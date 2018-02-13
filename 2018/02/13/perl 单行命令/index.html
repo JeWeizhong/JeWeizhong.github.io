@@ -103,7 +103,7 @@
 <meta property="og:description" content="与One-Liner相关的perl参数 -a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $ -F 指定-a的分隔符 -l 对输入的内容进行自动chomp，对输出的内容自动加换行符 -n 相当于while(&amp;lt;&amp;gt;) -e 执行命令，也就是脚本 -p 自动循环+输出，也就是while(&amp;lt;&amp;gt;){命令（脚本）; print;}    基本格式：perl">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923">
-<meta property="og:updated_time" content="2018-02-13T13:34:26.838Z">
+<meta property="og:updated_time" content="2018-02-13T13:36:40.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="perl 单行命令">
 <meta name="twitter:description" content="与One-Liner相关的perl参数 -a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $ -F 指定-a的分隔符 -l 对输入的内容进行自动chomp，对输出的内容自动加换行符 -n 相当于while(&amp;lt;&amp;gt;) -e 执行命令，也就是脚本 -p 自动循环+输出，也就是while(&amp;lt;&amp;gt;){命令（脚本）; print;}    基本格式：perl">
@@ -379,10 +379,8 @@
 <li><p><code>perl -e</code>为必须要写的参数</p>
 </li>
 <li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p>
-</li>
-</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -pe &apos;s/aaa/AAA/g&apos; 1.txt</span><br></pre></td></tr></table></figure>
-<ol>
+</li>
 <li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p>
 </li>
 <li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p>
@@ -444,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/13/IchorCNA/" rel="next" title="ichorCNA">
-                <i class="fa fa-chevron-left"></i> ichorCNA
+              <a href="/2018/02/13/我的第一个博客/" rel="next" title="测试">
+                <i class="fa fa-chevron-left"></i> 测试
               </a>
             
           </div>
