@@ -377,6 +377,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@A00262:122:H5FW3DSXX:3:1101:1561:1031 1:N:0:CCGTGAGA</span><br><span class="line">CNACCCCAAAAATGCTTTTGAAATCCTGAGATGTGATCAGTGAAATATGCAGCCAAGGCAAGGGGAAACTGTCCGCAAGTTAAAAAGATTTATTGCTATTCCAGGCTTCAAATGAGCCCAGAACTCAGGGCTGGTGTGTGTTTCAGAAGT</span><br><span class="line">+</span><br><span class="line">F#FFFFFFFFFFFFFFFFFFFFFFFFFFFFF,F:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFF:FFFFFFFFFFFFFFFFFFF:FFFFFFFFFF:FFFFFFFFFFF:FF,FFFFF:FFFFFFF</span><br></pre></td></tr></table></figure>
 <p><strong>Illumina 测序仪标识符</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -419,13 +420,15 @@
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p><strong>ps</strong>: 每个flowcell有8个泳道，一个泳道称为一个Lane，每条Lane上有两列，每列有多个有小格子，叫一个tile。(见下图)</p>
 <p><img src="/myphoto/flowcell.jpg" alt="flowcell"></p>
 </blockquote>
 <p><strong>质量评分</strong></p>
-<p>第四行表示序列的质量值,用<a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">ACSII码</a>表示。<br>测序仪一般是按照荧光信号来判断所测序的碱基是哪一种的，例如红黄蓝绿分别对应ATCG，因此对每个结果的判断都是一个概率的问题：<br>| Phred Quality Score(Q值) |错误率 |碱基准确率 |<br>| :——–:| :——–:| :——: |<br>|10|0.1 |  90%  |<br>|20|0.01|99%|<br>|30|0.001|99.9%|<br>|40|0.0001|99.99%|<br>|50|0.00001|99.999%|</p>
-<p>一般都是以Q值来衡量read碱基质量，Sanger中心用的换算公式如下，其中P为错误率，<br>$$Q=-10logP $$<br>Solexa系列测序仪使用不同的公示来计算质量值：$Q=-10log(P/1-P)$<br>不同的测序平台Q值所能表示的范围不一样，因此要想用对应的ACSII编码，必须加上一个数值(33或者64)<br>以上面的那条Illumina测序仪产生的read为例，<code>F</code>对应的十进制数是70，Q值就是36，也就是说这个碱基的准确率在99.99%以上</p>
+<p>第四行表示序列的质量值,用<a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">ACSII码</a>表示。<br>测序仪一般是按照荧光信号来判断所测序的碱基是哪一种的，例如红黄蓝绿分别对应ATCG，因此对每个结果的判断都是一个概率的问题：<br>| Phred Quality Score(Q值) |错误率 |碱基准确率 |<br>| :————:| :————:| :———: |<br>|10|0.1 |  90%  |<br>|20|0.01|99%|<br>|30|0.001|99.9%|<br>|40|0.0001|99.99%|<br>|50|0.00001|99.999%|</p>
+<p>一般都是以Q值来衡量read碱基质量，Sanger中心用的换算公式如下，其中P为错误率，</p>
+<script type="math/tex; mode=display">Q=-10logP</script><p>Solexa系列测序仪使用不同的公示来计算质量值：$Q=-10log(P/1-P)$<br>不同的测序平台Q值所能表示的范围不一样，因此要想用对应的ACSII编码，必须加上一个数值(33或者64)<br>以上面的那条Illumina测序仪产生的read为例，<code>F</code>对应的十进制数是70，Q值就是36，也就是说这个碱基的准确率在99.99%以上</p>
 <p><strong>参考链接:</strong></p>
 <ul>
 <li><a href="http://boyun.sh.cn/bio/?p=1901" target="_blank" rel="noopener">http://boyun.sh.cn/bio/?p=1901</a></li>
