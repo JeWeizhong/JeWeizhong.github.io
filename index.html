@@ -365,7 +365,7 @@
           
             <p>工作原理是：有一组已经分类好的数据。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（最近邻）的分类标签。</p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">对未知类别属性的数据集中的每个点依次执行以下操作：</span><br><span class="line">(1) 计算已知类别数据集中的点与当前点之间的距离；</span><br><span class="line">(2) 按照距离递增次序排序；</span><br><span class="line">(3) 选取与当前点距离最小的k个点；</span><br><span class="line">(4) 确定前k个点所在类别的出现频率；</span><br><span class="line">(5) 返回前k个点出现频率最高的类别作为当前点的预测分类。</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">def classify0(inX, dataSet, labels, k):</span><br><span class="line">    # 返回行数</span><br><span class="line">    dataSetSize = dataSet.shape[0]</span><br><span class="line">    # 在列向量方向上重复inX共1次(横向)，行向量方向上重复inX共dataSetSize次(纵向)</span><br><span class="line">    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**2</span><br><span class="line">    # sum()所有元素相加，sum(0)列相加，sum(1)行相加</span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=1)</span><br><span class="line">    distances = sqDistances**0.5</span><br><span class="line">    # 返回distances中元素从小到大排序后的索引值 </span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    #print(sortedDistIndicies)  </span><br><span class="line">    classCount=&#123;&#125;          </span><br><span class="line">    for i in range(k):</span><br><span class="line">        #print(sortedDistIndicies[i]) # 1,0,3</span><br><span class="line">        #print(labels[sortedDistIndicies[i]]) # A,A,B</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]  </span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1</span><br><span class="line">    #python3中用items()替换python2中的iteritems()</span><br><span class="line">    #key=operator.itemgetter(1)根据字典的值进行排序</span><br><span class="line">    #key=operator.itemgetter(0)根据字典的键进行排序</span><br><span class="line">    #reverse降序排序字典        </span><br><span class="line">    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)</span><br><span class="line">    return sortedClassCount[0][0]</span><br><span class="line"></span><br><span class="line">def createDataSet():</span><br><span class="line">    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span><br><span class="line">    labels = [&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;]</span><br><span class="line">    return group, labels</span><br><span class="line">#[[1.  1.1]</span><br><span class="line"> #[1.  1. ]</span><br><span class="line"> #[0.  0. ]</span><br><span class="line"> #[0.  0.1]]</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    group, labels = createDataSet()</span><br><span class="line">    result = classify0([0,0], group, labels, 3)</span><br><span class="line">    print(result) # B</span><br></pre></td></tr></table></figure>
-<p>计算$ (x_1,y_1)$与$(x_2,y_2)$距离公式：</p>
+<p>计算$(x_1,y_1)$与$(x_2,y_2)$距离公式：</p>
 <script type="math/tex; mode=display">\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}</script><p>这个距离也叫欧式距离。<br>上述代码的<code>classify0</code>函数中17~21行就是计算距离的方法</p>
 <h2 id="示例一：改进约会网站的配对效果"><a href="#示例一：改进约会网站的配对效果" class="headerlink" title="示例一：改进约会网站的配对效果"></a>示例一：改进约会网站的配对效果</h2><p><em>为了保证代码完整性，保留了<code>classify0</code>,<code>createDataSet</code>,是下列代码能够作为一个脚本单独运行，同时将多余的注释删除，节省空间</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line">from os import listdir</span><br><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import matplotlib.lines as mlines</span><br><span class="line">from matplotlib.font_manager import FontProperties</span><br><span class="line"></span><br><span class="line">def classify0(inX, dataSet, labels, k):</span><br><span class="line">    dataSetSize = dataSet.shape[0]</span><br><span class="line">    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**2</span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=1)</span><br><span class="line">    distances = sqDistances**0.5</span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    classCount=&#123;&#125;          </span><br><span class="line">    for i in range(k):</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]  </span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1</span><br><span class="line">    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)</span><br><span class="line">    return sortedClassCount[0][0]</span><br><span class="line"></span><br><span class="line">def createDataSet():</span><br><span class="line">    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span><br><span class="line">    labels = [&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;]</span><br><span class="line">    return group, labels</span><br><span class="line"></span><br><span class="line">def file2matrix(filename):</span><br><span class="line">    love_dictionary=&#123;&apos;largeDoses&apos;:3, &apos;smallDoses&apos;:2, &apos;didntLike&apos;:1&#125;</span><br><span class="line">    fr = open(filename)</span><br><span class="line">    arrayOLines = fr.readlines()</span><br><span class="line">    numberOfLines = len(arrayOLines)            #get the number of lines in the file</span><br><span class="line">    returnMat = np.zeros((numberOfLines,3))        #prepare matrix to return</span><br><span class="line">    classLabelVector = []                       #prepare labels return   </span><br><span class="line">    index = 0</span><br><span class="line">    for line in arrayOLines:</span><br><span class="line">        line = line.strip()</span><br><span class="line">        listFromLine = line.split(&apos;\t&apos;)</span><br><span class="line">        returnMat[index,:] = listFromLine[0:3] # 学习numpy之路任重道远啊</span><br><span class="line">        if(listFromLine[-1].isdigit()):</span><br><span class="line">            classLabelVector.append(int(listFromLine[-1]))</span><br><span class="line">        else:</span><br><span class="line">            classLabelVector.append(love_dictionary.get(listFromLine[-1])) # 最后一列就是标签</span><br><span class="line">        index += 1</span><br><span class="line">    return returnMat,classLabelVector</span><br><span class="line"></span><br><span class="line">def autoNorm(dataSet):</span><br><span class="line">    minVals = dataSet.min(0)</span><br><span class="line">    maxVals = dataSet.max(0)</span><br><span class="line">    ranges = maxVals - minVals</span><br><span class="line">    normDataSet = np.zeros(np.shape(dataSet))</span><br><span class="line">    m = dataSet.shape[0]</span><br><span class="line">    normDataSet = dataSet - np.tile(minVals, (m,1))</span><br><span class="line">    normDataSet = normDataSet/np.tile(ranges, (m,1))   #element wise divide</span><br><span class="line">    return normDataSet, ranges, minVals</span><br><span class="line">   </span><br><span class="line">def datingClassTest():</span><br><span class="line">    hoRatio = 0.50      #hold out 10%</span><br><span class="line">    datingDataMat,datingLabels = file2matrix(&apos;datingTestSet2.txt&apos;)       #load data setfrom file</span><br><span class="line">    normMat, ranges, minVals = autoNorm(datingDataMat)</span><br><span class="line">    m = normMat.shape[0]</span><br><span class="line">    numTestVecs = int(m*hoRatio)</span><br><span class="line">    errorCount = 0.0</span><br><span class="line">    for i in range(numTestVecs):</span><br><span class="line">	    #前numTestVecs个数据作为测试集,后m-numTestVecs个数据作为训练集</span><br><span class="line">        classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)</span><br><span class="line">        print (&quot;the classifier came back with: %d, the real answer is: %d&quot; % (classifierResult, datingLabels[i]))</span><br><span class="line">        if (classifierResult != datingLabels[i]): errorCount += 1.0</span><br><span class="line">    print (&quot;the total error rate is: %f&quot; % (errorCount/float(numTestVecs)))</span><br><span class="line">    print (errorCount)</span><br><span class="line">    </span><br><span class="line">def classifyPerson():</span><br><span class="line">    resultList = [&apos;not at all&apos;, &apos;in small doses&apos;, &apos;in large doses&apos;]</span><br><span class="line">    percentTats = float(input(\</span><br><span class="line">                                  &quot;percentage of time spent playing video games?&quot;))</span><br><span class="line">    ffMiles = float(input(&quot;frequent flier miles earned per year?&quot;))</span><br><span class="line">    iceCream = float(input(&quot;liters of ice cream consumed per year?&quot;))</span><br><span class="line">    datingDataMat, datingLabels = file2matrix(&apos;datingTestSet2.txt&apos;)</span><br><span class="line">    normMat, ranges, minVals = autoNorm(datingDataMat)</span><br><span class="line">    inArr = np.array([ffMiles, percentTats, iceCream, ])</span><br><span class="line">    classifierResult = classify0((inArr - \</span><br><span class="line">                                  minVals)/ranges, normMat, datingLabels, 3)</span><br><span class="line">    print (&quot;You will probably like this person: %s&quot; % resultList[classifierResult - 1])</span><br><span class="line"></span><br><span class="line">def showdatas(datingDataMat, datingLabels):</span><br><span class="line">    #设置汉字格式</span><br><span class="line">    font = FontProperties(fname=r&quot;c:\windows\fonts\simsun.ttc&quot;, size=12)</span><br><span class="line">    #将fig画布分隔成1行1列,不共享x轴和y轴,fig画布的大小为(13,8)</span><br><span class="line">    #当nrow=2,nclos=2时,代表fig画布被分为四个区域,axs[0][0]表示第一行第一个区域</span><br><span class="line">    fig, axs = plt.subplots(nrows=2, ncols=2,sharex=False, sharey=False, figsize=(13,8))</span><br><span class="line"></span><br><span class="line">    #numberOfLabels = len(datingLabels)</span><br><span class="line">    LabelsColors = []</span><br><span class="line">    for i in datingLabels:</span><br><span class="line">        if i == 1:</span><br><span class="line">            LabelsColors.append(&apos;black&apos;)</span><br><span class="line">        if i == 2:</span><br><span class="line">            LabelsColors.append(&apos;orange&apos;)</span><br><span class="line">        if i == 3:</span><br><span class="line">            LabelsColors.append(&apos;red&apos;)</span><br><span class="line">    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第二列(玩游戏)数据画散点数据,散点大小为15,透明度为0.5</span><br><span class="line">    axs[0][0].scatter(x=datingDataMat[:,0], y=datingDataMat[:,1], color=LabelsColors,s=15, alpha=.5)</span><br><span class="line">    #设置标题,x轴label,y轴label</span><br><span class="line">    axs0_title_text = axs[0][0].set_title(u&apos;每年获得的飞行常客里程数与玩视频游戏所消耗时间占比&apos;,FontProperties=font)</span><br><span class="line">    axs0_xlabel_text = axs[0][0].set_xlabel(u&apos;每年获得的飞行常客里程数&apos;,FontProperties=font)</span><br><span class="line">    axs0_ylabel_text = axs[0][0].set_ylabel(u&apos;玩视频游戏所消耗时间占&apos;,FontProperties=font)</span><br><span class="line">    plt.setp(axs0_title_text, size=9, weight=&apos;bold&apos;, color=&apos;red&apos;) </span><br><span class="line">    plt.setp(axs0_xlabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;) </span><br><span class="line">    plt.setp(axs0_ylabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;)</span><br><span class="line"></span><br><span class="line">    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5</span><br><span class="line">    axs[0][1].scatter(x=datingDataMat[:,0], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)</span><br><span class="line">    #设置标题,x轴label,y轴label</span><br><span class="line">    axs1_title_text = axs[0][1].set_title(u&apos;每年获得的飞行常客里程数与每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    axs1_xlabel_text = axs[0][1].set_xlabel(u&apos;每年获得的飞行常客里程数&apos;,FontProperties=font)</span><br><span class="line">    axs1_ylabel_text = axs[0][1].set_ylabel(u&apos;每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    plt.setp(axs1_title_text, size=9, weight=&apos;bold&apos;, color=&apos;red&apos;) </span><br><span class="line">    plt.setp(axs1_xlabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;) </span><br><span class="line">    plt.setp(axs1_ylabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;)</span><br><span class="line"></span><br><span class="line">    #画出散点图,以datingDataMat矩阵的第二(玩游戏)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5</span><br><span class="line">    axs[1][0].scatter(x=datingDataMat[:,1], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)</span><br><span class="line">    #设置标题,x轴label,y轴label</span><br><span class="line">    axs2_title_text = axs[1][0].set_title(u&apos;玩视频游戏所消耗时间占比与每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    axs2_xlabel_text = axs[1][0].set_xlabel(u&apos;玩视频游戏所消耗时间占比&apos;,FontProperties=font)</span><br><span class="line">    axs2_ylabel_text = axs[1][0].set_ylabel(u&apos;每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    plt.setp(axs2_title_text, size=9, weight=&apos;bold&apos;, color=&apos;red&apos;) </span><br><span class="line">    plt.setp(axs2_xlabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;) </span><br><span class="line">    plt.setp(axs2_ylabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;)</span><br><span class="line">    #设置图例</span><br><span class="line">    didntLike = mlines.Line2D([], [], color=&apos;black&apos;, marker=&apos;.&apos;,</span><br><span class="line">                      markersize=6, label=&apos;didntLike&apos;)</span><br><span class="line">    smallDoses = mlines.Line2D([], [], color=&apos;orange&apos;, marker=&apos;.&apos;,</span><br><span class="line">                      markersize=6, label=&apos;smallDoses&apos;)</span><br><span class="line">    largeDoses = mlines.Line2D([], [], color=&apos;red&apos;, marker=&apos;.&apos;,</span><br><span class="line">                      markersize=6, label=&apos;largeDoses&apos;)</span><br><span class="line">    #添加图例</span><br><span class="line">    axs[0][0].legend(handles=[didntLike,smallDoses,largeDoses])</span><br><span class="line">    axs[0][1].legend(handles=[didntLike,smallDoses,largeDoses])</span><br><span class="line">    axs[1][0].legend(handles=[didntLike,smallDoses,largeDoses])</span><br><span class="line">    #显示图片</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    # 文件有4列 </span><br><span class="line">    # 每年获得的飞行常客里程数</span><br><span class="line">    # 玩视频游戏所耗时间百分比</span><br><span class="line">    # 每周消费的冰淇淋公升数</span><br><span class="line">    # 不喜欢的人 魅力一般的人 极具魅力的人</span><br><span class="line">    #datingDataMat, datingLabels = file2matrix(r&apos;F:\download\machinelearninginaction-master\Ch02\datingTestSet.txt&apos;)</span><br><span class="line">    #showdatas(datingDataMat, datingLabels)</span><br><span class="line">    #datingClassTest</span><br><span class="line">    classifyPerson()</span><br></pre></td></tr></table></figure>
@@ -801,156 +801,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/linux下多个节点ssh互相免密码登陆/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/29/linux下多个节点ssh互相免密码登陆/" itemprop="url">linux下多个节点ssh互相免密码登陆</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T00:00:00+08:00">
-                2018-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>假定需要节点gm-35-2和gm-35-18之间免密登陆</strong></p>
-<ol>
-<li>确认安装了ssh</li>
-<li>创建私钥和密钥 （id_rsa和 id_rsa.pub）<br>执行<code>ssh-keygen-t rsa</code> ，这样你进入 <code>~/.ssh</code>文件夹下就会看到 <code>id_rsa</code> 和<code>id_rsa.pub</code>两个文件。每个节点都执行一次</li>
-<li>在<code>gm-35-2</code>下，运行<code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></li>
-<li><code>ssh gm-35-18 cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code> 将其他节点公匙拷贝到本节点</li>
-<li><code>scp ~/.ssh/authorized_keys usrname@gm-35-18:~/.ssh/authorized_keys</code> 将文件拷贝到其他节点</li>
-</ol>
-<p><em>网上说要将该文件权限改为600</em></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/samtools常用命令详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1088,6 +938,156 @@
 <p>bcftools view 的具体参数如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Input/Output Options:</span><br><span class="line">-A 	Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.</span><br><span class="line">-b 	Output in the BCF format. The default is VCF.</span><br><span class="line">-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]</span><br><span class="line">-F 	Indicate PL is generated by r921 or before (ordering is different).</span><br><span class="line">-G 	Suppress all individual genotype information.</span><br><span class="line">-l FILE List of sites at which information are outputted [all sites]</span><br><span class="line">-N 	Skip sites where the REF field is not A/C/G/T</span><br><span class="line">-Q 	Output the QCALL likelihood format</span><br><span class="line">-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]</span><br><span class="line">-S 	The input is VCF instead of BCF.</span><br><span class="line">-u 	Uncompressed BCF output (force -b). </span><br><span class="line"></span><br><span class="line">Consensus/Variant Calling Options:</span><br><span class="line">-c 	Call variants using Bayesian inference. This option automatically invokes option -e.</span><br><span class="line">-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]</span><br><span class="line">        当有多个sample用于variants calling时，比如多个转录组数据或多个重测序</span><br><span class="line">        数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的</span><br><span class="line">        samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况</span><br><span class="line">        下，该值设置在0～1之间没有意义，大于1则得不到任何结果。</span><br><span class="line">-e 	Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.</span><br><span class="line">-g 	Call per-sample genotypes at variant sites (force -c)</span><br><span class="line">-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]</span><br><span class="line">-p FLOAT A site is considered to be a variant if P(ref|D)</span><br><span class="line">-t FLOAT Scaled muttion rate for variant calling [0.001]</span><br><span class="line">-T STR 	Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]</span><br><span class="line">-v 	Output variant sites only (force -c) </span><br><span class="line"></span><br><span class="line">Contrast Calling and Association Test Options:</span><br><span class="line">-1 INT 	Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]</span><br><span class="line">-U INT 	Number of permutations for association test (effective only with -1) [0]</span><br><span class="line">-X FLOAT Only perform permutations for P(chi^2)</span><br></pre></td></tr></table></figure></p>
 <p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ perl -ne &apos;print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8&apos; snp_indel.vcf &gt; snp_indel.final.vcf</span><br></pre></td></tr></table></figure></p>
 <h2 id="rmdup"><a href="#rmdup" class="headerlink" title="rmdup"></a>rmdup</h2><p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Usage:  samtools rmdup [-sS]  </span><br><span class="line"> -s 对single-end reads。默认情况下，只对paired-end reads</span><br><span class="line"> -S 将Paired-end reads作为single-end reads处理。</span><br><span class="line"></span><br><span class="line">$ samtools input.sorted.bam output.bam</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/linux下多个节点ssh互相免密码登陆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/29/linux下多个节点ssh互相免密码登陆/" itemprop="url">linux下多个节点ssh互相免密码登陆</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T00:00:00+08:00">
+                2018-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>假定需要节点gm-35-2和gm-35-18之间免密登陆</strong></p>
+<ol>
+<li>确认安装了ssh</li>
+<li>创建私钥和密钥 （id_rsa和 id_rsa.pub）<br>执行<code>ssh-keygen-t rsa</code> ，这样你进入 <code>~/.ssh</code>文件夹下就会看到 <code>id_rsa</code> 和<code>id_rsa.pub</code>两个文件。每个节点都执行一次</li>
+<li>在<code>gm-35-2</code>下，运行<code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></li>
+<li><code>ssh gm-35-18 cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code> 将其他节点公匙拷贝到本节点</li>
+<li><code>scp ~/.ssh/authorized_keys usrname@gm-35-18:~/.ssh/authorized_keys</code> 将文件拷贝到其他节点</li>
+</ol>
+<p><em>网上说要将该文件权限改为600</em></p>
 
           
         
