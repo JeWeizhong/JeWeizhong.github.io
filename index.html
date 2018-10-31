@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/python3cook系列笔记(一)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/python3cook系列笔记(二)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/30/python3cook系列笔记(一)/" itemprop="url">python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表</a></h1>
+                <a class="post-title-link" href="/2018/10/31/python3cook系列笔记(二)/" itemprop="url">python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">
-                2018-10-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T00:00:00+08:00">
+                2018-10-31
               </time>
             
 
@@ -364,13 +364,35 @@
         
           
             <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
-<p>在python中任何可迭代的对象(<strong>列表，元组，字符串，文件，迭代器，生成器等</strong>)都可以直接进行解压并赋值，<strong>只要保证</strong>前后的元素是一样的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p=(4,5)</span><br><span class="line">&gt;&gt;&gt; x,y=p</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">5</span><br><span class="line"># 嵌套序列也一样</span><br><span class="line">&gt;&gt;&gt; data = [ &apos;ACME&apos;, 50, 91.1, (2012, 12, 21) ]</span><br><span class="line">&gt;&gt;&gt; name, shares, price, date = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; date</span><br><span class="line">(2012, 12, 21)</span><br><span class="line">&gt;&gt;&gt; name, shares, price, (year, mon, day) = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt; mon</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; day</span><br><span class="line">21</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>如果只想要部分，可以中<code>_</code>占位一个变量，<code>*_</code>占位多个变量(返回一个列表)，这些变量最后会被丢弃：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; record = (&apos;ACME&apos;, 50, 123.45, (12, 18, 2012))</span><br><span class="line">&gt;&gt;&gt; name, *_, (*_, year) = record</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>当然<code>*_</code>这个模式也可以不用下划线占位，而是给定一个变量名字，来获取剩余变量的列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; items = [1, 10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt; head, *tail = items</span><br><span class="line">&gt;&gt;&gt; head</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; tail</span><br><span class="line">[10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<p><em>拓展阅读：</em></p>
-<p>实现一个优先级队列:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"></span><br><span class="line">class PriorityQueue:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self._queue = []</span><br><span class="line">        self._index = 0</span><br><span class="line">    def push(self, item, priority):</span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index += 1</span><br><span class="line">    def pop(self):</span><br><span class="line">        return heapq.heappop(self._queue)[-1]</span><br></pre></td></tr></table></figure></p>
-<p>使用方式：<br><em>小声bb：这本书喜欢用类，自己要抓紧补一下类的知识了</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Item:</span><br><span class="line">...     def __init__(self, name):</span><br><span class="line">...         self.name = name</span><br><span class="line">...     def __repr__(self):</span><br><span class="line">...         return &apos;Item(&#123;!r&#125;)&apos;.format(self.name)</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; q = PriorityQueue()</span><br><span class="line"># 传入：元素，优先级</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;foo&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;bar&apos;), 5)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;spam&apos;), 4)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;grok&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;bar&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;spam&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;foo&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;grok&apos;)</span><br></pre></td></tr></table></figure></p>
-<p><strong>下一节：字典的用法</strong></p>
+<ol>
+<li><code>collections</code> 模块中的<code>defaultdict</code>函数能够构造一个值为列表的字典：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line">d = defaultdict(list)</span><br><span class="line">d[&apos;a&apos;].append(1)</span><br><span class="line">d[&apos;a&apos;].append(2)</span><br><span class="line">d[&apos;b&apos;].append(4)</span><br><span class="line">d = defaultdict(set)</span><br><span class="line">d[&apos;a&apos;].add(1)</span><br><span class="line">d[&apos;a&apos;].add(2)</span><br><span class="line">d[&apos;b&apos;].add(4)</span><br></pre></td></tr></table></figure>
+<p>简化版：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = defaultdict(list)</span><br><span class="line">for key, value in pairs:</span><br><span class="line">d[key].append(value)</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>字段的键存储是无序的，如果想要一个键顺序是一定的字典，可以这样做：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from collections import OrderedDict</span><br><span class="line">d = OrderedDict()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>但这样做内存占用比较大</p>
+<ol>
+<li>如果你在一个字典上执行普通的数学运算，你会发现它们仅仅作用于键，而不是值：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prices = &#123;</span><br><span class="line">&apos;ACME&apos;: 45.23,</span><br><span class="line">&apos;AAPL&apos;: 612.78,</span><br><span class="line">&apos;IBM&apos;: 205.55,</span><br><span class="line">&apos;HPQ&apos;: 37.20,</span><br><span class="line">&apos;FB&apos;: 10.75</span><br><span class="line">&#125;</span><br><span class="line">min(prices) # Returns &apos;AAPL&apos;</span><br><span class="line">max(prices) # Returns &apos;IBM&apos;</span><br></pre></td></tr></table></figure>
+<p>想要对值进行操作，可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">min(prices, key=lambda k: prices[k]) # Returns &apos;FB&apos;</span><br><span class="line">max(prices, key=lambda k: prices[k]) # Returns &apos;AAPL&apos;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>对两个字典进行运算：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Find keys in common</span><br><span class="line">a.keys() &amp; b.keys() # &#123; &apos;x&apos;, &apos;y&apos; &#125;</span><br><span class="line"># Find keys in a that are not in b</span><br><span class="line">a.keys() - b.keys() # &#123; &apos;z&apos; &#125;</span><br><span class="line"># Find (key,value) pairs in common</span><br><span class="line">a.items() &amp; b.items() # &#123; (&apos;y&apos;, 2) &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><del>ps：如果想要对列表消除重复元素可以转换位集合：</del><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[1, 5, 2, 1, 9, 1, 5, 10]</span><br><span class="line">&gt;&gt;&gt; set(a)</span><br><span class="line">&#123;1, 2, 10, 5, 9&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果想要对一个复杂类型的列表去重复，就要用到一个稍微复杂一点的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def dedupe(items, key=None):</span><br><span class="line">    seen = set()</span><br><span class="line">    for item in items:</span><br><span class="line">        val = item if key is None else key(item)</span><br><span class="line">        if val not in seen:</span><br><span class="line">            yield item</span><br><span class="line">            seen.add(val)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a = [ &#123;&apos;x&apos;:1, &apos;y&apos;:2&#125;, &#123;&apos;x&apos;:1, &apos;y&apos;:3&#125;, &#123;&apos;x&apos;:1, &apos;y&apos;:2&#125;, &#123;&apos;x&apos;:2, &apos;y&apos;:4&#125;]</span><br><span class="line">&gt;&gt;&gt; list(dedupe(a, key=lambda d: (d[&apos;x&apos;],d[&apos;y&apos;])))</span><br><span class="line">[&#123;&apos;x&apos;: 1, &apos;y&apos;: 2&#125;, &#123;&apos;x&apos;: 1, &apos;y&apos;: 3&#125;, &#123;&apos;x&apos;: 2, &apos;y&apos;: 4&#125;]</span><br><span class="line">&gt;&gt;&gt; list(dedupe(a, key=lambda d: d[&apos;x&apos;]))</span><br><span class="line">[&#123;&apos;x&apos;: 1, &apos;y&apos;: 2&#125;, &#123;&apos;x&apos;: 2, &apos;y&apos;: 4&#125;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>按照关键字对字典进行排序：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rows = [</span><br><span class="line">&#123;&apos;fname&apos;: &apos;Brian&apos;, &apos;lname&apos;: &apos;Jones&apos;, &apos;uid&apos;: 1003&#125;,</span><br><span class="line">&#123;&apos;fname&apos;: &apos;David&apos;, &apos;lname&apos;: &apos;Beazley&apos;, &apos;uid&apos;: 1002&#125;,</span><br><span class="line">&#123;&apos;fname&apos;: &apos;John&apos;, &apos;lname&apos;: &apos;Cleese&apos;, &apos;uid&apos;: 1001&#125;,</span><br><span class="line">&#123;&apos;fname&apos;: &apos;Big&apos;, &apos;lname&apos;: &apos;Jones&apos;, &apos;uid&apos;: 1004&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">from operator import itemgetter</span><br><span class="line">rows_by_fname = sorted(rows, key=itemgetter(&apos;fname&apos;))</span><br><span class="line">rows_by_uid = sorted(rows, key=itemgetter(&apos;uid&apos;))</span><br><span class="line">print(rows_by_fname)</span><br><span class="line">print(rows_by_uid)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>itemgetter()</code> 有时候也可以用<code>lambda</code> 表达式代替，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rows_by_fname = sorted(rows, key=lambda r: r[&apos;fname&apos;])</span><br><span class="line">rows_by_lfname = sorted(rows, key=lambda r: (r[&apos;lname&apos;],r[&apos;fname&apos;]))</span><br></pre></td></tr></table></figure></p>
+<p>理论上讲，<code>operator.attrgetter()</code>与 <code>itemgetter()</code> 函数的作用是一样，书中说<strong>排序不支持原生比较的对象</strong>要用<code>attrgetter()</code>函数，反正我也不知道什么是<strong>不支持原生比较的对象</strong></p>
+<p><strong>下一节：字典的用法(续)</strong></p>
 
           
         
@@ -543,6 +565,155 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line">from os import listdir</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier as kNN</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明:将32x32的二进制图像转换为1x1024向量。</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line">    filename - 文件名</span><br><span class="line">Returns:</span><br><span class="line">    returnVect - 返回的二进制图像的1x1024向量</span><br><span class="line"></span><br><span class="line">Modify:</span><br><span class="line">    2017-07-15</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def img2vector(filename):</span><br><span class="line">    #创建1x1024零向量</span><br><span class="line">    returnVect = np.zeros((1, 1024))</span><br><span class="line">    #打开文件</span><br><span class="line">    fr = open(filename)</span><br><span class="line">    #按行读取</span><br><span class="line">    for i in range(32):</span><br><span class="line">        #读一行数据</span><br><span class="line">        lineStr = fr.readline()</span><br><span class="line">        #每一行的前32个元素依次添加到returnVect中</span><br><span class="line">        for j in range(32):</span><br><span class="line">            returnVect[0, 32*i+j] = int(lineStr[j])</span><br><span class="line">    #返回转换后的1x1024向量</span><br><span class="line">    return returnVect</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明:手写数字分类测试</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line">    无</span><br><span class="line">Returns:</span><br><span class="line">    无</span><br><span class="line"></span><br><span class="line">Modify:</span><br><span class="line">    2017-07-15</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def handwritingClassTest():</span><br><span class="line">    #测试集的Labels</span><br><span class="line">    hwLabels = []</span><br><span class="line">    #返回trainingDigits目录下的文件名</span><br><span class="line">    trainingFileList = listdir(r&apos;E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\trainingDigits&apos;)</span><br><span class="line">    #返回文件夹下文件的个数</span><br><span class="line">    m = len(trainingFileList)</span><br><span class="line">    #初始化训练的Mat矩阵,测试集</span><br><span class="line">    trainingMat = np.zeros((m, 1024))</span><br><span class="line">    #从文件名中解析出训练集的类别</span><br><span class="line">    for i in range(m):</span><br><span class="line">        #获得文件的名字</span><br><span class="line">        fileNameStr = trainingFileList[i]</span><br><span class="line">        #获得分类的数字</span><br><span class="line">        classNumber = int(fileNameStr.split(&apos;_&apos;)[0])</span><br><span class="line">        #将获得的类别添加到hwLabels中</span><br><span class="line">        hwLabels.append(classNumber)</span><br><span class="line">        #将每一个文件的1x1024数据存储到trainingMat矩阵中</span><br><span class="line">        trainingMat[i,:] = img2vector(&apos;E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\trainingDigits/%s&apos; % (fileNameStr))</span><br><span class="line">    #构建kNN分类器</span><br><span class="line">    neigh = kNN(n_neighbors = 3, algorithm = &apos;auto&apos;)</span><br><span class="line">    #拟合模型, trainingMat为测试矩阵,hwLabels为对应的标签</span><br><span class="line">    neigh.fit(trainingMat, hwLabels)</span><br><span class="line">    #返回testDigits目录下的文件列表</span><br><span class="line">    testFileList = listdir(r&apos;E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\testDigits&apos;)</span><br><span class="line">    #错误检测计数</span><br><span class="line">    errorCount = 0.0</span><br><span class="line">    #测试数据的数量</span><br><span class="line">    mTest = len(testFileList)</span><br><span class="line">    #从文件中解析出测试集的类别并进行分类测试</span><br><span class="line">    for i in range(mTest):</span><br><span class="line">        #获得文件的名字</span><br><span class="line">        fileNameStr = testFileList[i]</span><br><span class="line">        #获得分类的数字</span><br><span class="line">        classNumber = int(fileNameStr.split(&apos;_&apos;)[0])</span><br><span class="line">        #获得测试集的1x1024向量,用于训练</span><br><span class="line">        vectorUnderTest = img2vector(&apos;E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\testDigits/%s&apos; % (fileNameStr))</span><br><span class="line">        #获得预测结果</span><br><span class="line">        # classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)</span><br><span class="line">        classifierResult = neigh.predict(vectorUnderTest)</span><br><span class="line">        print(&quot;分类返回结果为%d\t真实结果为%d&quot; % (classifierResult, classNumber))</span><br><span class="line">        if(classifierResult != classNumber):</span><br><span class="line">            errorCount += 1.0</span><br><span class="line">    print(&quot;总共错了%d个数据\n错误率为%f%%&quot; % (errorCount, errorCount/mTest * 100))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明:main函数</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line">    无</span><br><span class="line">Returns:</span><br><span class="line">    无</span><br><span class="line"></span><br><span class="line">Modify:</span><br><span class="line">    2017-07-15</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    handwritingClassTest()</span><br></pre></td></tr></table></figure>
 <hr>
 <p><strong>参考链接：</strong><a href="http://blog.csdn.net/c406495762" target="_blank" rel="noopener">http://blog.csdn.net/c406495762</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/python3cook系列笔记(一)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/30/python3cook系列笔记(一)/" itemprop="url">python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
+<p>在python中任何可迭代的对象(<strong>列表，元组，字符串，文件，迭代器，生成器等</strong>)都可以直接进行解压并赋值，<strong>只要保证</strong>前后的元素是一样的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p=(4,5)</span><br><span class="line">&gt;&gt;&gt; x,y=p</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">5</span><br><span class="line"># 嵌套序列也一样</span><br><span class="line">&gt;&gt;&gt; data = [ &apos;ACME&apos;, 50, 91.1, (2012, 12, 21) ]</span><br><span class="line">&gt;&gt;&gt; name, shares, price, date = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; date</span><br><span class="line">(2012, 12, 21)</span><br><span class="line">&gt;&gt;&gt; name, shares, price, (year, mon, day) = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt; mon</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; day</span><br><span class="line">21</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果只想要部分，可以中<code>_</code>占位一个变量，<code>*_</code>占位多个变量(返回一个列表)，这些变量最后会被丢弃：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; record = (&apos;ACME&apos;, 50, 123.45, (12, 18, 2012))</span><br><span class="line">&gt;&gt;&gt; name, *_, (*_, year) = record</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>当然<code>*_</code>这个模式也可以不用下划线占位，而是给定一个变量名字，来获取剩余变量的列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; items = [1, 10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt; head, *tail = items</span><br><span class="line">&gt;&gt;&gt; head</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; tail</span><br><span class="line">[10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p><em>拓展阅读：</em></p>
+<p>实现一个优先级队列:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"></span><br><span class="line">class PriorityQueue:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self._queue = []</span><br><span class="line">        self._index = 0</span><br><span class="line">    def push(self, item, priority):</span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index += 1</span><br><span class="line">    def pop(self):</span><br><span class="line">        return heapq.heappop(self._queue)[-1]</span><br></pre></td></tr></table></figure></p>
+<p>使用方式：<br><em>小声bb：这本书喜欢用类，自己要抓紧补一下类的知识了</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Item:</span><br><span class="line">...     def __init__(self, name):</span><br><span class="line">...         self.name = name</span><br><span class="line">...     def __repr__(self):</span><br><span class="line">...         return &apos;Item(&#123;!r&#125;)&apos;.format(self.name)</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; q = PriorityQueue()</span><br><span class="line"># 传入：元素，优先级</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;foo&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;bar&apos;), 5)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;spam&apos;), 4)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;grok&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;bar&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;spam&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;foo&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;grok&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>下一节：字典的用法</strong></p>
 
           
         
@@ -950,6 +1121,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/linux下多个节点ssh互相免密码登陆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/29/linux下多个节点ssh互相免密码登陆/" itemprop="url">linux下多个节点ssh互相免密码登陆</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T00:00:00+08:00">
+                2018-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>假定需要节点gm-35-2和gm-35-18之间免密登陆</strong></p>
+<ol>
+<li>确认安装了ssh</li>
+<li>创建私钥和密钥 （id_rsa和 id_rsa.pub）<br>执行<code>ssh-keygen-t rsa</code> ，这样你进入 <code>~/.ssh</code>文件夹下就会看到 <code>id_rsa</code> 和<code>id_rsa.pub</code>两个文件。每个节点都执行一次</li>
+<li>在<code>gm-35-2</code>下，运行<code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></li>
+<li><code>ssh gm-35-18 cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code> 将其他节点公匙拷贝到本节点</li>
+<li><code>scp ~/.ssh/authorized_keys usrname@gm-35-18:~/.ssh/authorized_keys</code> 将文件拷贝到其他节点</li>
+</ol>
+<p><em>网上说要将该文件权限改为600</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/samtools常用命令详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1087,156 +1408,6 @@
 <p>bcftools view 的具体参数如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Input/Output Options:</span><br><span class="line">-A 	Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.</span><br><span class="line">-b 	Output in the BCF format. The default is VCF.</span><br><span class="line">-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]</span><br><span class="line">-F 	Indicate PL is generated by r921 or before (ordering is different).</span><br><span class="line">-G 	Suppress all individual genotype information.</span><br><span class="line">-l FILE List of sites at which information are outputted [all sites]</span><br><span class="line">-N 	Skip sites where the REF field is not A/C/G/T</span><br><span class="line">-Q 	Output the QCALL likelihood format</span><br><span class="line">-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]</span><br><span class="line">-S 	The input is VCF instead of BCF.</span><br><span class="line">-u 	Uncompressed BCF output (force -b). </span><br><span class="line"></span><br><span class="line">Consensus/Variant Calling Options:</span><br><span class="line">-c 	Call variants using Bayesian inference. This option automatically invokes option -e.</span><br><span class="line">-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]</span><br><span class="line">        当有多个sample用于variants calling时，比如多个转录组数据或多个重测序</span><br><span class="line">        数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的</span><br><span class="line">        samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况</span><br><span class="line">        下，该值设置在0～1之间没有意义，大于1则得不到任何结果。</span><br><span class="line">-e 	Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.</span><br><span class="line">-g 	Call per-sample genotypes at variant sites (force -c)</span><br><span class="line">-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]</span><br><span class="line">-p FLOAT A site is considered to be a variant if P(ref|D)</span><br><span class="line">-t FLOAT Scaled muttion rate for variant calling [0.001]</span><br><span class="line">-T STR 	Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]</span><br><span class="line">-v 	Output variant sites only (force -c) </span><br><span class="line"></span><br><span class="line">Contrast Calling and Association Test Options:</span><br><span class="line">-1 INT 	Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]</span><br><span class="line">-U INT 	Number of permutations for association test (effective only with -1) [0]</span><br><span class="line">-X FLOAT Only perform permutations for P(chi^2)</span><br></pre></td></tr></table></figure></p>
 <p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ perl -ne &apos;print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8&apos; snp_indel.vcf &gt; snp_indel.final.vcf</span><br></pre></td></tr></table></figure></p>
 <h2 id="rmdup"><a href="#rmdup" class="headerlink" title="rmdup"></a>rmdup</h2><p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Usage:  samtools rmdup [-sS]  </span><br><span class="line"> -s 对single-end reads。默认情况下，只对paired-end reads</span><br><span class="line"> -S 将Paired-end reads作为single-end reads处理。</span><br><span class="line"></span><br><span class="line">$ samtools input.sorted.bam output.bam</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/linux下多个节点ssh互相免密码登陆/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/29/linux下多个节点ssh互相免密码登陆/" itemprop="url">linux下多个节点ssh互相免密码登陆</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T00:00:00+08:00">
-                2018-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>假定需要节点gm-35-2和gm-35-18之间免密登陆</strong></p>
-<ol>
-<li>确认安装了ssh</li>
-<li>创建私钥和密钥 （id_rsa和 id_rsa.pub）<br>执行<code>ssh-keygen-t rsa</code> ，这样你进入 <code>~/.ssh</code>文件夹下就会看到 <code>id_rsa</code> 和<code>id_rsa.pub</code>两个文件。每个节点都执行一次</li>
-<li>在<code>gm-35-2</code>下，运行<code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></li>
-<li><code>ssh gm-35-18 cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code> 将其他节点公匙拷贝到本节点</li>
-<li><code>scp ~/.ssh/authorized_keys usrname@gm-35-18:~/.ssh/authorized_keys</code> 将文件拷贝到其他节点</li>
-</ol>
-<p><em>网上说要将该文件权限改为600</em></p>
 
           
         
@@ -1783,219 +1954,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/15/注释格式说明/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/15/注释格式说明/" itemprop="url">突变注释格式说明</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-15T00:00:00+08:00">
-                2018-02-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生信/" itemprop="url" rel="index">
-                    <span itemprop="name">生信</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/myphoto/bdvj80uudkbj.png" alt="image"></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>核酸变化</th>
-<th style="text-align:center">氨基酸改变</th>
-<th style="text-align:center">详细说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.1915A&gt;G(exon16)</td>
-<td style="text-align:center">p.N639D</td>
-<td style="text-align:center">非同义突变，第639氨基酸蛋白位置上，氨基酸N突变为氨基酸D</td>
-</tr>
-<tr>
-<td>c.112C&gt;T(exon1)</td>
-<td style="text-align:center">p.R38X,70</td>
-<td style="text-align:center">非同义突变，提前终止，第20氨基酸蛋白位置上，氨基酸C突变为终止密码子（用X表示），且相对原来缩短170个氨基酸</td>
-</tr>
-<tr>
-<td>c.3052T&gt;C(exon20)</td>
-<td style="text-align:center">p.X1018Q,11</td>
-<td style="text-align:center">非同义突变，延长终止，第1018氨基酸蛋白位置为终止密码子（用X表示），突变为Q，且相对原来预测延长11个氨基酸，如果用“？”则表示无法计算延长长度</td>
-</tr>
-<tr>
-<td>c.67(exon1)_c.69(exon1)delCTG</td>
-<td style="text-align:center">p.L23del</td>
-<td style="text-align:center">非框移突变，第23氨基酸蛋白位置缺失</td>
-</tr>
-<tr>
-<td>c.3364(exon33)_c.3372(exon33)delGGCCCCCCA</td>
-<td style="text-align:center">p.G1122_P1124del</td>
-<td style="text-align:center">非框移突变，第1122位(G)至1124位(P)氨基酸缺失</td>
-</tr>
-<tr>
-<td>c.3675(exon2)_c.3676(exon2)insAGC</td>
-<td style="text-align:center">p.S1225_E1226insS</td>
-<td style="text-align:center">非框移突变，第1225（S）至1226（E）位氨基酸蛋白发生之间插入氨基酸S</td>
-</tr>
-<tr>
-<td>c.311(exon2)_c.313(exon2)delCCC</td>
-<td style="text-align:center">p.T104_L105delinsM</td>
-<td style="text-align:center">非框移突变，第104（T）至105（L）位氨基酸突变为氨基酸M，也可理解为：第104位至第105位置的氨基酸替换为M</td>
-</tr>
-<tr>
-<td>c.1072(exon10)_c.1073(exon10)insAGGGACTGGGCGGGGCCATGGTCT</td>
-<td style="text-align:center">p.W358delinsX,76</td>
-<td style="text-align:center">非框移突变，导致第358位氨基酸蛋白W突变为终止密码子(用X表示)，且相对原来长度缩短76个氨基酸</td>
-</tr>
-<tr>
-<td>c.417(exon3)delA</td>
-<td style="text-align:center">p.X139Wfs*8</td>
-<td style="text-align:center">框移突变，延长终止，导致终止密码子（第139位，用X表示）突变为氨基酸W，且相对原长度预测延长8个氨基酸（或从第139位氨基酸开始住数后第8个终止），如果用“？”则表示无法计算延长长度，即在3’UTR上找不到终止密码子</td>
-</tr>
-<tr>
-<td>c.191(exon4)delA</td>
-<td style="text-align:center">p.Y64Lfs*30</td>
-<td style="text-align:center">框移突变，导致其编码的蛋白从第64位氨基酸开始算起，再翻译29个氨基酸（包含第64位）后终止，且这29个氨基酸是移码的，序列和原来的序列不同</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>c.-20T&gt;G(exon1)：基因5’utr上距离起始密码子的第-20位碱基T突变为G，位于第1外显子 </li>
-<li>c.1A&gt;G(exon1)：基因编码区第1位碱基A突变为G，位于第1外显子 </li>
-<li>c.21T&gt;A(exon1)：基因编码区第21位碱基T突变为A，位于第1外显子 </li>
-<li>c.21+2T&gt;A(IVS1)：基因的第1个内含子第2位碱基G突变为A，距离第1外显子边界（c.21）2bp的位置 </li>
-<li>c.61-2G&gt;A(IVS2)：基因的第2个内含子上距离第3外显子边界（c.61）2bp的位置 </li>
-<li>c.*22G&gt;A(exon4)：基因3’utr上距离终止密码子的第22位碱基G突变为A，位于第4外显子</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2046,7 +2004,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
