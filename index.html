@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/机器学习系列笔记(三)Logistic回归/" itemprop="url">机器学习系列笔记(一)：Logistic回归(一)</a></h1>
+                <a class="post-title-link" href="/2018/11/06/机器学习系列笔记(三)Logistic回归/" itemprop="url">机器学习系列笔记(三)：Logistic回归(一)</a></h1>
         
 
         <div class="post-meta">
@@ -376,10 +376,10 @@ x_2  \\
 x_n  
 \end{matrix} \right]</script><p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此公式$(1)$的完整版是：</p>
 <script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x^i}+b \tag{2}</script><script type="math/tex; mode=display">(i=1...n)</script><p>展开式：</p>
-<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了下标，只用了一组$(x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
+<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了上标，只用了一组$(\vec x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
 <script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x} \tag{3}</script><p>这个很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
 <p>这里引出一个sigmoid函数：</p>
-<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/537860770073.png" alt="Alt text"></p>
+<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/1537860770073.png" alt="sigmoid"></p>
 <p>令：</p>
 <script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-{\vec\omega^T \vec{x}}}} \tag{4}</script><p>我们就引出了我们的模型：</p>
 <script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b \tag{5}</script><p>由此可以看出，式$(5)$实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
