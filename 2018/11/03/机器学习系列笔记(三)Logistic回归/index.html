@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编程语言,python3," />
+  <meta name="keywords" content="python3,机器学习," />
 
 
 
@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。 由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。 等以后有文字处理这方面的需求再回过头来复习 startswith() 和endswith() 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。 正则表达式 123">
-<meta name="keywords" content="编程语言,python3">
+<meta name="description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
+<meta name="keywords" content="python3,机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python3 cookbook笔记：第二章 字符串和文本">
-<meta property="og:url" content="http://yoursite.com/2018/11/02/python3cook系列笔记(四)/index.html">
+<meta property="og:title" content="机器学习系列笔记(一)：Logistic回归(一)">
+<meta property="og:url" content="http://yoursite.com/2018/11/03/机器学习系列笔记(三)Logistic回归/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。 由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。 等以后有文字处理这方面的需求再回过头来复习 startswith() 和endswith() 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。 正则表达式 123">
+<meta property="og:description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-02T16:23:24.943Z">
+<meta property="og:image" content="http://yoursite.com/myphoto/537860770073.png">
+<meta property="og:updated_time" content="2018-11-06T12:43:06.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python3 cookbook笔记：第二章 字符串和文本">
-<meta name="twitter:description" content="本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。 由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。 等以后有文字处理这方面的需求再回过头来复习 startswith() 和endswith() 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。 正则表达式 123">
+<meta name="twitter:title" content="机器学习系列笔记(一)：Logistic回归(一)">
+<meta name="twitter:description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
+<meta name="twitter:image" content="http://yoursite.com/myphoto/537860770073.png">
 
 
 
@@ -134,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/02/python3cook系列笔记(四)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/03/机器学习系列笔记(三)Logistic回归/"/>
 
 
 
 
 
-  <title>python3 cookbook笔记：第二章 字符串和文本 | 木叶村</title>
+  <title>机器学习系列笔记(一)：Logistic回归(一) | 木叶村</title>
   
 
 
@@ -273,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/python3cook系列笔记(四)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/机器学习系列笔记(三)Logistic回归/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -290,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python3 cookbook笔记：第二章 字符串和文本</h1>
+          <h1 class="post-title" itemprop="name headline">机器学习系列笔记(一)：Logistic回归(一)</h1>
         
 
         <div class="post-meta">
@@ -302,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T00:00:00+08:00">
-                2018-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T00:00:00+08:00">
+                2018-11-03
               </time>
             
 
@@ -325,8 +327,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -362,13 +364,35 @@
       
 
       
-        <p>本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。</p>
-<p>由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。</p>
-<p>等以后有文字处理这方面的需求再回过头来复习</p>
-<p><code>startswith()</code> 和<code>endswith()</code> 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。</p>
-<p><strong>正则表达式</strong></p>
-<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">re.compile() <span class="comment"># 编译匹配模式</span></span><br><span class="line">re.match() <span class="comment"># 匹配开头</span></span><br><span class="line">re.search() <span class="comment"># 任意位置,但只匹配一次</span></span><br><span class="line">re.findall() <span class="comment"># 匹配多次，返回元组</span></span><br><span class="line">re.finditer() <span class="comment"># 匹配多次，返回迭代器</span></span><br></pre></td></tr></table></figure>
-</code></pre>
+        <p><em>本节介绍逻辑回归的基础知识</em></p>
+<p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
+<p>至于为什么叫对数几率刚回归，请看下面的推倒过程：</p>
+<p>先来看一个简单的线性回归模型：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}+b \tag{1}</script><p>这里的</p>
+<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
+\begin{matrix}
+x_1 \\
+x_2  \\
+\cdots\\
+x_n  
+\end{matrix} \right]</script><p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此公式$(1)$的完整版是：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x^i}+b \tag{2}</script><script type="math/tex; mode=display">(i=1...n)</script><p>展开式：</p>
+<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了下标，只用了一组$(x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x} \tag{3}</script><p>这个很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
+<p>这里引出一个sigmoid函数：</p>
+<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/537860770073.png" alt="Alt text"></p>
+<p>令：</p>
+<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-{\vec\omega^T \vec{x}}}} \tag{4}</script><p>我们就引出了我们的模型：</p>
+<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b \tag{5}</script><p>由此可以看出，式$(5)$实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
+<p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
+<script type="math/tex; mode=display">P(y=1 |  x;\omega) = f(x) \tag{6}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = 1- f(x) \tag{7}</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式$(4)$中</p>
+<script type="math/tex; mode=display">P(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} \tag{8}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  \tag{9}</script><p>公式$(6)(7)$ 可以合并到一起：</p>
+<script type="math/tex; mode=display">Cost(f(x),y) = f(x)^y(1-f(x))^{(1-y)} \quad\quad其中： (y=0,1)</script><p>指数算法容易造成下溢，因此我们取$ln$(也可以是$lg$)：</p>
+<script type="math/tex; mode=display">Cost(f(x),y) = y lnf(x) + (1-y)ln{(1-f(x))} \quad\quad其中： (y=0,1)</script><p>我们得到的代价函数：</p>
+<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{i}),y^{i})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{i} lnf(x^{i}) + (1-y^{i})ln{(1-f(x^{i}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
+<p><strong>这里的代价函数其实是根据极大似然法得到的，但是这里不展开推倒了。</strong></p>
+<p><strong>另外，吴恩达老师的视频中,公式$(10)$多了一个$ \frac{1}{m}$, 但在这里省略了，因为是常数项，对结果没有太大的影响。视频中使用的是梯度下降法，那么这里的代价函数就要加一个负号，迭代公式的符号也就不一样了，但是结果是一样的</strong></p>
+
       
     </div>
     
@@ -385,9 +409,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
-          
             <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
       
@@ -400,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/01/python3cook系列笔记(三)/" rel="next" title="python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)">
-                <i class="fa fa-chevron-left"></i> python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)
+              <a href="/2018/11/03/机器学习系列笔记(一)线性回归/" rel="next" title="机器学习系列笔记(一)：线性回归(一)">
+                <i class="fa fa-chevron-left"></i> 机器学习系列笔记(一)：线性回归(一)
               </a>
             
           </div>
@@ -410,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/02/python3模块系列(一)/" rel="prev" title="python3 模块系列(一)---email模块">
-                python3 模块系列(一)---email模块 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/04/机器学习系列笔记(二)线性回归/" rel="prev" title="机器学习系列笔记(二)：线性回归(二)">
+                机器学习系列笔记(二)：线性回归(二) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
