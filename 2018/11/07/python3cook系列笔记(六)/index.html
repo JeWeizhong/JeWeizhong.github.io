@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="木叶村">
 <meta property="og:description" content="所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。 文本打开模式：     模式 描述     t 文本模式(默认)   r 以只读方式打开文件。这是默认模式。   rb 读取二进制文件   w 写入文件   wb 写入二进制到文件中   a 追加形式写入文件   w+ 打开文件用于读写，文件指针在开始">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T13:52:09.754Z">
+<meta property="og:updated_time" content="2018-11-07T13:55:16.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python3 cookbook笔记：第四章 迭代器与生成器">
 <meta name="twitter:description" content="所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。 文本打开模式：     模式 描述     t 文本模式(默认)   r 以只读方式打开文件。这是默认模式。   rb 读取二进制文件   w 写入文件   wb 写入二进制到文件中   a 追加形式写入文件   w+ 打开文件用于读写，文件指针在开始">
@@ -444,7 +444,7 @@
 <ul>
 <li>序列化Python 对象</li>
 </ul>
-<p>一下内容来源于廖老师的<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener"><strong>python教程</strong></a>,非常感谢廖老师出了如此优秀的入门教程</p>
+<p>以下内容来源于廖老师的<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener"><strong>python教程</strong></a>,非常感谢廖老师出了如此优秀的入门教程</p>
 <p>在程序运行的过程中，所有的变量都是在内存中，比如，定义一个<code>dict</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = dict(name=<span class="string">'Bob'</span>, age=<span class="number">20</span>, score=<span class="number">88</span>)</span><br></pre></td></tr></table></figure>
 <p>可以随时修改变量，比如把<code>name</code>改成<code>&#39;Bill&#39;</code>，但是一旦程序结束，变量所占用的内存就被操作系统全部回收。如果没有把修改后的<code>&#39;Bill&#39;</code>存储到磁盘上，下次重新运行程序，变量又被初始化为<code>&#39;Bob&#39;</code>。</p>
