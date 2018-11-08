@@ -103,7 +103,7 @@
 <meta property="og:description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/myphoto/1537860770073.png">
-<meta property="og:updated_time" content="2018-11-06T13:09:10.285Z">
+<meta property="og:updated_time" content="2018-11-08T13:23:02.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习系列笔记(三)：Logistic回归(一)">
 <meta name="twitter:description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
@@ -389,7 +389,7 @@ x_n
 <script type="math/tex; mode=display">P(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} \tag{8}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  \tag{9}</script><p>公式$(6)(7)$ 可以合并到一起：</p>
 <script type="math/tex; mode=display">Cost(f(x),y) = f(x)^y(1-f(x))^{(1-y)} \quad\quad其中： (y=0,1)</script><p>指数算法容易造成下溢，因此我们取$ln$(也可以是$lg$)：</p>
 <script type="math/tex; mode=display">Cost(f(x),y) = y lnf(x) + (1-y)ln{(1-f(x))} \quad\quad其中： (y=0,1)</script><p>我们得到的代价函数：</p>
-<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{i}),y^{i})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{i} lnf(x^{i}) + (1-y^{i})ln{(1-f(x^{i}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
+<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{(i)}),y^{(i)})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln{(1-f(x^{(i)}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
 <p><strong>这里的代价函数其实是根据极大似然法得到的，但是这里不展开推倒了。</strong></p>
 <p><strong>另外，吴恩达老师的视频中,公式$(10)$多了一个$ \frac{1}{m}$, 但在这里省略了，因为是常数项，对结果没有太大的影响。视频中使用的是梯度下降法，那么这里的代价函数就要加一个负号，迭代公式的符号也就不一样了，但是结果是一样的</strong></p>
 
