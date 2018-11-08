@@ -270,6 +270,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/16/AWK简明教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/16/AWK简明教程/" itemprop="url">AWK简明教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-16T00:00:00+08:00">
+                2018-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="awk命令格式和选项"><a href="#awk命令格式和选项" class="headerlink" title="awk命令格式和选项"></a>awk命令格式和选项</h5><p>语法形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk [options] &apos;script&apos; var=value file(s)</span><br><span class="line">awk [options] -f scriptfile var=value file(s)</span><br></pre></td></tr></table></figure></p>
+<p>常用命令选项</p>
+<ul>
+<li>-F fs   fs指定输入分隔符，fs可以是字符串或正则表达式，如-F:</li>
+<li>-v var=value   赋值一个用户定义变量，将外部变量传递给awk</li>
+<li>-f scripfile  从脚本文件中读取awk命令</li>
+<li>-m[fr] val   对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大数目。这两个功能是Bell实验室版awk的扩展功能，在标准awk中不适用。</li>
+</ul>
+<p><strong>工作原理</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hawk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</span><br></pre></td></tr></table></figure></p>
+<h5 id="内建变量"><a href="#内建变量" class="headerlink" title="内建变量"></a>内建变量</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>详细说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前记录（这个变量中存放着整个行的内容）</td>
+</tr>
+<tr>
+<td>$1~$n</td>
+<td>当前记录的第n个字段，字段间由FS分隔</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>输入字段分隔符 默认是空格或Tab (<strong>也可以是-F</strong>)</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>当前记录中的字段个数，就是有多少列</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</td>
+</tr>
+<tr>
+<td>FNR</td>
+<td>当前记录数，与NR不同的是，这个值会是各个文件自己的行号</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>输入的记录分隔符， 默认为换行符</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>输出字段分隔符， 默认也是空格</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>输出的记录分隔符，默认为换行符</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前输入文件的名字</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ awk &apos;$6 ~ /FIN|TIME/ || NR==1 &#123;print NR,$4,$5,$6&#125;&apos; OFS=&quot;\t&quot; netstat.txt</span><br></pre></td></tr></table></figure>
+<h5 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h5><p>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l  *.cpp *.c *.h | awk &apos;&#123;sum+=$5&#125; END &#123;print sum&#125;&apos;</span><br><span class="line">2511401</span><br></pre></td></tr></table></figure></p>
+<p>统计每个用户的进程的占了多少内存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | awk &apos;NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i &quot;, &quot; a[i]&quot;KB&quot;;&#125;&apos;</span><br><span class="line">dbus, 540KB</span><br><span class="line">mysql, 99928KB</span><br><span class="line">www, 3264924KB</span><br><span class="line">root, 63644KB</span><br><span class="line">hchen, 6020KB</span><br></pre></td></tr></table></figure></p>
+<p><strong>++控制结构和脚本语言待补充==++</strong></p>
+<p><strong>参考链接：</strong></p>
+<p><a href="http://man.linuxde.net/awk" target="_blank" rel="noopener">http://man.linuxde.net/awk</a><br><a href="https://coolshell.cn/articles/9070.html" target="_blank" rel="noopener">https://coolshell.cn/articles/9070.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/15/注释格式说明/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -783,7 +991,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/perl 单行命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/安装python3及模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -802,7 +1010,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/13/perl 单行命令/" itemprop="url">perl 单行命令</a></h1>
+                <a class="post-title-link" href="/2018/02/13/安装python3及模块/" itemprop="url">安装python3及模块</a></h1>
         
 
         <div class="post-meta">
@@ -837,8 +1045,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/perl/" itemprop="url" rel="index">
-                    <span itemprop="name">perl</span>
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
                   </a>
                 </span>
 
@@ -876,53 +1084,21 @@
       
         
           
-            <p><strong>与One-Liner相关的perl参数</strong></p>
-<ul>
-<li>-a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $</li>
-<li>-F 指定-a的分隔符</li>
-<li>-l 对输入的内容进行自动chomp，对输出的内容自动加换行符</li>
-<li>-n 相当于while(&lt;&gt;)</li>
-<li>-e 执行命令，也就是脚本</li>
-<li>-p 自动循环+输出，也就是while(&lt;&gt;){命令（脚本）; print;}</li>
-</ul>
-<p><img src="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923" alt="完整版本"></p>
+            <h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><p><strong>linux下安装python</strong></p>
 <ol>
-<li><p>基本格式：perl -参数 ‘命令’ 输入文件</p>
+<li>官网下载源码压缩包，解压 </li>
+<li>setup.py 里面可以设置sqlite3的搜索路径， 以防止模块安装不上</li>
+<li><p>./configure</p>
+<blockquote>
+<p>安装文件有很多选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">./configure -h</span><br><span class="line">`configure&apos; configures python 3.6 to adapt to many kinds of systems.</span><br><span class="line"></span><br><span class="line">Usage: ./configure [OPTION]... [VAR=VALUE]...</span><br><span class="line"></span><br><span class="line">To assign environment variables (e.g., CC, CFLAGS...), specify them as</span><br><span class="line">VAR=VALUE.  See below for descriptions of some of the useful variables.</span><br><span class="line"></span><br><span class="line">Defaults for the options are specified in brackets.</span><br><span class="line"></span><br><span class="line">Configuration:</span><br><span class="line">  -h, --help              display this help and exit</span><br><span class="line">      --help=short        display options specific to this package</span><br><span class="line">      --help=recursive    display the short help of all the included packages</span><br><span class="line">  -V, --version           display version information and exit</span><br><span class="line">  -q, --quiet, --silent   do not print `checking ...&apos; messages</span><br><span class="line">      --cache-file=FILE   cache test results in FILE [disabled]</span><br><span class="line">  -C, --config-cache      alias for `--cache-file=config.cache&apos;</span><br><span class="line">  -n, --no-create         do not create output files</span><br><span class="line">      --srcdir=DIR        find the sources in DIR [configure dir or `..&apos;]</span><br><span class="line"></span><br><span class="line">Installation directories:</span><br><span class="line">  --prefix=PREFIX         install architecture-independent files in PREFIX      ###  安装路径</span><br><span class="line">                          [/usr/local]</span><br><span class="line">  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX</span><br><span class="line">                          [PREFIX]</span><br><span class="line"></span><br><span class="line">By default, `make install&apos; will install all the files in</span><br><span class="line">`/usr/local/bin&apos;, `/usr/local/lib&apos; etc.  You can specify</span><br><span class="line">an installation prefix other than `/usr/local&apos; using `--prefix&apos;,</span><br><span class="line">for instance `--prefix=$HOME&apos;.</span><br><span class="line"></span><br><span class="line">For better control, use the options below.</span><br><span class="line"></span><br><span class="line">Fine tuning of the installation directories:</span><br><span class="line">  --bindir=DIR            user executables [EPREFIX/bin]</span><br><span class="line">  --sbindir=DIR           system admin executables [EPREFIX/sbin]</span><br><span class="line">  --libexecdir=DIR        program executables [EPREFIX/libexec]</span><br><span class="line">  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]</span><br><span class="line">  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]</span><br><span class="line">  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]</span><br><span class="line">  --libdir=DIR            object code libraries [EPREFIX/lib]</span><br><span class="line">  --includedir=DIR        C header files [PREFIX/include]</span><br><span class="line">  --oldincludedir=DIR     C header files for non-gcc [/usr/include]</span><br><span class="line">  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]</span><br><span class="line">  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]</span><br><span class="line">  --infodir=DIR           info documentation [DATAROOTDIR/info]</span><br><span class="line">  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]</span><br><span class="line">  --mandir=DIR            man documentation [DATAROOTDIR/man]</span><br><span class="line">  --docdir=DIR            documentation root [DATAROOTDIR/doc/python]</span><br><span class="line">  --htmldir=DIR           html documentation [DOCDIR]</span><br><span class="line">  --dvidir=DIR            dvi documentation [DOCDIR]</span><br><span class="line">  --pdfdir=DIR            pdf documentation [DOCDIR]</span><br><span class="line">  --psdir=DIR             ps documentation [DOCDIR]</span><br><span class="line"></span><br><span class="line">System types:</span><br><span class="line">  --build=BUILD     configure for building on BUILD [guessed]</span><br><span class="line">  --host=HOST       cross-compile to build programs to run on HOST [BUILD]</span><br><span class="line">  --target=TARGET   configure for building compilers for TARGET [HOST]</span><br><span class="line"></span><br><span class="line">Optional Features:</span><br><span class="line">  --disable-option-checking  ignore unrecognized --enable/--with options</span><br><span class="line">  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)</span><br><span class="line">  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]</span><br><span class="line">  --enable-universalsdk[=SDKDIR]</span><br><span class="line">                          Build fat binary against Mac OS X SDK</span><br><span class="line">  --enable-framework[=INSTALLDIR]</span><br><span class="line">                          Build (MacOSX|Darwin) framework</span><br><span class="line">  --enable-shared         disable/enable building shared python library</span><br><span class="line">  --enable-profiling      enable C-level code profiling</span><br><span class="line">  --enable-optimizations  Enable expensive, stable optimizations (PGO, etc).</span><br><span class="line">                          Disabled by default.</span><br><span class="line">  --enable-loadable-sqlite-extensions</span><br><span class="line">                          support loadable extensions in _sqlite module</span><br><span class="line">  --enable-ipv6           Enable ipv6 (with ipv4) support</span><br><span class="line">  --disable-ipv6          Disable ipv6 support</span><br><span class="line">  --enable-big-digits[=BITS]</span><br><span class="line">                          use big digits for Python longs [[BITS=30]]</span><br><span class="line"></span><br><span class="line">Optional Packages:</span><br><span class="line">  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]</span><br><span class="line">  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)</span><br><span class="line">  --with-universal-archs=ARCH</span><br><span class="line">                          select architectures for universal build (&quot;32-bit&quot;,</span><br><span class="line">                          &quot;64-bit&quot;, &quot;3-way&quot;, &quot;intel&quot;, &quot;intel-32&quot;, or &quot;all&quot;)</span><br><span class="line">  --with-framework-name=FRAMEWORK</span><br><span class="line">                          specify an alternate name of the framework built</span><br><span class="line">                          with --enable-framework</span><br><span class="line">  --without-gcc           never use gcc</span><br><span class="line">  --with-icc              build with icc</span><br><span class="line">  --with-cxx-main=&lt;compiler&gt;</span><br><span class="line">                          compile main() and link python executable with C++</span><br><span class="line">                          compiler</span><br><span class="line">  --with-suffix=.exe      set executable suffix</span><br><span class="line">  --with-pydebug          build with Py_DEBUG defined</span><br><span class="line">  --with-assertions       build with C assertions enabled</span><br><span class="line">  --with-lto              Enable Link Time Optimization in PGO builds.</span><br><span class="line">                          Disabled by default.</span><br><span class="line">  --with-hash-algorithm=[fnv|siphash24]</span><br><span class="line">                          select hash algorithm</span><br><span class="line">  --with-address-sanitizer</span><br><span class="line">                          enable AddressSanitizer</span><br><span class="line">  --with-libs=&apos;lib1 ...&apos;  link against additional libs</span><br><span class="line">  --with-system-expat     build pyexpat module using an installed expat</span><br><span class="line">                          library</span><br><span class="line">  --with-system-ffi       build _ctypes module using an installed ffi library</span><br><span class="line">  --with-system-libmpdec  build _decimal module using an installed libmpdec</span><br><span class="line">                          library</span><br><span class="line">  --with-tcltk-includes=&apos;-I...&apos;</span><br><span class="line">                          override search for Tcl and Tk include files</span><br><span class="line">  --with-tcltk-libs=&apos;-L...&apos;</span><br><span class="line">                          override search for Tcl and Tk libs</span><br><span class="line">  --with-dbmliborder=db1:db2:...</span><br><span class="line">                          order to check db backends for dbm. Valid value is a</span><br><span class="line">                          colon separated string with the backend names</span><br><span class="line">                          `ndbm&apos;, `gdbm&apos; and `bdb&apos;.</span><br><span class="line">  --with(out)-threads[=DIRECTORY]</span><br><span class="line">                          disable/enable thread support</span><br><span class="line">  --with(out)-thread[=DIRECTORY]</span><br><span class="line">                          deprecated; use --with(out)-threads</span><br><span class="line">  --with(out)-doc-strings disable/enable documentation strings</span><br><span class="line">  --with(out)-pymalloc    disable/enable specialized mallocs</span><br><span class="line">  --with-valgrind         Enable Valgrind support</span><br><span class="line">  --with(out)-dtrace      disable/enable DTrace support</span><br><span class="line">  --with-fpectl           enable SIGFPE catching</span><br><span class="line">  --with-libm=STRING      math library</span><br><span class="line">  --with-libc=STRING      C library</span><br><span class="line">  --with(out)-computed-gotos</span><br><span class="line">                          Use computed gotos in evaluation loop (enabled by</span><br><span class="line">                          default on supported compilers)</span><br><span class="line">  --with(out)-ensurepip=[=upgrade]</span><br><span class="line">                          &quot;install&quot; or &quot;upgrade&quot; using bundled pip</span><br><span class="line"></span><br><span class="line">Some influential environment variables:</span><br><span class="line">  MACHDEP     name for machine-dependent library files</span><br><span class="line">  CC          C compiler command</span><br><span class="line">  CFLAGS      C compiler flags</span><br><span class="line">  LDFLAGS     linker flags, e.g. -L&lt;lib dir&gt; if you have libraries in a</span><br><span class="line">              nonstandard directory &lt;lib dir&gt;</span><br><span class="line">  LIBS        libraries to pass to the linker, e.g. -l&lt;library&gt;</span><br><span class="line">  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I&lt;include dir&gt; if</span><br><span class="line">              you have headers in a nonstandard directory &lt;include dir&gt;</span><br><span class="line">  CPP         C preprocessor</span><br><span class="line">  PKG_CONFIG  path to pkg-config utility</span><br><span class="line">  PKG_CONFIG_PATH</span><br><span class="line">              directories to add to pkg-config&apos;s search path</span><br><span class="line">  PKG_CONFIG_LIBDIR</span><br><span class="line">              path overriding pkg-config&apos;s built-in search path</span><br><span class="line"></span><br><span class="line">Use these variables to override the choices made by `configure&apos; or to help</span><br><span class="line">it to find libraries and programs with nonstandard names/locations.</span><br><span class="line"></span><br><span class="line">Report bugs to &lt;https://bugs.python.org/&gt;.</span><br></pre></td></tr></table></figure>
+</blockquote>
 </li>
-<li><p><code>perl -e</code>为必须要写的参数</p>
+<li><p>make &amp;&amp; make install </p>
 </li>
-<li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -pe &apos;s/aaa/AAA/g&apos; 1.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p>
-</li>
-<li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p>
-</li>
-<li><p>perl单行命令脚本里的变量都不需要预先声明，如想打印出每空行，并且每行以行数开头</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print ++$a.&quot; $_&quot; if /./&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令有时优于sed/grep等shell命令是由于其优秀的正则匹配，通常简单的匹配可以如：匹配上的行号，模仿grep -c的功能：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -lne &apos;$a++ if /regex/; END &#123;print $a+0&#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令可以使用perl的模块，如使用sum函数的模块：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MList::Util=sum -alne &apos;print sum @F&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl也可以像awk一样使用END命令，如打印出文件中总单词个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;$t += @F; END &#123; print $t&#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl也可以使用<code>map{}</code>等函数，如打印出匹配上的单词的总个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;map &#123; /regex/ &amp;&amp; $t++ &#125; @F; END &#123; print $t &#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令可以说是将perl的简洁用到了极致，如打印出匹配上的行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;/regex/ &amp;&amp; print&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令能像perl一样灵活的使用则正表达式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print if /^\d+$/&apos;</span><br></pre></td></tr></table></figure>
-</li>
+<li>安装模块 pip3 install modulename</li>
 </ol>
-<p>以上例子均出自于 <a href="http://www.catonmat.net/blog/perl-one-liners-explained-part-one/" target="_blank" rel="noopener">http://www.catonmat.net/blog/perl-one-liners-explained-part-one/</a></p>
-<p>使用perl来处理数据的我们，会一点Perl one line可以有效的减少编写重复命令的时间，尤其是那些就用1-2次就不会用的脚本，尤其在window系统下不方便使用shell命令的时候。</p>
-<p>PS.当然在windows系统下也可以借用git模拟Unix命令环境</p>
+<p><strong>注意-h 下有响应时间等其他参数 按需设置,每个参数具体意义可自行搜索</strong></p>
 
           
         
@@ -1301,7 +1477,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/安装python3及模块/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/perl 单行命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -1320,7 +1496,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/13/安装python3及模块/" itemprop="url">安装python3及模块</a></h1>
+                <a class="post-title-link" href="/2018/02/13/perl 单行命令/" itemprop="url">perl 单行命令</a></h1>
         
 
         <div class="post-meta">
@@ -1355,8 +1531,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
+                  <a href="/categories/perl/" itemprop="url" rel="index">
+                    <span itemprop="name">perl</span>
                   </a>
                 </span>
 
@@ -1394,21 +1570,53 @@
       
         
           
-            <h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><p><strong>linux下安装python</strong></p>
+            <p><strong>与One-Liner相关的perl参数</strong></p>
+<ul>
+<li>-a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $</li>
+<li>-F 指定-a的分隔符</li>
+<li>-l 对输入的内容进行自动chomp，对输出的内容自动加换行符</li>
+<li>-n 相当于while(&lt;&gt;)</li>
+<li>-e 执行命令，也就是脚本</li>
+<li>-p 自动循环+输出，也就是while(&lt;&gt;){命令（脚本）; print;}</li>
+</ul>
+<p><img src="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923" alt="完整版本"></p>
 <ol>
-<li>官网下载源码压缩包，解压 </li>
-<li>setup.py 里面可以设置sqlite3的搜索路径， 以防止模块安装不上</li>
-<li><p>./configure</p>
-<blockquote>
-<p>安装文件有很多选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">./configure -h</span><br><span class="line">`configure&apos; configures python 3.6 to adapt to many kinds of systems.</span><br><span class="line"></span><br><span class="line">Usage: ./configure [OPTION]... [VAR=VALUE]...</span><br><span class="line"></span><br><span class="line">To assign environment variables (e.g., CC, CFLAGS...), specify them as</span><br><span class="line">VAR=VALUE.  See below for descriptions of some of the useful variables.</span><br><span class="line"></span><br><span class="line">Defaults for the options are specified in brackets.</span><br><span class="line"></span><br><span class="line">Configuration:</span><br><span class="line">  -h, --help              display this help and exit</span><br><span class="line">      --help=short        display options specific to this package</span><br><span class="line">      --help=recursive    display the short help of all the included packages</span><br><span class="line">  -V, --version           display version information and exit</span><br><span class="line">  -q, --quiet, --silent   do not print `checking ...&apos; messages</span><br><span class="line">      --cache-file=FILE   cache test results in FILE [disabled]</span><br><span class="line">  -C, --config-cache      alias for `--cache-file=config.cache&apos;</span><br><span class="line">  -n, --no-create         do not create output files</span><br><span class="line">      --srcdir=DIR        find the sources in DIR [configure dir or `..&apos;]</span><br><span class="line"></span><br><span class="line">Installation directories:</span><br><span class="line">  --prefix=PREFIX         install architecture-independent files in PREFIX      ###  安装路径</span><br><span class="line">                          [/usr/local]</span><br><span class="line">  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX</span><br><span class="line">                          [PREFIX]</span><br><span class="line"></span><br><span class="line">By default, `make install&apos; will install all the files in</span><br><span class="line">`/usr/local/bin&apos;, `/usr/local/lib&apos; etc.  You can specify</span><br><span class="line">an installation prefix other than `/usr/local&apos; using `--prefix&apos;,</span><br><span class="line">for instance `--prefix=$HOME&apos;.</span><br><span class="line"></span><br><span class="line">For better control, use the options below.</span><br><span class="line"></span><br><span class="line">Fine tuning of the installation directories:</span><br><span class="line">  --bindir=DIR            user executables [EPREFIX/bin]</span><br><span class="line">  --sbindir=DIR           system admin executables [EPREFIX/sbin]</span><br><span class="line">  --libexecdir=DIR        program executables [EPREFIX/libexec]</span><br><span class="line">  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]</span><br><span class="line">  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]</span><br><span class="line">  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]</span><br><span class="line">  --libdir=DIR            object code libraries [EPREFIX/lib]</span><br><span class="line">  --includedir=DIR        C header files [PREFIX/include]</span><br><span class="line">  --oldincludedir=DIR     C header files for non-gcc [/usr/include]</span><br><span class="line">  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]</span><br><span class="line">  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]</span><br><span class="line">  --infodir=DIR           info documentation [DATAROOTDIR/info]</span><br><span class="line">  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]</span><br><span class="line">  --mandir=DIR            man documentation [DATAROOTDIR/man]</span><br><span class="line">  --docdir=DIR            documentation root [DATAROOTDIR/doc/python]</span><br><span class="line">  --htmldir=DIR           html documentation [DOCDIR]</span><br><span class="line">  --dvidir=DIR            dvi documentation [DOCDIR]</span><br><span class="line">  --pdfdir=DIR            pdf documentation [DOCDIR]</span><br><span class="line">  --psdir=DIR             ps documentation [DOCDIR]</span><br><span class="line"></span><br><span class="line">System types:</span><br><span class="line">  --build=BUILD     configure for building on BUILD [guessed]</span><br><span class="line">  --host=HOST       cross-compile to build programs to run on HOST [BUILD]</span><br><span class="line">  --target=TARGET   configure for building compilers for TARGET [HOST]</span><br><span class="line"></span><br><span class="line">Optional Features:</span><br><span class="line">  --disable-option-checking  ignore unrecognized --enable/--with options</span><br><span class="line">  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)</span><br><span class="line">  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]</span><br><span class="line">  --enable-universalsdk[=SDKDIR]</span><br><span class="line">                          Build fat binary against Mac OS X SDK</span><br><span class="line">  --enable-framework[=INSTALLDIR]</span><br><span class="line">                          Build (MacOSX|Darwin) framework</span><br><span class="line">  --enable-shared         disable/enable building shared python library</span><br><span class="line">  --enable-profiling      enable C-level code profiling</span><br><span class="line">  --enable-optimizations  Enable expensive, stable optimizations (PGO, etc).</span><br><span class="line">                          Disabled by default.</span><br><span class="line">  --enable-loadable-sqlite-extensions</span><br><span class="line">                          support loadable extensions in _sqlite module</span><br><span class="line">  --enable-ipv6           Enable ipv6 (with ipv4) support</span><br><span class="line">  --disable-ipv6          Disable ipv6 support</span><br><span class="line">  --enable-big-digits[=BITS]</span><br><span class="line">                          use big digits for Python longs [[BITS=30]]</span><br><span class="line"></span><br><span class="line">Optional Packages:</span><br><span class="line">  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]</span><br><span class="line">  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)</span><br><span class="line">  --with-universal-archs=ARCH</span><br><span class="line">                          select architectures for universal build (&quot;32-bit&quot;,</span><br><span class="line">                          &quot;64-bit&quot;, &quot;3-way&quot;, &quot;intel&quot;, &quot;intel-32&quot;, or &quot;all&quot;)</span><br><span class="line">  --with-framework-name=FRAMEWORK</span><br><span class="line">                          specify an alternate name of the framework built</span><br><span class="line">                          with --enable-framework</span><br><span class="line">  --without-gcc           never use gcc</span><br><span class="line">  --with-icc              build with icc</span><br><span class="line">  --with-cxx-main=&lt;compiler&gt;</span><br><span class="line">                          compile main() and link python executable with C++</span><br><span class="line">                          compiler</span><br><span class="line">  --with-suffix=.exe      set executable suffix</span><br><span class="line">  --with-pydebug          build with Py_DEBUG defined</span><br><span class="line">  --with-assertions       build with C assertions enabled</span><br><span class="line">  --with-lto              Enable Link Time Optimization in PGO builds.</span><br><span class="line">                          Disabled by default.</span><br><span class="line">  --with-hash-algorithm=[fnv|siphash24]</span><br><span class="line">                          select hash algorithm</span><br><span class="line">  --with-address-sanitizer</span><br><span class="line">                          enable AddressSanitizer</span><br><span class="line">  --with-libs=&apos;lib1 ...&apos;  link against additional libs</span><br><span class="line">  --with-system-expat     build pyexpat module using an installed expat</span><br><span class="line">                          library</span><br><span class="line">  --with-system-ffi       build _ctypes module using an installed ffi library</span><br><span class="line">  --with-system-libmpdec  build _decimal module using an installed libmpdec</span><br><span class="line">                          library</span><br><span class="line">  --with-tcltk-includes=&apos;-I...&apos;</span><br><span class="line">                          override search for Tcl and Tk include files</span><br><span class="line">  --with-tcltk-libs=&apos;-L...&apos;</span><br><span class="line">                          override search for Tcl and Tk libs</span><br><span class="line">  --with-dbmliborder=db1:db2:...</span><br><span class="line">                          order to check db backends for dbm. Valid value is a</span><br><span class="line">                          colon separated string with the backend names</span><br><span class="line">                          `ndbm&apos;, `gdbm&apos; and `bdb&apos;.</span><br><span class="line">  --with(out)-threads[=DIRECTORY]</span><br><span class="line">                          disable/enable thread support</span><br><span class="line">  --with(out)-thread[=DIRECTORY]</span><br><span class="line">                          deprecated; use --with(out)-threads</span><br><span class="line">  --with(out)-doc-strings disable/enable documentation strings</span><br><span class="line">  --with(out)-pymalloc    disable/enable specialized mallocs</span><br><span class="line">  --with-valgrind         Enable Valgrind support</span><br><span class="line">  --with(out)-dtrace      disable/enable DTrace support</span><br><span class="line">  --with-fpectl           enable SIGFPE catching</span><br><span class="line">  --with-libm=STRING      math library</span><br><span class="line">  --with-libc=STRING      C library</span><br><span class="line">  --with(out)-computed-gotos</span><br><span class="line">                          Use computed gotos in evaluation loop (enabled by</span><br><span class="line">                          default on supported compilers)</span><br><span class="line">  --with(out)-ensurepip=[=upgrade]</span><br><span class="line">                          &quot;install&quot; or &quot;upgrade&quot; using bundled pip</span><br><span class="line"></span><br><span class="line">Some influential environment variables:</span><br><span class="line">  MACHDEP     name for machine-dependent library files</span><br><span class="line">  CC          C compiler command</span><br><span class="line">  CFLAGS      C compiler flags</span><br><span class="line">  LDFLAGS     linker flags, e.g. -L&lt;lib dir&gt; if you have libraries in a</span><br><span class="line">              nonstandard directory &lt;lib dir&gt;</span><br><span class="line">  LIBS        libraries to pass to the linker, e.g. -l&lt;library&gt;</span><br><span class="line">  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I&lt;include dir&gt; if</span><br><span class="line">              you have headers in a nonstandard directory &lt;include dir&gt;</span><br><span class="line">  CPP         C preprocessor</span><br><span class="line">  PKG_CONFIG  path to pkg-config utility</span><br><span class="line">  PKG_CONFIG_PATH</span><br><span class="line">              directories to add to pkg-config&apos;s search path</span><br><span class="line">  PKG_CONFIG_LIBDIR</span><br><span class="line">              path overriding pkg-config&apos;s built-in search path</span><br><span class="line"></span><br><span class="line">Use these variables to override the choices made by `configure&apos; or to help</span><br><span class="line">it to find libraries and programs with nonstandard names/locations.</span><br><span class="line"></span><br><span class="line">Report bugs to &lt;https://bugs.python.org/&gt;.</span><br></pre></td></tr></table></figure>
-</blockquote>
+<li><p>基本格式：perl -参数 ‘命令’ 输入文件</p>
 </li>
-<li><p>make &amp;&amp; make install </p>
+<li><p><code>perl -e</code>为必须要写的参数</p>
 </li>
-<li>安装模块 pip3 install modulename</li>
+<li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -pe &apos;s/aaa/AAA/g&apos; 1.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p>
+</li>
+<li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p>
+</li>
+<li><p>perl单行命令脚本里的变量都不需要预先声明，如想打印出每空行，并且每行以行数开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print ++$a.&quot; $_&quot; if /./&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令有时优于sed/grep等shell命令是由于其优秀的正则匹配，通常简单的匹配可以如：匹配上的行号，模仿grep -c的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -lne &apos;$a++ if /regex/; END &#123;print $a+0&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令可以使用perl的模块，如使用sum函数的模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MList::Util=sum -alne &apos;print sum @F&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl也可以像awk一样使用END命令，如打印出文件中总单词个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;$t += @F; END &#123; print $t&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl也可以使用<code>map{}</code>等函数，如打印出匹配上的单词的总个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;map &#123; /regex/ &amp;&amp; $t++ &#125; @F; END &#123; print $t &#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令可以说是将perl的简洁用到了极致，如打印出匹配上的行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;/regex/ &amp;&amp; print&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令能像perl一样灵活的使用则正表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print if /^\d+$/&apos;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p><strong>注意-h 下有响应时间等其他参数 按需设置,每个参数具体意义可自行搜索</strong></p>
+<p>以上例子均出自于 <a href="http://www.catonmat.net/blog/perl-one-liners-explained-part-one/" target="_blank" rel="noopener">http://www.catonmat.net/blog/perl-one-liners-explained-part-one/</a></p>
+<p>使用perl来处理数据的我们，会一点Perl one line可以有效的减少编写重复命令的时间，尤其是那些就用1-2次就不会用的脚本，尤其在window系统下不方便使用shell命令的时候。</p>
+<p>PS.当然在windows系统下也可以借用git模拟Unix命令环境</p>
 
           
         
@@ -1863,7 +2071,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
