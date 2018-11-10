@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="编程语言,python3," />
 
 
 
@@ -94,14 +94,18 @@
 
 
 
+<meta name="description" content="类类 定义了一组属性，这些属性与一组叫做实例的对象相关且由其共享。类通常是由函数（称为方法 ，method）、变量（称为类变量 ，class variable）和计算出的属性（称为特性 ，property）组成的集合 class 语句使用class语句可定义类。类主体包含一系列在类定义时执行的语句，例如： 1234567891011121314class Account(object):　　 nu">
+<meta name="keywords" content="编程语言,python3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="木叶村">
+<meta property="og:title" content="python3 cookbook笔记： 第八章 类与对象(一)">
 <meta property="og:url" content="http://yoursite.com/2018/11/09/python3cook系列笔记(七)/index.html">
 <meta property="og:site_name" content="木叶村">
+<meta property="og:description" content="类类 定义了一组属性，这些属性与一组叫做实例的对象相关且由其共享。类通常是由函数（称为方法 ，method）、变量（称为类变量 ，class variable）和计算出的属性（称为特性 ，property）组成的集合 class 语句使用class语句可定义类。类主体包含一系列在类定义时执行的语句，例如： 1234567891011121314class Account(object):　　 nu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-09T12:42:04.507Z">
+<meta property="og:updated_time" content="2018-11-10T12:56:45.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木叶村">
+<meta name="twitter:title" content="python3 cookbook笔记： 第八章 类与对象(一)">
+<meta name="twitter:description" content="类类 定义了一组属性，这些属性与一组叫做实例的对象相关且由其共享。类通常是由函数（称为方法 ，method）、变量（称为类变量 ，class variable）和计算出的属性（称为特性 ，property）组成的集合 class 语句使用class语句可定义类。类主体包含一系列在类定义时执行的语句，例如： 1234567891011121314class Account(object):　　 nu">
 
 
 
@@ -136,7 +140,7 @@
 
 
 
-  <title> | 木叶村</title>
+  <title>python3 cookbook笔记： 第八章 类与对象(一) | 木叶村</title>
   
 
 
@@ -286,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">python3 cookbook笔记： 第八章 类与对象(一)</h1>
         
 
         <div class="post-meta">
@@ -298,7 +302,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T20:42:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T00:00:00+08:00">
                 2018-11-09
               </time>
             
@@ -308,6 +312,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -336,7 +362,39 @@
       
 
       
-        
+        <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类 定义了一组属性，这些属性与一组叫做<strong>实例</strong>的对象相关且由其共享。类通常是由函数（称为<strong>方法</strong> ，method）、变量（称为<strong>类变量</strong> ，class variable）和计算出的属性（称为<strong>特性</strong> ，property）组成的集合</p>
+<h3 id="class-语句"><a href="#class-语句" class="headerlink" title="class 语句"></a>class 语句</h3><p>使用<code>class</code>语句可定义类。类主体包含一系列在类定义时执行的语句，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span><span class="params">(object)</span>:</span></span><br><span class="line">　　 num_accounts = <span class="number">0</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,balance)</span>:</span></span><br><span class="line">　　　　 self.name = name</span><br><span class="line">　　　　 self.balance = balance</span><br><span class="line">　　　　 Account.num_accounts += <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 Account.num_accounts -= <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">deposit</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance + amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance - amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">inquiry</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 <span class="keyword">return</span> self.balance</span><br></pre></td></tr></table></figure>
+<p>在类主体执行期间创建的值放在类对象中，这个对象充当着命名空间，与模块极为相似。例如，访问Account 类成员的方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Account.num_accounts</span><br><span class="line">Account.__init__</span><br><span class="line">Account.__del__</span><br><span class="line">Account.deposit</span><br><span class="line">Account.withdraw</span><br><span class="line">Account.inquiry</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，class 语句本身并不创建该类的任何实例（例如，上一个例子实际上不会创建任何账户）。类仅设置将在以后创建的所有实例使用的属性。从这种意义上讲，可以将类看作一个蓝图。</p>
+<p>类中定义的函数称为<strong>实例方法</strong> 。实例方法是一种在类的实例上进行操作的函数，类实例作为第一个参数传递。根据约定，这个参数称为<code>self</code> ，尽管所有合法的标识符都可以使用。在前面的例子中，<code>deposit()</code> 、<code>withdraw()</code>和<code>inquiry()</code> 都是实例方法。</p>
+<p><strong>类变量</strong>（如<code>num_accounts</code> ）是可在类的所有实例之间共享的值（也就是说，它们不是单独分配给每个实例的）。上例中的<code>num_accounts</code> 变量用于跟踪存在多少个Account 实例。</p>
+<h3 id="类实例"><a href="#类实例" class="headerlink" title="类实例"></a>类实例</h3><p>类的实例是以函数形式调用类对象来创建的。这种方法将创建一个新实例，然后将该实例传递给类的<code>__init__()</code>方法。<code>__init__()</code> 方法的参数包括新创建的实例self 和在调用类对象时提供的参数。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一些账户</span></span><br><span class="line">a = Account(<span class="string">"Guido"</span>, <span class="number">1000.00</span>)　 </span><br><span class="line"><span class="comment"># 调用Account.__init__(a,"Guido",1000.00)</span></span><br><span class="line">b = Account(<span class="string">"Bill"</span>, <span class="number">10.00</span>)</span><br></pre></td></tr></table></figure>
+<p>在<code>__init__()</code> 内，通过将属性分配给self 来将其保存到实例中。上例中，<code>self.name =  &quot;Guido&quot;</code>。</p>
+<p><strong>上面创建了两个实例</strong>，然后用(<code>.</code>)运算符即可访问属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.deposit(<span class="number">100.00</span>)　　　</span><br><span class="line"><span class="comment"># 调用Account.deposit(a,100.00)</span></span><br><span class="line"><span class="comment"># self.balance已经通过__init__实例化,即self.balance = 1000.00</span></span><br><span class="line"><span class="comment"># 所以访问deposit属性后：</span></span><br><span class="line"><span class="comment"># self.balance = 1000.00 + 100.00</span></span><br><span class="line">b.withdraw(<span class="number">50.00</span>)　　　<span class="comment"># 调用Account.withdraw(b,50.00)</span></span><br><span class="line">name = a.name　　　　　<span class="comment"># 获取账户名</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><ul>
+<li>默认的字符串显示是<code>__str__()</code>方法，我们可以自定义<code>__repr__()</code> 和<code>__str__()</code>来是的交互更加友好</li>
+<li><code>format()</code> 函数实际上是调用的<code>__formait__()</code>方法</li>
+<li><code>with</code>语句是调用的<code>__enter__()</code> 和<code>__exit__()</code> 方法,我们可以在定义类的时候定义这两个方法，就能使对象支持<code>witg</code>上下文管理</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> socket, AF_INET, SOCK_STREAM</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyConnection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, address, family=AF_INET, type=SOCK_STREAM)</span>:</span></span><br><span class="line">        self.address = address</span><br><span class="line">        self.family = family</span><br><span class="line">        self.type = type</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.sock <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">'Already connected'</span>)</span><br><span class="line">        self.sock = socket(self.family, self.type)</span><br><span class="line">        self.sock.connect(self.address)</span><br><span class="line">        <span class="keyword">return</span> self.sock</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_ty, exc_val, tb)</span>:</span></span><br><span class="line">        self.sock.close()</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>类添加<code>__slots__</code>属性来极大的减少实例所占的内存,但使用后我们不能再给实例添加新的属性了，只能使用在<code>__slots__</code> 中定义的那些属性名。</li>
+<li>约定是任何以单下划线<code>_</code> 开头的名字都应该是内部实现</li>
+<li><p>使用双下划线开始会导致访问名称变成其他形式:</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__private = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        self.__private_method()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>比如，在前面的类<code>B</code> 中，私有属性会被分别重命名为<code>_B__private</code> 和<code>_B__private_method</code> 。这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。比如：</p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.__private = <span class="number">1</span> <span class="comment"># Does not override B.__private</span></span><br><span class="line">    <span class="comment"># Does not override B.__private_method()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>这里，私有名称<code>__private</code> 和<code>__private_method</code> 被重命名为<code>_C__private</code> 和<code>_C__private_method</code> ，这个跟父类<code>B</code> 中的名称是完全不同的。</p>
+<ul>
+<li>有时候你定义的一个变量和某个保留关键字冲突，这时候可以使用单下划线作为后缀</li>
+</ul>
+
       
     </div>
     
@@ -350,6 +408,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
+          
+            <a href="/tags/python3/" rel="tag"># python3</a>
+          
+        </div>
       
 
       
@@ -369,6 +435,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/10/机器学习系列笔记(四)Logistic回归(二)/" rel="prev" title="机器学习系列笔记(三)：Logistic回归(二)">
+                机器学习系列笔记(三)：Logistic回归(二) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -420,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/137356299.jpg"
@@ -436,7 +515,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -494,6 +573,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-语句"><span class="nav-number">1.1.</span> <span class="nav-text">class 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类实例"><span class="nav-number">1.2.</span> <span class="nav-text">类实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象属性"><span class="nav-number">2.</span> <span class="nav-text">对象属性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -659,6 +754,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
