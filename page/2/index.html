@@ -270,6 +270,419 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3cook系列笔记(六)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/python3cook系列笔记(六)/" itemprop="url">python3 cookbook笔记：第四章 文件与IO</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。</p>
+<p>文本打开模式：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:left">文本模式(默认)</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:left">以只读方式打开文件。这是默认模式。</td>
+</tr>
+<tr>
+<td style="text-align:center">rb</td>
+<td style="text-align:left">读取二进制文件</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:left">写入文件</td>
+</tr>
+<tr>
+<td style="text-align:center">wb</td>
+<td style="text-align:left">写入二进制到文件中</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">追加形式写入文件</td>
+</tr>
+<tr>
+<td style="text-align:center">w+</td>
+<td style="text-align:left">打开文件用于读写，文件指针在开始</td>
+</tr>
+<tr>
+<td style="text-align:center">a+</td>
+<td style="text-align:left">打开文件用于读写，追加模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>open()</code> 函数默认是以”utf-8“编码打开文件，<code>encoding</code>参数可以指定编码：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'latin-1'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p><em>ps:我们都指定写入文件是用的<code>f.write()</code>,但是<code>print()</code>函数也可以指定<code>file</code>参数来输出内容到文件中：</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'d:/work/test.txt'</span>, <span class="string">'wt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(<span class="string">'Hello World!'</span>, file=f)</span><br></pre></td></tr></table></figure>
+<p><code>newline</code>参数可以指定行分隔符。默认情况下，Python 会以统一模式处理换行符(，在Unix 和Windows 中是不一样的,分别是\n 和\r\n ):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读写一个gzip 或bz2 格式的压缩文件，跟普通读写差别不是很大，直接看示例就好。</li>
+</ul>
+<p>读取压缩文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gzip compression</span></span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"><span class="keyword">with</span> gzip.open(<span class="string">'somefile.gz'</span>, <span class="string">'rt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br><span class="line"><span class="comment"># bz2 compression</span></span><br><span class="line"><span class="keyword">import</span> bz2</span><br><span class="line"><span class="keyword">with</span> bz2.open(<span class="string">'somefile.bz2'</span>, <span class="string">'rt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br></pre></td></tr></table></figure>
+<p>写入压缩文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> gzip.open(<span class="string">'somefile.gz'</span>, <span class="string">'wt'</span>, compresslevel=<span class="number">5</span>) <span class="keyword">as</span> f:</span><br><span class="line">f.write(text)</span><br></pre></td></tr></table></figure>
+<p><code>compresslevel</code>参数是指定压缩级别，默认的等级是9，也是最高的压缩等级。等级越低性能越好，但是数据压缩程度也越低。</p>
+<ul>
+<li>获取固定长度，而不是一行一行迭代：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line">RECORD_SIZE = <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.data'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    records = iter(partial(f.read, RECORD_SIZE), <span class="string">b''</span>)</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> records:</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>本章也介绍了<code>os.path</code>模块的使用，请参见<strong>python3标准库系列笔记</strong></li>
+<li>创建临时文件和文件夹，使用完以后会自动销毁：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> TemporaryFile</span><br><span class="line"><span class="comment"># 创建临时文件</span></span><br><span class="line"><span class="keyword">with</span> TemporaryFile(<span class="string">'w+t'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># Read/write to the file</span></span><br><span class="line">    f.write(<span class="string">'Hello World\n'</span>)</span><br><span class="line">    f.write(<span class="string">'Testing\n'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 回到文件开始，读取文件</span></span><br><span class="line">    f.seek(<span class="number">0</span>)</span><br><span class="line">    data = f.read()</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = TemporaryFile(<span class="string">'w+t'</span>)</span><br><span class="line"><span class="comment"># Use the temporary file</span></span><br><span class="line">...</span><br><span class="line">f.close()</span><br><span class="line"><span class="comment"># File is destroyed</span></span><br></pre></td></tr></table></figure>
+<p>在大多数Unix 系统上，通过<code>TemporaryFile()</code> 创建的文件都是匿名的，甚至连目录都没有。如果你想打破这个限制，可以使用<code>NamedTemporaryFile()</code> 来代替。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> NamedTemporaryFile</span><br><span class="line"><span class="keyword">with</span> NamedTemporaryFile(<span class="string">'w+t'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(<span class="string">'filename is:'</span>, f.name)</span><br><span class="line">    ...</span><br><span class="line"><span class="comment"># File automatically destroyed</span></span><br></pre></td></tr></table></figure>
+<p>这里，被打开文件的<code>f.name</code> 属性包含了该临时文件的文件名。当你需要将文件<br>名传递给其他代码来打开这个文件的时候，这个就很有用了。和<code>TemporaryFile()</code> 一样，结果<strong>文件关闭</strong>时会被自动删除掉。如果你不想这么做，可以传递一个关键字参数<code>delete=False</code> 即可。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with NamedTemporaryFile(&apos;w+t&apos;, delete=False) as f:</span><br><span class="line">    print(&apos;filename is:&apos;, f.name)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>为了创建一个临时目录，可以使用<code>tempfile.TemporaryDirectory()</code> 。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> TemporaryDirectory</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TemporaryDirectory() <span class="keyword">as</span> dirname:</span><br><span class="line">    print(<span class="string">'dirname is:'</span>, dirname)</span><br><span class="line">    <span class="comment"># Use the directory</span></span><br><span class="line">    ...</span><br><span class="line"><span class="comment"># Directory and all contents destroyed</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>序列化Python 对象</li>
+</ul>
+<p>以下内容来源于廖老师的<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="noopener"><strong>python教程</strong></a>,非常感谢廖老师出了如此优秀的入门教程</p>
+<p>在程序运行的过程中，所有的变量都是在内存中，比如，定义一个<code>dict</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = dict(name=<span class="string">'Bob'</span>, age=<span class="number">20</span>, score=<span class="number">88</span>)</span><br></pre></td></tr></table></figure>
+<p>可以随时修改变量，比如把<code>name</code>改成<code>&#39;Bill&#39;</code>，但是一旦程序结束，变量所占用的内存就被操作系统全部回收。如果没有把修改后的<code>&#39;Bill&#39;</code>存储到磁盘上，下次重新运行程序，变量又被初始化为<code>&#39;Bob&#39;</code>。</p>
+<p>我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫<code>pickling</code>，在其他语言中也被称之为<code>serialization</code>，<code>marshalling</code>，<code>flattening</code>等等，都是一个意思。</p>
+<p>序列化之后，就可以把序列化后的内容写入磁盘，或者通过网络传输到别的机器上。</p>
+<p>反过来，把变量内容从序列化的对象重新读到内存里称之为反序列化，即<code>unpickling</code>。</p>
+<p>Python提供两个模块来实现序列化：<code>cPickle</code>和<code>pickle</code>。这两个模块功能是一样的，区别在于<code>cPickle</code>是C语言写的，速度快，<code>pickle</code>是纯Python写的，速度慢，跟<code>cStringIO</code>和<code>StringIO</code>一个道理。用的时候，先尝试导入<code>cPickle</code>，如果失败，再导入<code>pickle</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> cPickle <span class="keyword">as</span> pickle</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> pickle</span><br></pre></td></tr></table></figure>
+<p>首先，我们尝试把一个对象序列化并写入文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = dict(name=<span class="string">'Bob'</span>, age=<span class="number">20</span>, score=<span class="number">88</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle.dumps(d)</span><br><span class="line"><span class="string">"(dp0\nS'age'\np1\nI20\nsS'score'\np2\nI88\nsS'name'\np3\nS'Bob'\np4\ns."</span></span><br></pre></td></tr></table></figure>
+<p><code>pickle.dumps()</code>方法把任意对象序列化成一个<code>str</code>，然后，就可以把这个<code>str</code>写入文件。或者用另一个方法<code>pickle.dump()</code>直接把对象序列化后写入一个<code>file-like Object</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'dump.txt'</span>, <span class="string">'wb'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pickle.dump(d, f)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</span><br></pre></td></tr></table></figure>
+<p>看看写入的<code>dump.txt</code>文件，一堆乱七八糟的内容，这些都是Python保存的对象内部信息。</p>
+<p>当我们要把对象从磁盘读到内存时，可以先把内容读到一个<code>str</code>，然后用<code>pickle.loads()</code>方法反序列化出对象，也可以直接用<code>pickle.load()</code>方法从一个<code>file-like Object</code>中直接反序列化出对象。我们打开另一个Python命令行来反序列化刚才保存的对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'dump.txt'</span>, <span class="string">'rb'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = pickle.load(f)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'score'</span>: <span class="number">88</span>, <span class="string">'name'</span>: <span class="string">'Bob'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>变量的内容又回来了！</p>
+<p>当然，这个变量和原来的变量是完全不相干的对象，它们只是内容相同而已。</p>
+<p><em>Pickle的问题和所有其他编程语言特有的序列化问题一样，就是它只能用于Python，并且可能不同版本的Python彼此都不兼容，因此，只能用Pickle保存那些不重要的数据，不能成功地反序列化也没关系。</em></p>
+<p>为了从字节流中恢复一个对象，使用<code>picle.load()</code> 或<code>pickle.loads()</code> 函数。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Restore from a file</span></span><br><span class="line">f = open(<span class="string">'somefile'</span>, <span class="string">'rb'</span>)</span><br><span class="line">data = pickle.load(f)</span><br><span class="line"><span class="comment"># Restore from a string</span></span><br><span class="line">data = pickle.loads(s)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/机器学习系列笔记(三)Logistic回归/" itemprop="url">机器学习系列笔记(三)：Logistic回归(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T00:00:00+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>本节介绍逻辑回归的基础知识</em></p>
+<p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
+<p>至于为什么叫对数几率刚回归，请看下面的推倒过程：</p>
+<p>先来看一个简单的线性回归模型：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}+b \tag{1}</script><p>这里的</p>
+<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
+\begin{matrix}
+x_1 \\
+x_2  \\
+\cdots\\
+x_n  
+\end{matrix} \right]</script><p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此公式$(1)$的完整版是：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x^i}+b \tag{2}</script><script type="math/tex; mode=display">(i=1...n)</script><p>展开式：</p>
+<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了上标，只用了一组$(\vec x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x} \tag{3}</script><p>这个很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
+<p>这里引出一个sigmoid函数：</p>
+<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/1537860770073.png" alt="sigmoid"></p>
+<p>令：</p>
+<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-{\vec\omega^T \vec{x}}}} \tag{4}</script><p>我们就引出了我们的模型：</p>
+<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b \tag{5}</script><p>由此可以看出，式$(5)$实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
+<p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
+<script type="math/tex; mode=display">P(y=1 |  x;\omega) = f(x) \tag{6}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = 1- f(x) \tag{7}</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式$(4)$中</p>
+<script type="math/tex; mode=display">P(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} \tag{8}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  \tag{9}</script><p>公式$(6)(7)$ 可以合并到一起：</p>
+<script type="math/tex; mode=display">Cost(f(x),y) = f(x)^y(1-f(x))^{(1-y)} \quad\quad其中： (y=0,1)</script><p>指数算法容易造成下溢，因此我们取$ln$(也可以是$lg$)：</p>
+<script type="math/tex; mode=display">Cost(f(x),y) = y lnf(x) + (1-y)ln{(1-f(x))} \quad\quad其中： (y=0,1)</script><p>我们得到的代价函数：</p>
+<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{(i)}),y^{(i)})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln{(1-f(x^{(i)}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
+<p><strong>这里的代价函数其实是根据极大似然法得到的，但是这里不展开推倒了。</strong></p>
+<p><strong>另外，吴恩达老师的视频中,公式$(10)$多了一个$ \frac{1}{m}$, 但在这里省略了，因为是常数项，对结果没有太大的影响。视频中使用的是梯度下降法，那么这里的代价函数就要加一个负号，迭代公式的符号也就不一样了，但是结果是一样的</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/python3cook系列笔记(五)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1391,178 +1804,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/机器学习实战笔记—kNN算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/机器学习实战笔记—kNN算法/" itemprop="url">机器学习实战笔记(一)---kNN算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>工作原理是：有一组已经分类好的数据。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（最近邻）的分类标签。</p>
-<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">对未知类别属性的数据集中的每个点依次执行以下操作：</span><br><span class="line">(1) 计算已知类别数据集中的点与当前点之间的距离；</span><br><span class="line">(2) 按照距离递增次序排序；</span><br><span class="line">(3) 选取与当前点距离最小的k个点；</span><br><span class="line">(4) 确定前k个点所在类别的出现频率；</span><br><span class="line">(5) 返回前k个点出现频率最高的类别作为当前点的预测分类。</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">def classify0(inX, dataSet, labels, k):</span><br><span class="line">    # 返回行数</span><br><span class="line">    dataSetSize = dataSet.shape[0]</span><br><span class="line">    # 在列向量方向上重复inX共1次(横向)，行向量方向上重复inX共dataSetSize次(纵向)</span><br><span class="line">    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**2</span><br><span class="line">    # sum()所有元素相加，sum(0)列相加，sum(1)行相加</span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=1)</span><br><span class="line">    distances = sqDistances**0.5</span><br><span class="line">    # 返回distances中元素从小到大排序后的索引值 </span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    #print(sortedDistIndicies)  </span><br><span class="line">    classCount=&#123;&#125;          </span><br><span class="line">    for i in range(k):</span><br><span class="line">        #print(sortedDistIndicies[i]) # 1,0,3</span><br><span class="line">        #print(labels[sortedDistIndicies[i]]) # A,A,B</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]  </span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1</span><br><span class="line">    #python3中用items()替换python2中的iteritems()</span><br><span class="line">    #key=operator.itemgetter(1)根据字典的值进行排序</span><br><span class="line">    #key=operator.itemgetter(0)根据字典的键进行排序</span><br><span class="line">    #reverse降序排序字典        </span><br><span class="line">    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)</span><br><span class="line">    return sortedClassCount[0][0]</span><br><span class="line"></span><br><span class="line">def createDataSet():</span><br><span class="line">    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span><br><span class="line">    labels = [&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;]</span><br><span class="line">    return group, labels</span><br><span class="line">#[[1.  1.1]</span><br><span class="line"> #[1.  1. ]</span><br><span class="line"> #[0.  0. ]</span><br><span class="line"> #[0.  0.1]]</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    group, labels = createDataSet()</span><br><span class="line">    result = classify0([0,0], group, labels, 3)</span><br><span class="line">    print(result) # B</span><br></pre></td></tr></table></figure>
-<p>计算$(x_1,y_1)$与$(x_2,y_2)$距离公式：</p>
-<script type="math/tex; mode=display">\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}</script><p>这个距离也叫欧式距离。<br>上述代码的<code>classify0</code>函数中17~21行就是计算距离的方法</p>
-<h2 id="示例一：改进约会网站的配对效果"><a href="#示例一：改进约会网站的配对效果" class="headerlink" title="示例一：改进约会网站的配对效果"></a>示例一：改进约会网站的配对效果</h2><p><em>为了保证代码完整性，保留了<code>classify0</code>,<code>createDataSet</code>,是下列代码能够作为一个脚本单独运行，同时将多余的注释删除，节省空间</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line">from os import listdir</span><br><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import matplotlib.lines as mlines</span><br><span class="line">from matplotlib.font_manager import FontProperties</span><br><span class="line"></span><br><span class="line">def classify0(inX, dataSet, labels, k):</span><br><span class="line">    dataSetSize = dataSet.shape[0]</span><br><span class="line">    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**2</span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=1)</span><br><span class="line">    distances = sqDistances**0.5</span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    classCount=&#123;&#125;          </span><br><span class="line">    for i in range(k):</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]  </span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1</span><br><span class="line">    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)</span><br><span class="line">    return sortedClassCount[0][0]</span><br><span class="line"></span><br><span class="line">def createDataSet():</span><br><span class="line">    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span><br><span class="line">    labels = [&apos;A&apos;,&apos;A&apos;,&apos;B&apos;,&apos;B&apos;]</span><br><span class="line">    return group, labels</span><br><span class="line"></span><br><span class="line">def file2matrix(filename):</span><br><span class="line">    love_dictionary=&#123;&apos;largeDoses&apos;:3, &apos;smallDoses&apos;:2, &apos;didntLike&apos;:1&#125;</span><br><span class="line">    fr = open(filename)</span><br><span class="line">    arrayOLines = fr.readlines()</span><br><span class="line">    numberOfLines = len(arrayOLines)            #get the number of lines in the file</span><br><span class="line">    returnMat = np.zeros((numberOfLines,3))        #prepare matrix to return</span><br><span class="line">    classLabelVector = []                       #prepare labels return   </span><br><span class="line">    index = 0</span><br><span class="line">    for line in arrayOLines:</span><br><span class="line">        line = line.strip()</span><br><span class="line">        listFromLine = line.split(&apos;\t&apos;)</span><br><span class="line">        returnMat[index,:] = listFromLine[0:3] # 学习numpy之路任重道远啊</span><br><span class="line">        if(listFromLine[-1].isdigit()):</span><br><span class="line">            classLabelVector.append(int(listFromLine[-1]))</span><br><span class="line">        else:</span><br><span class="line">            classLabelVector.append(love_dictionary.get(listFromLine[-1])) # 最后一列就是标签</span><br><span class="line">        index += 1</span><br><span class="line">    return returnMat,classLabelVector</span><br><span class="line"></span><br><span class="line">def autoNorm(dataSet):</span><br><span class="line">    minVals = dataSet.min(0)</span><br><span class="line">    maxVals = dataSet.max(0)</span><br><span class="line">    ranges = maxVals - minVals</span><br><span class="line">    normDataSet = np.zeros(np.shape(dataSet))</span><br><span class="line">    m = dataSet.shape[0]</span><br><span class="line">    normDataSet = dataSet - np.tile(minVals, (m,1))</span><br><span class="line">    normDataSet = normDataSet/np.tile(ranges, (m,1))   #element wise divide</span><br><span class="line">    return normDataSet, ranges, minVals</span><br><span class="line">   </span><br><span class="line">def datingClassTest():</span><br><span class="line">    hoRatio = 0.50      #hold out 10%</span><br><span class="line">    datingDataMat,datingLabels = file2matrix(&apos;datingTestSet2.txt&apos;)       #load data setfrom file</span><br><span class="line">    normMat, ranges, minVals = autoNorm(datingDataMat)</span><br><span class="line">    m = normMat.shape[0]</span><br><span class="line">    numTestVecs = int(m*hoRatio)</span><br><span class="line">    errorCount = 0.0</span><br><span class="line">    for i in range(numTestVecs):</span><br><span class="line">	    #前numTestVecs个数据作为测试集,后m-numTestVecs个数据作为训练集</span><br><span class="line">        classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)</span><br><span class="line">        print (&quot;the classifier came back with: %d, the real answer is: %d&quot; % (classifierResult, datingLabels[i]))</span><br><span class="line">        if (classifierResult != datingLabels[i]): errorCount += 1.0</span><br><span class="line">    print (&quot;the total error rate is: %f&quot; % (errorCount/float(numTestVecs)))</span><br><span class="line">    print (errorCount)</span><br><span class="line">    </span><br><span class="line">def classifyPerson():</span><br><span class="line">    resultList = [&apos;not at all&apos;, &apos;in small doses&apos;, &apos;in large doses&apos;]</span><br><span class="line">    percentTats = float(input(\</span><br><span class="line">                                  &quot;percentage of time spent playing video games?&quot;))</span><br><span class="line">    ffMiles = float(input(&quot;frequent flier miles earned per year?&quot;))</span><br><span class="line">    iceCream = float(input(&quot;liters of ice cream consumed per year?&quot;))</span><br><span class="line">    datingDataMat, datingLabels = file2matrix(&apos;datingTestSet2.txt&apos;)</span><br><span class="line">    normMat, ranges, minVals = autoNorm(datingDataMat)</span><br><span class="line">    inArr = np.array([ffMiles, percentTats, iceCream, ])</span><br><span class="line">    classifierResult = classify0((inArr - \</span><br><span class="line">                                  minVals)/ranges, normMat, datingLabels, 3)</span><br><span class="line">    print (&quot;You will probably like this person: %s&quot; % resultList[classifierResult - 1])</span><br><span class="line"></span><br><span class="line">def showdatas(datingDataMat, datingLabels):</span><br><span class="line">    #设置汉字格式</span><br><span class="line">    font = FontProperties(fname=r&quot;c:\windows\fonts\simsun.ttc&quot;, size=12)</span><br><span class="line">    #将fig画布分隔成1行1列,不共享x轴和y轴,fig画布的大小为(13,8)</span><br><span class="line">    #当nrow=2,nclos=2时,代表fig画布被分为四个区域,axs[0][0]表示第一行第一个区域</span><br><span class="line">    fig, axs = plt.subplots(nrows=2, ncols=2,sharex=False, sharey=False, figsize=(13,8))</span><br><span class="line"></span><br><span class="line">    #numberOfLabels = len(datingLabels)</span><br><span class="line">    LabelsColors = []</span><br><span class="line">    for i in datingLabels:</span><br><span class="line">        if i == 1:</span><br><span class="line">            LabelsColors.append(&apos;black&apos;)</span><br><span class="line">        if i == 2:</span><br><span class="line">            LabelsColors.append(&apos;orange&apos;)</span><br><span class="line">        if i == 3:</span><br><span class="line">            LabelsColors.append(&apos;red&apos;)</span><br><span class="line">    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第二列(玩游戏)数据画散点数据,散点大小为15,透明度为0.5</span><br><span class="line">    axs[0][0].scatter(x=datingDataMat[:,0], y=datingDataMat[:,1], color=LabelsColors,s=15, alpha=.5)</span><br><span class="line">    #设置标题,x轴label,y轴label</span><br><span class="line">    axs0_title_text = axs[0][0].set_title(u&apos;每年获得的飞行常客里程数与玩视频游戏所消耗时间占比&apos;,FontProperties=font)</span><br><span class="line">    axs0_xlabel_text = axs[0][0].set_xlabel(u&apos;每年获得的飞行常客里程数&apos;,FontProperties=font)</span><br><span class="line">    axs0_ylabel_text = axs[0][0].set_ylabel(u&apos;玩视频游戏所消耗时间占&apos;,FontProperties=font)</span><br><span class="line">    plt.setp(axs0_title_text, size=9, weight=&apos;bold&apos;, color=&apos;red&apos;) </span><br><span class="line">    plt.setp(axs0_xlabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;) </span><br><span class="line">    plt.setp(axs0_ylabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;)</span><br><span class="line"></span><br><span class="line">    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5</span><br><span class="line">    axs[0][1].scatter(x=datingDataMat[:,0], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)</span><br><span class="line">    #设置标题,x轴label,y轴label</span><br><span class="line">    axs1_title_text = axs[0][1].set_title(u&apos;每年获得的飞行常客里程数与每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    axs1_xlabel_text = axs[0][1].set_xlabel(u&apos;每年获得的飞行常客里程数&apos;,FontProperties=font)</span><br><span class="line">    axs1_ylabel_text = axs[0][1].set_ylabel(u&apos;每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    plt.setp(axs1_title_text, size=9, weight=&apos;bold&apos;, color=&apos;red&apos;) </span><br><span class="line">    plt.setp(axs1_xlabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;) </span><br><span class="line">    plt.setp(axs1_ylabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;)</span><br><span class="line"></span><br><span class="line">    #画出散点图,以datingDataMat矩阵的第二(玩游戏)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5</span><br><span class="line">    axs[1][0].scatter(x=datingDataMat[:,1], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)</span><br><span class="line">    #设置标题,x轴label,y轴label</span><br><span class="line">    axs2_title_text = axs[1][0].set_title(u&apos;玩视频游戏所消耗时间占比与每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    axs2_xlabel_text = axs[1][0].set_xlabel(u&apos;玩视频游戏所消耗时间占比&apos;,FontProperties=font)</span><br><span class="line">    axs2_ylabel_text = axs[1][0].set_ylabel(u&apos;每周消费的冰激淋公升数&apos;,FontProperties=font)</span><br><span class="line">    plt.setp(axs2_title_text, size=9, weight=&apos;bold&apos;, color=&apos;red&apos;) </span><br><span class="line">    plt.setp(axs2_xlabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;) </span><br><span class="line">    plt.setp(axs2_ylabel_text, size=7, weight=&apos;bold&apos;, color=&apos;black&apos;)</span><br><span class="line">    #设置图例</span><br><span class="line">    didntLike = mlines.Line2D([], [], color=&apos;black&apos;, marker=&apos;.&apos;,</span><br><span class="line">                      markersize=6, label=&apos;didntLike&apos;)</span><br><span class="line">    smallDoses = mlines.Line2D([], [], color=&apos;orange&apos;, marker=&apos;.&apos;,</span><br><span class="line">                      markersize=6, label=&apos;smallDoses&apos;)</span><br><span class="line">    largeDoses = mlines.Line2D([], [], color=&apos;red&apos;, marker=&apos;.&apos;,</span><br><span class="line">                      markersize=6, label=&apos;largeDoses&apos;)</span><br><span class="line">    #添加图例</span><br><span class="line">    axs[0][0].legend(handles=[didntLike,smallDoses,largeDoses])</span><br><span class="line">    axs[0][1].legend(handles=[didntLike,smallDoses,largeDoses])</span><br><span class="line">    axs[1][0].legend(handles=[didntLike,smallDoses,largeDoses])</span><br><span class="line">    #显示图片</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    # 文件有4列 </span><br><span class="line">    # 每年获得的飞行常客里程数</span><br><span class="line">    # 玩视频游戏所耗时间百分比</span><br><span class="line">    # 每周消费的冰淇淋公升数</span><br><span class="line">    # 不喜欢的人 魅力一般的人 极具魅力的人</span><br><span class="line">    #datingDataMat, datingLabels = file2matrix(r&apos;F:\download\machinelearninginaction-master\Ch02\datingTestSet.txt&apos;)</span><br><span class="line">    #showdatas(datingDataMat, datingLabels)</span><br><span class="line">    #datingClassTest</span><br><span class="line">    classifyPerson()</span><br></pre></td></tr></table></figure>
-<p>下面我们来进行代码解析，<code>showdatas</code>函数是从网上看到的实质上就是将数据可视化，看不懂可以暂时先不管。<br>首先是<code>file2matrix</code>函数读取数据转换成矩阵格式，最后一列就是标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># print(datingDataMat)</span><br><span class="line">[[4.0920000e+04 8.3269760e+00 9.5395200e-01]</span><br><span class="line"> [1.4488000e+04 7.1534690e+00 1.6739040e+00]</span><br><span class="line"> [2.6052000e+04 1.4418710e+00 8.0512400e-01]</span><br><span class="line"> ...</span><br><span class="line"> [2.6575000e+04 1.0650102e+01 8.6662700e-01]</span><br><span class="line"> [4.8111000e+04 9.1345280e+00 7.2804500e-01]</span><br><span class="line"> [4.3757000e+04 7.8826010e+00 1.3324460e+00]]</span><br><span class="line"># print(datingLabels)</span><br><span class="line">[3, 2, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 1, 1, 1, 1, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 3, 2, 1, 3, 1, 3, 1, 2, 1, 1, 2, 3, 3, 1, 2, 3, 3, 3, 1...</span><br></pre></td></tr></table></figure></p>
-<p>可视化后应该是计算两点间的距离，但是，三个数值之间的差异很大，也就是说飞行的里程数占的比重比其他的要大，但是我们在这里认为这三个因素都应该是平等的，因此就要对数据进行归一化处理，所以就有了<code>autoNorm</code>函数。</p>
-<p>此函数用到的算法是</p>
-<script type="math/tex; mode=display">new = (old-min)/(max-min)</script><p>这样就将里程数这个特征值控制在0~1之内，以保证三个特征值的取值范围是一样的，即都有一样的权重。(<em>好像对特征值进行缩放会有损失，暂时先不管</em>)</p>
-<p>最后我们就要去验证这个算法的可靠性了，也就是最后一个函数<code>classifyPerson</code></p>
-<p>这个示例是用了90%的样本来训练，然后用剩下的10%去做验证，后面的算法中也有更高级的数据分组。这也就是<code>datingClassTest</code>函数的功能了</p>
-<hr>
-<h2 id="示例二：手写识别系统"><a href="#示例二：手写识别系统" class="headerlink" title="示例二：手写识别系统"></a>示例二：手写识别系统</h2><p>为了使用前面两个例子的分类器，书中将一个32×32的二进制图像变成了文本存储，这里只附上代码，由于方法都一样，就不在赘述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line">from os import listdir</span><br><span class="line">from numpy import zeros</span><br><span class="line"></span><br><span class="line">def classify0(inX, dataSet, labels, k):</span><br><span class="line">    dataSetSize = dataSet.shape[0]</span><br><span class="line">    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**2</span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=1)</span><br><span class="line">    distances = sqDistances**0.5</span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    classCount=&#123;&#125;          </span><br><span class="line">    for i in range(k):</span><br><span class="line">        #print(sortedDistIndicies[i])</span><br><span class="line">        #print(labels[sortedDistIndicies[i]]) </span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]  </span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1</span><br><span class="line">    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)</span><br><span class="line">    return sortedClassCount[0][0]</span><br><span class="line"></span><br><span class="line">def img2vector(filename):</span><br><span class="line">    returnVect = zeros((1,1024))</span><br><span class="line">    fr = open(filename)</span><br><span class="line">    for i in range(32):</span><br><span class="line">        lineStr = fr.readline()</span><br><span class="line">        for j in range(32):</span><br><span class="line">            returnVect[0,32*i+j] = int(lineStr[j])</span><br><span class="line">    return returnVect</span><br><span class="line"></span><br><span class="line">def handwritingClassTest():</span><br><span class="line">    hwLabels = []</span><br><span class="line">    trainingFileList = listdir(r&apos;F:\download\machinelearninginaction-master\Ch02\digits\trainingDigits&apos;)           #load the training set</span><br><span class="line">    m = len(trainingFileList)</span><br><span class="line">    trainingMat = zeros((m,1024))</span><br><span class="line">    for i in range(m):</span><br><span class="line">        fileNameStr = trainingFileList[i]</span><br><span class="line">        fileStr = fileNameStr.split(&apos;.&apos;)[0]     #take off .txt</span><br><span class="line">        classNumStr = int(fileStr.split(&apos;_&apos;)[0])</span><br><span class="line">        hwLabels.append(classNumStr)</span><br><span class="line">        trainingMat[i,:] = img2vector(&apos;F:\\download\\machinelearninginaction-master\\Ch02\digits\\trainingDigits/%s&apos; % fileNameStr)</span><br><span class="line">    testFileList = listdir(r&apos;F:\download\machinelearninginaction-master\Ch02\digits\testDigits&apos;)        #iterate through the test set</span><br><span class="line">    errorCount = 0.0</span><br><span class="line">    mTest = len(testFileList)</span><br><span class="line">    for i in range(mTest):</span><br><span class="line">        fileNameStr = testFileList[i]</span><br><span class="line">        fileStr = fileNameStr.split(&apos;.&apos;)[0]     #take off .txt</span><br><span class="line">        classNumStr = int(fileStr.split(&apos;_&apos;)[0])</span><br><span class="line">        vectorUnderTest = img2vector(&apos;F:\\download\\machinelearninginaction-master\\Ch02\\digits\\testDigits/%s&apos; % fileNameStr)</span><br><span class="line">        classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)</span><br><span class="line">        print (&quot;the classifier came back with: %d, the real answer is: %d&quot; % (classifierResult, classNumStr))</span><br><span class="line">        if (classifierResult != classNumStr): errorCount += 1.0</span><br><span class="line">    print (&quot;\nthe total number of errors is: %d&quot; % errorCount)</span><br><span class="line">    print (&quot;\nthe total error rate is: %f&quot; % (errorCount/float(mTest)))</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    handwritingClassTest()</span><br></pre></td></tr></table></figure></p>
-<h2 id="Sklearn简介-重点"><a href="#Sklearn简介-重点" class="headerlink" title="Sklearn简介(重点)"></a>Sklearn简介(重点)</h2><p><a href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors" target="_blank" rel="noopener"><code>sklearn.neighbors</code></a>模块就是k-近邻算法，这里只介绍一个函数<a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" target="_blank" rel="noopener"><code>KNeighborsClassifier</code></a></p>
-<p>其他函数和参数等有时间再补充</p>
-<p> KNneighborsClassifier参数说明：</p>
-<ul>
-<li><code>n_neighbors</code>：默认为5，就是k-NN的k的值，选取最近的k个点。 </li>
-<li><code>weights</code>：默认是uniform，参数可以是uniform、distance，也可以是用户自己定义的函数。uniform是均等的权重，就说所有的邻近点的权重都是相等的。distance是不均等的权重，距离近的点比距离远的点的影响大。用户自定义的函数，接收距离的数组，返回一组维数相同的权重。</li>
-<li><code>algorithm</code>：快速k近邻搜索算法，默认参数为auto，可以理解为算法自己决定合适的搜索算法。除此之外，用户也可以自己指定搜索算法ball_tree、kd_tree、brute方法进行搜索，brute是蛮力搜索，也就是线性扫描，当训练集很大时，计算非常耗时。kd_tree，构造kd树存储数据以便对其进行快速检索的树形数据结构，kd树也就是数据结构中的二叉树。以中值切分构造的树，每个结点是一个超矩形，在维数小于20时效率高。ball tree是为了克服kd树高纬失效而发明的，其构造过程是以质心C和半径r分割样本空间，每个节点是一个超球体。</li>
-<li><code>leaf_size</code>：默认是30，这个是构造的kd树和ball树的大小。这个值的设置会影响树构建的速度和搜索速度，同样也影响着存储树所需的内存大小。需要根据问题的性质选择最优的大小。</li>
-<li><code>metric</code>：用于距离度量，默认度量是minkowski，也就是p=2的欧氏距离(欧几里德度量)。</li>
-<li><code>p</code>：距离度量公式。在上小结，我们使用欧氏距离公式进行距离度量。除此之外，还有其他的度量方法，例如曼哈顿距离。这个参数默认为2，也就是默认使用欧式距离公式进行距离度量。也可以设置为1，使用曼哈顿距离公式进行距离度量。</li>
-<li><code>metric_params</code>：距离公式的其他关键参数，这个可以不管，使用默认的None即可。</li>
-<li><code>n_jobs</code>：并行处理设置。默认为1，临近点搜索并行工作数。如果为-1，那么CPU的所有cores都用于并行工作。</li>
-</ul>
-<p>完整代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import numpy as np</span><br><span class="line">import operator</span><br><span class="line">from os import listdir</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier as kNN</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明:将32x32的二进制图像转换为1x1024向量。</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line">    filename - 文件名</span><br><span class="line">Returns:</span><br><span class="line">    returnVect - 返回的二进制图像的1x1024向量</span><br><span class="line"></span><br><span class="line">Modify:</span><br><span class="line">    2017-07-15</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def img2vector(filename):</span><br><span class="line">    #创建1x1024零向量</span><br><span class="line">    returnVect = np.zeros((1, 1024))</span><br><span class="line">    #打开文件</span><br><span class="line">    fr = open(filename)</span><br><span class="line">    #按行读取</span><br><span class="line">    for i in range(32):</span><br><span class="line">        #读一行数据</span><br><span class="line">        lineStr = fr.readline()</span><br><span class="line">        #每一行的前32个元素依次添加到returnVect中</span><br><span class="line">        for j in range(32):</span><br><span class="line">            returnVect[0, 32*i+j] = int(lineStr[j])</span><br><span class="line">    #返回转换后的1x1024向量</span><br><span class="line">    return returnVect</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明:手写数字分类测试</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line">    无</span><br><span class="line">Returns:</span><br><span class="line">    无</span><br><span class="line"></span><br><span class="line">Modify:</span><br><span class="line">    2017-07-15</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def handwritingClassTest():</span><br><span class="line">    #测试集的Labels</span><br><span class="line">    hwLabels = []</span><br><span class="line">    #返回trainingDigits目录下的文件名</span><br><span class="line">    trainingFileList = listdir(r&apos;E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\trainingDigits&apos;)</span><br><span class="line">    #返回文件夹下文件的个数</span><br><span class="line">    m = len(trainingFileList)</span><br><span class="line">    #初始化训练的Mat矩阵,测试集</span><br><span class="line">    trainingMat = np.zeros((m, 1024))</span><br><span class="line">    #从文件名中解析出训练集的类别</span><br><span class="line">    for i in range(m):</span><br><span class="line">        #获得文件的名字</span><br><span class="line">        fileNameStr = trainingFileList[i]</span><br><span class="line">        #获得分类的数字</span><br><span class="line">        classNumber = int(fileNameStr.split(&apos;_&apos;)[0])</span><br><span class="line">        #将获得的类别添加到hwLabels中</span><br><span class="line">        hwLabels.append(classNumber)</span><br><span class="line">        #将每一个文件的1x1024数据存储到trainingMat矩阵中</span><br><span class="line">        trainingMat[i,:] = img2vector(&apos;E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\trainingDigits/%s&apos; % (fileNameStr))</span><br><span class="line">    #构建kNN分类器</span><br><span class="line">    neigh = kNN(n_neighbors = 3, algorithm = &apos;auto&apos;)</span><br><span class="line">    #拟合模型, trainingMat为测试矩阵,hwLabels为对应的标签</span><br><span class="line">    neigh.fit(trainingMat, hwLabels)</span><br><span class="line">    #返回testDigits目录下的文件列表</span><br><span class="line">    testFileList = listdir(r&apos;E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\testDigits&apos;)</span><br><span class="line">    #错误检测计数</span><br><span class="line">    errorCount = 0.0</span><br><span class="line">    #测试数据的数量</span><br><span class="line">    mTest = len(testFileList)</span><br><span class="line">    #从文件中解析出测试集的类别并进行分类测试</span><br><span class="line">    for i in range(mTest):</span><br><span class="line">        #获得文件的名字</span><br><span class="line">        fileNameStr = testFileList[i]</span><br><span class="line">        #获得分类的数字</span><br><span class="line">        classNumber = int(fileNameStr.split(&apos;_&apos;)[0])</span><br><span class="line">        #获得测试集的1x1024向量,用于训练</span><br><span class="line">        vectorUnderTest = img2vector(&apos;E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\testDigits/%s&apos; % (fileNameStr))</span><br><span class="line">        #获得预测结果</span><br><span class="line">        # classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)</span><br><span class="line">        classifierResult = neigh.predict(vectorUnderTest)</span><br><span class="line">        print(&quot;分类返回结果为%d\t真实结果为%d&quot; % (classifierResult, classNumber))</span><br><span class="line">        if(classifierResult != classNumber):</span><br><span class="line">            errorCount += 1.0</span><br><span class="line">    print(&quot;总共错了%d个数据\n错误率为%f%%&quot; % (errorCount, errorCount/mTest * 100))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">函数说明:main函数</span><br><span class="line"></span><br><span class="line">Parameters:</span><br><span class="line">    无</span><br><span class="line">Returns:</span><br><span class="line">    无</span><br><span class="line"></span><br><span class="line">Modify:</span><br><span class="line">    2017-07-15</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    handwritingClassTest()</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>参考链接：</strong><a href="http://blog.csdn.net/c406495762" target="_blank" rel="noopener">http://blog.csdn.net/c406495762</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/python3cook系列笔记(一)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1699,257 +1940,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/07/生新基础教程(一)fastq格式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/07/生新基础教程(一)fastq格式/" itemprop="url">生新基础教程(一)：fastq格式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T00:00:00+08:00">
-                2018-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生信/" itemprop="url" rel="index">
-                    <span itemprop="name">生信</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><em>转载请注明出处</em></p>
-</blockquote>
-<p><strong>FASTQ格式</strong>是一种保存生物序列（通常为核酸序列）及其测序质量得分信息的文本格式。序列与质量得分皆由单个ASCII字符表示。</p>
-<p><strong>格式</strong></p>
-<p>FASTQ格式通常每个序列使用四行：</p>
-<ul>
-<li>第一行以“@”字符开头，后面是序列标识符和其他描述。</li>
-<li>第二行是序列</li>
-<li>第三行以“+”也是序列标识符和描述（可选）</li>
-<li>第四行是序列的质量得分信息，与第二行的碱基一一对应</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@A00262:122:H5FW3DSXX:3:1101:1561:1031 1:N:0:CCGTGAGA</span><br><span class="line">CNACCCCAAAAATGCTTTTGAAATCCTGAGATGTGATCAGTGAAATATGCAGCCAAGGCAAGGGGAAACTGTCCGCAAGTTAAAAAGATTTATTGCTATTCCAGGCTTCAAATGAGCCCAGAACTCAGGGCTGGTGTGTGTTTCAGAAGT</span><br><span class="line">+</span><br><span class="line">F#FFFFFFFFFFFFFFFFFFFFFFFFFFFFF,F:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFF:FFFFFFFFFFFFFFFFFFF:FFFFFFFFFF:FFFFFFFFFFF:FF,FFFFF:FFFFFFF</span><br></pre></td></tr></table></figure>
-<p><strong>Illumina 测序仪标识符</strong></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">A00262</th>
-<th style="text-align:center">测序仪编号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">122</td>
-<td style="text-align:center">运行id</td>
-</tr>
-<tr>
-<td style="text-align:center">H5FW3DSXX</td>
-<td style="text-align:center">flowcell id</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">lane 编号</td>
-</tr>
-<tr>
-<td style="text-align:center">1101</td>
-<td style="text-align:center">tile编号</td>
-</tr>
-<tr>
-<td style="text-align:center">1561</td>
-<td style="text-align:center">tile x坐标</td>
-</tr>
-<tr>
-<td style="text-align:center">1031</td>
-<td style="text-align:center">tile y坐标</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">单端测序为1，双端为2</td>
-</tr>
-<tr>
-<td style="text-align:center">N</td>
-<td style="text-align:center">Y过滤reads(reads质量较差),否则为N</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p><strong>ps</strong>: 每个flowcell有8个泳道，一个泳道称为一个Lane，每条Lane上有两列，每列有多个有小格子，叫一个tile。(见下图)</p>
-<p><img src="/myphoto/flowcell.jpg" alt="flowcell"></p>
-</blockquote>
-<p><strong>质量评分</strong></p>
-<p>第四行表示序列的质量值,用<a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">ACSII码</a>表示。<br>测序仪一般是按照荧光信号来判断所测序的碱基是哪一种的，例如红黄蓝绿分别对应ATCG，因此对每个结果的判断都是一个概率的问题：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Phred Quality Score(Q值)</th>
-<th style="text-align:center">错误率</th>
-<th style="text-align:center">碱基准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">10</td>
-<td style="text-align:center">0.1</td>
-<td style="text-align:center">90%</td>
-</tr>
-<tr>
-<td style="text-align:center">20</td>
-<td style="text-align:center">0.01</td>
-<td style="text-align:center">99%</td>
-</tr>
-<tr>
-<td style="text-align:center">30</td>
-<td style="text-align:center">0.001</td>
-<td style="text-align:center">99.9%</td>
-</tr>
-<tr>
-<td style="text-align:center">40</td>
-<td style="text-align:center">0.0001</td>
-<td style="text-align:center">99.99%</td>
-</tr>
-<tr>
-<td style="text-align:center">50</td>
-<td style="text-align:center">0.00001</td>
-<td style="text-align:center">99.999%</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>一般都是以Q值来衡量read碱基质量，Sanger中心用的换算公式如下，其中P为错误率，</p>
-<script type="math/tex; mode=display">Q=-10logP</script><p>Solexa系列测序仪使用不同的公示来计算质量值：$Q=-10log(P/1-P)$<br>不同的测序平台Q值所能表示的范围不一样，因此要想用对应的ACSII编码，必须加上一个数值(33或者64)<br>以上面的那条Illumina测序仪产生的read为例，<code>F</code>对应的十进制数是70，Q值就是36，也就是说这个碱基的准确率在99.99%以上</p>
-<p><strong>参考链接:</strong></p>
-<ul>
-<li><a href="http://boyun.sh.cn/bio/?p=1901" target="_blank" rel="noopener">http://boyun.sh.cn/bio/?p=1901</a></li>
-<li><a href="https://en.wikipedia.org/wiki/FASTQ_format" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/FASTQ_format</a></li>
-<li><a href="https://blog.csdn.net/godsunshine/article/details/51946314" target="_blank" rel="noopener">https://blog.csdn.net/godsunshine/article/details/51946314</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2000,7 +1990,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
