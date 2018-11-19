@@ -270,6 +270,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/SAM BAM格式说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/13/SAM BAM格式说明/" itemprop="url">SAM/BAM格式说明</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T00:00:00+08:00">
+                2018-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生信/" itemprop="url" rel="index">
+                    <span itemprop="name">生信</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>SAM</strong>是一种序列比对格式标准，由sanger制定，是以TAB为分割符的文本格式。 主要应用于测序序列mapping到基因组上的结果表示，当然也可以表示任意的多重比对结果。 SAM的全称是sequence alignment/map format</p>
+<h5 id="定义和示例"><a href="#定义和示例" class="headerlink" title="定义和示例"></a>定义和示例</h5><p>SAM分为两部分，注释信息（header section ）和比对结果部分 （alignment section）。 通常是把FASTQ文件格式的测序数据比对到对应的参考基因组版本得到的。 注释信息并不是SAM文件的重点，是该SAM文件产生以及被处理过程的一个记录，规定以@开头，用不同的tag表示不同的信息，主要有：</p>
+<ul>
+<li>@HD，说明符合标准的版本、对比序列的排列顺序；</li>
+<li>@SQ，参考序列说明；</li>
+<li>@RG，比对上的序列（read）说明；</li>
+<li>@PG，使用的程序说明；</li>
+<li>@CO，任意的说明信息。<br>一个简单的SAM文件例子如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ST-E00317:118:HNHK2CCXX:7:1101:5071:1309	97	chr1	196695666	60	147M	chr18	54806715	0	AAGAATATGGACACAGTGAAGTGGTGGAATATTATTGCAATCCTAGATTTCTAATGAAGGGACCTAATAAAATTCAGTGTGTTGATGGAGAGTGGACAACTTTACCAGTGTGTATTTGTAATGTATAAAACATTAATATTGAAACTT	FFAKKKKKKFKKKKKK,FKKKKKKK&lt;KKKFKK,FKKKKKKKKKFFKKKKKFFKKFAKFK,FKKKAKKKKKKKKKKKAF,,,FFAFA,FKKAKAA7FKKFKFFFKKKK7FFKK7F7K,7FAFKAFFKKKKK,7AFKFKFA,,,AAK,A	MC:Z:13S134M	MD:Z:76A39G13T9T6	RG:Z:sampleID	NM:i:4	AS:i:127	XS:i:21</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>说明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">QNAME   ST-E00317:118:HNHK2CCXX:7:1101:5071:1309      </span><br><span class="line">## read名称</span><br><span class="line">FLAG    97  </span><br><span class="line">##  FLAG, 概括出一个合适的标记，各个数字分别代表</span><br><span class="line">##1     序列是一对序列中的一个</span><br><span class="line">##2     比对结果是一个pair-end比对的末端</span><br><span class="line">##4     没有找到位点</span><br><span class="line">##8     这个序列是pair中的一个但是没有找到位点</span><br><span class="line">##16   在这个比对上的位点，序列与参考序列反向互补</span><br><span class="line">##32   这个序列在pair-end中的的mate序列与参考序列反响互补</span><br><span class="line">##64   序列是 mate 1</span><br><span class="line">##128 序列是 mate 2</span><br><span class="line">##假如说标记为以上列举出的数目，就可以直接推断出匹配的情况。假如说标记不是以上列举出的数字，比如说83=（64+16+2+1），就是这几种情况值和。</span><br><span class="line">##　其他情况可参见 http://broadinstitute.github.io/picard/explain-flags.html</span><br><span class="line">RNAME  chr1 </span><br><span class="line">## 染色体名称</span><br><span class="line">POS 196695666   </span><br><span class="line">## 染色体位置</span><br><span class="line">MAQ 60  </span><br><span class="line">## mapping质量 越高说明位点越独特</span><br><span class="line">CIGAR   147M </span><br><span class="line">## M”表示 match或 mismatch；</span><br><span class="line">## “I”表示 insert；</span><br><span class="line">## “D”表示 deletion；</span><br><span class="line">## “N”表示 skipped（跳过这段区域）；</span><br><span class="line">## “S”表示 soft clipping（被剪切的序列存在于序列中）；</span><br><span class="line">##“H”表示 hard clipping（被剪切的序列不存在于序列中）；</span><br><span class="line">##“P”表示 padding；</span><br><span class="line">##“=”表示 match；</span><br><span class="line">##“X”表示 mismatch（错配，位置是一一对应的）；</span><br><span class="line">MRNM    chr18</span><br><span class="line">## read2 在参考序列上的位置，如果没有就用 &quot;*&quot;, 相同&quot;=&quot;</span><br><span class="line">MPOS    0 </span><br><span class="line">##read2 的位置，若不可用则用0</span><br><span class="line">ISIZE   0</span><br><span class="line">## emplate的长度，最左边得为正，最右边的为负，中间的不用定义正负，不分区段（single-segment)的比对上，或者不可用时，此处为0</span><br><span class="line">SEQ AAGAATATGGACACAGTGAAGTGGTGGAATATTATTGCAATCCTAGATTTCTAATGAAGGGACCTAATAAAATTCAGTGTGTTGATGGAGAGTGGACAACTTTACCAGTGTGTATTTGTAATGTATAAAACATTAATATTGAAACTT</span><br><span class="line">##　序列片段的序列信息</span><br><span class="line">QUAL    FFAKKKKKKFKKKKKK,FKKKKKKK&lt;KKKFKK,FKKKKKKKKKFFKKKKKFFKKFAKFK,FKKKAKKKKKKKKKKKAF,,,FFAFA,FKKAKAA7FKKFKFFFKKKK7FFKK7F7K,7FAFKAFFKKKKK,7AFKFKFA,,,AAK,A</span><br><span class="line">## 序列的质量信息，格式同FASTQ一样。read质量的ASCII编码</span><br><span class="line">MC:Z:13S134M    MD:Z:76A39G13T9T6       RG:Z:sampleID   NM:i:4  AS:i:127        XS:i:21</span><br><span class="line">## 可选字段（optional fields)，格式如：TAG:TYPE:VALUE，其中TAG有两个大写字母组成，每个TAG代表一类信息，每一行一个TAG只能出现一次，TYPE表示TAG对应值的类型，可以是字符串、整数、字节、数组等。</span><br><span class="line">## AS:i 匹配的得分</span><br><span class="line">## XS:i 第二好的匹配的得分</span><br><span class="line">## YS:i mate 序列匹配的得分</span><br><span class="line">## XN:i 在参考序列上模糊碱基的个数</span><br><span class="line">## XM:i 错配的个数</span><br><span class="line">## XO:i gap open的个数</span><br><span class="line">## XG:i gap 延伸的个数</span><br><span class="line">## NM:i 经过编辑的序列 </span><br><span class="line">## YF:i 说明为什么这个序列被过滤的字符串</span><br><span class="line">## YT:Z</span><br><span class="line">## MD:Z 代表序列和参考序列错配的字符串</span><br><span class="line">##</span><br></pre></td></tr></table></figure></p>
+<h5 id="SAM要处理好的问题"><a href="#SAM要处理好的问题" class="headerlink" title="SAM要处理好的问题"></a>SAM要处理好的问题</h5><ul>
+<li>非常多序列（read)，mapping到多个参考基因组（reference）上</li>
+<li>同一条序列，分多段（segment）比对到参考基因组上</li>
+<li>无限量的，结构化信息表示，包括错配、删除、插入等比对信息</li>
+</ul>
+<p>要注意的几个概念，以及与之对应的模型：</p>
+<ul>
+<li>reference</li>
+<li>read</li>
+<li>segment</li>
+<li><strong>++template（参考序列和比对上的序列共同组成的序列为template）++</strong></li>
+<li>alignment</li>
+<li>seq</li>
+<li></li>
+</ul>
+<p><strong>参考链接</strong>：</p>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/SAM_(file_format" target="_blank" rel="noopener">SAM(file format)</a>)(可下载PDF文件)</li>
+<li><a href="https://genome.sph.umich.edu/wiki/SAM#What_are_TAGs.3F" target="_blank" rel="noopener">https://genome.sph.umich.edu/wiki/SAM#What_are_TAGs.3F</a></li>
+<li><a href="https://mp.weixin.qq.com/s/yK1OyJHrePg6bWl41JCpvA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/yK1OyJHrePg6bWl41JCpvA</a></li>
+<li><a href="http://www.cnblogs.com/emanlee/p/5366610.html" target="_blank" rel="noopener">http://www.cnblogs.com/emanlee/p/5366610.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/12/我的第一个博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -476,7 +650,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
