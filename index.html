@@ -270,6 +270,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/爬虫系列(一)---抓取电影top100/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/爬虫系列(一)---抓取电影top100/" itemprop="url">爬虫系列(一)---抓取电影评分top100</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T00:00:00+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> RequestException</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">抓取猫眼电影网，历史电影评分top100</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHtml</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    获取网页内容</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 我也不知道为什么要加请求头才可以</span></span><br><span class="line">        headers = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36'</span>&#125;</span><br><span class="line">        response = requests.get(url,headers=headers)</span><br><span class="line">        <span class="comment">#print(response.status_code)</span></span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> response.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parseHtml</span><span class="params">(html)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    解析网页,抓取：电影排名，分数，上映时间，主演，封面url</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#找到所有 dd 标签</span></span><br><span class="line">    soup = BeautifulSoup(html,<span class="string">"lxml"</span>)</span><br><span class="line">    films = soup.find_all(<span class="string">"dd"</span>)</span><br><span class="line">    outList = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> films:</span><br><span class="line">        <span class="comment"># 排名</span></span><br><span class="line">        num = i.find_all(<span class="string">"i"</span>,&#123;<span class="string">"class"</span>:re.compile(<span class="string">"board-index board-index.+\d+"</span>)&#125;)[<span class="number">0</span>].get_text().strip()</span><br><span class="line">        <span class="comment"># 影名</span></span><br><span class="line">        name = i.find_all(<span class="string">"p"</span>,&#123;<span class="string">"class"</span>:<span class="string">"name"</span>&#125;)[<span class="number">0</span>].get_text().strip()</span><br><span class="line">        <span class="comment"># 评分</span></span><br><span class="line">        score = i.find_all(<span class="string">"p"</span>,&#123;<span class="string">"class"</span>:<span class="string">"score"</span>&#125;)[<span class="number">0</span>].get_text().strip()</span><br><span class="line">        <span class="comment">#print(score)</span></span><br><span class="line">        <span class="comment"># 时间</span></span><br><span class="line">        releaseTime = i.find_all(<span class="string">"p"</span>,&#123;<span class="string">"class"</span>:<span class="string">"releasetime"</span>&#125;)[<span class="number">0</span>].get_text().strip()</span><br><span class="line">        <span class="comment"># 主演</span></span><br><span class="line">        star = i.find_all(<span class="string">"p"</span>,&#123;<span class="string">"class"</span>:<span class="string">"star"</span>&#125;)[<span class="number">0</span>].get_text().strip()</span><br><span class="line">        outList.append([num,name,score,releaseTime,star])</span><br><span class="line">    <span class="keyword">return</span> outList</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(index)</span>:</span></span><br><span class="line">    url = <span class="string">f"http://maoyan.com/board/4?offset=<span class="subst">&#123;index&#125;</span>"</span></span><br><span class="line">    </span><br><span class="line">    html = getHtml(url)</span><br><span class="line">    outList = parseHtml(html)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> outList:</span><br><span class="line">        print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment">#pool = Pool()</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        main(i*<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[&apos;1&apos;, &apos;霸王别姬&apos;, &apos;9.6&apos;, &apos;上映时间：1993-01-01&apos;, &apos;主演：张国荣,张丰毅,巩俐&apos;]</span><br><span class="line">[&apos;2&apos;, &apos;肖申克的救赎&apos;, &apos;9.5&apos;, &apos;上映时间：1994-10-14(美国)&apos;, &apos;主演：蒂姆·罗宾斯,摩根·弗里曼,鲍勃·冈顿&apos;]</span><br><span class="line">[&apos;3&apos;, &apos;罗马假日&apos;, &apos;9.1&apos;, &apos;上映时间：1953-09-02(美国)&apos;, &apos;主演：格利高里·派克,奥黛丽·赫本,埃迪·艾伯特&apos;]</span><br><span class="line">[&apos;4&apos;, &apos;这个杀手不太冷&apos;, &apos;9.5&apos;, &apos;上映时间：1994-09-14(法国)&apos;, &apos;主演：让·雷诺,加里·奥德曼,娜塔莉·波特曼&apos;]</span><br><span class="line">[&apos;5&apos;, &apos;教父&apos;, &apos;9.3&apos;, &apos;上映时间：1972-03-24(美国)&apos;, &apos;主演：马龙·白兰度,阿尔·帕西诺,詹姆斯·肯恩&apos;]</span><br><span class="line">[&apos;6&apos;, &apos;泰坦尼克号&apos;, &apos;9.5&apos;, &apos;上映时间：1998-04-03&apos;, &apos;主演：莱昂纳多·迪卡普里奥,凯特·温丝莱特,比利·赞恩&apos;]</span><br><span class="line">[&apos;7&apos;, &apos;唐伯虎点秋香&apos;, &apos;9.2&apos;, &apos;上映时间：1993-07-01(中国香港)&apos;, &apos;主演：周星驰,巩俐,郑佩佩&apos;]</span><br><span class="line">[&apos;8&apos;, &apos;千与千寻&apos;, &apos;9.3&apos;, &apos;上映时间：2001-07-20(日本)&apos;, &apos;主演：柊瑠美,入野自由,夏木真理&apos;]</span><br><span class="line">[&apos;9&apos;, &apos;魂断蓝桥&apos;, &apos;9.2&apos;, &apos;上映时间：1940-05-17(美国)&apos;, &apos;主演：费雯·丽,罗伯特·泰勒,露塞尔·沃特森&apos;]</span><br><span class="line">[&apos;10&apos;, &apos;乱世佳人&apos;, &apos;9.1&apos;, &apos;上映时间：1939-12-15(美国)&apos;, &apos;主演：费雯·丽,克拉克·盖博,奥利维娅·德哈维兰&apos;]</span><br><span class="line">(后面省略)</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/机器学习实战笔记(五)–决策树(一)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1902,147 +2045,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/Linux系列---tar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/Linux系列---tar/" itemprop="url">Linux命令：tar</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T00:00:00+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf log.tar log2018.log    #仅打包，不压缩！</span><br><span class="line"></span><br><span class="line">tar -zcvf log.tar.gz log2018.log   #打包后，以 gzip 压缩</span><br><span class="line">tar -jcvf log.tar.bz2 log2018.log  #打包后，以 bzip2 压缩</span><br><span class="line"></span><br><span class="line">tar -zxvf /opt/soft/test/log.tar.gz # 解压gz</span><br><span class="line">tar -jxvf /opt/soft/test/log.tar.bz2 # 解压bz2</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2093,7 +2095,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2115,7 +2117,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
