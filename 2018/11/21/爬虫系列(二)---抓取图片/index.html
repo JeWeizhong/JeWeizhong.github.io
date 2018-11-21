@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python3,机器学习," />
+  <meta name="keywords" content="python3,爬虫," />
 
 
 
@@ -94,20 +94,18 @@
 
 
 
-<meta name="description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
-<meta name="keywords" content="python3,机器学习">
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263import requestsfrom bs4 import BeautifulSoupimport osimport re#导入所需要的模块class mzitu(">
+<meta name="keywords" content="python3,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习系列笔记(三)：Logistic回归(一)">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/index.html">
+<meta property="og:title" content="爬虫系列(二)---抓取图片">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/爬虫系列(二)---抓取图片/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263import requestsfrom bs4 import BeautifulSoupimport osimport re#导入所需要的模块class mzitu(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/myphoto/1537860770073.png">
-<meta property="og:updated_time" content="2018-11-08T13:23:02.680Z">
+<meta property="og:updated_time" content="2018-11-21T15:31:14.077Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习系列笔记(三)：Logistic回归(一)">
-<meta name="twitter:description" content="本节介绍逻辑回归的基础知识 Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程： 先来看一个简单的线性回归模型： f(x)=\vec\omega^T \vec{x}+b \tag{1}这里的 \vec\omega^T = [\omega_">
-<meta name="twitter:image" content="http://yoursite.com/myphoto/1537860770073.png">
+<meta name="twitter:title" content="爬虫系列(二)---抓取图片">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263import requestsfrom bs4 import BeautifulSoupimport osimport re#导入所需要的模块class mzitu(">
 
 
 
@@ -136,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/21/爬虫系列(二)---抓取图片/"/>
 
 
 
 
 
-  <title>机器学习系列笔记(三)：Logistic回归(一) | 木叶村</title>
+  <title>爬虫系列(二)---抓取图片 | 木叶村</title>
   
 
 
@@ -275,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/爬虫系列(二)---抓取图片/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -292,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器学习系列笔记(三)：Logistic回归(一)</h1>
+          <h1 class="post-title" itemprop="name headline">爬虫系列(二)---抓取图片</h1>
         
 
         <div class="post-meta">
@@ -304,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T00:00:00+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T00:00:00+08:00">
+                2018-11-21
               </time>
             
 
@@ -327,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
                   </a>
                 </span>
 
@@ -364,34 +362,7 @@
       
 
       
-        <p><em>本节介绍逻辑回归的基础知识</em></p>
-<p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
-<p>至于为什么叫对数几率刚回归，请看下面的推倒过程：</p>
-<p>先来看一个简单的线性回归模型：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}+b \tag{1}</script><p>这里的</p>
-<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
-\begin{matrix}
-x_1 \\
-x_2  \\
-\cdots\\
-x_n  
-\end{matrix} \right]</script><p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此公式$(1)$的完整版是：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x^i}+b \tag{2}</script><script type="math/tex; mode=display">(i=1...n)</script><p>展开式：</p>
-<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了上标，只用了一组$(\vec x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x} \tag{3}</script><p>这个很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
-<p>这里引出一个sigmoid函数：</p>
-<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/1537860770073.png" alt="sigmoid"></p>
-<p>令：</p>
-<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-{\vec\omega^T \vec{x}}}} \tag{4}</script><p>我们就引出了我们的模型：</p>
-<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b \tag{5}</script><p>由此可以看出，式$(5)$实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
-<p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
-<script type="math/tex; mode=display">P(y=1 |  x;\omega) = f(x) \tag{6}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = 1- f(x) \tag{7}</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式$(4)$中</p>
-<script type="math/tex; mode=display">P(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} \tag{8}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  \tag{9}</script><p>公式$(6)(7)$ 可以合并到一起：</p>
-<script type="math/tex; mode=display">Cost(f(x),y) = f(x)^y(1-f(x))^{(1-y)} \quad\quad其中： (y=0,1)</script><p>指数算法容易造成下溢，因此我们取$ln$(也可以是$lg$)：</p>
-<script type="math/tex; mode=display">Cost(f(x),y) = y lnf(x) + (1-y)ln{(1-f(x))} \quad\quad其中： (y=0,1)</script><p>我们得到的代价函数：</p>
-<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{(i)}),y^{(i)})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln{(1-f(x^{(i)}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
-<p><strong>这里的代价函数其实是根据极大似然法得到的，但是这里不展开推倒了。</strong></p>
-<p><strong>另外，吴恩达老师的视频中,公式$(10)$多了一个$ \frac{1}{m}$, 但在这里省略了，因为是常数项，对结果没有太大的影响。视频中使用的是梯度下降法，那么这里的代价函数就要加一个负号，迭代公式的符号也就不一样了，但是结果是一样的</strong></p>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="comment">#导入所需要的模块</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mzitu</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">all_url</span><span class="params">(self, url)</span>:</span></span><br><span class="line">        html = self.request(url)<span class="comment">##</span></span><br><span class="line">        all_a = BeautifulSoup(html.text, <span class="string">'lxml'</span>).find(<span class="string">'div'</span>, class_=<span class="string">'all'</span>).find_all(<span class="string">'a'</span>,href=re.compile(<span class="string">'[0~9]'</span>))</span><br><span class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> all_a:</span><br><span class="line">            title = a.get_text()</span><br><span class="line">            print(<span class="string">'------开始保存：'</span>, title) </span><br><span class="line">            path = str(title).replace(<span class="string">"?"</span>, <span class="string">'_'</span>) <span class="comment">##替换掉带有的？</span></span><br><span class="line">            self.mkdir(path) <span class="comment">##调用mkdir函数创建文件夹！这儿path代表的是标题title</span></span><br><span class="line">            href = a[<span class="string">'href'</span>]</span><br><span class="line">            self.html(href) </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">html</span><span class="params">(self, href)</span>:</span>   <span class="comment">##获得图片的页面地址</span></span><br><span class="line">        html = self.request(href)</span><br><span class="line">        max_span = BeautifulSoup(html.text, <span class="string">'lxml'</span>).find(<span class="string">'div'</span>, class_=<span class="string">'pagenavi'</span>).find_all(<span class="string">'span'</span>)[<span class="number">-2</span>].get_text()</span><br><span class="line">        <span class="comment">#这个上面有提到</span></span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> range(<span class="number">1</span>, int(max_span) + <span class="number">1</span>):</span><br><span class="line">            page_url = href + <span class="string">'/'</span> + str(page)</span><br><span class="line">            self.img(page_url) <span class="comment">##调用img函数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">img</span><span class="params">(self, page_url)</span>:</span> <span class="comment">##处理图片页面地址获得图片的实际地址</span></span><br><span class="line">        img_html = self.request(page_url)</span><br><span class="line">        img_url = BeautifulSoup(img_html.text, <span class="string">'lxml'</span>).find(<span class="string">'div'</span>, class_=<span class="string">'main-image'</span>).find(<span class="string">'img'</span>)[<span class="string">'src'</span>]</span><br><span class="line">        self.save(img_url)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(self, img_url)</span>:</span> <span class="comment">##保存图片</span></span><br><span class="line">        name = img_url[<span class="number">-9</span>:<span class="number">-4</span>]</span><br><span class="line">        img = self.request(img_url)</span><br><span class="line">        f = open(name + <span class="string">'.jpg'</span>, <span class="string">'ab'</span>)</span><br><span class="line">        f.write(img.content)</span><br><span class="line">        f.close()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mkdir</span><span class="params">(self, path)</span>:</span> <span class="comment">##创建文件夹</span></span><br><span class="line">        path = path.strip()</span><br><span class="line">        isExists = os.path.exists(os.path.join(<span class="string">"F:\\download\\photo"</span>, path))</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isExists:</span><br><span class="line">            print(<span class="string">'建了一个名字叫做'</span>, path, <span class="string">'的文件夹！'</span>)</span><br><span class="line">            os.makedirs(os.path.join(<span class="string">r"F:\download\photo"</span>, path))</span><br><span class="line">            os.chdir(os.path.join(<span class="string">r"F:\download\photo"</span>, path)) <span class="comment">##切换到目录</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print( path, <span class="string">'文件夹已经存在了！'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span><span class="params">(self, url)</span>:</span> <span class="comment">##这个函数获取网页的response 然后返回</span></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36'</span>,</span><br><span class="line">            <span class="string">'referer'</span>: <span class="string">"http://www.mzitu.com/100260/2"</span> <span class="comment">#伪造一个访问来源 "http://www.mzitu.com/100260/2"</span></span><br><span class="line">            &#125;</span><br><span class="line">        content = requests.get(url, headers=headers)</span><br><span class="line">        <span class="keyword">return</span> content</span><br><span class="line"><span class="comment">#设置启动函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    Mzitu = mzitu() <span class="comment">##实例化</span></span><br><span class="line">    Mzitu.all_url(<span class="string">'http://www.mzitu.com/all'</span>) <span class="comment">##给函数all_url传入参数  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -411,7 +382,7 @@ x_n
           
             <a href="/tags/python3/" rel="tag"># python3</a>
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
           
         </div>
       
@@ -424,8 +395,8 @@ x_n
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/05/python3cook系列笔记(五)/" rel="next" title="python3 cookbook笔记：第四章 迭代器与生成器">
-                <i class="fa fa-chevron-left"></i> python3 cookbook笔记：第四章 迭代器与生成器
+              <a href="/2018/11/20/爬虫系列(一)---抓取电影top100/" rel="next" title="爬虫系列(一)---抓取电影评分top100">
+                <i class="fa fa-chevron-left"></i> 爬虫系列(一)---抓取电影评分top100
               </a>
             
           </div>
@@ -433,10 +404,6 @@ x_n
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/07/python3标准库系列(三)-os.path/" rel="prev" title="python3 标准库系列(三)---os.path">
-                python3 标准库系列(三)---os.path <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
