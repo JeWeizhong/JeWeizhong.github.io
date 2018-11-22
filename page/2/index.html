@@ -270,6 +270,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/Linux系列---vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/Linux系列---vim/" itemprop="url">vim 用法大全</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>打开/退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim -R file1 只读打开</span><br><span class="line">:qall 退出所有文件</span><br><span class="line">:wq 写入并退出</span><br><span class="line">:q! 强制退出</span><br></pre></td></tr></table></figure>
+<p>插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i 在当前位置生前插入</span><br><span class="line">I 在当前行首插入</span><br><span class="line">a 在当前位置后插入</span><br><span class="line">A 在当前行尾插入</span><br><span class="line">o 在当前行之后插入一行</span><br><span class="line">O 在当前行之前插入一行</span><br></pre></td></tr></table></figure>
+<p>移动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h 左移一个字符</span><br><span class="line">l 右移一个字符</span><br><span class="line">k 上移一个字符</span><br><span class="line">j 下移一个字符</span><br></pre></td></tr></table></figure>
+<p>删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd 删除当前行</span><br><span class="line">dj 删除当前行和上一行</span><br><span class="line">dk 删除当前行和下一行</span><br><span class="line">10dd 删除当前行开始的共10行</span><br><span class="line">D 删除当前字符至行尾</span><br></pre></td></tr></table></figure>
+<p>跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gg 跳转到文件头</span><br><span class="line">G 跳转到文件尾</span><br><span class="line">gg=G自动缩进 （非常有用）</span><br><span class="line">Ctrl + d 向下滚动半屏</span><br><span class="line">Ctrl + u 向上滚动半屏</span><br><span class="line">Ctrl + f 向下滚动一屏</span><br><span class="line">Ctrl + b 向上滚动一屏</span><br><span class="line">冒号+行号，跳转到指定行；比如:120，跳转到120行；</span><br><span class="line">$ 跳转到行尾</span><br><span class="line">0 跳转到行首</span><br></pre></td></tr></table></figure>
+<p>编辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">u 撤销</span><br><span class="line">Ctrl + r 重做</span><br><span class="line">yy 复制当前行</span><br><span class="line">按v（逐字）或V（逐行）进入可视模式，然后用jklh命令移动即可选择某些行或字符，再按y即可复制任意部分</span><br><span class="line">p 粘贴在当前位置</span><br><span class="line">另外，删除在vim里面就是剪切的意思，所以dd就是剪切当前行，可以用v或V选择特定部分再按d就是任意剪切了</span><br></pre></td></tr></table></figure>
+<p>查找</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/text　　查找text，按n健查找下一个，按N健查找前一个</span><br><span class="line">?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个</span><br><span class="line">:set ignorecase　　忽略大小写的查找</span><br><span class="line">:set noignorecase　　不忽略大小写的查找</span><br></pre></td></tr></table></figure>
+<p>替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:s/old/new/ 用old替换new，替换当前行的第一个匹配</span><br><span class="line">:s/old/new/g 用old替换new，替换当前行的所有匹配</span><br><span class="line">:%s/old/new/ 用old替换new，替换所有行的第一个匹配</span><br><span class="line">:%s/old/new/g 用old替换new，替换整个文件的所有匹配</span><br><span class="line">也可以用v或V选择指定行，然后执行</span><br></pre></td></tr></table></figure>
+<p>多文件操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim file1 file2 file3 ... 同时编辑多个文件</span><br><span class="line">:split 将窗口分成上下两个子窗口，对应两个不同的文件</span><br><span class="line">:vsplit 将窗口分成左右两个子窗口，对应两个不同的文件</span><br><span class="line">:open file4 打开新文件</span><br><span class="line">:bn 切换到下一个文件（当前窗口）</span><br><span class="line">:bp 切换到上一个文件（当前窗口）</span><br><span class="line">Ctrl-w h    移动到窗口左边</span><br><span class="line">Ctrl-w j    移动到窗口下边</span><br><span class="line">Ctrl-w k    移动到窗口上边</span><br><span class="line">Ctrl-w l    移动到窗口右边</span><br></pre></td></tr></table></figure>
+<p><em>未完待续……</em></p>
+<p>参考链接：<a href="https://www.cnblogs.com/linyx/p/4131699.html" target="_blank" rel="noopener">https://www.cnblogs.com/linyx/p/4131699.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/python3cook系列笔记(八)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1379,6 +1540,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(三)-os.path/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/python3标准库系列(三)-os.path/" itemprop="url">python3 标准库系列(三)---os.path</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3cook系列笔记(六)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1610,317 +1913,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(三)-os.path/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/python3标准库系列(三)-os.path/" itemprop="url">python3 标准库系列(三)---os.path</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/06/机器学习系列笔记(三)Logistic回归/" itemprop="url">机器学习系列笔记(三)：Logistic回归(一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T00:00:00+08:00">
-                2018-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>本节介绍逻辑回归的基础知识</em></p>
-<p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
-<p>至于为什么叫对数几率刚回归，请看下面的推倒过程：</p>
-<p>先来看一个简单的线性回归模型：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}+b \tag{1}</script><p>这里的</p>
-<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
-\begin{matrix}
-x_1 \\
-x_2  \\
-\cdots\\
-x_n  
-\end{matrix} \right]</script><p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此公式$(1)$的完整版是：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x^i}+b \tag{2}</script><script type="math/tex; mode=display">(i=1...n)</script><p>展开式：</p>
-<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了上标，只用了一组$(\vec x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x} \tag{3}</script><p>这个很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
-<p>这里引出一个sigmoid函数：</p>
-<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/1537860770073.png" alt="sigmoid"></p>
-<p>令：</p>
-<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-{\vec\omega^T \vec{x}}}} \tag{4}</script><p>我们就引出了我们的模型：</p>
-<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b \tag{5}</script><p>由此可以看出，式$(5)$实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
-<p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
-<script type="math/tex; mode=display">P(y=1 |  x;\omega) = f(x) \tag{6}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = 1- f(x) \tag{7}</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式$(4)$中</p>
-<script type="math/tex; mode=display">P(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} \tag{8}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  \tag{9}</script><p>公式$(6)(7)$ 可以合并到一起：</p>
-<script type="math/tex; mode=display">Cost(f(x),y) = f(x)^y(1-f(x))^{(1-y)} \quad\quad其中： (y=0,1)</script><p>指数算法容易造成下溢，因此我们取$ln$(也可以是$lg$)：</p>
-<script type="math/tex; mode=display">Cost(f(x),y) = y lnf(x) + (1-y)ln{(1-f(x))} \quad\quad其中： (y=0,1)</script><p>我们得到的代价函数：</p>
-<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{(i)}),y^{(i)})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln{(1-f(x^{(i)}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
-<p><strong>这里的代价函数其实是根据极大似然法得到的，但是这里不展开推倒了。</strong></p>
-<p><strong>另外，吴恩达老师的视频中,公式$(10)$多了一个$ \frac{1}{m}$, 但在这里省略了，因为是常数项，对结果没有太大的影响。视频中使用的是梯度下降法，那么这里的代价函数就要加一个负号，迭代公式的符号也就不一样了，但是结果是一样的</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1971,7 +1963,7 @@ x_n
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
