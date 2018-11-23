@@ -270,6 +270,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/23/git极简入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/23/git极简入门/" itemprop="url">git极简入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-23T00:00:00+08:00">
+                2018-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-安装-略"><a href="#1-安装-略" class="headerlink" title="1. 安装(略)"></a>1. 安装(略)</h2><h2 id="2-基础命令"><a href="#2-基础命令" class="headerlink" title="2.基础命令"></a>2.基础命令</h2><p><code>git config --global user.name &quot;Your Name&quot;</code><br><code>git config --global user.email &quot;email@example.com&quot;</code></p>
+<p><code>git init [dir]</code> : 目录变成Git可以管理的仓库<br><code>git add [file] [file]...</code> : 添加文件到仓库<br><code>git commit -m &quot;一些版本描述&quot;</code> : 把(多个)文件交给仓库<br><code>git log --pretty=oneline</code> : 改动日志<br><code>git reset --hard HEAD^</code> || <code>git reset --hard HEAD^^</code> : 切换到上次修改，或者上上次修改<br><code>git reset --hard [哈希值]</code> ： 切换到哈希值对应的版本号<br><code>git status</code> : 查看工作区状态<br><code>git diff</code> : 比较文件<br><code>git checkout -- [file]</code> ： 撤销工作区的修改，回到最近一次<code>git commit</code>或<code>git add</code>时的状态<br><code>git rm [file]</code>  : 从版本库里删除文件<br><code>git checkout [哈希值]</code> : 切换版本</p>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/JeWeizhong/Machine-learning-in-action-notes-and-code.git</span><br><span class="line">git push -u origin master <span class="comment">#第一次提交</span></span><br><span class="line">git push origin master -f <span class="comment">#强制覆盖已有分支</span></span><br></pre></td></tr></table></figure>
+<h2 id="远程仓库同步到本地"><a href="#远程仓库同步到本地" class="headerlink" title="远程仓库同步到本地"></a>远程仓库同步到本地</h2><p>１.　假如需要在另一个地方写项目可以用一下步骤：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/JeWeizhong/Machine-learning-in-action-notes-and-c <span class="comment"># 克隆到本地</span></span><br><span class="line"><span class="comment">#在本地修改后</span></span><br><span class="line">git add .</span><br><span class="line">git commit  -m <span class="string">"creat DTs"</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>假如本地已经有项目代码，需要同远程的项目合并：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从远程的origin的master主分支下载最新的版本到origin/master分支上</span></span><br><span class="line">Git fetch origin master </span><br><span class="line"><span class="comment"># 比较本地的master分支和origin/master分支的差别</span></span><br><span class="line">git <span class="built_in">log</span> -p master ..origin/master</span><br><span class="line">git merge origin/master <span class="comment"># 合并</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>第二种方式：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从远程下载到master下的tmp分支上</span></span><br><span class="line">git fetch origin master:tmp </span><br><span class="line"><span class="comment"># 比较</span></span><br><span class="line">git diff tmp </span><br><span class="line"><span class="comment"># 合并</span></span><br><span class="line">git merge tmp</span><br></pre></td></tr></table></figure></p>
+<p>或者直接用<code>git pull origin master</code>，但是看不到细节</p>
+<ol>
+<li><em>目前还没学会分支</em></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/爬虫系列(三)---抓取淘宝商品/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1871,167 +2025,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/Linux系列---vim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/Linux系列---vim/" itemprop="url">vim 用法大全</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>打开/退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim -R file1 只读打开</span><br><span class="line">:qall 退出所有文件</span><br><span class="line">:wq 写入并退出</span><br><span class="line">:q! 强制退出</span><br></pre></td></tr></table></figure>
-<p>插入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i 在当前位置生前插入</span><br><span class="line">I 在当前行首插入</span><br><span class="line">a 在当前位置后插入</span><br><span class="line">A 在当前行尾插入</span><br><span class="line">o 在当前行之后插入一行</span><br><span class="line">O 在当前行之前插入一行</span><br></pre></td></tr></table></figure>
-<p>移动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h 左移一个字符</span><br><span class="line">l 右移一个字符</span><br><span class="line">k 上移一个字符</span><br><span class="line">j 下移一个字符</span><br></pre></td></tr></table></figure>
-<p>删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd 删除当前行</span><br><span class="line">dj 删除当前行和上一行</span><br><span class="line">dk 删除当前行和下一行</span><br><span class="line">10dd 删除当前行开始的共10行</span><br><span class="line">D 删除当前字符至行尾</span><br></pre></td></tr></table></figure>
-<p>跳转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gg 跳转到文件头</span><br><span class="line">G 跳转到文件尾</span><br><span class="line">gg=G自动缩进 （非常有用）</span><br><span class="line">Ctrl + d 向下滚动半屏</span><br><span class="line">Ctrl + u 向上滚动半屏</span><br><span class="line">Ctrl + f 向下滚动一屏</span><br><span class="line">Ctrl + b 向上滚动一屏</span><br><span class="line">冒号+行号，跳转到指定行；比如:120，跳转到120行；</span><br><span class="line">$ 跳转到行尾</span><br><span class="line">0 跳转到行首</span><br></pre></td></tr></table></figure>
-<p>编辑</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">u 撤销</span><br><span class="line">Ctrl + r 重做</span><br><span class="line">yy 复制当前行</span><br><span class="line">按v（逐字）或V（逐行）进入可视模式，然后用jklh命令移动即可选择某些行或字符，再按y即可复制任意部分</span><br><span class="line">p 粘贴在当前位置</span><br><span class="line">另外，删除在vim里面就是剪切的意思，所以dd就是剪切当前行，可以用v或V选择特定部分再按d就是任意剪切了</span><br></pre></td></tr></table></figure>
-<p>查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/text　　查找text，按n健查找下一个，按N健查找前一个</span><br><span class="line">?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个</span><br><span class="line">:set ignorecase　　忽略大小写的查找</span><br><span class="line">:set noignorecase　　不忽略大小写的查找</span><br></pre></td></tr></table></figure>
-<p>替换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:s/old/new/ 用old替换new，替换当前行的第一个匹配</span><br><span class="line">:s/old/new/g 用old替换new，替换当前行的所有匹配</span><br><span class="line">:%s/old/new/ 用old替换new，替换所有行的第一个匹配</span><br><span class="line">:%s/old/new/g 用old替换new，替换整个文件的所有匹配</span><br><span class="line">也可以用v或V选择指定行，然后执行</span><br></pre></td></tr></table></figure>
-<p>多文件操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim file1 file2 file3 ... 同时编辑多个文件</span><br><span class="line">:split 将窗口分成上下两个子窗口，对应两个不同的文件</span><br><span class="line">:vsplit 将窗口分成左右两个子窗口，对应两个不同的文件</span><br><span class="line">:open file4 打开新文件</span><br><span class="line">:bn 切换到下一个文件（当前窗口）</span><br><span class="line">:bp 切换到上一个文件（当前窗口）</span><br><span class="line">Ctrl-w h    移动到窗口左边</span><br><span class="line">Ctrl-w j    移动到窗口下边</span><br><span class="line">Ctrl-w k    移动到窗口上边</span><br><span class="line">Ctrl-w l    移动到窗口右边</span><br></pre></td></tr></table></figure>
-<p><em>未完待续……</em></p>
-<p>参考链接：<a href="https://www.cnblogs.com/linyx/p/4131699.html" target="_blank" rel="noopener">https://www.cnblogs.com/linyx/p/4131699.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2082,7 +2075,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2093,7 +2086,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2104,7 +2097,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
