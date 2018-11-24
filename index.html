@@ -270,6 +270,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/24/Linux系列---查看CPU等信息/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/24/Linux系列---查看CPU等信息/" itemprop="url">(转)linux下查看CPU、内存、磁盘信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-24T00:00:00+08:00">
+                2018-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>文章内容来源：<a href="https://www.cnblogs.com/xubiao/p/6497533.html" target="_blank" rel="noopener">https://www.cnblogs.com/xubiao/p/6497533.html</a></p>
+<p><strong>查看CPU信息</strong></p>
+<p>总核数 = 物理CPU个数 X 每颗物理CPU的核数</p>
+<p>总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数</p>
+<p><strong>查看物理CPU个数</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo| grep <span class="string">"physical id"</span>| sort| uniq| wc -l</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看每个物理CPU中core的个数(即核数)</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo| grep <span class="string">"cpu cores"</span>| uniq</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看逻辑CPU的个数</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo| grep <span class="string">"processor"</span>| wc -l</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看CPU信息（型号）</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看CPU的负载</strong></p>
+<p><strong>平均负载</strong>是指上一分钟同时处于就绪状态的平均进程数。在CPU中可以理解为CPU可以并行处理的任务数量，就是CPU个数X核数。</p>
+<p>如果CPU Load等于CPU个数乘以核数，那么就说CPU正好满负载，再多一点，可能就要出问题了，有些任务不能被及时分配处理器，那要保证性能的话，最好要小于CPU个数X核数X0.7。</p>
+<p>Load Average是指CPU的Load。它所包含的信息是在一段时间内CPU正在处理及等待CPU处理的进程数之和的统计信息，也就是CPU使用队列的长度的统计信息。</p>
+<p>Load Average的值应该小于CPU个数X核数X0.7，Load Average会有3个状态平均值，分别是1分钟、5分钟和15分钟平均Load。</p>
+<p>如果1分钟平均出现大于CPU个数X核数的情况，还不需要担心；如果5分钟的平均也是这样，那就要警惕了；15分钟的平均也是这样，就要分析哪里出现问题，防范未然。</p>
+<p><strong>查看内存信息</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/meminfo</span><br><span class="line">$ free </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">**查看磁盘信息**</span><br><span class="line">```sh</span><br><span class="line">$ fdisk -l</span><br><span class="line">$ iostat -x 10    <span class="comment">#查看磁盘IO的性能</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/23/git极简入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1862,169 +2018,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/python3标准库系列(五)-subprocess/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/14/python3标准库系列(五)-subprocess/" itemprop="url">python3 标准库系列(五)---subprocess</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T00:00:00+08:00">
-                2018-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>subprocess模块是用来执行外部命令，下面介绍两种主要的用法。</p>
-<h2 id="subprocess-run"><a href="#subprocess-run" class="headerlink" title="subprocess.run"></a><code>subprocess.run</code></h2><p> 这里<code>call</code>, <code>check_call</code>, <code>check_output</code>, 与其功能性相似，就不展开介绍了</p>
-<p>常用参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">subprocess.run (args，*,</span><br><span class="line">				stdin = <span class="keyword">None</span>,</span><br><span class="line">				input = <span class="keyword">None</span>,</span><br><span class="line">				stdout = <span class="keyword">None</span>,</span><br><span class="line">				stderr = <span class="keyword">None</span>,</span><br><span class="line">				shell = <span class="keyword">False</span>,</span><br><span class="line">				cwd = <span class="keyword">None</span>,</span><br><span class="line">				timeout = <span class="keyword">None</span>,</span><br><span class="line">				check = <span class="keyword">False</span>,</span><br><span class="line">				encoding = <span class="keyword">None</span>,</span><br><span class="line">				errors = <span class="keyword">None</span>,</span><br><span class="line">				env = <span class="keyword">None</span> )</span><br></pre></td></tr></table></figure>
-<p>默认不会捕获stdout或stderr</p>
-<p>如果check为true，并且进程以非零退出代码退出， CalledProcessError则会引发异常。该异常的属性包含参数，退出代码以及stdout和stderr（如果它们被捕获）,</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里捕获了stdout,stderr</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = subprocess.run([<span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="string">"/dev/null"</span>],stdout=subprocess.PIPE,stderr=subprocess.PIPE)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.stdout</span><br><span class="line"><span class="string">b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.stdout</span><br><span class="line"><span class="string">b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.stdout.decode(<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
-<p>如果我们使用了check参数的话，如果执行错误，就会引发异常，这里什么都捕获不到</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = subprocess.run([<span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="string">"/null"</span>], check=<span class="keyword">True</span>,stdout=subprocess.PIPE,stderr=subprocess.PIPE)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">"/share/chg2master/prod/Other/zhongjw/miniconda3/lib/python3.6/subprocess.py"</span>, line <span class="number">418</span>, <span class="keyword">in</span> run</span><br><span class="line">    output=stdout, stderr=stderr)</span><br><span class="line">subprocess.CalledProcessError: Command <span class="string">'['</span>ls<span class="string">', '</span>-l<span class="string">', '</span>/null<span class="string">']'</span> returned non-zero exit status <span class="number">2.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(b)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">'b'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-<p><em>python3.7里新增了<code>capture_output</code>参数,如果设置为true，则将捕获stdout和stderr。 使用时，将使用stdout = PIPE和stderr = PIPE自动创建内部Popen对象。 也可能不使用stdout和stderr参数。那么Popen对象的stdout、stderr与上面示例里的有什么不同呢？</em></p>
-<h2 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen"></a><code>subprocess.Popen</code></h2><p>subprocess中更底层的进程创建和管理可以通过Popen类实现。它提供了更多的灵活性，程序员通过它能处理更多复杂的情况。</p>
-<p>常用参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">subprocess.Popen(args, </span><br><span class="line">				bufsize=<span class="number">-1</span>, </span><br><span class="line">				executable=<span class="keyword">None</span>, </span><br><span class="line">				stdin=<span class="keyword">None</span>, </span><br><span class="line">				stdout=<span class="keyword">None</span>, </span><br><span class="line">				stderr=<span class="keyword">None</span>, </span><br><span class="line">				preexec_fn=<span class="keyword">None</span>, </span><br><span class="line">				close_fds=<span class="keyword">True</span>, </span><br><span class="line">				shell=<span class="keyword">False</span>, </span><br><span class="line">				cwd=<span class="keyword">None</span>, </span><br><span class="line">				env=<span class="keyword">None</span>, </span><br><span class="line">				universal_newlines=<span class="keyword">False</span>, </span><br><span class="line">				startupinfo=<span class="keyword">None</span>, </span><br><span class="line">				creationflags=<span class="number">0</span>, </span><br><span class="line">				restore_signals=<span class="keyword">True</span>, </span><br><span class="line">				start_new_session=<span class="keyword">False</span>, </span><br><span class="line">				pass_fds=(), *, </span><br><span class="line">				encoding=<span class="keyword">None</span>, </span><br><span class="line">				errors=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj = subprocess.Popen([<span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="string">"/null"</span>], stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.stderr.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line"><span class="string">'ls: 无法访问/null: 没有那个文件或目录\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.stderr.read().decode(<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
-<p>从上面示例中可以看出Popen对象的stdout、stderr获取的是数据流，而run捕获的stdout、stderr是字符串格式</p>
-<p>当然官方文档说是不建议使用<code>.stdin.write</code>,<code>.stdout.read</code> 或者 <code>.stderr.read</code>，而是用<code>.communicate</code>方法，该方法会造成阻塞，以防止其他进程读取数据流造成死锁</p>
-<p><code>.communicate()</code>方法如果同时有<code>.stdout</code>和 <code>.stderr</code>, 返回的是一个元组, 用下标可以访问捕获的<code>stdout</code>和 <code>stderr</code>。</p>
-<p>还要补充一点就是如果不捕获输出的话，是不会造成阻塞的，如果要等待子进程运行完可以使用<code>.wait</code>方法，而<code>subprocesee.run</code>方法会造成主程序的阻塞，因为要获取子进程运行状态。</p>
-<p>Popen对象的主要方法有：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'communicate'</span>, <span class="string">'kill'</span>, <span class="string">'pid'</span>, <span class="string">'poll'</span>, <span class="string">'returncode'</span>, <span class="string">'send_signal'</span>, <span class="string">'stderr'</span>, <span class="string">'stdin'</span>, <span class="string">'stdout'</span>, <span class="string">'terminate'</span>, <span class="string">'universal_newlines'</span>, <span class="string">'wait'</span>]</span><br></pre></td></tr></table></figure>
-<p>如果有需要使用其他的参数和方法请查阅<a href="https://docs.python.org/3.6/library/subprocess.html#module-subprocess" target="_blank" rel="noopener">官方文档</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2075,7 +2068,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

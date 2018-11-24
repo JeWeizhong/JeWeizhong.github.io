@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="编程语言,Linux," />
 
 
 
@@ -94,14 +94,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="木叶村">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="文章内容来源：https://www.cnblogs.com/xubiao/p/6497533.html 查看CPU信息 总核数 = 物理CPU个数 X 每颗物理CPU的核数 总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数 查看物理CPU个数1cat /proc/cpuinfo| grep &quot;physical id&quot;| sort| uniq| wc -l 查看每个物理C">
+<meta name="keywords" content="编程语言,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(转)linux下查看CPU、内存、磁盘信息">
+<meta property="og:url" content="http://yoursite.com/2018/11/24/Linux系列---查看CPU等信息/index.html">
 <meta property="og:site_name" content="木叶村">
+<meta property="og:description" content="文章内容来源：https://www.cnblogs.com/xubiao/p/6497533.html 查看CPU信息 总核数 = 物理CPU个数 X 每颗物理CPU的核数 总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数 查看物理CPU个数1cat /proc/cpuinfo| grep &quot;physical id&quot;| sort| uniq| wc -l 查看每个物理C">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-13T07:04:07.636Z">
+<meta property="og:updated_time" content="2018-11-24T15:46:38.223Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木叶村">
+<meta name="twitter:title" content="(转)linux下查看CPU、内存、磁盘信息">
+<meta name="twitter:description" content="文章内容来源：https://www.cnblogs.com/xubiao/p/6497533.html 查看CPU信息 总核数 = 物理CPU个数 X 每颗物理CPU的核数 总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数 查看物理CPU个数1cat /proc/cpuinfo| grep &quot;physical id&quot;| sort| uniq| wc -l 查看每个物理C">
 
 
 
@@ -130,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/24/Linux系列---查看CPU等信息/"/>
 
 
 
 
 
-  <title>标签 | 木叶村</title>
+  <title>(转)linux下查看CPU、内存、磁盘信息 | 木叶村</title>
   
 
 
@@ -257,40 +261,182 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/24/Linux系列---查看CPU等信息/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 22 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/AWK/" style="font-size: 12px; color: #ccc">AWK</a> <a href="/tags/C/" style="font-size: 12px; color: #ccc">C</a> <a href="/tags/Linux/" style="font-size: 24px; color: #4f4f4f">Linux</a> <a href="/tags/R/" style="font-size: 12px; color: #ccc">R</a> <a href="/tags/Trimmomatic/" style="font-size: 12px; color: #ccc">Trimmomatic</a> <a href="/tags/git/" style="font-size: 12px; color: #ccc">git</a> <a href="/tags/perl/" style="font-size: 18px; color: #8e8e8e">perl</a> <a href="/tags/python3/" style="font-size: 27px; color: #303030">python3</a> <a href="/tags/samtools/" style="font-size: 12px; color: #ccc">samtools</a> <a href="/tags/ssh/" style="font-size: 12px; color: #ccc">ssh</a> <a href="/tags/vim/" style="font-size: 15px; color: #adadad">vim</a> <a href="/tags/其他/" style="font-size: 12px; color: #ccc">其他</a> <a href="/tags/大数据/" style="font-size: 15px; color: #adadad">大数据</a> <a href="/tags/文件格式/" style="font-size: 18px; color: #8e8e8e">文件格式</a> <a href="/tags/机器学习/" style="font-size: 21px; color: #6f6f6f">机器学习</a> <a href="/tags/测序数据质控/" style="font-size: 12px; color: #ccc">测序数据质控</a> <a href="/tags/爬虫/" style="font-size: 18px; color: #8e8e8e">爬虫</a> <a href="/tags/生信理论基础/" style="font-size: 21px; color: #6f6f6f">生信理论基础</a> <a href="/tags/生信软件/" style="font-size: 12px; color: #ccc">生信软件</a> <a href="/tags/统计语言/" style="font-size: 12px; color: #ccc">统计语言</a> <a href="/tags/编程语言/" style="font-size: 30px; color: #111">编程语言</a> <a href="/tags/软件/" style="font-size: 12px; color: #ccc">软件</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">(转)linux下查看CPU、内存、磁盘信息</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-24T00:00:00+08:00">
+                2018-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>文章内容来源：<a href="https://www.cnblogs.com/xubiao/p/6497533.html" target="_blank" rel="noopener">https://www.cnblogs.com/xubiao/p/6497533.html</a></p>
+<p><strong>查看CPU信息</strong></p>
+<p>总核数 = 物理CPU个数 X 每颗物理CPU的核数</p>
+<p>总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数</p>
+<p><strong>查看物理CPU个数</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo| grep <span class="string">"physical id"</span>| sort| uniq| wc -l</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看每个物理CPU中core的个数(即核数)</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo| grep <span class="string">"cpu cores"</span>| uniq</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看逻辑CPU的个数</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo| grep <span class="string">"processor"</span>| wc -l</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看CPU信息（型号）</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看CPU的负载</strong></p>
+<p><strong>平均负载</strong>是指上一分钟同时处于就绪状态的平均进程数。在CPU中可以理解为CPU可以并行处理的任务数量，就是CPU个数X核数。</p>
+<p>如果CPU Load等于CPU个数乘以核数，那么就说CPU正好满负载，再多一点，可能就要出问题了，有些任务不能被及时分配处理器，那要保证性能的话，最好要小于CPU个数X核数X0.7。</p>
+<p>Load Average是指CPU的Load。它所包含的信息是在一段时间内CPU正在处理及等待CPU处理的进程数之和的统计信息，也就是CPU使用队列的长度的统计信息。</p>
+<p>Load Average的值应该小于CPU个数X核数X0.7，Load Average会有3个状态平均值，分别是1分钟、5分钟和15分钟平均Load。</p>
+<p>如果1分钟平均出现大于CPU个数X核数的情况，还不需要担心；如果5分钟的平均也是这样，那就要警惕了；15分钟的平均也是这样，就要分析哪里出现问题，防范未然。</p>
+<p><strong>查看内存信息</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/meminfo</span><br><span class="line">$ free </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">**查看磁盘信息**</span><br><span class="line">```sh</span><br><span class="line">$ fdisk -l</span><br><span class="line">$ iostat -x 10    <span class="comment">#查看磁盘IO的性能</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/23/git极简入门/" rel="next" title="git极简入门">
+                <i class="fa fa-chevron-left"></i> git极简入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -510,10 +656,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
