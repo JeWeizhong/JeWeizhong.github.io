@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编程语言,Linux,AWK," />
+  <meta name="keywords" content="Linux,vim," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="awk命令格式和选项语法形式12awk [options] &amp;apos;script&amp;apos; var=value file(s)awk [options] -f scriptfile var=value file(s) 常用命令选项  -F fs   fs指定输入分隔符，fs可以是字符串或正则表达式，如-F: -v var=value   赋值一个用户定义变量，将外部变量传递给awk -f s">
-<meta name="keywords" content="编程语言,Linux,AWK">
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&quot;关闭vi兼容模式set nocompatible&quot;设置字符编码set fileencoding=utf-8set fileencodings=utf-8,gb2312,gb18030,latin1set">
+<meta name="keywords" content="Linux,vim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AWK简明教程">
-<meta property="og:url" content="http://yoursite.com/2018/02/16/AWK简明教程/index.html">
+<meta property="og:title" content="~&#x2F;.vimrc文件简单配置">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/Linux系列---vim配置/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="awk命令格式和选项语法形式12awk [options] &amp;apos;script&amp;apos; var=value file(s)awk [options] -f scriptfile var=value file(s) 常用命令选项  -F fs   fs指定输入分隔符，fs可以是字符串或正则表达式，如-F: -v var=value   赋值一个用户定义变量，将外部变量传递给awk -f s">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&quot;关闭vi兼容模式set nocompatible&quot;设置字符编码set fileencoding=utf-8set fileencodings=utf-8,gb2312,gb18030,latin1set">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-16T13:45:38.205Z">
+<meta property="og:updated_time" content="2018-11-28T12:39:24.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AWK简明教程">
-<meta name="twitter:description" content="awk命令格式和选项语法形式12awk [options] &amp;apos;script&amp;apos; var=value file(s)awk [options] -f scriptfile var=value file(s) 常用命令选项  -F fs   fs指定输入分隔符，fs可以是字符串或正则表达式，如-F: -v var=value   赋值一个用户定义变量，将外部变量传递给awk -f s">
+<meta name="twitter:title" content="~&#x2F;.vimrc文件简单配置">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&quot;关闭vi兼容模式set nocompatible&quot;设置字符编码set fileencoding=utf-8set fileencodings=utf-8,gb2312,gb18030,latin1set">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/16/AWK简明教程/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/Linux系列---vim配置/"/>
 
 
 
 
 
-  <title>AWK简明教程 | 木叶村</title>
+  <title>~/.vimrc文件简单配置 | 木叶村</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/16/AWK简明教程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/Linux系列---vim配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">AWK简明教程</h1>
+          <h1 class="post-title" itemprop="name headline">~/.vimrc文件简单配置</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-16T00:00:00+08:00">
-                2018-02-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T00:00:00+08:00">
+                2018-11-27
               </time>
             
 
@@ -362,74 +362,7 @@
       
 
       
-        <h5 id="awk命令格式和选项"><a href="#awk命令格式和选项" class="headerlink" title="awk命令格式和选项"></a>awk命令格式和选项</h5><p>语法形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk [options] &apos;script&apos; var=value file(s)</span><br><span class="line">awk [options] -f scriptfile var=value file(s)</span><br></pre></td></tr></table></figure></p>
-<p>常用命令选项</p>
-<ul>
-<li>-F fs   fs指定输入分隔符，fs可以是字符串或正则表达式，如-F:</li>
-<li>-v var=value   赋值一个用户定义变量，将外部变量传递给awk</li>
-<li>-f scripfile  从脚本文件中读取awk命令</li>
-<li>-m[fr] val   对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大数目。这两个功能是Bell实验室版awk的扩展功能，在标准awk中不适用。</li>
-</ul>
-<p><strong>工作原理</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hawk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<h5 id="内建变量"><a href="#内建变量" class="headerlink" title="内建变量"></a>内建变量</h5><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>详细说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$0</td>
-<td>当前记录（这个变量中存放着整个行的内容）</td>
-</tr>
-<tr>
-<td>$1~$n</td>
-<td>当前记录的第n个字段，字段间由FS分隔</td>
-</tr>
-<tr>
-<td>FS</td>
-<td>输入字段分隔符 默认是空格或Tab (<strong>也可以是-F</strong>)</td>
-</tr>
-<tr>
-<td>NF</td>
-<td>当前记录中的字段个数，就是有多少列</td>
-</tr>
-<tr>
-<td>NR</td>
-<td>已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</td>
-</tr>
-<tr>
-<td>FNR</td>
-<td>当前记录数，与NR不同的是，这个值会是各个文件自己的行号</td>
-</tr>
-<tr>
-<td>RS</td>
-<td>输入的记录分隔符， 默认为换行符</td>
-</tr>
-<tr>
-<td>OFS</td>
-<td>输出字段分隔符， 默认也是空格</td>
-</tr>
-<tr>
-<td>ORS</td>
-<td>输出的记录分隔符，默认为换行符</td>
-</tr>
-<tr>
-<td>FILENAME</td>
-<td>当前输入文件的名字</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h5 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ awk &apos;$6 ~ /FIN|TIME/ || NR==1 &#123;print NR,$4,$5,$6&#125;&apos; OFS=&quot;\t&quot; netstat.txt</span><br></pre></td></tr></table></figure>
-<h5 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h5><p>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l  *.cpp *.c *.h | awk &apos;&#123;sum+=$5&#125; END &#123;print sum&#125;&apos;</span><br><span class="line">2511401</span><br></pre></td></tr></table></figure></p>
-<p>统计每个用户的进程的占了多少内存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | awk &apos;NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i &quot;, &quot; a[i]&quot;KB&quot;;&#125;&apos;</span><br><span class="line">dbus, 540KB</span><br><span class="line">mysql, 99928KB</span><br><span class="line">www, 3264924KB</span><br><span class="line">root, 63644KB</span><br><span class="line">hchen, 6020KB</span><br></pre></td></tr></table></figure></p>
-<p><strong>++控制结构和脚本语言待补充==++</strong></p>
-<p><strong>参考链接：</strong></p>
-<p><a href="http://man.linuxde.net/awk" target="_blank" rel="noopener">http://man.linuxde.net/awk</a><br><a href="https://coolshell.cn/articles/9070.html" target="_blank" rel="noopener">https://coolshell.cn/articles/9070.html</a></p>
-
+        <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">"关闭vi兼容模式</span></span><br><span class="line"><span class="keyword">set</span> nocompatible</span><br><span class="line"><span class="comment">"设置字符编码</span></span><br><span class="line"><span class="keyword">set</span> fileencoding=utf-<span class="number">8</span></span><br><span class="line"><span class="keyword">set</span> fileencodings=utf-<span class="number">8</span>,gb2312,gb18030,latin1</span><br><span class="line"><span class="keyword">set</span> termencoding=utf-<span class="number">8</span></span><br><span class="line"><span class="keyword">set</span> encoding=utf-<span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="string">"set mouse=a"</span>启用鼠标</span><br><span class="line"><span class="comment">" 语法高亮</span></span><br><span class="line"><span class="keyword">syntax</span> <span class="keyword">on</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 检测文件类型</span></span><br><span class="line"><span class="comment">" filetype on</span></span><br><span class="line"><span class="comment">"根据文件类型加载对应的插件, 未安装插件</span></span><br><span class="line"><span class="comment">" filetype plugin on</span></span><br><span class="line"><span class="string">" filetype indent on "</span> 开启文件类型检查，并且载入与该类型对应的缩进规则,未配置</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> ruler <span class="comment">" 打开状态栏标尺</span></span><br><span class="line"><span class="keyword">set</span> smarttab <span class="comment">" 使得按退格键时可以一次删掉4个空格</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 显示行号</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">number</span></span><br><span class="line"><span class="comment">" 在第99列显示竖线</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">cc</span>=<span class="number">99</span></span><br><span class="line"><span class="comment">" 高亮显示当前行</span></span><br><span class="line"><span class="keyword">set</span> cursorline</span><br><span class="line"><span class="keyword">set</span> showmode <span class="comment">" 在底部显示，当前处于命令模式还是插入模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 设置各种缩进</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> softtabstop=<span class="number">4</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span> <span class="comment">" 设定&lt;&lt;和&gt;&gt;命令移动时的宽度为4</span></span><br><span class="line"><span class="keyword">set</span> autoindent <span class="comment">" 按下回车键后，下一行的缩进会自动跟上一行的缩进保持一致</span></span><br><span class="line"><span class="keyword">set</span> smartindent</span><br><span class="line"><span class="keyword">set</span> <span class="built_in">cindent</span></span><br><span class="line"><span class="keyword">set</span> smartindent <span class="comment">" 开启新行时使用智能自动缩进</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" 如果行尾有多余的空格（包括Tab键），该配置将让这些空格显示成可见的小方块。</span></span><br><span class="line"><span class="comment">" set listchars=tab:»■,trail:■</span></span><br><span class="line"><span class="comment">" set list</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> hlsearch <span class="comment">" 搜索时高亮显示被找到的文本</span></span><br><span class="line"><span class="keyword">set</span> noerrorbells <span class="comment">" 关闭错误信息响铃</span></span><br><span class="line"><span class="keyword">set</span> novisualbell <span class="comment">" 关闭使用可视响铃代替呼叫</span></span><br><span class="line"><span class="keyword">set</span> smartindent <span class="comment">" 开启新行时使用智能自动缩进</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">" Python文件的一般设置，比如不要tab等</span></span><br><span class="line"><span class="keyword">autocmd</span> FileType <span class="keyword">python</span> <span class="keyword">set</span> tabstop=<span class="number">4</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span> expandtab</span><br><span class="line"><span class="keyword">autocmd</span> FileType <span class="keyword">python</span> <span class="keyword">map</span> <span class="symbol">&lt;F12&gt;</span> :!python %<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="string">" set expandtab "</span> <span class="keyword">tab</span> 转换为空格</span><br><span class="line"><span class="string">" set softtabstop=2 "</span> Tab转为多少个空格</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -446,11 +379,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
-          
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/AWK/" rel="tag"># AWK</a>
+            <a href="/tags/vim/" rel="tag"># vim</a>
           
         </div>
       
@@ -463,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/15/注释格式说明/" rel="next" title="突变注释格式说明">
-                <i class="fa fa-chevron-left"></i> 突变注释格式说明
+              <a href="/2018/11/26/算法与数据结构系列(一)---单链表(一)/" rel="next" title="算法与数据结构系列(一)： 单链表(一)">
+                <i class="fa fa-chevron-left"></i> 算法与数据结构系列(一)： 单链表(一)
               </a>
             
           </div>
@@ -472,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/03/You Are What You Write/" rel="prev" title="沈向洋：You Are What You Write">
-                沈向洋：You Are What You Write <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -527,17 +454,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/137356299.jpg"
@@ -610,22 +528,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#awk命令格式和选项"><span class="nav-number">1.</span> <span class="nav-text">awk命令格式和选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内建变量"><span class="nav-number">2.</span> <span class="nav-text">内建变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模式匹配"><span class="nav-number">3.</span> <span class="nav-text">模式匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#统计"><span class="nav-number">4.</span> <span class="nav-text">统计</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
