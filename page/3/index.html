@@ -270,6 +270,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/机器学习系列笔记(四)Logistic回归(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/10/机器学习系列笔记(四)Logistic回归(二)/" itemprop="url">机器学习系列笔记(三)：Logistic回归(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T00:00:00+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>本节介绍使用梯度上升法求代价函数的最大值</em></p>
+<script type="math/tex; mode=display">\frac{\partial{J(\omega)}}{\partial\omega_{j}} = (y-f(x))x_j  \tag{11}</script><script type="math/tex; mode=display">\omega_j := \omega_j+\alpha\sum_{i=1}^{m}(y-f(x^{(i)}))x_j^{(i)} \tag{12}</script><p>上面公式$(11)$我们忽略了上标，只拿了一组(x,y)数据用来推导</p>
+<p>公式$(12)$是迭代公式，如果用梯度下降法，需要把“+”换成“-”</p>
+<p>接下来我们用<strong>机器学习实战</strong>中的示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotBestFit</span><span class="params">(weights)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    画出决策边界,matplotlib暂时看不懂</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#  读取数据</span></span><br><span class="line">    dataMat,labelMat = loadDataSet()</span><br><span class="line">    <span class="comment"># 转成矩阵</span></span><br><span class="line">    dataArr = np.array(dataMat)</span><br><span class="line">    <span class="comment"># 获取形状</span></span><br><span class="line">    n = np.shape(dataMat)[<span class="number">0</span>]</span><br><span class="line">    xcord1 = []; ycord1 = []</span><br><span class="line">    xcord2 = []; ycord2 = []</span><br><span class="line">    <span class="comment"># 根据label画出不同的颜色</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">if</span> int(labelMat[i])== <span class="number">1</span>:</span><br><span class="line">            xcord1.append(dataArr[i,<span class="number">1</span>]); ycord1.append(dataArr[i,<span class="number">2</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            xcord2.append(dataArr[i,<span class="number">1</span>]); ycord2.append(dataArr[i,<span class="number">2</span>])</span><br><span class="line">    fig = plt.figure()</span><br><span class="line">    ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">    ax.scatter(xcord1, ycord1, s=<span class="number">30</span>, c=<span class="string">'red'</span>, marker=<span class="string">'s'</span>)</span><br><span class="line">    ax.scatter(xcord2, ycord2, s=<span class="number">30</span>, c=<span class="string">'green'</span>)</span><br><span class="line">    x = np.arange(<span class="number">-3.0</span>, <span class="number">3.0</span>, <span class="number">0.1</span>)</span><br><span class="line">    y = (-weights[<span class="number">0</span>]-weights[<span class="number">1</span>]*x)/weights[<span class="number">2</span>]</span><br><span class="line">    <span class="comment"># 画分类线</span></span><br><span class="line">    ax.plot(x, y)</span><br><span class="line">    plt.xlabel(<span class="string">'X1'</span>); plt.ylabel(<span class="string">'X2'</span>);</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradAscent</span><span class="params">(dataIn,classLables)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    梯度上升法</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># np.mat : 转换为矩阵类型</span></span><br><span class="line">    dataMaxtrix = np.mat(dataIn)</span><br><span class="line">    <span class="comment"># 转置成为列向量</span></span><br><span class="line">    labelMat = np.mat(classLables).transpose()</span><br><span class="line">    <span class="comment"># 返回矩阵的形状</span></span><br><span class="line">    m,n = np.shape(dataMaxtrix)</span><br><span class="line">    <span class="comment"># 固定阿尔法值</span></span><br><span class="line">    alpha = <span class="number">0.001</span></span><br><span class="line">    maxCycles = <span class="number">500</span> </span><br><span class="line">    <span class="comment"># 全1 矩阵</span></span><br><span class="line">    weights = np.ones ((n,<span class="number">1</span>))</span><br><span class="line">    <span class="comment"># 寻找500次</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range (maxCycles):</span><br><span class="line">        h = sigmoid(dataMaxtrix*weights)</span><br><span class="line">        error = labelMat - h</span><br><span class="line">        <span class="comment"># 公式(12)</span></span><br><span class="line">        weights = weights + alpha * dataMaxtrix.transpose() * error</span><br><span class="line">    <span class="keyword">return</span> weights</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(inX)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    sigmoid函数, Inx = w^T x, </span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1</span>+np.exp(-inX))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    导入数据</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    dataMat = []; labelMat = []</span><br><span class="line">    <span class="comment"># 文件路径，不知道是什么文件，先用着就是</span></span><br><span class="line">    fr = open(<span class="string">'F:\\zhongjianwei\\pyscript\\机器学习实战\\Machine-learning-in-action-notes-and-code\\Logistic回归\\Ch05\\testSet.txt'</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">        <span class="comment"># 默认分隔符： 换行，空格，制表符</span></span><br><span class="line">        lineArr = line.strip().split()</span><br><span class="line">        <span class="comment"># 只取文件前两列当做x1，x2，而x0设置为1</span></span><br><span class="line">        dataMat.append([<span class="number">1.0</span>, float(lineArr[<span class="number">0</span>]), float(lineArr[<span class="number">1</span>])])</span><br><span class="line">        <span class="comment"># y值</span></span><br><span class="line">        labelMat.append(int(lineArr[<span class="number">2</span>]))</span><br><span class="line">    <span class="keyword">return</span> dataMat,labelMat</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    dataArr,labelMat = loadDataSet()</span><br><span class="line">    <span class="comment">#print(dataArr)</span></span><br><span class="line">    weights = gradAscent(dataArr,labelMat)</span><br><span class="line">    print(weights)</span><br><span class="line">    <span class="comment"># 矩阵转换成数组</span></span><br><span class="line">    plotBestFit(weights.getA())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>输出$\omega_0,\omega_1,\omega_2$：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[ 4.12414349]</span><br><span class="line"> [ 0.48007329]</span><br><span class="line"> [-0.6168482 ]]</span><br></pre></td></tr></table></figure>
+<p>可视化分类结果：</p>
+<p><img src="/myphoto/logistic2.png" alt="结果"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/python3cook系列笔记(七)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -595,7 +745,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(三)-os.path/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -614,7 +764,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/07/python3标准库系列(三)-os.path/" itemprop="url">python3 标准库系列(三)---os.path</a></h1>
+                <a class="post-title-link" href="/2018/11/07/python3标准库系列(二)-argparse/" itemprop="url">python3 标准库系列(二)---argparse 模块</a></h1>
         
 
         <div class="post-meta">
@@ -688,8 +838,58 @@
       
         
           
-            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
+            <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Search some files'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-p'</span>, <span class="string">'--pat'</span>,metavar=<span class="string">'pattern'</span>, required=<span class="keyword">True</span>,dest=<span class="string">'patterns'</span>, action=<span class="string">'append'</span>,	help=<span class="string">'text pattern to search for'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="comment"># 使用方法</span></span><br><span class="line">print(args.filenames)</span><br><span class="line">print(args.patterns)</span><br><span class="line">print(args.verbose)</span><br><span class="line">print(args.outfile)</span><br><span class="line">print(args.speed)</span><br></pre></td></tr></table></figure>
+<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
+<p>在每个<code>add_argument()</code> 调用中，</p>
+<ul>
+<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
+</li>
+<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
+</li>
+<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--baz'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'--foo --bar'</span>.split())</span><br><span class="line">Namespace(foo=<span class="keyword">True</span>, bar=<span class="keyword">False</span>, baz=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
+<ul>
+<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
+<li>* , 也就是说参数可以接收任意个数值</li>
+<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
+<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
+<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'command'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'args'</span>, nargs=argparse.REMAINDER)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(parser.parse_args(<span class="string">'--foo B cmd --arg1 XX ZZ'</span>.split()))</span><br><span class="line">Namespace(args=[<span class="string">'--arg1'</span>, <span class="string">'XX'</span>, <span class="string">'ZZ'</span>], command=<span class="string">'cmd'</span>, foo=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br></pre></td></tr></table></figure>
+<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
+<p>其他一些参数：</p>
+<ul>
+<li><code>default</code>: 设置默认值</li>
+<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'foo'</span>, type=int)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'bar'</span>, type=open)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'2 temp.txt'</span>.split())</span><br><span class="line">Namespace(bar=&lt;_io.TextIOWrapper name=<span class="string">'temp.txt'</span> encoding=<span class="string">'UTF-8'</span>&gt;, foo=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>required</code>: 设置为必须参数</li>
+</ul>
+<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_argument_group(<span class="string">'group'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--foo FOO] bar</span><br><span class="line"></span><br><span class="line">group:</span><br><span class="line">  bar    bar help</span><br><span class="line">  --foo FOO  foo help</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1 = parser.add_argument_group(<span class="string">'group1'</span>, <span class="string">'group1 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1.add_argument(<span class="string">'foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2 = parser.add_argument_group(<span class="string">'group2'</span>, <span class="string">'group2 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2.add_argument(<span class="string">'--bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--bar BAR] foo</span><br><span class="line"></span><br><span class="line">group1:</span><br><span class="line">  group1 description</span><br><span class="line"></span><br><span class="line">  foo    foo help</span><br><span class="line"></span><br><span class="line">group2:</span><br><span class="line">  group2 description</span><br><span class="line"></span><br><span class="line">  --bar BAR  bar help</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
           
         
       
@@ -981,7 +1181,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(三)-os.path/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -1000,7 +1200,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/07/python3标准库系列(二)-argparse/" itemprop="url">python3 标准库系列(二)---argparse 模块</a></h1>
+                <a class="post-title-link" href="/2018/11/07/python3标准库系列(三)-os.path/" itemprop="url">python3 标准库系列(三)---os.path</a></h1>
         
 
         <div class="post-meta">
@@ -1074,58 +1274,8 @@
       
         
           
-            <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Search some files'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-p'</span>, <span class="string">'--pat'</span>,metavar=<span class="string">'pattern'</span>, required=<span class="keyword">True</span>,dest=<span class="string">'patterns'</span>, action=<span class="string">'append'</span>,	help=<span class="string">'text pattern to search for'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="comment"># 使用方法</span></span><br><span class="line">print(args.filenames)</span><br><span class="line">print(args.patterns)</span><br><span class="line">print(args.verbose)</span><br><span class="line">print(args.outfile)</span><br><span class="line">print(args.speed)</span><br></pre></td></tr></table></figure>
-<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
-<p>在每个<code>add_argument()</code> 调用中，</p>
-<ul>
-<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
-</li>
-<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
-</li>
-<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--baz'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'--foo --bar'</span>.split())</span><br><span class="line">Namespace(foo=<span class="keyword">True</span>, bar=<span class="keyword">False</span>, baz=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
-<ul>
-<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
-<li>* , 也就是说参数可以接收任意个数值</li>
-<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
-<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
-<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'command'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'args'</span>, nargs=argparse.REMAINDER)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(parser.parse_args(<span class="string">'--foo B cmd --arg1 XX ZZ'</span>.split()))</span><br><span class="line">Namespace(args=[<span class="string">'--arg1'</span>, <span class="string">'XX'</span>, <span class="string">'ZZ'</span>], command=<span class="string">'cmd'</span>, foo=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br></pre></td></tr></table></figure>
-<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
-<p>其他一些参数：</p>
-<ul>
-<li><code>default</code>: 设置默认值</li>
-<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'foo'</span>, type=int)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'bar'</span>, type=open)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'2 temp.txt'</span>.split())</span><br><span class="line">Namespace(bar=&lt;_io.TextIOWrapper name=<span class="string">'temp.txt'</span> encoding=<span class="string">'UTF-8'</span>&gt;, foo=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>required</code>: 设置为必须参数</li>
-</ul>
-<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_argument_group(<span class="string">'group'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--foo FOO] bar</span><br><span class="line"></span><br><span class="line">group:</span><br><span class="line">  bar    bar help</span><br><span class="line">  --foo FOO  foo help</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1 = parser.add_argument_group(<span class="string">'group1'</span>, <span class="string">'group1 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1.add_argument(<span class="string">'foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2 = parser.add_argument_group(<span class="string">'group2'</span>, <span class="string">'group2 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2.add_argument(<span class="string">'--bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--bar BAR] foo</span><br><span class="line"></span><br><span class="line">group1:</span><br><span class="line">  group1 description</span><br><span class="line"></span><br><span class="line">  foo    foo help</span><br><span class="line"></span><br><span class="line">group2:</span><br><span class="line">  group2 description</span><br><span class="line"></span><br><span class="line">  --bar BAR  bar help</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
+            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1809,158 +1959,11 @@ x_n
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/python3cook系列笔记(四)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/02/python3cook系列笔记(四)/" itemprop="url">python3 cookbook笔记：第二章 字符串和文本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T00:00:00+08:00">
-                2018-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。</p>
-<p>由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。</p>
-<p>等以后有文字处理这方面的需求再回过头来复习</p>
-<p><code>startswith()</code> 和<code>endswith()</code> 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。</p>
-<p><strong>正则表达式</strong></p>
-<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">re.compile() <span class="comment"># 编译匹配模式</span></span><br><span class="line">re.match() <span class="comment"># 匹配开头</span></span><br><span class="line">re.search() <span class="comment"># 任意位置,但只匹配一次</span></span><br><span class="line">re.findall() <span class="comment"># 匹配多次，返回元组</span></span><br><span class="line">re.finditer() <span class="comment"># 匹配多次，返回迭代器</span></span><br></pre></td></tr></table></figure>
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2006,7 +2009,7 @@ x_n
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2028,7 +2031,7 @@ x_n
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
