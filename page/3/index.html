@@ -270,6 +270,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/python3cook系列笔记(八)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/python3cook系列笔记(八)/" itemprop="url">python3 cookbook笔记： 第八章 类与对象(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T00:00:00+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>本节介绍property装饰器的用法</em></p>
+<p><code>proprety</code>的作用是可以将方法变成属性，那它到底是怎么实现的呢？让我们先来看一个例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">		self.first_name = name</span><br><span class="line">	<span class="comment"># Getter 方法</span></span><br><span class="line"><span class="meta">	@property</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self._first_name</span><br><span class="line">	<span class="comment"># Setter 方法</span></span><br><span class="line"><span class="meta">	@first_name.setter</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, str):</span><br><span class="line">			<span class="keyword">raise</span> TypeError(<span class="string">'Expected a string'</span>)</span><br><span class="line">		self._first_name = value</span><br><span class="line">	<span class="comment"># Deleter 方法(可选)</span></span><br><span class="line"><span class="meta">	@first_name.deleter</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">raise</span> AttributeError(<span class="string">"Can't delete attribute"</span>)</span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = Person(<span class="string">'Guido'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.first_name <span class="comment"># 调用getter方法</span></span><br><span class="line"><span class="string">'Guido'</span></span><br></pre></td></tr></table></figure>
+<p>当我们进行赋值操作时<code>a = Person(&#39;Guido&#39;)</code>就创建了实例，在构造函数中的赋值语句<code>self.first_name</code>就会自动调用<code>first_name</code>的<code>getter</code>、<code>setter</code>、<code>deleter</code>方法(实质上是调用了<code>__get__()</code> 、<code>__set__()</code>和<code>__delete__()</code> 方法)。</p>
+<p>而将等号右边的<code>name</code>参数传入到<code>@first_name.setter</code>下面的方法中，书中是用的<code>first_name</code>变量名字，其实这里设置成其他的变量名比较好，要不然容易混淆参数与方法函数。</p>
+<p>因此装饰器<code>property</code>将原来的<code>first_name()</code>方法，变成了<code>self.first_name</code>属性,一开始我们要调用方法是<code>var.mothed()</code>,现在变成了属性，只用<code>.</code>运算符就可以, 括号就不需要了</p>
+<p>接下来我们来看另一中形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(value, str):</span><br><span class="line">            self._name = value</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self._name = <span class="string">'to getter '</span></span><br></pre></td></tr></table></figure>
+<p>这里在构造函数中并没有调用<code>getter</code>、<code>setter</code>方法，那么，<code>self._name</code>，<code>self.name</code>其实是两个不同的属性，只是<code>self._name</code>属性依赖于<code>self.name</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = Animal(<span class="string">'black dog'</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name <span class="comment"># 此时其实是没有调用setter方法的，只调用了 getter方法</span></span><br><span class="line"><span class="string">'black dog'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a._name <span class="comment"># 因为没有调用setter方法，所以self._name值也没有修改</span></span><br><span class="line"><span class="string">'black dog'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name = <span class="number">1</span> <span class="comment"># 调用了setter方法，但是不是字符串类型的，所以执行 self._name = 'to getter '，然后调用getter方法，返回self._name的值</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name</span><br><span class="line"><span class="string">'to getter '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a._name <span class="comment"># 因为进行了赋值操作，因此self._name的值也进行了修改</span></span><br><span class="line"><span class="string">'to getter '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name = <span class="string">"white55k"</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name</span><br><span class="line"><span class="string">'white55k'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a._name</span><br><span class="line"><span class="string">'white55k'</span></span><br></pre></td></tr></table></figure>
+<p>这里要说明的一点是<code>__init__</code>函数的参数<code>name</code>只是执行了<code>self._name = name</code>赋值操作，由于并没有调用<code>setter</code>方法，因此<code>def name(self, value)</code>需要重新传入参数(赋值)</p>
+<p>在看另一种用法，只设置<code>getter</code>方法，变成只读属性，实现编程接口：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">2018</span> - self._birth</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a=Student() <span class="comment"># 创建实例</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.birth=<span class="number">1990</span> <span class="comment"># setter</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.birth <span class="comment"># getter</span></span><br><span class="line"><span class="number">1990</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.age <span class="comment"># 只有 getter</span></span><br><span class="line"><span class="number">28</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.age=<span class="number">2</span> <span class="comment"># 调用setter方法，会报错</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">AttributeError: can<span class="string">'t set attribute</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/perl命令行打印单引号/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1032,6 +1187,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/python3标准库系列(二)-argparse/" itemprop="url">python3 标准库系列(二)---argparse 模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Search some files'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-p'</span>, <span class="string">'--pat'</span>,metavar=<span class="string">'pattern'</span>, required=<span class="keyword">True</span>,dest=<span class="string">'patterns'</span>, action=<span class="string">'append'</span>,	help=<span class="string">'text pattern to search for'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="comment"># 使用方法</span></span><br><span class="line">print(args.filenames)</span><br><span class="line">print(args.patterns)</span><br><span class="line">print(args.verbose)</span><br><span class="line">print(args.outfile)</span><br><span class="line">print(args.speed)</span><br></pre></td></tr></table></figure>
+<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
+<p>在每个<code>add_argument()</code> 调用中，</p>
+<ul>
+<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
+</li>
+<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
+</li>
+<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--baz'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'--foo --bar'</span>.split())</span><br><span class="line">Namespace(foo=<span class="keyword">True</span>, bar=<span class="keyword">False</span>, baz=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
+<ul>
+<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
+<li>* , 也就是说参数可以接收任意个数值</li>
+<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
+<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
+<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'command'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'args'</span>, nargs=argparse.REMAINDER)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(parser.parse_args(<span class="string">'--foo B cmd --arg1 XX ZZ'</span>.split()))</span><br><span class="line">Namespace(args=[<span class="string">'--arg1'</span>, <span class="string">'XX'</span>, <span class="string">'ZZ'</span>], command=<span class="string">'cmd'</span>, foo=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br></pre></td></tr></table></figure>
+<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
+<p>其他一些参数：</p>
+<ul>
+<li><code>default</code>: 设置默认值</li>
+<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'foo'</span>, type=int)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'bar'</span>, type=open)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'2 temp.txt'</span>.split())</span><br><span class="line">Namespace(bar=&lt;_io.TextIOWrapper name=<span class="string">'temp.txt'</span> encoding=<span class="string">'UTF-8'</span>&gt;, foo=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>required</code>: 设置为必须参数</li>
+</ul>
+<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_argument_group(<span class="string">'group'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--foo FOO] bar</span><br><span class="line"></span><br><span class="line">group:</span><br><span class="line">  bar    bar help</span><br><span class="line">  --foo FOO  foo help</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1 = parser.add_argument_group(<span class="string">'group1'</span>, <span class="string">'group1 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1.add_argument(<span class="string">'foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2 = parser.add_argument_group(<span class="string">'group2'</span>, <span class="string">'group2 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2.add_argument(<span class="string">'--bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--bar BAR] foo</span><br><span class="line"></span><br><span class="line">group1:</span><br><span class="line">  group1 description</span><br><span class="line"></span><br><span class="line">  foo    foo help</span><br><span class="line"></span><br><span class="line">group2:</span><br><span class="line">  group2 description</span><br><span class="line"></span><br><span class="line">  --bar BAR  bar help</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3cook系列笔记(六)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1418,198 +1765,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/python3标准库系列(二)-argparse/" itemprop="url">python3 标准库系列(二)---argparse 模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Search some files'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-p'</span>, <span class="string">'--pat'</span>,metavar=<span class="string">'pattern'</span>, required=<span class="keyword">True</span>,dest=<span class="string">'patterns'</span>, action=<span class="string">'append'</span>,	help=<span class="string">'text pattern to search for'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="comment"># 使用方法</span></span><br><span class="line">print(args.filenames)</span><br><span class="line">print(args.patterns)</span><br><span class="line">print(args.verbose)</span><br><span class="line">print(args.outfile)</span><br><span class="line">print(args.speed)</span><br></pre></td></tr></table></figure>
-<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
-<p>在每个<code>add_argument()</code> 调用中，</p>
-<ul>
-<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
-</li>
-<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
-</li>
-<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--baz'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'--foo --bar'</span>.split())</span><br><span class="line">Namespace(foo=<span class="keyword">True</span>, bar=<span class="keyword">False</span>, baz=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
-<ul>
-<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
-<li>* , 也就是说参数可以接收任意个数值</li>
-<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
-<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
-<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'command'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'args'</span>, nargs=argparse.REMAINDER)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(parser.parse_args(<span class="string">'--foo B cmd --arg1 XX ZZ'</span>.split()))</span><br><span class="line">Namespace(args=[<span class="string">'--arg1'</span>, <span class="string">'XX'</span>, <span class="string">'ZZ'</span>], command=<span class="string">'cmd'</span>, foo=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br></pre></td></tr></table></figure>
-<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
-<p>其他一些参数：</p>
-<ul>
-<li><code>default</code>: 设置默认值</li>
-<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'foo'</span>, type=int)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'bar'</span>, type=open)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'2 temp.txt'</span>.split())</span><br><span class="line">Namespace(bar=&lt;_io.TextIOWrapper name=<span class="string">'temp.txt'</span> encoding=<span class="string">'UTF-8'</span>&gt;, foo=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>required</code>: 设置为必须参数</li>
-</ul>
-<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_argument_group(<span class="string">'group'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--foo FOO] bar</span><br><span class="line"></span><br><span class="line">group:</span><br><span class="line">  bar    bar help</span><br><span class="line">  --foo FOO  foo help</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1 = parser.add_argument_group(<span class="string">'group1'</span>, <span class="string">'group1 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1.add_argument(<span class="string">'foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2 = parser.add_argument_group(<span class="string">'group2'</span>, <span class="string">'group2 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2.add_argument(<span class="string">'--bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--bar BAR] foo</span><br><span class="line"></span><br><span class="line">group1:</span><br><span class="line">  group1 description</span><br><span class="line"></span><br><span class="line">  foo    foo help</span><br><span class="line"></span><br><span class="line">group2:</span><br><span class="line">  group2 description</span><br><span class="line"></span><br><span class="line">  --bar BAR  bar help</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1766,173 +1921,6 @@ x_n
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/python3cook系列笔记(五)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/python3cook系列笔记(五)/" itemprop="url">python3 cookbook笔记：第四章 迭代器与生成器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-05T00:00:00+08:00">
-                2018-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>可迭代对象是一个比较新的词汇，而迭代是Python 最强大的功能之一。初看起来，你可能会简单的认为迭代只不过是处理序列中元素的一种方法。然而，绝非仅仅就是如此，还有很多你可能不知道的，比如创建你自己的迭代器对象，在itertools 模块中使用有用的迭代模式，构造生成器函数等等。</p>
-<ol>
-<li><p>使用<code>next()</code>可以实现手动手动迭代，其实任何迭代内部都是调用了<code>__next__()</code>方法迭代结束标识是在结尾处捕获了<code>StopIteration</code></p>
-</li>
-<li><p><code>yield</code> 语句可是创建一个可迭代对象</p>
-</li>
-<li><p>函数<code>itertools.islice()</code>用于在迭代器和生成器上做切片操作:</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    &gt;&gt;&gt; <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(n)</span>:</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">yield</span> n</span><br><span class="line"><span class="meta">... </span>            n += <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = count(<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">10</span>:<span class="number">20</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">'generator'</span> object <span class="keyword">is</span> <span class="keyword">not</span> subscriptable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Now using islice()</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> itertools</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x <span class="keyword">in</span> itertools.islice(c, <span class="number">10</span>, <span class="number">20</span>):</span><br><span class="line"><span class="meta">... </span>print(x)</span><br><span class="line">...</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">13</span></span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">17</span></span><br><span class="line"><span class="number">18</span></span><br><span class="line"><span class="number">19</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p> 迭代器和生成器不能使用标准的切片操作，因为它们的长度事先我们并不知道(并且也没有实现索引)。函数islice() 返回一个可以生成指定元素的迭代器，它通过遍<br>历并丢弃直到切片开始索引位置的所有元素。然后才开始一个个的返回元素，并直到切片结束索引位置。<br> 这里要着重强调的一点是islice() 会消耗掉传入的迭代器中的数据。必须考虑到迭代器是不可逆的这个事实。所以如果你需要之后再次访问这个迭代器的话，那你就得<br>先将它里面的数据放入一个列表中。</p>
-</li>
-<li><p><code>itertools.dropwhile()</code> 函数,你给它传递一个函数对象和一个可迭代对象。它会返回一个迭代器对象，丢弃原有序列中直到函数返回Flase 之前的所有元素，然后返回后<br>面所有元素。</p>
-</li>
-<li><p><strong>排列组合的迭代：</strong>迭代遍历一个集合中元素的所有可能的排列或组合。<br><code>itertools.permutations()</code>函数接受一个集合并产生一个元组序列，序列包括了集合中所有的排列组合(顺序不同也算是一种组合)：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>items = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> itertools <span class="keyword">import</span> permutations</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> p <span class="keyword">in</span> permutations(items):</span><br><span class="line"><span class="meta">... </span>print(p)</span><br><span class="line">...</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>)</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>)</span><br><span class="line">(<span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'c'</span>)</span><br><span class="line">(<span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>)</span><br><span class="line">(<span class="string">'c'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>)</span><br><span class="line">(<span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p> 如果你想得到指定长度的所有排列，你可以传递一个可选的长度参数:</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> p <span class="keyword">in</span> permutations(items, <span class="number">2</span>):</span><br><span class="line"><span class="meta">... </span>print(p)</span><br><span class="line">...</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>)</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'c'</span>)</span><br><span class="line">(<span class="string">'b'</span>, <span class="string">'a'</span>)</span><br><span class="line">(<span class="string">'b'</span>, <span class="string">'c'</span>)</span><br><span class="line">(<span class="string">'c'</span>, <span class="string">'a'</span>)</span><br><span class="line">(<span class="string">'c'</span>, <span class="string">'b'</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p> <code>itertools.combinations()</code>函数也是返回排列组合，但是忽略顺序，即，组合(‘a’,’b’) 跟(‘b’, ‘a’)</p>
-</li>
-<li><p>内置的<code>enumerate() 函数</code>返回索引跟对应的元素</p>
-</li>
-<li><p><code>zip()</code> 函数可以同时迭代多喝序列：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>xpts = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">7</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ypts = [<span class="number">101</span>, <span class="number">78</span>, <span class="number">37</span>, <span class="number">15</span>, <span class="number">62</span>, <span class="number">99</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x, y <span class="keyword">in</span> zip(xpts, ypts):</span><br><span class="line"><span class="meta">... </span>    print(x,y)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> <span class="number">101</span></span><br><span class="line"><span class="number">5</span> <span class="number">78</span></span><br><span class="line"><span class="number">4</span> <span class="number">37</span></span><br><span class="line"><span class="number">2</span> <span class="number">15</span></span><br><span class="line"><span class="number">10</span> <span class="number">62</span></span><br><span class="line"><span class="number">7</span> <span class="number">99</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>isinstance(x, Iterable)</code> 检查某个元素是否是可迭代的</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1983,7 +1971,7 @@ x_n
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
