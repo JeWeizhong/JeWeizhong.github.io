@@ -270,6 +270,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/机器学习实战笔记(五)--决策树(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/02/机器学习实战笔记(五)--决策树(二)/" itemprop="url">机器学习实战笔记(五)---决策树(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T00:00:00+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2018/1/3 14:02</span></span><br><span class="line"><span class="comment"># @Author  : wangzy</span></span><br><span class="line"><span class="comment"># 原文代码作者：https://github.com/wzyonggege/statistical-learning-method</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># 中文注释制作：机器学习初学者(微信公众号：ID:ai-start-com)</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># 配置环境：python 3.6</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义节点类 二叉树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root=True, label=None, feature_name=None, feature=None)</span>:</span></span><br><span class="line">        self.root = root</span><br><span class="line">        self.label = label</span><br><span class="line">        self.feature_name = feature_name</span><br><span class="line">        self.feature = feature</span><br><span class="line">        self.tree = &#123;&#125;</span><br><span class="line">        self.result = &#123;<span class="string">'label:'</span>: self.label, <span class="string">'feature'</span>: self.feature, <span class="string">'tree'</span>: self.tree&#125;</span><br><span class="line">    <span class="comment"># 调用 __repr__ 而不是 __str__</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;&#125;'</span>.format(self.result)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_node</span><span class="params">(self, val, node)</span>:</span></span><br><span class="line">        self.tree[val] = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, features)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.root <span class="keyword">is</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">return</span> self.label</span><br><span class="line">        <span class="keyword">return</span> self.tree[features[self.feature]].predict(features)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 书上题目5.1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_data</span><span class="params">()</span>:</span></span><br><span class="line">    datasets = [[<span class="string">'青年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'一般'</span>, <span class="string">'否'</span>],</span><br><span class="line">               [<span class="string">'青年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'好'</span>, <span class="string">'否'</span>],</span><br><span class="line">               [<span class="string">'青年'</span>, <span class="string">'是'</span>, <span class="string">'否'</span>, <span class="string">'好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'青年'</span>, <span class="string">'是'</span>, <span class="string">'是'</span>, <span class="string">'一般'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'青年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'一般'</span>, <span class="string">'否'</span>],</span><br><span class="line">               [<span class="string">'中年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'一般'</span>, <span class="string">'否'</span>],</span><br><span class="line">               [<span class="string">'中年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'好'</span>, <span class="string">'否'</span>],</span><br><span class="line">               [<span class="string">'中年'</span>, <span class="string">'是'</span>, <span class="string">'是'</span>, <span class="string">'好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'中年'</span>, <span class="string">'否'</span>, <span class="string">'是'</span>, <span class="string">'非常好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'中年'</span>, <span class="string">'否'</span>, <span class="string">'是'</span>, <span class="string">'非常好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'老年'</span>, <span class="string">'否'</span>, <span class="string">'是'</span>, <span class="string">'非常好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'老年'</span>, <span class="string">'否'</span>, <span class="string">'是'</span>, <span class="string">'好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'老年'</span>, <span class="string">'是'</span>, <span class="string">'否'</span>, <span class="string">'好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'老年'</span>, <span class="string">'是'</span>, <span class="string">'否'</span>, <span class="string">'非常好'</span>, <span class="string">'是'</span>],</span><br><span class="line">               [<span class="string">'老年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'一般'</span>, <span class="string">'否'</span>],</span><br><span class="line">               ]</span><br><span class="line">    <span class="comment"># 每行的名字</span></span><br><span class="line">    labels = [<span class="string">u'年龄'</span>, <span class="string">u'有工作'</span>, <span class="string">u'有自己的房子'</span>, <span class="string">u'信贷情况'</span>, <span class="string">u'类别'</span>]</span><br><span class="line">    <span class="comment"># 返回数据集和每个维度的名称</span></span><br><span class="line">    <span class="keyword">return</span> datasets, labels</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DTree</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, epsilon=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">        self.epsilon = epsilon</span><br><span class="line">        self._tree = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 熵</span></span><br><span class="line"><span class="meta">    @staticmethod # 声明的静态方法，因此无需实例化，不用写self，可以直接使用</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calc_ent</span><span class="params">(datasets)</span>:</span></span><br><span class="line">        data_length = len(datasets)</span><br><span class="line">        label_count = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(data_length):</span><br><span class="line">            label = datasets[i][<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> label <span class="keyword">not</span> <span class="keyword">in</span> label_count:</span><br><span class="line">                label_count[label] = <span class="number">0</span></span><br><span class="line">            label_count[label] += <span class="number">1</span></span><br><span class="line">        ent = -sum([(p/data_length)*log(p/data_length, <span class="number">2</span>) <span class="keyword">for</span> p <span class="keyword">in</span> label_count.values()])</span><br><span class="line">        <span class="keyword">return</span> ent</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 经验条件熵</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cond_ent</span><span class="params">(self, datasets, axis=<span class="number">0</span>)</span>:</span></span><br><span class="line">        data_length = len(datasets)</span><br><span class="line">        feature_sets = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(data_length):</span><br><span class="line">            feature = datasets[i][axis]</span><br><span class="line">            <span class="keyword">if</span> feature <span class="keyword">not</span> <span class="keyword">in</span> feature_sets:</span><br><span class="line">                feature_sets[feature] = []</span><br><span class="line">            feature_sets[feature].append(datasets[i])</span><br><span class="line">        cond_ent = sum([(len(p)/data_length)*self.calc_ent(p) <span class="keyword">for</span> p <span class="keyword">in</span> feature_sets.values()])</span><br><span class="line">        <span class="keyword">return</span> cond_ent</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 信息增益</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">info_gain</span><span class="params">(ent, cond_ent)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> ent - cond_ent</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">info_gain_train</span><span class="params">(self, datasets)</span>:</span></span><br><span class="line">        count = len(datasets[<span class="number">0</span>]) - <span class="number">1</span></span><br><span class="line">        ent = self.calc_ent(datasets) <span class="comment"># 获得信息熵</span></span><br><span class="line">        best_feature = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(count):</span><br><span class="line">            c_info_gain = self.info_gain(ent, self.cond_ent(datasets, axis=c)) <span class="comment"># 计算信息增益</span></span><br><span class="line">            best_feature.append((c, c_info_gain)) <span class="comment"># 存于列表中，然后选出信息增益最大的</span></span><br><span class="line">        <span class="comment"># 比较大小</span></span><br><span class="line">        best_ = max(best_feature, key=<span class="keyword">lambda</span> x: x[<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">return</span> best_</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self, train_data)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        input:数据集D(DataFrame格式)，特征集A，阈值eta</span></span><br><span class="line"><span class="string">        output:决策树T</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        1. 计算信息熵 H(D)</span></span><br><span class="line"><span class="string">        2. 获取信息增益最大的类别</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 训练集，类别(y值),列名</span></span><br><span class="line">        _, y_train, features = train_data.iloc[:, :<span class="number">-1</span>], train_data.iloc[:, <span class="number">-1</span>], train_data.columns[:<span class="number">-1</span>]</span><br><span class="line">        <span class="comment"># 1,若D中实例属于同一类Ck，则T为单节点树，并将类Ck作为结点的类标记，返回T</span></span><br><span class="line">        <span class="keyword">if</span> len(y_train.value_counts()) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> Node(root=<span class="keyword">True</span>,</span><br><span class="line">                        label=y_train.iloc[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2, 若A为空，则T为单节点树，将D中实例树最大的类Ck作为该节点的类标记，返回T</span></span><br><span class="line">        <span class="keyword">if</span> len(features) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> Node(root=<span class="keyword">True</span>, label=y_train.value_counts().sort_values(ascending=<span class="keyword">False</span>).index[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3,计算最大信息增益 同5.1,Ag为信息增益最大的特征</span></span><br><span class="line">        max_feature, max_info_gain = self.info_gain_train(np.array(train_data))</span><br><span class="line">        max_feature_name = features[max_feature]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4,Ag的信息增益小于阈值eta,则置T为单节点树，并将D中是实例数最大的类Ck作为该节点的类标记，返回T</span></span><br><span class="line">        <span class="keyword">if</span> max_info_gain &lt; self.epsilon:</span><br><span class="line">            <span class="keyword">return</span> Node(root=<span class="keyword">True</span>, label=y_train.value_counts().sort_values(ascending=<span class="keyword">False</span>).index[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5,构建Ag子集</span></span><br><span class="line">        node_tree = Node(root=<span class="keyword">False</span>, feature_name=max_feature_name, feature=max_feature)</span><br><span class="line"></span><br><span class="line">        feature_list = train_data[max_feature_name].value_counts().index</span><br><span class="line">        <span class="keyword">for</span> f <span class="keyword">in</span> feature_list:</span><br><span class="line">            sub_train_df = train_data.loc[train_data[max_feature_name] == f].drop([max_feature_name], axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 6, 递归生成树</span></span><br><span class="line">            sub_tree = self.train(sub_train_df)</span><br><span class="line">            node_tree.add_node(f, sub_tree)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># pprint.pprint(node_tree.tree)</span></span><br><span class="line">        <span class="keyword">return</span> node_tree</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, train_data)</span>:</span></span><br><span class="line">        self._tree = self.train(train_data)</span><br><span class="line">        <span class="keyword">return</span> self._tree</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, X_test)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._tree.predict(X_test)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 数据是统计学与方法中的立体</span></span><br><span class="line">    datasets, labels = create_data()</span><br><span class="line">    data_df = pd.DataFrame(datasets, columns=labels)</span><br><span class="line">    <span class="comment">#print(data_df)</span></span><br><span class="line">    dt = DTree()</span><br><span class="line">    tree = dt.fit(data_df)</span><br><span class="line">    print(dt.predict([<span class="string">'老年'</span>, <span class="string">'否'</span>, <span class="string">'否'</span>, <span class="string">'一般'</span>]))</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/python3匿名函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1579,147 +1720,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/爬虫系列(三)---抓取淘宝商品/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/爬虫系列(三)---抓取淘宝商品/" itemprop="url">爬虫系列(三)---抓取淘宝商品</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T00:00:00+08:00">
-                2018-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> html.parser</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="keyword">import</span> DesiredCapabilities</span><br><span class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome(<span class="string">"E:\\Program Files\\chromedriver_win32\\chromedriver.exe"</span>)</span><br><span class="line"><span class="comment">#browser = webdriver.Chrome()</span></span><br><span class="line">wait = WebDriverWait(browser, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getProducts</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    提取商品数据</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    html = browser.page_source</span><br><span class="line">    <span class="comment"># 解析</span></span><br><span class="line">    doc = pq(html)</span><br><span class="line">    <span class="comment"># 找id，子标签是商品列表</span></span><br><span class="line">    items = doc(<span class="string">'#mainsrp-itemlist .items .item'</span>).items()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        product = &#123;</span><br><span class="line">            <span class="string">'image'</span>: item.find(<span class="string">'.pic .img'</span>).attr(<span class="string">'data-src'</span>),</span><br><span class="line">            <span class="string">'price'</span>: item.find(<span class="string">'.price'</span>).text(),</span><br><span class="line">            <span class="string">'deal'</span>: item.find(<span class="string">'.deal-cnt'</span>).text(),</span><br><span class="line">            <span class="string">'title'</span>: item.find(<span class="string">'.title'</span>).text(),</span><br><span class="line">            <span class="string">'shop'</span>: item.find(<span class="string">'.shop'</span>).text(),</span><br><span class="line">            <span class="string">'location'</span>: item.find(<span class="string">'.location'</span>).text()</span><br><span class="line">        &#125;</span><br><span class="line">        print(product)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        browser.get(<span class="string">"https://www.taobao.com/"</span>)</span><br><span class="line">        <span class="comment"># 登陆，淘宝反爬虫，目前是手动扫码登陆，做了个sleep等待时间</span></span><br><span class="line">        login = wait.until(</span><br><span class="line">            EC.element_to_be_clickable((By.CSS_SELECTOR,<span class="string">'#J_SiteNavLogin &gt; div.site-nav-menu-hd &gt; div.site-nav-sign &gt; a.h'</span>))</span><br><span class="line">        )</span><br><span class="line">        login.click()</span><br><span class="line">        time.sleep(<span class="number">30</span>)</span><br><span class="line">        <span class="comment"># 输入框</span></span><br><span class="line">        input = wait.until(</span><br><span class="line">            EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">"#q"</span>))</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># 搜索按钮</span></span><br><span class="line">        submit = wait.until(</span><br><span class="line">            EC.element_to_be_clickable((By.CSS_SELECTOR,<span class="string">"#J_TSearchForm &gt; div.search-button &gt; button"</span>))</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># 输入</span></span><br><span class="line">        input.send_keys(<span class="string">"美食"</span>)</span><br><span class="line">        <span class="comment"># 点击搜索</span></span><br><span class="line">        submit.click()</span><br><span class="line">        getProducts()</span><br><span class="line">    <span class="keyword">except</span> TimeoutError:</span><br><span class="line">        <span class="keyword">return</span>  search()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    search()</span><br><span class="line">    browser.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1770,7 +1770,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
