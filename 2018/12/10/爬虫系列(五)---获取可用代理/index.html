@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编程语言,python3," />
+  <meta name="keywords" content="python3,爬虫," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：https://github.com/yidao620c/python3-cookbook  在python中任何可迭代的对象(列表，元组，字符串，文件，迭代器，生成器等)都可以直接进行解压并赋值，只要保证前后的元素是一样的，比如：1234567891011121314151617181920212223&amp;gt;&amp;">
-<meta name="keywords" content="编程语言,python3">
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445import timeimport reimport requests from bs4 import BeautifulSoupfrom requests.exceptions import RequestExceptiondef pa">
+<meta name="keywords" content="python3,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表">
-<meta property="og:url" content="http://yoursite.com/2018/10/30/python3cook系列笔记(一)/index.html">
+<meta property="og:title" content="爬虫系列(五)---获取可用代理">
+<meta property="og:url" content="http://yoursite.com/2018/12/10/爬虫系列(五)---获取可用代理/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：https://github.com/yidao620c/python3-cookbook  在python中任何可迭代的对象(列表，元组，字符串，文件，迭代器，生成器等)都可以直接进行解压并赋值，只要保证前后的元素是一样的，比如：1234567891011121314151617181920212223&amp;gt;&amp;">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445import timeimport reimport requests from bs4 import BeautifulSoupfrom requests.exceptions import RequestExceptiondef pa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-08T12:45:12.421Z">
+<meta property="og:updated_time" content="2018-12-10T15:43:36.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表">
-<meta name="twitter:description" content="写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：https://github.com/yidao620c/python3-cookbook  在python中任何可迭代的对象(列表，元组，字符串，文件，迭代器，生成器等)都可以直接进行解压并赋值，只要保证前后的元素是一样的，比如：1234567891011121314151617181920212223&amp;gt;&amp;">
+<meta name="twitter:title" content="爬虫系列(五)---获取可用代理">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445import timeimport reimport requests from bs4 import BeautifulSoupfrom requests.exceptions import RequestExceptiondef pa">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/30/python3cook系列笔记(一)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/10/爬虫系列(五)---获取可用代理/"/>
 
 
 
 
 
-  <title>python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表 | 木叶村</title>
+  <title>爬虫系列(五)---获取可用代理 | 木叶村</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/python3cook系列笔记(一)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/爬虫系列(五)---获取可用代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表</h1>
+          <h1 class="post-title" itemprop="name headline">爬虫系列(五)---获取可用代理</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">
-                2018-10-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T00:00:00+08:00">
+                2018-12-10
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
                   </a>
                 </span>
 
@@ -362,15 +362,7 @@
       
 
       
-        <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
-<p>在python中任何可迭代的对象(<strong>列表，元组，字符串，文件，迭代器，生成器等</strong>)都可以直接进行解压并赋值，<strong>只要保证</strong>前后的元素是一样的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p=(4,5)</span><br><span class="line">&gt;&gt;&gt; x,y=p</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">5</span><br><span class="line"># 嵌套序列也一样</span><br><span class="line">&gt;&gt;&gt; data = [ &apos;ACME&apos;, 50, 91.1, (2012, 12, 21) ]</span><br><span class="line">&gt;&gt;&gt; name, shares, price, date = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; date</span><br><span class="line">(2012, 12, 21)</span><br><span class="line">&gt;&gt;&gt; name, shares, price, (year, mon, day) = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt; mon</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; day</span><br><span class="line">21</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>如果只想要部分，可以中<code>_</code>占位一个变量，<code>*_</code>占位多个变量(返回一个列表)，这些变量最后会被丢弃：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; record = (&apos;ACME&apos;, 50, 123.45, (12, 18, 2012))</span><br><span class="line">&gt;&gt;&gt; name, *_, (*_, year) = record</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>当然<code>*_</code>这个模式也可以不用下划线占位，而是给定一个变量名字，来获取剩余变量的列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; items = [1, 10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt; head, *tail = items</span><br><span class="line">&gt;&gt;&gt; head</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; tail</span><br><span class="line">[10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<p><em>拓展阅读：</em></p>
-<p>实现一个优先级队列:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"></span><br><span class="line">class PriorityQueue:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self._queue = []</span><br><span class="line">        self._index = 0</span><br><span class="line">    def push(self, item, priority):</span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index += 1</span><br><span class="line">    def pop(self):</span><br><span class="line">        return heapq.heappop(self._queue)[-1]</span><br></pre></td></tr></table></figure></p>
-<p>使用方式：<br><em>小声bb：这本书喜欢用类，自己要抓紧补一下类的知识了</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Item:</span><br><span class="line">...     def __init__(self, name):</span><br><span class="line">...         self.name = name</span><br><span class="line">...     def __repr__(self):</span><br><span class="line">...         return &apos;Item(&#123;!r&#125;)&apos;.format(self.name)</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; q = PriorityQueue()</span><br><span class="line"># 传入：元素，优先级</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;foo&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;bar&apos;), 5)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;spam&apos;), 4)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;grok&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;bar&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;spam&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;foo&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;grok&apos;)</span><br></pre></td></tr></table></figure></p>
-<p><strong>下一节：字典的用法</strong></p>
-
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests </span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> RequestException</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_ip</span><span class="params">(http,ip,port)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        proxies = &#123;<span class="string">"http"</span>: <span class="string">"http://"</span>+ip+<span class="string">":"</span>+port&#125;</span><br><span class="line">        print(proxies)</span><br><span class="line">        resp2 = requests.get(<span class="string">"http://2018.ip138.com/ic.asp"</span>, proxies=proxies)</span><br><span class="line">        soup = BeautifulSoup(resp2.content.decode(<span class="string">"gbk"</span>), <span class="string">"html.parser"</span>)</span><br><span class="line">        <span class="keyword">return</span> soup.body.get_text()</span><br><span class="line">    <span class="keyword">except</span> RequestException <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_proxy</span><span class="params">(index)</span>:</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"</span></span><br><span class="line">    &#125;</span><br><span class="line">    html = requests.get(<span class="string">f"https://www.xicidaili.com/nn/<span class="subst">&#123;index&#125;</span>"</span>,headers=headers)</span><br><span class="line">    <span class="comment">#print(html.text)</span></span><br><span class="line">    soup = BeautifulSoup(html.content,<span class="string">"lxml"</span>)</span><br><span class="line">    get_info = soup.find_all(<span class="string">"tr"</span>)</span><br><span class="line">    <span class="comment">#print(get_info[1])</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> get_info:</span><br><span class="line">        get_ip = re.match(<span class="string">"&lt;tr.+?&gt;.&lt;td.+?&gt;&lt;/td&gt;.&lt;td&gt;(.+?)&lt;/td&gt;.&lt;td&gt;(.+?)&lt;/td&gt;.+(HTTP\w)"</span>,str(i),re.S)</span><br><span class="line">        <span class="comment"># &lt;tr.+?&gt;.&lt;td.+?&gt;&lt;/td&gt;.&lt;td&gt;(.+?)&lt;/td&gt;.&lt;td&gt;(.+?)&lt;/td&gt;.+(HTTP\w)</span></span><br><span class="line">        <span class="keyword">if</span> get_ip:</span><br><span class="line">            <span class="comment">#print(f"&#123;get_ip.group(3)&#125;://&#123;get_ip.group(1)&#125;:&#123;get_ip.group(2)&#125;")</span></span><br><span class="line">            ip = parse_ip(get_ip.group(<span class="number">3</span>),get_ip.group(<span class="number">1</span>),get_ip.group(<span class="number">2</span>))</span><br><span class="line">            <span class="comment">#print(ip)</span></span><br><span class="line">            time.sleep(<span class="number">10</span>)</span><br><span class="line">            <span class="keyword">if</span> ip:</span><br><span class="line">                <span class="keyword">return</span> ip</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        print(get_proxy(index))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -387,9 +379,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
-          
             <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
           
         </div>
       
@@ -402,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/07/生新基础教程(一)fastq格式/" rel="next" title="生新基础教程(一)：fastq格式">
-                <i class="fa fa-chevron-left"></i> 生新基础教程(一)：fastq格式
+              <a href="/2018/12/05/爬虫系列(四)---保持登陆/" rel="next" title="爬虫系列(四)---保持登陆">
+                <i class="fa fa-chevron-left"></i> 爬虫系列(四)---保持登陆
               </a>
             
           </div>
@@ -411,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/机器学习实战笔记(六)—kNN算法(一)/" rel="prev" title="机器学习实战笔记(六)---kNN算法">
-                机器学习实战笔记(六)---kNN算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

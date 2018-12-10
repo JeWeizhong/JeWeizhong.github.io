@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="木叶村">
 <meta property="og:description" content="在爬取一些网站的时候，需要登陆，而且需要一直保持登陆状态才可以看一些文章，比如知乎、微博，这时我们就需要把我们的登陆信息在请求的时候一并提交，而这个登陆信息就是cookies 123456789101112131415161718192021import requests from  urllib.request import urlopen# 可以保持同一个cookies，保持登陆状态#s =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T13:10:07.944Z">
+<meta property="og:updated_time" content="2018-12-10T15:44:02.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫系列(四)---保持登陆">
 <meta name="twitter:description" content="在爬取一些网站的时候，需要登陆，而且需要一直保持登陆状态才可以看一些文章，比如知乎、微博，这时我们就需要把我们的登陆信息在请求的时候一并提交，而这个登陆信息就是cookies 123456789101112131415161718192021import requests from  urllib.request import urlopen# 可以保持同一个cookies，保持登陆状态#s =">
@@ -363,7 +363,7 @@
 
       
         <p>在爬取一些网站的时候，需要登陆，而且需要一直保持登陆状态才可以看一些文章，比如知乎、微博，这时我们就需要把我们的登陆信息在请求的时候一并提交，而这个登陆信息就是cookies</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests </span><br><span class="line"><span class="keyword">from</span>  urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="comment"># 可以保持同一个cookies，保持登陆状态</span></span><br><span class="line"><span class="comment">#s = requests.Session()</span></span><br><span class="line"><span class="comment">#s = requests.get("https://weibo.com") # 没有登陆的状态</span></span><br><span class="line"><span class="comment">#print(s.text)</span></span><br><span class="line"><span class="comment"># 不知道为什么用 requests 请求到的网页是中文乱码，而且不能用 bg2313 解码</span></span><br><span class="line"><span class="comment"># 但是用 uurllib 的就没事，这里暂时先不管了</span></span><br><span class="line"><span class="comment">#s = urlopen("https://weibo.com")</span></span><br><span class="line"><span class="comment">#print(s.read().decode("gb2312"))</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"Cookie"</span>: <span class="string">"太长了，这里就不写了"</span>,</span><br><span class="line">    <span class="string">"Host"</span>: <span class="string">"weibo.com"</span>,</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line">s = requests.get(<span class="string">"这里的地址必须是跟你在Request URL看到的一样"</span>,headers=headers)</span><br><span class="line">print(s.text)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests </span><br><span class="line"><span class="keyword">from</span>  urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="comment"># 可以保持同一个cookies，保持登陆状态</span></span><br><span class="line"><span class="comment">#s = s.Session()</span></span><br><span class="line"><span class="comment">#s = s.get("https://weibo.com") # 没有登陆的状态</span></span><br><span class="line"><span class="comment">#print(s.text)</span></span><br><span class="line"><span class="comment"># 不知道为什么用 requests 请求到的网页是中文乱码，而且不能用 bg2313 解码</span></span><br><span class="line"><span class="comment"># 但是用 uurllib 的就没事，这里暂时先不管了</span></span><br><span class="line"><span class="comment">#s = urlopen("https://weibo.com")</span></span><br><span class="line"><span class="comment">#print(s.read().decode("gb2312"))</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"Cookie"</span>: <span class="string">"太长了，这里就不写了"</span>,</span><br><span class="line">    <span class="string">"Host"</span>: <span class="string">"weibo.com"</span>,</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line">s = s.get(<span class="string">"这里的地址必须是跟你在Request URL看到的一样"</span>,headers=headers)</span><br><span class="line">print(s.text)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -404,6 +404,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/10/爬虫系列(五)---获取可用代理/" rel="prev" title="爬虫系列(五)---获取可用代理">
+                爬虫系列(五)---获取可用代理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -471,7 +475,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
