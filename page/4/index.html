@@ -270,6 +270,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/python3标准库系列(四)---logging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/python3标准库系列(四)---logging/" itemprop="url">python3 标准库系列(四)---logging</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:00:00+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>logging</code>模块可以给脚本添加日志功能。</p>
+<p>下面是一个输出日志的简单版：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="comment"># levelname 输出等级</span></span><br><span class="line"><span class="comment"># asctime 时间</span></span><br><span class="line"><span class="comment"># lineno 所在行</span></span><br><span class="line"><span class="comment"># module 所在模块名</span></span><br><span class="line"><span class="comment"># filename 日志输出函数的模块的文件名，注意不是参数 filename</span></span><br><span class="line"><span class="comment"># message 输出的内容</span></span><br><span class="line">logging.basicConfig(format=<span class="string">'%(levelname)s %(asctime)s,line %(lineno)s:\t%(message)s'</span>,</span><br><span class="line">                    level=logging.INFO,</span><br><span class="line">                    datefmt=<span class="string">'%Y-%m-%d %H:%M:%S'</span>) <span class="comment"># 可以加filename=logfile参数将日志输出到文件中</span></span><br><span class="line"></span><br><span class="line">logging.critical(<span class="string">'当发生严重错误，导致应用程序不能继续运行时记录的信息'</span>)</span><br><span class="line">logging.error(<span class="string">'由于一个更严重的问题导致某些功能不能正常运行时记录的信息'</span>)</span><br><span class="line">logging.warning(<span class="string">'当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的'</span>)</span><br><span class="line">logging.info(<span class="string">'信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作'</span>)</span><br><span class="line">logging.debug(<span class="string">'最详细的日志信息，典型应用场景是 问题诊断'</span>)</span><br></pre></td></tr></table></figure>
+<p>日志调用（<code>critical()</code>, <code>error()</code>, <code>warning()</code>, <code>info()</code>, <code>debug()</code>）以降序方式表示不同的严重级别,默认是<code>warning</code>。</p>
+<p>下面的是一个自己用的以天为单位的输出日志的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> TimedRotatingFileHandler</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> RotatingFileHandler</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log_init</span><span class="params">(logfile)</span>:</span></span><br><span class="line">    log_fmt = <span class="string">'%(asctime)s\tFile \"%(filename)s\",line %(lineno)s\t%(levelname)s: %(message)s'</span></span><br><span class="line">    formatter = logging.Formatter(log_fmt)</span><br><span class="line">    <span class="comment"># 可以设置间隔时间，这里是一天生成一个文件</span></span><br><span class="line">    log_file_handler = TimedRotatingFileHandler(filename=logfile, when=<span class="string">"D"</span>, interval=<span class="number">1</span>, backupCount=<span class="number">7</span>)</span><br><span class="line">    log_file_handler.suffix = <span class="string">"%Y-%m-%d.log"</span></span><br><span class="line">    <span class="comment"># filehanlder.suffix的格式必须这么写，才能自动删除旧文件</span></span><br><span class="line">    <span class="comment"># 如果设定是天，就必须写成“%Y-%m-%d.log”，写成其他格式会导致删除旧文件不生效</span></span><br><span class="line"></span><br><span class="line">    log_file_handler.setFormatter(formatter)</span><br><span class="line">    <span class="comment"># log_file_handler.setLevel(logging.DEBUG)</span></span><br><span class="line">    logging.getLogger().setLevel(logging.DEBUG)</span><br><span class="line">    logging.getLogger().addHandler(log_file_handler)</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    这里是需要运行的程序，需要按照文件格式删除log文件，需要启用 extMatch、removeHandle函数</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># logging.info('this is a loggging info message')</span></span><br><span class="line">    <span class="comment"># logging.debug('this is a loggging debug message')</span></span><br><span class="line">    <span class="comment"># logging.warning('this is loggging a warning message')</span></span><br><span class="line">    <span class="comment"># logging.error('this is an loggging error message')</span></span><br><span class="line">    <span class="comment"># logging.critical('this is a loggging critical message')</span></span><br></pre></td></tr></table></figure>
+<p>修改所调用的模块中的日志设置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># somelib.py</span></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">log = logging.getLogger(__name__) <span class="comment"># 默认就是： __name__ 只的当前的模块</span></span><br><span class="line">log.addHandler(logging.NullHandler())</span><br><span class="line"><span class="comment"># Example function (for testing)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    log.critical(<span class="string">'A Critical Error!'</span>)</span><br><span class="line">    log.debug(<span class="string">'A debug message'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面我们调用这个模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> logging</span><br><span class="line"><span class="comment"># 这是当前脚本的日志设置</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>logging.basicConfig(level=logging.ERROR)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> somelib</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 指定模块名，改变该模块的输出级别</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>logging.getLogger(<span class="string">'somelib'</span>).level=logging.DEBUG</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line">DEBUG:somelib:A debug message</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里，根日志被配置成仅仅输出<code>ERROR</code> 或更高级别的消息。不过，<code>somelib</code> 的日志级别被单独配置成可以输出debug 级别的消息，它的优先级比全局配置高。像这<br>样更改单独模块的日志配置对于调试来讲是很方便的，因为你无需去更改任何的全局日志配置——只需要修改你想要更多输出的模块的日志等级。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3cook系列笔记(六)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -514,148 +666,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(三)-os.path/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/python3标准库系列(三)-os.path/" itemprop="url">python3 标准库系列(三)---os.path</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -801,6 +811,148 @@
 <li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(三)-os.path/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/python3标准库系列(三)-os.path/" itemprop="url">python3 标准库系列(三)---os.path</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1774,185 +1926,6 @@ x_n
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/python3cook系列笔记(三)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/01/python3cook系列笔记(三)/" itemprop="url">python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T00:00:00+08:00">
-                2018-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
-<ol>
-<li><p><code>itertools.groupby()</code>可以根据指定字段来分组：</p>
-<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rows = [</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5412 N CLARK'</span>, <span class="string">'date'</span>: <span class="string">'07/01/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5148 N CLARK'</span>, <span class="string">'date'</span>: <span class="string">'07/04/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5800 E 58TH'</span>, <span class="string">'date'</span>: <span class="string">'07/02/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'2122 N CLARK'</span>, <span class="string">'date'</span>: <span class="string">'07/03/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5645 N RAVENSWOOD'</span>, <span class="string">'date'</span>: <span class="string">'07/02/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'1060 W ADDISON'</span>, <span class="string">'date'</span>: <span class="string">'07/02/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'4801 N BROADWAY'</span>, <span class="string">'date'</span>: <span class="string">'07/01/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'1039 W GRANVILLE'</span>, <span class="string">'date'</span>: <span class="string">'07/04/2012'</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</code></pre><p> 我们按照date来分组：</p>
-<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> groupby</span><br><span class="line"><span class="comment"># Sort by the desired field first</span></span><br><span class="line">rows.sort(key=itemgetter(<span class="string">'date'</span>))</span><br><span class="line"><span class="comment"># Iterate in groups</span></span><br><span class="line"><span class="keyword">for</span> date, items <span class="keyword">in</span> groupby(rows, key=itemgetter(<span class="string">'date'</span>)):</span><br><span class="line">print(date)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">print(<span class="string">' '</span>, i)</span><br></pre></td></tr></table></figure>
-</code></pre><p> 输出：</p>
-<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">07</span>/<span class="number">01</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/01/2012'</span>, <span class="string">'address'</span>: <span class="string">'5412 N CLARK'</span>&#125;</span><br><span class="line">&#123;<span class="string">'date'</span>: <span class="string">'07/01/2012'</span>, <span class="string">'address'</span>: <span class="string">'4801 N BROADWAY'</span>&#125;</span><br><span class="line"><span class="number">07</span>/<span class="number">02</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/02/2012'</span>, <span class="string">'address'</span>: <span class="string">'5800 E 58TH'</span>&#125;</span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/02/2012'</span>, <span class="string">'address'</span>: <span class="string">'5645 N RAVENSWOOD'</span>&#125;</span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/02/2012'</span>, <span class="string">'address'</span>: <span class="string">'1060 W ADDISON'</span>&#125;</span><br><span class="line"><span class="number">07</span>/<span class="number">03</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/03/2012'</span>, <span class="string">'address'</span>: <span class="string">'2122 N CLARK'</span>&#125;</span><br><span class="line"><span class="number">07</span>/<span class="number">04</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/04/2012'</span>, <span class="string">'address'</span>: <span class="string">'5148 N CLARK'</span>&#125;</span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/04/2012'</span>, <span class="string">'address'</span>: <span class="string">'1039 W GRANVILLE'</span>&#125;</span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ol>
-<p><code>groupby()</code> 函数扫描整个序列并且查找连续相同值（或者根据指定key 函数返回值相同）的元素序列。在每次迭代的时候，它会返回一个值和一个迭代器对象，这个迭代器对象可以生成元素值全部等于上面那个值的组中所有对象。</p>
-<p>还有一个非常重要的准备步骤是要根据指定的字段将数据排序</p>
-<ol>
-<li><code>itertools.compress()</code>,它以一个iterable对象和一个相对应的Boolean 选择器序列作为输入参数。然后输出iterable 对象中对<br>应选择器为True 的元素.</li>
-</ol>
-<p>示例：</p>
-<pre><code>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">addresses = [</span><br><span class="line"><span class="string">'5412 N CLARK'</span>,</span><br><span class="line"><span class="string">'5148 N CLARK'</span>,</span><br><span class="line"><span class="string">'5800 E 58TH'</span>,</span><br><span class="line"><span class="string">'2122 N CLARK'</span>,</span><br><span class="line"><span class="string">'5645 N RAVENSWOOD'</span>,</span><br><span class="line"><span class="string">'1060 W ADDISON'</span>,</span><br><span class="line"><span class="string">'4801 N BROADWAY'</span>,</span><br><span class="line"><span class="string">'1039 W GRANVILLE'</span>,</span><br><span class="line">]</span><br><span class="line">counts = [ <span class="number">0</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> itertools <span class="keyword">import</span> compress</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>more5 = [n &gt; <span class="number">5</span> <span class="keyword">for</span> n <span class="keyword">in</span> counts]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>more5</span><br><span class="line">[<span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">True</span>, <span class="keyword">False</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(compress(addresses, more5))</span><br><span class="line">[<span class="string">'5800 E 58TH'</span>, <span class="string">'1060 W ADDISON'</span>, <span class="string">'4801 N BROADWAY'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-</code></pre><ol>
-<li><p><code>collections.namedtuple()</code> 函数对元组进行命名：</p>
-<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Subscriber = namedtuple(<span class="string">'Subscriber'</span>, [<span class="string">'addr'</span>, <span class="string">'joined'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub = Subscriber(<span class="string">'jonesy@example.com'</span>, <span class="string">'2012-10-19'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub</span><br><span class="line">Subscriber(addr=<span class="string">'jonesy@example.com'</span>, joined=<span class="string">'2012-10-19'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub.addr</span><br><span class="line"><span class="string">'jonesy@example.com'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub.joined</span><br><span class="line"><span class="string">'2012-10-19'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ol>
-<p>命名元组另一个用途就是作为字典的替代，因为字典存储需要更多的内存空间。如果你需要构建一个非常大的包含字典的数据结构，那么使用命名元组会更加高效。但是需要注意的是，不像字典那样，一个命名元组是不可更改的</p>
-<ol>
-<li><p><code>sum()</code> , <code>min()</code> , <code>max()</code>等函数可以接收迭代器作为参数：</p>
-<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = sum((x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums)) <span class="comment"># 显示的传递一个生成器表达式对象</span></span><br><span class="line">s = sum(x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums) <span class="comment"># 更加优雅的实现方式，省略了括号,而且省去了一个新建列表的命名空间</span></span><br></pre></td></tr></table></figure>
-</code></pre></li>
-<li><p>合并多个字典或映射,先看示例：</p>
-<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'z'</span>: <span class="number">3</span> &#125;</span><br><span class="line">b = &#123;<span class="string">'y'</span>: <span class="number">2</span>, <span class="string">'z'</span>: <span class="number">4</span> &#125;</span><br></pre></td></tr></table></figure>
-
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line">c = ChainMap(a,b)</span><br><span class="line">print(c[<span class="string">'x'</span>]) <span class="comment"># Outputs 1 (from a)</span></span><br><span class="line">print(c[<span class="string">'y'</span>]) <span class="comment"># Outputs 2 (from b)</span></span><br><span class="line">print(c[<span class="string">'z'</span>]) <span class="comment"># Outputs 3 (from a)</span></span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ol>
-<p>一个<code>ChainMap</code> 接受多个字典并将它们在逻辑上变为一个字典。然后，这些字典并不是真的合并在一起了，<code>ChainMap</code> 类只是在内部创建了一个容纳这些字典的列表并重新定义了一些常见的字典操作来遍历这个列表.</p>
-<p>如果出现重复键，那么第一次出现的映射值会被返回。因此，例子程序中的c[‘z’],总是会返回字典a 中对应的值，而不是b 中对应的值。</p>
-<p>因此，对于字典的更新或删除操作总是影响的是列表中第一个字典。</p>
-<p>与<code>update</code>不同，<code>ChainMap</code> 使用原来的字典，它自己不创建新的字典</p>
-<p><strong>第一章完，下一章：字符串和文本</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2003,7 +1976,7 @@ x_n
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
