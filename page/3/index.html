@@ -270,6 +270,528 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/Linux系列---vim(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/Linux系列---vim(2)/" itemprop="url">vim 进阶版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T00:00:00+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>参考链接</strong>: <a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html" target="_blank" rel="noopener">https://linuxtoy.org/archives/efficient-editing-with-vim.html</a></p>
+<h2 id="高效率移动"><a href="#高效率移动" class="headerlink" title="高效率移动"></a>高效率移动</h2><h3 id="在当前行里面有效的移动光标"><a href="#在当前行里面有效的移动光标" class="headerlink" title="在当前行里面有效的移动光标"></a>在当前行里面有效的移动光标</h3><ul>
+<li>fx：移动光标到当前行的下一个 x 处。很明显，x 可以是任意一个字母，而且你可以使用 ; 来重复你的上一个 f 命令。</li>
+<li>tx：和上面的命令类似，但是是移动到 x 的左边一个位置。（这真的很有用）</li>
+<li>Fx：和 fx 类似，不过是往回找。</li>
+<li>w：光标往前移动一个词。</li>
+<li>b：光标往后移动一个词。</li>
+<li>0：移动光标到当前行首。</li>
+<li>^：移动光标到当前行的第一个字母位置。</li>
+<li>$：移动光标到行尾。</li>
+<li>)：移动光标到下一个句子。</li>
+<li>( ：移动光标到上一个句子。</li>
+</ul>
+<h3 id="在整个文件里面有效移动光标"><a href="#在整个文件里面有效移动光标" class="headerlink" title="在整个文件里面有效移动光标"></a>在整个文件里面有效移动光标</h3><ul>
+<li>ctrl+F：向下移动一屏。</li>
+<li>ctrl+B：向上移动一屏。</li>
+<li>G：到文件尾</li>
+<li>numG：移动光标到指定的行（num）。（比如 10G 就是到第 10 行）</li>
+<li>gg：到文件首</li>
+<li>H：移动光标到屏幕上面</li>
+<li>M：移动光标到屏幕中间</li>
+<li>L：移动光标到屏幕下面</li>
+<li>*：读取光标处的字符串，并且移动光标到它再次出现的地方。</li>
+<li><h1 id="：和上面的类似，但是是往反方向寻找。"><a href="#：和上面的类似，但是是往反方向寻找。" class="headerlink" title="：和上面的类似，但是是往反方向寻找。"></a>：和上面的类似，但是是往反方向寻找。</h1></li>
+<li>/text：从当前光标处开始搜索字符串 text，并且到达 text 出现的地方。必须使用回车来开始这个搜索命令。如果想重复上次的搜索的话，按 n。</li>
+<li>？text：和上面类似，但是是反方向。</li>
+<li>ma：在当前光标的位置标记一个书签，名字为 a。书签名只能是小写字母。你看不见书签的存在，但它确实已经在那里了。</li>
+<li>`a：到书签 a 处。注意这个不是单引号，它一般位于大部分键盘的 1 的左边。</li>
+<li>`.：到你上次编辑文件的地方。这个命令很有用，而且你不用自己去标记它。</li>
+</ul>
+<h2 id="高效的输入"><a href="#高效的输入" class="headerlink" title="高效的输入"></a>高效的输入</h2><h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p>使用关键词自动完成功能，你只需要输入开始几个字母（比如 iAmAL），然后按 <code>&lt;C-N&gt;</code>（按住 Ctrl，再按 N）或者 <code>&lt;C-P&gt;</code>。如果 Vim 没有给出你想要的词，继续按，直到你满意为止，Vim 会一直循环它找到的匹配的字符串</p>
+<h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><ul>
+<li>i：在当前字符的左边插入</li>
+<li>I：在当前行首插入</li>
+<li>a：在当前字符的右边插入</li>
+<li>A：在当前行尾插入</li>
+<li>o：在当前行下面插入一个新行</li>
+<li>O：在当前行上面插入一个新行</li>
+<li>c{motion}：删除 motion 命令跨过的字符，并且进入插入模式。比如：c$，这将会删除从光标位置到行尾的字符并且进入插入模式。ct！，这会删除从光标位置到下一个叹号（但不包括），然后进入插入模式。被删除的字符被存在了剪贴板里面，并且可以再粘贴出来。</li>
+<li>d{motion}：和上面差不多，但是不进入插入模式。</li>
+</ul>
+<h2 id="移动大段文本"><a href="#移动大段文本" class="headerlink" title="移动大段文本"></a>移动大段文本</h2><h3 id="可视选择"><a href="#可视选择" class="headerlink" title="可视选择"></a>可视选择</h3><ul>
+<li>v：按字符选择。经常使用的模式，所以亲自尝试一下它。</li>
+<li>V：按行选择。这在你想拷贝或者移动很多行的文本的时候特别有用。</li>
+<li>ctrl+V：按块选择。非常强大，只在很少的编辑器中才有这样的功能。你可以选择一个矩形块，并且在这个矩形里面的文本会被高亮。</li>
+</ul>
+<p>在选择模式的时候使用上面所述的方向键和命令（motion）。比如，vwww，会高亮光标前面的三个词。Vjj 将会高亮当前行以及下面两行。</p>
+<h3 id="在可视选择模式下剪切和拷贝"><a href="#在可视选择模式下剪切和拷贝" class="headerlink" title="在可视选择模式下剪切和拷贝"></a>在可视选择模式下剪切和拷贝</h3><p>一旦你高亮了选区，你或许想进行一些操作：</p>
+<ul>
+<li>d：剪贴选择的内容到剪贴板。</li>
+<li>y：拷贝选择的内容到剪贴板。</li>
+<li>c：剪贴选择的内容到剪贴板并且进入插入模式。</li>
+</ul>
+<h3 id="在非可视选择模式下剪切和拷贝"><a href="#在非可视选择模式下剪切和拷贝" class="headerlink" title="在非可视选择模式下剪切和拷贝"></a>在非可视选择模式下剪切和拷贝</h3><p>如果你很清楚的知道你想拷贝或者剪切什么，那你根本就不需要进入可视选择模式。这样也会节省时间：</p>
+<ul>
+<li>d{motion}：剪切 motion 命令跨过的字符到剪贴板。比如，dw 会剪切一个词而 dfS 会将从当前光标到下一个 S 之间的字符剪切至剪贴板。</li>
+<li>y{motion}：和上面类似，不过是拷贝。</li>
+<li>c{motion}：和 d{motion} 类似，不过最后进入插入模式。</li>
+<li>dd：剪切当前行。</li>
+<li>yy：拷贝当前行。</li>
+<li>cc：剪切当前行并且进入插入模式。</li>
+<li>D：剪切从光标位置到行尾到剪贴板。</li>
+<li>Y：拷贝当前行。</li>
+<li>C：和 D 类似，最后进入插入模式。</li>
+<li>x：剪切当前字符到剪贴板。</li>
+<li>s：和x类似，不过最后进入插入模式。</li>
+</ul>
+<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><p>粘贴很简单，按 p。</p>
+<h2 id="避免重复"><a href="#避免重复" class="headerlink" title="避免重复"></a>避免重复</h2><h3 id="令人惊奇的-命令"><a href="#令人惊奇的-命令" class="headerlink" title="令人惊奇的 . 命令"></a>令人惊奇的 . 命令</h3><p>在 Vi 里面，输入 <code>.</code> (小数点符号），将会重复你输入的上一个命令。比如，你上个命令为“dw”（删除一个词），Vi 将会接着再删除一个词。</p>
+<h3 id="使用数字"><a href="#使用数字" class="headerlink" title="使用数字"></a>使用数字</h3><p>使用数字也是 Vim 强大的而且很节省时间的重要特性之一。在很多 Vim 的命令之前都可以使用一个数字，这个数字将会告诉 Vim 这个命令需要执行几次。比如：</p>
+<ul>
+<li>3j: 将会把光标向下移动三行。</li>
+<li>10dd: 将会删除十行。</li>
+<li>y3”: 将会拷贝从当前光标到第三个出现的引号之间的内容到剪贴板。<br>数字是扩展 motion 命令作用域非常有效的方法。</li>
+</ul>
+<h3 id="记录宏"><a href="#记录宏" class="headerlink" title="记录宏"></a>记录宏</h3><p>有时候，你会发现你自己在文章的每段或者每行都重复相同的一系列动作。Vim 允许你记录一个宏来完成你的特殊需要。</p>
+<ul>
+<li>qregister：记录宏到寄存器 register，这里 register 是任意的你的寄存器的名字。比如 qa，将会记录并且把宏存在寄存器 a 里面。</li>
+<li>q：结束宏的记录。</li>
+<li>@register：使用存在寄存器 register 的宏。比如 @a，将会使用存在寄存器 a 里面的宏。</li>
+</ul>
+<p>必须要记住的是，宏只记录了你的系列按键并且重复执行它们。它们不是魔法。因为在 Vim 里面完成目的的方法有很多，所以有时候你要小心选择命令来记录你的宏。因为它们会在所有你要执行它的地方执行。</p>
+<h2 id="用-Vim-写代码"><a href="#用-Vim-写代码" class="headerlink" title="用 Vim 写代码"></a>用 Vim 写代码</h2><p>Vim 是一个用来写代码的绝好编辑器，因为它有一些特性是专门为程序员而设计的。这里是一些常用的：</p>
+<ul>
+<li>]p：和 p 的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！</li>
+<li>%：匹配花括号、方括号、括号等。在一个括号的上面，然后按 %，鼠标就会出现在匹配的另外一半括号处。</li>
+<li><blockquote>
+<blockquote>
+<p>：缩进所有选择的代码</p>
+</blockquote>
+</blockquote>
+</li>
+<li>&lt;&lt;：和上面类似，但是反缩进</li>
+<li>gd：到达光标所在处函数或者变量的定义处。</li>
+<li>K：在 Man 里面查找光标当前所在处的词。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/Linux系列---(转)你应该知道的Linux技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/17/Linux系列---(转)你应该知道的Linux技巧/" itemprop="url">(转)应该知道的LINUX技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T00:00:00+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>文章来源：</em><a href="https://coolshell.cn/articles/8883.html?utm_source=qq&amp;utm_medium=social" target="_blank" rel="noopener">https://coolshell.cn/articles/8883.html?utm_source=qq&amp;utm_medium=social</a></p>
+<p><strong>写在开头，此篇文章算是一些Linux系统和命令的总结，可以提升效率。里面的一些教程资源自己还没有读过，在这里记录一下，以后看了会整理出来的。</strong></p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><p>[ ] 学习 <code>Bash</code> 。你可以<code>man bash</code>来看看<code>bash</code>的东西，并不复杂也并不长。你用别的<code>shell</code>也行，但是<code>bash</code>是很强大的并且也是系统默认的。（学习<code>zsh</code>或<code>tsch</code>只会让你在很多情况下受到限制）</p>
+</li>
+<li><p>[ ] 学习 <code>vim</code> 。在Linux下，基本没有什么可与之竞争的编译辑器（就算你是一个Emacs或Eclipse的重度用户）。你可以看看<a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">《简明vim攻略》</a>和 <a href="https://coolshell.cn/articles/7166.html" target="_blank" rel="noopener">《Vim的冒险游戏》</a>以及<a href="https://coolshell.cn/articles/5479.html" target="_blank" rel="noopener">《给程序员的Vim速查卡》</a>还有<a href="https://coolshell.cn/articles/894.html" target="_blank" rel="noopener">《把Vim变成一个编程的IDE》</a>等等。</p>
+</li>
+<li><p>[ ] 了解 ssh。明白不需要口令的用户认证（通过<code>ssh-agent</code>, <code>ssh-add</code>），学会用ssh FQ，用scp而不是ftp传文件，等等。你知道吗？scp 远端的时候，你可以按tab键来查看远端的目录和文件（当然，需要无口令的用户认证），这都是bash的功劳。</p>
+</li>
+<li><p>[x] 熟悉bash的作业管理，如： &amp;, Ctrl-Z, Ctrl-C, jobs, fg, bg, kill, 等等。当然，你也要知道Ctrl+\（SIGQUIT）和Ctrl+C （SIGINT）的区别。</p>
+</li>
+<li><p>[x] 简单的文件管理 ： ls 和 ls -l (你最好知道 “ls -l” 的每一列的意思), less, head, tail 和 tail -f, ln 和 ln -s (你知道明白hard link和soft link的不同和优缺点), chown, chmod, du (如果你想看看磁盘的大小 du -sk *), df, mount。当然，原作者忘了find命令。</p>
+</li>
+<li><p>[x] 基础的网络管理： <code>ip</code> 或 <code>ifconfig</code>, <code>dig</code>。当然，原作者还忘了如<code>netstat</code>, <code>ping</code>, <code>traceroute</code>, 等</p>
+</li>
+<li><p>[ ] 理解正则表达式，还有grep/egrep的各种选项。比如： -o, -A, 和 -B 这些选项是很值得了解的。</p>
+</li>
+<li><p>[x] 学习使用 <code>apt-get</code> 和 <code>yum</code> 来查找和安装软件（前者的经典分发包是Ubuntu，后者的经典分发包是Redhat），我还建议你试着从源码编译安装软件。</p>
+</li>
+</ul>
+<h2 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h2><ul>
+<li><p>[x]在 <code>bash</code> 里，使用 <code>Ctrl+r</code> 而不是上下光标键来查找历史命令。</p>
+</li>
+<li><p>[x] 在 <code>bash</code>里，使用 <code>Ctrl+w</code> 来删除最后一个单词，使用 <code>Ctrl+U</code> 来删除一行。请<code>man bash</code>后查找<code>Readline Key Bindings</code>一节来看看<code>bash</code>的默认热键，比如：<code>Alt+.</code> 把上一次命令的最后一个参数打出来，而<code>Alt+*</code> 则列出你可以输入的命令。</p>
+</li>
+<li><p>[x] 回到上一次的工作目录： <code>cd –</code>  （回到home是 <code>cd ~</code>）</p>
+</li>
+<li><p>[ ] 使用 <code>xargs</code>。这是一个很强大的命令。你可以使用<code>-L</code>来限定有多少个命令，也可以用<code>-P</code>来指定并行的进程数。如果你不知道你的命令会变成什么样，你可以使用<code>xargs echo</code>来看看会是什么样。当然， -<code>I{}</code> 也很好用。示例：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find . -name \*.py | xargs grep some_function</span><br><span class="line">cat hosts | xargs -I&#123;&#125; ssh root@&#123;&#125; hostname</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>[ ] <code>pstree -p</code> 可以帮你显示进程树。参考<a href="https://coolshell.cn/articles/7965.html" target="_blank" rel="noopener">《一个fork的面试题》</a></p>
+</li>
+<li><p>[ ] 使用 <code>pgrep</code> 和 <code>pkill</code> 来找到或是<code>kill</code> 某个名字的进程。 (<code>-f</code> 选项很有用).</p>
+</li>
+<li><p>[ ] 了解可以发给进程的信号。例如：要挂起一个进程，使用<code>kill -STOP [pid]</code>. 使用 <code>man 7 signal</code> 来查看各种信号，使用<code>kill -l</code> 来查看数字和信号的对应表</p>
+</li>
+<li><p>[x] 使用 <code>nohup</code>或  <code>disown</code> 如果你要让某个进程运行在后台。</p>
+</li>
+<li><p>[ ] 使用<code>netstat -lntp</code>来看看有侦听在网络某端口的进程。当然，也可以使用 <code>lsof</code>。</p>
+</li>
+</ul>
+<ul>
+<li><p>[ ] 在bash的脚本中，你可以使用 <code>set -x</code> 来<code>debug</code>输出。使用 <code>set -e</code> 来当有错误发生的时候abort执行。考虑使用 <code>set -o pipefail</code> 来限制错误。还可以使用<code>trap</code>来截获信号（如截获<code>ctrl+c</code>）。</p>
+</li>
+<li><p>[xx] 在bash 脚本中，subshells (写在圆括号里的) 是一个很方便的方式来组合一些命令。一个常用的例子是临时地到另一个目录中，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># do something in current dir</span></span><br><span class="line">(<span class="built_in">cd</span> /some/other/dir; other-command)</span><br><span class="line"><span class="comment"># continue in original dir</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[ ] 在 bash 中，注意那里有很多的变量展开。如：</p>
+<ul>
+<li>[ ] 检查一个变量是否存在: <code>${name:?error message}</code>。</li>
+<li>[ ] 如果一个bash的脚本需要一个参数，也许就是这样一个表达式 <code>input_file=${1:?usage: $0 input_file}</code>。</li>
+<li>[ ] 一个计算表达式： <code>i=$(( (i + 1) % 5 ))</code>。</li>
+<li>[ ] 一个序列： <code>{1..10}</code>。 </li>
+<li>[ ] 截断一个字符串： <code>${var%suffix}</code> 和 <code>${var#prefix}</code>。 示例： <code>if var=foo.pdf, then echo ${var%.pdf}.txt prints “foo.txt”</code>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>[ ] 通过 <code>&lt;(some command)</code> 可以把某命令当成一个文件。示例：比较一个本地文件和远程文件 <code>/etc/hosts： diff /etc/hosts &lt;(ssh somehost cat /etc/hosts)</code></p>
+</li>
+<li><p>[ ] 了解什么叫 “here documents” ，就是诸如 <code>cat &lt;&lt;EOF</code> 这样的东西。</p>
+</li>
+<li><p>[ ] 在 bash中，使用重定向到标准输出和标准错误。如： <code>some-command &gt;logfile 2&gt;&amp;1</code>。另外，要确认某命令没有把某个打开了的文件句柄重定向给标准输入，最佳实践是加上 “<code>&lt;/dev/null</code>”，把<code>/dev/null</code>重定向到标准输入。</p>
+</li>
+<li><p>[x] 使用 man ascii 来查看 ASCII 表。</p>
+</li>
+<li><p>[ ] 在远端的 ssh 会话里，使用 <code>screen</code> 或 <code>dtach</code> 来保存你的会话。（参看<a href="https://coolshell.cn/articles/7829.html" target="_blank" rel="noopener">《28个Unix/Linux的命令行神器》</a>）</p>
+</li>
+<li><p>[ ] 要来debug Web，试试<code>curl</code> 和 <code>curl -I</code> 或是 <code>wget</code> 。我觉得debug Web的利器是<code>firebug</code>，<code>curl</code>和<code>wget</code>是用来抓网页的</p>
+</li>
+<li><p>[ ] 把 HTML 转成文本： <code>lynx -dump -stdin</code></p>
+</li>
+<li><p>[ ] 如果你要处理XML，使用 <code>xmlstarlet</code></p>
+</li>
+<li><p>[ ] 对于 Amazon S3， <code>s3cmd</code> 是一个很方便的命令（还有点不成熟）</p>
+</li>
+<li><p>[ ] 在 ssh中，知道怎么来使用ssh隧道。通过 <code>-L</code> or <code>-D</code> (还有<code>-R</code>) ，FQ神器。</p>
+</li>
+<li><p>[ ] 你还可以对你的ssh 做点优化。比如，<code>.ssh/config</code> 包含着一些配置：避免链接被丢弃，链接新的host时不需要确认，转发认证，以前使用压缩（如果你要使用scp传文件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCPKeepAlive=yes</span><br><span class="line">ServerAliveInterval=15</span><br><span class="line">ServerAliveCountMax=6</span><br><span class="line">StrictHostKeyChecking=no</span><br><span class="line">Compression=yes</span><br><span class="line">ForwardAgent=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[ ] 如果你有输了个命令行，但是你改变注意了，但你又不想删除它，因为你要在历史命令中找到它，但你也不想执行它。那么，你可以按下 <code>Alt_#</code> ，于是这个命令关就被加了一个#字符，于是就被注释掉了。</p>
+</li>
+</ul>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul>
+<li><p>[x] 了解 <code>sort</code> 和 <code>uniq</code> 命令 (包括 <code>uniq</code> 的 <code>-u</code> 和 <code>-d</code> 选项).</p>
+</li>
+<li><p>[x] 了解用 <code>cut</code>, <code>paste</code>, 和 <code>join</code> 命令来操作文本文件。很多人忘了在<code>cut</code>前使用<code>join</code>。</p>
+</li>
+<li><p>[ ]  如果你知道怎么用<code>sort</code>/<code>uniq</code>来做集合交集、并集、差集能很大地促进你的工作效率。假设有两个文本文件a和b已解被 uniq了，那么，用<code>sort</code>/<code>uniq</code>会是最快的方式，无论这两个文件有多大（<code>sort</code>不会被内存所限，你甚至可以使用<code>-T</code>选项，如果你的/tmp目录很小）</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat a b | sort | uniq &gt; c   <span class="comment"># c is a union b 并集</span></span><br><span class="line">cat a b | sort | uniq -d &gt; c   <span class="comment"># c is a intersect b 交集</span></span><br><span class="line">cat a b b | sort | uniq -u &gt; c   <span class="comment"># c is set difference a - b 差集</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>[ ] 了解和字符集相关的命令行工具，包括排序和性能。很多的Linux安装程序都会设置<code>LANG</code> 或是其它和字符集相关的环境变量。这些东西可能会让一些命令（如：<code>sort</code>）的执行性能慢N多倍（注：就算是你用UTF-8编码文本文件，你也可以很安全地使用ASCII来对其排序）。如果你想Disable那个i18n 并使用传统的基于byte的排序方法，那就设置<code>export LC_ALL=C</code> （实际上，你可以把其放在 <code>.bashrc</code>）。如果这设置这个变量，你的<code>sort</code>命令很有可能会是错的。</p>
+</li>
+<li><p>[x] 了解 <code>awk</code> 和 <code>sed</code>，并用他们来做一些简单的数据修改操作。例如：求第三列的数字之和： <code>awk &#39;{ x += $3 } END { print x }&#39;</code>。这可能会比Python快3倍，并比Python的代码少三倍。</p>
+</li>
+<li><p>[ ] 使用 <code>shuf</code> 来打乱一个文件中的行或是选择文件中一个随机的行。</p>
+</li>
+<li><p>[x] 了解<code>sor</code>t命令的选项。了解key是什么（<code>-t</code>和<code>-k</code>）。具体说来，你可以使用<code>-k1,1</code>来对第一列排序，<code>-k1</code>来对全行排序。</p>
+</li>
+<li><p>[ ] Stable <code>sort</code> (<code>sort -s</code>) 会很有用。例如：如果你要想对两例排序，先是以第二列，然后再以第一列，那么你可以这样： <code>sort -k1,1 | sort -s -k2,2</code></p>
+</li>
+<li><p>[ ] 我们知道，在bash命令行下，Tab键是用来做目录文件自动完成的事的。但是如果你想输入一个Tab字符（比如：你想在<code>sort -t</code>选项后输入<code>&lt;tab&gt;</code>字符），你可以先按<code>Ctrl+V</code>，然后再按Tab键，就可以输入<code>&lt;tab&gt;</code>字符了。当然，你也可以使用<code>\t</code>。</p>
+</li>
+<li><p>[ ] 如果你想查看二进制文件，你可以使用<code>hd</code>命令（在CentOS下是<code>hexdump</code>命令），如果你想编译二进制文件，你可以使用bvi命令（<a href="http://bvi.sourceforge.net/" target="_blank" rel="noopener">http://bvi.sourceforge.net/</a> 墙）</p>
+</li>
+<li><p>[ ] 另外，对于二进制文件，你可以使用<code>strings</code>（配合<code>grep</code>等）来查看二进制中的文本。</p>
+</li>
+<li><p>[ ] 对于文本文件转码，你可以试一下 <code>iconv</code>。或是试试更强的 <code>uconv</code> 命令（这个命令支持更高级的Unicode编码）</p>
+</li>
+<li><p>[ ] 如果你要分隔一个大文件，你可以使用<code>split</code>命令（split by size）和<code>csplit</code>命令（split by a pattern）。</p>
+</li>
+</ul>
+<h2 id="系统调试"><a href="#系统调试" class="headerlink" title="系统调试"></a>系统调试</h2><p><em>这部分内容因为用不到，所以看不懂</em></p>
+<ul>
+<li><p>[ ] 如果你想知道磁盘、CPU、或网络状态，你可以使用 <code>iostat</code>, <code>netstat</code>, <code>top</code> (或更好的 <code>htop</code>), 还有 <code>dstat</code> 命令。你可以很快地知道你的系统发生了什么事。关于这方面的命令，还有<code>iftop</code>, <code>iotop</code>等（参看<a href="https://coolshell.cn/articles/7829.html" target="_blank" rel="noopener">《28个Unix/Linux的命令行神器》</a>）</p>
+</li>
+<li><p>[ ] 要了解内存的状态，你可以使用<code>free</code>和<code>vmstat</code>命令。具体来说，你需要注意 “<code>cached</code>” 的值，这个值是Linux内核占用的内存。还有<code>free</code>的值。</p>
+</li>
+<li><p>[ ] Java 系统监控有一个小的技巧是，你可以使用<code>kill -3 &lt;pid&gt;</code> 发一个SIGQUIT的信号给JVM，可以把堆栈信息（包括垃圾回收的信息）dump到stderr/logs。</p>
+</li>
+<li><p>[ ] 使用 <code>mtr</code> 会比使用 <code>traceroute</code> 要更容易定位一个网络问题。<br>如果你要找到哪个socket或进程在使用网络带宽，你可以使用 <code>iftop</code> 或 <code>nethogs</code>。</p>
+</li>
+<li><p>[ ] Apache的一个叫 <code>ab</code> 的工具是一个很有用的，用<code>quick-and-dirty</code>的方式来测试网站服务器的性能负载的工作。如果你需要更为复杂的测试，你可以试试 <code>siege</code>。</p>
+</li>
+<li><p>[ ] 如果你要抓网络包的话，试试 <code>wireshark</code> 或 <code>tshark</code>。</p>
+</li>
+<li><p>[ ] 了解 <code>strace</code> 和 <code>ltrace</code>。这两个命令可以让你查看进程的系统调用，这有助于你分析进程的<code>hang</code>在哪了，怎么<code>crash</code>和<code>failed</code>的。你还可以用其来做性能<code>profile</code>，使用 <code>-c</code> 选项，你可以使用<code>-p</code>选项来<code>attach</code>上任意一个进程。</p>
+</li>
+<li><p>[ ] 了解用<code>ldd</code>命令来检查相关的动态链接库。注意：<a href="https://coolshell.cn/articles/1626.html" target="_blank" rel="noopener"><code>ldd</code>的安全问题</a></p>
+</li>
+<li><p>[ ] 使用<code>gd</code>b来调试一个正在运行的进程或分析core dump文件。参看<a href="https://coolshell.cn/articles/3643.html" target="_blank" rel="noopener">《GDB中应该知道的几个调试方法》</a></p>
+</li>
+<li><p>[ ] 学会到 <code>/proc</code> 目录中查看信息。这是一个Linux内核运行时记录的整个操作系统的运行统计和信息，比如： <code>/proc/cpuinfo</code>, <code>/proc/xxx/cwd,</code> <code>/proc/xxx/exe</code>, <code>/proc/xxx/fd/</code>, <code>/proc/xxx/smaps</code>.</p>
+</li>
+<li><p>[ ] 如果你调试某个东西为什么出错时，<code>sar</code>命令会有用。它可以让你看看 CPU, 内存, 网络, 等的统计信息。</p>
+</li>
+<li><p>[ ] 使用 <code>dmesg</code> 来查看一些硬件或驱动程序的信息或问题。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/Linux系列---find/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1521,329 +2043,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/机器学习系列笔记(四)Logistic回归(二)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/10/机器学习系列笔记(四)Logistic回归(二)/" itemprop="url">机器学习系列笔记(三)：Logistic回归(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T00:00:00+08:00">
-                2018-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>本节介绍使用梯度上升法求代价函数的最大值</em></p>
-<script type="math/tex; mode=display">\frac{\partial{J(\omega)}}{\partial\omega_{j}} = (y-f(x))x_j  \tag{11}</script><script type="math/tex; mode=display">\omega_j := \omega_j+\alpha\sum_{i=1}^{m}(y-f(x^{(i)}))x_j^{(i)} \tag{12}</script><p>上面公式$(11)$我们忽略了上标，只拿了一组(x,y)数据用来推导</p>
-<p>公式$(12)$是迭代公式，如果用梯度下降法，需要把“+”换成“-”</p>
-<p>接下来我们用<strong>机器学习实战</strong>中的示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotBestFit</span><span class="params">(weights)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    画出决策边界,matplotlib暂时看不懂</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#  读取数据</span></span><br><span class="line">    dataMat,labelMat = loadDataSet()</span><br><span class="line">    <span class="comment"># 转成矩阵</span></span><br><span class="line">    dataArr = np.array(dataMat)</span><br><span class="line">    <span class="comment"># 获取形状</span></span><br><span class="line">    n = np.shape(dataMat)[<span class="number">0</span>]</span><br><span class="line">    xcord1 = []; ycord1 = []</span><br><span class="line">    xcord2 = []; ycord2 = []</span><br><span class="line">    <span class="comment"># 根据label画出不同的颜色</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">if</span> int(labelMat[i])== <span class="number">1</span>:</span><br><span class="line">            xcord1.append(dataArr[i,<span class="number">1</span>]); ycord1.append(dataArr[i,<span class="number">2</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            xcord2.append(dataArr[i,<span class="number">1</span>]); ycord2.append(dataArr[i,<span class="number">2</span>])</span><br><span class="line">    fig = plt.figure()</span><br><span class="line">    ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">    ax.scatter(xcord1, ycord1, s=<span class="number">30</span>, c=<span class="string">'red'</span>, marker=<span class="string">'s'</span>)</span><br><span class="line">    ax.scatter(xcord2, ycord2, s=<span class="number">30</span>, c=<span class="string">'green'</span>)</span><br><span class="line">    x = np.arange(<span class="number">-3.0</span>, <span class="number">3.0</span>, <span class="number">0.1</span>)</span><br><span class="line">    y = (-weights[<span class="number">0</span>]-weights[<span class="number">1</span>]*x)/weights[<span class="number">2</span>]</span><br><span class="line">    <span class="comment"># 画分类线</span></span><br><span class="line">    ax.plot(x, y)</span><br><span class="line">    plt.xlabel(<span class="string">'X1'</span>); plt.ylabel(<span class="string">'X2'</span>);</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradAscent</span><span class="params">(dataIn,classLables)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    梯度上升法</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># np.mat : 转换为矩阵类型</span></span><br><span class="line">    dataMaxtrix = np.mat(dataIn)</span><br><span class="line">    <span class="comment"># 转置成为列向量</span></span><br><span class="line">    labelMat = np.mat(classLables).transpose()</span><br><span class="line">    <span class="comment"># 返回矩阵的形状</span></span><br><span class="line">    m,n = np.shape(dataMaxtrix)</span><br><span class="line">    <span class="comment"># 固定阿尔法值</span></span><br><span class="line">    alpha = <span class="number">0.001</span></span><br><span class="line">    maxCycles = <span class="number">500</span> </span><br><span class="line">    <span class="comment"># 全1 矩阵</span></span><br><span class="line">    weights = np.ones ((n,<span class="number">1</span>))</span><br><span class="line">    <span class="comment"># 寻找500次</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range (maxCycles):</span><br><span class="line">        h = sigmoid(dataMaxtrix*weights)</span><br><span class="line">        error = labelMat - h</span><br><span class="line">        <span class="comment"># 公式(12)</span></span><br><span class="line">        weights = weights + alpha * dataMaxtrix.transpose() * error</span><br><span class="line">    <span class="keyword">return</span> weights</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(inX)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    sigmoid函数, Inx = w^T x, </span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1</span>+np.exp(-inX))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    导入数据</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    dataMat = []; labelMat = []</span><br><span class="line">    <span class="comment"># 文件路径，不知道是什么文件，先用着就是</span></span><br><span class="line">    fr = open(<span class="string">'F:\\zhongjianwei\\pyscript\\机器学习实战\\Machine-learning-in-action-notes-and-code\\Logistic回归\\Ch05\\testSet.txt'</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">        <span class="comment"># 默认分隔符： 换行，空格，制表符</span></span><br><span class="line">        lineArr = line.strip().split()</span><br><span class="line">        <span class="comment"># 只取文件前两列当做x1，x2，而x0设置为1</span></span><br><span class="line">        dataMat.append([<span class="number">1.0</span>, float(lineArr[<span class="number">0</span>]), float(lineArr[<span class="number">1</span>])])</span><br><span class="line">        <span class="comment"># y值</span></span><br><span class="line">        labelMat.append(int(lineArr[<span class="number">2</span>]))</span><br><span class="line">    <span class="keyword">return</span> dataMat,labelMat</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    dataArr,labelMat = loadDataSet()</span><br><span class="line">    <span class="comment">#print(dataArr)</span></span><br><span class="line">    weights = gradAscent(dataArr,labelMat)</span><br><span class="line">    print(weights)</span><br><span class="line">    <span class="comment"># 矩阵转换成数组</span></span><br><span class="line">    plotBestFit(weights.getA())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p>输出$\omega_0,\omega_1,\omega_2$：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[ 4.12414349]</span><br><span class="line"> [ 0.48007329]</span><br><span class="line"> [-0.6168482 ]]</span><br></pre></td></tr></table></figure>
-<p>可视化分类结果：</p>
-<p><img src="/myphoto/logistic2.png" alt="结果"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/python3cook系列笔记(七)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/09/python3cook系列笔记(七)/" itemprop="url">python3 cookbook笔记： 第八章 类与对象(一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T00:00:00+08:00">
-                2018-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类 定义了一组属性，这些属性与一组叫做<strong>实例</strong>的对象相关且由其共享。类通常是由函数（称为<strong>方法</strong> ，method）、变量（称为<strong>类变量</strong> ，class variable）和计算出的属性（称为<strong>特性</strong> ，property）组成的集合</p>
-<h3 id="class-语句"><a href="#class-语句" class="headerlink" title="class 语句"></a>class 语句</h3><p>使用<code>class</code>语句可定义类。类主体包含一系列在类定义时执行的语句，例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span><span class="params">(object)</span>:</span></span><br><span class="line">　　 num_accounts = <span class="number">0</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,balance)</span>:</span></span><br><span class="line">　　　　 self.name = name</span><br><span class="line">　　　　 self.balance = balance</span><br><span class="line">　　　　 Account.num_accounts += <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 Account.num_accounts -= <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">deposit</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance + amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance - amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">inquiry</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 <span class="keyword">return</span> self.balance</span><br></pre></td></tr></table></figure>
-<p>在类主体执行期间创建的值放在类对象中，这个对象充当着命名空间，与模块极为相似。例如，访问Account 类成员的方式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Account.num_accounts</span><br><span class="line">Account.__init__</span><br><span class="line">Account.__del__</span><br><span class="line">Account.deposit</span><br><span class="line">Account.withdraw</span><br><span class="line">Account.inquiry</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，class 语句本身并不创建该类的任何实例（例如，上一个例子实际上不会创建任何账户）。类仅设置将在以后创建的所有实例使用的属性。从这种意义上讲，可以将类看作一个蓝图。</p>
-<p>类中定义的函数称为<strong>实例方法</strong> 。实例方法是一种在类的实例上进行操作的函数，类实例作为第一个参数传递。根据约定，这个参数称为<code>self</code> ，尽管所有合法的标识符都可以使用。在前面的例子中，<code>deposit()</code> 、<code>withdraw()</code>和<code>inquiry()</code> 都是实例方法。</p>
-<p><strong>类变量</strong>（如<code>num_accounts</code> ）是可在类的所有实例之间共享的值（也就是说，它们不是单独分配给每个实例的）。上例中的<code>num_accounts</code> 变量用于跟踪存在多少个Account 实例。</p>
-<h3 id="类实例"><a href="#类实例" class="headerlink" title="类实例"></a>类实例</h3><p>类的实例是以函数形式调用类对象来创建的。这种方法将创建一个新实例，然后将该实例传递给类的<code>__init__()</code>方法。<code>__init__()</code> 方法的参数包括新创建的实例self 和在调用类对象时提供的参数。例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一些账户</span></span><br><span class="line">a = Account(<span class="string">"Guido"</span>, <span class="number">1000.00</span>)　 </span><br><span class="line"><span class="comment"># 调用Account.__init__(a,"Guido",1000.00)</span></span><br><span class="line">b = Account(<span class="string">"Bill"</span>, <span class="number">10.00</span>)</span><br></pre></td></tr></table></figure>
-<p>在<code>__init__()</code> 内，通过将属性分配给self 来将其保存到实例中。上例中，<code>self.name =  &quot;Guido&quot;</code>。</p>
-<p><strong>上面创建了两个实例</strong>，然后用(<code>.</code>)运算符即可访问属性：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.deposit(<span class="number">100.00</span>)　　　</span><br><span class="line"><span class="comment"># 调用Account.deposit(a,100.00)</span></span><br><span class="line"><span class="comment"># self.balance已经通过__init__实例化,即self.balance = 1000.00</span></span><br><span class="line"><span class="comment"># 所以访问deposit属性后：</span></span><br><span class="line"><span class="comment"># self.balance = 1000.00 + 100.00</span></span><br><span class="line">b.withdraw(<span class="number">50.00</span>)　　　<span class="comment"># 调用Account.withdraw(b,50.00)</span></span><br><span class="line">name = a.name　　　　　<span class="comment"># 获取账户名</span></span><br></pre></td></tr></table></figure>
-<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><ul>
-<li>默认的字符串显示是<code>__str__()</code>方法，我们可以自定义<code>__repr__()</code> 和<code>__str__()</code>来是的交互更加友好</li>
-<li><code>format()</code> 函数实际上是调用的<code>__formait__()</code>方法</li>
-<li><code>with</code>语句是调用的<code>__enter__()</code> 和<code>__exit__()</code> 方法,我们可以在定义类的时候定义这两个方法，就能使对象支持<code>witg</code>上下文管理</li>
-</ul>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> socket, AF_INET, SOCK_STREAM</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyConnection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, address, family=AF_INET, type=SOCK_STREAM)</span>:</span></span><br><span class="line">        self.address = address</span><br><span class="line">        self.family = family</span><br><span class="line">        self.type = type</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.sock <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">'Already connected'</span>)</span><br><span class="line">        self.sock = socket(self.family, self.type)</span><br><span class="line">        self.sock.connect(self.address)</span><br><span class="line">        <span class="keyword">return</span> self.sock</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_ty, exc_val, tb)</span>:</span></span><br><span class="line">        self.sock.close()</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>类添加<code>__slots__</code>属性来极大的减少实例所占的内存,但使用后我们不能再给实例添加新的属性了，只能使用在<code>__slots__</code> 中定义的那些属性名。</li>
-<li>约定是任何以单下划线<code>_</code> 开头的名字都应该是内部实现</li>
-<li><p>使用双下划线开始会导致访问名称变成其他形式:</p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__private = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        self.__private_method()</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>比如，在前面的类<code>B</code> 中，私有属性会被分别重命名为<code>_B__private</code> 和<code>_B__private_method</code> 。这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。比如：</p>
-<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.__private = <span class="number">1</span> <span class="comment"># Does not override B.__private</span></span><br><span class="line">    <span class="comment"># Does not override B.__private_method()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-</code></pre><p>这里，私有名称<code>__private</code> 和<code>__private_method</code> 被重命名为<code>_C__private</code> 和<code>_C__private_method</code> ，这个跟父类<code>B</code> 中的名称是完全不同的。</p>
-<ul>
-<li>有时候你定义的一个变量和某个保留关键字冲突，这时候可以使用单下划线作为后缀</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1894,7 +2093,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1969,7 +2168,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

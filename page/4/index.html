@@ -270,6 +270,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/python3cook系列笔记(七)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/python3cook系列笔记(七)/" itemprop="url">python3 cookbook笔记： 第八章 类与对象(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T00:00:00+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类 定义了一组属性，这些属性与一组叫做<strong>实例</strong>的对象相关且由其共享。类通常是由函数（称为<strong>方法</strong> ，method）、变量（称为<strong>类变量</strong> ，class variable）和计算出的属性（称为<strong>特性</strong> ，property）组成的集合</p>
+<h3 id="class-语句"><a href="#class-语句" class="headerlink" title="class 语句"></a>class 语句</h3><p>使用<code>class</code>语句可定义类。类主体包含一系列在类定义时执行的语句，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span><span class="params">(object)</span>:</span></span><br><span class="line">　　 num_accounts = <span class="number">0</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,balance)</span>:</span></span><br><span class="line">　　　　 self.name = name</span><br><span class="line">　　　　 self.balance = balance</span><br><span class="line">　　　　 Account.num_accounts += <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 Account.num_accounts -= <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">deposit</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance + amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance - amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">inquiry</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 <span class="keyword">return</span> self.balance</span><br></pre></td></tr></table></figure>
+<p>在类主体执行期间创建的值放在类对象中，这个对象充当着命名空间，与模块极为相似。例如，访问Account 类成员的方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Account.num_accounts</span><br><span class="line">Account.__init__</span><br><span class="line">Account.__del__</span><br><span class="line">Account.deposit</span><br><span class="line">Account.withdraw</span><br><span class="line">Account.inquiry</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，class 语句本身并不创建该类的任何实例（例如，上一个例子实际上不会创建任何账户）。类仅设置将在以后创建的所有实例使用的属性。从这种意义上讲，可以将类看作一个蓝图。</p>
+<p>类中定义的函数称为<strong>实例方法</strong> 。实例方法是一种在类的实例上进行操作的函数，类实例作为第一个参数传递。根据约定，这个参数称为<code>self</code> ，尽管所有合法的标识符都可以使用。在前面的例子中，<code>deposit()</code> 、<code>withdraw()</code>和<code>inquiry()</code> 都是实例方法。</p>
+<p><strong>类变量</strong>（如<code>num_accounts</code> ）是可在类的所有实例之间共享的值（也就是说，它们不是单独分配给每个实例的）。上例中的<code>num_accounts</code> 变量用于跟踪存在多少个Account 实例。</p>
+<h3 id="类实例"><a href="#类实例" class="headerlink" title="类实例"></a>类实例</h3><p>类的实例是以函数形式调用类对象来创建的。这种方法将创建一个新实例，然后将该实例传递给类的<code>__init__()</code>方法。<code>__init__()</code> 方法的参数包括新创建的实例self 和在调用类对象时提供的参数。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一些账户</span></span><br><span class="line">a = Account(<span class="string">"Guido"</span>, <span class="number">1000.00</span>)　 </span><br><span class="line"><span class="comment"># 调用Account.__init__(a,"Guido",1000.00)</span></span><br><span class="line">b = Account(<span class="string">"Bill"</span>, <span class="number">10.00</span>)</span><br></pre></td></tr></table></figure>
+<p>在<code>__init__()</code> 内，通过将属性分配给self 来将其保存到实例中。上例中，<code>self.name =  &quot;Guido&quot;</code>。</p>
+<p><strong>上面创建了两个实例</strong>，然后用(<code>.</code>)运算符即可访问属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.deposit(<span class="number">100.00</span>)　　　</span><br><span class="line"><span class="comment"># 调用Account.deposit(a,100.00)</span></span><br><span class="line"><span class="comment"># self.balance已经通过__init__实例化,即self.balance = 1000.00</span></span><br><span class="line"><span class="comment"># 所以访问deposit属性后：</span></span><br><span class="line"><span class="comment"># self.balance = 1000.00 + 100.00</span></span><br><span class="line">b.withdraw(<span class="number">50.00</span>)　　　<span class="comment"># 调用Account.withdraw(b,50.00)</span></span><br><span class="line">name = a.name　　　　　<span class="comment"># 获取账户名</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><ul>
+<li>默认的字符串显示是<code>__str__()</code>方法，我们可以自定义<code>__repr__()</code> 和<code>__str__()</code>来是的交互更加友好</li>
+<li><code>format()</code> 函数实际上是调用的<code>__formait__()</code>方法</li>
+<li><code>with</code>语句是调用的<code>__enter__()</code> 和<code>__exit__()</code> 方法,我们可以在定义类的时候定义这两个方法，就能使对象支持<code>witg</code>上下文管理</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> socket, AF_INET, SOCK_STREAM</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyConnection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, address, family=AF_INET, type=SOCK_STREAM)</span>:</span></span><br><span class="line">        self.address = address</span><br><span class="line">        self.family = family</span><br><span class="line">        self.type = type</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.sock <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">'Already connected'</span>)</span><br><span class="line">        self.sock = socket(self.family, self.type)</span><br><span class="line">        self.sock.connect(self.address)</span><br><span class="line">        <span class="keyword">return</span> self.sock</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_ty, exc_val, tb)</span>:</span></span><br><span class="line">        self.sock.close()</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>类添加<code>__slots__</code>属性来极大的减少实例所占的内存,但使用后我们不能再给实例添加新的属性了，只能使用在<code>__slots__</code> 中定义的那些属性名。</li>
+<li>约定是任何以单下划线<code>_</code> 开头的名字都应该是内部实现</li>
+<li><p>使用双下划线开始会导致访问名称变成其他形式:</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__private = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        self.__private_method()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>比如，在前面的类<code>B</code> 中，私有属性会被分别重命名为<code>_B__private</code> 和<code>_B__private_method</code> 。这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。比如：</p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.__private = <span class="number">1</span> <span class="comment"># Does not override B.__private</span></span><br><span class="line">    <span class="comment"># Does not override B.__private_method()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>这里，私有名称<code>__private</code> 和<code>__private_method</code> 被重命名为<code>_C__private</code> 和<code>_C__private_method</code> ，这个跟父类<code>B</code> 中的名称是完全不同的。</p>
+<ul>
+<li>有时候你定义的一个变量和某个保留关键字冲突，这时候可以使用单下划线作为后缀</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/python3标准库系列(四)---logging/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,198 +548,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> logging</span><br><span class="line"><span class="comment"># 这是当前脚本的日志设置</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>logging.basicConfig(level=logging.ERROR)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> somelib</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 指定模块名，改变该模块的输出级别</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>logging.getLogger(<span class="string">'somelib'</span>).level=logging.DEBUG</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line">DEBUG:somelib:A debug message</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p>在这里，根日志被配置成仅仅输出<code>ERROR</code> 或更高级别的消息。不过，<code>somelib</code> 的日志级别被单独配置成可以输出debug 级别的消息，它的优先级比全局配置高。像这<br>样更改单独模块的日志配置对于调试来讲是很方便的，因为你无需去更改任何的全局日志配置——只需要修改你想要更多输出的模块的日志等级。</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/python3标准库系列(二)-argparse/" itemprop="url">python3 标准库系列(二)---argparse 模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Search some files'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-p'</span>, <span class="string">'--pat'</span>,metavar=<span class="string">'pattern'</span>, required=<span class="keyword">True</span>,dest=<span class="string">'patterns'</span>, action=<span class="string">'append'</span>,	help=<span class="string">'text pattern to search for'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="comment"># 使用方法</span></span><br><span class="line">print(args.filenames)</span><br><span class="line">print(args.patterns)</span><br><span class="line">print(args.verbose)</span><br><span class="line">print(args.outfile)</span><br><span class="line">print(args.speed)</span><br></pre></td></tr></table></figure>
-<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
-<p>在每个<code>add_argument()</code> 调用中，</p>
-<ul>
-<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
-</li>
-<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
-</li>
-<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--baz'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'--foo --bar'</span>.split())</span><br><span class="line">Namespace(foo=<span class="keyword">True</span>, bar=<span class="keyword">False</span>, baz=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br></pre></td></tr></table></figure>
-<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
-<ul>
-<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
-<li>* , 也就是说参数可以接收任意个数值</li>
-<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
-<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
-<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'command'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'args'</span>, nargs=argparse.REMAINDER)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(parser.parse_args(<span class="string">'--foo B cmd --arg1 XX ZZ'</span>.split()))</span><br><span class="line">Namespace(args=[<span class="string">'--arg1'</span>, <span class="string">'XX'</span>, <span class="string">'ZZ'</span>], command=<span class="string">'cmd'</span>, foo=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br></pre></td></tr></table></figure>
-<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
-<p>其他一些参数：</p>
-<ul>
-<li><code>default</code>: 设置默认值</li>
-<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'foo'</span>, type=int)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'bar'</span>, type=open)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'2 temp.txt'</span>.split())</span><br><span class="line">Namespace(bar=&lt;_io.TextIOWrapper name=<span class="string">'temp.txt'</span> encoding=<span class="string">'UTF-8'</span>&gt;, foo=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>required</code>: 设置为必须参数</li>
-</ul>
-<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_argument_group(<span class="string">'group'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--foo FOO] bar</span><br><span class="line"></span><br><span class="line">group:</span><br><span class="line">  bar    bar help</span><br><span class="line">  --foo FOO  foo help</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1 = parser.add_argument_group(<span class="string">'group1'</span>, <span class="string">'group1 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1.add_argument(<span class="string">'foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2 = parser.add_argument_group(<span class="string">'group2'</span>, <span class="string">'group2 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2.add_argument(<span class="string">'--bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--bar BAR] foo</span><br><span class="line"></span><br><span class="line">group1:</span><br><span class="line">  group1 description</span><br><span class="line"></span><br><span class="line">  foo    foo help</span><br><span class="line"></span><br><span class="line">group2:</span><br><span class="line">  group2 description</span><br><span class="line"></span><br><span class="line">  --bar BAR  bar help</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1000,7 +981,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/机器学习系列笔记(三)Logistic回归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/python3标准库系列(二)-argparse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -1019,7 +1000,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/机器学习系列笔记(三)Logistic回归/" itemprop="url">机器学习系列笔记(三)：Logistic回归(一)</a></h1>
+                <a class="post-title-link" href="/2018/11/07/python3标准库系列(二)-argparse/" itemprop="url">python3 标准库系列(二)---argparse 模块</a></h1>
         
 
         <div class="post-meta">
@@ -1031,8 +1012,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T00:00:00+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
               </time>
             
 
@@ -1054,8 +1035,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
                   </a>
                 </span>
 
@@ -1093,35 +1074,58 @@
       
         
           
-            <p><em>本节介绍逻辑回归的基础知识</em></p>
-<p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
-<p>至于为什么叫对数几率刚回归，请看下面的推倒过程：</p>
-<p>先来看一个简单的线性回归模型：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}+b \tag{1}</script><p>这里的</p>
-<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
-\begin{matrix}
-x_1 \\
-x_2  \\
-\cdots\\
-x_n  
-\end{matrix} \right]</script><p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此公式$(1)$的完整版是：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x^i}+b \tag{2}</script><script type="math/tex; mode=display">(i=1...n)</script><p>展开式：</p>
-<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>公式$(1)$中我们为了便于推倒，忽略了上标，只用了一组$(\vec x,y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x} \tag{3}</script><p>这个很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
-<p>这里引出一个sigmoid函数：</p>
-<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/1537860770073.png" alt="sigmoid"></p>
-<p>令：</p>
-<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-{\vec\omega^T \vec{x}}}} \tag{4}</script><p>我们就引出了我们的模型：</p>
-<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b \tag{5}</script><p>由此可以看出，式$(5)$实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
-<p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
-<script type="math/tex; mode=display">P(y=1 |  x;\omega) = f(x) \tag{6}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = 1- f(x) \tag{7}</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式$(4)$中</p>
-<script type="math/tex; mode=display">P(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} \tag{8}</script><script type="math/tex; mode=display">P(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  \tag{9}</script><p>公式$(6)(7)$ 可以合并到一起：</p>
-<script type="math/tex; mode=display">Cost(f(x),y) = f(x)^y(1-f(x))^{(1-y)} \quad\quad其中： (y=0,1)</script><p>指数算法容易造成下溢，因此我们取$ln$(也可以是$lg$)：</p>
-<script type="math/tex; mode=display">Cost(f(x),y) = y lnf(x) + (1-y)ln{(1-f(x))} \quad\quad其中： (y=0,1)</script><p>我们得到的代价函数：</p>
-<script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} Cost(f(x^{(i)}),y^{(i)})</script><script type="math/tex; mode=display">J(\omega) =\sum_{i=1}^{m} [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln{(1-f(x^{(i)}))} ] \tag{10}</script><p>$J(\omega)$越大，就说明$f(x) = y$的概率越大，因此只要求出$J(\omega)$的最大值</p>
-<p><strong>这里的代价函数其实是根据极大似然法得到的，但是这里不展开推倒了。</strong></p>
-<p><strong>另外，吴恩达老师的视频中,公式$(10)$多了一个$ \frac{1}{m}$, 但在这里省略了，因为是常数项，对结果没有太大的影响。视频中使用的是梯度下降法，那么这里的代价函数就要加一个负号，迭代公式的符号也就不一样了，但是结果是一样的</strong></p>
-
+            <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Search some files'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-p'</span>, <span class="string">'--pat'</span>,metavar=<span class="string">'pattern'</span>, required=<span class="keyword">True</span>,dest=<span class="string">'patterns'</span>, action=<span class="string">'append'</span>,	help=<span class="string">'text pattern to search for'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"><span class="comment"># 使用方法</span></span><br><span class="line">print(args.filenames)</span><br><span class="line">print(args.patterns)</span><br><span class="line">print(args.verbose)</span><br><span class="line">print(args.outfile)</span><br><span class="line">print(args.speed)</span><br></pre></td></tr></table></figure>
+<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
+<p>在每个<code>add_argument()</code> 调用中，</p>
+<ul>
+<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
+</li>
+<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
+</li>
+<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--baz'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'--foo --bar'</span>.split())</span><br><span class="line">Namespace(foo=<span class="keyword">True</span>, bar=<span class="keyword">False</span>, baz=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(dest=<span class="string">'filenames'</span>,metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-v'</span>, dest=<span class="string">'verbose'</span>, action=<span class="string">'store_true'</span>,help=<span class="string">'verbose mode'</span>)</span><br></pre></td></tr></table></figure>
+<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, action=<span class="string">'store'</span>,help=<span class="string">'output file'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
+<ul>
+<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
+<li>* , 也就是说参数可以接收任意个数值</li>
+<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
+<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
+<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'command'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'args'</span>, nargs=argparse.REMAINDER)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(parser.parse_args(<span class="string">'--foo B cmd --arg1 XX ZZ'</span>.split()))</span><br><span class="line">Namespace(args=[<span class="string">'--arg1'</span>, <span class="string">'XX'</span>, <span class="string">'ZZ'</span>], command=<span class="string">'cmd'</span>, foo=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--speed'</span>, dest=<span class="string">'speed'</span>, action=<span class="string">'store'</span>,choices=&#123;<span class="string">'slow'</span>,<span class="string">'fast'</span>&#125;, default=<span class="string">'slow'</span>,help=<span class="string">'search speed'</span>)</span><br></pre></td></tr></table></figure>
+<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
+<p>其他一些参数：</p>
+<ul>
+<li><code>default</code>: 设置默认值</li>
+<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'foo'</span>, type=int)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.add_argument(<span class="string">'bar'</span>, type=open)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args(<span class="string">'2 temp.txt'</span>.split())</span><br><span class="line">Namespace(bar=&lt;_io.TextIOWrapper name=<span class="string">'temp.txt'</span> encoding=<span class="string">'UTF-8'</span>&gt;, foo=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>required</code>: 设置为必须参数</li>
+</ul>
+<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_argument_group(<span class="string">'group'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--foo FOO] bar</span><br><span class="line"></span><br><span class="line">group:</span><br><span class="line">  bar    bar help</span><br><span class="line">  --foo FOO  foo help</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>, add_help=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1 = parser.add_argument_group(<span class="string">'group1'</span>, <span class="string">'group1 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group1.add_argument(<span class="string">'foo'</span>, help=<span class="string">'foo help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2 = parser.add_argument_group(<span class="string">'group2'</span>, <span class="string">'group2 description'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group2.add_argument(<span class="string">'--bar'</span>, help=<span class="string">'bar help'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.print_help()</span><br><span class="line">usage: PROG [--bar BAR] foo</span><br><span class="line"></span><br><span class="line">group1:</span><br><span class="line">  group1 description</span><br><span class="line"></span><br><span class="line">  foo    foo help</span><br><span class="line"></span><br><span class="line">group2:</span><br><span class="line">  group2 description</span><br><span class="line"></span><br><span class="line">  --bar BAR  bar help</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser = argparse.ArgumentParser(prog=<span class="string">'PROG'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group = parser.add_mutually_exclusive_group(required=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>group.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([]) </span><br><span class="line"><span class="comment"># 如果required=False,那么这里不会报错</span></span><br><span class="line"><span class="comment"># Namespace(bar=True, foo=False)</span></span><br><span class="line">usage: PROG [-h] (--foo | --bar)</span><br><span class="line">PROG: error: one of the arguments --foo --bar <span class="keyword">is</span> required</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1336,7 +1340,7 @@ x_n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/04/机器学习系列笔记(二)线性回归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/python3标准库系列(一)-email/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -1355,7 +1359,7 @@ x_n
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/04/机器学习系列笔记(二)线性回归/" itemprop="url">机器学习系列笔记(二)：线性回归(二)</a></h1>
+                <a class="post-title-link" href="/2018/11/02/python3标准库系列(一)-email/" itemprop="url">python3 标准库系列(一)---email模块</a></h1>
         
 
         <div class="post-meta">
@@ -1367,8 +1371,8 @@ x_n
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-04T00:00:00+08:00">
-                2018-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T00:00:00+08:00">
+                2018-11-02
               </time>
             
 
@@ -1390,8 +1394,8 @@ x_n
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
                   </a>
                 </span>
 
@@ -1429,178 +1433,8 @@ x_n
       
         
           
-            <p><strong>本节我们介绍最小二乘法求解线性回归模型的系数，关于梯度下降法的使用，我们会在逻辑回归一章里演示用法</strong></p>
-<p>参考sklearn的官方文档中文版：<a href="http://cwiki.apachecn.org/pages/viewpage.action?pageId=12681716" target="_blank" rel="noopener">http://cwiki.apachecn.org/pages/viewpage.action?pageId=12681716</a></p>
-<p><code>linear_model.LinearRegression</code>类的成员函数 <code>fit</code> 以数组X和y为输入，并将线性模型的系数$\omega$存储在其成员变量<code>coef_</code> 中：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reg = linear_model.LinearRegression()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reg.fit ([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">LinearRegression(copy_X=<span class="keyword">True</span>, fit_intercept=<span class="keyword">True</span>, n_jobs=<span class="number">1</span>, normalize=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reg.coef_</span><br><span class="line">array([ <span class="number">0.5</span>,  <span class="number">0.5</span>])</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>然而，最小二乘的系数估计依赖于模型特征项的独立性。当特征项相关并且设计矩阵X 的列近似的线性相关时，设计矩阵便接近于一个奇异矩阵(不是满秩，列数过多，会有多个最优解，需要<strong>正则化</strong>)，因此最小二乘估计对观测点中的随机误差变得高度敏感，产生大的方差。</p>
-</blockquote>
-<p>下面这个是sklearn官方的示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">=========================================================</span></span><br><span class="line"><span class="string">Linear Regression Example</span></span><br><span class="line"><span class="string">=========================================================</span></span><br><span class="line"><span class="string">This example uses the only the first feature of the `diabetes` dataset, in</span></span><br><span class="line"><span class="string">order to illustrate a two-dimensional plot of this regression technique. The</span></span><br><span class="line"><span class="string">straight line can be seen in the plot, showing how linear regression attempts</span></span><br><span class="line"><span class="string">to draw a straight line that will best minimize the residual sum of squares</span></span><br><span class="line"><span class="string">between the observed responses in the dataset, and the responses predicted by</span></span><br><span class="line"><span class="string">the linear approximation.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The coefficients, the residual sum of squares and the variance score are also</span></span><br><span class="line"><span class="string">calculated.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#print(__doc__)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Code source: Jaques Grobler</span></span><br><span class="line"><span class="comment"># License: BSD 3 clause</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets, linear_model</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error, r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load the diabetes dataset</span></span><br><span class="line">diabetes = datasets.load_diabetes()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use only one feature</span></span><br><span class="line">diabetes_X = diabetes.data[:, np.newaxis, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split the data into training/testing sets</span></span><br><span class="line">diabetes_X_train = diabetes_X[:<span class="number">-20</span>]</span><br><span class="line">diabetes_X_test = diabetes_X[<span class="number">-20</span>:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split the targets into training/testing sets</span></span><br><span class="line">diabetes_y_train = diabetes.target[:<span class="number">-20</span>]</span><br><span class="line">diabetes_y_test = diabetes.target[<span class="number">-20</span>:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create linear regression object</span></span><br><span class="line">regr = linear_model.LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Train the model using the training sets</span></span><br><span class="line">regr.fit(diabetes_X_train, diabetes_y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Make predictions using the testing set</span></span><br><span class="line">diabetes_y_pred = regr.predict(diabetes_X_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Coefficients</span></span><br><span class="line">print(<span class="string">'Coefficients: \n'</span>, regr.coef_)</span><br><span class="line"><span class="comment"># The mean squared error</span></span><br><span class="line">print(<span class="string">"Mean squared error: %.2f"</span></span><br><span class="line">      % mean_squared_error(diabetes_y_test, diabetes_y_pred))</span><br><span class="line"><span class="comment"># Explained variance score: 1 is perfect prediction</span></span><br><span class="line">print(<span class="string">'Variance score: %.2f'</span> % r2_score(diabetes_y_test, diabetes_y_pred))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot outputs</span></span><br><span class="line">plt.scatter(diabetes_X_test, diabetes_y_test,  color=<span class="string">'black'</span>)</span><br><span class="line">plt.plot(diabetes_X_test, diabetes_y_pred, color=<span class="string">'blue'</span>, linewidth=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">plt.xticks(())</span><br><span class="line">plt.yticks(())</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><strong>下一章：逻辑回归</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/机器学习系列笔记(一)线性回归/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/03/机器学习系列笔记(一)线性回归/" itemprop="url">机器学习系列笔记(一)：线性回归(一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T00:00:00+08:00">
-                2018-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="线性模型的基本形式"><a href="#线性模型的基本形式" class="headerlink" title="线性模型的基本形式"></a>线性模型的基本形式</h2><p>给定由d 个属性描述的示例$\vec{x}= (x_1,x_2,…x_d)$ ， 其中$x_i$是x 在第i个属性上的取值，线性模型(linear model)试图学得一个通过属性的线性组合来进行预测的函数，即:</p>
-<script type="math/tex; mode=display">f(\vec{x}) = \omega_1 x_1 + \omega_2 x_2 +\cdots + \omega_d x+d + b  \tag{1}</script><p>写成向量式：</p>
-<script type="math/tex; mode=display">f(\vec{x}) = \vec\omega^T \vec{x} +b \tag{2}</script><h2 id="线性回归原理"><a href="#线性回归原理" class="headerlink" title="线性回归原理"></a>线性回归原理</h2><p>给定数据集$D = \{(\vec{x_1},y_1),(\vec{x_2},y_2),\cdots,(\vec{x_m},y_m)\}$,线性回归就是使用$\vec{x}$得到一个线性模型是的输出$y’$ 无限接近与$y$，即：</p>
-<script type="math/tex; mode=display">f(\vec{x}) = \vec\omega^T \vec{x}+ b \simeq y \tag{3}</script><p>这里忽略了下标，即每一个输入$\vec{x}$ 通过线性回归模型的式子$(3)$得到的$y’$ 都无限接近与数据集中的$y$</p>
-<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>那么如何确定公式$(3)$中的$\vec\omega$和$b$呢?</p>
-<p>如果我们的$f(x)$ 与$y$的差别足够小，那么我们就可以带入到公式$(3)$中直接解出$\vec\omega$和$b$来:</p>
-<script type="math/tex; mode=display">min\sum|f(x)-y|</script><p>而在实际运用过程中我们一般用平方误差来做性能度量：</p>
-<script type="math/tex; mode=display">min \sum(f(x)-y)^2 \tag{4}</script><p>当然也有其他的性能度量方式，只是平方误差这个在线性回归中最常用，这个求解线性回归参数的方法也叫做<strong>最小二乘法</strong></p>
-<p>令：</p>
-<script type="math/tex; mode=display">E(w,b) = \sum(f(x)-y)^2 \tag{5}</script><p>$E(w,b)$在这里就叫做<strong>代价函数</strong>,吴恩达老师的机器学习课程中稍做了调整：</p>
-<script type="math/tex; mode=display">E(w,b) = \frac{1}{2m}\sum^m(f(x)-y)^2 \tag{5}</script><p>我们只需要对$E(w,b)$求偏导就能够求得最小值，这里假设$E(w,b)$是<strong>凸函数</strong>：</p>
-<p><img src="\myphoto\ml.png" alt="偏导结果"></p>
-<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>在讲梯度下降法之前，我们先讲如何直接解出$E(\omega,b)$的最小值：</p>
-<p><img src="\myphoto\ml1.png" alt="解方程1"></p>
-<p><img src="\myphoto\ml2.png" alt="解方程2"></p>
-<p><img src="\myphoto\ml3.png" alt="解方程3"></p>
-<p>显然这种方法比较复杂，貌似计算量也很大?</p>
-<p>下面讲另一种求解$E$最小值的方式，<strong>梯度下降法</strong></p>
-<p>该方法的核心思想是同步更新$\vec\omega,b$中每个值：</p>
-<script type="math/tex; mode=display">\omega_i = \omega_i -\alpha \frac{\partial{E}}{\partial{\omega_i}} (i=1,2,...m)</script><p>$\alpha$称作<strong>学习率</strong>,它的值太小会增加求解的时间，太大会容易造成过拟合。</p>
-<p>该方法像是一种穷举，一步一步的找到最小值。下一节我们会对线性回归进行实战练习</p>
+            <p>自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.image <span class="keyword">import</span> MIMEImage</span><br><span class="line"><span class="keyword">from</span> email <span class="keyword">import</span> encoders</span><br><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> parseaddr, formataddr</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">发送邮件：</span></span><br><span class="line"><span class="string">文本，网页，附件，图片</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sendemail</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,mailToList,mailHost,mailUser,mailPass,sub)</span>:</span></span><br><span class="line">        self.mailToList = mailToList  <span class="comment"># 邮件接收方的邮件地址，传入的必须是list类型</span></span><br><span class="line">        self.mailHost = mailHost    <span class="comment"># 邮件传送协议服务器: smtp.qiye.163.com</span></span><br><span class="line">        self.mailUser = mailUser  <span class="comment"># 邮件发送方的邮箱账号: xxxx@xxxx.org</span></span><br><span class="line">        self.mailPass = mailPass  <span class="comment"># 邮件发送方的邮箱密码: ****</span></span><br><span class="line">        self.sub = sub <span class="comment"># 邮件名</span></span><br><span class="line">        <span class="comment">#self.content = content # 内容</span></span><br><span class="line">        <span class="comment">#self.subtype = subtype # 发送类型 plain(文字)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_formatAddr</span><span class="params">(self,s)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">            处理发件人的名字，防止有带中文名的发件人</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        name, addr = parseaddr(s)</span><br><span class="line">        <span class="keyword">return</span> formataddr((Header(name, <span class="string">'utf-8'</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendEmail</span><span class="params">(self,content,subtype)</span>:</span></span><br><span class="line">        msg = MIMEMultipart(<span class="string">'mixed'</span>) <span class="comment">#　默认就是　mixed类型</span></span><br><span class="line">        me = re.split(<span class="string">'@'</span>,self.mailUser)[<span class="number">0</span>]+<span class="string">"&lt;"</span>+self.mailUser+<span class="string">"&gt;"</span></span><br><span class="line">        msg[<span class="string">'Subject'</span>] = self.sub</span><br><span class="line">        msg[<span class="string">'From'</span>] = self._formatAddr(me)</span><br><span class="line">        msg[<span class="string">'To'</span>] = <span class="string">','</span>.join(self.mailToList)  <span class="comment"># 多个收件人以“,”分隔</span></span><br><span class="line">        text = MIMEText(content, _subtype=subtype, _charset=<span class="string">'utf-8'</span>)</span><br><span class="line">        msg.attach(text)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            server = smtplib.SMTP()</span><br><span class="line">            server.connect(self.mailHost)</span><br><span class="line">            server.login(self.mailUser, self.mailPass)</span><br><span class="line">            server.sendmail(me, self.mailToList, msg.as_string())</span><br><span class="line">            server.quit()</span><br><span class="line">            print(<span class="string">"发送成功"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> (e)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendFile</span><span class="params">(self,file)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        发送附件'''</span></span><br><span class="line">        msg = MIMEMultipart(<span class="string">'mixed'</span>) <span class="comment">#　默认就是　mixed类型</span></span><br><span class="line">        me = re.split(<span class="string">'@'</span>,self.mailUser)[<span class="number">0</span>]+<span class="string">"&lt;"</span>+self.mailUser+<span class="string">"&gt;"</span></span><br><span class="line">        msg[<span class="string">'Subject'</span>] = self.sub</span><br><span class="line">        msg[<span class="string">'From'</span>] = self._formatAddr(me)</span><br><span class="line">        msg[<span class="string">'To'</span>] = <span class="string">','</span>.join(self.mailToList)</span><br><span class="line">        </span><br><span class="line">        sendfile=open(file,<span class="string">'rb'</span>).read()</span><br><span class="line">        text_att = MIMEText(sendfile, <span class="string">'base64'</span>, <span class="string">'utf-8'</span>) </span><br><span class="line">        text_att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span>  </span><br><span class="line">        <span class="comment"># 设置附件名字，如果是windows下的中文文件名需要以gbk编码，这里默认是再Linux上的中文名字的文件</span></span><br><span class="line">        text_att.add_header(<span class="string">'Content-Disposition'</span>, <span class="string">'attachment'</span>, filename=(<span class="string">"utf-8"</span>, <span class="string">""</span>,os.path.basename(file)))</span><br><span class="line">        <span class="comment">#return text_att</span></span><br><span class="line">        </span><br><span class="line">        msg.attach(text_att)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            server = smtplib.SMTP()</span><br><span class="line">            server.connect(self.mailHost)</span><br><span class="line">            server.login(self.mailUser, self.mailPass)</span><br><span class="line">            server.sendmail(me, self.mailToList, msg.as_string())</span><br><span class="line">            server.quit()</span><br><span class="line">            print(<span class="string">"发送成功"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> (e)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    mailToList = [<span class="string">"xxx@xx.com"</span>,<span class="string">"xxx@xxx.com"</span>]  <span class="comment"># 邮件接收方的邮件地址，传入的必须是list类型</span></span><br><span class="line">    mailHost = <span class="string">"smtp.qiye.163.com"</span>    <span class="comment"># 邮件传送协议服务器: smtp.qiye.163.com</span></span><br><span class="line">    mailUser = <span class="string">"xxx@xxx.com"</span>  <span class="comment"># 邮件发送方的邮箱账号: xxxx@xxxx.com</span></span><br><span class="line">    mailPass = <span class="string">"xxxx"</span>  <span class="comment"># 邮件发送方的邮箱密码: ****</span></span><br><span class="line">    sub = <span class="string">"测试邮件"</span> <span class="comment"># 邮件名</span></span><br><span class="line">    s = Sendemail(mailToList,mailHost,mailUser,mailPass,sub)</span><br><span class="line">    <span class="comment">#content  内容/文件路径</span></span><br><span class="line">    <span class="comment">#subtype  发送类型 plain(文字) html(网页) 正文图片(目前只能实现插入一张图) 附件</span></span><br><span class="line">    content = <span class="string">"test"</span></span><br><span class="line">    subtype = <span class="string">"plain"</span></span><br><span class="line">    <span class="comment"># 如果发送的是附件用这个函数，暂时不支持邮件正文中发图片，因为比较麻烦，就是把图片插入网页格式中</span></span><br><span class="line">    s.sendFile(<span class="string">"filepath"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1796,7 +1630,7 @@ x_n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/python3标准库系列(一)-email/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/python3cook系列笔记(三)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Naruto">
@@ -1815,7 +1649,7 @@ x_n
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/02/python3标准库系列(一)-email/" itemprop="url">python3 标准库系列(一)---email模块</a></h1>
+                <a class="post-title-link" href="/2018/11/01/python3cook系列笔记(三)/" itemprop="url">python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)</a></h1>
         
 
         <div class="post-meta">
@@ -1827,8 +1661,8 @@ x_n
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T00:00:00+08:00">
-                2018-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T00:00:00+08:00">
+                2018-11-01
               </time>
             
 
@@ -1889,8 +1723,216 @@ x_n
       
         
           
-            <p>自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.image <span class="keyword">import</span> MIMEImage</span><br><span class="line"><span class="keyword">from</span> email <span class="keyword">import</span> encoders</span><br><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> parseaddr, formataddr</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">发送邮件：</span></span><br><span class="line"><span class="string">文本，网页，附件，图片</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sendemail</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,mailToList,mailHost,mailUser,mailPass,sub)</span>:</span></span><br><span class="line">        self.mailToList = mailToList  <span class="comment"># 邮件接收方的邮件地址，传入的必须是list类型</span></span><br><span class="line">        self.mailHost = mailHost    <span class="comment"># 邮件传送协议服务器: smtp.qiye.163.com</span></span><br><span class="line">        self.mailUser = mailUser  <span class="comment"># 邮件发送方的邮箱账号: xxxx@xxxx.org</span></span><br><span class="line">        self.mailPass = mailPass  <span class="comment"># 邮件发送方的邮箱密码: ****</span></span><br><span class="line">        self.sub = sub <span class="comment"># 邮件名</span></span><br><span class="line">        <span class="comment">#self.content = content # 内容</span></span><br><span class="line">        <span class="comment">#self.subtype = subtype # 发送类型 plain(文字)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_formatAddr</span><span class="params">(self,s)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">            处理发件人的名字，防止有带中文名的发件人</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        name, addr = parseaddr(s)</span><br><span class="line">        <span class="keyword">return</span> formataddr((Header(name, <span class="string">'utf-8'</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendEmail</span><span class="params">(self,content,subtype)</span>:</span></span><br><span class="line">        msg = MIMEMultipart(<span class="string">'mixed'</span>) <span class="comment">#　默认就是　mixed类型</span></span><br><span class="line">        me = re.split(<span class="string">'@'</span>,self.mailUser)[<span class="number">0</span>]+<span class="string">"&lt;"</span>+self.mailUser+<span class="string">"&gt;"</span></span><br><span class="line">        msg[<span class="string">'Subject'</span>] = self.sub</span><br><span class="line">        msg[<span class="string">'From'</span>] = self._formatAddr(me)</span><br><span class="line">        msg[<span class="string">'To'</span>] = <span class="string">','</span>.join(self.mailToList)  <span class="comment"># 多个收件人以“,”分隔</span></span><br><span class="line">        text = MIMEText(content, _subtype=subtype, _charset=<span class="string">'utf-8'</span>)</span><br><span class="line">        msg.attach(text)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            server = smtplib.SMTP()</span><br><span class="line">            server.connect(self.mailHost)</span><br><span class="line">            server.login(self.mailUser, self.mailPass)</span><br><span class="line">            server.sendmail(me, self.mailToList, msg.as_string())</span><br><span class="line">            server.quit()</span><br><span class="line">            print(<span class="string">"发送成功"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> (e)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendFile</span><span class="params">(self,file)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        发送附件'''</span></span><br><span class="line">        msg = MIMEMultipart(<span class="string">'mixed'</span>) <span class="comment">#　默认就是　mixed类型</span></span><br><span class="line">        me = re.split(<span class="string">'@'</span>,self.mailUser)[<span class="number">0</span>]+<span class="string">"&lt;"</span>+self.mailUser+<span class="string">"&gt;"</span></span><br><span class="line">        msg[<span class="string">'Subject'</span>] = self.sub</span><br><span class="line">        msg[<span class="string">'From'</span>] = self._formatAddr(me)</span><br><span class="line">        msg[<span class="string">'To'</span>] = <span class="string">','</span>.join(self.mailToList)</span><br><span class="line">        </span><br><span class="line">        sendfile=open(file,<span class="string">'rb'</span>).read()</span><br><span class="line">        text_att = MIMEText(sendfile, <span class="string">'base64'</span>, <span class="string">'utf-8'</span>) </span><br><span class="line">        text_att[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span>  </span><br><span class="line">        <span class="comment"># 设置附件名字，如果是windows下的中文文件名需要以gbk编码，这里默认是再Linux上的中文名字的文件</span></span><br><span class="line">        text_att.add_header(<span class="string">'Content-Disposition'</span>, <span class="string">'attachment'</span>, filename=(<span class="string">"utf-8"</span>, <span class="string">""</span>,os.path.basename(file)))</span><br><span class="line">        <span class="comment">#return text_att</span></span><br><span class="line">        </span><br><span class="line">        msg.attach(text_att)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            server = smtplib.SMTP()</span><br><span class="line">            server.connect(self.mailHost)</span><br><span class="line">            server.login(self.mailUser, self.mailPass)</span><br><span class="line">            server.sendmail(me, self.mailToList, msg.as_string())</span><br><span class="line">            server.quit()</span><br><span class="line">            print(<span class="string">"发送成功"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">print</span> (e)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    mailToList = [<span class="string">"xxx@xx.com"</span>,<span class="string">"xxx@xxx.com"</span>]  <span class="comment"># 邮件接收方的邮件地址，传入的必须是list类型</span></span><br><span class="line">    mailHost = <span class="string">"smtp.qiye.163.com"</span>    <span class="comment"># 邮件传送协议服务器: smtp.qiye.163.com</span></span><br><span class="line">    mailUser = <span class="string">"xxx@xxx.com"</span>  <span class="comment"># 邮件发送方的邮箱账号: xxxx@xxxx.com</span></span><br><span class="line">    mailPass = <span class="string">"xxxx"</span>  <span class="comment"># 邮件发送方的邮箱密码: ****</span></span><br><span class="line">    sub = <span class="string">"测试邮件"</span> <span class="comment"># 邮件名</span></span><br><span class="line">    s = Sendemail(mailToList,mailHost,mailUser,mailPass,sub)</span><br><span class="line">    <span class="comment">#content  内容/文件路径</span></span><br><span class="line">    <span class="comment">#subtype  发送类型 plain(文字) html(网页) 正文图片(目前只能实现插入一张图) 附件</span></span><br><span class="line">    content = <span class="string">"test"</span></span><br><span class="line">    subtype = <span class="string">"plain"</span></span><br><span class="line">    <span class="comment"># 如果发送的是附件用这个函数，暂时不支持邮件正文中发图片，因为比较麻烦，就是把图片插入网页格式中</span></span><br><span class="line">    s.sendFile(<span class="string">"filepath"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+            <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
+<ol>
+<li><p><code>itertools.groupby()</code>可以根据指定字段来分组：</p>
+<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rows = [</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5412 N CLARK'</span>, <span class="string">'date'</span>: <span class="string">'07/01/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5148 N CLARK'</span>, <span class="string">'date'</span>: <span class="string">'07/04/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5800 E 58TH'</span>, <span class="string">'date'</span>: <span class="string">'07/02/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'2122 N CLARK'</span>, <span class="string">'date'</span>: <span class="string">'07/03/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'5645 N RAVENSWOOD'</span>, <span class="string">'date'</span>: <span class="string">'07/02/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'1060 W ADDISON'</span>, <span class="string">'date'</span>: <span class="string">'07/02/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'4801 N BROADWAY'</span>, <span class="string">'date'</span>: <span class="string">'07/01/2012'</span>&#125;,</span><br><span class="line">&#123;<span class="string">'address'</span>: <span class="string">'1039 W GRANVILLE'</span>, <span class="string">'date'</span>: <span class="string">'07/04/2012'</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</code></pre><p> 我们按照date来分组：</p>
+<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> groupby</span><br><span class="line"><span class="comment"># Sort by the desired field first</span></span><br><span class="line">rows.sort(key=itemgetter(<span class="string">'date'</span>))</span><br><span class="line"><span class="comment"># Iterate in groups</span></span><br><span class="line"><span class="keyword">for</span> date, items <span class="keyword">in</span> groupby(rows, key=itemgetter(<span class="string">'date'</span>)):</span><br><span class="line">print(date)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">print(<span class="string">' '</span>, i)</span><br></pre></td></tr></table></figure>
+</code></pre><p> 输出：</p>
+<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">07</span>/<span class="number">01</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/01/2012'</span>, <span class="string">'address'</span>: <span class="string">'5412 N CLARK'</span>&#125;</span><br><span class="line">&#123;<span class="string">'date'</span>: <span class="string">'07/01/2012'</span>, <span class="string">'address'</span>: <span class="string">'4801 N BROADWAY'</span>&#125;</span><br><span class="line"><span class="number">07</span>/<span class="number">02</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/02/2012'</span>, <span class="string">'address'</span>: <span class="string">'5800 E 58TH'</span>&#125;</span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/02/2012'</span>, <span class="string">'address'</span>: <span class="string">'5645 N RAVENSWOOD'</span>&#125;</span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/02/2012'</span>, <span class="string">'address'</span>: <span class="string">'1060 W ADDISON'</span>&#125;</span><br><span class="line"><span class="number">07</span>/<span class="number">03</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/03/2012'</span>, <span class="string">'address'</span>: <span class="string">'2122 N CLARK'</span>&#125;</span><br><span class="line"><span class="number">07</span>/<span class="number">04</span>/<span class="number">2012</span></span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/04/2012'</span>, <span class="string">'address'</span>: <span class="string">'5148 N CLARK'</span>&#125;</span><br><span class="line">        &#123;<span class="string">'date'</span>: <span class="string">'07/04/2012'</span>, <span class="string">'address'</span>: <span class="string">'1039 W GRANVILLE'</span>&#125;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+<p><code>groupby()</code> 函数扫描整个序列并且查找连续相同值（或者根据指定key 函数返回值相同）的元素序列。在每次迭代的时候，它会返回一个值和一个迭代器对象，这个迭代器对象可以生成元素值全部等于上面那个值的组中所有对象。</p>
+<p>还有一个非常重要的准备步骤是要根据指定的字段将数据排序</p>
+<ol>
+<li><code>itertools.compress()</code>,它以一个iterable对象和一个相对应的Boolean 选择器序列作为输入参数。然后输出iterable 对象中对<br>应选择器为True 的元素.</li>
+</ol>
+<p>示例：</p>
+<pre><code>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">addresses = [</span><br><span class="line"><span class="string">'5412 N CLARK'</span>,</span><br><span class="line"><span class="string">'5148 N CLARK'</span>,</span><br><span class="line"><span class="string">'5800 E 58TH'</span>,</span><br><span class="line"><span class="string">'2122 N CLARK'</span>,</span><br><span class="line"><span class="string">'5645 N RAVENSWOOD'</span>,</span><br><span class="line"><span class="string">'1060 W ADDISON'</span>,</span><br><span class="line"><span class="string">'4801 N BROADWAY'</span>,</span><br><span class="line"><span class="string">'1039 W GRANVILLE'</span>,</span><br><span class="line">]</span><br><span class="line">counts = [ <span class="number">0</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> itertools <span class="keyword">import</span> compress</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>more5 = [n &gt; <span class="number">5</span> <span class="keyword">for</span> n <span class="keyword">in</span> counts]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>more5</span><br><span class="line">[<span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">True</span>, <span class="keyword">False</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(compress(addresses, more5))</span><br><span class="line">[<span class="string">'5800 E 58TH'</span>, <span class="string">'1060 W ADDISON'</span>, <span class="string">'4801 N BROADWAY'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p><code>collections.namedtuple()</code> 函数对元组进行命名：</p>
+<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Subscriber = namedtuple(<span class="string">'Subscriber'</span>, [<span class="string">'addr'</span>, <span class="string">'joined'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub = Subscriber(<span class="string">'jonesy@example.com'</span>, <span class="string">'2012-10-19'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub</span><br><span class="line">Subscriber(addr=<span class="string">'jonesy@example.com'</span>, joined=<span class="string">'2012-10-19'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub.addr</span><br><span class="line"><span class="string">'jonesy@example.com'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub.joined</span><br><span class="line"><span class="string">'2012-10-19'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+<p>命名元组另一个用途就是作为字典的替代，因为字典存储需要更多的内存空间。如果你需要构建一个非常大的包含字典的数据结构，那么使用命名元组会更加高效。但是需要注意的是，不像字典那样，一个命名元组是不可更改的</p>
+<ol>
+<li><p><code>sum()</code> , <code>min()</code> , <code>max()</code>等函数可以接收迭代器作为参数：</p>
+<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = sum((x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums)) <span class="comment"># 显示的传递一个生成器表达式对象</span></span><br><span class="line">s = sum(x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums) <span class="comment"># 更加优雅的实现方式，省略了括号,而且省去了一个新建列表的命名空间</span></span><br></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>合并多个字典或映射,先看示例：</p>
+<pre><code> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'z'</span>: <span class="number">3</span> &#125;</span><br><span class="line">b = &#123;<span class="string">'y'</span>: <span class="number">2</span>, <span class="string">'z'</span>: <span class="number">4</span> &#125;</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line">c = ChainMap(a,b)</span><br><span class="line">print(c[<span class="string">'x'</span>]) <span class="comment"># Outputs 1 (from a)</span></span><br><span class="line">print(c[<span class="string">'y'</span>]) <span class="comment"># Outputs 2 (from b)</span></span><br><span class="line">print(c[<span class="string">'z'</span>]) <span class="comment"># Outputs 3 (from a)</span></span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+<p>一个<code>ChainMap</code> 接受多个字典并将它们在逻辑上变为一个字典。然后，这些字典并不是真的合并在一起了，<code>ChainMap</code> 类只是在内部创建了一个容纳这些字典的列表并重新定义了一些常见的字典操作来遍历这个列表.</p>
+<p>如果出现重复键，那么第一次出现的映射值会被返回。因此，例子程序中的c[‘z’],总是会返回字典a 中对应的值，而不是b 中对应的值。</p>
+<p>因此，对于字典的更新或删除操作总是影响的是列表中第一个字典。</p>
+<p>与<code>update</code>不同，<code>ChainMap</code> 使用原来的字典，它自己不创建新的字典</p>
+<p><strong>第一章完，下一章：字符串和文本</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/python3cook系列笔记(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/python3cook系列笔记(二)/" itemprop="url">python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T00:00:00+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
+<ol>
+<li><p><code>collections</code> 模块中的<code>defaultdict</code>函数能够构造一个值为列表的字典：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line">d = defaultdict(list)</span><br><span class="line">d[<span class="string">'a'</span>].append(<span class="number">1</span>)</span><br><span class="line">d[<span class="string">'a'</span>].append(<span class="number">2</span>)</span><br><span class="line">d[<span class="string">'b'</span>].append(<span class="number">4</span>)</span><br><span class="line">d = defaultdict(set)</span><br><span class="line">d[<span class="string">'a'</span>].add(<span class="number">1</span>)</span><br><span class="line">d[<span class="string">'a'</span>].add(<span class="number">2</span>)</span><br><span class="line">d[<span class="string">'b'</span>].add(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p> 简化版：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = defaultdict(list)</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> pairs:</span><br><span class="line">d[key].append(value)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字段的键存储是无序的，如果想要一个键顺序是一定的字典，可以这样做：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from collections import OrderedDict</span><br><span class="line">d = OrderedDict()</span><br></pre></td></tr></table></figure>
+<p> 但这样做内存占用比较大</p>
+</li>
+<li><p>如果你在一个字典上执行普通的数学运算，你会发现它们仅仅作用于键，而不是值：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prices = &#123;</span><br><span class="line"><span class="string">'ACME'</span>: <span class="number">45.23</span>,</span><br><span class="line"><span class="string">'AAPL'</span>: <span class="number">612.78</span>,</span><br><span class="line"><span class="string">'IBM'</span>: <span class="number">205.55</span>,</span><br><span class="line"><span class="string">'HPQ'</span>: <span class="number">37.20</span>,</span><br><span class="line"><span class="string">'FB'</span>: <span class="number">10.75</span></span><br><span class="line">&#125;</span><br><span class="line">min(prices) <span class="comment"># Returns 'AAPL'</span></span><br><span class="line">max(prices) <span class="comment"># Returns 'IBM'</span></span><br></pre></td></tr></table></figure>
+<p> 想要对值进行操作，可以这样：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">min(prices, key=lambda k: prices[k]) # Returns &apos;FB&apos;</span><br><span class="line">max(prices, key=lambda k: prices[k]) # Returns &apos;AAPL&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对两个字典进行运算：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find keys in common</span></span><br><span class="line">a.keys() &amp; b.keys() <span class="comment"># &#123; 'x', 'y' &#125;</span></span><br><span class="line"><span class="comment"># Find keys in a that are not in b</span></span><br><span class="line">a.keys() - b.keys() <span class="comment"># &#123; 'z' &#125;</span></span><br><span class="line"><span class="comment"># Find (key,value) pairs in common</span></span><br><span class="line">a.items() &amp; b.items() <span class="comment"># &#123; ('y', 2) &#125;</span></span><br></pre></td></tr></table></figure>
+<p> <del>ps：如果想要对列表消除重复元素可以转换位集合：</del></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>set(a)</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">9</span>&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p> 如果想要对一个复杂类型的列表去重复，就要用到一个稍微复杂一点的函数：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dedupe</span><span class="params">(items, key=None)</span>:</span></span><br><span class="line">    seen = set()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        val = item <span class="keyword">if</span> key <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">else</span> key(item)</span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">            seen.add(val)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [ &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">3</span>&#125;, &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>:<span class="number">2</span>, <span class="string">'y'</span>:<span class="number">4</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(dedupe(a, key=<span class="keyword">lambda</span> d: (d[<span class="string">'x'</span>],d[<span class="string">'y'</span>])))</span><br><span class="line">[&#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'x'</span>: <span class="number">2</span>, <span class="string">'y'</span>: <span class="number">4</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(dedupe(a, key=<span class="keyword">lambda</span> d: d[<span class="string">'x'</span>]))</span><br><span class="line">[&#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>: <span class="number">2</span>, <span class="string">'y'</span>: <span class="number">4</span>&#125;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按照关键字对字典进行排序：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rows = [</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'Brian'</span>, <span class="string">'lname'</span>: <span class="string">'Jones'</span>, <span class="string">'uid'</span>: <span class="number">1003</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'David'</span>, <span class="string">'lname'</span>: <span class="string">'Beazley'</span>, <span class="string">'uid'</span>: <span class="number">1002</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'John'</span>, <span class="string">'lname'</span>: <span class="string">'Cleese'</span>, <span class="string">'uid'</span>: <span class="number">1001</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'Big'</span>, <span class="string">'lname'</span>: <span class="string">'Jones'</span>, <span class="string">'uid'</span>: <span class="number">1004</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line">rows_by_fname = sorted(rows, key=itemgetter(<span class="string">'fname'</span>))</span><br><span class="line">rows_by_uid = sorted(rows, key=itemgetter(<span class="string">'uid'</span>))</span><br><span class="line">print(rows_by_fname)</span><br><span class="line">print(rows_by_uid)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>itemgetter()</code> 有时候也可以用<code>lambda</code> 表达式代替，比如：</p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rows_by_fname = sorted(rows, key=<span class="keyword">lambda</span> r: r[<span class="string">'fname'</span>])</span><br><span class="line">rows_by_lfname = sorted(rows, key=<span class="keyword">lambda</span> r: (r[<span class="string">'lname'</span>],r[<span class="string">'fname'</span>]))</span><br></pre></td></tr></table></figure>
+</code></pre><p>理论上讲，<code>operator.attrgetter()</code>与 <code>itemgetter()</code> 函数的作用是一样，书中说<strong>排序不支持原生比较的对象</strong>要用<code>attrgetter()</code>函数，反正我也不知道什么是<strong>不支持原生比较的对象</strong></p>
+<p><strong>下一节：字典的用法(续)</strong></p>
 
           
         
@@ -1976,7 +2018,7 @@ x_n
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2051,7 +2093,7 @@ x_n
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
