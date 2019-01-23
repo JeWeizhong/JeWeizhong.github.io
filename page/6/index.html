@@ -570,194 +570,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/perl 单行命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/13/perl 单行命令/" itemprop="url">perl 单行命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T00:00:00+08:00">
-                2018-02-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/perl/" itemprop="url" rel="index">
-                    <span itemprop="name">perl</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>与One-Liner相关的perl参数</strong></p>
-<ul>
-<li>-a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $</li>
-<li>-F 指定-a的分隔符</li>
-<li>-l 对输入的内容进行自动chomp，对输出的内容自动加换行符</li>
-<li>-n 相当于while(&lt;&gt;)</li>
-<li>-e 执行命令，也就是脚本</li>
-<li>-p 自动循环+输出，也就是while(&lt;&gt;){命令（脚本）; print;}</li>
-</ul>
-<p><img src="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923" alt="完整版本"></p>
-<ol>
-<li><p>基本格式：perl -参数 ‘命令’ 输入文件</p>
-</li>
-<li><p><code>perl -e</code>为必须要写的参数</p>
-</li>
-<li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -pe &apos;s/aaa/AAA/g&apos; 1.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p>
-</li>
-<li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p>
-</li>
-<li><p>perl单行命令脚本里的变量都不需要预先声明，如想打印出每空行，并且每行以行数开头</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print ++$a.&quot; $_&quot; if /./&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令有时优于sed/grep等shell命令是由于其优秀的正则匹配，通常简单的匹配可以如：匹配上的行号，模仿grep -c的功能：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -lne &apos;$a++ if /regex/; END &#123;print $a+0&#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令可以使用perl的模块，如使用sum函数的模块：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MList::Util=sum -alne &apos;print sum @F&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl也可以像awk一样使用END命令，如打印出文件中总单词个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;$t += @F; END &#123; print $t&#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl也可以使用<code>map{}</code>等函数，如打印出匹配上的单词的总个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;map &#123; /regex/ &amp;&amp; $t++ &#125; @F; END &#123; print $t &#125;&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令可以说是将perl的简洁用到了极致，如打印出匹配上的行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;/regex/ &amp;&amp; print&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>perl单行命令能像perl一样灵活的使用则正表达式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print if /^\d+$/&apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>以上例子均出自于 <a href="http://www.catonmat.net/blog/perl-one-liners-explained-part-one/" target="_blank" rel="noopener">http://www.catonmat.net/blog/perl-one-liners-explained-part-one/</a></p>
-<p>使用perl来处理数据的我们，会一点Perl one line可以有效的减少编写重复命令的时间，尤其是那些就用1-2次就不会用的脚本，尤其在window系统下不方便使用shell命令的时候。</p>
-<p>PS.当然在windows系统下也可以借用git模拟Unix命令环境</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/(转载)linux下R安装(无root权限)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1132,162 +944,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/IchorCNA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/13/IchorCNA/" itemprop="url">ichorCNA</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T00:00:00+08:00">
-                2018-02-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生信/" itemprop="url" rel="index">
-                    <span itemprop="name">生信</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h4><p>ichorCNA是从超低通全基因组测序（ULP-WGS，0.1x覆盖率）估计无细胞DNA中肿瘤分数的工具。</p>
-<p><strong>描述</strong></p>
-<p>ichorCNA使用概率模型，作为隐马尔可夫模型（HMM）实现，以同时分割基因组，预测大规模拷贝数改变，并估计超低通全基因组测序样本（ULP-WGS ）。ichorCNA针对样本的低覆盖率（〜0.1x）测序进行了优化，并使用患者和健康供体cfDNA样本进行了基准测试。</p>
-<p><strong>用途</strong></p>
-<p>ichorCNA可用于通知肿瘤来源DNA的存在或缺失，并指导决定进行整个外显子或更深的全基因组测序。此外，我们可以使用肿瘤分数的定量估计来校准期望的测序深度，以达到用于鉴定无细胞DNA中的突变的统计功效。最后，ichorCNA可以利用超低通量测序的成本效益方法来检测来自大群体的大规模拷贝数变化。</p>
-<p><strong>文献</strong></p>
-<p>Adalsteinsson, Ha, Freeman, et al. Scalable whole-exome sequencing of cell-free DNA reveals high concordance with metastatic tumors</p>
-<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#R控制台中</span><br><span class="line">install.packages(&quot;plyr&quot;)</span><br><span class="line">source(&quot;https://bioconductor.org/biocLite.R&quot;)</span><br><span class="line">biocLite(&quot;HMMcopy&quot;)</span><br><span class="line">biocLite(&quot;GenomeInfoDb&quot;)</span><br><span class="line">install.packages(&quot;devtools&quot;)</span><br><span class="line">library(devtools)</span><br><span class="line">install_github(&quot;broadinstitute/ichorCNA&quot;, &quot;--no-docs&quot;)</span><br><span class="line">#依赖的包有很多，安装过程报错信息可以看出需要依赖的其他包</span><br></pre></td></tr></table></figure>
-<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#以样本DYDFA-842-31为例</span><br><span class="line">$bwa mem -t 4 -B 3 -O 11 -E 4 -k 32 -Y hg19_reference_with_NC.fasta </span><br><span class="line">DYDFA-842-31/DYDFA-842-31_R1.fq.gz DYDFA-842-31_R2.fq.gz &gt; ichorCNA/test31/31.sam</span><br><span class="line"></span><br><span class="line">$samtools view -bS ichorCNA/test31/31.sam &gt; ichorCNA/test31/31.bam</span><br><span class="line"></span><br><span class="line">$samtools sort 31.bam &gt; 31.sort.bam &amp;</span><br><span class="line"></span><br><span class="line">$samtools  index 31.sort.bam &amp;</span><br><span class="line"></span><br><span class="line">$java -jar picard-2.8.2.jar MarkDuplicates I=./31.sort.bam O=./31.rmdup.bam M=rmdup_stat.txt REMOVE_DUPLICATES=true &amp;</span><br><span class="line"></span><br><span class="line">$samtools index 31.rmdup.bam  &amp;</span><br><span class="line"></span><br><span class="line">hmmcopy_utils-master/bin/readCounter --window 1000000 --quality 20 --chromosome chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY 31.rmdup.bam &gt; 31.wig &amp;</span><br><span class="line"></span><br><span class="line">$Rscript ichorCNA-master/scripts/runIchorCNA.R --id test31 --WIG test31.wig \</span><br><span class="line">    --gcWig ichorCNA-master/inst/extdata/gc_hg19_1000kb.wig \</span><br><span class="line">    --mapWig ichorCNA-master/inst/extdata/map_hg19_1000kb.wig \</span><br><span class="line">    --centromere ichorCNA-master/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt \</span><br><span class="line">    --normalPanel ichorCNA-master/inst/extdata/HD_ULP_PoN_1Mb_median_normAutosome_mapScoreFiltered_median.rds \</span><br><span class="line">    --normal &quot;c(0.5,0.6,0.7,0.8,0.9)&quot;  --scStates &quot;c(1,3)&quot; \</span><br><span class="line">    --txnE 0.9999 --txnStrength 10000 --outDir ./</span><br></pre></td></tr></table></figure>
-<h4 id="4-输出"><a href="#4-输出" class="headerlink" title="4. 输出"></a>4. 输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test31</span><br><span class="line">Gender: male</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 2.001</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure>
-<p><img src="/myphoto/clipboard31.png" alt="31"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test32</span><br><span class="line">Gender: male</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 2</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure></p>
-<p><img src="/myphoto/clipboard32.png" alt="32"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test33</span><br><span class="line">Gender: female</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 2</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure></p>
-<p><img src="/myphoto/clipboard33.png" alt="33"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test34</span><br><span class="line">Gender: female</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 1.999</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure></p>
-<p><img src="/myphoto/clipboard34.png" alt="34"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test35</span><br><span class="line">Gender: female</span><br><span class="line">Tumor Fraction: 0.404</span><br><span class="line">Ploidy: 2.98</span><br><span class="line">Subclone Fraction:      0.5017</span><br></pre></td></tr></table></figure></p>
-<p><img src="/myphoto/clipboard35.png" alt="35"></p>
-<h4 id="5-解释结果"><a href="#5-解释结果" class="headerlink" title="5. 解释结果"></a>5. 解释结果</h4><h4 id="6-帮助文档"><a href="#6-帮助文档" class="headerlink" title="6. 帮助文档"></a>6. 帮助文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">Rscript runIchorCNA.R --help</span><br><span class="line">Usage: runIchorCNA.R [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">--WIG=WIG</span><br><span class="line">	WIG 文件(必须)</span><br><span class="line"></span><br><span class="line">--NORMWIG=NORMWIG</span><br><span class="line">	标准 WIG 文件 Default: [NULL]</span><br><span class="line"></span><br><span class="line">--gcWig=GCWIG</span><br><span class="line">	GC-content WIG 文件; (必须);软件给出的是hg19的GC WIG文件</span><br><span class="line"></span><br><span class="line">--mapWig=MAPWIG</span><br><span class="line">	 WIG 文件  Default: [NULL]</span><br><span class="line"></span><br><span class="line">--normalPanel=NORMALPANEL</span><br><span class="line">	深度矫正文件 Default: [NULL]</span><br><span class="line"></span><br><span class="line">--exons.bed=EXONS.BED</span><br><span class="line">	外显子bed文件 Default: [NULL]</span><br><span class="line"></span><br><span class="line">--id=ID</span><br><span class="line">	样本名 Default: [test]</span><br><span class="line"></span><br><span class="line">--centromere=CENTROMERE</span><br><span class="line">	着丝粒位置文件;ichorCNA提供的是hg19版本的. Default: [NULL]</span><br><span class="line"></span><br><span class="line">--rmCentromereFlankLength=RMCENTROMEREFLANKLENGTH</span><br><span class="line">    去除着丝粒侧翼的长度. Default: [1e+05]</span><br><span class="line"></span><br><span class="line">--normal=NORMAL</span><br><span class="line">	Initial normal contamination; can be more than one value if additional normal initializations are desired. Default: [0.5]</span><br><span class="line">    #初始正常污染; 如果需要额外的正常初始化，可以是多于一个值</span><br><span class="line">--scStates=SCSTATES</span><br><span class="line">	亚克隆状态. Default: [NULL]</span><br><span class="line"></span><br><span class="line">--coverage=COVERAGE</span><br><span class="line">	PICARD 软件计算出的覆盖度文件. Default: [NULL]</span><br><span class="line"></span><br><span class="line">--lambda=LAMBDA</span><br><span class="line">	Initial Student&apos;s t precision; must contain 4 values (e.g. c(1500,1500,1500,1500)); if not provided then will automatically use based on variance of data. Default: [NULL]</span><br><span class="line">    # 初始T-test精确度; 必须包含4个值（例如c（1500,1500,1500,1500））;如果没有提供，则会根据数据的方差自动使用</span><br><span class="line">--lambdaScaleHyperParam=LAMBDASCALEHYPERPARAM</span><br><span class="line">	Hyperparameter (scale) for Gamma prior on Student&apos;s-t precision. Default: [3]</span><br><span class="line">    #Gamma之前的超参数（规模）的t精度</span><br><span class="line">--ploidy=PLOIDY</span><br><span class="line">	Initial tumour ploidy; can be more than one value if additional ploidy initializations are desired. Default: [2]</span><br><span class="line">    # 最初的肿瘤倍性; 默认二倍体；</span><br><span class="line">--maxCN=MAXCN</span><br><span class="line">	Total clonal CN states. Default: [7]</span><br><span class="line"></span><br><span class="line">--estimateNormal=ESTIMATENORMAL</span><br><span class="line">	Estimate normal. Default: [TRUE]</span><br><span class="line"></span><br><span class="line">--estimateScPrevalence=ESTIMATESCPREVALENCE</span><br><span class="line">	Estimate subclonal prevalence. Default: [TRUE]</span><br><span class="line"></span><br><span class="line">--estimatePloidy=ESTIMATEPLOIDY</span><br><span class="line">	Estimate tumour ploidy. Default: [TRUE]</span><br><span class="line"></span><br><span class="line">--maxFracCNASubclone=MAXFRACCNASUBCLONE</span><br><span class="line">	Exclude solutions with fraction of subclonal events greater than this value. Default: [0.7]</span><br><span class="line">    # 排除大于此值的部分亚克隆事件的解决方案</span><br><span class="line">--maxFracGenomeSubclone=MAXFRACGENOMESUBCLONE</span><br><span class="line">	Exclude solutions with subclonal genome fraction greater than this value. Default: [0.5]</span><br><span class="line">    # 排除亚克隆基因组分数大于此值的解决方案</span><br><span class="line">--minSegmentBins=MINSEGMENTBINS</span><br><span class="line">	Minimum number of bins for largest segment threshold required to estimate tumor fraction; if below this threshold, then will be assigned zero tumor fraction.</span><br><span class="line"></span><br><span class="line">--altFracThreshold=ALTFRACTHRESHOLD</span><br><span class="line">	Minimum proportion of bins altered required to estimate tumor fraction; if below this threshold, then will be assigned zero tumor fraction. Default: [0.05]</span><br><span class="line">    # 评估肿瘤分数所需的最大分割阈值的最小分箱数量; 如果低于这个阈值，则将被分配零肿瘤分数</span><br><span class="line">--chrNormalize=CHRNORMALIZE</span><br><span class="line">	Specify chromosomes to normalize GC/mappability biases. Default: [c(1:22)]</span><br><span class="line">    #指定染色体</span><br><span class="line">--chrTrain=CHRTRAIN</span><br><span class="line">	Specify chromosomes to estimate params. Default: [c(1:22)]</span><br><span class="line">    #指定染色体</span><br><span class="line">--chrs=CHRS</span><br><span class="line">	Specify chromosomes to analyze. Default: [c(1:22,&quot;X&quot;)]</span><br><span class="line">    #指定染色体</span><br><span class="line">--normalizeMaleX=NORMALIZEMALEX</span><br><span class="line">	If male, then normalize chrX by median. Default: [TRUE]</span><br><span class="line">    # 男性按照X染色体分析</span><br><span class="line">--fracReadsInChrYForMale=FRACREADSINCHRYFORMALE</span><br><span class="line">	Threshold for fraction of reads in chrY to assign as male. Default: [0.001]</span><br><span class="line">    #将chrY中的读数部分的阈值分配为男性</span><br><span class="line">--includeHOMD=INCLUDEHOMD</span><br><span class="line">	If FALSE, then exclude HOMD state. Useful when using large bins (e.g. 1Mb). Default: [FALSE]</span><br><span class="line">    # 如果FALSE，则排除HOMD状态。 使用大容量箱（如1Mb）时很有用</span><br><span class="line">--txnE=TXNE</span><br><span class="line">	Self-transition probability. Increase to decrease number of segments. Default: [0.9999999]</span><br><span class="line">    #　自我转换概率。 增加以减少段数</span><br><span class="line">--txnStrength=TXNSTRENGTH</span><br><span class="line">	Transition pseudo-counts. Exponent should be the same as the number of decimal places of --txnE. Default: [1e+07]</span><br><span class="line">    # 转换伪计数。 指数应与--txnE的小数位数相同</span><br><span class="line">--plotFileType=PLOTFILETYPE</span><br><span class="line">	File format for output plots. Default: [pdf]</span><br><span class="line">    #图片输出格式</span><br><span class="line">--plotYLim=PLOTYLIM</span><br><span class="line">	ylim to use for chromosome plots. Default: [c(-2,2)]</span><br><span class="line">    y轴范围</span><br><span class="line">--outDir=OUTDIR</span><br><span class="line">	Output Directory. Default: [./]</span><br><span class="line"></span><br><span class="line">--libdir=LIBDIR</span><br><span class="line">	Script library path. Usually exclude this argument unless custom modifications have been made to the ichorCNA R package code and the user would like to source those R files. Default: [NULL]</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/安装python3及模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1397,6 +1053,350 @@
 </ol>
 <p><strong>注意-h 下有响应时间等其他参数 按需设置,每个参数具体意义可自行搜索</strong></p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/perl 单行命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/13/perl 单行命令/" itemprop="url">perl 单行命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T00:00:00+08:00">
+                2018-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/perl/" itemprop="url" rel="index">
+                    <span itemprop="name">perl</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>与One-Liner相关的perl参数</strong></p>
+<ul>
+<li>-a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $</li>
+<li>-F 指定-a的分隔符</li>
+<li>-l 对输入的内容进行自动chomp，对输出的内容自动加换行符</li>
+<li>-n 相当于while(&lt;&gt;)</li>
+<li>-e 执行命令，也就是脚本</li>
+<li>-p 自动循环+输出，也就是while(&lt;&gt;){命令（脚本）; print;}</li>
+</ul>
+<p><img src="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923" alt="完整版本"></p>
+<ol>
+<li><p>基本格式：perl -参数 ‘命令’ 输入文件</p>
+</li>
+<li><p><code>perl -e</code>为必须要写的参数</p>
+</li>
+<li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -pe &apos;s/aaa/AAA/g&apos; 1.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p>
+</li>
+<li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p>
+</li>
+<li><p>perl单行命令脚本里的变量都不需要预先声明，如想打印出每空行，并且每行以行数开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print ++$a.&quot; $_&quot; if /./&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令有时优于sed/grep等shell命令是由于其优秀的正则匹配，通常简单的匹配可以如：匹配上的行号，模仿grep -c的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -lne &apos;$a++ if /regex/; END &#123;print $a+0&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令可以使用perl的模块，如使用sum函数的模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -MList::Util=sum -alne &apos;print sum @F&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl也可以像awk一样使用END命令，如打印出文件中总单词个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;$t += @F; END &#123; print $t&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl也可以使用<code>map{}</code>等函数，如打印出匹配上的单词的总个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -alne &apos;map &#123; /regex/ &amp;&amp; $t++ &#125; @F; END &#123; print $t &#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令可以说是将perl的简洁用到了极致，如打印出匹配上的行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;/regex/ &amp;&amp; print&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>perl单行命令能像perl一样灵活的使用则正表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -ne &apos;print if /^\d+$/&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上例子均出自于 <a href="http://www.catonmat.net/blog/perl-one-liners-explained-part-one/" target="_blank" rel="noopener">http://www.catonmat.net/blog/perl-one-liners-explained-part-one/</a></p>
+<p>使用perl来处理数据的我们，会一点Perl one line可以有效的减少编写重复命令的时间，尤其是那些就用1-2次就不会用的脚本，尤其在window系统下不方便使用shell命令的时候。</p>
+<p>PS.当然在windows系统下也可以借用git模拟Unix命令环境</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/IchorCNA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/13/IchorCNA/" itemprop="url">ichorCNA</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T00:00:00+08:00">
+                2018-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生信/" itemprop="url" rel="index">
+                    <span itemprop="name">生信</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h4><p>ichorCNA是从超低通全基因组测序（ULP-WGS，0.1x覆盖率）估计无细胞DNA中肿瘤分数的工具。</p>
+<p><strong>描述</strong></p>
+<p>ichorCNA使用概率模型，作为隐马尔可夫模型（HMM）实现，以同时分割基因组，预测大规模拷贝数改变，并估计超低通全基因组测序样本（ULP-WGS ）。ichorCNA针对样本的低覆盖率（〜0.1x）测序进行了优化，并使用患者和健康供体cfDNA样本进行了基准测试。</p>
+<p><strong>用途</strong></p>
+<p>ichorCNA可用于通知肿瘤来源DNA的存在或缺失，并指导决定进行整个外显子或更深的全基因组测序。此外，我们可以使用肿瘤分数的定量估计来校准期望的测序深度，以达到用于鉴定无细胞DNA中的突变的统计功效。最后，ichorCNA可以利用超低通量测序的成本效益方法来检测来自大群体的大规模拷贝数变化。</p>
+<p><strong>文献</strong></p>
+<p>Adalsteinsson, Ha, Freeman, et al. Scalable whole-exome sequencing of cell-free DNA reveals high concordance with metastatic tumors</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#R控制台中</span><br><span class="line">install.packages(&quot;plyr&quot;)</span><br><span class="line">source(&quot;https://bioconductor.org/biocLite.R&quot;)</span><br><span class="line">biocLite(&quot;HMMcopy&quot;)</span><br><span class="line">biocLite(&quot;GenomeInfoDb&quot;)</span><br><span class="line">install.packages(&quot;devtools&quot;)</span><br><span class="line">library(devtools)</span><br><span class="line">install_github(&quot;broadinstitute/ichorCNA&quot;, &quot;--no-docs&quot;)</span><br><span class="line">#依赖的包有很多，安装过程报错信息可以看出需要依赖的其他包</span><br></pre></td></tr></table></figure>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#以样本DYDFA-842-31为例</span><br><span class="line">$bwa mem -t 4 -B 3 -O 11 -E 4 -k 32 -Y hg19_reference_with_NC.fasta </span><br><span class="line">DYDFA-842-31/DYDFA-842-31_R1.fq.gz DYDFA-842-31_R2.fq.gz &gt; ichorCNA/test31/31.sam</span><br><span class="line"></span><br><span class="line">$samtools view -bS ichorCNA/test31/31.sam &gt; ichorCNA/test31/31.bam</span><br><span class="line"></span><br><span class="line">$samtools sort 31.bam &gt; 31.sort.bam &amp;</span><br><span class="line"></span><br><span class="line">$samtools  index 31.sort.bam &amp;</span><br><span class="line"></span><br><span class="line">$java -jar picard-2.8.2.jar MarkDuplicates I=./31.sort.bam O=./31.rmdup.bam M=rmdup_stat.txt REMOVE_DUPLICATES=true &amp;</span><br><span class="line"></span><br><span class="line">$samtools index 31.rmdup.bam  &amp;</span><br><span class="line"></span><br><span class="line">hmmcopy_utils-master/bin/readCounter --window 1000000 --quality 20 --chromosome chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY 31.rmdup.bam &gt; 31.wig &amp;</span><br><span class="line"></span><br><span class="line">$Rscript ichorCNA-master/scripts/runIchorCNA.R --id test31 --WIG test31.wig \</span><br><span class="line">    --gcWig ichorCNA-master/inst/extdata/gc_hg19_1000kb.wig \</span><br><span class="line">    --mapWig ichorCNA-master/inst/extdata/map_hg19_1000kb.wig \</span><br><span class="line">    --centromere ichorCNA-master/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt \</span><br><span class="line">    --normalPanel ichorCNA-master/inst/extdata/HD_ULP_PoN_1Mb_median_normAutosome_mapScoreFiltered_median.rds \</span><br><span class="line">    --normal &quot;c(0.5,0.6,0.7,0.8,0.9)&quot;  --scStates &quot;c(1,3)&quot; \</span><br><span class="line">    --txnE 0.9999 --txnStrength 10000 --outDir ./</span><br></pre></td></tr></table></figure>
+<h4 id="4-输出"><a href="#4-输出" class="headerlink" title="4. 输出"></a>4. 输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test31</span><br><span class="line">Gender: male</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 2.001</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure>
+<p><img src="/myphoto/clipboard31.png" alt="31"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test32</span><br><span class="line">Gender: male</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 2</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure></p>
+<p><img src="/myphoto/clipboard32.png" alt="32"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test33</span><br><span class="line">Gender: female</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 2</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure></p>
+<p><img src="/myphoto/clipboard33.png" alt="33"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test34</span><br><span class="line">Gender: female</span><br><span class="line">Tumor Fraction: 0</span><br><span class="line">Ploidy: 1.999</span><br><span class="line">Subclone Fraction:      NA</span><br></pre></td></tr></table></figure></p>
+<p><img src="/myphoto/clipboard34.png" alt="34"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test35</span><br><span class="line">Gender: female</span><br><span class="line">Tumor Fraction: 0.404</span><br><span class="line">Ploidy: 2.98</span><br><span class="line">Subclone Fraction:      0.5017</span><br></pre></td></tr></table></figure></p>
+<p><img src="/myphoto/clipboard35.png" alt="35"></p>
+<h4 id="5-解释结果"><a href="#5-解释结果" class="headerlink" title="5. 解释结果"></a>5. 解释结果</h4><h4 id="6-帮助文档"><a href="#6-帮助文档" class="headerlink" title="6. 帮助文档"></a>6. 帮助文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">Rscript runIchorCNA.R --help</span><br><span class="line">Usage: runIchorCNA.R [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">--WIG=WIG</span><br><span class="line">	WIG 文件(必须)</span><br><span class="line"></span><br><span class="line">--NORMWIG=NORMWIG</span><br><span class="line">	标准 WIG 文件 Default: [NULL]</span><br><span class="line"></span><br><span class="line">--gcWig=GCWIG</span><br><span class="line">	GC-content WIG 文件; (必须);软件给出的是hg19的GC WIG文件</span><br><span class="line"></span><br><span class="line">--mapWig=MAPWIG</span><br><span class="line">	 WIG 文件  Default: [NULL]</span><br><span class="line"></span><br><span class="line">--normalPanel=NORMALPANEL</span><br><span class="line">	深度矫正文件 Default: [NULL]</span><br><span class="line"></span><br><span class="line">--exons.bed=EXONS.BED</span><br><span class="line">	外显子bed文件 Default: [NULL]</span><br><span class="line"></span><br><span class="line">--id=ID</span><br><span class="line">	样本名 Default: [test]</span><br><span class="line"></span><br><span class="line">--centromere=CENTROMERE</span><br><span class="line">	着丝粒位置文件;ichorCNA提供的是hg19版本的. Default: [NULL]</span><br><span class="line"></span><br><span class="line">--rmCentromereFlankLength=RMCENTROMEREFLANKLENGTH</span><br><span class="line">    去除着丝粒侧翼的长度. Default: [1e+05]</span><br><span class="line"></span><br><span class="line">--normal=NORMAL</span><br><span class="line">	Initial normal contamination; can be more than one value if additional normal initializations are desired. Default: [0.5]</span><br><span class="line">    #初始正常污染; 如果需要额外的正常初始化，可以是多于一个值</span><br><span class="line">--scStates=SCSTATES</span><br><span class="line">	亚克隆状态. Default: [NULL]</span><br><span class="line"></span><br><span class="line">--coverage=COVERAGE</span><br><span class="line">	PICARD 软件计算出的覆盖度文件. Default: [NULL]</span><br><span class="line"></span><br><span class="line">--lambda=LAMBDA</span><br><span class="line">	Initial Student&apos;s t precision; must contain 4 values (e.g. c(1500,1500,1500,1500)); if not provided then will automatically use based on variance of data. Default: [NULL]</span><br><span class="line">    # 初始T-test精确度; 必须包含4个值（例如c（1500,1500,1500,1500））;如果没有提供，则会根据数据的方差自动使用</span><br><span class="line">--lambdaScaleHyperParam=LAMBDASCALEHYPERPARAM</span><br><span class="line">	Hyperparameter (scale) for Gamma prior on Student&apos;s-t precision. Default: [3]</span><br><span class="line">    #Gamma之前的超参数（规模）的t精度</span><br><span class="line">--ploidy=PLOIDY</span><br><span class="line">	Initial tumour ploidy; can be more than one value if additional ploidy initializations are desired. Default: [2]</span><br><span class="line">    # 最初的肿瘤倍性; 默认二倍体；</span><br><span class="line">--maxCN=MAXCN</span><br><span class="line">	Total clonal CN states. Default: [7]</span><br><span class="line"></span><br><span class="line">--estimateNormal=ESTIMATENORMAL</span><br><span class="line">	Estimate normal. Default: [TRUE]</span><br><span class="line"></span><br><span class="line">--estimateScPrevalence=ESTIMATESCPREVALENCE</span><br><span class="line">	Estimate subclonal prevalence. Default: [TRUE]</span><br><span class="line"></span><br><span class="line">--estimatePloidy=ESTIMATEPLOIDY</span><br><span class="line">	Estimate tumour ploidy. Default: [TRUE]</span><br><span class="line"></span><br><span class="line">--maxFracCNASubclone=MAXFRACCNASUBCLONE</span><br><span class="line">	Exclude solutions with fraction of subclonal events greater than this value. Default: [0.7]</span><br><span class="line">    # 排除大于此值的部分亚克隆事件的解决方案</span><br><span class="line">--maxFracGenomeSubclone=MAXFRACGENOMESUBCLONE</span><br><span class="line">	Exclude solutions with subclonal genome fraction greater than this value. Default: [0.5]</span><br><span class="line">    # 排除亚克隆基因组分数大于此值的解决方案</span><br><span class="line">--minSegmentBins=MINSEGMENTBINS</span><br><span class="line">	Minimum number of bins for largest segment threshold required to estimate tumor fraction; if below this threshold, then will be assigned zero tumor fraction.</span><br><span class="line"></span><br><span class="line">--altFracThreshold=ALTFRACTHRESHOLD</span><br><span class="line">	Minimum proportion of bins altered required to estimate tumor fraction; if below this threshold, then will be assigned zero tumor fraction. Default: [0.05]</span><br><span class="line">    # 评估肿瘤分数所需的最大分割阈值的最小分箱数量; 如果低于这个阈值，则将被分配零肿瘤分数</span><br><span class="line">--chrNormalize=CHRNORMALIZE</span><br><span class="line">	Specify chromosomes to normalize GC/mappability biases. Default: [c(1:22)]</span><br><span class="line">    #指定染色体</span><br><span class="line">--chrTrain=CHRTRAIN</span><br><span class="line">	Specify chromosomes to estimate params. Default: [c(1:22)]</span><br><span class="line">    #指定染色体</span><br><span class="line">--chrs=CHRS</span><br><span class="line">	Specify chromosomes to analyze. Default: [c(1:22,&quot;X&quot;)]</span><br><span class="line">    #指定染色体</span><br><span class="line">--normalizeMaleX=NORMALIZEMALEX</span><br><span class="line">	If male, then normalize chrX by median. Default: [TRUE]</span><br><span class="line">    # 男性按照X染色体分析</span><br><span class="line">--fracReadsInChrYForMale=FRACREADSINCHRYFORMALE</span><br><span class="line">	Threshold for fraction of reads in chrY to assign as male. Default: [0.001]</span><br><span class="line">    #将chrY中的读数部分的阈值分配为男性</span><br><span class="line">--includeHOMD=INCLUDEHOMD</span><br><span class="line">	If FALSE, then exclude HOMD state. Useful when using large bins (e.g. 1Mb). Default: [FALSE]</span><br><span class="line">    # 如果FALSE，则排除HOMD状态。 使用大容量箱（如1Mb）时很有用</span><br><span class="line">--txnE=TXNE</span><br><span class="line">	Self-transition probability. Increase to decrease number of segments. Default: [0.9999999]</span><br><span class="line">    #　自我转换概率。 增加以减少段数</span><br><span class="line">--txnStrength=TXNSTRENGTH</span><br><span class="line">	Transition pseudo-counts. Exponent should be the same as the number of decimal places of --txnE. Default: [1e+07]</span><br><span class="line">    # 转换伪计数。 指数应与--txnE的小数位数相同</span><br><span class="line">--plotFileType=PLOTFILETYPE</span><br><span class="line">	File format for output plots. Default: [pdf]</span><br><span class="line">    #图片输出格式</span><br><span class="line">--plotYLim=PLOTYLIM</span><br><span class="line">	ylim to use for chromosome plots. Default: [c(-2,2)]</span><br><span class="line">    y轴范围</span><br><span class="line">--outDir=OUTDIR</span><br><span class="line">	Output Directory. Default: [./]</span><br><span class="line"></span><br><span class="line">--libdir=LIBDIR</span><br><span class="line">	Script library path. Usually exclude this argument unless custom modifications have been made to the ichorCNA R package code and the user would like to source those R files. Default: [NULL]</span><br></pre></td></tr></table></figure>
           
         
       

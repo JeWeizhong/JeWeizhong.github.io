@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/myphoto/logtic.png">
 <meta property="og:image" content="http://yoursite.com/myphoto/output_12_0.png">
 <meta property="og:image" content="http://yoursite.com/myphoto/output_12_1.png">
-<meta property="og:updated_time" content="2019-01-23T13:43:44.535Z">
+<meta property="og:updated_time" content="2019-01-23T13:47:22.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记-----Logistic回归">
 <meta name="twitter:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程 线性回归回顾先来看一个简单的线性回归模型： f(x) = \vec\omega^T \vec{x}+b这里的 \vec\omega^T = [\omega_1,\omega_2,\cdo">
@@ -396,7 +396,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
 <script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>我们为了便于推导，忽略了下标，只用了一组$(\vec{x},y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
 <script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}</script><h2 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h2><p>线性回归很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
 <p>这里引出一个sigmoid函数：</p>
-<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}</script><p><img src="/myphoto/logtic.png" alt="logtic"></p>
+<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/logtic.png" alt="logtic"></p>
 <p>令：</p>
 <script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-\vec\omega^T \vec{x}}}</script><p>我们就引出了我们的模型：</p>
 <script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b</script><p>上式中$\frac{y}{1-y}$ 称为几率，反应x获得正例(y)的相对可能性，由此可以看出，模型实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>

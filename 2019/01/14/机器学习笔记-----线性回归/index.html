@@ -102,15 +102,15 @@
 <meta property="og:site_name" content="木叶村">
 <meta property="og:description" content="线性模型的基本形式给定由d 个属性描述的示例$\vec x = (x_1,x_2,…x_d)$ ， 其中$x_i$是x 在第i个属性上的取值，线性模型(linear model)试图学得一个通过属性的线性组合来进行预测的函数，即: f(\vec x) = \omega_1 x_1 + \omega_2 x_2 +\cdots + \omega_d x_d+d + b  \tag{1}写成向量式：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="e:/bioinformation/Hexo/source/myphoto/ml1.png">
-<meta property="og:image" content="e:/bioinformation/Hexo/source/myphoto/ml2.png">
-<meta property="og:image" content="e:/bioinformation/Hexo/source/myphoto/ml3.png">
+<meta property="og:image" content="http://yoursite.com/myphoto/ml1.png">
+<meta property="og:image" content="http://yoursite.com/myphoto/ml2.png">
+<meta property="og:image" content="http://yoursite.com/myphoto/ml3.png">
 <meta property="og:image" content="http://yoursite.com/myphoto/liner_reg.png">
-<meta property="og:updated_time" content="2019-01-23T13:43:51.182Z">
+<meta property="og:updated_time" content="2019-01-23T13:47:25.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习系列笔记(一)：线性回归">
 <meta name="twitter:description" content="线性模型的基本形式给定由d 个属性描述的示例$\vec x = (x_1,x_2,…x_d)$ ， 其中$x_i$是x 在第i个属性上的取值，线性模型(linear model)试图学得一个通过属性的线性组合来进行预测的函数，即: f(\vec x) = \omega_1 x_1 + \omega_2 x_2 +\cdots + \omega_d x_d+d + b  \tag{1}写成向量式：">
-<meta name="twitter:image" content="e:/bioinformation/Hexo/source/myphoto/ml1.png">
+<meta name="twitter:image" content="http://yoursite.com/myphoto/ml1.png">
 
 
 
@@ -379,9 +379,9 @@
 <script type="math/tex; mode=display">E(w,b) = \sum(f(x)-y)^2 \tag{5}</script><p>$E(w,b)$在这里就叫做<strong>代价函数</strong>,吴恩达老师的机器学习课程中稍做了调整：</p>
 <script type="math/tex; mode=display">E(w,b) = \frac{1}{2m} \sum_{i=1}^m (f(x)-y)^2 \tag{5}</script><p>我们只需要对$E(w,b)$求偏导就能够求得最小值，这里假设$E(w,b)$是<strong>凸函数</strong>：</p>
 <script type="math/tex; mode=display">\frac{\partial E(\omega,b) }{\partial \omega} = 2(\omega \sum_{1=1}^m x_i^2 - \sum_{i=1}^m (y_i-b)x_i)</script><script type="math/tex; mode=display">\frac{\partial E(\omega,b) }{\partial b} = 2(mb - \sum_{i=1}^m (y_i-\omega x_i))</script><h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>在讲梯度下降法之前，我们先讲如何直接解出$E(\omega,b)$的最小值：</p>
-<p><img src="E:\bioinformation\Hexo\source\myphoto\ml1.png" alt="解方程"></p>
-<p><img src="E:\bioinformation\Hexo\source\myphoto\ml2.png" alt="解方程2"></p>
-<p><img src="E:\bioinformation\Hexo\source\myphoto\ml3.png" alt="解方程3"></p>
+<p><img src="/myphoto/ml1.png" alt="解方程"></p>
+<p><img src="/myphoto/ml2.png" alt="解方程2"></p>
+<p><img src="/myphoto/ml3.png" alt="解方程3"></p>
 <p>显然这种方法比较复杂，貌似计算量也很大?</p>
 <p>下面讲另一种求解$E$最小值的方式，<strong>梯度下降法</strong></p>
 <p>该方法的核心思想是同步更新$\vec\omega,b$中每个值：</p>
