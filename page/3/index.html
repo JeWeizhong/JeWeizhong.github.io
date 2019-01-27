@@ -270,243 +270,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/Linux系列---vim(2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/Linux系列---vim(2)/" itemprop="url">vim 进阶版</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T00:00:00+08:00">
-                2018-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>参考链接</strong>: <a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html" target="_blank" rel="noopener">https://linuxtoy.org/archives/efficient-editing-with-vim.html</a></p>
-<h2 id="高效率移动"><a href="#高效率移动" class="headerlink" title="高效率移动"></a>高效率移动</h2><h3 id="在当前行里面有效的移动光标"><a href="#在当前行里面有效的移动光标" class="headerlink" title="在当前行里面有效的移动光标"></a>在当前行里面有效的移动光标</h3><ul>
-<li>fx：移动光标到当前行的下一个 x 处。很明显，x 可以是任意一个字母，而且你可以使用 ; 来重复你的上一个 f 命令。</li>
-<li>tx：和上面的命令类似，但是是移动到 x 的左边一个位置。（这真的很有用）</li>
-<li>Fx：和 fx 类似，不过是往回找。</li>
-<li>w：光标往前移动一个词。</li>
-<li>b：光标往后移动一个词。</li>
-<li>0：移动光标到当前行首。</li>
-<li>^：移动光标到当前行的第一个字母位置。</li>
-<li>$：移动光标到行尾。</li>
-<li>)：移动光标到下一个句子。</li>
-<li>( ：移动光标到上一个句子。</li>
-</ul>
-<h3 id="在整个文件里面有效移动光标"><a href="#在整个文件里面有效移动光标" class="headerlink" title="在整个文件里面有效移动光标"></a>在整个文件里面有效移动光标</h3><ul>
-<li>ctrl+F：向下移动一屏。</li>
-<li>ctrl+B：向上移动一屏。</li>
-<li>G：到文件尾</li>
-<li>numG：移动光标到指定的行（num）。（比如 10G 就是到第 10 行）</li>
-<li>gg：到文件首</li>
-<li>H：移动光标到屏幕上面</li>
-<li>M：移动光标到屏幕中间</li>
-<li>L：移动光标到屏幕下面</li>
-<li>*：读取光标处的字符串，并且移动光标到它再次出现的地方。</li>
-<li><h1 id="：和上面的类似，但是是往反方向寻找。"><a href="#：和上面的类似，但是是往反方向寻找。" class="headerlink" title="：和上面的类似，但是是往反方向寻找。"></a>：和上面的类似，但是是往反方向寻找。</h1></li>
-<li>/text：从当前光标处开始搜索字符串 text，并且到达 text 出现的地方。必须使用回车来开始这个搜索命令。如果想重复上次的搜索的话，按 n。</li>
-<li>？text：和上面类似，但是是反方向。</li>
-<li>ma：在当前光标的位置标记一个书签，名字为 a。书签名只能是小写字母。你看不见书签的存在，但它确实已经在那里了。</li>
-<li>`a：到书签 a 处。注意这个不是单引号，它一般位于大部分键盘的 1 的左边。</li>
-<li>`.：到你上次编辑文件的地方。这个命令很有用，而且你不用自己去标记它。</li>
-</ul>
-<h2 id="高效的输入"><a href="#高效的输入" class="headerlink" title="高效的输入"></a>高效的输入</h2><h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p>使用关键词自动完成功能，你只需要输入开始几个字母（比如 iAmAL），然后按 <code>&lt;C-N&gt;</code>（按住 Ctrl，再按 N）或者 <code>&lt;C-P&gt;</code>。如果 Vim 没有给出你想要的词，继续按，直到你满意为止，Vim 会一直循环它找到的匹配的字符串</p>
-<h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><ul>
-<li>i：在当前字符的左边插入</li>
-<li>I：在当前行首插入</li>
-<li>a：在当前字符的右边插入</li>
-<li>A：在当前行尾插入</li>
-<li>o：在当前行下面插入一个新行</li>
-<li>O：在当前行上面插入一个新行</li>
-<li>c{motion}：删除 motion 命令跨过的字符，并且进入插入模式。比如：c$，这将会删除从光标位置到行尾的字符并且进入插入模式。ct！，这会删除从光标位置到下一个叹号（但不包括），然后进入插入模式。被删除的字符被存在了剪贴板里面，并且可以再粘贴出来。</li>
-<li>d{motion}：和上面差不多，但是不进入插入模式。</li>
-</ul>
-<h2 id="移动大段文本"><a href="#移动大段文本" class="headerlink" title="移动大段文本"></a>移动大段文本</h2><h3 id="可视选择"><a href="#可视选择" class="headerlink" title="可视选择"></a>可视选择</h3><ul>
-<li>v：按字符选择。经常使用的模式，所以亲自尝试一下它。</li>
-<li>V：按行选择。这在你想拷贝或者移动很多行的文本的时候特别有用。</li>
-<li>ctrl+V：按块选择。非常强大，只在很少的编辑器中才有这样的功能。你可以选择一个矩形块，并且在这个矩形里面的文本会被高亮。</li>
-</ul>
-<p>在选择模式的时候使用上面所述的方向键和命令（motion）。比如，vwww，会高亮光标前面的三个词。Vjj 将会高亮当前行以及下面两行。</p>
-<h3 id="在可视选择模式下剪切和拷贝"><a href="#在可视选择模式下剪切和拷贝" class="headerlink" title="在可视选择模式下剪切和拷贝"></a>在可视选择模式下剪切和拷贝</h3><p>一旦你高亮了选区，你或许想进行一些操作：</p>
-<ul>
-<li>d：剪贴选择的内容到剪贴板。</li>
-<li>y：拷贝选择的内容到剪贴板。</li>
-<li>c：剪贴选择的内容到剪贴板并且进入插入模式。</li>
-</ul>
-<h3 id="在非可视选择模式下剪切和拷贝"><a href="#在非可视选择模式下剪切和拷贝" class="headerlink" title="在非可视选择模式下剪切和拷贝"></a>在非可视选择模式下剪切和拷贝</h3><p>如果你很清楚的知道你想拷贝或者剪切什么，那你根本就不需要进入可视选择模式。这样也会节省时间：</p>
-<ul>
-<li>d{motion}：剪切 motion 命令跨过的字符到剪贴板。比如，dw 会剪切一个词而 dfS 会将从当前光标到下一个 S 之间的字符剪切至剪贴板。</li>
-<li>y{motion}：和上面类似，不过是拷贝。</li>
-<li>c{motion}：和 d{motion} 类似，不过最后进入插入模式。</li>
-<li>dd：剪切当前行。</li>
-<li>yy：拷贝当前行。</li>
-<li>cc：剪切当前行并且进入插入模式。</li>
-<li>D：剪切从光标位置到行尾到剪贴板。</li>
-<li>Y：拷贝当前行。</li>
-<li>C：和 D 类似，最后进入插入模式。</li>
-<li>x：剪切当前字符到剪贴板。</li>
-<li>s：和x类似，不过最后进入插入模式。</li>
-</ul>
-<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><p>粘贴很简单，按 p。</p>
-<h2 id="避免重复"><a href="#避免重复" class="headerlink" title="避免重复"></a>避免重复</h2><h3 id="令人惊奇的-命令"><a href="#令人惊奇的-命令" class="headerlink" title="令人惊奇的 . 命令"></a>令人惊奇的 . 命令</h3><p>在 Vi 里面，输入 <code>.</code> (小数点符号），将会重复你输入的上一个命令。比如，你上个命令为“dw”（删除一个词），Vi 将会接着再删除一个词。</p>
-<h3 id="使用数字"><a href="#使用数字" class="headerlink" title="使用数字"></a>使用数字</h3><p>使用数字也是 Vim 强大的而且很节省时间的重要特性之一。在很多 Vim 的命令之前都可以使用一个数字，这个数字将会告诉 Vim 这个命令需要执行几次。比如：</p>
-<ul>
-<li>3j: 将会把光标向下移动三行。</li>
-<li>10dd: 将会删除十行。</li>
-<li>y3”: 将会拷贝从当前光标到第三个出现的引号之间的内容到剪贴板。<br>数字是扩展 motion 命令作用域非常有效的方法。</li>
-</ul>
-<h3 id="记录宏"><a href="#记录宏" class="headerlink" title="记录宏"></a>记录宏</h3><p>有时候，你会发现你自己在文章的每段或者每行都重复相同的一系列动作。Vim 允许你记录一个宏来完成你的特殊需要。</p>
-<ul>
-<li>qregister：记录宏到寄存器 register，这里 register 是任意的你的寄存器的名字。比如 qa，将会记录并且把宏存在寄存器 a 里面。</li>
-<li>q：结束宏的记录。</li>
-<li>@register：使用存在寄存器 register 的宏。比如 @a，将会使用存在寄存器 a 里面的宏。</li>
-</ul>
-<p>必须要记住的是，宏只记录了你的系列按键并且重复执行它们。它们不是魔法。因为在 Vim 里面完成目的的方法有很多，所以有时候你要小心选择命令来记录你的宏。因为它们会在所有你要执行它的地方执行。</p>
-<h2 id="用-Vim-写代码"><a href="#用-Vim-写代码" class="headerlink" title="用 Vim 写代码"></a>用 Vim 写代码</h2><p>Vim 是一个用来写代码的绝好编辑器，因为它有一些特性是专门为程序员而设计的。这里是一些常用的：</p>
-<ul>
-<li>]p：和 p 的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！</li>
-<li>%：匹配花括号、方括号、括号等。在一个括号的上面，然后按 %，鼠标就会出现在匹配的另外一半括号处。</li>
-<li><blockquote>
-<blockquote>
-<p>：缩进所有选择的代码</p>
-</blockquote>
-</blockquote>
-</li>
-<li>&lt;&lt;：和上面类似，但是反缩进</li>
-<li>gd：到达光标所在处函数或者变量的定义处。</li>
-<li>K：在 Man 里面查找光标当前所在处的词。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/Linux系列---(转)你应该知道的Linux技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2043,6 +1806,179 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/python3cook系列笔记(七)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Naruto">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/137356299.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木叶村">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/python3cook系列笔记(七)/" itemprop="url">python3 cookbook笔记： 第八章 类与对象(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T00:00:00+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类 定义了一组属性，这些属性与一组叫做<strong>实例</strong>的对象相关且由其共享。类通常是由函数（称为<strong>方法</strong> ，method）、变量（称为<strong>类变量</strong> ，class variable）和计算出的属性（称为<strong>特性</strong> ，property）组成的集合</p>
+<h3 id="class-语句"><a href="#class-语句" class="headerlink" title="class 语句"></a>class 语句</h3><p>使用<code>class</code>语句可定义类。类主体包含一系列在类定义时执行的语句，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span><span class="params">(object)</span>:</span></span><br><span class="line">　　 num_accounts = <span class="number">0</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,balance)</span>:</span></span><br><span class="line">　　　　 self.name = name</span><br><span class="line">　　　　 self.balance = balance</span><br><span class="line">　　　　 Account.num_accounts += <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 Account.num_accounts -= <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">deposit</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance + amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance - amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">inquiry</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 <span class="keyword">return</span> self.balance</span><br></pre></td></tr></table></figure>
+<p>在类主体执行期间创建的值放在类对象中，这个对象充当着命名空间，与模块极为相似。例如，访问Account 类成员的方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Account.num_accounts</span><br><span class="line">Account.__init__</span><br><span class="line">Account.__del__</span><br><span class="line">Account.deposit</span><br><span class="line">Account.withdraw</span><br><span class="line">Account.inquiry</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，class 语句本身并不创建该类的任何实例（例如，上一个例子实际上不会创建任何账户）。类仅设置将在以后创建的所有实例使用的属性。从这种意义上讲，可以将类看作一个蓝图。</p>
+<p>类中定义的函数称为<strong>实例方法</strong> 。实例方法是一种在类的实例上进行操作的函数，类实例作为第一个参数传递。根据约定，这个参数称为<code>self</code> ，尽管所有合法的标识符都可以使用。在前面的例子中，<code>deposit()</code> 、<code>withdraw()</code>和<code>inquiry()</code> 都是实例方法。</p>
+<p><strong>类变量</strong>（如<code>num_accounts</code> ）是可在类的所有实例之间共享的值（也就是说，它们不是单独分配给每个实例的）。上例中的<code>num_accounts</code> 变量用于跟踪存在多少个Account 实例。</p>
+<h3 id="类实例"><a href="#类实例" class="headerlink" title="类实例"></a>类实例</h3><p>类的实例是以函数形式调用类对象来创建的。这种方法将创建一个新实例，然后将该实例传递给类的<code>__init__()</code>方法。<code>__init__()</code> 方法的参数包括新创建的实例self 和在调用类对象时提供的参数。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一些账户</span></span><br><span class="line">a = Account(<span class="string">"Guido"</span>, <span class="number">1000.00</span>)　 </span><br><span class="line"><span class="comment"># 调用Account.__init__(a,"Guido",1000.00)</span></span><br><span class="line">b = Account(<span class="string">"Bill"</span>, <span class="number">10.00</span>)</span><br></pre></td></tr></table></figure>
+<p>在<code>__init__()</code> 内，通过将属性分配给self 来将其保存到实例中。上例中，<code>self.name =  &quot;Guido&quot;</code>。</p>
+<p><strong>上面创建了两个实例</strong>，然后用(<code>.</code>)运算符即可访问属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.deposit(<span class="number">100.00</span>)　　　</span><br><span class="line"><span class="comment"># 调用Account.deposit(a,100.00)</span></span><br><span class="line"><span class="comment"># self.balance已经通过__init__实例化,即self.balance = 1000.00</span></span><br><span class="line"><span class="comment"># 所以访问deposit属性后：</span></span><br><span class="line"><span class="comment"># self.balance = 1000.00 + 100.00</span></span><br><span class="line">b.withdraw(<span class="number">50.00</span>)　　　<span class="comment"># 调用Account.withdraw(b,50.00)</span></span><br><span class="line">name = a.name　　　　　<span class="comment"># 获取账户名</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><ul>
+<li>默认的字符串显示是<code>__str__()</code>方法，我们可以自定义<code>__repr__()</code> 和<code>__str__()</code>来是的交互更加友好</li>
+<li><code>format()</code> 函数实际上是调用的<code>__formait__()</code>方法</li>
+<li><code>with</code>语句是调用的<code>__enter__()</code> 和<code>__exit__()</code> 方法,我们可以在定义类的时候定义这两个方法，就能使对象支持<code>witg</code>上下文管理</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> socket, AF_INET, SOCK_STREAM</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyConnection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, address, family=AF_INET, type=SOCK_STREAM)</span>:</span></span><br><span class="line">        self.address = address</span><br><span class="line">        self.family = family</span><br><span class="line">        self.type = type</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.sock <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">'Already connected'</span>)</span><br><span class="line">        self.sock = socket(self.family, self.type)</span><br><span class="line">        self.sock.connect(self.address)</span><br><span class="line">        <span class="keyword">return</span> self.sock</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_ty, exc_val, tb)</span>:</span></span><br><span class="line">        self.sock.close()</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>类添加<code>__slots__</code>属性来极大的减少实例所占的内存,但使用后我们不能再给实例添加新的属性了，只能使用在<code>__slots__</code> 中定义的那些属性名。</li>
+<li>约定是任何以单下划线<code>_</code> 开头的名字都应该是内部实现</li>
+<li><p>使用双下划线开始会导致访问名称变成其他形式:</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__private = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        self.__private_method()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>比如，在前面的类<code>B</code> 中，私有属性会被分别重命名为<code>_B__private</code> 和<code>_B__private_method</code> 。这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。比如：</p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.__private = <span class="number">1</span> <span class="comment"># Does not override B.__private</span></span><br><span class="line">    <span class="comment"># Does not override B.__private_method()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>这里，私有名称<code>__private</code> 和<code>__private_method</code> 被重命名为<code>_C__private</code> 和<code>_C__private_method</code> ，这个跟父类<code>B</code> 中的名称是完全不同的。</p>
+<ul>
+<li>有时候你定义的一个变量和某个保留关键字冲突，这时候可以使用单下划线作为后缀</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2093,7 +2029,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
