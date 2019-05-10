@@ -329,20 +329,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/Linux/" title="Linux: 9">
+                <a href="/categories/C-C/" title="C/C++: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Linux
-                        <span class="tag-length">9</span>
+                            style="background-color: #F5EEF8;">C/C++
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/C-C/" title="C/C++: 1">
+                <a href="/categories/Linux/" title="Linux: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">C/C++
-                        <span class="tag-length">1</span>
+                            style="background-color: #D5F5E3;">Linux
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -431,19 +431,21 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2018/11/07/python3cook-xi-lie-bi-ji-liu/">
+                    <a href="/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="python3 cookbook笔记：第四章 文件与IO">
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="python3 标准库系列(三)---os.path">
                             
-                            <span class="card-title">python3 cookbook笔记：第四章 文件与IO</span>
+                            <span class="card-title">python3 标准库系列(三)---os.path</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary">
                             
-                                所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。
+                                os.path模块比较简单，先记住下面这些常用的用就可以了：
+>>> import os
+>>> path = '/Users/beazle
                             
                         </div>
                         <div class="publish-info">
@@ -584,24 +586,20 @@ pars
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/">
+                    <a href="/2018/11/02/python3cook-xi-lie-bi-ji-si/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="python3 标准库系列(一)---email模块">
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="python3 cookbook笔记：第二章 字符串和文本">
                             
-                            <span class="card-title">python3 标准库系列(一)---email模块</span>
+                            <span class="card-title">python3 cookbook笔记：第二章 字符串和文本</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary">
                             
-                                自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程
-
-#-*-coding:utf-8-*-
-
-import smtplib
-imp
+                                本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。
+由于自己对这部分处理没有需求
                             
                         </div>
                         <div class="publish-info">
@@ -639,20 +637,24 @@ imp
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2018/11/02/python3cook-xi-lie-bi-ji-si/">
+                    <a href="/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="python3 cookbook笔记：第二章 字符串和文本">
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="python3 标准库系列(一)---email模块">
                             
-                            <span class="card-title">python3 cookbook笔记：第二章 字符串和文本</span>
+                            <span class="card-title">python3 标准库系列(一)---email模块</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary">
                             
-                                本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。
-由于自己对这部分处理没有需求
+                                自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程
+
+#-*-coding:utf-8-*-
+
+import smtplib
+imp
                             
                         </div>
                         <div class="publish-info">
@@ -1071,5 +1073,21 @@ setup.py 里面可以设置sqlite3的搜索路径， 以防止模块
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
