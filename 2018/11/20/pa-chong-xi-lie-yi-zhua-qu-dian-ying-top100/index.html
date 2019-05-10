@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>爬虫系列(一)---抓取电影评分top100 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="python3,爬虫">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="爬虫系列(一)---抓取电影评分top100"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>爬虫系列(一)---抓取电影评分top100</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/20/pa-chong-xi-lie-yi-zhua-qu-dian-ying-top100/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-19T16:00:00.000Z">
+          2018-11-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <pre class=" language-lang-python"><code class="language-lang-python">import requests
+from bs4 import BeautifulSoup
+import os
+import re
+from requests.exceptions import RequestException
+from multiprocessing import Pool
+
+'''
+抓取猫眼电影网，历史电影评分top100
+'''
+
+def getHtml(url):
+    '''
+    获取网页内容
+    '''
+    try:
+        # 我也不知道为什么要加请求头才可以
+        headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36'}
+        response = requests.get(url,headers=headers)
+        #print(response.status_code)
+        if response.status_code == 200:
+            return response.text
+        return None
+    except RequestException as e:
+        print(e)
+        return None
+
+def parseHtml(html):
+    '''
+    解析网页,抓取：电影排名，分数，上映时间，主演，封面url
+    '''
+    #找到所有 dd 标签
+    soup = BeautifulSoup(html,"lxml")
+    films = soup.find_all("dd")
+    outList = []
+    for i in films:
+        # 排名
+        num = i.find_all("i",{"class":re.compile("board-index board-index.+\d+")})[0].get_text().strip()
+        # 影名
+        name = i.find_all("p",{"class":"name"})[0].get_text().strip()
+        # 评分
+        score = i.find_all("p",{"class":"score"})[0].get_text().strip()
+        #print(score)
+        # 时间
+        releaseTime = i.find_all("p",{"class":"releasetime"})[0].get_text().strip()
+        # 主演
+        star = i.find_all("p",{"class":"star"})[0].get_text().strip()
+        outList.append([num,name,score,releaseTime,star])
+    return outList
+
+def main(index):
+    url = f"http://ma oyan.com/board/4?offset={index}"
+
+    html = getHtml(url)
+    outList = parseHtml(html)
+    for i in outList:
+        print(i)
+
+if __name__ == "__main__":
+    #pool = Pool()
+    for i in range(10):
+        main(i*10)
+</code></pre>
+<p>输出：</p>
+<pre><code>[&#39;1&#39;, &#39;霸王别姬&#39;, &#39;9.6&#39;, &#39;上映时间：1993-01-01&#39;, &#39;主演：张国荣,张丰毅,巩俐&#39;]
+[&#39;2&#39;, &#39;肖申克的救赎&#39;, &#39;9.5&#39;, &#39;上映时间：1994-10-14(美国)&#39;, &#39;主演：蒂姆·罗宾斯,摩根·弗里曼,鲍勃·冈顿&#39;]
+[&#39;3&#39;, &#39;罗马假日&#39;, &#39;9.1&#39;, &#39;上映时间：1953-09-02(美国)&#39;, &#39;主演：格利高里·派克,奥黛丽·赫本,埃迪·艾伯特&#39;]
+[&#39;4&#39;, &#39;这个杀手不太冷&#39;, &#39;9.5&#39;, &#39;上映时间：1994-09-14(法国)&#39;, &#39;主演：让·雷诺,加里·奥德曼,娜塔莉·波特曼&#39;]
+[&#39;5&#39;, &#39;教父&#39;, &#39;9.3&#39;, &#39;上映时间：1972-03-24(美国)&#39;, &#39;主演：马龙·白兰度,阿尔·帕西诺,詹姆斯·肯恩&#39;]
+[&#39;6&#39;, &#39;泰坦尼克号&#39;, &#39;9.5&#39;, &#39;上映时间：1998-04-03&#39;, &#39;主演：莱昂纳多·迪卡普里奥,凯特·温丝莱特,比利·赞恩&#39;]
+[&#39;7&#39;, &#39;唐伯虎点秋香&#39;, &#39;9.2&#39;, &#39;上映时间：1993-07-01(中国香港)&#39;, &#39;主演：周星驰,巩俐,郑佩佩&#39;]
+[&#39;8&#39;, &#39;千与千寻&#39;, &#39;9.3&#39;, &#39;上映时间：2001-07-20(日本)&#39;, &#39;主演：柊瑠美,入野自由,夏木真理&#39;]
+[&#39;9&#39;, &#39;魂断蓝桥&#39;, &#39;9.2&#39;, &#39;上映时间：1940-05-17(美国)&#39;, &#39;主演：费雯·丽,罗伯特·泰勒,露塞尔·沃特森&#39;]
+[&#39;10&#39;, &#39;乱世佳人&#39;, &#39;9.1&#39;, &#39;上映时间：1939-12-15(美国)&#39;, &#39;主演：费雯·丽,克拉克·盖博,奥利维娅·德哈维兰&#39;]
+(后面省略)
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/爬虫/">爬虫</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

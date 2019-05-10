@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 cookbook笔记：第四章 迭代器与生成器 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 cookbook笔记：第四章 迭代器与生成器"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 cookbook笔记：第四章 迭代器与生成器</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/05/python3cook-xi-lie-bi-ji-wu/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-04T16:00:00.000Z">
+          2018-11-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>可迭代对象是一个比较新的词汇，而迭代是Python 最强大的功能之一。初看起来，你可能会简单的认为迭代只不过是处理序列中元素的一种方法。然而，绝非仅仅就是如此，还有很多你可能不知道的，比如创建你自己的迭代器对象，在itertools 模块中使用有用的迭代模式，构造生成器函数等等。</p>
+<ol>
+<li><p>使用<code>next()</code>可以实现手动手动迭代，其实任何迭代内部都是调用了<code>__next__()</code>方法迭代结束标识是在结尾处捕获了<code>StopIteration</code></p>
+</li>
+<li><p><code>yield</code> 语句可是创建一个可迭代对象</p>
+</li>
+<li><p>函数<code>itertools.islice()</code>用于在迭代器和生成器上做切片操作:</p>
+<pre class=" language-lang-python"><code class="language-lang-python">     >>> def count(n):
+ ...         while True:
+ ...             yield n
+ ...             n += 1
+ ...
+ >>> c = count(0)
+ >>> c[10:20]
+ Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ TypeError: 'generator' object is not subscriptable
+ >>> # Now using islice()
+ >>> import itertools
+ >>> for x in itertools.islice(c, 10, 20):
+ ... print(x)
+ ...
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ >>>
+</code></pre>
+<p> 迭代器和生成器不能使用标准的切片操作，因为它们的长度事先我们并不知道(并且也没有实现索引)。函数islice() 返回一个可以生成指定元素的迭代器，它通过遍<br>历并丢弃直到切片开始索引位置的所有元素。然后才开始一个个的返回元素，并直到切片结束索引位置。<br> 这里要着重强调的一点是islice() 会消耗掉传入的迭代器中的数据。必须考虑到迭代器是不可逆的这个事实。所以如果你需要之后再次访问这个迭代器的话，那你就得<br>先将它里面的数据放入一个列表中。</p>
+</li>
+<li><p><code>itertools.dropwhile()</code> 函数,你给它传递一个函数对象和一个可迭代对象。它会返回一个迭代器对象，丢弃原有序列中直到函数返回Flase 之前的所有元素，然后返回后<br>面所有元素。</p>
+</li>
+<li><p><strong>排列组合的迭代：</strong>迭代遍历一个集合中元素的所有可能的排列或组合。<br><code>itertools.permutations()</code>函数接受一个集合并产生一个元组序列，序列包括了集合中所有的排列组合(顺序不同也算是一种组合)：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> >>> items = ['a', 'b', 'c']
+ >>> from itertools import permutations
+ >>> for p in permutations(items):
+ ... print(p)
+ ...
+ ('a', 'b', 'c')
+ ('a', 'c', 'b')
+ ('b', 'a', 'c')
+ ('b', 'c', 'a')
+ ('c', 'a', 'b')
+ ('c', 'b', 'a')
+ >>>
+</code></pre>
+<p> 如果你想得到指定长度的所有排列，你可以传递一个可选的长度参数:</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> >>> for p in permutations(items, 2):
+ ... print(p)
+ ...
+ ('a', 'b')
+ ('a', 'c')
+ ('b', 'a')
+ ('b', 'c')
+ ('c', 'a')
+ ('c', 'b')
+ >>>
+</code></pre>
+<p> <code>itertools.combinations()</code>函数也是返回排列组合，但是忽略顺序，即，组合(‘a’,’b’) 跟(‘b’, ‘a’)</p>
+</li>
+<li><p>内置的<code>enumerate() 函数</code>返回索引跟对应的元素</p>
+</li>
+<li><p><code>zip()</code> 函数可以同时迭代多喝序列：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> >>> xpts = [1, 5, 4, 2, 10, 7]
+ >>> ypts = [101, 78, 37, 15, 62, 99]
+ >>> for x, y in zip(xpts, ypts):
+ ...     print(x,y)
+ ...
+ 1 101
+ 5 78
+ 4 37
+ 2 15
+ 10 62
+ 7 99
+ >>>
+</code></pre>
+</li>
+<li><p><code>isinstance(x, Iterable)</code> 检查某个元素是否是可迭代的</p>
+</li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

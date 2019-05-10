@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 cookbook笔记：第二章 字符串和文本 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 cookbook笔记：第二章 字符串和文本"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 cookbook笔记：第二章 字符串和文本</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/02/python3cook-xi-lie-bi-ji-si/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-01T16:00:00.000Z">
+          2018-11-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。</p>
+<p>由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。</p>
+<p>等以后有文字处理这方面的需求再回过头来复习</p>
+<p><code>startswith()</code> 和<code>endswith()</code> 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。</p>
+<p><strong>正则表达式</strong></p>
+<pre><code>```python
+    re.compile() # 编译匹配模式
+    re.match() # 匹配开头
+    re.search() # 任意位置,但只匹配一次
+    re.findall() # 匹配多次，返回元组
+    re.finditer() # 匹配多次，返回迭代器
+```
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

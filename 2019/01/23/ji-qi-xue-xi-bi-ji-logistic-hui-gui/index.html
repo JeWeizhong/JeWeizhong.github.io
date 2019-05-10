@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>机器学习笔记-----Logistic回归 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="python3,机器学习">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="机器学习笔记-----Logistic回归"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>机器学习笔记-----Logistic回归</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-01-22T16:00:00.000Z">
+          2019-01-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
+<p>至于为什么叫对数几率刚回归，请看下面的推倒过程</p>
+<h2 id="线性回归回顾"><a href="#线性回归回顾" class="headerlink" title="线性回归回顾"></a>线性回归回顾</h2><p>先来看一个简单的线性回归模型：</p>
+<script type="math/tex; mode=display">f(x) = \vec\omega^T \vec{x}+b</script><p>这里的</p>
+<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
+\begin{matrix}
+x_1 \\
+x_2  \\
+\cdots\\
+x_n  
+\end{matrix} \right]</script><p>一般来说给定的数据集是：$D=\{(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})\}$, 即有m组数据，n个未知数，因此多变量线性回归的公式是：</p>
+<script type="math/tex; mode=display">f(x)= X^T \vec\omega</script><p>其中：</p>
+<script type="math/tex; mode=display">X = \left[
+\begin{matrix}
+x_1^{(1)} \   x_2^{(1)} \ x_1^{(1)} \ \cdots \ x_n^{(1)} \ 1 \\
+x_1^{(2)} \   x_2^{(2)} \ x_3^{(2)} \ \cdots \ x_n^{(2)} \ 1 \\
+x_1^{(3)} \   x_2^{(3)} \ x_3^{(3)} \ \cdots \ x_n^{(3)} \ 1 \\
+\cdots \\
+x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1 
+\end{matrix} \right] =  \left[
+\begin{matrix}
+\vec x^{(1)T} \ 1 \\
+\vec x^{(2)T} \ 1 \\
+\vec x^{(3)T} \ 1 \\
+\cdots \\
+\vec x^{(m)T} \ 1 \\
+\end{matrix} \right]</script><p>展开式：</p>
+<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>我们为了便于推导，忽略了下标，只用了一组$(\vec{x},y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
+<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}</script><h2 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h2><p>线性回归很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
+<p>这里引出一个sigmoid函数：</p>
+<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/logtic.png" alt="logtic"></p>
+<p>令：</p>
+<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-\vec\omega^T \vec{x}}}</script><p>我们就引出了我们的模型：</p>
+<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b</script><p>上式中$\frac{y}{1-y}$ 称为几率，反应x获得正例(y)的相对可能性，由此可以看出，模型实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
+<script type="math/tex; mode=display">p(y=1 |  x;\omega) = f(x)</script><script type="math/tex; mode=display">p(y=0 |  x;\omega) = 1- f(x)</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式中：</p>
+<script type="math/tex; mode=display">p(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}}</script><script type="math/tex; mode=display">p(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}</script><p>为了确定$\omega$用对数似然函数：</p>
+<script type="math/tex; mode=display">\ell(\omega) = lnp(y|x ;\omega)</script><p>可以合并到一起：</p>
+<script type="math/tex; mode=display">p(y|x ;\omega) = f(x)^y(1-f(x))^{(1-y)}</script><p>带入到对数似然函数中：</p>
+<script type="math/tex; mode=display">ln p(y|x ;\omega) = y lnf(x) + (1-y)ln(1-f(x))</script><p>我们得到的代价函数：</p>
+<script type="math/tex; mode=display">J(\omega) = - \frac{1}{m} \sum_{i=1}^m [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln(1-f(x^{(i)})) ]</script><p>$J(\omega)$越小，就说明$f(x) = 1$的概率越大，因此只要求出$J(\omega)$的<strong>最小值</strong></p>
+<blockquote>
+<p>ps：</p>
+<p>1）其实正常推倒出来的J(w)是没有前面的负号的，这里为了习惯，用梯度下降法求最小值，所以加了一个负号</p>
+<p>2） 之前推倒时候忽略了上标，但是我们在最后的损失函数中为了完整性就把上标加了上去</p>
+</blockquote>
+<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>对代价函数求导的过程就不写了，直接写最后的结果:</p>
+<script type="math/tex; mode=display">\frac{\partial J(\omega)}{\partial\omega_j} =\frac{1}{m} \sum_{i=1}^m (f(x^{(i)}) - y^{(i)})x_j^{(i)}</script><script type="math/tex; mode=display">\omega_{j+1} := \omega_j- \frac{1}{m}\alpha\sum_{i=1}^m(f(x^{(i)}) - y^{(i)})x_j^{(i)}</script><h2 id="sklearn代码实现逻辑回归"><a href="#sklearn代码实现逻辑回归" class="headerlink" title="sklearn代码实现逻辑回归"></a>sklearn代码实现逻辑回归</h2><pre class=" language-lang-python"><code class="language-lang-python">%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">dataset = pd.read_csv(r'E:\Downloads\100-Days-Of-ML-Code-master\Social_Network_Ads.csv')
+dataset.head(5)
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">X = dataset.iloc[:,[2,3]].values
+Y = dataset.iloc[:,4].values
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
+# classifier.coef_
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">y_pred = classifier.predict(X_test)
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+</code></pre>
+<p>可视化</p>
+<pre class=" language-lang-python"><code class="language-lang-python">from matplotlib.colors import ListedColormap
+X_set,y_set=X_train,y_train
+X1,X2=np. meshgrid(np. arange(start=X_set[:,0].min()-1, stop=X_set[:, 0].max()+1, step=0.01),
+                   np. arange(start=X_set[:,1].min()-1, stop=X_set[:,1].max()+1, step=0.01))
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),
+             alpha = 0.75, cmap = ListedColormap(('red', 'green')))
+plt.xlim(X1.min(),X1.max())
+plt.ylim(X2.min(),X2.max())
+for i,j in enumerate(np. unique(y_set)):
+    plt.scatter(X_set[y_set==j,0],X_set[y_set==j,1],
+                c = ListedColormap(('red', 'green'))(i), label=j)
+
+plt. title(' LOGISTIC(Training set)')
+plt. xlabel(' Age')
+plt. ylabel(' Estimated Salary')
+plt. legend()
+plt. show()
+
+X_set,y_set=X_test,y_test
+X1,X2=np. meshgrid(np. arange(start=X_set[:,0].min()-1, stop=X_set[:, 0].max()+1, step=0.01),
+                   np. arange(start=X_set[:,1].min()-1, stop=X_set[:,1].max()+1, step=0.01))
+
+plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),
+             alpha = 0.75, cmap = ListedColormap(('red', 'green')))
+plt.xlim(X1.min(),X1.max())
+plt.ylim(X2.min(),X2.max())
+for i,j in enumerate(np. unique(y_set)):
+    plt.scatter(X_set[y_set==j,0],X_set[y_set==j,1],
+                c = ListedColormap(('red', 'green'))(i), label=j)
+
+plt. title(' LOGISTIC(Test set)')
+plt. xlabel(' Age')
+plt. ylabel(' Estimated Salary')
+plt. legend()
+plt. show()
+</code></pre>
+<p><img src="/myphoto/output_12_0.png" alt="png"></p>
+<p><img src="/myphoto/output_12_1.png" alt="png"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

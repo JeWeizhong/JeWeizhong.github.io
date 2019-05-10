@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>(转)linux下查看CPU、内存、磁盘信息 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,Linux">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="(转)linux下查看CPU、内存、磁盘信息"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>(转)linux下查看CPU、内存、磁盘信息</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/24/linux-xi-lie-cha-kan-cpu-deng-xin-xi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-23T16:00:00.000Z">
+          2018-11-24
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>文章内容来源：<a href="https://www.cnblogs.com/xubiao/p/6497533.html" target="_blank" rel="noopener">https://www.cnblogs.com/xubiao/p/6497533.html</a></p>
+<p><strong>查看CPU信息</strong></p>
+<p>总核数 = 物理CPU个数 X 每颗物理CPU的核数</p>
+<p>总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数</p>
+<p><strong>查看物理CPU个数</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+</code></pre>
+<p><strong>查看每个物理CPU中core的个数(即核数)</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo| grep "cpu cores"| uniq
+</code></pre>
+<p><strong>查看逻辑CPU的个数</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo| grep "processor"| wc -l
+</code></pre>
+<p><strong>查看CPU信息（型号）</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+</code></pre>
+<p><strong>查看CPU的负载</strong></p>
+<p><strong>平均负载</strong>是指上一分钟同时处于就绪状态的平均进程数。在CPU中可以理解为CPU可以并行处理的任务数量，就是CPU个数X核数。</p>
+<p>如果CPU Load等于CPU个数乘以核数，那么就说CPU正好满负载，再多一点，可能就要出问题了，有些任务不能被及时分配处理器，那要保证性能的话，最好要小于CPU个数X核数X0.7。</p>
+<p>Load Average是指CPU的Load。它所包含的信息是在一段时间内CPU正在处理及等待CPU处理的进程数之和的统计信息，也就是CPU使用队列的长度的统计信息。</p>
+<p>Load Average的值应该小于CPU个数X核数X0.7，Load Average会有3个状态平均值，分别是1分钟、5分钟和15分钟平均Load。</p>
+<p>如果1分钟平均出现大于CPU个数X核数的情况，还不需要担心；如果5分钟的平均也是这样，那就要警惕了；15分钟的平均也是这样，就要分析哪里出现问题，防范未然。</p>
+<p><strong>查看内存信息</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">$ cat /proc/meminfo
+$ free
+</code></pre>
+<p><strong>查看磁盘信息</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">$ fdisk -l
+$ iostat -x 10    #查看磁盘IO的性能
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

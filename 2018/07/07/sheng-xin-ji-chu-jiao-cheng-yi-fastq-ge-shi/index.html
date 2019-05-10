@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>生新基础教程(一)：fastq格式 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="文件格式">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="生新基础教程(一)：fastq格式"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>生新基础教程(一)：fastq格式</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/07/07/sheng-xin-ji-chu-jiao-cheng-yi-fastq-ge-shi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-07-06T16:00:00.000Z">
+          2018-07-07
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p><em>转载请注明出处</em></p>
+</blockquote>
+<p><strong>FASTQ格式</strong>是一种保存生物序列（通常为核酸序列）及其测序质量得分信息的文本格式。序列与质量得分皆由单个ASCII字符表示。</p>
+<p><strong>格式</strong></p>
+<p>FASTQ格式通常每个序列使用四行：</p>
+<ul>
+<li>第一行以“@”字符开头，后面是序列标识符和其他描述。</li>
+<li>第二行是序列</li>
+<li>第三行以“+”也是序列标识符和描述（可选）</li>
+<li>第四行是序列的质量得分信息，与第二行的碱基一一对应</li>
+</ul>
+<pre><code>@A00262:122:H5FW3DSXX:3:1101:1561:1031 1:N:0:CCGTGAGA
+CNACCCCAAAAATGCTTTTGAAATCCTGAGATGTGATCAGTGAAATATGCAGCCAAGGCAAGGGGAAACTGTCCGCAAGTTAAAAAGATTTATTGCTATTCCAGGCTTCAAATGAGCCCAGAACTCAGGGCTGGTGTGTGTTTCAGAAGT
++
+F#FFFFFFFFFFFFFFFFFFFFFFFFFFFFF,F:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFF:FFFFFFFFFFFFFFFFFFF:FFFFFFFFFF:FFFFFFFFFFF:FF,FFFFF:FFFFFFF
+</code></pre><p><strong>Illumina 测序仪标识符</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A00262</th>
+<th style="text-align:center">测序仪编号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">122</td>
+<td style="text-align:center">运行id</td>
+</tr>
+<tr>
+<td style="text-align:center">H5FW3DSXX</td>
+<td style="text-align:center">flowcell id</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">lane 编号</td>
+</tr>
+<tr>
+<td style="text-align:center">1101</td>
+<td style="text-align:center">tile编号</td>
+</tr>
+<tr>
+<td style="text-align:center">1561</td>
+<td style="text-align:center">tile x坐标</td>
+</tr>
+<tr>
+<td style="text-align:center">1031</td>
+<td style="text-align:center">tile y坐标</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">单端测序为1，双端为2</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y过滤reads(reads质量较差),否则为N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>ps</strong>: 每个flowcell有8个泳道，一个泳道称为一个Lane，每条Lane上有两列，每列有多个有小格子，叫一个tile。(见下图)</p>
+<p><img src="/myphoto/flowcell.jpg" alt="flowcell"></p>
+</blockquote>
+<p><strong>质量评分</strong></p>
+<p>第四行表示序列的质量值,用<a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">ACSII码</a>表示。<br>测序仪一般是按照荧光信号来判断所测序的碱基是哪一种的，例如红黄蓝绿分别对应ATCG，因此对每个结果的判断都是一个概率的问题：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Phred Quality Score(Q值)</th>
+<th style="text-align:center">错误率</th>
+<th style="text-align:center">碱基准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">90%</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">99%</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">0.001</td>
+<td style="text-align:center">99.9%</td>
+</tr>
+<tr>
+<td style="text-align:center">40</td>
+<td style="text-align:center">0.0001</td>
+<td style="text-align:center">99.99%</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td style="text-align:center">0.00001</td>
+<td style="text-align:center">99.999%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一般都是以Q值来衡量read碱基质量，Sanger中心用的换算公式如下，其中P为错误率，</p>
+<script type="math/tex; mode=display">Q=-10logP</script><p>Solexa系列测序仪使用不同的公示来计算质量值：$Q=-10log(P/1-P)$<br>不同的测序平台Q值所能表示的范围不一样，因此要想用对应的ACSII编码，必须加上一个数值(33或者64)<br>以上面的那条Illumina测序仪产生的read为例，<code>F</code>对应的十进制数是70，Q值就是36，也就是说这个碱基的准确率在99.99%以上</p>
+<p><strong>参考链接:</strong></p>
+<ul>
+<li><a href="http://boyun.sh.cn/bio/?p=1901" target="_blank" rel="noopener">http://boyun.sh.cn/bio/?p=1901</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FASTQ_format" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/FASTQ_format</a></li>
+<li><a href="https://blog.csdn.net/godsunshine/article/details/51946314" target="_blank" rel="noopener">https://blog.csdn.net/godsunshine/article/details/51946314</a></li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/生信/">生信</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/文件格式/">文件格式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

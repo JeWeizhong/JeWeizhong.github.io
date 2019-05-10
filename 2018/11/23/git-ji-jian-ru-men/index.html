@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>git极简入门 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="git">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="git极简入门"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>git极简入门</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/23/git-ji-jian-ru-men/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-22T16:00:00.000Z">
+          2018-11-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1-安装-略"><a href="#1-安装-略" class="headerlink" title="1. 安装(略)"></a>1. 安装(略)</h2><h2 id="2-基础命令"><a href="#2-基础命令" class="headerlink" title="2.基础命令"></a>2.基础命令</h2><p><code>git config --global user.name &quot;Your Name&quot;</code><br><code>git config --global user.email &quot;email@example.com&quot;</code></p>
+<p><code>git init [dir]</code> : 目录变成Git可以管理的仓库<br><code>git add [file] [file]...</code> : 添加文件到仓库<br><code>git commit -m &quot;一些版本描述&quot;</code> : 把(多个)文件交给仓库<br><code>git log --pretty=oneline</code> : 改动日志<br><code>git reset --hard HEAD^</code> || <code>git reset --hard HEAD^^</code> : 切换到上次修改，或者上上次修改<br><code>git reset --hard [哈希值]</code> ： 切换到哈希值对应的版本号<br><code>git status</code> : 查看工作区状态<br><code>git diff</code> : 比较文件<br><code>git checkout -- [file]</code> ： 撤销工作区的修改，回到最近一次<code>git commit</code>或<code>git add</code>时的状态<br><code>git rm [file]</code>  : 从版本库里删除文件<br><code>git checkout [哈希值]</code> : 切换版本</p>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><pre class=" language-lang-sh"><code class="language-lang-sh">git remote add origin https://github.com/JeWeizhong/Machine-learning-in-action-notes-and-code.git
+git push -u origin master #第一次提交
+git push origin master -f #强制覆盖已有分支
+</code></pre>
+<h2 id="远程仓库同步到本地"><a href="#远程仓库同步到本地" class="headerlink" title="远程仓库同步到本地"></a>远程仓库同步到本地</h2><p>１.　假如需要在另一个地方写项目可以用一下步骤：</p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">git clone https://github.com/JeWeizhong/Machine-learning-in-action-notes-and-c # 克隆到本地
+#在本地修改后
+git add .
+git commit  -m "creat DTs"
+git push origin master
+</code></pre>
+<ol>
+<li><p>假如本地已经有项目代码，需要同远程的项目合并：</p>
+<pre class=" language-lang-sh"><code class="language-lang-sh"># 从远程的origin的master主分支下载最新的版本到origin/master分支上
+Git fetch origin master 
+# 比较本地的master分支和origin/master分支的差别
+git log -p master ..origin/master
+git merge origin/master # 合并
+</code></pre>
+<p>第二种方式：</p>
+<pre class=" language-lang-sh"><code class="language-lang-sh"># 从远程下载到master下的tmp分支上
+git fetch origin master:tmp 
+# 比较
+git diff tmp 
+# 合并
+git merge tmp
+</code></pre>
+<p>或者直接用<code>git pull origin master</code>，但是看不到细节</p>
+</li>
+<li><p><em>目前还没学会分支</em></p>
+</li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/git/">git</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/git/">git</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

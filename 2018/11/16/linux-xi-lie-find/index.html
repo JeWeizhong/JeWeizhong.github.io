@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux命令：find | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,Linux">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Linux命令：find"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Linux命令：find</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/16/linux-xi-lie-find/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-15T16:00:00.000Z">
+          2018-11-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>语法：</p>
+<pre><code>find *[directory-list]* *[option]* *[expression]*
+</code></pre><p>常用</p>
+<pre><code>find dir -name file1
+</code></pre><p><strong>选项：</strong></p>
+<ul>
+<li><p><code>-i</code> 忽略大小写</p>
+</li>
+<li><p><code>-depth</code>：从指定目录下最深层的子目录开始查找； </p>
+</li>
+<li><p><code>-expty</code>：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录</p>
+</li>
+<li><p><code>-name</code>：指定字符串作为寻找文件或目录的范本样式；</p>
+</li>
+<li><p><code>-anewer</code>：查找其存取时间较指定文件或目录的存取时间 更接近现在的文件或目录；</p>
+</li>
+<li><p><code>-newer</code>：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
+</li>
+<li><p><code>-maxdepth</code>：设置最大目录层级； </p>
+</li>
+<li><p><code>-mindepth</code>：设置最小目录层级；</p>
+</li>
+<li><p><code>-regex</code>：正则表达式</p>
+</li>
+<li><p><code>-type</code>：只寻找符合指定的文件类型的文件:</p>
+<ul>
+<li><code>b</code> 特殊的块文件</li>
+<li><code>c</code> 特殊的字符文件</li>
+<li><code>d</code> 目录文件</li>
+<li><code>f</code> 普通文件</li>
+<li><code>I</code> 符号链接</li>
+<li><code>p</code> FIFO(命名管道)</li>
+<li><code>s</code> 套接字</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

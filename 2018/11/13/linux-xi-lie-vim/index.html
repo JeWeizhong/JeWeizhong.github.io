@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vim 用法大全 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="Linux,vim">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="vim 用法大全"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>vim 用法大全</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/13/linux-xi-lie-vim/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-12T16:00:00.000Z">
+          2018-11-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>打开/退出</p>
+<pre><code>vim -R file1 只读打开
+:qall 退出所有文件
+:wq 写入并退出
+:q! 强制退出
+</code></pre><p>插入</p>
+<pre><code>i 在当前位置生前插入
+I 在当前行首插入
+a 在当前位置后插入
+A 在当前行尾插入
+o 在当前行之后插入一行
+O 在当前行之前插入一行
+</code></pre><p>移动</p>
+<pre><code>h 左移一个字符
+l 右移一个字符
+k 上移一个字符
+j 下移一个字符
+</code></pre><p>删除</p>
+<pre><code>dd 删除当前行
+dj 删除当前行和上一行
+dk 删除当前行和下一行
+10dd 删除当前行开始的共10行
+D 删除当前字符至行尾
+</code></pre><p>跳转</p>
+<pre><code>gg 跳转到文件头
+G 跳转到文件尾
+gg=G自动缩进 （非常有用）
+Ctrl + d 向下滚动半屏
+Ctrl + u 向上滚动半屏
+Ctrl + f 向下滚动一屏
+Ctrl + b 向上滚动一屏
+冒号+行号，跳转到指定行；比如:120，跳转到120行；
+$ 跳转到行尾
+0 跳转到行首
+</code></pre><p>编辑</p>
+<pre><code>u 撤销
+Ctrl + r 重做
+yy 复制当前行
+按v（逐字）或V（逐行）进入可视模式，然后用jklh命令移动即可选择某些行或字符，再按y即可复制任意部分
+p 粘贴在当前位置
+另外，删除在vim里面就是剪切的意思，所以dd就是剪切当前行，可以用v或V选择特定部分再按d就是任意剪切了
+</code></pre><p>查找</p>
+<pre><code>/text　　查找text，按n健查找下一个，按N健查找前一个
+?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个
+:set ignorecase　　忽略大小写的查找
+:set noignorecase　　不忽略大小写的查找
+</code></pre><p>替换</p>
+<pre><code>:s/old/new/ 用old替换new，替换当前行的第一个匹配
+:s/old/new/g 用old替换new，替换当前行的所有匹配
+:%s/old/new/ 用old替换new，替换所有行的第一个匹配
+:%s/old/new/g 用old替换new，替换整个文件的所有匹配
+也可以用v或V选择指定行，然后执行
+</code></pre><p>多文件操作</p>
+<pre><code>vim file1 file2 file3 ... 同时编辑多个文件
+:split 将窗口分成上下两个子窗口，对应两个不同的文件
+:vsplit 将窗口分成左右两个子窗口，对应两个不同的文件
+:open file4 打开新文件
+:bn 切换到下一个文件（当前窗口）
+:bp 切换到上一个文件（当前窗口）
+Ctrl-w h    移动到窗口左边
+Ctrl-w j    移动到窗口下边
+Ctrl-w k    移动到窗口上边
+Ctrl-w l    移动到窗口右边
+</code></pre><p><em>未完待续……</em></p>
+<p>参考链接：<a href="https://www.cnblogs.com/linyx/p/4131699.html" target="_blank" rel="noopener">https://www.cnblogs.com/linyx/p/4131699.html</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Linux/">Linux</a><a href="/tags/vim/">vim</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

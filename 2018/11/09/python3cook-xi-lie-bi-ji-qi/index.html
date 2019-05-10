@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 cookbook笔记： 第八章 类与对象(一) | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 cookbook笔记： 第八章 类与对象(一)"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 cookbook笔记： 第八章 类与对象(一)</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/09/python3cook-xi-lie-bi-ji-qi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-08T16:00:00.000Z">
+          2018-11-09
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类 定义了一组属性，这些属性与一组叫做<strong>实例</strong>的对象相关且由其共享。类通常是由函数（称为<strong>方法</strong> ，method）、变量（称为<strong>类变量</strong> ，class variable）和计算出的属性（称为<strong>特性</strong> ，property）组成的集合</p>
+<h3 id="class-语句"><a href="#class-语句" class="headerlink" title="class 语句"></a>class 语句</h3><p>使用<code>class</code>语句可定义类。类主体包含一系列在类定义时执行的语句，例如：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Account(object):
+　　 num_accounts = 0
+　　 def __init__(self,name,balance):
+　　　　 self.name = name
+　　　　 self.balance = balance
+　　　　 Account.num_accounts += 1
+　　 def __del__(self):
+　　　　 Account.num_accounts -= 1
+　　 def deposit(self,amt):
+　　　　 self.balance = self.balance + amt
+　　 def withdraw(self,amt):
+　　　　 self.balance = self.balance - amt
+　　 def inquiry(self):
+　　　　 return self.balance
+</code></pre>
+<p>在类主体执行期间创建的值放在类对象中，这个对象充当着命名空间，与模块极为相似。例如，访问Account 类成员的方式如下：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">Account.num_accounts
+Account.__init__
+Account.__del__
+Account.deposit
+Account.withdraw
+Account.inquiry
+</code></pre>
+<p>需要注意的是，class 语句本身并不创建该类的任何实例（例如，上一个例子实际上不会创建任何账户）。类仅设置将在以后创建的所有实例使用的属性。从这种意义上讲，可以将类看作一个蓝图。</p>
+<p>类中定义的函数称为<strong>实例方法</strong> 。实例方法是一种在类的实例上进行操作的函数，类实例作为第一个参数传递。根据约定，这个参数称为<code>self</code> ，尽管所有合法的标识符都可以使用。在前面的例子中，<code>deposit()</code> 、<code>withdraw()</code>和<code>inquiry()</code> 都是实例方法。</p>
+<p><strong>类变量</strong>（如<code>num_accounts</code> ）是可在类的所有实例之间共享的值（也就是说，它们不是单独分配给每个实例的）。上例中的<code>num_accounts</code> 变量用于跟踪存在多少个Account 实例。</p>
+<h3 id="类实例"><a href="#类实例" class="headerlink" title="类实例"></a>类实例</h3><p>类的实例是以函数形式调用类对象来创建的。这种方法将创建一个新实例，然后将该实例传递给类的<code>__init__()</code>方法。<code>__init__()</code> 方法的参数包括新创建的实例self 和在调用类对象时提供的参数。例如：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 创建一些账户
+a = Account("Guido", 1000.00)　 
+# 调用Account.__init__(a,"Guido",1000.00)
+b = Account("Bill", 10.00)
+</code></pre>
+<p>在<code>__init__()</code> 内，通过将属性分配给self 来将其保存到实例中。上例中，<code>self.name =  &quot;Guido&quot;</code>。</p>
+<p><strong>上面创建了两个实例</strong>，然后用(<code>.</code>)运算符即可访问属性：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">a.deposit(100.00)　　　
+# 调用Account.deposit(a,100.00)
+# self.balance已经通过__init__实例化,即self.balance = 1000.00
+# 所以访问deposit属性后：
+# self.balance = 1000.00 + 100.00
+b.withdraw(50.00)　　　# 调用Account.withdraw(b,50.00)
+name = a.name　　　　　# 获取账户名
+</code></pre>
+<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><ul>
+<li>默认的字符串显示是<code>__str__()</code>方法，我们可以自定义<code>__repr__()</code> 和<code>__str__()</code>来是的交互更加友好</li>
+<li><code>format()</code> 函数实际上是调用的<code>__formait__()</code>方法</li>
+<li><code>with</code>语句是调用的<code>__enter__()</code> 和<code>__exit__()</code> 方法,我们可以在定义类的时候定义这两个方法，就能使对象支持<code>witg</code>上下文管理</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">    from socket import socket, AF_INET, SOCK_STREAM
+
+    class LazyConnection:
+        def __init__(self, address, family=AF_INET, type=SOCK_STREAM):
+            self.address = address
+            self.family = family
+            self.type = type
+            self.sock = None
+        def __enter__(self):
+            if self.sock is not None:
+                raise RuntimeError('Already connected')
+            self.sock = socket(self.family, self.type)
+            self.sock.connect(self.address)
+            return self.sock
+        def __exit__(self, exc_ty, exc_val, tb):
+            self.sock.close()
+            self.sock = None
+</code></pre>
+<ul>
+<li>类添加<code>__slots__</code>属性来极大的减少实例所占的内存,但使用后我们不能再给实例添加新的属性了，只能使用在<code>__slots__</code> 中定义的那些属性名。</li>
+<li>约定是任何以单下划线<code>_</code> 开头的名字都应该是内部实现</li>
+<li><p>使用双下划线开始会导致访问名称变成其他形式:</p>
+<pre class=" language-lang-python"><code class="language-lang-python">  class B:
+      def __init__(self):
+          self.__private = 0
+      def __private_method(self):
+          pass
+      def public_method(self):
+          pass
+          self.__private_method()
+</code></pre>
+</li>
+</ul>
+<p>比如，在前面的类<code>B</code> 中，私有属性会被分别重命名为<code>_B__private</code> 和<code>_B__private_method</code> 。这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。比如：</p>
+<pre><code>```python
+class C(B):
+    def __init__(self):
+        super().__init__()
+        self.__private = 1 # Does not override B.__private
+    # Does not override B.__private_method()
+    def __private_method(self):
+    pass
+```
+</code></pre><p>这里，私有名称<code>__private</code> 和<code>__private_method</code> 被重命名为<code>_C__private</code> 和<code>_C__private_method</code> ，这个跟父类<code>B</code> 中的名称是完全不同的。</p>
+<ul>
+<li>有时候你定义的一个变量和某个保留关键字冲突，这时候可以使用单下划线作为后缀</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

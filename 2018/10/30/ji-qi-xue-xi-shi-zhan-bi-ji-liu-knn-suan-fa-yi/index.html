@@ -1,0 +1,555 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>机器学习实战笔记(六)---kNN算法 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="python3,机器学习">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="机器学习实战笔记(六)---kNN算法"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>机器学习实战笔记(六)---kNN算法</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/10/30/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-yi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-10-29T16:00:00.000Z">
+          2018-10-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>工作原理是：有一组已经分类好的数据。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（最近邻）的分类标签。</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+import operator
+
+'''
+对未知类别属性的数据集中的每个点依次执行以下操作：
+(1) 计算已知类别数据集中的点与当前点之间的距离；
+(2) 按照距离递增次序排序；
+(3) 选取与当前点距离最小的k个点；
+(4) 确定前k个点所在类别的出现频率；
+(5) 返回前k个点出现频率最高的类别作为当前点的预测分类。
+'''
+
+def classify0(inX, dataSet, labels, k):
+    # 返回行数
+    dataSetSize = dataSet.shape[0]
+    # 在列向量方向上重复inX共1次(横向)，行向量方向上重复inX共dataSetSize次(纵向)
+    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    # sum()所有元素相加，sum(0)列相加，sum(1)行相加
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    # 返回distances中元素从小到大排序后的索引值 
+    sortedDistIndicies = distances.argsort()
+    #print(sortedDistIndicies)  
+    classCount={}          
+    for i in range(k):
+        #print(sortedDistIndicies[i]) # 1,0,3
+        #print(labels[sortedDistIndicies[i]]) # A,A,B
+        voteIlabel = labels[sortedDistIndicies[i]]  
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
+    #python3中用items()替换python2中的iteritems()
+    #key=operator.itemgetter(1)根据字典的值进行排序
+    #key=operator.itemgetter(0)根据字典的键进行排序
+    #reverse降序排序字典        
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def createDataSet():
+    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
+    labels = ['A','A','B','B']
+    return group, labels
+#[[1.  1.1]
+ #[1.  1. ]
+ #[0.  0. ]
+ #[0.  0.1]]
+if __name__ == '__main__':
+    group, labels = createDataSet()
+    result = classify0([0,0], group, labels, 3)
+    print(result) # B
+</code></pre>
+<p>计算$(x_1,y_1)$与$(x_2,y_2)$距离公式：</p>
+<script type="math/tex; mode=display">\sqrt{(x_1 - x_2)^2+(y_1-y_2)^2}</script><p>这个距离也叫欧式距离。<br>上述代码的<code>classify0</code>函数中17~21行就是计算距离的方法</p>
+<h2 id="示例一：改进约会网站的配对效果"><a href="#示例一：改进约会网站的配对效果" class="headerlink" title="示例一：改进约会网站的配对效果"></a>示例一：改进约会网站的配对效果</h2><p><em>为了保证代码完整性，保留了<code>classify0</code>,<code>createDataSet</code>,是下列代码能够作为一个脚本单独运行，同时将多余的注释删除，节省空间</em></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+import operator
+from os import listdir
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.lines as mlines
+from matplotlib.font_manager import FontProperties
+
+def classify0(inX, dataSet, labels, k):
+    dataSetSize = dataSet.shape[0]
+    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndicies = distances.argsort()
+    classCount={}          
+    for i in range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]  
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def createDataSet():
+    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
+    labels = ['A','A','B','B']
+    return group, labels
+
+def file2matrix(filename):
+    love_dictionary={'largeDoses':3, 'smallDoses':2, 'didntLike':1}
+    fr = open(filename)
+    arrayOLines = fr.readlines()
+    numberOfLines = len(arrayOLines)            #get the number of lines in the file
+    returnMat = np.zeros((numberOfLines,3))        #prepare matrix to return
+    classLabelVector = []                       #prepare labels return   
+    index = 0
+    for line in arrayOLines:
+        line = line.strip()
+        listFromLine = line.split('\t')
+        returnMat[index,:] = listFromLine[0:3] # 学习numpy之路任重道远啊
+        if(listFromLine[-1].isdigit()):
+            classLabelVector.append(int(listFromLine[-1]))
+        else:
+            classLabelVector.append(love_dictionary.get(listFromLine[-1])) # 最后一列就是标签
+        index += 1
+    return returnMat,classLabelVector
+
+def autoNorm(dataSet):
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges = maxVals - minVals
+    normDataSet = np.zeros(np.shape(dataSet))
+    m = dataSet.shape[0]
+    normDataSet = dataSet - np.tile(minVals, (m,1))
+    normDataSet = normDataSet/np.tile(ranges, (m,1))   #element wise divide
+    return normDataSet, ranges, minVals
+
+def datingClassTest():
+    hoRatio = 0.50      #hold out 10%
+    datingDataMat,datingLabels = file2matrix('datingTestSet2.txt')       #load data setfrom file
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    m = normMat.shape[0]
+    numTestVecs = int(m*hoRatio)
+    errorCount = 0.0
+    for i in range(numTestVecs):
+        #前numTestVecs个数据作为测试集,后m-numTestVecs个数据作为训练集
+        classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
+        print ("the classifier came back with: %d, the real answer is: %d" % (classifierResult, datingLabels[i]))
+        if (classifierResult != datingLabels[i]): errorCount += 1.0
+    print ("the total error rate is: %f" % (errorCount/float(numTestVecs)))
+    print (errorCount)
+
+def classifyPerson():
+    resultList = ['not at all', 'in small doses', 'in large doses']
+    percentTats = float(input(\
+                                  "percentage of time spent playing video games?"))
+    ffMiles = float(input("frequent flier miles earned per year?"))
+    iceCream = float(input("liters of ice cream consumed per year?"))
+    datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    inArr = np.array([ffMiles, percentTats, iceCream, ])
+    classifierResult = classify0((inArr - \
+                                  minVals)/ranges, normMat, datingLabels, 3)
+    print ("You will probably like this person: %s" % resultList[classifierResult - 1])
+
+def showdatas(datingDataMat, datingLabels):
+    #设置汉字格式
+    font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=12)
+    #将fig画布分隔成1行1列,不共享x轴和y轴,fig画布的大小为(13,8)
+    #当nrow=2,nclos=2时,代表fig画布被分为四个区域,axs[0][0]表示第一行第一个区域
+    fig, axs = plt.subplots(nrows=2, ncols=2,sharex=False, sharey=False, figsize=(13,8))
+
+    #numberOfLabels = len(datingLabels)
+    LabelsColors = []
+    for i in datingLabels:
+        if i == 1:
+            LabelsColors.append('black')
+        if i == 2:
+            LabelsColors.append('orange')
+        if i == 3:
+            LabelsColors.append('red')
+    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第二列(玩游戏)数据画散点数据,散点大小为15,透明度为0.5
+    axs[0][0].scatter(x=datingDataMat[:,0], y=datingDataMat[:,1], color=LabelsColors,s=15, alpha=.5)
+    #设置标题,x轴label,y轴label
+    axs0_title_text = axs[0][0].set_title(u'每年获得的飞行常客里程数与玩视频游戏所消耗时间占比',FontProperties=font)
+    axs0_xlabel_text = axs[0][0].set_xlabel(u'每年获得的飞行常客里程数',FontProperties=font)
+    axs0_ylabel_text = axs[0][0].set_ylabel(u'玩视频游戏所消耗时间占',FontProperties=font)
+    plt.setp(axs0_title_text, size=9, weight='bold', color='red') 
+    plt.setp(axs0_xlabel_text, size=7, weight='bold', color='black') 
+    plt.setp(axs0_ylabel_text, size=7, weight='bold', color='black')
+
+    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5
+    axs[0][1].scatter(x=datingDataMat[:,0], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)
+    #设置标题,x轴label,y轴label
+    axs1_title_text = axs[0][1].set_title(u'每年获得的飞行常客里程数与每周消费的冰激淋公升数',FontProperties=font)
+    axs1_xlabel_text = axs[0][1].set_xlabel(u'每年获得的飞行常客里程数',FontProperties=font)
+    axs1_ylabel_text = axs[0][1].set_ylabel(u'每周消费的冰激淋公升数',FontProperties=font)
+    plt.setp(axs1_title_text, size=9, weight='bold', color='red') 
+    plt.setp(axs1_xlabel_text, size=7, weight='bold', color='black') 
+    plt.setp(axs1_ylabel_text, size=7, weight='bold', color='black')
+
+    #画出散点图,以datingDataMat矩阵的第二(玩游戏)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5
+    axs[1][0].scatter(x=datingDataMat[:,1], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)
+    #设置标题,x轴label,y轴label
+    axs2_title_text = axs[1][0].set_title(u'玩视频游戏所消耗时间占比与每周消费的冰激淋公升数',FontProperties=font)
+    axs2_xlabel_text = axs[1][0].set_xlabel(u'玩视频游戏所消耗时间占比',FontProperties=font)
+    axs2_ylabel_text = axs[1][0].set_ylabel(u'每周消费的冰激淋公升数',FontProperties=font)
+    plt.setp(axs2_title_text, size=9, weight='bold', color='red') 
+    plt.setp(axs2_xlabel_text, size=7, weight='bold', color='black') 
+    plt.setp(axs2_ylabel_text, size=7, weight='bold', color='black')
+    #设置图例
+    didntLike = mlines.Line2D([], [], color='black', marker='.',
+                      markersize=6, label='didntLike')
+    smallDoses = mlines.Line2D([], [], color='orange', marker='.',
+                      markersize=6, label='smallDoses')
+    largeDoses = mlines.Line2D([], [], color='red', marker='.',
+                      markersize=6, label='largeDoses')
+    #添加图例
+    axs[0][0].legend(handles=[didntLike,smallDoses,largeDoses])
+    axs[0][1].legend(handles=[didntLike,smallDoses,largeDoses])
+    axs[1][0].legend(handles=[didntLike,smallDoses,largeDoses])
+    #显示图片
+    plt.show()
+
+
+if __name__ == "__main__":
+    # 文件有4列 
+    # 每年获得的飞行常客里程数
+    # 玩视频游戏所耗时间百分比
+    # 每周消费的冰淇淋公升数
+    # 不喜欢的人 魅力一般的人 极具魅力的人
+    #datingDataMat, datingLabels = file2matrix(r'F:\download\machinelearninginaction-master\Ch02\datingTestSet.txt')
+    #showdatas(datingDataMat, datingLabels)
+    #datingClassTest
+    classifyPerson()
+</code></pre>
+<p>下面我们来进行代码解析，<code>showdatas</code>函数是从网上看到的实质上就是将数据可视化，看不懂可以暂时先不管。<br>首先是<code>file2matrix</code>函数读取数据转换成矩阵格式，最后一列就是标签</p>
+<pre><code># print(datingDataMat)
+[[4.0920000e+04 8.3269760e+00 9.5395200e-01]
+ [1.4488000e+04 7.1534690e+00 1.6739040e+00]
+ [2.6052000e+04 1.4418710e+00 8.0512400e-01]
+ ...
+ [2.6575000e+04 1.0650102e+01 8.6662700e-01]
+ [4.8111000e+04 9.1345280e+00 7.2804500e-01]
+ [4.3757000e+04 7.8826010e+00 1.3324460e+00]]
+# print(datingLabels)
+[3, 2, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 1, 1, 1, 1, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 3, 2, 1, 3, 1, 3, 1, 2, 1, 1, 2, 3, 3, 1, 2, 3, 3, 3, 1...
+</code></pre><p>可视化后应该是计算两点间的距离，但是，三个数值之间的差异很大，也就是说飞行的里程数占的比重比其他的要大，但是我们在这里认为这三个因素都应该是平等的，因此就要对数据进行归一化处理，所以就有了<code>autoNorm</code>函数。</p>
+<p>此函数用到的算法是</p>
+<script type="math/tex; mode=display">new = (old-min)/(max-min)</script><p>这样就将里程数这个特征值控制在0~1之内，以保证三个特征值的取值范围是一样的，即都有一样的权重。(<em>好像对特征值进行缩放会有损失，暂时先不管</em>)</p>
+<p>最后我们就要去验证这个算法的可靠性了，也就是最后一个函数<code>classifyPerson</code></p>
+<p>这个示例是用了90%的样本来训练，然后用剩下的10%去做验证，后面的算法中也有更高级的数据分组。这也就是<code>datingClassTest</code>函数的功能了</p>
+<hr>
+<h2 id="示例二：手写识别系统"><a href="#示例二：手写识别系统" class="headerlink" title="示例二：手写识别系统"></a>示例二：手写识别系统</h2><p>为了使用前面两个例子的分类器，书中将一个32×32的二进制图像变成了文本存储，这里只附上代码，由于方法都一样，就不在赘述</p>
+<pre><code>import numpy as np
+import operator
+from os import listdir
+from numpy import zeros
+
+def classify0(inX, dataSet, labels, k):
+    dataSetSize = dataSet.shape[0]
+    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndicies = distances.argsort()
+    classCount={}          
+    for i in range(k):
+        #print(sortedDistIndicies[i])
+        #print(labels[sortedDistIndicies[i]]) 
+        voteIlabel = labels[sortedDistIndicies[i]]  
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def img2vector(filename):
+    returnVect = zeros((1,1024))
+    fr = open(filename)
+    for i in range(32):
+        lineStr = fr.readline()
+        for j in range(32):
+            returnVect[0,32*i+j] = int(lineStr[j])
+    return returnVect
+
+def handwritingClassTest():
+    hwLabels = []
+    trainingFileList = listdir(r&#39;F:\download\machinelearninginaction-master\Ch02\digits\trainingDigits&#39;)           #load the training set
+    m = len(trainingFileList)
+    trainingMat = zeros((m,1024))
+    for i in range(m):
+        fileNameStr = trainingFileList[i]
+        fileStr = fileNameStr.split(&#39;.&#39;)[0]     #take off .txt
+        classNumStr = int(fileStr.split(&#39;_&#39;)[0])
+        hwLabels.append(classNumStr)
+        trainingMat[i,:] = img2vector(&#39;F:\\download\\machinelearninginaction-master\\Ch02\digits\\trainingDigits/%s&#39; % fileNameStr)
+    testFileList = listdir(r&#39;F:\download\machinelearninginaction-master\Ch02\digits\testDigits&#39;)        #iterate through the test set
+    errorCount = 0.0
+    mTest = len(testFileList)
+    for i in range(mTest):
+        fileNameStr = testFileList[i]
+        fileStr = fileNameStr.split(&#39;.&#39;)[0]     #take off .txt
+        classNumStr = int(fileStr.split(&#39;_&#39;)[0])
+        vectorUnderTest = img2vector(&#39;F:\\download\\machinelearninginaction-master\\Ch02\\digits\\testDigits/%s&#39; % fileNameStr)
+        classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
+        print (&quot;the classifier came back with: %d, the real answer is: %d&quot; % (classifierResult, classNumStr))
+        if (classifierResult != classNumStr): errorCount += 1.0
+    print (&quot;\nthe total number of errors is: %d&quot; % errorCount)
+    print (&quot;\nthe total error rate is: %f&quot; % (errorCount/float(mTest)))
+
+if __name__ == &#39;__main__&#39;:
+    handwritingClassTest()
+</code></pre><h2 id="Sklearn简介-重点"><a href="#Sklearn简介-重点" class="headerlink" title="Sklearn简介(重点)"></a>Sklearn简介(重点)</h2><p><a href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors" target="_blank" rel="noopener"><code>sklearn.neighbors</code></a>模块就是k-近邻算法，这里只介绍一个函数<a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" target="_blank" rel="noopener"><code>KNeighborsClassifier</code></a></p>
+<p>其他函数和参数等有时间再补充</p>
+<p> KNneighborsClassifier参数说明：</p>
+<ul>
+<li><code>n_neighbors</code>：默认为5，就是k-NN的k的值，选取最近的k个点。 </li>
+<li><code>weights</code>：默认是uniform，参数可以是uniform、distance，也可以是用户自己定义的函数。uniform是均等的权重，就说所有的邻近点的权重都是相等的。distance是不均等的权重，距离近的点比距离远的点的影响大。用户自定义的函数，接收距离的数组，返回一组维数相同的权重。</li>
+<li><code>algorithm</code>：快速k近邻搜索算法，默认参数为auto，可以理解为算法自己决定合适的搜索算法。除此之外，用户也可以自己指定搜索算法ball_tree、kd_tree、brute方法进行搜索，brute是蛮力搜索，也就是线性扫描，当训练集很大时，计算非常耗时。kd_tree，构造kd树存储数据以便对其进行快速检索的树形数据结构，kd树也就是数据结构中的二叉树。以中值切分构造的树，每个结点是一个超矩形，在维数小于20时效率高。ball tree是为了克服kd树高纬失效而发明的，其构造过程是以质心C和半径r分割样本空间，每个节点是一个超球体。</li>
+<li><code>leaf_size</code>：默认是30，这个是构造的kd树和ball树的大小。这个值的设置会影响树构建的速度和搜索速度，同样也影响着存储树所需的内存大小。需要根据问题的性质选择最优的大小。</li>
+<li><code>metric</code>：用于距离度量，默认度量是minkowski，也就是p=2的欧氏距离(欧几里德度量)。</li>
+<li><code>p</code>：距离度量公式。在上小结，我们使用欧氏距离公式进行距离度量。除此之外，还有其他的度量方法，例如曼哈顿距离。这个参数默认为2，也就是默认使用欧式距离公式进行距离度量。也可以设置为1，使用曼哈顿距离公式进行距离度量。</li>
+<li><code>metric_params</code>：距离公式的其他关键参数，这个可以不管，使用默认的None即可。</li>
+<li><code>n_jobs</code>：并行处理设置。默认为1，临近点搜索并行工作数。如果为-1，那么CPU的所有cores都用于并行工作。</li>
+</ul>
+<p>完整代码：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># -*- coding: UTF-8 -*-
+import numpy as np
+import operator
+from os import listdir
+from sklearn.neighbors import KNeighborsClassifier as kNN
+
+"""
+函数说明:将32x32的二进制图像转换为1x1024向量。
+
+Parameters:
+    filename - 文件名
+Returns:
+    returnVect - 返回的二进制图像的1x1024向量
+
+Modify:
+    2017-07-15
+"""
+def img2vector(filename):
+    #创建1x1024零向量
+    returnVect = np.zeros((1, 1024))
+    #打开文件
+    fr = open(filename)
+    #按行读取
+    for i in range(32):
+        #读一行数据
+        lineStr = fr.readline()
+        #每一行的前32个元素依次添加到returnVect中
+        for j in range(32):
+            returnVect[0, 32*i+j] = int(lineStr[j])
+    #返回转换后的1x1024向量
+    return returnVect
+
+"""
+函数说明:手写数字分类测试
+
+Parameters:
+    无
+Returns:
+    无
+
+Modify:
+    2017-07-15
+"""
+def handwritingClassTest():
+    #测试集的Labels
+    hwLabels = []
+    #返回trainingDigits目录下的文件名
+    trainingFileList = listdir(r'E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\trainingDigits')
+    #返回文件夹下文件的个数
+    m = len(trainingFileList)
+    #初始化训练的Mat矩阵,测试集
+    trainingMat = np.zeros((m, 1024))
+    #从文件名中解析出训练集的类别
+    for i in range(m):
+        #获得文件的名字
+        fileNameStr = trainingFileList[i]
+        #获得分类的数字
+        classNumber = int(fileNameStr.split('_')[0])
+        #将获得的类别添加到hwLabels中
+        hwLabels.append(classNumber)
+        #将每一个文件的1x1024数据存储到trainingMat矩阵中
+        trainingMat[i,:] = img2vector('E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\trainingDigits/%s' % (fileNameStr))
+    #构建kNN分类器
+    neigh = kNN(n_neighbors = 3, algorithm = 'auto')
+    #拟合模型, trainingMat为测试矩阵,hwLabels为对应的标签
+    neigh.fit(trainingMat, hwLabels)
+    #返回testDigits目录下的文件列表
+    testFileList = listdir(r'E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\testDigits')
+    #错误检测计数
+    errorCount = 0.0
+    #测试数据的数量
+    mTest = len(testFileList)
+    #从文件中解析出测试集的类别并进行分类测试
+    for i in range(mTest):
+        #获得文件的名字
+        fileNameStr = testFileList[i]
+        #获得分类的数字
+        classNumber = int(fileNameStr.split('_')[0])
+        #获得测试集的1x1024向量,用于训练
+        vectorUnderTest = img2vector('E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\testDigits/%s' % (fileNameStr))
+        #获得预测结果
+        # classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
+        classifierResult = neigh.predict(vectorUnderTest)
+        print("分类返回结果为%d\t真实结果为%d" % (classifierResult, classNumber))
+        if(classifierResult != classNumber):
+            errorCount += 1.0
+    print("总共错了%d个数据\n错误率为%f%%" % (errorCount, errorCount/mTest * 100))
+
+
+"""
+函数说明:main函数
+
+Parameters:
+    无
+Returns:
+    无
+
+Modify:
+    2017-07-15
+"""
+if __name__ == '__main__':
+    handwritingClassTest()
+</code></pre>
+<hr>
+<p><strong>参考链接：</strong><a href="http://blog.csdn.net/c406495762" target="_blank" rel="noopener">http://blog.csdn.net/c406495762</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

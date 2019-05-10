@@ -1,1682 +1,2192 @@
-
-<!DOCTYPE html>
-<html lang="zh">
-
-
-
+<!DOCTYPE HTML>
+<html>
 <head>
-  <script>
-    window.themeRuntime = {
-      root: "/",
-      scriptsMap: {},
-      init: {
-        status: false
-      },
-      commentRest: {
-        status: false
-      },
-      versions: {
-        theme: "2.0.3",
-        mdui: "0.4.0",
-        fetch: "3.0.0",
-        es6promise: "4.2.5+7f2b526d",
-        lightgallery: "1.0.1",
-        smoothscroll: "15.2.0"
-      }
-      
-    };
-    console.info("%cCopyright © 2018 - " + new Date().getFullYear() +" Halyul\n"+'Theme Version: ' + themeRuntime.versions.theme +'%c\nhttps://github.com/Halyul/hexo-theme-mdui',"font-size: 14px;color: #3F51B5;","color: #448AFF;text-decoration: none");
-  </script>
-  <!--
-        © HEXO MDUI Theme
-        https://github.com/Halyul/hexo-theme-mdui
-        -->
+  <meta charset="utf-8">
+  
+  <title>第 4 页 | 木叶村 | life is short</title>
 
-  <meta charset="UTF-8">
-  <title>首页 - 木叶村</title>
-
-  <!-- Favicons -->
-  <link rel="icon shortcut" type="image/ico" href="/images/favicon.png">
-  <link rel="icon" sizes="192x192" href="/images/favicon.png">
-  <link rel="apple-touch-icon" href="/images/favicon.png">
-
-  <!-- Meta & Info -->
-  <meta http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  <meta name="theme-color" content="#fff">
-
+  
   <meta name="author" content="Naruto">
   
-      <meta name="description" content="无人为孤岛，一书一世界">
-  
-  <meta name="keywords" content="blog, hexo, mdui">
 
-  <!--iOS -->
-  <meta name="apple-mobile-web-app-title" content="木叶村">
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="480">
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-
-  <!-- The Open Graph protocol -->
-  <meta property="og:url" content="https://jeweizhong.github.io">
-  <meta property="og:type" content="blog">
-  <meta property="og:title" content="首页 - 木叶村 | 木叶村">
-  <meta property="og:image" content="/images/favicon.png" />
-  
-    <meta property="og:description" content="无人为孤岛，一书一世界">
-  
 
   
 
-  
-
-  <!-- Import CSS -->
-  
-    <link rel="stylesheet" href="/css/mdui.css">
-  
+  <meta property="og:site_name" content="木叶村"/>
 
   
+  <meta property="og:image" content="/favicon.ico"/>
+  
 
-</head>
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
-<body class="mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+<body>
+<div class="blog">
+  <div class="content">
 
-  <style>
-    #spinner {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-          opacity: 1;
-      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-          transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-    }
-    main {
-      opacity: 0;
-      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-      transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-      display: none;
-    }
-  </style>
-  <div id="spinner">
-    <style>
-      .spinner {
-
-      -webkit-animation: rotator 1.4s linear infinite;
-              animation: rotator 1.4s linear infinite;
-      }
-
-      @-webkit-keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-      }
-      }
-
-      @keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-      }
-      }
-
-      .path {
-      stroke-dasharray: 187;
-      stroke-dashoffset: 0;
-      -webkit-transform-origin: center;
-              transform-origin: center;
-      -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-              animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-      }
-
-      @-webkit-keyframes colors {
-      0% {
-        stroke: #4285F4;
-      }
-      25% {
-        stroke: #DE3E35;
-      }
-      50% {
-        stroke: #F7C223;
-      }
-      75% {
-        stroke: #1B9A59;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-      }
-
-      @keyframes colors {
-      0% {
-        stroke: #4285F4;
-      }
-      25% {
-        stroke: #DE3E35;
-      }
-      50% {
-        stroke: #F7C223;
-      }
-      75% {
-        stroke: #1B9A59;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-      }
-
-      @-webkit-keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-      }
-      }
-
-      @keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-      }
-      }
-    </style>
-    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-    </svg>
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
   </div>
-
-  <main>
-    <div class="mdui-appbar mdui-appbar-fixed mdui-color-white mdui-shadow-0 theme-appbar">
-  <div class="mdui-toolbar theme-toolbar-top">
-    
-      <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger">
-        <i class="mdui-icon">
-          <span></span>
-        </i>
-      </a>
-    
-  </div>
-  <div class="mdui-toolbar theme-toolbar-bottom">
-    <span class="theme-toolbar-bottom__title">木叶村</span>
-    
-      <a href="/search.html" class="mdui-textfield-icon mdui-btn mdui-btn-icon theme-toolbar-bottom__search">
-        <i class="mdui-icon material-icons">&#xe8b6;</i>
-      </a>
-    
-  </div>
-  <div class="mdui-progress theme-appbar__progress" id="progressBar">
-    <div class="mdui-progress-indeterminate"></div>
-  </div>
-</div>
-
-    <div class="mdui-drawer mdui-drawer-full-height theme-drawer" id="drawer">
-  <!-- header -->
-  <div class="theme-drawer__header">
-  <div class="theme-drawer__header__layer-1">
-    <div class="mdui-toolbar theme-toolbar-top">
+  <nav class="site-navigation">
+    <ul>
       
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger theme-appbar__burger--drawer"  id="drawer-back">
-          <i class="mdui-icon">
-            <span></span>
-          </i>
-        </a>
+        <li><a href="/">主页</a></li>
       
-    </div>
-    <div class="mdui-toolbar theme-toolbar-bottom">
-      <span class="theme-toolbar-bottom__title">木叶村</span>
-    </div>
-  </div>
-  <div class="theme-drawer__header__layer-2" style="background-image: url(/images/bg.png)">
-    <img class="mdui-img-circle theme-drawer__header__layer-2__user__avatar" src="/images/avatar.png"/>
-    <div class="theme-drawer__header__layer-2__user__info">
-      <div class="theme-drawer__header__layer-2__user__info__author mdui-text-color-white-text">
-        Naruto
-      </div>
-      <div class="theme-drawer__header__layer-2__user__info__slogan mdui-text-color-white-secondary">
-        I&#39;m your slogan!
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="theme-drawer__warpper">
-    <!-- content -->
-    <div class="theme-drawer__warpper__content">
-  <ul class="mdui-list">
-    <a href="/" class="mdui-list-item mdui-ripple mdui-ripple-white">
-      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe88a;</i>
-      <div class="mdui-list-item-content">首页</div>
-    </a>
-    <a href="/archives/" class="mdui-list-item mdui-ripple mdui-ripple-white">
-      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe149;</i>
-      <div class="mdui-list-item-content">归档</div>
-    </a>
-    <ul class="mdui-list mdui-collapse" mdui-collapse="{accordion: true}" mdui-collapse>
-      
-        <div class="mdui-collapse-item ">
-          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-            <i class="mdui-list-item-icon mdui-icon material-icons">&#xe86e;</i>
-            <div class="mdui-list-item-content">分类</div>
-            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-          </div>
-          <div class="mdui-collapse-item-body mdui-list">
-            
-              <a href="/categories/R/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                R
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/Linux/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                Linux
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">9</span>
-              </a>
-            
-              <a href="/categories/C-C/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                C/C++
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/生信/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                生信
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">8</span>
-              </a>
-            
-              <a href="/categories/杂谈/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                杂谈
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/git/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                git
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/perl/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                perl
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/categories/python3/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                python3
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">20</span>
-              </a>
-            
-              <a href="/categories/机器学习/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                机器学习
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">6</span>
-              </a>
-            
-              <a href="/categories/爬虫/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                爬虫
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">5</span>
-              </a>
-            
-              <a href="/categories/算法与数据结构/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                算法与数据结构
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-          </div>
-        </div>
-      
-      
-        <div class="mdui-collapse-item ">
-          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-            <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-            <div class="mdui-list-item-content">标签</div>
-            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-          </div>
-          <div class="mdui-collapse-item-body mdui-list">
-            
-              <a href="/tags/编程语言/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                编程语言
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">31</span>
-              </a>
-            
-              <a href="/tags/R/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                R
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/统计语言/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                统计语言
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/Linux/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                Linux
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">9</span>
-              </a>
-            
-              <a href="/tags/AWK/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                AWK
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/C/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                C
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/生信软件/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                生信软件
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/vim/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                vim
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/tags/生信理论基础/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                生信理论基础
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">6</span>
-              </a>
-            
-              <a href="/tags/文件格式/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                文件格式
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/tags/其他/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                其他
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/软件/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                软件
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/git/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                git
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/ssh/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                ssh
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/perl/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                perl
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/tags/python3/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                python3
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">32</span>
-              </a>
-            
-              <a href="/tags/samtools/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                samtools
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/大数据/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                大数据
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/测序数据质控/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                测序数据质控
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/Trimmomatic/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                Trimmomatic
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/机器学习/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                机器学习
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">6</span>
-              </a>
-            
-              <a href="/tags/爬虫/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                爬虫
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">5</span>
-              </a>
-            
-              <a href="/tags/可视化/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                可视化
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/数据结构/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                数据结构
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-          </div>
-        </div>
-      
-      <div class="mdui-collapse-item ">
-        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-          <i class="mdui-list-item-icon mdui-icon material-icons">&#xe916;</i>
-          <div class="mdui-list-item-content">年份</div>
-          <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-        </div>
-        <div class="mdui-collapse-item-body mdui-list">
-          
-          
-            <a href="/archives/2019/" class="mdui-list-item mdui-ripple">
-              2019
-            </a>
-          
-            <a href="/archives/2018/" class="mdui-list-item mdui-ripple">
-              2018
-            </a>
-          
-        </div>
-      </div>
-    </ul>
-  </ul>
-  
-    <div class="mdui-divider"></div>
-    <ul class="mdui-list" mdui-collapse="{accordion: true}" mdui-collapse>
-      
-        
-          
-            <a href="/friends" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">&#xe0ba;</i>
-              
-              
-              <div class="mdui-list-item-content">Test1</div>
-            </a>
-        
-      
-        
-          
-            <a href="/apply-for-link" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-                <i class="mdui-list-item-icon mdui-icon fa fa-child mdui-text-center"></i>
-              
-              
-              
-              <div class="mdui-list-item-content">Test2</div>
-            </a>
-        
-      
-        
-          
-            <a href="/galleries" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-              
-              
-              <div class="mdui-list-item-content">Test3</div>
-            </a>
-        
-      
-        
-          <div class="mdui-collapse-item">
-            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-              
-              
-              <div class="mdui-list-item-content">Test4</div>
-              <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-            </div>
-            <div class="mdui-collapse-item-body mdui-list">
-              
-                
-                  <a href="/myfriends" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
-                
-                    TEST1
-                  </a>
-              
-                
-                  <a href="/timeline" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
-                
-                    TEST2
-                  </a>
-              
-            </div>
-          </div>
-        
+        <li><a href="/archives">归档</a></li>
       
     </ul>
-  
-</div>
+  </nav>
+</header>
 
-    <div class="theme-spacer"></div>
-    <!-- footer -->
-    <div class="theme-drawer__warpper__footer">
-  <div class="mdui-typo mdui-typo-caption-opacity">
-    Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
-    <br />
-    Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank">Halyul/MDUI</a>
-    <br />
-    <span>
-      Copyright ©
-      <span year></span>
-      Naruto
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/02/python3cook-xi-lie-bi-ji-si/"><span>python3 cookbook笔记：第二章 字符串和文本</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/02/python3cook-xi-lie-bi-ji-si/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-01T16:00:00.000Z">
+          2018-11-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>本章介绍了几种字符串的操作方式，python提供了大量的内置的操作函数，若果还解决不了问题就需要用正则表达式。</p>
+<p>由于自己对这部分处理没有需求，就只是大概看了看，而且后面几个小节没有看懂，因此这部分就暂时不整理了。</p>
+<p>等以后有文字处理这方面的需求再回过头来复习</p>
+<p><code>startswith()</code> 和<code>endswith()</code> 方法提供了一个非常方便的方式去做字符串开头和结尾的检查,这里就不举例了。</p>
+<p><strong>正则表达式</strong></p>
+<pre><code>```python
+    re.compile() # 编译匹配模式
+    re.match() # 匹配开头
+    re.search() # 任意位置,但只匹配一次
+    re.findall() # 匹配多次，返回元组
+    re.finditer() # 匹配多次，返回迭代器
+```
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
     </span>
     
-    
-      <br />
-      <span>
-        最后更新于: 5月 11, 2019
-      </span>
-    
-    
-  </div>
-</div>
-<script type="text/javascript">
-  var copyrightNow = new Date().getFullYear();
-  var textContent = document.querySelector('span[year]')
-  
-    textContent.textContent = copyrightNow
-  
-</script>
-
-  </div>
-</div>
-
-    <div id="top"></div>
-
-    <script src="/js/lightgallery.min.js"></script>
-
-    <div id="barba-wrapper">
-      <div class="barba-container"  data-namespace="posts">
-        <div class="theme-index">
-  <div class="theme-posts">
-    
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/11.png)">
-        <img src="/images/random/11.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              python3 标准库系列(一)---email模块
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程
-
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/python3/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">python3</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-0'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-0">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 02, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/32.png)">
-        <img src="/images/random/32.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/01/python3cook-xi-lie-bi-ji-san/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/python3/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">python3</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-1'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-1">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 01, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/13.png)">
-        <img src="/images/random/13.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/10/31/python3cook-xi-lie-bi-ji-er/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/python3/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">python3</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-2'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-2">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            10月 31, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/18.png)">
-        <img src="/images/random/18.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/10/30/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-yi/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              机器学习实战笔记(六)---kNN算法
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        工作原理是：有一组已经分类好的数据。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（...
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/机器学习/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">机器学习</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-3'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-3">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/机器学习/" class="mdui-ripple">
-                      <span>机器学习</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            10月 30, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/18.png)">
-        <img src="/images/random/18.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/10/30/python3cook-xi-lie-bi-ji-yi/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/python3/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">python3</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-4'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-4">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            10月 30, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/41.png)">
-        <img src="/images/random/41.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/07/07/sheng-xin-ji-chu-jiao-cheng-yi-fastq-ge-shi/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              生新基础教程(一)：fastq格式
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        
-转载请注明出处
-
-FASTQ格式
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/生信/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">生信</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            
-              <a href="/tags/文件格式/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__tags">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon fa fa-tags mdui-text-center"></i>
-                  </span>
-                  <span class="mdui-chip-title">文件格式</span>
-                </div>
-              </a>
-            
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            7月 07, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/26.png)">
-        <img src="/images/random/26.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/05/13/yong-python3-de-matplotlib-mo-kuai-hua-tiao-xing-tu/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              用python3的matplotlib模块画条形图
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        文章来源：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/python3/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">python3</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-6'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-6">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/可视化/" class="mdui-ripple">
-                      <span>可视化</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            5月 13, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/13.png)">
-        <img src="/images/random/13.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              (转载)samtools常用命令详解
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        samtools的说明文档：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/生信/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">生信</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-7'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-7">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/生信理论基础/" class="mdui-ripple">
-                      <span>生信理论基础</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/samtools/" class="mdui-ripple">
-                      <span>samtools</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            4月 29, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/16.png)">
-        <img src="/images/random/16.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/04/29/linux-xia-duo-ge-jie-dian-ssh-hu-xiang-mian-mi-ma-deng-lu/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              linux下多个节点ssh互相免密码登陆
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        假定需要节点gm-35-2和gm-35-18之间免密登陆
-
-确认安装了ssh
-
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/Linux/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">Linux</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-8'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-8">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/Linux/" class="mdui-ripple">
-                      <span>Linux</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/ssh/" class="mdui-ripple">
-                      <span>ssh</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            4月 29, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/2.png)">
-        <img src="/images/random/2.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/04/01/c-yu-yan-du-xie-wen-jian/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              C语言读写文件
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        使用标准I/O处理文件
-#include &lt;stdio.h&gt;
-#incl...
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/C-C/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">C/C++</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-9'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-9">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/C/" class="mdui-ripple">
-                      <span>C</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            4月 01, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/21.png)">
-        <img src="/images/random/21.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/03/03/you-are-what-you-write/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              沈向洋：You Are What You Write
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/杂谈/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">杂谈</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            
-              <a href="/tags/其他/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__tags">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon fa fa-tags mdui-text-center"></i>
-                  </span>
-                  <span class="mdui-chip-title">其他</span>
-                </div>
-              </a>
-            
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            3月 03, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/10.png)">
-        <img src="/images/random/10.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              AWK简明教程
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/Linux/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">Linux</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-11'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-11">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/Linux/" class="mdui-ripple">
-                      <span>Linux</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/AWK/" class="mdui-ripple">
-                      <span>AWK</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            2月 16, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
 
     
     
-      <div class="theme-end-footer">
-        <div class="mdui-text-center mdui-text-color-theme-text">
-          4 of 5
-        </div>
-      </div>
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
     
-  </div>
-  <button id="index-fab" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" onclick="smoothScroll.animateScroll( 0 );">
-  <i class="mdui-icon material-icons">&#xe5d8;</i>
-</button>
 
-</div>
-<script type="text/javascript">
-  themeRuntime.scriptsMap.posts = [];
-  (function() {
-    var fabTopFlag = false;
-    var fabEl = document.getElementById('index-fab');
-    function fabShowHide() {
-      var bodyScrolled = document.documentElement.scrollTop || document.body.scrollTop;
-      if (bodyScrolled > 0 && !fabTopFlag) {
-        fabEl.classList.remove('mdui-fab-hide');
-        fabTopFlag = true;
-      } else if (bodyScrolled === 0 && fabTopFlag) {
-        fabEl.classList.add('mdui-fab-hide');
-        fabTopFlag = false;
-      }
-    }
-    fabShowHide()
-    window.addEventListener('scroll', fabShowHide);
-    var listener = {
-      function: fabShowHide,
-      event: 'scroll',
-      el: window,
-      removed: false
-    }
-    themeRuntime.scriptsMap.posts.push(listener)
-  })();
-
-  (function() {
-    var pageTotal = 5
-    var pageNext = 2
-    var pageLoad = false
-    themeRuntime.temp = {
-      index: 1
-    }
-    function morePosts() {
-      var screenHeight = window.innerHeight;
-      var compareHeight = document.body.clientHeight -  (document.documentElement.scrollTop || document.body.scrollTop);
-      var loadStatus = pageNext - themeRuntime.temp.index
-      if (screenHeight >= compareHeight - 1 && loadStatus === 1 && pageLoad === false) {
-        if (pageNext <= pageTotal) {
-          loadProgressInline(false)
-          var url = window.location.href + "page/" + pageNext + "/"
-          themeRuntime.temp.index = pageNext;
-          //console.log(pageTotal, url)
-          pageLoad = true;
-          fetch(url, {
-              method:'GET',
-              mode:'cors',
-              credentials: 'include'
-          })
-          .then(function(response) {
-            return response.text()
-          }).then(function(HTML) {
-            var fakeDom = document.createElement('html');
-            fakeDom.innerHTML = HTML
-            var morePostsHTML = fakeDom.querySelector('.theme-posts').innerHTML
-            var postsArea = document.querySelector(".theme-posts")
-            loadProgressInline(true)
-            postsArea.insertAdjacentHTML('beforeend', morePostsHTML)
-            pageNext++;
-            pageLoad = false;
-          }).catch(function(error) {
-            mdui.alert(error, "错误！");
-            pageLoad = false;
-          })
-        }
-      }
-    }
-    function loadProgressInline(state) {
-      var progressEl = document.getElementById('progressBar')
-      if (state === true) {
-        progressEl.classList.add('theme-appbar__progress--hidden')
-      } else if (state === false) {
-        progressEl.classList.remove('theme-appbar__progress--hidden')
-      }
-    }
-    window.addEventListener('scroll', morePosts);
-    var listener = {
-      function: morePosts,
-      event: 'scroll',
-      el: window,
-      removed: false
-    }
-    themeRuntime.scriptsMap.posts.push(listener)
-  })();
-</script>
-
-
-      </div>
     </div>
-  </main>
 
-  <div id="outdated" style="z-index: 9999;">
-    <h6>你的浏览器已经过气辣！</h6>
-    <p>赶紧升级浏览器来访问本站吧！<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">现在就去</a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="关闭">&times;</a></p>
+    
   </div>
-  <!-- import js -->
+</article>
 
 
-  <script src="/js/outdatedbrowser.min.js"></script>
 
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/01/python3cook-xi-lie-bi-ji-san/"><span>python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/01/python3cook-xi-lie-bi-ji-san/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-10-31T16:00:00.000Z">
+          2018-11-01
+        </time>
+      </a>
+    </span>
+  </div>
 
 
   
-    <script src="/js/js.barba.min.js"></script>
-    <script type="text/javascript">
-      Barba.Utils.errorPageUrl = '/404.html';
-    </script>
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
+<ol>
+<li><p><code>itertools.groupby()</code>可以根据指定字段来分组：</p>
+<pre><code> ```python
+ rows = [
+ {&#39;address&#39;: &#39;5412 N CLARK&#39;, &#39;date&#39;: &#39;07/01/2012&#39;},
+ {&#39;address&#39;: &#39;5148 N CLARK&#39;, &#39;date&#39;: &#39;07/04/2012&#39;},
+ {&#39;address&#39;: &#39;5800 E 58TH&#39;, &#39;date&#39;: &#39;07/02/2012&#39;},
+ {&#39;address&#39;: &#39;2122 N CLARK&#39;, &#39;date&#39;: &#39;07/03/2012&#39;},
+ {&#39;address&#39;: &#39;5645 N RAVENSWOOD&#39;, &#39;date&#39;: &#39;07/02/2012&#39;},
+ {&#39;address&#39;: &#39;1060 W ADDISON&#39;, &#39;date&#39;: &#39;07/02/2012&#39;},
+ {&#39;address&#39;: &#39;4801 N BROADWAY&#39;, &#39;date&#39;: &#39;07/01/2012&#39;},
+ {&#39;address&#39;: &#39;1039 W GRANVILLE&#39;, &#39;date&#39;: &#39;07/04/2012&#39;},
+ ]
+ ```
+</code></pre><p> 我们按照date来分组：</p>
+<pre><code> ```python
+ from operator import itemgetter
+ from itertools import groupby
+ # Sort by the desired field first
+ rows.sort(key=itemgetter(&#39;date&#39;))
+ # Iterate in groups
+ for date, items in groupby(rows, key=itemgetter(&#39;date&#39;)):
+ print(date)
+ for i in items:
+ print(&#39; &#39;, i)
+ ```
+</code></pre><p> 输出：</p>
+<pre><code> ```python
+
+ 07/01/2012
+         {&#39;date&#39;: &#39;07/01/2012&#39;, &#39;address&#39;: &#39;5412 N CLARK&#39;}
+ {&#39;date&#39;: &#39;07/01/2012&#39;, &#39;address&#39;: &#39;4801 N BROADWAY&#39;}
+ 07/02/2012
+         {&#39;date&#39;: &#39;07/02/2012&#39;, &#39;address&#39;: &#39;5800 E 58TH&#39;}
+         {&#39;date&#39;: &#39;07/02/2012&#39;, &#39;address&#39;: &#39;5645 N RAVENSWOOD&#39;}
+         {&#39;date&#39;: &#39;07/02/2012&#39;, &#39;address&#39;: &#39;1060 W ADDISON&#39;}
+ 07/03/2012
+         {&#39;date&#39;: &#39;07/03/2012&#39;, &#39;address&#39;: &#39;2122 N CLARK&#39;}
+ 07/04/2012
+         {&#39;date&#39;: &#39;07/04/2012&#39;, &#39;address&#39;: &#39;5148 N CLARK&#39;}
+         {&#39;date&#39;: &#39;07/04/2012&#39;, &#39;address&#39;: &#39;1039 W GRANVILLE&#39;}
+ ```
+</code></pre></li>
+</ol>
+<p><code>groupby()</code> 函数扫描整个序列并且查找连续相同值（或者根据指定key 函数返回值相同）的元素序列。在每次迭代的时候，它会返回一个值和一个迭代器对象，这个迭代器对象可以生成元素值全部等于上面那个值的组中所有对象。</p>
+<p>还有一个非常重要的准备步骤是要根据指定的字段将数据排序</p>
+<ol>
+<li><code>itertools.compress()</code>,它以一个iterable对象和一个相对应的Boolean 选择器序列作为输入参数。然后输出iterable 对象中对<br>应选择器为True 的元素.</li>
+</ol>
+<p>示例：</p>
+<pre><code>    ```python
+    addresses = [
+    &#39;5412 N CLARK&#39;,
+    &#39;5148 N CLARK&#39;,
+    &#39;5800 E 58TH&#39;,
+    &#39;2122 N CLARK&#39;,
+    &#39;5645 N RAVENSWOOD&#39;,
+    &#39;1060 W ADDISON&#39;,
+    &#39;4801 N BROADWAY&#39;,
+    &#39;1039 W GRANVILLE&#39;,
+    ]
+    counts = [ 0, 3, 10, 4, 1, 7, 6, 1]
+    # 
+    &gt;&gt;&gt; from itertools import compress
+    &gt;&gt;&gt; more5 = [n &gt; 5 for n in counts]
+    &gt;&gt;&gt; more5
+    [False, False, True, False, False, True, True, False]
+    &gt;&gt;&gt; list(compress(addresses, more5))
+    [&#39;5800 E 58TH&#39;, &#39;1060 W ADDISON&#39;, &#39;4801 N BROADWAY&#39;]
+    &gt;&gt;&gt;
+    ```
+</code></pre><ol>
+<li><p><code>collections.namedtuple()</code> 函数对元组进行命名：</p>
+<pre><code> ```python
+ &gt;&gt;&gt; from collections import namedtuple
+ &gt;&gt;&gt; Subscriber = namedtuple(&#39;Subscriber&#39;, [&#39;addr&#39;, &#39;joined&#39;])
+ &gt;&gt;&gt; sub = Subscriber(&#39;jonesy@example.com&#39;, &#39;2012-10-19&#39;)
+ &gt;&gt;&gt; sub
+ Subscriber(addr=&#39;jonesy@example.com&#39;, joined=&#39;2012-10-19&#39;)
+ &gt;&gt;&gt; sub.addr
+ &#39;jonesy@example.com&#39;
+ &gt;&gt;&gt; sub.joined
+ &#39;2012-10-19&#39;
+ &gt;&gt;&gt;
+ ```
+</code></pre><p>命名元组另一个用途就是作为字典的替代，因为字典存储需要更多的内存空间。如果你需要构建一个非常大的包含字典的数据结构，那么使用命名元组会更加高效。但是需要注意的是，不像字典那样，一个命名元组是不可更改的</p>
+</li>
+<li><p><code>sum()</code> , <code>min()</code> , <code>max()</code>等函数可以接收迭代器作为参数：</p>
+<pre><code> ```python 
+ s = sum((x * x for x in nums)) # 显示的传递一个生成器表达式对象
+ s = sum(x * x for x in nums) # 更加优雅的实现方式，省略了括号,而且省去了一个新建列表的命名空间
+ ```
+</code></pre></li>
+<li><p>合并多个字典或映射,先看示例：</p>
+<pre><code> ```python
+ a = {&#39;x&#39;: 1, &#39;z&#39;: 3 }
+ b = {&#39;y&#39;: 2, &#39;z&#39;: 4 }
+ ```
+
+ ```python
+ from collections import ChainMap
+ c = ChainMap(a,b)
+ print(c[&#39;x&#39;]) # Outputs 1 (from a)
+ print(c[&#39;y&#39;]) # Outputs 2 (from b)
+ print(c[&#39;z&#39;]) # Outputs 3 (from a)
+ ```
+</code></pre></li>
+</ol>
+<p>一个<code>ChainMap</code> 接受多个字典并将它们在逻辑上变为一个字典。然后，这些字典并不是真的合并在一起了，<code>ChainMap</code> 类只是在内部创建了一个容纳这些字典的列表并重新定义了一些常见的字典操作来遍历这个列表.</p>
+<p>如果出现重复键，那么第一次出现的映射值会被返回。因此，例子程序中的c[‘z’],总是会返回字典a 中对应的值，而不是b 中对应的值。</p>
+<p>因此，对于字典的更新或删除操作总是影响的是列表中第一个字典。</p>
+<p>与<code>update</code>不同，<code>ChainMap</code> 使用原来的字典，它自己不创建新的字典</p>
+<p><strong>第一章完，下一章：字符串和文本</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/10/31/python3cook-xi-lie-bi-ji-er/"><span>python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法</span></a></h3>
+    
   
 
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/10/31/python3cook-xi-lie-bi-ji-er/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-10-30T16:00:00.000Z">
+          2018-10-31
+        </time>
+      </a>
+    </span>
+  </div>
 
-<!-- theme js -->
-<script type="text/javascript">
-  (function() {
-    var appbarTopFlag = false;
-    var appbarEl = document.querySelector('.theme-appbar');
-    function appbarShadow() {
-      var bodyScrolled = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-      if (bodyScrolled > 0 && !appbarTopFlag) {
-        appbarEl.classList.add('theme-appbar--shadow');
-        appbarTopFlag = true;
-      } else if (bodyScrolled === 0 && appbarTopFlag) {
-        appbarEl.classList.remove('theme-appbar--shadow');
-        appbarTopFlag = false;
-      }
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
+<ol>
+<li><p><code>collections</code> 模块中的<code>defaultdict</code>函数能够构造一个值为列表的字典：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> from collections import defaultdict
+ d = defaultdict(list)
+ d['a'].append(1)
+ d['a'].append(2)
+ d['b'].append(4)
+ d = defaultdict(set)
+ d['a'].add(1)
+ d['a'].add(2)
+ d['b'].add(4)
+</code></pre>
+<p> 简化版：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> d = defaultdict(list)
+ for key, value in pairs:
+ d[key].append(value)
+</code></pre>
+</li>
+<li><p>字段的键存储是无序的，如果想要一个键顺序是一定的字典，可以这样做：</p>
+<pre><code> from collections import OrderedDict
+ d = OrderedDict()
+</code></pre><p> 但这样做内存占用比较大</p>
+</li>
+<li><p>如果你在一个字典上执行普通的数学运算，你会发现它们仅仅作用于键，而不是值：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> prices = {
+ 'ACME': 45.23,
+ 'AAPL': 612.78,
+ 'IBM': 205.55,
+ 'HPQ': 37.20,
+ 'FB': 10.75
+ }
+ min(prices) # Returns 'AAPL'
+ max(prices) # Returns 'IBM'
+</code></pre>
+<p> 想要对值进行操作，可以这样：</p>
+<pre><code> min(prices, key=lambda k: prices[k]) # Returns &#39;FB&#39;
+ max(prices, key=lambda k: prices[k]) # Returns &#39;AAPL&#39;
+</code></pre></li>
+<li><p>对两个字典进行运算：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> # Find keys in common
+ a.keys() & b.keys() # { 'x', 'y' }
+ # Find keys in a that are not in b
+ a.keys() - b.keys() # { 'z' }
+ # Find (key,value) pairs in common
+ a.items() & b.items() # { ('y', 2) }
+</code></pre>
+<p> <del>ps：如果想要对列表消除重复元素可以转换位集合：</del></p>
+<pre class=" language-lang-python"><code class="language-lang-python"> >>> a
+ [1, 5, 2, 1, 9, 1, 5, 10]
+ >>> set(a)
+ {1, 2, 10, 5, 9}
+ >>>
+</code></pre>
+<p> 如果想要对一个复杂类型的列表去重复，就要用到一个稍微复杂一点的函数：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> def dedupe(items, key=None):
+     seen = set()
+     for item in items:
+         val = item if key is None else key(item)
+         if val not in seen:
+             yield item
+             seen.add(val)
+
+ >>> a = [ {'x':1, 'y':2}, {'x':1, 'y':3}, {'x':1, 'y':2}, {'x':2, 'y':4}]
+ >>> list(dedupe(a, key=lambda d: (d['x'],d['y'])))
+ [{'x': 1, 'y': 2}, {'x': 1, 'y': 3}, {'x': 2, 'y': 4}]
+ >>> list(dedupe(a, key=lambda d: d['x']))
+ [{'x': 1, 'y': 2}, {'x': 2, 'y': 4}]
+ >>>
+</code></pre>
+</li>
+<li><p>按照关键字对字典进行排序：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"> rows = [
+ {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003},
+ {'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
+ {'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
+ {'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
+ ]
+
+ from operator import itemgetter
+ rows_by_fname = sorted(rows, key=itemgetter('fname'))
+ rows_by_uid = sorted(rows, key=itemgetter('uid'))
+ print(rows_by_fname)
+ print(rows_by_uid)
+</code></pre>
+</li>
+</ol>
+<p><code>itemgetter()</code> 有时候也可以用<code>lambda</code> 表达式代替，比如：</p>
+<pre><code>```python
+
+rows_by_fname = sorted(rows, key=lambda r: r[&#39;fname&#39;])
+rows_by_lfname = sorted(rows, key=lambda r: (r[&#39;lname&#39;],r[&#39;fname&#39;]))
+```
+</code></pre><p>理论上讲，<code>operator.attrgetter()</code>与 <code>itemgetter()</code> 函数的作用是一样，书中说<strong>排序不支持原生比较的对象</strong>要用<code>attrgetter()</code>函数，反正我也不知道什么是<strong>不支持原生比较的对象</strong></p>
+<p><strong>下一节：字典的用法(续)</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/10/30/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-yi/"><span>机器学习实战笔记(六)---kNN算法</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/10/30/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-yi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-10-29T16:00:00.000Z">
+          2018-10-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>工作原理是：有一组已经分类好的数据。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（最近邻）的分类标签。</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+import operator
+
+'''
+对未知类别属性的数据集中的每个点依次执行以下操作：
+(1) 计算已知类别数据集中的点与当前点之间的距离；
+(2) 按照距离递增次序排序；
+(3) 选取与当前点距离最小的k个点；
+(4) 确定前k个点所在类别的出现频率；
+(5) 返回前k个点出现频率最高的类别作为当前点的预测分类。
+'''
+
+def classify0(inX, dataSet, labels, k):
+    # 返回行数
+    dataSetSize = dataSet.shape[0]
+    # 在列向量方向上重复inX共1次(横向)，行向量方向上重复inX共dataSetSize次(纵向)
+    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    # sum()所有元素相加，sum(0)列相加，sum(1)行相加
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    # 返回distances中元素从小到大排序后的索引值 
+    sortedDistIndicies = distances.argsort()
+    #print(sortedDistIndicies)  
+    classCount={}          
+    for i in range(k):
+        #print(sortedDistIndicies[i]) # 1,0,3
+        #print(labels[sortedDistIndicies[i]]) # A,A,B
+        voteIlabel = labels[sortedDistIndicies[i]]  
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
+    #python3中用items()替换python2中的iteritems()
+    #key=operator.itemgetter(1)根据字典的值进行排序
+    #key=operator.itemgetter(0)根据字典的键进行排序
+    #reverse降序排序字典        
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def createDataSet():
+    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
+    labels = ['A','A','B','B']
+    return group, labels
+#[[1.  1.1]
+ #[1.  1. ]
+ #[0.  0. ]
+ #[0.  0.1]]
+if __name__ == '__main__':
+    group, labels = createDataSet()
+    result = classify0([0,0], group, labels, 3)
+    print(result) # B
+</code></pre>
+<p>计算$(x_1,y_1)$与$(x_2,y_2)$距离公式：</p>
+<script type="math/tex; mode=display">\sqrt{(x_1 - x_2)^2+(y_1-y_2)^2}</script><p>这个距离也叫欧式距离。<br>上述代码的<code>classify0</code>函数中17~21行就是计算距离的方法</p>
+<h2 id="示例一：改进约会网站的配对效果"><a href="#示例一：改进约会网站的配对效果" class="headerlink" title="示例一：改进约会网站的配对效果"></a>示例一：改进约会网站的配对效果</h2><p><em>为了保证代码完整性，保留了<code>classify0</code>,<code>createDataSet</code>,是下列代码能够作为一个脚本单独运行，同时将多余的注释删除，节省空间</em></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import numpy as np
+import operator
+from os import listdir
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.lines as mlines
+from matplotlib.font_manager import FontProperties
+
+def classify0(inX, dataSet, labels, k):
+    dataSetSize = dataSet.shape[0]
+    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndicies = distances.argsort()
+    classCount={}          
+    for i in range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]  
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def createDataSet():
+    group = np.array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])
+    labels = ['A','A','B','B']
+    return group, labels
+
+def file2matrix(filename):
+    love_dictionary={'largeDoses':3, 'smallDoses':2, 'didntLike':1}
+    fr = open(filename)
+    arrayOLines = fr.readlines()
+    numberOfLines = len(arrayOLines)            #get the number of lines in the file
+    returnMat = np.zeros((numberOfLines,3))        #prepare matrix to return
+    classLabelVector = []                       #prepare labels return   
+    index = 0
+    for line in arrayOLines:
+        line = line.strip()
+        listFromLine = line.split('\t')
+        returnMat[index,:] = listFromLine[0:3] # 学习numpy之路任重道远啊
+        if(listFromLine[-1].isdigit()):
+            classLabelVector.append(int(listFromLine[-1]))
+        else:
+            classLabelVector.append(love_dictionary.get(listFromLine[-1])) # 最后一列就是标签
+        index += 1
+    return returnMat,classLabelVector
+
+def autoNorm(dataSet):
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges = maxVals - minVals
+    normDataSet = np.zeros(np.shape(dataSet))
+    m = dataSet.shape[0]
+    normDataSet = dataSet - np.tile(minVals, (m,1))
+    normDataSet = normDataSet/np.tile(ranges, (m,1))   #element wise divide
+    return normDataSet, ranges, minVals
+
+def datingClassTest():
+    hoRatio = 0.50      #hold out 10%
+    datingDataMat,datingLabels = file2matrix('datingTestSet2.txt')       #load data setfrom file
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    m = normMat.shape[0]
+    numTestVecs = int(m*hoRatio)
+    errorCount = 0.0
+    for i in range(numTestVecs):
+        #前numTestVecs个数据作为测试集,后m-numTestVecs个数据作为训练集
+        classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
+        print ("the classifier came back with: %d, the real answer is: %d" % (classifierResult, datingLabels[i]))
+        if (classifierResult != datingLabels[i]): errorCount += 1.0
+    print ("the total error rate is: %f" % (errorCount/float(numTestVecs)))
+    print (errorCount)
+
+def classifyPerson():
+    resultList = ['not at all', 'in small doses', 'in large doses']
+    percentTats = float(input(\
+                                  "percentage of time spent playing video games?"))
+    ffMiles = float(input("frequent flier miles earned per year?"))
+    iceCream = float(input("liters of ice cream consumed per year?"))
+    datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    inArr = np.array([ffMiles, percentTats, iceCream, ])
+    classifierResult = classify0((inArr - \
+                                  minVals)/ranges, normMat, datingLabels, 3)
+    print ("You will probably like this person: %s" % resultList[classifierResult - 1])
+
+def showdatas(datingDataMat, datingLabels):
+    #设置汉字格式
+    font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=12)
+    #将fig画布分隔成1行1列,不共享x轴和y轴,fig画布的大小为(13,8)
+    #当nrow=2,nclos=2时,代表fig画布被分为四个区域,axs[0][0]表示第一行第一个区域
+    fig, axs = plt.subplots(nrows=2, ncols=2,sharex=False, sharey=False, figsize=(13,8))
+
+    #numberOfLabels = len(datingLabels)
+    LabelsColors = []
+    for i in datingLabels:
+        if i == 1:
+            LabelsColors.append('black')
+        if i == 2:
+            LabelsColors.append('orange')
+        if i == 3:
+            LabelsColors.append('red')
+    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第二列(玩游戏)数据画散点数据,散点大小为15,透明度为0.5
+    axs[0][0].scatter(x=datingDataMat[:,0], y=datingDataMat[:,1], color=LabelsColors,s=15, alpha=.5)
+    #设置标题,x轴label,y轴label
+    axs0_title_text = axs[0][0].set_title(u'每年获得的飞行常客里程数与玩视频游戏所消耗时间占比',FontProperties=font)
+    axs0_xlabel_text = axs[0][0].set_xlabel(u'每年获得的飞行常客里程数',FontProperties=font)
+    axs0_ylabel_text = axs[0][0].set_ylabel(u'玩视频游戏所消耗时间占',FontProperties=font)
+    plt.setp(axs0_title_text, size=9, weight='bold', color='red') 
+    plt.setp(axs0_xlabel_text, size=7, weight='bold', color='black') 
+    plt.setp(axs0_ylabel_text, size=7, weight='bold', color='black')
+
+    #画出散点图,以datingDataMat矩阵的第一(飞行常客例程)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5
+    axs[0][1].scatter(x=datingDataMat[:,0], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)
+    #设置标题,x轴label,y轴label
+    axs1_title_text = axs[0][1].set_title(u'每年获得的飞行常客里程数与每周消费的冰激淋公升数',FontProperties=font)
+    axs1_xlabel_text = axs[0][1].set_xlabel(u'每年获得的飞行常客里程数',FontProperties=font)
+    axs1_ylabel_text = axs[0][1].set_ylabel(u'每周消费的冰激淋公升数',FontProperties=font)
+    plt.setp(axs1_title_text, size=9, weight='bold', color='red') 
+    plt.setp(axs1_xlabel_text, size=7, weight='bold', color='black') 
+    plt.setp(axs1_ylabel_text, size=7, weight='bold', color='black')
+
+    #画出散点图,以datingDataMat矩阵的第二(玩游戏)、第三列(冰激凌)数据画散点数据,散点大小为15,透明度为0.5
+    axs[1][0].scatter(x=datingDataMat[:,1], y=datingDataMat[:,2], color=LabelsColors,s=15, alpha=.5)
+    #设置标题,x轴label,y轴label
+    axs2_title_text = axs[1][0].set_title(u'玩视频游戏所消耗时间占比与每周消费的冰激淋公升数',FontProperties=font)
+    axs2_xlabel_text = axs[1][0].set_xlabel(u'玩视频游戏所消耗时间占比',FontProperties=font)
+    axs2_ylabel_text = axs[1][0].set_ylabel(u'每周消费的冰激淋公升数',FontProperties=font)
+    plt.setp(axs2_title_text, size=9, weight='bold', color='red') 
+    plt.setp(axs2_xlabel_text, size=7, weight='bold', color='black') 
+    plt.setp(axs2_ylabel_text, size=7, weight='bold', color='black')
+    #设置图例
+    didntLike = mlines.Line2D([], [], color='black', marker='.',
+                      markersize=6, label='didntLike')
+    smallDoses = mlines.Line2D([], [], color='orange', marker='.',
+                      markersize=6, label='smallDoses')
+    largeDoses = mlines.Line2D([], [], color='red', marker='.',
+                      markersize=6, label='largeDoses')
+    #添加图例
+    axs[0][0].legend(handles=[didntLike,smallDoses,largeDoses])
+    axs[0][1].legend(handles=[didntLike,smallDoses,largeDoses])
+    axs[1][0].legend(handles=[didntLike,smallDoses,largeDoses])
+    #显示图片
+    plt.show()
+
+
+if __name__ == "__main__":
+    # 文件有4列 
+    # 每年获得的飞行常客里程数
+    # 玩视频游戏所耗时间百分比
+    # 每周消费的冰淇淋公升数
+    # 不喜欢的人 魅力一般的人 极具魅力的人
+    #datingDataMat, datingLabels = file2matrix(r'F:\download\machinelearninginaction-master\Ch02\datingTestSet.txt')
+    #showdatas(datingDataMat, datingLabels)
+    #datingClassTest
+    classifyPerson()
+</code></pre>
+<p>下面我们来进行代码解析，<code>showdatas</code>函数是从网上看到的实质上就是将数据可视化，看不懂可以暂时先不管。<br>首先是<code>file2matrix</code>函数读取数据转换成矩阵格式，最后一列就是标签</p>
+<pre><code># print(datingDataMat)
+[[4.0920000e+04 8.3269760e+00 9.5395200e-01]
+ [1.4488000e+04 7.1534690e+00 1.6739040e+00]
+ [2.6052000e+04 1.4418710e+00 8.0512400e-01]
+ ...
+ [2.6575000e+04 1.0650102e+01 8.6662700e-01]
+ [4.8111000e+04 9.1345280e+00 7.2804500e-01]
+ [4.3757000e+04 7.8826010e+00 1.3324460e+00]]
+# print(datingLabels)
+[3, 2, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 1, 1, 1, 1, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 3, 2, 1, 3, 1, 3, 1, 2, 1, 1, 2, 3, 3, 1, 2, 3, 3, 3, 1...
+</code></pre><p>可视化后应该是计算两点间的距离，但是，三个数值之间的差异很大，也就是说飞行的里程数占的比重比其他的要大，但是我们在这里认为这三个因素都应该是平等的，因此就要对数据进行归一化处理，所以就有了<code>autoNorm</code>函数。</p>
+<p>此函数用到的算法是</p>
+<script type="math/tex; mode=display">new = (old-min)/(max-min)</script><p>这样就将里程数这个特征值控制在0~1之内，以保证三个特征值的取值范围是一样的，即都有一样的权重。(<em>好像对特征值进行缩放会有损失，暂时先不管</em>)</p>
+<p>最后我们就要去验证这个算法的可靠性了，也就是最后一个函数<code>classifyPerson</code></p>
+<p>这个示例是用了90%的样本来训练，然后用剩下的10%去做验证，后面的算法中也有更高级的数据分组。这也就是<code>datingClassTest</code>函数的功能了</p>
+<hr>
+<h2 id="示例二：手写识别系统"><a href="#示例二：手写识别系统" class="headerlink" title="示例二：手写识别系统"></a>示例二：手写识别系统</h2><p>为了使用前面两个例子的分类器，书中将一个32×32的二进制图像变成了文本存储，这里只附上代码，由于方法都一样，就不在赘述</p>
+<pre><code>import numpy as np
+import operator
+from os import listdir
+from numpy import zeros
+
+def classify0(inX, dataSet, labels, k):
+    dataSetSize = dataSet.shape[0]
+    diffMat = np.tile(inX, (dataSetSize,1)) - dataSet
+    sqDiffMat = diffMat**2
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndicies = distances.argsort()
+    classCount={}          
+    for i in range(k):
+        #print(sortedDistIndicies[i])
+        #print(labels[sortedDistIndicies[i]]) 
+        voteIlabel = labels[sortedDistIndicies[i]]  
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def img2vector(filename):
+    returnVect = zeros((1,1024))
+    fr = open(filename)
+    for i in range(32):
+        lineStr = fr.readline()
+        for j in range(32):
+            returnVect[0,32*i+j] = int(lineStr[j])
+    return returnVect
+
+def handwritingClassTest():
+    hwLabels = []
+    trainingFileList = listdir(r&#39;F:\download\machinelearninginaction-master\Ch02\digits\trainingDigits&#39;)           #load the training set
+    m = len(trainingFileList)
+    trainingMat = zeros((m,1024))
+    for i in range(m):
+        fileNameStr = trainingFileList[i]
+        fileStr = fileNameStr.split(&#39;.&#39;)[0]     #take off .txt
+        classNumStr = int(fileStr.split(&#39;_&#39;)[0])
+        hwLabels.append(classNumStr)
+        trainingMat[i,:] = img2vector(&#39;F:\\download\\machinelearninginaction-master\\Ch02\digits\\trainingDigits/%s&#39; % fileNameStr)
+    testFileList = listdir(r&#39;F:\download\machinelearninginaction-master\Ch02\digits\testDigits&#39;)        #iterate through the test set
+    errorCount = 0.0
+    mTest = len(testFileList)
+    for i in range(mTest):
+        fileNameStr = testFileList[i]
+        fileStr = fileNameStr.split(&#39;.&#39;)[0]     #take off .txt
+        classNumStr = int(fileStr.split(&#39;_&#39;)[0])
+        vectorUnderTest = img2vector(&#39;F:\\download\\machinelearninginaction-master\\Ch02\\digits\\testDigits/%s&#39; % fileNameStr)
+        classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
+        print (&quot;the classifier came back with: %d, the real answer is: %d&quot; % (classifierResult, classNumStr))
+        if (classifierResult != classNumStr): errorCount += 1.0
+    print (&quot;\nthe total number of errors is: %d&quot; % errorCount)
+    print (&quot;\nthe total error rate is: %f&quot; % (errorCount/float(mTest)))
+
+if __name__ == &#39;__main__&#39;:
+    handwritingClassTest()
+</code></pre><h2 id="Sklearn简介-重点"><a href="#Sklearn简介-重点" class="headerlink" title="Sklearn简介(重点)"></a>Sklearn简介(重点)</h2><p><a href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors" target="_blank" rel="noopener"><code>sklearn.neighbors</code></a>模块就是k-近邻算法，这里只介绍一个函数<a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" target="_blank" rel="noopener"><code>KNeighborsClassifier</code></a></p>
+<p>其他函数和参数等有时间再补充</p>
+<p> KNneighborsClassifier参数说明：</p>
+<ul>
+<li><code>n_neighbors</code>：默认为5，就是k-NN的k的值，选取最近的k个点。 </li>
+<li><code>weights</code>：默认是uniform，参数可以是uniform、distance，也可以是用户自己定义的函数。uniform是均等的权重，就说所有的邻近点的权重都是相等的。distance是不均等的权重，距离近的点比距离远的点的影响大。用户自定义的函数，接收距离的数组，返回一组维数相同的权重。</li>
+<li><code>algorithm</code>：快速k近邻搜索算法，默认参数为auto，可以理解为算法自己决定合适的搜索算法。除此之外，用户也可以自己指定搜索算法ball_tree、kd_tree、brute方法进行搜索，brute是蛮力搜索，也就是线性扫描，当训练集很大时，计算非常耗时。kd_tree，构造kd树存储数据以便对其进行快速检索的树形数据结构，kd树也就是数据结构中的二叉树。以中值切分构造的树，每个结点是一个超矩形，在维数小于20时效率高。ball tree是为了克服kd树高纬失效而发明的，其构造过程是以质心C和半径r分割样本空间，每个节点是一个超球体。</li>
+<li><code>leaf_size</code>：默认是30，这个是构造的kd树和ball树的大小。这个值的设置会影响树构建的速度和搜索速度，同样也影响着存储树所需的内存大小。需要根据问题的性质选择最优的大小。</li>
+<li><code>metric</code>：用于距离度量，默认度量是minkowski，也就是p=2的欧氏距离(欧几里德度量)。</li>
+<li><code>p</code>：距离度量公式。在上小结，我们使用欧氏距离公式进行距离度量。除此之外，还有其他的度量方法，例如曼哈顿距离。这个参数默认为2，也就是默认使用欧式距离公式进行距离度量。也可以设置为1，使用曼哈顿距离公式进行距离度量。</li>
+<li><code>metric_params</code>：距离公式的其他关键参数，这个可以不管，使用默认的None即可。</li>
+<li><code>n_jobs</code>：并行处理设置。默认为1，临近点搜索并行工作数。如果为-1，那么CPU的所有cores都用于并行工作。</li>
+</ul>
+<p>完整代码：</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># -*- coding: UTF-8 -*-
+import numpy as np
+import operator
+from os import listdir
+from sklearn.neighbors import KNeighborsClassifier as kNN
+
+"""
+函数说明:将32x32的二进制图像转换为1x1024向量。
+
+Parameters:
+    filename - 文件名
+Returns:
+    returnVect - 返回的二进制图像的1x1024向量
+
+Modify:
+    2017-07-15
+"""
+def img2vector(filename):
+    #创建1x1024零向量
+    returnVect = np.zeros((1, 1024))
+    #打开文件
+    fr = open(filename)
+    #按行读取
+    for i in range(32):
+        #读一行数据
+        lineStr = fr.readline()
+        #每一行的前32个元素依次添加到returnVect中
+        for j in range(32):
+            returnVect[0, 32*i+j] = int(lineStr[j])
+    #返回转换后的1x1024向量
+    return returnVect
+
+"""
+函数说明:手写数字分类测试
+
+Parameters:
+    无
+Returns:
+    无
+
+Modify:
+    2017-07-15
+"""
+def handwritingClassTest():
+    #测试集的Labels
+    hwLabels = []
+    #返回trainingDigits目录下的文件名
+    trainingFileList = listdir(r'E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\trainingDigits')
+    #返回文件夹下文件的个数
+    m = len(trainingFileList)
+    #初始化训练的Mat矩阵,测试集
+    trainingMat = np.zeros((m, 1024))
+    #从文件名中解析出训练集的类别
+    for i in range(m):
+        #获得文件的名字
+        fileNameStr = trainingFileList[i]
+        #获得分类的数字
+        classNumber = int(fileNameStr.split('_')[0])
+        #将获得的类别添加到hwLabels中
+        hwLabels.append(classNumber)
+        #将每一个文件的1x1024数据存储到trainingMat矩阵中
+        trainingMat[i,:] = img2vector('E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\trainingDigits/%s' % (fileNameStr))
+    #构建kNN分类器
+    neigh = kNN(n_neighbors = 3, algorithm = 'auto')
+    #拟合模型, trainingMat为测试矩阵,hwLabels为对应的标签
+    neigh.fit(trainingMat, hwLabels)
+    #返回testDigits目录下的文件列表
+    testFileList = listdir(r'E:\workspace\python\机器学习实战笔记\kNN\Ch02\digits\testDigits')
+    #错误检测计数
+    errorCount = 0.0
+    #测试数据的数量
+    mTest = len(testFileList)
+    #从文件中解析出测试集的类别并进行分类测试
+    for i in range(mTest):
+        #获得文件的名字
+        fileNameStr = testFileList[i]
+        #获得分类的数字
+        classNumber = int(fileNameStr.split('_')[0])
+        #获得测试集的1x1024向量,用于训练
+        vectorUnderTest = img2vector('E:\\workspace\\python\\机器学习实战笔记\\kNN\\Ch02\\digits\\testDigits/%s' % (fileNameStr))
+        #获得预测结果
+        # classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
+        classifierResult = neigh.predict(vectorUnderTest)
+        print("分类返回结果为%d\t真实结果为%d" % (classifierResult, classNumber))
+        if(classifierResult != classNumber):
+            errorCount += 1.0
+    print("总共错了%d个数据\n错误率为%f%%" % (errorCount, errorCount/mTest * 100))
+
+
+"""
+函数说明:main函数
+
+Parameters:
+    无
+Returns:
+    无
+
+Modify:
+    2017-07-15
+"""
+if __name__ == '__main__':
+    handwritingClassTest()
+</code></pre>
+<hr>
+<p><strong>参考链接：</strong><a href="http://blog.csdn.net/c406495762" target="_blank" rel="noopener">http://blog.csdn.net/c406495762</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/10/30/python3cook-xi-lie-bi-ji-yi/"><span>python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/10/30/python3cook-xi-lie-bi-ji-yi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-10-29T16:00:00.000Z">
+          2018-10-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
+<p>在python中任何可迭代的对象(<strong>列表，元组，字符串，文件，迭代器，生成器等</strong>)都可以直接进行解压并赋值，<strong>只要保证</strong>前后的元素是一样的，比如：</p>
+<pre><code>&gt;&gt;&gt; p=(4,5)
+&gt;&gt;&gt; x,y=p
+&gt;&gt;&gt; x
+4
+&gt;&gt;&gt; y
+5
+# 嵌套序列也一样
+&gt;&gt;&gt; data = [ &#39;ACME&#39;, 50, 91.1, (2012, 12, 21) ]
+&gt;&gt;&gt; name, shares, price, date = data
+&gt;&gt;&gt; name
+&#39;ACME&#39;
+&gt;&gt;&gt; date
+(2012, 12, 21)
+&gt;&gt;&gt; name, shares, price, (year, mon, day) = data
+&gt;&gt;&gt; name
+&#39;ACME&#39;
+&gt;&gt;&gt; year
+2012
+&gt;&gt;&gt; mon
+12
+&gt;&gt;&gt; day
+21
+&gt;&gt;&gt;
+</code></pre><p>如果只想要部分，可以中<code>_</code>占位一个变量，<code>*_</code>占位多个变量(返回一个列表)，这些变量最后会被丢弃：</p>
+<pre><code>&gt;&gt;&gt; record = (&#39;ACME&#39;, 50, 123.45, (12, 18, 2012))
+&gt;&gt;&gt; name, *_, (*_, year) = record
+&gt;&gt;&gt; name
+&#39;ACME&#39;
+&gt;&gt;&gt; year
+2012
+&gt;&gt;&gt;
+</code></pre><p>当然<code>*_</code>这个模式也可以不用下划线占位，而是给定一个变量名字，来获取剩余变量的列表：</p>
+<pre><code>&gt;&gt;&gt; items = [1, 10, 7, 4, 5, 9]
+&gt;&gt;&gt; head, *tail = items
+&gt;&gt;&gt; head
+1
+&gt;&gt;&gt; tail
+[10, 7, 4, 5, 9]
+&gt;&gt;&gt;
+</code></pre><p><em>拓展阅读：</em></p>
+<p>实现一个优先级队列:</p>
+<pre><code>import heapq
+
+class PriorityQueue:
+    def __init__(self):
+        self._queue = []
+        self._index = 0
+    def push(self, item, priority):
+        heapq.heappush(self._queue, (-priority, self._index, item))
+        self._index += 1
+    def pop(self):
+        return heapq.heappop(self._queue)[-1]
+</code></pre><p>使用方式：<br><em>小声bb：这本书喜欢用类，自己要抓紧补一下类的知识了</em></p>
+<pre><code>&gt;&gt;&gt; class Item:
+...     def __init__(self, name):
+...         self.name = name
+...     def __repr__(self):
+...         return &#39;Item({!r})&#39;.format(self.name)
+...
+&gt;&gt;&gt; q = PriorityQueue()
+# 传入：元素，优先级
+&gt;&gt;&gt; q.push(Item(&#39;foo&#39;), 1)
+&gt;&gt;&gt; q.push(Item(&#39;bar&#39;), 5)
+&gt;&gt;&gt; q.push(Item(&#39;spam&#39;), 4)
+&gt;&gt;&gt; q.push(Item(&#39;grok&#39;), 1)
+&gt;&gt;&gt; q.pop()
+Item(&#39;bar&#39;)
+&gt;&gt;&gt; q.pop()
+Item(&#39;spam&#39;)
+&gt;&gt;&gt; q.pop()
+Item(&#39;foo&#39;)
+&gt;&gt;&gt; q.pop()
+Item(&#39;grok&#39;)
+</code></pre><p><strong>下一节：字典的用法</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/07/07/sheng-xin-ji-chu-jiao-cheng-yi-fastq-ge-shi/"><span>生新基础教程(一)：fastq格式</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/07/07/sheng-xin-ji-chu-jiao-cheng-yi-fastq-ge-shi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-07-06T16:00:00.000Z">
+          2018-07-07
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p><em>转载请注明出处</em></p>
+</blockquote>
+<p><strong>FASTQ格式</strong>是一种保存生物序列（通常为核酸序列）及其测序质量得分信息的文本格式。序列与质量得分皆由单个ASCII字符表示。</p>
+<p><strong>格式</strong></p>
+<p>FASTQ格式通常每个序列使用四行：</p>
+<ul>
+<li>第一行以“@”字符开头，后面是序列标识符和其他描述。</li>
+<li>第二行是序列</li>
+<li>第三行以“+”也是序列标识符和描述（可选）</li>
+<li>第四行是序列的质量得分信息，与第二行的碱基一一对应</li>
+</ul>
+<pre><code>@A00262:122:H5FW3DSXX:3:1101:1561:1031 1:N:0:CCGTGAGA
+CNACCCCAAAAATGCTTTTGAAATCCTGAGATGTGATCAGTGAAATATGCAGCCAAGGCAAGGGGAAACTGTCCGCAAGTTAAAAAGATTTATTGCTATTCCAGGCTTCAAATGAGCCCAGAACTCAGGGCTGGTGTGTGTTTCAGAAGT
++
+F#FFFFFFFFFFFFFFFFFFFFFFFFFFFFF,F:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFF:FFFFFFFFFFFFFFFFFFF:FFFFFFFFFF:FFFFFFFFFFF:FF,FFFFF:FFFFFFF
+</code></pre><p><strong>Illumina 测序仪标识符</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A00262</th>
+<th style="text-align:center">测序仪编号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">122</td>
+<td style="text-align:center">运行id</td>
+</tr>
+<tr>
+<td style="text-align:center">H5FW3DSXX</td>
+<td style="text-align:center">flowcell id</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">lane 编号</td>
+</tr>
+<tr>
+<td style="text-align:center">1101</td>
+<td style="text-align:center">tile编号</td>
+</tr>
+<tr>
+<td style="text-align:center">1561</td>
+<td style="text-align:center">tile x坐标</td>
+</tr>
+<tr>
+<td style="text-align:center">1031</td>
+<td style="text-align:center">tile y坐标</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">单端测序为1，双端为2</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y过滤reads(reads质量较差),否则为N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>ps</strong>: 每个flowcell有8个泳道，一个泳道称为一个Lane，每条Lane上有两列，每列有多个有小格子，叫一个tile。(见下图)</p>
+<p><img src="/myphoto/flowcell.jpg" alt="flowcell"></p>
+</blockquote>
+<p><strong>质量评分</strong></p>
+<p>第四行表示序列的质量值,用<a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">ACSII码</a>表示。<br>测序仪一般是按照荧光信号来判断所测序的碱基是哪一种的，例如红黄蓝绿分别对应ATCG，因此对每个结果的判断都是一个概率的问题：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Phred Quality Score(Q值)</th>
+<th style="text-align:center">错误率</th>
+<th style="text-align:center">碱基准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0.1</td>
+<td style="text-align:center">90%</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">99%</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">0.001</td>
+<td style="text-align:center">99.9%</td>
+</tr>
+<tr>
+<td style="text-align:center">40</td>
+<td style="text-align:center">0.0001</td>
+<td style="text-align:center">99.99%</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td style="text-align:center">0.00001</td>
+<td style="text-align:center">99.999%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一般都是以Q值来衡量read碱基质量，Sanger中心用的换算公式如下，其中P为错误率，</p>
+<script type="math/tex; mode=display">Q=-10logP</script><p>Solexa系列测序仪使用不同的公示来计算质量值：$Q=-10log(P/1-P)$<br>不同的测序平台Q值所能表示的范围不一样，因此要想用对应的ACSII编码，必须加上一个数值(33或者64)<br>以上面的那条Illumina测序仪产生的read为例，<code>F</code>对应的十进制数是70，Q值就是36，也就是说这个碱基的准确率在99.99%以上</p>
+<p><strong>参考链接:</strong></p>
+<ul>
+<li><a href="http://boyun.sh.cn/bio/?p=1901" target="_blank" rel="noopener">http://boyun.sh.cn/bio/?p=1901</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FASTQ_format" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/FASTQ_format</a></li>
+<li><a href="https://blog.csdn.net/godsunshine/article/details/51946314" target="_blank" rel="noopener">https://blog.csdn.net/godsunshine/article/details/51946314</a></li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/生信/">生信</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/文件格式/">文件格式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/05/13/yong-python3-de-matplotlib-mo-kuai-hua-tiao-xing-tu/"><span>用python3的matplotlib模块画条形图</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/05/13/yong-python3-de-matplotlib-mo-kuai-hua-tiao-xing-tu/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-05-12T16:00:00.000Z">
+          2018-05-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>文章来源：<a href="https://www.kesci.com/apps/home/project/59ed8d7418ec724555a9b4c0" target="_blank" rel="noopener">https://www.kesci.com/apps/home/project/59ed8d7418ec724555a9b4c0</a></p>
+<h3 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h3><pre><code>
+# -*- coding: UTF-8 -*-
+
+import matplotlib.pyplot as plt
+
+GDP = [12406.8,13908.57,9386.87,9143.64]
+# 中文乱码的处理
+plt.rcParams[&#39;font.sans-serif&#39;] =[&#39;SimHei&#39;]
+plt.rcParams[&#39;axes.unicode_minus&#39;] = False
+
+# 绘图
+plt.bar(range(4), GDP, align = &#39;center&#39;,color=&#39;steelblue&#39;, alpha = 0.8)
+# 添加轴标签
+plt.ylabel(&#39;GDP&#39;)
+# 添加标题
+plt.title(&#39;四个直辖市GDP大比拼&#39;)
+# 添加刻度标签
+plt.xticks(range(4),[&#39;北京市&#39;,&#39;上海市&#39;,&#39;天津市&#39;,&#39;重庆市&#39;])
+# 设置Y轴的刻度范围
+plt.ylim([5000,15000])
+
+# 为每个条形图添加数值标签
+for x,y in enumerate(GDP):
+    plt.text(x,y+100,&#39;%s&#39; %round(y,1),ha=&#39;center&#39;)  # round函数 ，返回y保留1位小数的四舍五入的值
+            # 坐标，文字，对齐方式
+# 显示图形
+plt.show()
+</code></pre><p><img src="\myphoto\Figure_1.png" alt="示例一"></p>
+<hr>
+<h3 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h3><pre><code># 导入绘图模块
+import matplotlib.pyplot as plt
+import numpy as np
+# 构建数据
+Y2016 = [15600,12700,11300,4270,3620]
+Y2017 = [17400,14800,12000,5200,4020]
+labels = [&#39;北京&#39;,&#39;上海&#39;,&#39;香港&#39;,&#39;深圳&#39;,&#39;广州&#39;]
+bar_width = 0.35
+
+# 中文乱码的处理
+plt.rcParams[&#39;font.sans-serif&#39;] =[&#39;SimHei&#39;]
+plt.rcParams[&#39;axes.unicode_minus&#39;] = False
+
+# 绘图
+plt.bar(np.arange(5), Y2016, label = &#39;2016&#39;, color = &#39;steelblue&#39;, alpha = 0.8, width = bar_width)
+plt.bar(np.arange(5)+bar_width, Y2017, label = &#39;2017&#39;, color = &#39;indianred&#39;, alpha = 0.8, width = bar_width)
+# 添加轴标签
+plt.xlabel(&#39;Top5城市&#39;)
+plt.ylabel(&#39;家庭数量&#39;)
+# 添加标题
+plt.title(&#39;亿万财富家庭数Top5城市分布&#39;)
+# 添加刻度标签
+plt.xticks(np.arange(5)+bar_width,labels)
+# 设置Y轴的刻度范围
+plt.ylim([2500, 19000])
+
+# 为每个条形图添加数值标签
+for x2016,y2016 in enumerate(Y2016):
+    plt.text(x2016-0.17, y2016+200, &#39;%s&#39; %y2016)
+
+for x2017,y2017 in enumerate(Y2017):
+    plt.text(x2017+0.17, y2017+100, &#39;%s&#39; %y2017)
+# 显示图例
+plt.legend()
+# 显示图形
+plt.show()
+</code></pre><p><img src="\myphoto\Figure_1.png" alt="示例二"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a><a href="/tags/可视化/">可视化</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/29/linux-xia-duo-ge-jie-dian-ssh-hu-xiang-mian-mi-ma-deng-lu/"><span>linux下多个节点ssh互相免密码登陆</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/29/linux-xia-duo-ge-jie-dian-ssh-hu-xiang-mian-mi-ma-deng-lu/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-28T16:00:00.000Z">
+          2018-04-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>假定需要节点gm-35-2和gm-35-18之间免密登陆</strong></p>
+<ol>
+<li>确认安装了ssh</li>
+<li>创建私钥和密钥 （id_rsa和 id_rsa.pub）<br>执行<code>ssh-keygen-t rsa</code> ，这样你进入 <code>~/.ssh</code>文件夹下就会看到 <code>id_rsa</code> 和<code>id_rsa.pub</code>两个文件。每个节点都执行一次</li>
+<li>在<code>gm-35-2</code>下，运行<code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></li>
+<li><code>ssh gm-35-18 cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code> 将其他节点公匙拷贝到本节点</li>
+<li><code>scp ~/.ssh/authorized_keys usrname@gm-35-18:~/.ssh/authorized_keys</code> 将文件拷贝到其他节点</li>
+</ol>
+<p><em>网上说要将该文件权限改为600</em></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a><a href="/tags/ssh/">ssh</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/"><span>(转载)samtools常用命令详解</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-04-28T16:00:00.000Z">
+          2018-04-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>samtools的说明文档：<a href="http://samtools.sourceforge.net/samtools.shtml" target="_blank" rel="noopener">http://samtools.sourceforge.net/samtools.shtml</a><br>samtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以下是常用命令的介绍</p>
+<h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p>view命令的主要功能是：将sam文件转换成bam文件；然后对bam文件进行各种操作，比如数据的排序(不属于本命令的功能)和提取(这些操作是对bam文件进行的，因而当输入为sam文件的时候，不能进行该操作)；最后将排序或提取得到的数据输出为bam或sam（默认的）格式。</p>
+<p>bam文件优点：bam文件为二进制文件，占用的磁盘空间比sam文本文件小；利用bam二进制文件的运算速度快。</p>
+<p>view命令中，对sam文件头部的输入(-t或-T）和输出(-h)是单独的一些参数来控制的。</p>
+<pre><code>Usage: samtools view [options] &lt;in.bam&gt;|&lt;in.sam&gt; [region1 [...]]
+ 默认情况下不加 region，则是输出所有的 region.
+
+Options: -b       output BAM
+                  默认下输出是 SAM 格式文件，该参数设置输出 BAM 格式
+         -h       print header for the SAM output
+                  默认下输出的 sam 格式文件不带 header，该参数设定输出sam文件时带 header 信息
+         -H       print header only (no alignments)
+         -S       input is SAM
+                  默认下输入是 BAM 文件，若是输入是 SAM 文件，则最好加该参数，否则有时候会报错。
+         -u       uncompressed BAM output (force -b)
+                  该参数的使用需要有-b参数，能节约时间，但是需要更多磁盘空间。
+         -c       Instead of printing the alignments, only count them and print the 
+                  total number. All filter options, such as ‘-f’, ‘-F’ and ‘-q’ , 
+                  are taken into account.
+         -1       fast compression (force -b)
+         -x       output FLAG in HEX (samtools-C specific)
+         -X       output FLAG in string (samtools-C specific)
+         -c       print only the count of matching records
+         -L FILE  output alignments overlapping the input BED FILE [null]
+         -t FILE  list of reference names and lengths (force -S) [null]
+                  使用一个list文件来作为header的输入
+         -T FILE  reference sequence file (force -S) [null]
+                  使用序列fasta文件作为header的输入
+         -o FILE  output file name [stdout]
+         -R FILE  list of read groups to be outputted [null]
+         -f INT   required flag, 0 for unset [0]
+         -F INT   filtering flag, 0 for unset [0] 
+                  Skip alignments with bits present in INT [0]
+                  数字4代表该序列没有比对到参考序列上
+                  数字8代表该序列的mate序列没有比对到参考序列上
+         -q INT   minimum mapping quality [0]
+         -l STR   only output reads in library STR [null]
+         -r STR   only output reads in read group STR [null]
+         -s FLOAT fraction of templates to subsample; integer part as seed [-1]
+         -?       longer help
+</code></pre><p>例子：</p>
+<pre><code>将sam文件转换成bam文件
+$ samtools view -bS abc.sam &gt; abc.bam
+$ samtools view -b -S abc.sam -o abc.bam
+
+提取比对到参考序列上的比对结果
+$ samtools view -bF 4 abc.bam &gt; abc.F.bam
+
+提取paired reads中两条reads都比对到参考序列上的比对结果，只需要把两个4+8的值12作为过滤参数即可
+$ samtools view -bF 12 abc.bam &gt; abc.F12.bam
+
+提取没有比对到参考序列上的比对结果
+$ samtools view -bf 4 abc.bam &gt; abc.f.bam
+
+提取bam文件中比对到caffold1上的比对结果，并保存到sam文件格式
+$ samtools view abc.bam scaffold1 &gt; scaffold1.sam
+
+提取scaffold1上能比对到30k到100k区域的比对结果
+$ samtools view abc.bam scaffold1:30000-100000 $gt; scaffold1_30k-100k.sam
+
+根据fasta文件，将 header 加入到 sam 或 bam 文件中
+$ samtools view -T genome.fasta -h scaffold1.sam &gt; scaffold1.h.sam
+</code></pre><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort对bam文件进行排序。</p>
+<pre><code>Usage: samtools sort [-n] [-m &lt;maxMem&gt;] &lt;in.bam&gt; &lt;out.prefix&gt;  
+-m 参数默认下是 500,000,000 即500M（不支持K，M，G等缩写）。对于处理大数据时，如果内存够用，则设置大点的值，以节约时间。
+-n 设定排序方式按short reads的ID排序。默认下是按序列在fasta文件中的顺序（即header）和序列从左往右的位点排序。
+</code></pre><p>例子：</p>
+<pre><code>$ samtools sort abc.bam abc.sort
+$ samtools view abc.sort.bam | less -S
+</code></pre><h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>将2个或2个以上的已经sort了的bam文件融合成一个bam文件。融合后的文件不需要则是已经sort过了的。</p>
+<pre><code>Usage:   samtools merge [-nr] [-h inh.sam] &lt;out.bam&gt; &lt;in1.bam&gt; &lt;in2.bam&gt;[...]
+
+Options: -n       sort by read names
+         -r       attach RG tag (inferred from file names)
+         -u       uncompressed BAM output
+         -f       overwrite the output BAM if exist
+         -1       compress level 1
+         -R STR   merge file in the specified region STR [all]
+         -h FILE  copy the header in FILE to &lt;out.bam&gt; [in1.bam]
+
+Note: Samtools&#39; merge does not reconstruct the @RG dictionary in the header. Users
+      must provide the correct header with -h, or uses Picard which properly maintains
+      the header dictionary in merging.
+</code></pre><h2 id="index"><a href="#index" class="headerlink" title="index"></a>index</h2><p>必须对bam文件进行默认情况下的排序后，才能进行index。否则会报错。</p>
+<p>建立索引后将产生后缀为.bai的文件，用于快速的随机处理。很多情况下需要有bai文件的存在，特别是显示序列比对情况下。比如samtool的tview命令就需要；gbrowse2显示reads的比对图形的时候也需要。</p>
+<pre><code>Usage: samtools index &lt;in.bam&gt; [out.index]
+</code></pre><p>例子：<br>以下两种命令结果一样</p>
+<pre class=" language-lang-`"><code class="language-lang-`">$ samtools index abc.sort.bam
+$ samtools index abc.sort.bam abc.sort.bam.bai
+</code></pre>
+<h2 id="faidx"><a href="#faidx" class="headerlink" title="faidx"></a>faidx</h2><p>对fasta文件建立索引,生成的索引文件以.fai后缀结尾。该命令也能依据索引文件快速提取fasta文件中的某一条（子）序列</p>
+<pre><code>
+Usage: samtools faidx &lt;in.bam&gt; [ [...]]
+
+对基因组文件建立索引
+$ samtools faidx genome.fasta
+生成了索引文件genome.fasta.fai,是一个文本文件，分成了5列。第一列是子序列的名称；
+第二列是子序列的长度；个人认为“第三列是序列所在的位置”，因为该数字从上往下逐渐变大，
+最后的数字是genome.fasta文件的大小；第4和5列不知是啥意思。于是通过此文件，可以定位子序列在fasta文件在磁盘上的存放位置，直接快速调出子序列。
+
+由于有索引文件，可以使用以下命令很快从基因组中提取到fasta格式的子序列
+$ samtools faidx genome.fasta scffold_10 &gt; scaffold_10.fasta
+</code></pre><h2 id="tview"><a href="#tview" class="headerlink" title="tview"></a>tview</h2><p>tview能直观的显示出reads比对基因组的情况，和基因组浏览器有点类似。</p>
+<pre><code>Usage: samtools tview &lt;aln.bam&gt; [ref.fasta]
+
+当给出参考基因组的时候，会在第一排显示参考基因组的序列，否则，第一排全用N表示。
+按下 g ，则提示输入要到达基因组的某一个位点。例子“scaffold_10:1000&quot;表示到达第10号scaffold的第1000个碱基位点处。
+使用H(左）J（上）K（下）L（右）移动显示界面。大写字母移动快，小写字母移动慢。
+使用空格建向左快速移动（和 L 类似），使用Backspace键向左快速移动（和 H 类似）。
+Ctrl+H 向左移动1kb碱基距离； Ctrl+L 向右移动1kb碱基距离
+可以用颜色标注比对质量，碱基质量，核苷酸等。30～40的碱基质量或比对质量使用白色表示；
+20～30黄色；10～20绿色；0～10蓝色。
+使用点号&#39;.&#39;切换显示碱基和点号；使用r切换显示read name等
+还有很多其它的使用说明，具体按 ？ 键来查看。
+</code></pre><h2 id="flagstat"><a href="#flagstat" class="headerlink" title="flagstat"></a>flagstat</h2><p>给出BAM文件的比对结果</p>
+<pre><code>Usage: samtools flagstat &lt;in.bam&gt;
+
+$ samtools flagstat example.bam
+11945742 + 0 in total (QC-passed reads + QC-failed reads)
+总共的reads数
+0 + 0 duplicates
+7536364 + 0 mapped (63.09%:-nan%)
+总体上reads的匹配率
+11945742 + 0 paired in sequencing
+有多少reads是属于paired reads
+5972871 + 0 read1
+reads1中的reads数
+5972871 + 0 read2
+reads2中的reads数
+6412042 + 0 properly paired (53.68%:-nan%)
+完美匹配的reads数：比对到同一条参考序列，并且两条reads之间的距离符合设置的阈值
+6899708 + 0 with itself and mate mapped
+paired reads中两条都比对到参考序列上的reads数
+636656 + 0 singletons (5.33%:-nan%)
+单独一条匹配到参考序列上的reads数，和上一个相加，则是总的匹配上的reads数。
+469868 + 0 with mate mapped to a different chr
+paired reads中两条分别比对到两条不同的参考序列的reads数
+243047 + 0 with mate mapped to a different chr (mapQ&gt;=5)
+同上一个，只是其中比对质量&gt;=5的reads的数量
+</code></pre><h2 id="depth"><a href="#depth" class="headerlink" title="depth"></a>depth</h2><p>得到每个碱基位点的测序深度,并输出到标准输出。</p>
+<pre><code>Usage: bam2depth [-r reg] [-q baseQthres] [-Q mapQthres] [-b in.bed] &lt;in1.bam&gt; [...]
+</code></pre><h2 id="其它有用的命令"><a href="#其它有用的命令" class="headerlink" title="其它有用的命令"></a>其它有用的命令</h2><p>reheader 替换bam文件的头</p>
+<pre><code>$ samtools reheader &lt;in.header.sam&gt; &lt;in.bam&gt;
+</code></pre><p>cat 连接多个bam文件，适用于非sorted的bam文件</p>
+<pre><code>$ samtools cat [-h header.sam] [-o out.bam] &lt;in1.bam&gt; &lt;in2.bam&gt; [ ... ]
+</code></pre><p>idxstats 统计一个表格，4列，分别为”序列名，序列长度，比对上的reads数，unmapped reads number”。第4列应该是paired reads中有一端能匹配到该scaffold上，而另外一端不匹配到任何scaffolds上的reads数。</p>
+<pre><code>$ samtools idxstats &lt;aln.bam&gt;
+</code></pre><h2 id="将bam文件转换为fastq文件"><a href="#将bam文件转换为fastq文件" class="headerlink" title="将bam文件转换为fastq文件"></a>将bam文件转换为fastq文件</h2><p>有时候，我们需要提取出比对到一段参考序列的reads，进行小范围的分析，以利于debug等。这时需要将bam或sam文件转换为fastq格式。<br>该网站提供了一个bam转换为fastq的程序：<a href="http://www.hudsonalpha.org/gsl/information/software/bam2fastq" target="_blank" rel="noopener">http://www.hudsonalpha.org/gsl/information/software/bam2fastq</a></p>
+<pre><code>$ wget http://www.hudsonalpha.org/gsl/static/software/bam2fastq-1.1.0.tgz
+$ tar zxf bam2fastq-1.1.0.tgz
+$ cd bam2fastq-1.1.0
+$ make
+$ ./bam2fastq &lt;in.bam&gt;
+</code></pre><h2 id="mpileup"><a href="#mpileup" class="headerlink" title="mpileup"></a>mpileup</h2><p>samtools还有个非常重要的命令mpileup，以前为pileup。该命令用于生成bcf文件，再使用bcftools进行SNP和Indel的分析。bcftools是samtool中附带的软件，在samtools的安装文件夹中可以找到。</p>
+<p>最常用的参数有2： <code>-f</code> 来输入有索引文件的fasta参考序列； <code>-g</code> 输出到bcf格式。用法和最简单的例子如下</p>
+<pre><code>Usage: samtools mpileup [-EBug] [-C capQcoef] [-r reg] [-f in.fa] [-l list] [-M capMapQ] [-Q minBaseQ] [-q minMapQ] in.bam [in2.bam [...]]
+
+$ samtools mpileup -f genome.fasta abc.bam &gt; abc.txt
+$ samtools mpileup -gSDf genome.fasta abc.bam &gt; abc.bcf
+$ samtools mpileup -guSDf genome.fasta abc.bam | \
+           bcftools view -cvNg - &gt; abc.vcf
+</code></pre><p>mpileup不使用<code>-u</code>或<code>-g</code>参数时，则不生成二进制的bcf文件，而生成一个文本文件(输出到标准输出)。该文本文件统计了参考序列中每个碱基位点的比对情况；该文件每一行代表了参考序列中某一个碱基位点的比对结果。比如：</p>
+<pre><code>scaffold_1      2841    A       11      ,,,...,....     BHIGDGIJ?FF
+scaffold_1      2842    C       12      ,$,,...,....^I. CFGEGEGGCFF+
+scaffold_1      2843    G       11      ,,...,.....     FDDDDCD?DD+
+scaffold_1      2844    G       11      ,,...,.....     FA?AAAA&lt;AA+
+scaffold_1      2845    G       11      ,,...,.....     F656666166*
+scaffold_1      2846    A       11      ,,...,.....     (1.1111)11*
+scaffold_1      2847    A       11      ,,+9acggtgaag.+9ACGGTGAAT.+9ACGGTGAAG.+9ACGGTGAAG,+9acggtgaag.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG       %.+....-..)
+scaffold_1      2848    N       11      agGGGgGGGGG     !!$!!!!!!!!
+scaffold_1      2849    A       11      c$,...,.....    !0000000000
+scaffold_1      2850    A       10      ,...,.....      353333333
+</code></pre><p>mpileup生成的结果包含6行：参考序列名；位置；参考碱基；比对上的reads数；比对情况；比对上的碱基的质量。其中第5列比较复杂,解释如下：</p>
+<pre><code> 1  ‘.’代表与参考序列正链匹配。
+ 2  ‘,’代表与参考序列负链匹配。
+ 3  ‘ATCGN’代表在正链上的不匹配。
+ 4  ‘atcgn’代表在负链上的不匹配。
+ 5  ‘*’代表模糊碱基
+ 6  ‘^’代表匹配的碱基是一个read的开始；’^’后面紧跟的ascii码减去33代表比对质量；这两个符号修饰的是后面的碱基，其后紧跟的碱基(.,ATCGatcgNn)代表该read的第一个碱基。
+ 7  ‘$’代表一个read的结束，该符号修饰的是其前面的碱基。
+ 8  正则式’\+[0-9]+[ACGTNacgtn]+’代表在该位点后插入的碱基；比如上例中在scaffold_1的2847后插入了9个长度的碱基acggtgaag。表明此处极可能是indel。
+ 9  正则式’-[0-9]+[ACGTNacgtn]+’代表在该位点后缺失的碱基；
+</code></pre><p><strong>pileup具体的参数如下：</strong></p>
+<p><strong>输入参数</strong></p>
+<pre><code> -6       Assume the quality is in the Illumina 1.3+ encoding. 
+  -A Do not skip anomalous read pairs in variant calling. 
+ -B       Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments. 
+ -b FILE  List of input BAM files, one file per line [null]
+ -C INT   Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0] 
+ -d INT   At a position, read maximally INT reads per input BAM. [250] 
+ -E       Extended BAQ computation. This option helps sensitivity especially for MNPs, but may hurt specificity a little bit. 
+ -f FILE  The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by razip. [null] 
+ -l FILE  BED or position list file containing a list of regions or sites where pileup or BCF should be generated [null] 
+ -M INT       cap mapping quality at INT [60]
+ -q INT     Minimum mapping quality for an alignment to be used [0] 
+ -Q INT     Minimum base quality for a base to be considered [13]
+ -r STR     Only generate pileup in region STR [all sites]
+</code></pre><p><strong>输出参数</strong></p>
+<pre><code> -D     Output per-sample read depth (require -g/-u)
+ -g     Compute genotype likelihoods and output them in the binary call format (BCF). 
+ -S     Output per-sample Phred-scaled strand bias P-value (require -g/-u) 
+ -u     Similar to -g except that the output is uncompressed BCF, which is preferred for piping. 
+
+Options for Genotype Likelihood Computation (for -g or -u):
+ -e INT     Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20] 
+ -h INT     Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100] 
+ -I     Do not perform INDEL calling 
+ -L INT     Skip INDEL calling if the average per-sample depth is above INT. [250] 
+ -o INT     Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40] 
+ -P STR     Comma dilimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]
+</code></pre><h2 id="使用bcftools"><a href="#使用bcftools" class="headerlink" title="使用bcftools"></a>使用bcftools</h2><p>bcftools和samtools类似，用于处理vcf(variant call format)文件和bcf(binary call format)文件。前者为文本文件，后者为其二进制文件。</p>
+<p>bcftools使用简单，最主要的命令是view命令，其次还有index和cat等命令。index和cat命令和samtools中类似。此处主讲使用view命令来进行SNP和Indel calling。该命令的使用方法和例子为：</p>
+<pre><code>$ bcftools view [-AbFGNQSucgv] [-D seqDict] [-l listLoci] [-s listSample] 
+          [-i gapSNPratio] [-t mutRate] [-p varThres] [-P prior] 
+          [-1 nGroup1] [-d minFrac] [-U nPerm] [-X permThres] 
+          [-T trioType] in.bcf [region]
+
+$ bcftools view -cvNg abc.bcf &gt; snp_indel.vcf
+</code></pre><p>生成的结果文件为vcf格式，有10列，分别是：</p>
+<blockquote>
+<p>1 参考序列名；<br>2 varianti所在的left-most位置；<br>3 variant的ID（默认未设置，用’.’表示)；<br>4 参考序列的allele；<br>5 variant的allele(有多个alleles，则用’,’分隔);<br>6 variant/reference QUALity;<br>7 FILTers applied;<br>8 variant的信息，使用分号隔开；<br>9 FORMAT of the genotype fields, separated by colon (optional)；<br>10 SAMPLE genotypes and per-sample information (optional)。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code>scaffold_1      2847    .       A       AACGGTGAAG      194     .       INDEL;DP=11;VDB=0.0401;AF1=1;AC1=2;DP4=0,0,8,3;MQ=35;FQ=-67.5   GT:PL:GQ        1/1:235,33,0:63
+scaffold_1      3908    .       G       A       111     .       DP=13;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,5,7;MQ=42;FQ=-63   GT:PL:GQ        1/1:144,36,0:69
+scaffold_1      4500    .       A       G       31.5    .       DP=8;VDB=0.0034;AF1=1;AC1=2;DP4=0,0,1,3;MQ=42;FQ=-39    GT:PL:GQ        1/1:64,12,0:21
+scaffold_1      4581    .       TGGNGG  TGG     145     .       INDEL;DP=8;VDB=0.0308;AF1=1;AC1=2;DP4=0,0,0,8;MQ=42;FQ=-58.5    GT:PL:GQ        1/1:186,24,0:45
+scaffold_1      4644    .       G       A       195     .       DP=21;VDB=0.0198;AF1=1;AC1=2;DP4=0,0,10,10;MQ=42;FQ=-87 GT:PL:GQ        1/1:228,60,0:99
+scaffold_1      4827    .       NACAAAGA        NA      4.42    .       INDEL;DP=1;AF1=1;AC1=2;DP4=0,0,1,0;MQ=40;FQ=-37.5       GT:PL:GQ        0/1:40,3,0:3
+scaffold_1      4854    .       A       G       48      .       DP=6;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,2,1;MQ=41;FQ=-36    GT:PL:GQ        1/1:80,9,0:16
+scaffold_1      5120    .       A       G       85      .       DP=8;VDB=0.0355;AF1=1;AC1=2;DP4=0,0,5,3;MQ=42;FQ=-51    GT:PL:GQ        1/1:118,24,0:45
+</code></pre><p>第8列中显示了对variants的信息描述，比较重要，其中的 Tag 的描述如下：</p>
+<pre><code>Tag    Format    Description
+AF1    double    Max-likelihood estimate of the site allele frequency (AF) of the first ALT allele
+DP    int    Raw read depth (without quality filtering)
+DP4    int[4]      high-quality reference forward bases, ref reverse, alternate for and alt rev bases
+FQ    int    Consensus quality. Positive: sample genotypes different; negative: otherwise
+MQ    int    Root-Mean-Square mapping quality of covering reads
+PC2    int[2]    Phred probability of AF in group1 samples being larger (,smaller) than in group2
+PCHI2    double    Posterior weighted chi^2 P-value between group1 and group2 samples
+PV4    double[4]    P-value for strand bias, baseQ bias, mapQ bias and tail distance bias
+QCHI2    int    Phred-scaled PCHI2
+RP    int      permutations yielding a smaller PCHI2
+CLR    int    Phred log ratio of genotype likelihoods with and without the trio/pair constraint
+UGT    string    Most probable genotype configuration without the trio constraint
+CGT    string    Most probable configuration with the trio constraint
+</code></pre><p>bcftools view 的具体参数如下：</p>
+<pre><code>Input/Output Options:
+-A     Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.
+-b     Output in the BCF format. The default is VCF.
+-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]
+-F     Indicate PL is generated by r921 or before (ordering is different).
+-G     Suppress all individual genotype information.
+-l FILE List of sites at which information are outputted [all sites]
+-N     Skip sites where the REF field is not A/C/G/T
+-Q     Output the QCALL likelihood format
+-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]
+-S     The input is VCF instead of BCF.
+-u     Uncompressed BCF output (force -b). 
+
+Consensus/Variant Calling Options:
+-c     Call variants using Bayesian inference. This option automatically invokes option -e.
+-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]
+        当有多个sample用于variants calling时，比如多个转录组数据或多个重测序
+        数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的
+        samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况
+        下，该值设置在0～1之间没有意义，大于1则得不到任何结果。
+-e     Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.
+-g     Call per-sample genotypes at variant sites (force -c)
+-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]
+-p FLOAT A site is considered to be a variant if P(ref|D)
+-t FLOAT Scaled muttion rate for variant calling [0.001]
+-T STR     Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]
+-v     Output variant sites only (force -c) 
+
+Contrast Calling and Association Test Options:
+-1 INT     Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]
+-U INT     Number of permutations for association test (effective only with -1) [0]
+-X FLOAT Only perform permutations for P(chi^2)
+</code></pre><p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：</p>
+<pre><code>$ perl -ne &#39;print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8&#39; snp_indel.vcf &gt; snp_indel.final.vcf
+</code></pre><h2 id="rmdup"><a href="#rmdup" class="headerlink" title="rmdup"></a>rmdup</h2><p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.</p>
+<pre><code>Usage:  samtools rmdup [-sS]  
+ -s 对single-end reads。默认情况下，只对paired-end reads
+ -S 将Paired-end reads作为single-end reads处理。
+
+$ samtools input.sorted.bam output.bam
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/生信/">生信</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/生信理论基础/">生信理论基础</a><a href="/tags/samtools/">samtools</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/04/01/c-yu-yan-du-xie-wen-jian/"><span>C语言读写文件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/04/01/c-yu-yan-du-xie-wen-jian/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-03-31T16:00:00.000Z">
+          2018-04-01
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>使用标准I/O处理文件</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;    // exit()原型
+
+int main(int argc, char *argv[])
+{
+    int ch;
+    FILE *fp;  // 文件指针
+    unsigned long count = 0;
+    if (argc != 2)
+    {
+        printf(&quot;Usage: %s filename\n&quot;,argv[0]);
+        exit(EXIT_FAILURE);
     }
-    appbarShadow()
-    window.addEventListener('scroll', appbarShadow);
-  })();
-</script>
+    if ((fp = fopen(argv[1],&quot;r&quot;)) == NULL)
+    {
+        printf(&quot;Can&#39;t open %s\n&quot;,argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    while ((ch = getc(fp)) != EOF)
+    {
+        putc(ch, stdout); // putchar(ch)相同
+        count++;
+    }
+    fclose(fp);
+    printf(&quot;File %s hash %lu characters\n&quot;, argv[1],count);
+
+    return 0;
+}
+</code></pre><pre><code>//输入/输出升级版，将一个文件附加到另一个文件的末尾
+//未测试
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib&gt;
+#include &lt;string.h&gt;
+#define BUFSIZE 4096
+#define SLEN 81
+
+void append(FILE *source,FILE *dest);  //函数原型,没有返回值，参数为两个文件指针
+char *s_gets(char *st,int n);
+
+int main(void)
+{
+    FILE *fa, *fs;
+    int file = 0;
+    char file_app[SLEN];
+    char file_src[SLEN];
+    int ch;
+
+    puts(&quot;Enter name of destination file:&quot;);
+    s_gets(file_app,SLEN);
+    if ((fa = fopen(file_app,&quot;a+&quot;) = NULL)
+    {
+    fprintf(stderr, &quot;Can&#39;t opne %s\n&quot;, file_app);
+        exit(EXIT_FAILURE);        //程序结束失败
+    }
+    if(setvbuf(fa,NULL,_IOFBF,BUFSIZE) !=0) // 完全缓冲。若无法缓冲，就返回0
+    {
+        fputs(&quot;Can&#39;t creat output buffer\n&quot;,stderr);
+        exit(EXIT_FAILURE);
+    }
+    puts(&quot;Enter name of first source file (empty line to quit):&quot;);
+    while(s_gets(file_src,SLEN) &amp;&amp; file_src[0] != &#39;\0&#39;)
+    {
+        if (strcmp(file_src,file_app)==0)
+            fputs(&quot;Can&#39;t append file to itself\n&quot;,stderr);
+        else if ((fs = fopen(file_src,&quot;r&quot;)) == NULL)
+            fprintf(stderr, &quot;Can&#39;t open %s\n&quot;,file_src);
+        else
+        {
+             if (setvbuf(fs, NULL,_IOFBF,BUFSIZE) != 0)
+             {
+                fputs(&quot;Can&#39;t creat input buffer\n&quot;,stderr);
+                continue;
+             }
+             append(fs,fa);
+             if (ferror(fs) != 0)
+                 fprintf(stderr,&quot;Error in reading file %s.\n&quot;,file_src);
+             if (ferror(fa) != 0)
+                 fprintf(stderr,&quot;Error in writing file %s.\n&quot;,file_app);
+             fclose(fs);
+             files++;
+             puts(&quot;Next file (empty line to quit):&quot;);
+        }
+    }
+    printf(&quot;Done appending. %d files appending.\n&quot;, files );
+    rewind(fa);
+    printf(&quot;%s continue:\n&quot;, file_app);
+    while  ((ch = gets(fa) != EOF)
+        putchar(ch);
+    puts(&quot;Done displaying.&quot;);
+    fclose(fa);
+
+    return 0;
+}
+
+void append(FILE *source, FILE *dest)
+{
+    size_t bytes;
+    static char temp[BUFSIZE];
+
+    while((bytes = fread(temp,sizeof(char),BUFSIZE,source)) &gt; 0)    //二进制形式处理数据
+        fwrite(temp,sizeof(char),bytes, dest);
+    return 0;
+}
+
+char *s_gets(char *st, int n)
+{
+    char *ret_val;
+    char *find;
+
+    ret_val = fgets(st,n, stdin);    // fgets(类型,长度,文件指针)
+    if(ret_val)
+    {
+        find = strchr(st,&#39;\n&#39;);    //查找换行符
+        if(find)
+
+            *find = &#39;\0&#39;;
+        else
+            while(getchar() != &#39;\n&#39;)
+                continue;
+    }
+    return ret_val;
+}
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/C-C/">C/C++</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/C/">C</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/03/03/you-are-what-you-write/"><span>沈向洋：You Are What You Write</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/03/03/you-are-what-you-write/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-03-02T16:00:00.000Z">
+          2018-03-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="You-Are-What-You-Write"><a href="#You-Are-What-You-Write" class="headerlink" title="You Are What You Write"></a>You Are What You Write</h2><p><em>原文：<a href="https://www.linkedin.com/pulse/you-what-write-harry-shum?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.linkedin.com/pulse/you-what-write-harry-shum?from=timeline&amp;isappinstalled=0</a></em></p>
+<p>Are Twitter, PowerPoint, Facebook, Instagram and texting eroding our ability to think?</p>
+<p>There is a Chinese proverb that says “见文如见人,” which literally means “reading the document is the same as seeing the author.” If we are what we write, then who have we, as a society, become?</p>
+<p>I was sitting in a technical review recently, listening to one of our reviewers grill the engineer who was presenting: Why did you choose that design? Why is the service showing bad results? How many users will switch to the solution?</p>
+<p>The presenter’s answers lacked depth. It seemed like he hadn’t done enough rigorous thinking, the kind where you sit quietly, sift through research, contemplate options, determine what you know, don’t know and where more work is required. The kind of thinking I did as a young researcher when peers took me and my work apart when I took short cuts. Back then, I practiced a disciplined approach, spending hours just thinking, and even more hours on the hardest part—writing it down.</p>
+<p>Today, long-form writing is being replaced. Tweets pass for dialogue. PowerPoint condenses thoughts to bullets. Words have been traded for emojis and GIFs. And we’ve become addicted to the noise. What happens in an Internet minute? 16 million text messages. 1.8 million snaps. 452,000 Tweets. 156 million emails. Who has time to think, let alone write?</p>
+<p>And maybe we, in the technology industry, have shaped this reality. We created the phones, apps and 24/7-connected world. We’ve enabled society to put down the pen. The only writing I do today is email or quick WeChat posts.</p>
+<p>So now I worry that we’re losing a valuable tool that helps us to think deeply, express who we are at our greatest and expand the intellect of those around us. And for us in the technical community, this is especially troubling. The stakes are higher than ever before with AI. We’re under enormous pressure to ship quickly, to achieve more, faster, but we can’t do this at the expense of the highest engineering quality. We have to think carefully about consequences and alternatives. Who gets blamed when a self-driving car hits someone? The engineer who wrote the code is the driver. Who is accountable for the AI algorithm with bias? The engineer who created the AI.</p>
+<p>I see fewer engineers writing and sharing deep thinking, but this is what will lead to far more true innovation across the industry. How will we achieve the big transformative breakthroughs versus the incremental milestones?</p>
+<p>By writing. Because the way to think is actually to write.</p>
+<p>Putting pen to paper forces you to develop and refine your thinking by iterating, revising and exploring alternatives. Anyone who can think deeply can write beautiful code, inspiring papers or develop the plan to bring the next big thing to life. I encourage you to read Reid Hoffman’s Series B pitch for LinkedIn in which he shares the thinking that helped him succeed. At the time, he shares that a partner in a venture firm was exposed to around 5,000 pitches, looked more closely at 600 to 800, and did between 0 and 2 deals.</p>
+<p>Writing offers the possibility to create lasting artifacts. I think of papers I published that endure, albeit perhaps as reference materials. Plenoptic Sampling. Lazy Snapping. Poisson Matting. These are my work’s contribution to the field of computer vision and graphics. They will survive me and, if I’m lucky, even help shape a mind or two.</p>
+<p>One of my favorite professors at Carnegie Mellon, Takeo Kanade, said that you have to write research papers like detective novels. You need story, suspense, surprise and ‘aha’ to explain your ideas to peers, to inspire others to contribute and advance your work and the whole field.</p>
+<p>Writing is an equalizer to get the best from the whole team. At Amazon, presentations are done with the six-page paper. Meetings kick off with everyone reading followed by comments and questions to the author. Everyone operates from the same context, and introverts, extroverts and non-native speakers have an equal chance to get their thinking across. It’s not about the presenter’s personality, but the words.</p>
+<p>Ultimately, writing helps make you successful. You might be the smartest person with the best idea, but if you can’t communicate your thinking in a compelling way, you won’t get far. Two engineers in our AI+R team who inspire me with their regular writing habits are Bill Ramsey and Ronny Kohavi. Bill has written over 250 blog posts at Microsoft, benefitting our entire technical community. With Ronny, you don’t even need to meet him—his highly cited A/B test experimentation papers say it all, and he’s publishing for the benefit of the industry on LinkedIn.</p>
+<p>As you’re reading this, you may be logging your objections: I need to drive results, so I need to go straight to code. I’m known for my code, so I don’t need to write papers. I’m not a native speaker, and I speak better with my code. I don’t know what to write about. I don’t have time… But please set them aside—for your own success, for your company’s, for the industry’s advancement—and start writing.</p>
+<p>I see so many occasions for building long-form writing back into the engineering culture—planning documents, project proposals, technology LRP’s, review articles—to inspire us to work together, collectively creating and cultivating big ideas and big thinking.</p>
+<p>I took a first step recently, writing a research paper with my colleagues Xiaodong He and Di Li, From Eliza to XiaoIce: Challenges and Opportunities with Social Chatbots, for the first time in years, so please no judgment, only constructive feedback!</p>
+<p>I challenge everyone reading this piece to write 500 words per week. If you’ve got an idea or you see a problem, write your proposal and share it!</p>
+<p>Let’s rewrite our standards for thought leadership and engineering quality by writing more!</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/杂谈/">杂谈</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/其他/">其他</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/02/16/awk-jian-ming-jiao-cheng/"><span>AWK简明教程</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-02-15T16:00:00.000Z">
+          2018-02-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h5 id="awk命令格式和选项"><a href="#awk命令格式和选项" class="headerlink" title="awk命令格式和选项"></a>awk命令格式和选项</h5><p>语法形式</p>
+<pre><code>awk [options] &#39;script&#39; var=value file(s)
+awk [options] -f scriptfile var=value file(s)
+</code></pre><p>常用命令选项</p>
+<ul>
+<li>-F fs   fs指定输入分隔符，fs可以是字符串或正则表达式，如-F:</li>
+<li>-v var=value   赋值一个用户定义变量，将外部变量传递给awk</li>
+<li>-f scripfile  从脚本文件中读取awk命令</li>
+<li>-m[fr] val   对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大数目。这两个功能是Bell实验室版awk的扩展功能，在标准awk中不适用。</li>
+</ul>
+<p><strong>工作原理</strong></p>
+<pre><code>hawk &#39;BEGIN{ commands } pattern{ commands } END{ commands }&#39;
+</code></pre><h5 id="内建变量"><a href="#内建变量" class="headerlink" title="内建变量"></a>内建变量</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>详细说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前记录（这个变量中存放着整个行的内容）</td>
+</tr>
+<tr>
+<td>$1~$n</td>
+<td>当前记录的第n个字段，字段间由FS分隔</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>输入字段分隔符 默认是空格或Tab (<strong>也可以是-F</strong>)</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>当前记录中的字段个数，就是有多少列</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</td>
+</tr>
+<tr>
+<td>FNR</td>
+<td>当前记录数，与NR不同的是，这个值会是各个文件自己的行号</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>输入的记录分隔符， 默认为换行符</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>输出字段分隔符， 默认也是空格</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>输出的记录分隔符，默认为换行符</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前输入文件的名字</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h5><pre><code>$ awk &#39;$6 ~ /FIN|TIME/ || NR==1 {print NR,$4,$5,$6}&#39; OFS=&quot;\t&quot; netstat.txt
+</code></pre><h5 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h5><p>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和。</p>
+<pre><code>$ ls -l  *.cpp *.c *.h | awk &#39;{sum+=$5} END {print sum}&#39;
+2511401
+</code></pre><p>统计每个用户的进程的占了多少内存</p>
+<pre><code>$ ps aux | awk &#39;NR!=1{a[$1]+=$6;} END { for(i in a) print i &quot;, &quot; a[i]&quot;KB&quot;;}&#39;
+dbus, 540KB
+mysql, 99928KB
+www, 3264924KB
+root, 63644KB
+hchen, 6020KB
+</code></pre><p><strong>++控制结构和脚本语言待补充==++</strong></p>
+<p><strong>参考链接：</strong></p>
+<p><a href="http://man.linuxde.net/awk" target="_blank" rel="noopener">http://man.linuxde.net/awk</a><br><a href="https://coolshell.cn/articles/9070.html" target="_blank" rel="noopener">https://coolshell.cn/articles/9070.html</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a><a href="/tags/AWK/">AWK</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
 
 
 
 
+<nav class="pagination">
+  
+  <a href="/page/3/" class="pagination-prev">上一页</a>
+  
+  
+  <a href="/page/5/" class="pagination-next">下一页</a>
+  
+</nav>
+    </main>
 
-
-<script type="text/javascript">
-  document.querySelector('body').classList.add('theme-loaded')
-</script>
-
-
-
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

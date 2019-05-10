@@ -1,1670 +1,1750 @@
-
-<!DOCTYPE html>
-<html lang="zh">
-
-
-
+<!DOCTYPE HTML>
+<html>
 <head>
-  <script>
-    window.themeRuntime = {
-      root: "/",
-      scriptsMap: {},
-      init: {
-        status: false
-      },
-      commentRest: {
-        status: false
-      },
-      versions: {
-        theme: "2.0.3",
-        mdui: "0.4.0",
-        fetch: "3.0.0",
-        es6promise: "4.2.5+7f2b526d",
-        lightgallery: "1.0.1",
-        smoothscroll: "15.2.0"
-      }
-      
-    };
-    console.info("%cCopyright © 2018 - " + new Date().getFullYear() +" Halyul\n"+'Theme Version: ' + themeRuntime.versions.theme +'%c\nhttps://github.com/Halyul/hexo-theme-mdui',"font-size: 14px;color: #3F51B5;","color: #448AFF;text-decoration: none");
-  </script>
-  <!--
-        © HEXO MDUI Theme
-        https://github.com/Halyul/hexo-theme-mdui
-        -->
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | 木叶村 | life is short</title>
 
-  <meta charset="UTF-8">
-  <title>首页 - 木叶村</title>
-
-  <!-- Favicons -->
-  <link rel="icon shortcut" type="image/ico" href="/images/favicon.png">
-  <link rel="icon" sizes="192x192" href="/images/favicon.png">
-  <link rel="apple-touch-icon" href="/images/favicon.png">
-
-  <!-- Meta & Info -->
-  <meta http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  <meta name="theme-color" content="#fff">
-
+  
   <meta name="author" content="Naruto">
   
-      <meta name="description" content="无人为孤岛，一书一世界">
-  
-  <meta name="keywords" content="blog, hexo, mdui">
 
-  <!--iOS -->
-  <meta name="apple-mobile-web-app-title" content="木叶村">
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="480">
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-
-  <!-- The Open Graph protocol -->
-  <meta property="og:url" content="https://jeweizhong.github.io">
-  <meta property="og:type" content="blog">
-  <meta property="og:title" content="首页 - 木叶村 | 木叶村">
-  <meta property="og:image" content="/images/favicon.png" />
-  
-    <meta property="og:description" content="无人为孤岛，一书一世界">
-  
 
   
 
-  
-
-  <!-- Import CSS -->
-  
-    <link rel="stylesheet" href="/css/mdui.css">
-  
+  <meta property="og:site_name" content="木叶村"/>
 
   
+  <meta property="og:image" content="/favicon.ico"/>
+  
 
-</head>
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
-<body class="mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+<body>
+<div class="blog">
+  <div class="content">
 
-  <style>
-    #spinner {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-          opacity: 1;
-      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-          transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-    }
-    main {
-      opacity: 0;
-      -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-      transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-      display: none;
-    }
-  </style>
-  <div id="spinner">
-    <style>
-      .spinner {
-
-      -webkit-animation: rotator 1.4s linear infinite;
-              animation: rotator 1.4s linear infinite;
-      }
-
-      @-webkit-keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-      }
-      }
-
-      @keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-                transform: rotate(270deg);
-      }
-      }
-
-      .path {
-      stroke-dasharray: 187;
-      stroke-dashoffset: 0;
-      -webkit-transform-origin: center;
-              transform-origin: center;
-      -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-              animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-      }
-
-      @-webkit-keyframes colors {
-      0% {
-        stroke: #4285F4;
-      }
-      25% {
-        stroke: #DE3E35;
-      }
-      50% {
-        stroke: #F7C223;
-      }
-      75% {
-        stroke: #1B9A59;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-      }
-
-      @keyframes colors {
-      0% {
-        stroke: #4285F4;
-      }
-      25% {
-        stroke: #DE3E35;
-      }
-      50% {
-        stroke: #F7C223;
-      }
-      75% {
-        stroke: #1B9A59;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-      }
-
-      @-webkit-keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-      }
-      }
-
-      @keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-                transform: rotate(450deg);
-      }
-      }
-    </style>
-    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-    </svg>
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
   </div>
-
-  <main>
-    <div class="mdui-appbar mdui-appbar-fixed mdui-color-white mdui-shadow-0 theme-appbar">
-  <div class="mdui-toolbar theme-toolbar-top">
-    
-      <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger">
-        <i class="mdui-icon">
-          <span></span>
-        </i>
-      </a>
-    
-  </div>
-  <div class="mdui-toolbar theme-toolbar-bottom">
-    <span class="theme-toolbar-bottom__title">木叶村</span>
-    
-      <a href="/search.html" class="mdui-textfield-icon mdui-btn mdui-btn-icon theme-toolbar-bottom__search">
-        <i class="mdui-icon material-icons">&#xe8b6;</i>
-      </a>
-    
-  </div>
-  <div class="mdui-progress theme-appbar__progress" id="progressBar">
-    <div class="mdui-progress-indeterminate"></div>
-  </div>
-</div>
-
-    <div class="mdui-drawer mdui-drawer-full-height theme-drawer" id="drawer">
-  <!-- header -->
-  <div class="theme-drawer__header">
-  <div class="theme-drawer__header__layer-1">
-    <div class="mdui-toolbar theme-toolbar-top">
+  <nav class="site-navigation">
+    <ul>
       
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple theme-appbar__burger theme-appbar__burger--drawer"  id="drawer-back">
-          <i class="mdui-icon">
-            <span></span>
-          </i>
-        </a>
+        <li><a href="/">主页</a></li>
       
-    </div>
-    <div class="mdui-toolbar theme-toolbar-bottom">
-      <span class="theme-toolbar-bottom__title">木叶村</span>
-    </div>
-  </div>
-  <div class="theme-drawer__header__layer-2" style="background-image: url(/images/bg.png)">
-    <img class="mdui-img-circle theme-drawer__header__layer-2__user__avatar" src="/images/avatar.png"/>
-    <div class="theme-drawer__header__layer-2__user__info">
-      <div class="theme-drawer__header__layer-2__user__info__author mdui-text-color-white-text">
-        Naruto
-      </div>
-      <div class="theme-drawer__header__layer-2__user__info__slogan mdui-text-color-white-secondary">
-        I&#39;m your slogan!
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="theme-drawer__warpper">
-    <!-- content -->
-    <div class="theme-drawer__warpper__content">
-  <ul class="mdui-list">
-    <a href="/" class="mdui-list-item mdui-ripple mdui-ripple-white">
-      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe88a;</i>
-      <div class="mdui-list-item-content">首页</div>
-    </a>
-    <a href="/archives/" class="mdui-list-item mdui-ripple mdui-ripple-white">
-      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe149;</i>
-      <div class="mdui-list-item-content">归档</div>
-    </a>
-    <ul class="mdui-list mdui-collapse" mdui-collapse="{accordion: true}" mdui-collapse>
-      
-        <div class="mdui-collapse-item ">
-          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-            <i class="mdui-list-item-icon mdui-icon material-icons">&#xe86e;</i>
-            <div class="mdui-list-item-content">分类</div>
-            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-          </div>
-          <div class="mdui-collapse-item-body mdui-list">
-            
-              <a href="/categories/R/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                R
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/Linux/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                Linux
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">9</span>
-              </a>
-            
-              <a href="/categories/C-C/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                C/C++
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/生信/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                生信
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">8</span>
-              </a>
-            
-              <a href="/categories/杂谈/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                杂谈
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/git/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                git
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/categories/perl/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                perl
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/categories/python3/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                python3
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">20</span>
-              </a>
-            
-              <a href="/categories/机器学习/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                机器学习
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">6</span>
-              </a>
-            
-              <a href="/categories/爬虫/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                爬虫
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">5</span>
-              </a>
-            
-              <a href="/categories/算法与数据结构/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                算法与数据结构
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-          </div>
-        </div>
-      
-      
-        <div class="mdui-collapse-item ">
-          <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-            <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-            <div class="mdui-list-item-content">标签</div>
-            <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-          </div>
-          <div class="mdui-collapse-item-body mdui-list">
-            
-              <a href="/tags/编程语言/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                编程语言
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">31</span>
-              </a>
-            
-              <a href="/tags/R/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                R
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/统计语言/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                统计语言
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/Linux/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                Linux
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">9</span>
-              </a>
-            
-              <a href="/tags/AWK/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                AWK
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/C/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                C
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/生信软件/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                生信软件
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/vim/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                vim
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/tags/生信理论基础/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                生信理论基础
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">6</span>
-              </a>
-            
-              <a href="/tags/文件格式/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                文件格式
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/tags/其他/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                其他
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/软件/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                软件
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/git/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                git
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/ssh/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                ssh
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/perl/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                perl
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">3</span>
-              </a>
-            
-              <a href="/tags/python3/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                python3
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">32</span>
-              </a>
-            
-              <a href="/tags/samtools/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                samtools
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/大数据/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                大数据
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/测序数据质控/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                测序数据质控
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/Trimmomatic/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                Trimmomatic
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/机器学习/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                机器学习
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">6</span>
-              </a>
-            
-              <a href="/tags/爬虫/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                爬虫
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">5</span>
-              </a>
-            
-              <a href="/tags/可视化/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                可视化
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-              <a href="/tags/数据结构/" class="mdui-list-item mdui-ripple mdui-ripple-white" style="display: flex">
-                数据结构
-                <div style="flex-grow: 1;"></div>
-                <span class="theme-menu-badge new mdui-color-theme-accent" data-badge-caption="">1</span>
-              </a>
-            
-          </div>
-        </div>
-      
-      <div class="mdui-collapse-item ">
-        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-          <i class="mdui-list-item-icon mdui-icon material-icons">&#xe916;</i>
-          <div class="mdui-list-item-content">年份</div>
-          <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-        </div>
-        <div class="mdui-collapse-item-body mdui-list">
-          
-          
-            <a href="/archives/2019/" class="mdui-list-item mdui-ripple">
-              2019
-            </a>
-          
-            <a href="/archives/2018/" class="mdui-list-item mdui-ripple">
-              2018
-            </a>
-          
-        </div>
-      </div>
-    </ul>
-  </ul>
-  
-    <div class="mdui-divider"></div>
-    <ul class="mdui-list" mdui-collapse="{accordion: true}" mdui-collapse>
-      
-        
-          
-            <a href="/friends" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">&#xe0ba;</i>
-              
-              
-              <div class="mdui-list-item-content">Test1</div>
-            </a>
-        
-      
-        
-          
-            <a href="/apply-for-link" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-                <i class="mdui-list-item-icon mdui-icon fa fa-child mdui-text-center"></i>
-              
-              
-              
-              <div class="mdui-list-item-content">Test2</div>
-            </a>
-        
-      
-        
-          
-            <a href="/galleries" target="_self" class="mdui-list-item mdui-ripple mdui-ripple-white">
-          
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-              
-              
-              <div class="mdui-list-item-content">Test3</div>
-            </a>
-        
-      
-        
-          <div class="mdui-collapse-item">
-            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple mdui-ripple-white">
-              
-              
-                <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-              
-              
-              <div class="mdui-list-item-content">Test4</div>
-              <i class="mdui-collapse-item-arrow mdui-icon material-icons">&#xe5c5;</i>
-            </div>
-            <div class="mdui-collapse-item-body mdui-list">
-              
-                
-                  <a href="/myfriends" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
-                
-                    TEST1
-                  </a>
-              
-                
-                  <a href="/timeline" class="mdui-list-item mdui-ripple mdui-ripple-white" target="_self">
-                
-                    TEST2
-                  </a>
-              
-            </div>
-          </div>
-        
+        <li><a href="/archives">归档</a></li>
       
     </ul>
-  
-</div>
+  </nav>
+</header>
 
-    <div class="theme-spacer"></div>
-    <!-- footer -->
-    <div class="theme-drawer__warpper__footer">
-  <div class="mdui-typo mdui-typo-caption-opacity">
-    Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
-    <br />
-    Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank">Halyul/MDUI</a>
-    <br />
-    <span>
-      Copyright ©
-      <span year></span>
-      Naruto
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/25/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-er/"><span>机器学习实战笔记(六)---kNN算法(二)-使用鸢尾花数据集</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/25/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-er/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-24T16:00:00.000Z">
+          2018-11-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>python实现，遍历所有数据点，找出n个距离最近的点的分类情况，少数服从多数</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># coding: utf-8
+
+# 原文代码作者：https://github.com/wzyonggege/statistical-learning-method
+# 
+# 中文注释制作：机器学习初学者(微信公众号：ID:ai-start-com)
+# 
+# 配置环境：python 3.6
+# 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+from collections import Counter
+
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['label'] = iris.target
+df.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'label']
+
+
+plt.scatter(df[:50]['sepal length'], df[:50]['sepal width'], label='0')
+plt.scatter(df[50:100]['sepal length'], df[50:100]['sepal width'], label='1')
+plt.xlabel('sepal length')
+plt.ylabel('sepal width')
+plt.legend()
+
+
+data = np.array(df.iloc[:100, [0, 1, -1]])
+X, y = data[:,:-1], data[:,-1]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+class KNN:
+    def __init__(self, X_train, y_train, n_neighbors=3, p=2):
+        """
+        parameter: n_neighbors 临近点个数
+        parameter: p 距离度量
+        """
+        self.n = n_neighbors
+        self.p = p
+        self.X_train = X_train
+        self.y_train = y_train
+
+    def predict(self, X):
+        # 取出n个点
+        knn_list = []
+        for i in range(self.n):
+            dist = np.linalg.norm(X - self.X_train[i], ord=self.p)
+            knn_list.append((dist, self.y_train[i]))
+
+        for i in range(self.n, len(self.X_train)):
+            max_index = knn_list.index(max(knn_list, key=lambda x: x[0]))
+            dist = np.linalg.norm(X - self.X_train[i], ord=self.p)
+            if knn_list[max_index][0] > dist:
+                knn_list[max_index] = (dist, self.y_train[i])
+
+        # 统计
+        knn = [k[-1] for k in knn_list]
+        count_pairs = Counter(knn)
+        max_count = sorted(count_pairs, key=lambda x:x)[-1]
+        return max_count
+
+    def score(self, X_test, y_test):
+        right_count = 0
+        n = 10
+        for X, y in zip(X_test, y_test):
+            label = self.predict(X)
+            if label == y:
+                right_count += 1
+        return right_count / len(X_test)
+
+clf = KNN(X_train, y_train)
+
+
+clf.score(X_test, y_test)
+
+
+test_point = [6.0, 3.0]
+print('Test Point: {}'.format(clf.predict(test_point)))
+
+
+plt.scatter(df[:50]['sepal length'], df[:50]['sepal width'], label='0')
+plt.scatter(df[50:100]['sepal length'], df[50:100]['sepal width'], label='1')
+plt.plot(test_point[0], test_point[1], 'bo', label='test_point')
+plt.xlabel('sepal length')
+plt.ylabel('sepal width')
+plt.legend()
+</code></pre>
+<p>当然也可以使用<code>sklearn</code>快速实现,中文文档地址：<a href="http://sklearn.apachecn.org/cn/0.19.0/" target="_blank" rel="noopener">http://sklearn.apachecn.org/cn/0.19.0/</a></p>
+<pre class=" language-lang-python"><code class="language-lang-python">from sklearn.neighbors import KNeighborsClassifier
+
+clf_sk = KNeighborsClassifier()
+clf_sk.fit(X_train, y_train)
+
+clf_sk.score(X_test, y_test)
+
+# ### sklearn.neighbors.KNeighborsClassifier
+# 
+# - n_neighbors: 临近点个数
+# - p: 距离度量
+# - algorithm: 近邻算法，可选{'auto', 'ball_tree', 'kd_tree', 'brute'}
+# - weights: 确定近邻的权重
+</code></pre>
+<p><em>下一小节：kd树的实现</em></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
     </span>
     
-    
-      <br />
-      <span>
-        最后更新于: 5月 11, 2019
-      </span>
-    
-    
-  </div>
-</div>
-<script type="text/javascript">
-  var copyrightNow = new Date().getFullYear();
-  var textContent = document.querySelector('span[year]')
-  
-    textContent.textContent = copyrightNow
-  
-</script>
-
-  </div>
-</div>
-
-    <div id="top"></div>
-
-    <script src="/js/lightgallery.min.js"></script>
-
-    <div id="barba-wrapper">
-      <div class="barba-container"  data-namespace="posts">
-        <div class="theme-index">
-  <div class="theme-posts">
-    
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/13.png)">
-        <img src="/images/random/13.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/25/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-er/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              机器学习实战笔记(六)---kNN算法(二)-使用鸢尾花数据集
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        python实现，遍历所有数据点，找出n个距离最近的点的分类情况，少数服从多数
-
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/机器学习/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">机器学习</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-0'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-0">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/机器学习/" class="mdui-ripple">
-                      <span>机器学习</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 25, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/33.png)">
-        <img src="/images/random/33.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/24/linux-xi-lie-cha-kan-cpu-deng-xin-xi/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              (转)linux下查看CPU、内存、磁盘信息
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        文章内容来源：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/Linux/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">Linux</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-1'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-1">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/Linux/" class="mdui-ripple">
-                      <span>Linux</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 24, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/27.png)">
-        <img src="/images/random/27.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/23/git-ji-jian-ru-men/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              git极简入门
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        1. ...
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/git/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">git</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            
-              <a href="/tags/git/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__tags">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon fa fa-tags mdui-text-center"></i>
-                  </span>
-                  <span class="mdui-chip-title">git</span>
-                </div>
-              </a>
-            
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 23, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/23.png)">
-        <img src="/images/random/23.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/22/pa-chong-xi-lie-san-zhua-qu-tao-bao-shang-pin/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              爬虫系列(三)---抓取淘宝商品
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/爬虫/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">爬虫</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-3'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-3">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/爬虫/" class="mdui-ripple">
-                      <span>爬虫</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 22, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/18.png)">
-        <img src="/images/random/18.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/21/pa-chong-xi-lie-er-zhua-qu-tu-pian/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              爬虫系列(二)---抓取图片
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/爬虫/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">爬虫</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-4'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-4">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/爬虫/" class="mdui-ripple">
-                      <span>爬虫</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 21, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/27.png)">
-        <img src="/images/random/27.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/20/pa-chong-xi-lie-yi-zhua-qu-dian-ying-top100/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              爬虫系列(一)---抓取电影评分top100
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/爬虫/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">爬虫</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-5'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-5">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/爬虫/" class="mdui-ripple">
-                      <span>爬虫</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 20, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/44.png)">
-        <img src="/images/random/44.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/19/ji-qi-xue-xi-shi-zhan-bi-ji-wu-jue-ce-shu-yi/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              机器学习实战笔记(五)---决策树(一)
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        基本概念
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/机器学习/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">机器学习</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-6'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-6">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/机器学习/" class="mdui-ripple">
-                      <span>机器学习</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 19, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/16.png)">
-        <img src="/images/random/16.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/18/linux-xi-lie-vim-2/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              vim 进阶版
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        参考链接: 
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/Linux/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">Linux</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-7'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-7">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/Linux/" class="mdui-ripple">
-                      <span>Linux</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/vim/" class="mdui-ripple">
-                      <span>vim</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 18, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/5.png)">
-        <img src="/images/random/5.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/17/linux-xi-lie-zhuan-ni-ying-gai-zhi-dao-de-linux-ji-qiao/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              (转)应该知道的LINUX技巧
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        文章来源：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/Linux/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">Linux</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-8'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-8">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/Linux/" class="mdui-ripple">
-                      <span>Linux</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 17, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/23.png)">
-        <img src="/images/random/23.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/16/linux-xi-lie-find/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              Linux命令：find
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        语法：
-find *[directory-list]* *[option]* *[expression]*
-
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/Linux/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">Linux</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-9'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-9">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/Linux/" class="mdui-ripple">
-                      <span>Linux</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 16, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/18.png)">
-        <img src="/images/random/18.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/15/fastp/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              (转)fastp： 一款超快速全功能的FASTQ文件自动化质控+过滤+校正+预处理软件
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        软件作者简介：陈实富，海普洛斯 联合创始人 / CTO
-文章转载自：
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/生信/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">生信</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-10'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-10">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/生信理论基础/" class="mdui-ripple">
-                      <span>生信理论基础</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/软件/" class="mdui-ripple">
-                      <span>软件</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 15, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
-
-    
-      
-
-
-  <div class="theme-posts__post">
-    <article class="mdui-card mdui-hoverable">
-      <section class="mdui-card-media theme-posts__post__media" style="background-image: url(/images/random/35.png)">
-        <img src="/images/random/35.png" class="theme-posts__post__media__image" />
-        <div class="mdui-card-media-covered theme-posts__post__media-covered">
-          <div class="mdui-card-primary mdui-typo">
-            <a href="/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/" target="_self" class="mdui-card-primary-title mdui-text-truncate">
-              
-              python3 标准库系列(五)---subprocess
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="mdui-card-content">
-        subprocess模块是用来执行外部命令，下面介绍两种主要的用法。
-
-      </section>
-      <div class="mdui-divider" style="margin: 0 16px;"></div>
-      <section class="theme-posts__post__footer">
-        
-          
-            
-              <a href="/categories/python3/" class="theme-link--no-style">
-                <div class="mdui-chip theme-posts__post__footer__categories">
-                  <span class="mdui-chip-icon">
-                    <i class="mdui-icon material-icons mdui-text-center">&#xe86e;</i>
-                  </span>
-                  <span class="mdui-chip-title">python3</span>
-                </div>
-              </a>
-            
-          
-        
-        
-          
-            <div class="theme-posts__post__footer__tags mdui-valign">
-              <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-ripple" mdui-menu="{target: '#post-tags-11'}">
-                <i class="mdui-list-item-icon mdui-icon fa fa-tags mdui-text-center"></i>
-              </button>
-              <ul class="mdui-menu" id="post-tags-11">
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/编程语言/" class="mdui-ripple">
-                      <span>编程语言</span>
-                    </a>
-                  </li>
-                
-                  <li class="mdui-menu-item">
-                    <a href="/tags/python3/" class="mdui-ripple">
-                      <span>python3</span>
-                    </a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-        
-        <div class="theme-spacer"></div>
-        <div class="mdui-valign">
-          <div>
-            11月 14, 2018
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-
 
     
     
-      <div class="theme-end-footer">
-        <div class="mdui-text-center mdui-text-color-theme-text">
-          2 of 5
-        </div>
-      </div>
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
+    </span>
     
-  </div>
-  <button id="index-fab" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-fab-hide" onclick="smoothScroll.animateScroll( 0 );">
-  <i class="mdui-icon material-icons">&#xe5d8;</i>
-</button>
 
-</div>
-<script type="text/javascript">
-  themeRuntime.scriptsMap.posts = [];
-  (function() {
-    var fabTopFlag = false;
-    var fabEl = document.getElementById('index-fab');
-    function fabShowHide() {
-      var bodyScrolled = document.documentElement.scrollTop || document.body.scrollTop;
-      if (bodyScrolled > 0 && !fabTopFlag) {
-        fabEl.classList.remove('mdui-fab-hide');
-        fabTopFlag = true;
-      } else if (bodyScrolled === 0 && fabTopFlag) {
-        fabEl.classList.add('mdui-fab-hide');
-        fabTopFlag = false;
-      }
-    }
-    fabShowHide()
-    window.addEventListener('scroll', fabShowHide);
-    var listener = {
-      function: fabShowHide,
-      event: 'scroll',
-      el: window,
-      removed: false
-    }
-    themeRuntime.scriptsMap.posts.push(listener)
-  })();
-
-  (function() {
-    var pageTotal = 5
-    var pageNext = 2
-    var pageLoad = false
-    themeRuntime.temp = {
-      index: 1
-    }
-    function morePosts() {
-      var screenHeight = window.innerHeight;
-      var compareHeight = document.body.clientHeight -  (document.documentElement.scrollTop || document.body.scrollTop);
-      var loadStatus = pageNext - themeRuntime.temp.index
-      if (screenHeight >= compareHeight - 1 && loadStatus === 1 && pageLoad === false) {
-        if (pageNext <= pageTotal) {
-          loadProgressInline(false)
-          var url = window.location.href + "page/" + pageNext + "/"
-          themeRuntime.temp.index = pageNext;
-          //console.log(pageTotal, url)
-          pageLoad = true;
-          fetch(url, {
-              method:'GET',
-              mode:'cors',
-              credentials: 'include'
-          })
-          .then(function(response) {
-            return response.text()
-          }).then(function(HTML) {
-            var fakeDom = document.createElement('html');
-            fakeDom.innerHTML = HTML
-            var morePostsHTML = fakeDom.querySelector('.theme-posts').innerHTML
-            var postsArea = document.querySelector(".theme-posts")
-            loadProgressInline(true)
-            postsArea.insertAdjacentHTML('beforeend', morePostsHTML)
-            pageNext++;
-            pageLoad = false;
-          }).catch(function(error) {
-            mdui.alert(error, "错误！");
-            pageLoad = false;
-          })
-        }
-      }
-    }
-    function loadProgressInline(state) {
-      var progressEl = document.getElementById('progressBar')
-      if (state === true) {
-        progressEl.classList.add('theme-appbar__progress--hidden')
-      } else if (state === false) {
-        progressEl.classList.remove('theme-appbar__progress--hidden')
-      }
-    }
-    window.addEventListener('scroll', morePosts);
-    var listener = {
-      function: morePosts,
-      event: 'scroll',
-      el: window,
-      removed: false
-    }
-    themeRuntime.scriptsMap.posts.push(listener)
-  })();
-</script>
-
-
-      </div>
     </div>
-  </main>
 
-  <div id="outdated" style="z-index: 9999;">
-    <h6>你的浏览器已经过气辣！</h6>
-    <p>赶紧升级浏览器来访问本站吧！<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">现在就去</a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="关闭">&times;</a></p>
+    
   </div>
-  <!-- import js -->
+</article>
 
 
-  <script src="/js/outdatedbrowser.min.js"></script>
 
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/24/linux-xi-lie-cha-kan-cpu-deng-xin-xi/"><span>(转)linux下查看CPU、内存、磁盘信息</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/24/linux-xi-lie-cha-kan-cpu-deng-xin-xi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-23T16:00:00.000Z">
+          2018-11-24
+        </time>
+      </a>
+    </span>
+  </div>
 
 
   
-    <script src="/js/js.barba.min.js"></script>
-    <script type="text/javascript">
-      Barba.Utils.errorPageUrl = '/404.html';
-    </script>
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>文章内容来源：<a href="https://www.cnblogs.com/xubiao/p/6497533.html" target="_blank" rel="noopener">https://www.cnblogs.com/xubiao/p/6497533.html</a></p>
+<p><strong>查看CPU信息</strong></p>
+<p>总核数 = 物理CPU个数 X 每颗物理CPU的核数</p>
+<p>总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数</p>
+<p><strong>查看物理CPU个数</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+</code></pre>
+<p><strong>查看每个物理CPU中core的个数(即核数)</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo| grep "cpu cores"| uniq
+</code></pre>
+<p><strong>查看逻辑CPU的个数</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo| grep "processor"| wc -l
+</code></pre>
+<p><strong>查看CPU信息（型号）</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+</code></pre>
+<p><strong>查看CPU的负载</strong></p>
+<p><strong>平均负载</strong>是指上一分钟同时处于就绪状态的平均进程数。在CPU中可以理解为CPU可以并行处理的任务数量，就是CPU个数X核数。</p>
+<p>如果CPU Load等于CPU个数乘以核数，那么就说CPU正好满负载，再多一点，可能就要出问题了，有些任务不能被及时分配处理器，那要保证性能的话，最好要小于CPU个数X核数X0.7。</p>
+<p>Load Average是指CPU的Load。它所包含的信息是在一段时间内CPU正在处理及等待CPU处理的进程数之和的统计信息，也就是CPU使用队列的长度的统计信息。</p>
+<p>Load Average的值应该小于CPU个数X核数X0.7，Load Average会有3个状态平均值，分别是1分钟、5分钟和15分钟平均Load。</p>
+<p>如果1分钟平均出现大于CPU个数X核数的情况，还不需要担心；如果5分钟的平均也是这样，那就要警惕了；15分钟的平均也是这样，就要分析哪里出现问题，防范未然。</p>
+<p><strong>查看内存信息</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">$ cat /proc/meminfo
+$ free
+</code></pre>
+<p><strong>查看磁盘信息</strong></p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">$ fdisk -l
+$ iostat -x 10    #查看磁盘IO的性能
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/23/git-ji-jian-ru-men/"><span>git极简入门</span></a></h3>
+    
   
 
-
-<!-- theme js -->
-<script type="text/javascript">
-  (function() {
-    var appbarTopFlag = false;
-    var appbarEl = document.querySelector('.theme-appbar');
-    function appbarShadow() {
-      var bodyScrolled = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-      if (bodyScrolled > 0 && !appbarTopFlag) {
-        appbarEl.classList.add('theme-appbar--shadow');
-        appbarTopFlag = true;
-      } else if (bodyScrolled === 0 && appbarTopFlag) {
-        appbarEl.classList.remove('theme-appbar--shadow');
-        appbarTopFlag = false;
-      }
-    }
-    appbarShadow()
-    window.addEventListener('scroll', appbarShadow);
-  })();
-</script>
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/23/git-ji-jian-ru-men/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-22T16:00:00.000Z">
+          2018-11-23
+        </time>
+      </a>
+    </span>
+  </div>
 
 
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="1-安装-略"><a href="#1-安装-略" class="headerlink" title="1. 安装(略)"></a>1. 安装(略)</h2><h2 id="2-基础命令"><a href="#2-基础命令" class="headerlink" title="2.基础命令"></a>2.基础命令</h2><p><code>git config --global user.name &quot;Your Name&quot;</code><br><code>git config --global user.email &quot;email@example.com&quot;</code></p>
+<p><code>git init [dir]</code> : 目录变成Git可以管理的仓库<br><code>git add [file] [file]...</code> : 添加文件到仓库<br><code>git commit -m &quot;一些版本描述&quot;</code> : 把(多个)文件交给仓库<br><code>git log --pretty=oneline</code> : 改动日志<br><code>git reset --hard HEAD^</code> || <code>git reset --hard HEAD^^</code> : 切换到上次修改，或者上上次修改<br><code>git reset --hard [哈希值]</code> ： 切换到哈希值对应的版本号<br><code>git status</code> : 查看工作区状态<br><code>git diff</code> : 比较文件<br><code>git checkout -- [file]</code> ： 撤销工作区的修改，回到最近一次<code>git commit</code>或<code>git add</code>时的状态<br><code>git rm [file]</code>  : 从版本库里删除文件<br><code>git checkout [哈希值]</code> : 切换版本</p>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><pre class=" language-lang-sh"><code class="language-lang-sh">git remote add origin https://github.com/JeWeizhong/Machine-learning-in-action-notes-and-code.git
+git push -u origin master #第一次提交
+git push origin master -f #强制覆盖已有分支
+</code></pre>
+<h2 id="远程仓库同步到本地"><a href="#远程仓库同步到本地" class="headerlink" title="远程仓库同步到本地"></a>远程仓库同步到本地</h2><p>１.　假如需要在另一个地方写项目可以用一下步骤：</p>
+<pre class=" language-lang-sh"><code class="language-lang-sh">git clone https://github.com/JeWeizhong/Machine-learning-in-action-notes-and-c # 克隆到本地
+#在本地修改后
+git add .
+git commit  -m "creat DTs"
+git push origin master
+</code></pre>
+<ol>
+<li><p>假如本地已经有项目代码，需要同远程的项目合并：</p>
+<pre class=" language-lang-sh"><code class="language-lang-sh"># 从远程的origin的master主分支下载最新的版本到origin/master分支上
+Git fetch origin master 
+# 比较本地的master分支和origin/master分支的差别
+git log -p master ..origin/master
+git merge origin/master # 合并
+</code></pre>
+<p>第二种方式：</p>
+<pre class=" language-lang-sh"><code class="language-lang-sh"># 从远程下载到master下的tmp分支上
+git fetch origin master:tmp 
+# 比较
+git diff tmp 
+# 合并
+git merge tmp
+</code></pre>
+<p>或者直接用<code>git pull origin master</code>，但是看不到细节</p>
+</li>
+<li><p><em>目前还没学会分支</em></p>
+</li>
+</ol>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/git/">git</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/git/">git</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/22/pa-chong-xi-lie-san-zhua-qu-tao-bao-shang-pin/"><span>爬虫系列(三)---抓取淘宝商品</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/22/pa-chong-xi-lie-san-zhua-qu-tao-bao-shang-pin/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-21T16:00:00.000Z">
+          2018-11-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <pre class=" language-lang-python"><code class="language-lang-python">from selenium import webdriver
+import time
+import requests
+from bs4 import BeautifulSoup
+import html.parser
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from pyquery import PyQuery as pq
+
+browser = webdriver.Chrome("E:\\Program Files\\chromedriver_win32\\chromedriver.exe")
+#browser = webdriver.Chrome()
+wait = WebDriverWait(browser, 10)
+
+def getProducts():
+    """
+    提取商品数据
+    """
+    html = browser.page_source
+    # 解析
+    doc = pq(html)
+    # 找id，子标签是商品列表
+    items = doc('#mainsrp-itemlist .items .item').items()
+    for item in items:
+        product = {
+            'image': item.find('.pic .img').attr('data-src'),
+            'price': item.find('.price').text(),
+            'deal': item.find('.deal-cnt').text(),
+            'title': item.find('.title').text(),
+            'shop': item.find('.shop').text(),
+            'location': item.find('.location').text()
+        }
+        print(product)
+
+def search():
+    try:
+        browser.get("https://www.taobao.com/")
+        # 登陆，淘宝反爬虫，目前是手动扫码登陆，做了个sleep等待时间
+        login = wait.until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR,'#J_SiteNavLogin > div.site-nav-menu-hd > div.site-nav-sign > a.h'))
+        )
+        login.click()
+        time.sleep(30)
+        # 输入框
+        input = wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#q"))
+        )
+        # 搜索按钮
+        submit = wait.until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR,"#J_TSearchForm > div.search-button > button"))
+        )
+        # 输入
+        input.send_keys("美食")
+        # 点击搜索
+        submit.click()
+        getProducts()
+    except TimeoutError:
+        return  search()
+
+def main():
+    search()
+    browser.close()
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/爬虫/">爬虫</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/21/pa-chong-xi-lie-er-zhua-qu-tu-pian/"><span>爬虫系列(二)---抓取图片</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/21/pa-chong-xi-lie-er-zhua-qu-tu-pian/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-20T16:00:00.000Z">
+          2018-11-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <pre class=" language-lang-python"><code class="language-lang-python">import requests
+from bs4 import BeautifulSoup
+import os
+import re
+#导入所需要的模块
+class mzitu():
+    def all_url(self, url):
+        html = self.request(url)##
+        all_a = BeautifulSoup(html.text, 'lxml').find('div', class_='all').find_all('a',href=re.compile('[0~9]'))
+        for a in all_a:
+            title = a.get_text()
+            print('------开始保存：', title) 
+            path = str(title).replace("?", '_') ##替换掉带有的？
+            self.mkdir(path) ##调用mkdir函数创建文件夹！这儿path代表的是标题title
+            href = a['href']
+            self.html(href) 
+
+    def html(self, href):   ##获得图片的页面地址
+        html = self.request(href)
+        max_span = BeautifulSoup(html.text, 'lxml').find('div', class_='pagenavi').find_all('span')[-2].get_text()
+        #这个上面有提到
+        for page in range(1, int(max_span) + 1):
+            page_url = href + '/' + str(page)
+            self.img(page_url) ##调用img函数
+
+    def img(self, page_url): ##处理图片页面地址获得图片的实际地址
+        img_html = self.request(page_url)
+        img_url = BeautifulSoup(img_html.text, 'lxml').find('div', class_='main-image').find('img')['src']
+        self.save(img_url)
+
+    def save(self, img_url): ##保存图片
+        name = img_url[-9:-4]
+        img = self.request(img_url)
+        f = open(name + '.jpg', 'ab')
+        f.write(img.content)
+        f.close()
+
+    def mkdir(self, path): ##创建文件夹
+        path = path.strip()
+        isExists = os.path.exists(os.path.join("F:\\download\\photo", path))
+        if not isExists:
+            print('建了一个名字叫做', path, '的文件夹！')
+            os.makedirs(os.path.join(r"F:\download\photo", path))
+            os.chdir(os.path.join(r"F:\download\photo", path)) ##切换到目录
+            return True
+        else:
+            print( path, '文件夹已经存在了！')
+            return False
+
+    def request(self, url): ##这个函数获取网页的response 然后返回
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36',
+            'referer': "http://www.mzitu.com/100260/2" #伪造一个访问来源 "http://www.mzitu.com/100260/2"
+            }
+        content = requests.get(url, headers=headers)
+        return content
+#设置启动函数
+def main():
+    Mzitu = mzitu() ##实例化
+    Mzitu.all_url('http://www.mzitu.com/all') ##给函数all_url传入参数  
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/爬虫/">爬虫</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/20/pa-chong-xi-lie-yi-zhua-qu-dian-ying-top100/"><span>爬虫系列(一)---抓取电影评分top100</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/20/pa-chong-xi-lie-yi-zhua-qu-dian-ying-top100/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-19T16:00:00.000Z">
+          2018-11-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <pre class=" language-lang-python"><code class="language-lang-python">import requests
+from bs4 import BeautifulSoup
+import os
+import re
+from requests.exceptions import RequestException
+from multiprocessing import Pool
+
+'''
+抓取猫眼电影网，历史电影评分top100
+'''
+
+def getHtml(url):
+    '''
+    获取网页内容
+    '''
+    try:
+        # 我也不知道为什么要加请求头才可以
+        headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36'}
+        response = requests.get(url,headers=headers)
+        #print(response.status_code)
+        if response.status_code == 200:
+            return response.text
+        return None
+    except RequestException as e:
+        print(e)
+        return None
+
+def parseHtml(html):
+    '''
+    解析网页,抓取：电影排名，分数，上映时间，主演，封面url
+    '''
+    #找到所有 dd 标签
+    soup = BeautifulSoup(html,"lxml")
+    films = soup.find_all("dd")
+    outList = []
+    for i in films:
+        # 排名
+        num = i.find_all("i",{"class":re.compile("board-index board-index.+\d+")})[0].get_text().strip()
+        # 影名
+        name = i.find_all("p",{"class":"name"})[0].get_text().strip()
+        # 评分
+        score = i.find_all("p",{"class":"score"})[0].get_text().strip()
+        #print(score)
+        # 时间
+        releaseTime = i.find_all("p",{"class":"releasetime"})[0].get_text().strip()
+        # 主演
+        star = i.find_all("p",{"class":"star"})[0].get_text().strip()
+        outList.append([num,name,score,releaseTime,star])
+    return outList
+
+def main(index):
+    url = f"http://ma oyan.com/board/4?offset={index}"
+
+    html = getHtml(url)
+    outList = parseHtml(html)
+    for i in outList:
+        print(i)
+
+if __name__ == "__main__":
+    #pool = Pool()
+    for i in range(10):
+        main(i*10)
+</code></pre>
+<p>输出：</p>
+<pre><code>[&#39;1&#39;, &#39;霸王别姬&#39;, &#39;9.6&#39;, &#39;上映时间：1993-01-01&#39;, &#39;主演：张国荣,张丰毅,巩俐&#39;]
+[&#39;2&#39;, &#39;肖申克的救赎&#39;, &#39;9.5&#39;, &#39;上映时间：1994-10-14(美国)&#39;, &#39;主演：蒂姆·罗宾斯,摩根·弗里曼,鲍勃·冈顿&#39;]
+[&#39;3&#39;, &#39;罗马假日&#39;, &#39;9.1&#39;, &#39;上映时间：1953-09-02(美国)&#39;, &#39;主演：格利高里·派克,奥黛丽·赫本,埃迪·艾伯特&#39;]
+[&#39;4&#39;, &#39;这个杀手不太冷&#39;, &#39;9.5&#39;, &#39;上映时间：1994-09-14(法国)&#39;, &#39;主演：让·雷诺,加里·奥德曼,娜塔莉·波特曼&#39;]
+[&#39;5&#39;, &#39;教父&#39;, &#39;9.3&#39;, &#39;上映时间：1972-03-24(美国)&#39;, &#39;主演：马龙·白兰度,阿尔·帕西诺,詹姆斯·肯恩&#39;]
+[&#39;6&#39;, &#39;泰坦尼克号&#39;, &#39;9.5&#39;, &#39;上映时间：1998-04-03&#39;, &#39;主演：莱昂纳多·迪卡普里奥,凯特·温丝莱特,比利·赞恩&#39;]
+[&#39;7&#39;, &#39;唐伯虎点秋香&#39;, &#39;9.2&#39;, &#39;上映时间：1993-07-01(中国香港)&#39;, &#39;主演：周星驰,巩俐,郑佩佩&#39;]
+[&#39;8&#39;, &#39;千与千寻&#39;, &#39;9.3&#39;, &#39;上映时间：2001-07-20(日本)&#39;, &#39;主演：柊瑠美,入野自由,夏木真理&#39;]
+[&#39;9&#39;, &#39;魂断蓝桥&#39;, &#39;9.2&#39;, &#39;上映时间：1940-05-17(美国)&#39;, &#39;主演：费雯·丽,罗伯特·泰勒,露塞尔·沃特森&#39;]
+[&#39;10&#39;, &#39;乱世佳人&#39;, &#39;9.1&#39;, &#39;上映时间：1939-12-15(美国)&#39;, &#39;主演：费雯·丽,克拉克·盖博,奥利维娅·德哈维兰&#39;]
+(后面省略)
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/爬虫/">爬虫</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/19/ji-qi-xue-xi-shi-zhan-bi-ji-wu-jue-ce-shu-yi/"><span>机器学习实战笔记(五)---决策树(一)</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/19/ji-qi-xue-xi-shi-zhan-bi-ji-wu-jue-ce-shu-yi/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-18T16:00:00.000Z">
+          2018-11-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p>“信息熵”是度量样本纯合度最常用的的指标。假定当前样本集合D中的第$k$类样本所占的比例为$p_k(k=1,2…|y|)$,则D的信息熵可以定义为：</p>
+<script type="math/tex; mode=display">Ent(D) = -\sum_{k=1}^{|y|}p_klog_2^{p_k}</script><p>Ent(D)越小，表明D的纯度越高，信息熵也称作经验熵</p>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>在划分数据集之前之后信息发生的变化称为<strong>信息增益</strong><br>书中的说法都太正式，通俗的将就是我们将样本集D按照特征A划分后，子集中按照剩余的特征划分后的信息熵乘以各自的权重($\frac{|D^v|}{|D|}$)之和就是<strong>条件熵</strong>，与信息熵的差就是信息增益：</p>
+<script type="math/tex; mode=display">Gain(D,a) = Ent(D) - \sum_{v=1}^{V} \frac{|D^v|}{|D|} Ent(D^v)</script><p>按照不同的特征划分可以得到不同的信息增益，一般来说信息增益越大，分类的纯度提升越大，<br>上式中$v$表示的是按照特征A划分后的第$v$类，共有$V$类，而</p>
+<script type="math/tex; mode=display">\sum_{v=1}^{V} \frac{|D^v|}{|D|} Ent(D^v) = Ent(D|A)</script><h2 id="ID3算法构建决策树"><a href="#ID3算法构建决策树" class="headerlink" title="ID3算法构建决策树"></a>ID3算法构建决策树</h2><pre class=" language-lang-python"><code class="language-lang-python">from math import log
+import operator
+
+def createDataSet():
+    dataSet = [[1, 1, 'yes'],
+               [1, 1, 'yes'],
+               [1, 0, 'no'],
+               [0, 1, 'no'],
+               [0, 1, 'no']]
+    labels = ['no surfacing','flippers']
+    #change to discrete values
+    return dataSet, labels
+
+def createTree(dataSet,labels):
+    classList = [example[-1] for example in dataSet]
+    if classList.count(classList[0]) == len(classList): 
+        return classList[0]# 所有类别都相等
+    if len(dataSet[0]) == 1: # 只有一个类别
+        return majorityCnt(classList)
+    bestFeat = chooseBestFeatureToSplit(dataSet)
+    bestFeatLabel = labels[bestFeat]
+    myTree = {bestFeatLabel:{}}
+    del(labels[bestFeat])
+    featValues = [example[bestFeat] for example in dataSet]
+    uniqueVals = set(featValues)
+    for value in uniqueVals:
+        subLabels = labels[:]       #copy all of labels, so trees don't mess up existing labels
+        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value),subLabels)
+    return myTree                  
+
+def majorityCnt(classList):
+    '''
+    选择类别最多的类型
+    '''
+    classCount={}
+    for vote in classList:
+        if vote not in classCount.keys(): classCount[vote] = 0
+        classCount[vote] += 1
+    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+def splitDataSet(dataSet, axis, value):
+    '''
+    选取指定列中的指定类别
+    '''
+    retDataSet = []
+    for featVec in dataSet:
+        if featVec[axis] == value:
+            reducedFeatVec = featVec[:axis]     #chop out axis used for splitting
+            reducedFeatVec.extend(featVec[axis+1:])
+            retDataSet.append(reducedFeatVec)
+    return retDataSet
+
+def chooseBestFeatureToSplit(dataSet):
+    '''
+    计算条件熵：在选出信息熵最大分类的条件下
+    '''
+    numFeatures = len(dataSet[0]) - 1      #the last column is used for the labels
+    baseEntropy = calcShannonEnt(dataSet)
+    bestInfoGain = 0.0; bestFeature = -1
+    for i in range(numFeatures):        #iterate over all the features
+        featList = [example[i] for example in dataSet]#create a list of all the examples of this feature
+        uniqueVals = set(featList)       #get a set of unique values
+        newEntropy = 0.0
+        for value in uniqueVals:
+            subDataSet = splitDataSet(dataSet, i, value)
+            prob = len(subDataSet)/float(len(dataSet))
+            newEntropy += prob * calcShannonEnt(subDataSet) # 经验熵    
+        infoGain = baseEntropy - newEntropy     # 计算信息增益
+        if (infoGain > bestInfoGain):       #compare this to the best gain so far
+            bestInfoGain = infoGain         #if better than current best, set to best
+            bestFeature = i
+    return bestFeature                      #returns an integer
+
+def calcShannonEnt(dataSet):
+    '''
+    计算信息熵
+    '''
+    numEntries = len(dataSet) # 样本数
+    labelCounts = {} #　分类数
+    for featVec in dataSet: #the the number of unique elements and their occurance
+        currentLabel = featVec[-1] # 按照最后一列分类
+        if currentLabel not in labelCounts.keys(): labelCounts[currentLabel] = 0
+        labelCounts[currentLabel] += 1
+    shannonEnt = 0.0
+    for key in labelCounts:
+        prob = float(labelCounts[key])/numEntries # 概率
+        shannonEnt -= prob * log(prob,2) #log base 2 # 计算熵。求和 
+    return shannonEnt
+
+if __name__ == '__main__'    :
+    dataSet, labels = createDataSet()
+    #print (dataSet)
+    # 代码运行结果告诉我们，第0个特征是最好的用于划分数据集的特征
+    #print (chooseBestFeatureToSplit(dataSet))
+    print (createTree(dataSet,labels))
+    # {'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}}
+</code></pre>
+<h3 id="可视化-略"><a href="#可视化-略" class="headerlink" title="可视化(略)"></a>可视化(略)</h3>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/18/linux-xi-lie-vim-2/"><span>vim 进阶版</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/18/linux-xi-lie-vim-2/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-17T16:00:00.000Z">
+          2018-11-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>参考链接</strong>: <a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html" target="_blank" rel="noopener">https://linuxtoy.org/archives/efficient-editing-with-vim.html</a></p>
+<h2 id="高效率移动"><a href="#高效率移动" class="headerlink" title="高效率移动"></a>高效率移动</h2><h3 id="在当前行里面有效的移动光标"><a href="#在当前行里面有效的移动光标" class="headerlink" title="在当前行里面有效的移动光标"></a>在当前行里面有效的移动光标</h3><ul>
+<li>fx：移动光标到当前行的下一个 x 处。很明显，x 可以是任意一个字母，而且你可以使用 ; 来重复你的上一个 f 命令。</li>
+<li>tx：和上面的命令类似，但是是移动到 x 的左边一个位置。（这真的很有用）</li>
+<li>Fx：和 fx 类似，不过是往回找。</li>
+<li>w：光标往前移动一个词。</li>
+<li>b：光标往后移动一个词。</li>
+<li>0：移动光标到当前行首。</li>
+<li>^：移动光标到当前行的第一个字母位置。</li>
+<li>$：移动光标到行尾。</li>
+<li>)：移动光标到下一个句子。</li>
+<li>( ：移动光标到上一个句子。</li>
+</ul>
+<h3 id="在整个文件里面有效移动光标"><a href="#在整个文件里面有效移动光标" class="headerlink" title="在整个文件里面有效移动光标"></a>在整个文件里面有效移动光标</h3><ul>
+<li>ctrl+F：向下移动一屏。</li>
+<li>ctrl+B：向上移动一屏。</li>
+<li>G：到文件尾</li>
+<li>numG：移动光标到指定的行（num）。（比如 10G 就是到第 10 行）</li>
+<li>gg：到文件首</li>
+<li>H：移动光标到屏幕上面</li>
+<li>M：移动光标到屏幕中间</li>
+<li>L：移动光标到屏幕下面</li>
+<li>*：读取光标处的字符串，并且移动光标到它再次出现的地方。</li>
+<li><h1 id="：和上面的类似，但是是往反方向寻找。"><a href="#：和上面的类似，但是是往反方向寻找。" class="headerlink" title="：和上面的类似，但是是往反方向寻找。"></a>：和上面的类似，但是是往反方向寻找。</h1></li>
+<li>/text：从当前光标处开始搜索字符串 text，并且到达 text 出现的地方。必须使用回车来开始这个搜索命令。如果想重复上次的搜索的话，按 n。</li>
+<li>？text：和上面类似，但是是反方向。</li>
+<li>ma：在当前光标的位置标记一个书签，名字为 a。书签名只能是小写字母。你看不见书签的存在，但它确实已经在那里了。</li>
+<li>`a：到书签 a 处。注意这个不是单引号，它一般位于大部分键盘的 1 的左边。</li>
+<li>`.：到你上次编辑文件的地方。这个命令很有用，而且你不用自己去标记它。</li>
+</ul>
+<h2 id="高效的输入"><a href="#高效的输入" class="headerlink" title="高效的输入"></a>高效的输入</h2><h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p>使用关键词自动完成功能，你只需要输入开始几个字母（比如 iAmAL），然后按 <code>&lt;C-N&gt;</code>（按住 Ctrl，再按 N）或者 <code>&lt;C-P&gt;</code>。如果 Vim 没有给出你想要的词，继续按，直到你满意为止，Vim 会一直循环它找到的匹配的字符串</p>
+<h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><ul>
+<li>i：在当前字符的左边插入</li>
+<li>I：在当前行首插入</li>
+<li>a：在当前字符的右边插入</li>
+<li>A：在当前行尾插入</li>
+<li>o：在当前行下面插入一个新行</li>
+<li>O：在当前行上面插入一个新行</li>
+<li>c{motion}：删除 motion 命令跨过的字符，并且进入插入模式。比如：c$，这将会删除从光标位置到行尾的字符并且进入插入模式。ct！，这会删除从光标位置到下一个叹号（但不包括），然后进入插入模式。被删除的字符被存在了剪贴板里面，并且可以再粘贴出来。</li>
+<li>d{motion}：和上面差不多，但是不进入插入模式。</li>
+</ul>
+<h2 id="移动大段文本"><a href="#移动大段文本" class="headerlink" title="移动大段文本"></a>移动大段文本</h2><h3 id="可视选择"><a href="#可视选择" class="headerlink" title="可视选择"></a>可视选择</h3><ul>
+<li>v：按字符选择。经常使用的模式，所以亲自尝试一下它。</li>
+<li>V：按行选择。这在你想拷贝或者移动很多行的文本的时候特别有用。</li>
+<li>ctrl+V：按块选择。非常强大，只在很少的编辑器中才有这样的功能。你可以选择一个矩形块，并且在这个矩形里面的文本会被高亮。</li>
+</ul>
+<p>在选择模式的时候使用上面所述的方向键和命令（motion）。比如，vwww，会高亮光标前面的三个词。Vjj 将会高亮当前行以及下面两行。</p>
+<h3 id="在可视选择模式下剪切和拷贝"><a href="#在可视选择模式下剪切和拷贝" class="headerlink" title="在可视选择模式下剪切和拷贝"></a>在可视选择模式下剪切和拷贝</h3><p>一旦你高亮了选区，你或许想进行一些操作：</p>
+<ul>
+<li>d：剪贴选择的内容到剪贴板。</li>
+<li>y：拷贝选择的内容到剪贴板。</li>
+<li>c：剪贴选择的内容到剪贴板并且进入插入模式。</li>
+</ul>
+<h3 id="在非可视选择模式下剪切和拷贝"><a href="#在非可视选择模式下剪切和拷贝" class="headerlink" title="在非可视选择模式下剪切和拷贝"></a>在非可视选择模式下剪切和拷贝</h3><p>如果你很清楚的知道你想拷贝或者剪切什么，那你根本就不需要进入可视选择模式。这样也会节省时间：</p>
+<ul>
+<li>d{motion}：剪切 motion 命令跨过的字符到剪贴板。比如，dw 会剪切一个词而 dfS 会将从当前光标到下一个 S 之间的字符剪切至剪贴板。</li>
+<li>y{motion}：和上面类似，不过是拷贝。</li>
+<li>c{motion}：和 d{motion} 类似，不过最后进入插入模式。</li>
+<li>dd：剪切当前行。</li>
+<li>yy：拷贝当前行。</li>
+<li>cc：剪切当前行并且进入插入模式。</li>
+<li>D：剪切从光标位置到行尾到剪贴板。</li>
+<li>Y：拷贝当前行。</li>
+<li>C：和 D 类似，最后进入插入模式。</li>
+<li>x：剪切当前字符到剪贴板。</li>
+<li>s：和x类似，不过最后进入插入模式。</li>
+</ul>
+<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><p>粘贴很简单，按 p。</p>
+<h2 id="避免重复"><a href="#避免重复" class="headerlink" title="避免重复"></a>避免重复</h2><h3 id="令人惊奇的-命令"><a href="#令人惊奇的-命令" class="headerlink" title="令人惊奇的 . 命令"></a>令人惊奇的 . 命令</h3><p>在 Vi 里面，输入 <code>.</code> (小数点符号），将会重复你输入的上一个命令。比如，你上个命令为“dw”（删除一个词），Vi 将会接着再删除一个词。</p>
+<h3 id="使用数字"><a href="#使用数字" class="headerlink" title="使用数字"></a>使用数字</h3><p>使用数字也是 Vim 强大的而且很节省时间的重要特性之一。在很多 Vim 的命令之前都可以使用一个数字，这个数字将会告诉 Vim 这个命令需要执行几次。比如：</p>
+<ul>
+<li>3j: 将会把光标向下移动三行。</li>
+<li>10dd: 将会删除十行。</li>
+<li>y3”: 将会拷贝从当前光标到第三个出现的引号之间的内容到剪贴板。<br>数字是扩展 motion 命令作用域非常有效的方法。</li>
+</ul>
+<h3 id="记录宏"><a href="#记录宏" class="headerlink" title="记录宏"></a>记录宏</h3><p>有时候，你会发现你自己在文章的每段或者每行都重复相同的一系列动作。Vim 允许你记录一个宏来完成你的特殊需要。</p>
+<ul>
+<li>qregister：记录宏到寄存器 register，这里 register 是任意的你的寄存器的名字。比如 qa，将会记录并且把宏存在寄存器 a 里面。</li>
+<li>q：结束宏的记录。</li>
+<li>@register：使用存在寄存器 register 的宏。比如 @a，将会使用存在寄存器 a 里面的宏。</li>
+</ul>
+<p>必须要记住的是，宏只记录了你的系列按键并且重复执行它们。它们不是魔法。因为在 Vim 里面完成目的的方法有很多，所以有时候你要小心选择命令来记录你的宏。因为它们会在所有你要执行它的地方执行。</p>
+<h2 id="用-Vim-写代码"><a href="#用-Vim-写代码" class="headerlink" title="用 Vim 写代码"></a>用 Vim 写代码</h2><p>Vim 是一个用来写代码的绝好编辑器，因为它有一些特性是专门为程序员而设计的。这里是一些常用的：</p>
+<ul>
+<li>]p：和 p 的功能差不多，但是它会自动调整被粘贴的文本的缩进去适应当前代码的位置。试一下！</li>
+<li>%：匹配花括号、方括号、括号等。在一个括号的上面，然后按 %，鼠标就会出现在匹配的另外一半括号处。</li>
+<li><blockquote>
+<blockquote>
+<p>：缩进所有选择的代码</p>
+</blockquote>
+</blockquote>
+</li>
+<li>&lt;&lt;：和上面类似，但是反缩进</li>
+<li>gd：到达光标所在处函数或者变量的定义处。</li>
+<li>K：在 Man 里面查找光标当前所在处的词。</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Linux/">Linux</a><a href="/tags/vim/">vim</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/17/linux-xi-lie-zhuan-ni-ying-gai-zhi-dao-de-linux-ji-qiao/"><span>(转)应该知道的LINUX技巧</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/17/linux-xi-lie-zhuan-ni-ying-gai-zhi-dao-de-linux-ji-qiao/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-16T16:00:00.000Z">
+          2018-11-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><em>文章来源：</em><a href="https://coolshell.cn/articles/8883.html?utm_source=qq&amp;utm_medium=social" target="_blank" rel="noopener">https://coolshell.cn/articles/8883.html?utm_source=qq&amp;utm_medium=social</a></p>
+<p><strong>写在开头，此篇文章算是一些Linux系统和命令的总结，可以提升效率。里面的一些教程资源自己还没有读过，在这里记录一下，以后看了会整理出来的。</strong></p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><p>[ ] 学习 <code>Bash</code> 。你可以<code>man bash</code>来看看<code>bash</code>的东西，并不复杂也并不长。你用别的<code>shell</code>也行，但是<code>bash</code>是很强大的并且也是系统默认的。（学习<code>zsh</code>或<code>tsch</code>只会让你在很多情况下受到限制）</p>
+</li>
+<li><p>[ ] 学习 <code>vim</code> 。在Linux下，基本没有什么可与之竞争的编译辑器（就算你是一个Emacs或Eclipse的重度用户）。你可以看看<a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">《简明vim攻略》</a>和 <a href="https://coolshell.cn/articles/7166.html" target="_blank" rel="noopener">《Vim的冒险游戏》</a>以及<a href="https://coolshell.cn/articles/5479.html" target="_blank" rel="noopener">《给程序员的Vim速查卡》</a>还有<a href="https://coolshell.cn/articles/894.html" target="_blank" rel="noopener">《把Vim变成一个编程的IDE》</a>等等。</p>
+</li>
+<li><p>[ ] 了解 ssh。明白不需要口令的用户认证（通过<code>ssh-agent</code>, <code>ssh-add</code>），学会用ssh FQ，用scp而不是ftp传文件，等等。你知道吗？scp 远端的时候，你可以按tab键来查看远端的目录和文件（当然，需要无口令的用户认证），这都是bash的功劳。</p>
+</li>
+<li><p>[x] 熟悉bash的作业管理，如： &amp;, Ctrl-Z, Ctrl-C, jobs, fg, bg, kill, 等等。当然，你也要知道Ctrl+\（SIGQUIT）和Ctrl+C （SIGINT）的区别。</p>
+</li>
+<li><p>[x] 简单的文件管理 ： ls 和 ls -l (你最好知道 “ls -l” 的每一列的意思), less, head, tail 和 tail -f, ln 和 ln -s (你知道明白hard link和soft link的不同和优缺点), chown, chmod, du (如果你想看看磁盘的大小 du -sk *), df, mount。当然，原作者忘了find命令。</p>
+</li>
+<li><p>[x] 基础的网络管理： <code>ip</code> 或 <code>ifconfig</code>, <code>dig</code>。当然，原作者还忘了如<code>netstat</code>, <code>ping</code>, <code>traceroute</code>, 等</p>
+</li>
+<li><p>[ ] 理解正则表达式，还有grep/egrep的各种选项。比如： -o, -A, 和 -B 这些选项是很值得了解的。</p>
+</li>
+<li><p>[x] 学习使用 <code>apt-get</code> 和 <code>yum</code> 来查找和安装软件（前者的经典分发包是Ubuntu，后者的经典分发包是Redhat），我还建议你试着从源码编译安装软件。</p>
+</li>
+</ul>
+<h2 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h2><ul>
+<li><p>[x]在 <code>bash</code> 里，使用 <code>Ctrl+r</code> 而不是上下光标键来查找历史命令。</p>
+</li>
+<li><p>[x] 在 <code>bash</code>里，使用 <code>Ctrl+w</code> 来删除最后一个单词，使用 <code>Ctrl+U</code> 来删除一行。请<code>man bash</code>后查找<code>Readline Key Bindings</code>一节来看看<code>bash</code>的默认热键，比如：<code>Alt+.</code> 把上一次命令的最后一个参数打出来，而<code>Alt+*</code> 则列出你可以输入的命令。</p>
+</li>
+<li><p>[x] 回到上一次的工作目录： <code>cd –</code>  （回到home是 <code>cd ~</code>）</p>
+</li>
+<li><p>[ ] 使用 <code>xargs</code>。这是一个很强大的命令。你可以使用<code>-L</code>来限定有多少个命令，也可以用<code>-P</code>来指定并行的进程数。如果你不知道你的命令会变成什么样，你可以使用<code>xargs echo</code>来看看会是什么样。当然， -<code>I{}</code> 也很好用。示例：</p>
+</li>
+</ul>
+<pre class=" language-lang-bash"><code class="language-lang-bash">find . -name \*.py | xargs grep some_function
+cat hosts | xargs -I{} ssh root@{} hostname
+</code></pre>
+<ul>
+<li><p>[ ] <code>pstree -p</code> 可以帮你显示进程树。参考<a href="https://coolshell.cn/articles/7965.html" target="_blank" rel="noopener">《一个fork的面试题》</a></p>
+</li>
+<li><p>[ ] 使用 <code>pgrep</code> 和 <code>pkill</code> 来找到或是<code>kill</code> 某个名字的进程。 (<code>-f</code> 选项很有用).</p>
+</li>
+<li><p>[ ] 了解可以发给进程的信号。例如：要挂起一个进程，使用<code>kill -STOP [pid]</code>. 使用 <code>man 7 signal</code> 来查看各种信号，使用<code>kill -l</code> 来查看数字和信号的对应表</p>
+</li>
+<li><p>[x] 使用 <code>nohup</code>或  <code>disown</code> 如果你要让某个进程运行在后台。</p>
+</li>
+<li><p>[ ] 使用<code>netstat -lntp</code>来看看有侦听在网络某端口的进程。当然，也可以使用 <code>lsof</code>。</p>
+</li>
+</ul>
+<ul>
+<li><p>[ ] 在bash的脚本中，你可以使用 <code>set -x</code> 来<code>debug</code>输出。使用 <code>set -e</code> 来当有错误发生的时候abort执行。考虑使用 <code>set -o pipefail</code> 来限制错误。还可以使用<code>trap</code>来截获信号（如截获<code>ctrl+c</code>）。</p>
+</li>
+<li><p>[xx] 在bash 脚本中，subshells (写在圆括号里的) 是一个很方便的方式来组合一些命令。一个常用的例子是临时地到另一个目录中，例如：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash"># do something in current dir
+(cd /some/other/dir; other-command)
+# continue in original dir
+</code></pre>
+</li>
+<li><p>[ ] 在 bash 中，注意那里有很多的变量展开。如：</p>
+<ul>
+<li>[ ] 检查一个变量是否存在: <code>${name:?error message}</code>。</li>
+<li>[ ] 如果一个bash的脚本需要一个参数，也许就是这样一个表达式 <code>input_file=${1:?usage: $0 input_file}</code>。</li>
+<li>[ ] 一个计算表达式： <code>i=$(( (i + 1) % 5 ))</code>。</li>
+<li>[ ] 一个序列： <code>{1..10}</code>。 </li>
+<li>[ ] 截断一个字符串： <code>${var%suffix}</code> 和 <code>${var#prefix}</code>。 示例： <code>if var=foo.pdf, then echo ${var%.pdf}.txt prints “foo.txt”</code>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>[ ] 通过 <code>&lt;(some command)</code> 可以把某命令当成一个文件。示例：比较一个本地文件和远程文件 <code>/etc/hosts： diff /etc/hosts &lt;(ssh somehost cat /etc/hosts)</code></p>
+</li>
+<li><p>[ ] 了解什么叫 “here documents” ，就是诸如 <code>cat &lt;&lt;EOF</code> 这样的东西。</p>
+</li>
+<li><p>[ ] 在 bash中，使用重定向到标准输出和标准错误。如： <code>some-command &gt;logfile 2&gt;&amp;1</code>。另外，要确认某命令没有把某个打开了的文件句柄重定向给标准输入，最佳实践是加上 “<code>&lt;/dev/null</code>”，把<code>/dev/null</code>重定向到标准输入。</p>
+</li>
+<li><p>[x] 使用 man ascii 来查看 ASCII 表。</p>
+</li>
+<li><p>[ ] 在远端的 ssh 会话里，使用 <code>screen</code> 或 <code>dtach</code> 来保存你的会话。（参看<a href="https://coolshell.cn/articles/7829.html" target="_blank" rel="noopener">《28个Unix/Linux的命令行神器》</a>）</p>
+</li>
+<li><p>[ ] 要来debug Web，试试<code>curl</code> 和 <code>curl -I</code> 或是 <code>wget</code> 。我觉得debug Web的利器是<code>firebug</code>，<code>curl</code>和<code>wget</code>是用来抓网页的</p>
+</li>
+<li><p>[ ] 把 HTML 转成文本： <code>lynx -dump -stdin</code></p>
+</li>
+<li><p>[ ] 如果你要处理XML，使用 <code>xmlstarlet</code></p>
+</li>
+<li><p>[ ] 对于 Amazon S3， <code>s3cmd</code> 是一个很方便的命令（还有点不成熟）</p>
+</li>
+<li><p>[ ] 在 ssh中，知道怎么来使用ssh隧道。通过 <code>-L</code> or <code>-D</code> (还有<code>-R</code>) ，FQ神器。</p>
+</li>
+<li><p>[ ] 你还可以对你的ssh 做点优化。比如，<code>.ssh/config</code> 包含着一些配置：避免链接被丢弃，链接新的host时不需要确认，转发认证，以前使用压缩（如果你要使用scp传文件）：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">TCPKeepAlive=yes
+ServerAliveInterval=15
+ServerAliveCountMax=6
+StrictHostKeyChecking=no
+Compression=yes
+ForwardAgent=yes
+</code></pre>
+</li>
+<li><p>[ ] 如果你有输了个命令行，但是你改变注意了，但你又不想删除它，因为你要在历史命令中找到它，但你也不想执行它。那么，你可以按下 <code>Alt_#</code> ，于是这个命令关就被加了一个#字符，于是就被注释掉了。</p>
+</li>
+</ul>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul>
+<li><p>[x] 了解 <code>sort</code> 和 <code>uniq</code> 命令 (包括 <code>uniq</code> 的 <code>-u</code> 和 <code>-d</code> 选项).</p>
+</li>
+<li><p>[x] 了解用 <code>cut</code>, <code>paste</code>, 和 <code>join</code> 命令来操作文本文件。很多人忘了在<code>cut</code>前使用<code>join</code>。</p>
+</li>
+<li><p>[ ]  如果你知道怎么用<code>sort</code>/<code>uniq</code>来做集合交集、并集、差集能很大地促进你的工作效率。假设有两个文本文件a和b已解被 uniq了，那么，用<code>sort</code>/<code>uniq</code>会是最快的方式，无论这两个文件有多大（<code>sort</code>不会被内存所限，你甚至可以使用<code>-T</code>选项，如果你的/tmp目录很小）</p>
+</li>
+</ul>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cat a b | sort | uniq > c   # c is a union b 并集
+cat a b | sort | uniq -d > c   # c is a intersect b 交集
+cat a b b | sort | uniq -u > c   # c is set difference a - b 差集
+</code></pre>
+<ul>
+<li><p>[ ] 了解和字符集相关的命令行工具，包括排序和性能。很多的Linux安装程序都会设置<code>LANG</code> 或是其它和字符集相关的环境变量。这些东西可能会让一些命令（如：<code>sort</code>）的执行性能慢N多倍（注：就算是你用UTF-8编码文本文件，你也可以很安全地使用ASCII来对其排序）。如果你想Disable那个i18n 并使用传统的基于byte的排序方法，那就设置<code>export LC_ALL=C</code> （实际上，你可以把其放在 <code>.bashrc</code>）。如果这设置这个变量，你的<code>sort</code>命令很有可能会是错的。</p>
+</li>
+<li><p>[x] 了解 <code>awk</code> 和 <code>sed</code>，并用他们来做一些简单的数据修改操作。例如：求第三列的数字之和： <code>awk &#39;{ x += $3 } END { print x }&#39;</code>。这可能会比Python快3倍，并比Python的代码少三倍。</p>
+</li>
+<li><p>[ ] 使用 <code>shuf</code> 来打乱一个文件中的行或是选择文件中一个随机的行。</p>
+</li>
+<li><p>[x] 了解<code>sor</code>t命令的选项。了解key是什么（<code>-t</code>和<code>-k</code>）。具体说来，你可以使用<code>-k1,1</code>来对第一列排序，<code>-k1</code>来对全行排序。</p>
+</li>
+<li><p>[ ] Stable <code>sort</code> (<code>sort -s</code>) 会很有用。例如：如果你要想对两例排序，先是以第二列，然后再以第一列，那么你可以这样： <code>sort -k1,1 | sort -s -k2,2</code></p>
+</li>
+<li><p>[ ] 我们知道，在bash命令行下，Tab键是用来做目录文件自动完成的事的。但是如果你想输入一个Tab字符（比如：你想在<code>sort -t</code>选项后输入<code>&lt;tab&gt;</code>字符），你可以先按<code>Ctrl+V</code>，然后再按Tab键，就可以输入<code>&lt;tab&gt;</code>字符了。当然，你也可以使用<code>\t</code>。</p>
+</li>
+<li><p>[ ] 如果你想查看二进制文件，你可以使用<code>hd</code>命令（在CentOS下是<code>hexdump</code>命令），如果你想编译二进制文件，你可以使用bvi命令（<a href="http://bvi.sourceforge.net/" target="_blank" rel="noopener">http://bvi.sourceforge.net/</a> 墙）</p>
+</li>
+<li><p>[ ] 另外，对于二进制文件，你可以使用<code>strings</code>（配合<code>grep</code>等）来查看二进制中的文本。</p>
+</li>
+<li><p>[ ] 对于文本文件转码，你可以试一下 <code>iconv</code>。或是试试更强的 <code>uconv</code> 命令（这个命令支持更高级的Unicode编码）</p>
+</li>
+<li><p>[ ] 如果你要分隔一个大文件，你可以使用<code>split</code>命令（split by size）和<code>csplit</code>命令（split by a pattern）。</p>
+</li>
+</ul>
+<h2 id="系统调试"><a href="#系统调试" class="headerlink" title="系统调试"></a>系统调试</h2><p><em>这部分内容因为用不到，所以看不懂</em></p>
+<ul>
+<li><p>[ ] 如果你想知道磁盘、CPU、或网络状态，你可以使用 <code>iostat</code>, <code>netstat</code>, <code>top</code> (或更好的 <code>htop</code>), 还有 <code>dstat</code> 命令。你可以很快地知道你的系统发生了什么事。关于这方面的命令，还有<code>iftop</code>, <code>iotop</code>等（参看<a href="https://coolshell.cn/articles/7829.html" target="_blank" rel="noopener">《28个Unix/Linux的命令行神器》</a>）</p>
+</li>
+<li><p>[ ] 要了解内存的状态，你可以使用<code>free</code>和<code>vmstat</code>命令。具体来说，你需要注意 “<code>cached</code>” 的值，这个值是Linux内核占用的内存。还有<code>free</code>的值。</p>
+</li>
+<li><p>[ ] Java 系统监控有一个小的技巧是，你可以使用<code>kill -3 &lt;pid&gt;</code> 发一个SIGQUIT的信号给JVM，可以把堆栈信息（包括垃圾回收的信息）dump到stderr/logs。</p>
+</li>
+<li><p>[ ] 使用 <code>mtr</code> 会比使用 <code>traceroute</code> 要更容易定位一个网络问题。<br>如果你要找到哪个socket或进程在使用网络带宽，你可以使用 <code>iftop</code> 或 <code>nethogs</code>。</p>
+</li>
+<li><p>[ ] Apache的一个叫 <code>ab</code> 的工具是一个很有用的，用<code>quick-and-dirty</code>的方式来测试网站服务器的性能负载的工作。如果你需要更为复杂的测试，你可以试试 <code>siege</code>。</p>
+</li>
+<li><p>[ ] 如果你要抓网络包的话，试试 <code>wireshark</code> 或 <code>tshark</code>。</p>
+</li>
+<li><p>[ ] 了解 <code>strace</code> 和 <code>ltrace</code>。这两个命令可以让你查看进程的系统调用，这有助于你分析进程的<code>hang</code>在哪了，怎么<code>crash</code>和<code>failed</code>的。你还可以用其来做性能<code>profile</code>，使用 <code>-c</code> 选项，你可以使用<code>-p</code>选项来<code>attach</code>上任意一个进程。</p>
+</li>
+<li><p>[ ] 了解用<code>ldd</code>命令来检查相关的动态链接库。注意：<a href="https://coolshell.cn/articles/1626.html" target="_blank" rel="noopener"><code>ldd</code>的安全问题</a></p>
+</li>
+<li><p>[ ] 使用<code>gd</code>b来调试一个正在运行的进程或分析core dump文件。参看<a href="https://coolshell.cn/articles/3643.html" target="_blank" rel="noopener">《GDB中应该知道的几个调试方法》</a></p>
+</li>
+<li><p>[ ] 学会到 <code>/proc</code> 目录中查看信息。这是一个Linux内核运行时记录的整个操作系统的运行统计和信息，比如： <code>/proc/cpuinfo</code>, <code>/proc/xxx/cwd,</code> <code>/proc/xxx/exe</code>, <code>/proc/xxx/fd/</code>, <code>/proc/xxx/smaps</code>.</p>
+</li>
+<li><p>[ ] 如果你调试某个东西为什么出错时，<code>sar</code>命令会有用。它可以让你看看 CPU, 内存, 网络, 等的统计信息。</p>
+</li>
+<li><p>[ ] 使用 <code>dmesg</code> 来查看一些硬件或驱动程序的信息或问题。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/16/linux-xi-lie-find/"><span>Linux命令：find</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/16/linux-xi-lie-find/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-15T16:00:00.000Z">
+          2018-11-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>语法：</p>
+<pre><code>find *[directory-list]* *[option]* *[expression]*
+</code></pre><p>常用</p>
+<pre><code>find dir -name file1
+</code></pre><p><strong>选项：</strong></p>
+<ul>
+<li><p><code>-i</code> 忽略大小写</p>
+</li>
+<li><p><code>-depth</code>：从指定目录下最深层的子目录开始查找； </p>
+</li>
+<li><p><code>-expty</code>：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录</p>
+</li>
+<li><p><code>-name</code>：指定字符串作为寻找文件或目录的范本样式；</p>
+</li>
+<li><p><code>-anewer</code>：查找其存取时间较指定文件或目录的存取时间 更接近现在的文件或目录；</p>
+</li>
+<li><p><code>-newer</code>：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
+</li>
+<li><p><code>-maxdepth</code>：设置最大目录层级； </p>
+</li>
+<li><p><code>-mindepth</code>：设置最小目录层级；</p>
+</li>
+<li><p><code>-regex</code>：正则表达式</p>
+</li>
+<li><p><code>-type</code>：只寻找符合指定的文件类型的文件:</p>
+<ul>
+<li><code>b</code> 特殊的块文件</li>
+<li><code>c</code> 特殊的字符文件</li>
+<li><code>d</code> 目录文件</li>
+<li><code>f</code> 普通文件</li>
+<li><code>I</code> 符号链接</li>
+<li><code>p</code> FIFO(命名管道)</li>
+<li><code>s</code> 套接字</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Linux/">Linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/Linux/">Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/15/fastp/"><span>(转)fastp： 一款超快速全功能的FASTQ文件自动化质控+过滤+校正+预处理软件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/15/fastp/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-14T16:00:00.000Z">
+          2018-11-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>软件作者简介：陈实富，海普洛斯 联合创始人 / CTO</p>
+<p>文章转载自：<a href="https://zhuanlan.zhihu.com/p/33601691" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33601691</a></p>
+<h2 id="1引言"><a href="#1引言" class="headerlink" title="1引言"></a>1引言</h2><p>各位做生信的小伙伴都知道，对于下机的FASTQ数据需要进行质控和预处理，以保证下游分析输入的数据都是干净可靠的。通常我们都是使用FASTQC等软件进行质控，使用cutadapt软件去除接头，使用Trimmomatic等软件进行剪裁，然后使用一些自已开发的脚本进行过滤。这一过程可能需要使用多个软件，相当繁琐，而且速度较慢，这些软件大多又不支持多线程，遇到较大的FASTQ文件，处理起来可真是让人等得心急如焚。</p>
+<p>所以今天给大家介绍一款新的软件，名字叫fastp，它可以仅仅扫描FASTQ文件一次，就完成比FASTQC+ cutadapt + Trimmomatic 这三个软件加起来的功能还多很多的功能，而且速度上比仅仅使用Trimmomatic一个软件还要快3倍左右，因为它使用C++开发，处处使用了高效算法，而且完美支持多线程！<br>github地址请戳：<a href="https://github.com/OpenGene/fastp" target="_blank" rel="noopener">https://github.com/OpenGene/fastp</a></p>
+<h2 id="2功能特点"><a href="#2功能特点" class="headerlink" title="2功能特点"></a>2功能特点</h2><p>该软件的功能列表：</p>
+<ul>
+<li>对数据自动进行全方位质控，生成人性化的报告。</li>
+<li>过滤功能（低质量，太短，太多N……）。</li>
+<li>对每一个序列的头部或尾部，计算滑动窗内的质量均值，并将均值较低的子序列进行切除（类似Trimmomatic的做法，但是快非常多）。</li>
+<li>全局剪裁 （在头/尾部，不影响去重），对于Illumina下机数据往往最后一到两个cycle需要这样处理。</li>
+<li>去除接头污染。厉害的是，你不用输入接头序列，因为算法会自动识别接头序列并进行剪裁。</li>
+<li>对于双端测序（PE）的数据，软件会自动查找每一对read的重叠区域，并对该重叠区域中不匹配的碱基对进行校正。</li>
+<li>去除尾部的polyG。对于Illumina NextSeq/NovaSeq的测序数据，因为是两色法发光，polyG是常有的事，所以该特性对该两类测序平台默认打开。</li>
+<li>对于PE数据中的overlap区间中不一致的碱基对，依据质量值进行校正</li>
+<li>可以对带分子标签（UMI）的数据进行预处理，不管UMI在插入片段还是在index上，都可以轻松处理。</li>
+<li>可以将输出进行分拆，而且支持两种模式，分别是指定分拆的个数，或者分拆后每个文件的行数。</li>
+</ul>
+<h2 id="3轻松上手"><a href="#3轻松上手" class="headerlink" title="3轻松上手"></a>3轻松上手</h2><p>SE:</p>
+<pre><code>fastp -i in.fq -o out.fq
+</code></pre><p>PE:</p>
+<pre><code>fastp -i in.R1.fq -o out.R1.fq -I in.R2.fq -O out.R2.fq
+fastp-i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz
+</code></pre><h2 id="4安装fastp"><a href="#4安装fastp" class="headerlink" title="4安装fastp"></a>4安装fastp</h2><pre><code>git clone https://github.com/OpenGene/fastp.git
+cd fastp
+make
+sudo make install
+</code></pre><h2 id="5功能介绍"><a href="#5功能介绍" class="headerlink" title="5功能介绍"></a>5功能介绍</h2><h3 id="5-1过滤"><a href="#5-1过滤" class="headerlink" title="5.1过滤"></a>5.1过滤</h3><p>fastp可以对低质量序列，较多N的序列，该功能默认是启用的，但可以使用<code>-Q</code>参数关闭。使用<code>-q</code>参数来指定合格的phred质量值，比如<code>-q 15</code>表示质量值大于等于Q15的即为合格，然后使用<code>-u</code>参数来指定最多可以有多少百分比的质量不合格碱基。比如<code>-q 15 -u 40</code>表示一个read最多只能有40%的碱基的质量值低于Q15，否则会被扔掉。使用<code>-n</code>可以限定一个read中最多能有多少个N。</p>
+<p>fastp还默认启用了read长度过滤，但可以使用<code>-L</code>参数关闭。使用<code>-l</code>参数指定最低要求一个read有多长，比如<code>-l 30</code>表示低于30个碱基的read会被扔掉。这个功能可以用于实现常用的discard模式，以保证所有输出的序列都一样长。<br>在fastp的HTML报告中，最头上的Summary表格很清楚地显示了过滤的统计信息，如下图所示：<br><img src="https://pic2.zhimg.com/80/v2-6920178b4b210ff1e37089ff8e1b289d_hd.jpg" alt="5.1"></p>
+<h3 id="5-2接头处理"><a href="#5-2接头处理" class="headerlink" title="5.2接头处理"></a>5.2接头处理</h3><p>接头（adapter）污染的处理是FASTQ文件预处理中很重要的一步。fastp默认启用了接头处理，但是可以使用<code>-A</code>命令来关掉。fastp可以自动化地查找接头序列并进行剪裁，也就是说你可以不输入任何的接头序列，fastp全自动搞定了！对于SE数据，你还是可以<code>-a</code>参数来输入你的接头，而对于PE数据则完全没有必要，fastp基于PE数据的overlap分析可以更准确地查找接头，去得更干净，而且对于一些接头本身就有碱基不匹配情况处理得更好。fastp对于接头去除会有一个汇总的报告，如下图所示：<br><img src="https://pic1.zhimg.com/80/v2-202f214ad93c99a305f6b3510ddf3f78_hd.jpg" alt="5.2"></p>
+<h3 id="5-3滑窗质量剪裁"><a href="#5-3滑窗质量剪裁" class="headerlink" title="5.3滑窗质量剪裁"></a>5.3滑窗质量剪裁</h3><p>很多时候，一个read的低质量序列都是集中在read的末端，也有少部分是在read的开头。fastp支持像Trimmomatic那样对滑动窗口中的碱基计算平均质量值，然后将不符合的滑窗直接剪裁掉。使用<code>-5</code>参数开启在5’端，也就是read的开头的剪裁，使用<code>-3</code>参数开启在3’端，也就是read的末尾的剪裁。使用<code>-W</code>参数指定滑动窗大小，默认是4，使用<code>-M</code>参数指定要求的平均质量值，默认是20，也就是Q20。</p>
+<h3 id="5-4-PE数据的碱基校正"><a href="#5-4-PE数据的碱基校正" class="headerlink" title="5.4 PE数据的碱基校正"></a>5.4 PE数据的碱基校正</h3><p>fastp支持对PE数据的每一对read进行分析，查找它们的overlap区间，然后对于overlap区间中不一致的碱基，如果发现其中一个质量非常高，而另一个非常低，则可以将非常低质量的碱基改为相应的非常高质量值的碱基值，如下图所示：<br><img src="https://pic4.zhimg.com/80/v2-78e31fe48bbdc53f5c1a1427b6170a53_hd.jpg" alt="5.4"></p>
+<p>上图中所示的标红的T碱基是低质量序列，和高质量的A不匹配，它会被校正为A。该校正功能默认没有开启使用<code>-c</code>参数可以启用，对于一些对噪声容忍度低的应用，比如液体活检，建议开启。</p>
+<h3 id="5-5全局剪裁"><a href="#5-5全局剪裁" class="headerlink" title="5.5全局剪裁"></a>5.5全局剪裁</h3><p>fastp可以对所有read在头部和尾部进行统一剪裁，该功能在去除一些测序质量不好的cycle比较有用，比如151*2的PE测序中，最后一个cycle通常质量是非常低的，需要剪裁掉。使用<code>-f</code>和<code>-t</code>分别指定read1的头部和尾部的剪裁，使用<code>-F</code>和<code>-T</code>分别指定read2的头部和尾部的剪裁。</p>
+<h3 id="5-6-polyG剪裁"><a href="#5-6-polyG剪裁" class="headerlink" title="5.6 polyG剪裁"></a>5.6 polyG剪裁</h3><p>对于两色发光法的Illumina设备（NextSeq /NovaSeq），因为在没有光信号情况下base calling的结果会返回G，所以在序列的尾端可能会出现较多的polyG，需要被去除。fastp会自动化地识别NextSeq / NovaSeq的数据，然后进行polyG识别和剪裁。如果你想强制开启该功能，可以指定<code>-g</code>参数，如果想强制关闭该功能，则可以指定<code>-G</code>参数。</p>
+<h3 id="5-7分子标签UMI处理"><a href="#5-7分子标签UMI处理" class="headerlink" title="5.7分子标签UMI处理"></a>5.7分子标签UMI处理</h3><p>UMI在处理ctDNA类似的超低频突变检测应用中是十分有用的，为了更好地对带UMI的FASTQ文件进行预处理，fastp也很好地支持了UMI预处理功能。该功能默认没有启用，需要使用<code>-U</code>参数开启，另外需要使用<code>--umi_loc</code>来指定UMI所在的位置，它可以是（index1、 index2、 read1、 read2、 per_index、 per_read ）中的一种，分别表示UMI是在index位置上，还是在插入片段中。如果指定了是在插入序列中，还需要使用 <code>--umi_len</code> 参数来指定UMI所占的碱基长度。</p>
+<h3 id="5-8输出文件切分"><a href="#5-8输出文件切分" class="headerlink" title="5.8输出文件切分"></a>5.8输出文件切分</h3><p>很多时候我们需要对输出的FASTQ进行切分，分成大小均匀的多个文件，这样可以使用比对软件并行地比对，提高并行处理的速度。fastp软件也提供了相应的功能，并且支持了两种模式，分别是使用参数<code>-s</code>指定切分后文件的个数，或者使用<code>-S</code>参数指定每个切分后文件的行数。</p>
+<h2 id="6质控报告解读"><a href="#6质控报告解读" class="headerlink" title="6质控报告解读"></a>6质控报告解读</h2><p>接下来，我们再看一下如何理解fastp生成的质控报告。fastp的报告在单一文件中同时包含了过滤前和过滤后的统计结果，如果是PE数据，则同时包含了read1和read2的统计结果。之前我们已经说过了，fastp会生成HTML的报告和JSON格式的报告。HTML报告的默认文件名是fastp.html，但是可以通过-h参数修改，JSON报告的默认文件名是fastp.json，但是可以通过-j参数修改。而且fastp报告还有一个标题，默认是fastp report，这个也可以通过-R参数修改为你想要的标题。JSON格式的报告是优化过的，人机皆可读，适合进阶的用户使用程序解析，而这里我们重点关注HTML格式的报告。</p>
+<h3 id="6-1质量分布曲线图"><a href="#6-1质量分布曲线图" class="headerlink" title="6.1质量分布曲线图"></a>6.1质量分布曲线图</h3><p>我们第一关注的当然是质量，所以fastp提供了质量分布曲线，即每一个cycle的平均质量值，而且fastp同时提供了A/T/C/G四种不同碱基的平均质量，以及总的平均质量，如下图所示：<br><img src="https://pic3.zhimg.com/80/v2-ee5358c3a2a93af49171459278aa751e_hd.jpg" alt="6.1"><br><img src="https://pic3.zhimg.com/80/v2-ee5358c3a2a93af49171459278aa751e_hd.jpg" alt="6.1_1"></p>
+<p>从上图我们可以看到，一共有5条曲线，分别是A/T/C/G和mean。而且HTML报告中的每一个项目和分项目都是可以点击进行隐藏和展开的。</p>
+<h3 id="6-2碱基含量分布曲线"><a href="#6-2碱基含量分布曲线" class="headerlink" title="6.2碱基含量分布曲线"></a>6.2碱基含量分布曲线</h3><p>和质量分布曲线类似，碱基含量分布曲线也是按照每一个cycle来的，显示了每一个位置的碱基含量。如下图所示：<br><img src="https://pic2.zhimg.com/80/v2-c2ca5f1b36bf7c9010d43773dffaf66d_hd.jpg" alt="6.2"><br><img src="https://pic2.zhimg.com/80/v2-4d30aaf1dfe395d89d36d9ae5c3e135d_hd.jpg" alt="6.2_1"></p>
+<p>从图中可以看到，fastp同时显示了A/T/C/G/N/GC的每一个位置的比例和总的比例。而且如果你觉得头部那里比较乱看不清的话，可以用鼠标拉一个框，它就放大了</p>
+<h3 id="6-3-KMER统计表格"><a href="#6-3-KMER统计表格" class="headerlink" title="6.3 KMER统计表格"></a>6.3 KMER统计表格</h3><p>fastp对5个碱基长度的所有组合的出现次数进行了统计，然后把它放在了一张表格中，表格的每一个元素为深背景白字，背景越深，则表示重复次数越多。这样，一眼望去，就可以发现有哪一些异常的信息。<br><img src="https://pic3.zhimg.com/80/v2-a69e014cd516d44ac2bb0d3cb8d6d67e_hd.jpg" alt="6.3"></p>
+<p>从上面的KMER表格中，我们可以发现，GGGGG的颜色特别深，从鼠标移上去之后显示的信息中我们可以发现它的出现次数是平均次数的12.8倍，这是不正常的，因为GGGGG的正常倍数应该在1倍左右。幸好我们有fastp，它可以过滤掉这种polyG，让数值较多地回归正常。</p>
+<h3 id="6-4过表达序列-overrepresented-sequence"><a href="#6-4过表达序列-overrepresented-sequence" class="headerlink" title="6.4过表达序列(overrepresented sequence)"></a>6.4过表达序列(overrepresented sequence)</h3><p>fastp的最新版本（v0.12）提供了overrepresetned<br>sequence的分析，而且不但提供了这些overrepresented sequence的序列个数和占比，还提供了他们在测序cycles中的分布情况，这有利于分析各种问题</p>
+<h2 id="7-完整参数"><a href="#7-完整参数" class="headerlink" title="7 完整参数"></a>7 完整参数</h2><p>使用示例：</p>
+<pre><code>fastp -i R1.fastq.gz -I R2.clean.fastq.gz -o R1.clean.fastq.gz -O R2.clean.fastq.gz -f 5 -F 5 -3 -W 8 -M 25 -q 20 -u 25 -n 3 -l 50 -c -g --poly_g_min_len 6 -x -y -Y 20 -j out.json -h out.html --adapter_sequence GATCGGAAGAGCACACGTCTGAACTCCAGTCAC --adapter_sequence_r2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT &gt; fastp.log
+</code></pre><pre><code>$fastp
+fastp: an ultra-fast all-in-one FASTQ preprocessor
+version 0.19.3
+usage: fastp --in1=string [options] ...
+options:
+  -i, --in1                            read1 input file name (string)
+  -o, --out1                           read1 output file name (string [=])
+  -I, --in2                            read2 input file name (string [=])
+  -O, --out2                           read2 output file name (string [=])
+  -6, --phred64                        indicate the input is using phred64 scoring (it&#39;ll be converted to phred33, so the output will still be phred33)
+  -z, --compression                    compression level for gzip output (1 ~ 9). 1 is fastest, 9 is smallest, default is 4. (int [=4])
+      --stdout                         stream passing-filters reads to STDOUT. This option will result in interleaved FASTQ output for paired-end input. Disabled by defaut.
+      --interleaved_in                 indicate that &lt;in1&gt; is an interleaved FASTQ which contains both read1 and read2. Disabled by defaut.
+      --reads_to_process               specify how many reads/pairs to be processed. Default 0 means process all reads. (int [=0])
+      --dont_overwrite                 don&#39;t overwrite existing files. Overwritting is allowed by default.
+  -V, --verbose                        output verbose log information (i.e. when every 1M reads are processed).
+  -A, --disable_adapter_trimming       adapter trimming is enabled by default. If this option is specified, adapter trimming is disabled
+  -a, --adapter_sequence               the adapter for read1. For SE data, if not specified, the adapter will be auto-detected. For PE data, this is used if R1/R2 are found not overlapped. (string [=auto])
+      --adapter_sequence_r2            the adapter for read2 (PE data only). This is used if R1/R2 are found not overlapped. If not specified, it will be the same as &lt;adapter_sequence&gt; (string [=])
+  -f, --trim_front1                    trimming how many bases in front for read1, default is 0 (int [=0])
+  -t, --trim_tail1                     trimming how many bases in tail for read1, default is 0 (int [=0])
+  -F, --trim_front2                    trimming how many bases in front for read2. If it&#39;s not specified, it will follow read1&#39;s settings (int [=0])
+  -T, --trim_tail2                     trimming how many bases in tail for read2. If it&#39;s not specified, it will follow read1&#39;s settings (int [=0])
+  -g, --trim_poly_g                    force polyG tail trimming, by default trimming is automatically enabled for Illumina NextSeq/NovaSeq data
+      --poly_g_min_len                 the minimum length to detect polyG in the read tail. 10 by default. (int [=10])
+  -G, --disable_trim_poly_g            disable polyG tail trimming, by default trimming is automatically enabled for Illumina NextSeq/NovaSeq data
+  -x, --trim_poly_x                    enable polyX trimming in 3&#39; ends.
+      --poly_x_min_len                 the minimum length to detect polyX in the read tail. 10 by default. (int [=10])
+  -5, --cut_by_quality5                enable per read cutting by quality in front (5&#39;), default is disabled (WARNING: this will interfere deduplication for both PE/SE data)
+  -3, --cut_by_quality3                enable per read cutting by quality in tail (3&#39;), default is disabled (WARNING: this will interfere deduplication for SE data)
+  -W, --cut_window_size                the size of the sliding window for sliding window trimming, default is 4 (int [=4])
+  -M, --cut_mean_quality               the bases in the sliding window with mean quality below cutting_quality will be cut, default is Q20 (int [=20])
+  -Q, --disable_quality_filtering      quality filtering is enabled by default. If this option is specified, quality filtering is disabled
+  -q, --qualified_quality_phred        the quality value that a base is qualified. Default 15 means phred quality &gt;=Q15 is qualified. (int [=15])
+  -u, --unqualified_percent_limit      how many percents of bases are allowed to be unqualified (0~100). Default 40 means 40% (int [=40])
+  -n, --n_base_limit                   if one read&#39;s number of N base is &gt;n_base_limit, then this read/pair is discarded. Default is 5 (int [=5])
+  -L, --disable_length_filtering       length filtering is enabled by default. If this option is specified, length filtering is disabled
+  -l, --length_required                reads shorter than length_required will be discarded, default is 15. (int [=15])
+      --length_limit                   reads longer than length_limit will be discarded, default 0 means no limitation. (int [=0])
+  -y, --low_complexity_filter          enable low complexity filter. The complexity is defined as the percentage of base that is different from its next base (base[i] != base[i+1]).
+  -Y, --complexity_threshold           the threshold for low complexity filter (0~100). Default is 30, which means 30% complexity is required. (int [=30])
+      --filter_by_index1               specify a file contains a list of barcodes of index1 to be filtered out, one barcode per line (string [=])
+      --filter_by_index2               specify a file contains a list of barcodes of index2 to be filtered out, one barcode per line (string [=])
+      --filter_by_index_threshold      the allowed difference of index barcode for index filtering, default 0 means completely identical. (int [=0])
+  -c, --correction                     enable base correction in overlapped regions (only for PE data), default is disabled
+      --overlap_len_require            the minimum length of the overlapped region for overlap analysis based adapter trimming and correction. 30 by default. (int [=30])
+      --overlap_diff_limit             the maximum difference of the overlapped region for overlap analysis based adapter trimming and correction. 5 by default. (int [=5])
+  -U, --umi                            enable unique molecular identifer (UMI) preprocessing
+      --umi_loc                        specify the location of UMI, can be (index1/index2/read1/read2/per_index/per_read, default is none (string [=])
+      --umi_len                        if the UMI is in read1/read2, its length should be provided (int [=0])
+      --umi_prefix                     if specified, an underline will be used to connect prefix and UMI (i.e. prefix=UMI, UMI=AATTCG, final=UMI_AATTCG). No prefix by default (string [=])
+      --umi_skip                       if the UMI is in read1/read2, fastp can skip several bases following UMI, default is 0 (int [=0])
+  -p, --overrepresentation_analysis    enable overrepresented sequence analysis.
+  -P, --overrepresentation_sampling    one in (--overrepresentation_sampling) reads will be computed for overrepresentation analysis (1~10000), smaller is slower, default is 20. (int [=20])
+  -j, --json                           the json format report file name (string [=fastp.json])
+  -h, --html                           the html format report file name (string [=fastp.html])
+  -R, --report_title                   should be quoted with &#39; or &quot;, default is &quot;fastp report&quot; (string [=fastp report])
+  -w, --thread                         worker thread number, default is 2 (int [=2])
+  -s, --split                          split output by limiting total split file number with this option (2~999), a sequential number prefix will be added to output name ( 0001.out.fq, 0002.out.fq...), disabled by default (int [=0])
+  -S, --split_by_lines                 split output by limiting lines of each file with this option(&gt;=1000), a sequential number prefix will be added to output name ( 0001.out.fq, 0002.out.fq...), disabled by default (long [=0])
+  -d, --split_prefix_digits            the digits for the sequential number padding (1~10), default is 4, so the filename will be padded as 0001.xxx, 0 to disable padding (int[=4])
+  -?, --help                           print this message
+</code></pre>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/生信/">生信</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/生信理论基础/">生信理论基础</a><a href="/tags/软件/">软件</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/"><span>python3 标准库系列(五)---subprocess</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-13T16:00:00.000Z">
+          2018-11-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>subprocess模块是用来执行外部命令，下面介绍两种主要的用法。</p>
+<h2 id="subprocess-run"><a href="#subprocess-run" class="headerlink" title="subprocess.run"></a><code>subprocess.run</code></h2><p> 这里<code>call</code>, <code>check_call</code>, <code>check_output</code>, 与其功能性相似，就不展开介绍了</p>
+<p>常用参数：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">subprocess.run (args，*,
+                stdin = None,
+                input = None,
+                stdout = None,
+                stderr = None,
+                shell = False,
+                cwd = None,
+                timeout = None,
+                check = False,
+                encoding = None,
+                errors = None,
+                env = None )
+</code></pre>
+<p>默认不会捕获stdout或stderr</p>
+<p>如果check为true，并且进程以非零退出代码退出， CalledProcessError则会引发异常。该异常的属性包含参数，退出代码以及stdout和stderr（如果它们被捕获）,</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 这里捕获了stdout,stderr
+>>> a = subprocess.run(["ls", "-l", "/dev/null"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+>>> a.stdout
+b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'
+>>> a.stdout
+b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'
+>>> a.stdout.decode("utf-8")
+</code></pre>
+<p>如果我们使用了check参数的话，如果执行错误，就会引发异常，这里什么都捕获不到</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> b = subprocess.run(["ls", "-l", "/null"], check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/share/chg2master/prod/Other/zhongjw/miniconda3/lib/python3.6/subprocess.py", line 418, in run
+    output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['ls', '-l', '/null']' returned non-zero exit status 2.
+>>> dir(b)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'b' is not defined
+</code></pre>
+<p><em>python3.7里新增了<code>capture_output</code>参数,如果设置为true，则将捕获stdout和stderr。 使用时，将使用stdout = PIPE和stderr = PIPE自动创建内部Popen对象。 也可能不使用stdout和stderr参数。那么Popen对象的stdout、stderr与上面示例里的有什么不同呢？</em></p>
+<h2 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen"></a><code>subprocess.Popen</code></h2><p>subprocess中更底层的进程创建和管理可以通过Popen类实现。它提供了更多的灵活性，程序员通过它能处理更多复杂的情况。</p>
+<p>常用参数：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">subprocess.Popen(args, 
+                bufsize=-1, 
+                executable=None, 
+                stdin=None, 
+                stdout=None, 
+                stderr=None, 
+                preexec_fn=None, 
+                close_fds=True, 
+                shell=False, 
+                cwd=None, 
+                env=None, 
+                universal_newlines=False, 
+                startupinfo=None, 
+                creationflags=0, 
+                restore_signals=True, 
+                start_new_session=False, 
+                pass_fds=(), *, 
+                encoding=None, 
+                errors=None)
+</code></pre>
+<p>示例：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> obj = subprocess.Popen(["ls", "-l", "/null"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+>>> obj.stderr.read().decode("utf-8")
+'ls: 无法访问/null: 没有那个文件或目录\n'
+>>> obj.stderr.read().decode("utf-8")
+</code></pre>
+<p>从上面示例中可以看出Popen对象的stdout、stderr获取的是数据流，而run捕获的stdout、stderr是字符串格式</p>
+<p>当然官方文档说是不建议使用<code>.stdin.write</code>,<code>.stdout.read</code> 或者 <code>.stderr.read</code>，而是用<code>.communicate</code>方法，该方法会造成阻塞，以防止其他进程读取数据流造成死锁</p>
+<p><code>.communicate()</code>方法如果同时有<code>.stdout</code>和 <code>.stderr</code>, 返回的是一个元组, 用下标可以访问捕获的<code>stdout</code>和 <code>stderr</code>。</p>
+<p>还要补充一点就是如果不捕获输出的话，是不会造成阻塞的，如果要等待子进程运行完可以使用<code>.wait</code>方法，而<code>subprocesee.run</code>方法会造成主程序的阻塞，因为要获取子进程运行状态。</p>
+<p>Popen对象的主要方法有：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">['communicate', 'kill', 'pid', 'poll', 'returncode', 'send_signal', 'stderr', 'stdin', 'stdout', 'terminate', 'universal_newlines', 'wait']
+</code></pre>
+<p>如果有需要使用其他的参数和方法请查阅<a href="https://docs.python.org/3.6/library/subprocess.html#module-subprocess" target="_blank" rel="noopener">官方文档</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
 
 
 
 
-<script type="text/javascript">
-  document.querySelector('body').classList.add('theme-loaded')
-</script>
+<nav class="pagination">
+  
+  <a href="/" class="pagination-prev">上一页</a>
+  
+  
+  <a href="/page/3/" class="pagination-next">下一页</a>
+  
+</nav>
+    </main>
 
-
-
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

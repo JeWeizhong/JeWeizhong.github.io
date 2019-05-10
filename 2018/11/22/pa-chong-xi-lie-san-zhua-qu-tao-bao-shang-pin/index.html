@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>爬虫系列(三)---抓取淘宝商品 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="python3,爬虫">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="爬虫系列(三)---抓取淘宝商品"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>爬虫系列(三)---抓取淘宝商品</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/22/pa-chong-xi-lie-san-zhua-qu-tao-bao-shang-pin/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-21T16:00:00.000Z">
+          2018-11-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <pre class=" language-lang-python"><code class="language-lang-python">from selenium import webdriver
+import time
+import requests
+from bs4 import BeautifulSoup
+import html.parser
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from pyquery import PyQuery as pq
+
+browser = webdriver.Chrome("E:\\Program Files\\chromedriver_win32\\chromedriver.exe")
+#browser = webdriver.Chrome()
+wait = WebDriverWait(browser, 10)
+
+def getProducts():
+    """
+    提取商品数据
+    """
+    html = browser.page_source
+    # 解析
+    doc = pq(html)
+    # 找id，子标签是商品列表
+    items = doc('#mainsrp-itemlist .items .item').items()
+    for item in items:
+        product = {
+            'image': item.find('.pic .img').attr('data-src'),
+            'price': item.find('.price').text(),
+            'deal': item.find('.deal-cnt').text(),
+            'title': item.find('.title').text(),
+            'shop': item.find('.shop').text(),
+            'location': item.find('.location').text()
+        }
+        print(product)
+
+def search():
+    try:
+        browser.get("https://www.taobao.com/")
+        # 登陆，淘宝反爬虫，目前是手动扫码登陆，做了个sleep等待时间
+        login = wait.until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR,'#J_SiteNavLogin > div.site-nav-menu-hd > div.site-nav-sign > a.h'))
+        )
+        login.click()
+        time.sleep(30)
+        # 输入框
+        input = wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#q"))
+        )
+        # 搜索按钮
+        submit = wait.until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR,"#J_TSearchForm > div.search-button > button"))
+        )
+        # 输入
+        input.send_keys("美食")
+        # 点击搜索
+        submit.click()
+        getProducts()
+    except TimeoutError:
+        return  search()
+
+def main():
+    search()
+    browser.close()
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/爬虫/">爬虫</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

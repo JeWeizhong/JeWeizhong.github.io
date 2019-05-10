@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 标准库系列(五)---subprocess | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 标准库系列(五)---subprocess"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 标准库系列(五)---subprocess</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-13T16:00:00.000Z">
+          2018-11-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>subprocess模块是用来执行外部命令，下面介绍两种主要的用法。</p>
+<h2 id="subprocess-run"><a href="#subprocess-run" class="headerlink" title="subprocess.run"></a><code>subprocess.run</code></h2><p> 这里<code>call</code>, <code>check_call</code>, <code>check_output</code>, 与其功能性相似，就不展开介绍了</p>
+<p>常用参数：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">subprocess.run (args，*,
+                stdin = None,
+                input = None,
+                stdout = None,
+                stderr = None,
+                shell = False,
+                cwd = None,
+                timeout = None,
+                check = False,
+                encoding = None,
+                errors = None,
+                env = None )
+</code></pre>
+<p>默认不会捕获stdout或stderr</p>
+<p>如果check为true，并且进程以非零退出代码退出， CalledProcessError则会引发异常。该异常的属性包含参数，退出代码以及stdout和stderr（如果它们被捕获）,</p>
+<pre class=" language-lang-python"><code class="language-lang-python"># 这里捕获了stdout,stderr
+>>> a = subprocess.run(["ls", "-l", "/dev/null"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+>>> a.stdout
+b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'
+>>> a.stdout
+b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'
+>>> a.stdout.decode("utf-8")
+</code></pre>
+<p>如果我们使用了check参数的话，如果执行错误，就会引发异常，这里什么都捕获不到</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> b = subprocess.run(["ls", "-l", "/null"], check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/share/chg2master/prod/Other/zhongjw/miniconda3/lib/python3.6/subprocess.py", line 418, in run
+    output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['ls', '-l', '/null']' returned non-zero exit status 2.
+>>> dir(b)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'b' is not defined
+</code></pre>
+<p><em>python3.7里新增了<code>capture_output</code>参数,如果设置为true，则将捕获stdout和stderr。 使用时，将使用stdout = PIPE和stderr = PIPE自动创建内部Popen对象。 也可能不使用stdout和stderr参数。那么Popen对象的stdout、stderr与上面示例里的有什么不同呢？</em></p>
+<h2 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen"></a><code>subprocess.Popen</code></h2><p>subprocess中更底层的进程创建和管理可以通过Popen类实现。它提供了更多的灵活性，程序员通过它能处理更多复杂的情况。</p>
+<p>常用参数：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">subprocess.Popen(args, 
+                bufsize=-1, 
+                executable=None, 
+                stdin=None, 
+                stdout=None, 
+                stderr=None, 
+                preexec_fn=None, 
+                close_fds=True, 
+                shell=False, 
+                cwd=None, 
+                env=None, 
+                universal_newlines=False, 
+                startupinfo=None, 
+                creationflags=0, 
+                restore_signals=True, 
+                start_new_session=False, 
+                pass_fds=(), *, 
+                encoding=None, 
+                errors=None)
+</code></pre>
+<p>示例：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> obj = subprocess.Popen(["ls", "-l", "/null"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+>>> obj.stderr.read().decode("utf-8")
+'ls: 无法访问/null: 没有那个文件或目录\n'
+>>> obj.stderr.read().decode("utf-8")
+</code></pre>
+<p>从上面示例中可以看出Popen对象的stdout、stderr获取的是数据流，而run捕获的stdout、stderr是字符串格式</p>
+<p>当然官方文档说是不建议使用<code>.stdin.write</code>,<code>.stdout.read</code> 或者 <code>.stderr.read</code>，而是用<code>.communicate</code>方法，该方法会造成阻塞，以防止其他进程读取数据流造成死锁</p>
+<p><code>.communicate()</code>方法如果同时有<code>.stdout</code>和 <code>.stderr</code>, 返回的是一个元组, 用下标可以访问捕获的<code>stdout</code>和 <code>stderr</code>。</p>
+<p>还要补充一点就是如果不捕获输出的话，是不会造成阻塞的，如果要等待子进程运行完可以使用<code>.wait</code>方法，而<code>subprocesee.run</code>方法会造成主程序的阻塞，因为要获取子进程运行状态。</p>
+<p>Popen对象的主要方法有：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">['communicate', 'kill', 'pid', 'poll', 'returncode', 'send_signal', 'stderr', 'stdin', 'stdout', 'terminate', 'universal_newlines', 'wait']
+</code></pre>
+<p>如果有需要使用其他的参数和方法请查阅<a href="https://docs.python.org/3.6/library/subprocess.html#module-subprocess" target="_blank" rel="noopener">官方文档</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

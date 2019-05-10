@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 标准库系列(二)---argparse 模块 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 标准库系列(二)---argparse 模块"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 标准库系列(二)---argparse 模块</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/07/python3-biao-zhun-ku-xi-lie-er-argparse/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-06T16:00:00.000Z">
+          2018-11-07
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import argparse
+
+parser = argparse.ArgumentParser(description='Search some files')
+
+parser.add_argument(dest='filenames',metavar='filename', nargs='*')
+
+parser.add_argument('-p', '--pat',metavar='pattern', required=True,dest='patterns', action='append',    help='text pattern to search for')
+
+parser.add_argument('-v', dest='verbose', action='store_true',help='verbose mode')
+
+parser.add_argument('-o', dest='outfile', action='store',help='output file')
+parser.add_argument('--speed', dest='speed', action='store',choices={'slow','fast'}, default='slow',help='search speed')
+
+args = parser.parse_args()
+# 使用方法
+print(args.filenames)
+print(args.patterns)
+print(args.verbose)
+print(args.outfile)
+print(args.speed)
+</code></pre>
+<p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p>
+<p>在每个<code>add_argument()</code> 调用中，</p>
+<ul>
+<li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p>
+</li>
+<li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p>
+</li>
+<li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p>
+</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser()
+>>> parser.add_argument('--foo', action='store_true')
+>>> parser.add_argument('--bar', action='store_false')
+>>> parser.add_argument('--baz', action='store_false')
+>>> parser.parse_args('--foo --bar'.split())
+Namespace(foo=True, bar=False, baz=True)
+</code></pre>
+<p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument(dest='filenames',metavar='filename', nargs='*')
+</code></pre>
+<p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument('-v', dest='verbose', action='store_true',help='verbose mode')
+</code></pre>
+<p>下面的参数接受一个单独值并将其存储为一个字符串：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument('-o', dest='outfile', action='store',help='output file')
+</code></pre>
+<ul>
+<li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p>
+<ul>
+<li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li>
+<li>* , 也就是说参数可以接收任意个数值</li>
+<li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li>
+<li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li>
+<li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG')
+>>> parser.add_argument('--foo')
+>>> parser.add_argument('command')
+>>> parser.add_argument('args', nargs=argparse.REMAINDER)
+>>> print(parser.parse_args('--foo B cmd --arg1 XX ZZ'.split()))
+Namespace(args=['--arg1', 'XX', 'ZZ'], command='cmd', foo='B')
+</code></pre>
+<ul>
+<li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument('--speed', dest='speed', action='store',choices={'slow','fast'}, default='slow',help='search speed')
+</code></pre>
+<p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p>
+<p>其他一些参数：</p>
+<ul>
+<li><code>default</code>: 设置默认值</li>
+<li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser()
+>>> parser.add_argument('foo', type=int)
+>>> parser.add_argument('bar', type=open)
+>>> parser.parse_args('2 temp.txt'.split())
+Namespace(bar=<_io.TextIOWrapper name='temp.txt' encoding='UTF-8'>, foo=2)
+</code></pre>
+<ul>
+<li><code>required</code>: 设置为必须参数</li>
+</ul>
+<p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)
+>>> group = parser.add_argument_group('group')
+>>> group.add_argument('--foo', help='foo help')
+>>> group.add_argument('bar', help='bar help')
+>>> parser.print_help()
+usage: PROG [--foo FOO] bar
+
+group:
+  bar    bar help
+  --foo FOO  foo help
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)
+>>> group1 = parser.add_argument_group('group1', 'group1 description')
+>>> group1.add_argument('foo', help='foo help')
+>>> group2 = parser.add_argument_group('group2', 'group2 description')
+>>> group2.add_argument('--bar', help='bar help')
+>>> parser.print_help()
+usage: PROG [--bar BAR] foo
+
+group1:
+  group1 description
+
+  foo    foo help
+
+group2:
+  group2 description
+
+  --bar BAR  bar help
+</code></pre>
+<ul>
+<li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li>
+</ul>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG')
+>>> group = parser.add_mutually_exclusive_group(required=True)
+>>> group.add_argument('--foo', action='store_true')
+>>> group.add_argument('--bar', action='store_false')
+>>> parser.parse_args([]) 
+# 如果required=False,那么这里不会报错
+# Namespace(bar=True, foo=False)
+usage: PROG [-h] (--foo | --bar)
+PROG: error: one of the arguments --foo --bar is required
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

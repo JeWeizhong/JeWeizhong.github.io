@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 cookbook笔记： 第八章 类与对象(二) | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 cookbook笔记： 第八章 类与对象(二)"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 cookbook笔记： 第八章 类与对象(二)</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/12/python3cook-xi-lie-bi-ji-ba/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-11T16:00:00.000Z">
+          2018-11-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><em>本节介绍property装饰器的用法</em></p>
+<p><code>proprety</code>的作用是可以将方法变成属性，那它到底是怎么实现的呢？让我们先来看一个例子：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Person:
+    def __init__(self, name):
+        self.first_name = name
+    # Getter 方法
+    @property
+    def first_name(self):
+        return self._first_name
+    # Setter 方法
+    @first_name.setter
+    def first_name(self, value):
+        if not isinstance(value, str):
+            raise TypeError('Expected a string')
+        self._first_name = value
+    # Deleter 方法(可选)
+    @first_name.deleter
+    def first_name(self):
+        raise AttributeError("Can't delete attribute")
+</code></pre>
+<p>使用方法：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> a = Person('Guido')
+>>> a.first_name # 调用getter方法
+'Guido'
+</code></pre>
+<p>当我们进行赋值操作时<code>a = Person(&#39;Guido&#39;)</code>就创建了实例，在构造函数中的赋值语句<code>self.first_name</code>就会自动调用<code>first_name</code>的<code>getter</code>、<code>setter</code>、<code>deleter</code>方法(实质上是调用了<code>__get__()</code> 、<code>__set__()</code>和<code>__delete__()</code> 方法)。</p>
+<p>而将等号右边的<code>name</code>参数传入到<code>@first_name.setter</code>下面的方法中，书中是用的<code>first_name</code>变量名字，其实这里设置成其他的变量名比较好，要不然容易混淆参数与方法函数。</p>
+<p>因此装饰器<code>property</code>将原来的<code>first_name()</code>方法，变成了<code>self.first_name</code>属性,一开始我们要调用方法是<code>var.mothed()</code>,现在变成了属性，只用<code>.</code>运算符就可以, 括号就不需要了</p>
+<p>接下来我们来看另一中形式：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Animal(object):
+    def __init__(self, name, age):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str):
+            self._name = value
+        else:
+            self._name = 'to getter '
+</code></pre>
+<p>这里在构造函数中并没有调用<code>getter</code>、<code>setter</code>方法，那么，<code>self._name</code>，<code>self.name</code>其实是两个不同的属性，只是<code>self._name</code>属性依赖于<code>self.name</code>:</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> a = Animal('black dog', 3)
+>>> a.name # 此时其实是没有调用setter方法的，只调用了 getter方法
+'black dog'
+>>> a._name # 因为没有调用setter方法，所以self._name值也没有修改
+'black dog'
+>>> a.name = 1 # 调用了setter方法，但是不是字符串类型的，所以执行 self._name = 'to getter '，然后调用getter方法，返回self._name的值
+>>> a.name
+'to getter '
+>>> a._name # 因为进行了赋值操作，因此self._name的值也进行了修改
+'to getter '
+>>> a.name = "white55k" 
+>>> a.name
+'white55k'
+>>> a._name
+'white55k'
+</code></pre>
+<p>这里要说明的一点是<code>__init__</code>函数的参数<code>name</code>只是执行了<code>self._name = name</code>赋值操作，由于并没有调用<code>setter</code>方法，因此<code>def name(self, value)</code>需要重新传入参数(赋值)</p>
+<p>在看另一种用法，只设置<code>getter</code>方法，变成只读属性，实现编程接口：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">class Student(object):
+
+    @property
+    def birth(self):
+        return self._birth
+
+    @birth.setter
+    def birth(self, value):
+        self._birth = value
+
+    @property
+    def age(self):
+        return 2018 - self._birth
+
+# 使用
+>>> a=Student() # 创建实例
+>>> a.birth=1990 # setter
+>>> a.birth # getter
+1990
+>>> a.age # 只有 getter
+28
+>>> a.age=2 # 调用setter方法，会报错
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: can't set attribute
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

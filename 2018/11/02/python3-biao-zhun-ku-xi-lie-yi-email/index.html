@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python3 标准库系列(一)---email模块 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="python3 标准库系列(一)---email模块"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>python3 标准库系列(一)---email模块</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-11-01T16:00:00.000Z">
+          2018-11-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程</p>
+<pre class=" language-lang-Python"><code class="language-lang-Python">
+#-*-coding:utf-8-*-
+
+import smtplib
+import sys
+import re
+import os
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email import encoders
+from email.header import Header
+from email.utils import parseaddr, formataddr
+
+'''
+发送邮件：
+文本，网页，附件，图片
+'''
+
+class Sendemail():
+
+
+    def __init__(self,mailToList,mailHost,mailUser,mailPass,sub):
+        self.mailToList = mailToList  # 邮件接收方的邮件地址，传入的必须是list类型
+        self.mailHost = mailHost    # 邮件传送协议服务器: smtp.qiye.163.com
+        self.mailUser = mailUser  # 邮件发送方的邮箱账号: xxxx@xxxx.org
+        self.mailPass = mailPass  # 邮件发送方的邮箱密码: ****
+        self.sub = sub # 邮件名
+        #self.content = content # 内容
+        #self.subtype = subtype # 发送类型 plain(文字)
+
+    def _formatAddr(self,s):
+        '''
+            处理发件人的名字，防止有带中文名的发件人
+        '''
+        name, addr = parseaddr(s)
+        return formataddr((Header(name, 'utf-8').encode(), addr))
+
+    def sendEmail(self,content,subtype):
+        msg = MIMEMultipart('mixed') #　默认就是　mixed类型
+        me = re.split('@',self.mailUser)[0]+"<"+self.mailUser+">"
+        msg['Subject'] = self.sub
+        msg['From'] = self._formatAddr(me)
+        msg['To'] = ','.join(self.mailToList)  # 多个收件人以“,”分隔
+        text = MIMEText(content, _subtype=subtype, _charset='utf-8')
+        msg.attach(text)
+
+        try:
+            server = smtplib.SMTP()
+            server.connect(self.mailHost)
+            server.login(self.mailUser, self.mailPass)
+            server.sendmail(me, self.mailToList, msg.as_string())
+            server.quit()
+            print("发送成功")
+            return True
+        except Exception as e:
+            print (e)
+            return False
+
+
+    def sendFile(self,file):
+        '''
+        发送附件'''
+        msg = MIMEMultipart('mixed') #　默认就是　mixed类型
+        me = re.split('@',self.mailUser)[0]+"<"+self.mailUser+">"
+        msg['Subject'] = self.sub
+        msg['From'] = self._formatAddr(me)
+        msg['To'] = ','.join(self.mailToList)
+
+        sendfile=open(file,'rb').read()
+        text_att = MIMEText(sendfile, 'base64', 'utf-8') 
+        text_att["Content-Type"] = 'application/octet-stream'  
+        # 设置附件名字，如果是windows下的中文文件名需要以gbk编码，这里默认是再Linux上的中文名字的文件
+        text_att.add_header('Content-Disposition', 'attachment', filename=("utf-8", "",os.path.basename(file)))
+        #return text_att
+
+        msg.attach(text_att)
+        try:
+            server = smtplib.SMTP()
+            server.connect(self.mailHost)
+            server.login(self.mailUser, self.mailPass)
+            server.sendmail(me, self.mailToList, msg.as_string())
+            server.quit()
+            print("发送成功")
+            return True
+        except Exception as e:
+            print (e)
+            return False
+
+
+def main():
+
+    mailToList = ["xxx@xx.com","xxx@xxx.com"]  # 邮件接收方的邮件地址，传入的必须是list类型
+    mailHost = "smtp.qiye.163.com"    # 邮件传送协议服务器: smtp.qiye.163.com
+    mailUser = "xxx@xxx.com"  # 邮件发送方的邮箱账号: xxxx@xxxx.com
+    mailPass = "xxxx"  # 邮件发送方的邮箱密码: ****
+    sub = "测试邮件" # 邮件名
+    s = Sendemail(mailToList,mailHost,mailUser,mailPass,sub)
+    #content  内容/文件路径
+    #subtype  发送类型 plain(文字) html(网页) 正文图片(目前只能实现插入一张图) 附件
+    content = "test"
+    subtype = "plain"
+    # 如果发送的是附件用这个函数，暂时不支持邮件正文中发图片，因为比较麻烦，就是把图片插入网页格式中
+    s.sendFile("filepath")
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

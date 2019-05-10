@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>机器学习笔记-----线性回归 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="python3,机器学习">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="机器学习笔记-----线性回归"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>机器学习笔记-----线性回归</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/01/14/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-01-13T16:00:00.000Z">
+          2019-01-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="线性模型的基本形式"><a href="#线性模型的基本形式" class="headerlink" title="线性模型的基本形式"></a>线性模型的基本形式</h2><p>给定由d 个属性描述的示例$\vec x = (x_1,x_2,…x_d)$ ， 其中$x_i$是x 在第i个属性上的取值，线性模型(linear model)试图学得一个通过属性的线性组合来进行预测的函数，即:</p>
+<script type="math/tex; mode=display">f(\vec x) = \omega_1 x_1 + \omega_2 x_2 +\cdots + \omega_d x_d+d + b  \tag{1}</script><p>写成向量式：</p>
+<script type="math/tex; mode=display">f(\vec x ) = \vec\omega^T \vec x  +b \tag{2}</script><h2 id="线性回归原理"><a href="#线性回归原理" class="headerlink" title="线性回归原理"></a>线性回归原理</h2><p>给定数据集$D = \{(\vec x_1 ,y_1),(\vec x_2,y_2),\cdots,(\vec x_m,y_m)\}$,线性回归就是使用$\vec x$得到一个线性模型是的输出$y’$ 无限接近与$y$，即：</p>
+<script type="math/tex; mode=display">f(\vec x ) = \vec\omega^T \vec x + b \simeq y \tag{3}</script><p>这里忽略了下标，即每一个输入$\vec x$ 通过线性回归模型的式子$(3)$得到的$y’$ 都无限接近与数据集中的$y$</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>那么如何确定公式$(3)$中的$\vec\omega$和$b$呢?</p>
+<p>如果我们的$f(x)$ 与$y$的差别足够小，那么我们就可以带入到公式$(3)$中直接解出$\vec\omega$和$b$来:</p>
+<script type="math/tex; mode=display">min\sum|f(x)-y|</script><p>而在实际运用过程中我们一般用平方误差来做性能度量：</p>
+<script type="math/tex; mode=display">min \sum(f(x)-y)^2 \tag{4}</script><p>当然也有其他的性能度量方式，只是平方误差这个在线性回归中最常用，这个求解线性回归参数的方法也叫做<strong>最小二乘法</strong></p>
+<p>令：</p>
+<script type="math/tex; mode=display">E(w,b) = \sum(f(x)-y)^2 \tag{5}</script><p>$E(w,b)$在这里就叫做<strong>代价函数</strong>,吴恩达老师的机器学习课程中稍做了调整：</p>
+<script type="math/tex; mode=display">E(w,b) = \frac{1}{2m} \sum_{i=1}^m (f(x)-y)^2 \tag{5}</script><p>我们只需要对$E(w,b)$求偏导就能够求得最小值，这里假设$E(w,b)$是<strong>凸函数</strong>：</p>
+<script type="math/tex; mode=display">\frac{\partial E(\omega,b) }{\partial \omega} = 2(\omega \sum_{1=1}^m x_i^2 - \sum_{i=1}^m (y_i-b)x_i)</script><script type="math/tex; mode=display">\frac{\partial E(\omega,b) }{\partial b} = 2(mb - \sum_{i=1}^m (y_i-\omega x_i))</script><h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>在讲梯度下降法之前，我们先讲如何直接解出$E(\omega,b)$的最小值：</p>
+<p><img src="/myphoto/ml1.png" alt="解方程"></p>
+<p><img src="/myphoto/ml2.png" alt="解方程2"></p>
+<p><img src="/myphoto/ml3.png" alt="解方程3"></p>
+<p>显然这种方法比较复杂，貌似计算量也很大?</p>
+<p>下面讲另一种求解$E$最小值的方式，<strong>梯度下降法</strong></p>
+<p>该方法的核心思想是同步更新$\vec\omega,b$中每个值：</p>
+<script type="math/tex; mode=display">\omega_i = \omega_i -\alpha \frac{\partial E }{\partial \omega_i} ,(i=1,2,...m)</script><p>$\alpha​$称作<strong>学习率</strong>,它的值太小会增加求解的时间，太大会容易造成过拟合。</p>
+<p>该方法像是一种穷举，一步一步的找到最小值。</p>
+<p>关于这种方法的实现我们将会在逻辑回归中演示，下面讲一下Scikit-Learn关于线性回归的用法。</p>
+<h2 id="LinearRegression"><a href="#LinearRegression" class="headerlink" title="LinearRegression"></a>LinearRegression</h2><p>参考sklearn的官方文档中文版：<a href="http://cwiki.apachecn.org/pages/viewpage.action?pageId=12681716" target="_blank" rel="noopener">http://cwiki.apachecn.org/pages/viewpage.action?pageId=12681716</a></p>
+<p><code>linear_model.LinearRegression</code>类的成员函数 <code>fit</code> 以数组X和y为输入，并将线性模型的系数$\omega$存储在其成员变量<code>coef_</code> 中：</p>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> from sklearn import linear_model
+>>> reg = linear_model.LinearRegression()
+>>> reg.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
+LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+>>> reg.coef_
+array([ 0.5,  0.5])
+</code></pre>
+<blockquote>
+<p>然而，最小二乘的系数估计依赖于模型特征项的独立性。当特征项相关并且设计矩阵X 的列近似的线性相关时，设计矩阵便接近于一个奇异矩阵(不是满秩，列数过多，会有多个最优解，需要<strong>正则化</strong>)，因此最小二乘估计对观测点中的随机误差变得高度敏感，产生大的方差。</p>
+</blockquote>
+<h2 id="造轮子"><a href="#造轮子" class="headerlink" title="造轮子"></a>造轮子</h2><pre class=" language-lang-python"><code class="language-lang-python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+class SimpleLR:
+
+    def __init__(self):
+        self._a = None
+        self._b = None
+
+    def fit(self,x_train,y_train):
+        if x_train.ndim == 1 and len(x_train) == len(y_train):
+            self._a = (np.mean(x_train) * np.mean(y_train) - np.mean(x_train * y_train)) / \
+                      ((np.mean(x_train)**2) - np.mean(x_train**2))
+            self._b = np.mean(y_train) - self._a * np.mean(x_train)
+            print(self._a,self._b)
+
+    def predict(self,x_test):
+        if x_test.ndim == 1 and self._a is not None and self._b is not None:
+            return self._a * x_test + self._b
+
+def main():
+    rng = np.random.RandomState(1)
+    x_train = 10 * rng.rand(50) # 生成均匀分布的50个数
+    y_train = 2 * x_train - 5 + rng.randn(50) # randn是标准正太分布
+    x_test = np.linspace(0, 10, 1000)
+    slr = SimpleLR()
+    slr.fit(x_train, y_train)
+    y = slr.predict(x_test)
+    # 画图
+    fig = plt.figure()
+    plt.scatter(x_train, y_train)
+    plt.plot(x_test,y)
+    plt.show()
+    fig.savefig('fig.png')
+
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p>输出：</p>
+<pre><code>2.027208810360695 -4.998577085553202
+</code></pre><p>可见训练效果还是不错的</p>
+<p><img src="/myphoto/liner_reg.png" alt="可视化"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/机器学习/">机器学习</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

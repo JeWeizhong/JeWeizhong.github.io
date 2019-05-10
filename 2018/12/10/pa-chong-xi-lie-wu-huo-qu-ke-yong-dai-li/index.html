@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>爬虫系列(五)---获取可用代理 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="python3,爬虫">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="爬虫系列(五)---获取可用代理"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>爬虫系列(五)---获取可用代理</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/12/10/pa-chong-xi-lie-wu-huo-qu-ke-yong-dai-li/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-12-09T16:00:00.000Z">
+          2018-12-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <pre class=" language-lang-python"><code class="language-lang-python">
+import time
+import re
+import requests 
+from bs4 import BeautifulSoup
+from requests.exceptions import RequestException
+
+def parse_ip(http,ip,port):
+    try:
+        proxies = {"http": "http://"+ip+":"+port}
+        print(proxies)
+        resp2 = requests.get("http://2018.ip138.com/ic.asp", proxies=proxies)
+        soup = BeautifulSoup(resp2.content.decode("gbk"), "html.parser")
+        return soup.body.get_text()
+    except RequestException as e:
+        return None 
+
+def get_proxy(index):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+    }
+    html = requests.get(f"https://www.xicidaili.com/nn/{index}",headers=headers)
+    #print(html.text)
+    soup = BeautifulSoup(html.content,"lxml")
+    get_info = soup.find_all("tr")
+    #print(get_info[1])
+    for i in get_info:
+        get_ip = re.match("<tr.+?>.<td.+?></td>.<td>(.+?)</td>.<td>(.+?)</td>.+(HTTP\w)",str(i),re.S)
+        # <tr.+?>.<td.+?></td>.<td>(.+?)</td>.<td>(.+?)</td>.+(HTTP\w)
+        if get_ip:
+            #print(f"{get_ip.group(3)}://{get_ip.group(1)}:{get_ip.group(2)}")
+            ip = parse_ip(get_ip.group(3),get_ip.group(1),get_ip.group(2))
+            #print(ip)
+            time.sleep(10)
+            if ip:
+                return ip
+            else:
+                continue
+
+def main():
+    for index in range(10):
+        print(get_proxy(index))
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/爬虫/">爬虫</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/python3/">python3</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

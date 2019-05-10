@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>安装python3及模块 | 木叶村 | life is short</title>
+
+  
+  <meta name="author" content="Naruto">
+  
+
+  
+  <meta name="description" content="无人为孤岛，一书一世界">
+  
+
+  
+  
+  <meta name="keywords" content="编程语言,python3,大数据">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="安装python3及模块"/>
+
+  <meta property="og:site_name" content="木叶村"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">木叶村</a>
+    </h1>
+    <p class="site-description">life is short</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>安装python3及模块</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/02/13/an-zhuang-python3-ji-mo-kuai/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-02-12T16:00:00.000Z">
+          2018-02-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><p><strong>linux下安装python</strong></p>
+<ol>
+<li>官网下载源码压缩包，解压 </li>
+<li>setup.py 里面可以设置sqlite3的搜索路径， 以防止模块安装不上</li>
+<li>./configure<blockquote>
+<p>安装文件有很多选项<br><code>``
+./configure -h</code>configure’ configures python 3.6 to adapt to many kinds of systems.</p>
+</blockquote>
+</li>
+</ol>
+<p>Usage: ./configure [OPTION]… [VAR=VALUE]…</p>
+<p>To assign environment variables (e.g., CC, CFLAGS…), specify them as<br>VAR=VALUE.  See below for descriptions of some of the useful variables.</p>
+<p>Defaults for the options are specified in brackets.</p>
+<p>Configuration:<br>  -h, —help              display this help and exit<br>      —help=short        display options specific to this package<br>      —help=recursive    display the short help of all the included packages<br>  -V, —version           display version information and exit<br>  -q, —quiet, —silent   do not print <code>checking ...&#39; messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for</code>—cache-file=config.cache’<br>  -n, —no-create         do not create output files<br>      —srcdir=DIR        find the sources in DIR [configure dir or `..’]</p>
+<p>Installation directories:<br>  —prefix=PREFIX         install architecture-independent files in PREFIX      ###  安装路径<br>                          [/usr/local]<br>  —exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX<br>                          [PREFIX]</p>
+<p>By default, <code>make install&#39; will install all the files in</code>/usr/local/bin’, <code>/usr/local/lib&#39; etc.  You can specify
+an installation prefix other than</code>/usr/local’ using <code>--prefix&#39;,
+for instance</code>—prefix=$HOME’.</p>
+<p>For better control, use the options below.</p>
+<p>Fine tuning of the installation directories:<br>  —bindir=DIR            user executables [EPREFIX/bin]<br>  —sbindir=DIR           system admin executables [EPREFIX/sbin]<br>  —libexecdir=DIR        program executables [EPREFIX/libexec]<br>  —sysconfdir=DIR        read-only single-machine data [PREFIX/etc]<br>  —sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]<br>  —localstatedir=DIR     modifiable single-machine data [PREFIX/var]<br>  —libdir=DIR            object code libraries [EPREFIX/lib]<br>  —includedir=DIR        C header files [PREFIX/include]<br>  —oldincludedir=DIR     C header files for non-gcc [/usr/include]<br>  —datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]<br>  —datadir=DIR           read-only architecture-independent data [DATAROOTDIR]<br>  —infodir=DIR           info documentation [DATAROOTDIR/info]<br>  —localedir=DIR         locale-dependent data [DATAROOTDIR/locale]<br>  —mandir=DIR            man documentation [DATAROOTDIR/man]<br>  —docdir=DIR            documentation root [DATAROOTDIR/doc/python]<br>  —htmldir=DIR           html documentation [DOCDIR]<br>  —dvidir=DIR            dvi documentation [DOCDIR]<br>  —pdfdir=DIR            pdf documentation [DOCDIR]<br>  —psdir=DIR             ps documentation [DOCDIR]</p>
+<p>System types:<br>  —build=BUILD     configure for building on BUILD [guessed]<br>  —host=HOST       cross-compile to build programs to run on HOST [BUILD]<br>  —target=TARGET   configure for building compilers for TARGET [HOST]</p>
+<p>Optional Features:<br>  —disable-option-checking  ignore unrecognized —enable/—with options<br>  —disable-FEATURE       do not include FEATURE (same as —enable-FEATURE=no)<br>  —enable-FEATURE[=ARG]  include FEATURE [ARG=yes]<br>  —enable-universalsdk[=SDKDIR]<br>                          Build fat binary against Mac OS X SDK<br>  —enable-framework[=INSTALLDIR]<br>                          Build (MacOSX|Darwin) framework<br>  —enable-shared         disable/enable building shared python library<br>  —enable-profiling      enable C-level code profiling<br>  —enable-optimizations  Enable expensive, stable optimizations (PGO, etc).<br>                          Disabled by default.<br>  —enable-loadable-sqlite-extensions<br>                          support loadable extensions in _sqlite module<br>  —enable-ipv6           Enable ipv6 (with ipv4) support<br>  —disable-ipv6          Disable ipv6 support<br>  —enable-big-digits[=BITS]<br>                          use big digits for Python longs [[BITS=30]]</p>
+<p>Optional Packages:<br>  —with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]<br>  —without-PACKAGE       do not use PACKAGE (same as —with-PACKAGE=no)<br>  —with-universal-archs=ARCH<br>                          select architectures for universal build (“32-bit”,<br>                          “64-bit”, “3-way”, “intel”, “intel-32”, or “all”)<br>  —with-framework-name=FRAMEWORK<br>                          specify an alternate name of the framework built<br>                          with —enable-framework<br>  —without-gcc           never use gcc<br>  —with-icc              build with icc<br>  —with-cxx-main=<compiler><br>                          compile main() and link python executable with C++<br>                          compiler<br>  —with-suffix=.exe      set executable suffix<br>  —with-pydebug          build with Py_DEBUG defined<br>  —with-assertions       build with C assertions enabled<br>  —with-lto              Enable Link Time Optimization in PGO builds.<br>                          Disabled by default.<br>  —with-hash-algorithm=[fnv|siphash24]<br>                          select hash algorithm<br>  —with-address-sanitizer<br>                          enable AddressSanitizer<br>  —with-libs=’lib1 …’  link against additional libs<br>  —with-system-expat     build pyexpat module using an installed expat<br>                          library<br>  —with-system-ffi       build _ctypes module using an installed ffi library<br>  —with-system-libmpdec  build _decimal module using an installed libmpdec<br>                          library<br>  —with-tcltk-includes=’-I…’<br>                          override search for Tcl and Tk include files<br>  —with-tcltk-libs=’-L…’<br>                          override search for Tcl and Tk libs<br>  —with-dbmliborder=db1:db2:…<br>                          order to check db backends for dbm. Valid value is a<br>                          colon separated string with the backend names<br>                          <code>ndbm&#39;,</code>gdbm’ and `bdb’.<br>  —with(out)-threads[=DIRECTORY]<br>                          disable/enable thread support<br>  —with(out)-thread[=DIRECTORY]<br>                          deprecated; use —with(out)-threads<br>  —with(out)-doc-strings disable/enable documentation strings<br>  —with(out)-pymalloc    disable/enable specialized mallocs<br>  —with-valgrind         Enable Valgrind support<br>  —with(out)-dtrace      disable/enable DTrace support<br>  —with-fpectl           enable SIGFPE catching<br>  —with-libm=STRING      math library<br>  —with-libc=STRING      C library<br>  —with(out)-computed-gotos<br>                          Use computed gotos in evaluation loop (enabled by<br>                          default on supported compilers)<br>  —with(out)-ensurepip=[=upgrade]<br>                          “install” or “upgrade” using bundled pip</compiler></p>
+<p>Some influential environment variables:<br>  MACHDEP     name for machine-dependent library files<br>  CC          C compiler command<br>  CFLAGS      C compiler flags<br>  LDFLAGS     linker flags, e.g. -L<lib dir=""> if you have libraries in a<br>              nonstandard directory <lib dir=""><br>  LIBS        libraries to pass to the linker, e.g. -l<library><br>  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir=""> if<br>              you have headers in a nonstandard directory <include dir=""><br>  CPP         C preprocessor<br>  PKG_CONFIG  path to pkg-config utility<br>  PKG_CONFIG_PATH<br>              directories to add to pkg-config’s search path<br>  PKG_CONFIG_LIBDIR<br>              path overriding pkg-config’s built-in search path</include></include></library></lib></lib></p>
+<p>Use these variables to override the choices made by `configure’ or to help<br>it to find libraries and programs with nonstandard names/locations.</p>
+<p>Report bugs to <a href="https://bugs.python.org/" target="_blank" rel="noopener">https://bugs.python.org/</a>.<br>```</p>
+<ol>
+<li>make &amp;&amp; make install </li>
+<li>安装模块 pip3 install modulename</li>
+</ol>
+<p><strong>注意-h 下有响应时间等其他参数 按需设置,每个参数具体意义可自行搜索</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/python3/">python3</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a><a href="/tags/大数据/">大数据</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 Naruto
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
