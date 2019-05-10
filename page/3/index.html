@@ -1,2283 +1,1111 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+    <meta charset="utf-8">
+    <meta name="keywords" content="木叶村">
+    <meta name="description" content="木叶村">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>木叶村</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
+<body>
 
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">木叶村</span>
+                    </a>
+                </div>
+                
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="木叶村">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="木叶村">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木叶村">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
-
-
-
-
-
-  <title>木叶村</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
     
-  
-
-  <div class="container sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">木叶村</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">木叶村</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+    
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <ul class="menu-list mobile-menu-list">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
         </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
         </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
         </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
         </li>
-      
-
-      
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
     </ul>
-  
 
-  
-</nav>
+    <div class="social-link">
 
 
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
 
- </div>
-    </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
 
-  
-  
-  
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/Linux系列---(转)你应该知道的Linux技巧/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
+<a href="https://github.com/JeWeizhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a></div>
+</div>
 
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/Linux系列---(转)你应该知道的Linux技巧/" itemprop="url">(转)应该知道的LINUX技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T00:00:00+08:00">
-                2018-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>文章来源：</em><a href="https://coolshell.cn/articles/8883.html?utm_source=qq&amp;utm_medium=social" target="_blank" rel="noopener">https://coolshell.cn/articles/8883.html?utm_source=qq&amp;utm_medium=social</a></p>
-<p><strong>写在开头，此篇文章算是一些Linux系统和命令的总结，可以提升效率。里面的一些教程资源自己还没有读过，在这里记录一下，以后看了会整理出来的。</strong></p>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li><p>[ ] 学习 <code>Bash</code> 。你可以<code>man bash</code>来看看<code>bash</code>的东西，并不复杂也并不长。你用别的<code>shell</code>也行，但是<code>bash</code>是很强大的并且也是系统默认的。（学习<code>zsh</code>或<code>tsch</code>只会让你在很多情况下受到限制）</p>
-</li>
-<li><p>[ ] 学习 <code>vim</code> 。在Linux下，基本没有什么可与之竞争的编译辑器（就算你是一个Emacs或Eclipse的重度用户）。你可以看看<a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">《简明vim攻略》</a>和 <a href="https://coolshell.cn/articles/7166.html" target="_blank" rel="noopener">《Vim的冒险游戏》</a>以及<a href="https://coolshell.cn/articles/5479.html" target="_blank" rel="noopener">《给程序员的Vim速查卡》</a>还有<a href="https://coolshell.cn/articles/894.html" target="_blank" rel="noopener">《把Vim变成一个编程的IDE》</a>等等。</p>
-</li>
-<li><p>[ ] 了解 ssh。明白不需要口令的用户认证（通过<code>ssh-agent</code>, <code>ssh-add</code>），学会用ssh FQ，用scp而不是ftp传文件，等等。你知道吗？scp 远端的时候，你可以按tab键来查看远端的目录和文件（当然，需要无口令的用户认证），这都是bash的功劳。</p>
-</li>
-<li><p>[x] 熟悉bash的作业管理，如： &amp;, Ctrl-Z, Ctrl-C, jobs, fg, bg, kill, 等等。当然，你也要知道Ctrl+\（SIGQUIT）和Ctrl+C （SIGINT）的区别。</p>
-</li>
-<li><p>[x] 简单的文件管理 ： ls 和 ls -l (你最好知道 “ls -l” 的每一列的意思), less, head, tail 和 tail -f, ln 和 ln -s (你知道明白hard link和soft link的不同和优缺点), chown, chmod, du (如果你想看看磁盘的大小 du -sk *), df, mount。当然，原作者忘了find命令。</p>
-</li>
-<li><p>[x] 基础的网络管理： <code>ip</code> 或 <code>ifconfig</code>, <code>dig</code>。当然，原作者还忘了如<code>netstat</code>, <code>ping</code>, <code>traceroute</code>, 等</p>
-</li>
-<li><p>[ ] 理解正则表达式，还有grep/egrep的各种选项。比如： -o, -A, 和 -B 这些选项是很值得了解的。</p>
-</li>
-<li><p>[x] 学习使用 <code>apt-get</code> 和 <code>yum</code> 来查找和安装软件（前者的经典分发包是Ubuntu，后者的经典分发包是Redhat），我还建议你试着从源码编译安装软件。</p>
-</li>
-</ul>
-<h2 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h2><ul>
-<li><p>[x]在 <code>bash</code> 里，使用 <code>Ctrl+r</code> 而不是上下光标键来查找历史命令。</p>
-</li>
-<li><p>[x] 在 <code>bash</code>里，使用 <code>Ctrl+w</code> 来删除最后一个单词，使用 <code>Ctrl+U</code> 来删除一行。请<code>man bash</code>后查找<code>Readline Key Bindings</code>一节来看看<code>bash</code>的默认热键，比如：<code>Alt+.</code> 把上一次命令的最后一个参数打出来，而<code>Alt+*</code> 则列出你可以输入的命令。</p>
-</li>
-<li><p>[x] 回到上一次的工作目录： <code>cd –</code>  （回到home是 <code>cd ~</code>）</p>
-</li>
-<li><p>[ ] 使用 <code>xargs</code>。这是一个很强大的命令。你可以使用<code>-L</code>来限定有多少个命令，也可以用<code>-P</code>来指定并行的进程数。如果你不知道你的命令会变成什么样，你可以使用<code>xargs echo</code>来看看会是什么样。当然， -<code>I{}</code> 也很好用。示例：</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find . -name \*.py | xargs grep some_function</span><br><span class="line">cat hosts | xargs -I&#123;&#125; ssh root@&#123;&#125; hostname</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>[ ] <code>pstree -p</code> 可以帮你显示进程树。参考<a href="https://coolshell.cn/articles/7965.html" target="_blank" rel="noopener">《一个fork的面试题》</a></p>
-</li>
-<li><p>[ ] 使用 <code>pgrep</code> 和 <code>pkill</code> 来找到或是<code>kill</code> 某个名字的进程。 (<code>-f</code> 选项很有用).</p>
-</li>
-<li><p>[ ] 了解可以发给进程的信号。例如：要挂起一个进程，使用<code>kill -STOP [pid]</code>. 使用 <code>man 7 signal</code> 来查看各种信号，使用<code>kill -l</code> 来查看数字和信号的对应表</p>
-</li>
-<li><p>[x] 使用 <code>nohup</code>或  <code>disown</code> 如果你要让某个进程运行在后台。</p>
-</li>
-<li><p>[ ] 使用<code>netstat -lntp</code>来看看有侦听在网络某端口的进程。当然，也可以使用 <code>lsof</code>。</p>
-</li>
-</ul>
-<ul>
-<li><p>[ ] 在bash的脚本中，你可以使用 <code>set -x</code> 来<code>debug</code>输出。使用 <code>set -e</code> 来当有错误发生的时候abort执行。考虑使用 <code>set -o pipefail</code> 来限制错误。还可以使用<code>trap</code>来截获信号（如截获<code>ctrl+c</code>）。</p>
-</li>
-<li><p>[xx] 在bash 脚本中，subshells (写在圆括号里的) 是一个很方便的方式来组合一些命令。一个常用的例子是临时地到另一个目录中，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># do something in current dir</span></span><br><span class="line">(<span class="built_in">cd</span> /some/other/dir; other-command)</span><br><span class="line"><span class="comment"># continue in original dir</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>[ ] 在 bash 中，注意那里有很多的变量展开。如：</p>
-<ul>
-<li>[ ] 检查一个变量是否存在: <code>${name:?error message}</code>。</li>
-<li>[ ] 如果一个bash的脚本需要一个参数，也许就是这样一个表达式 <code>input_file=${1:?usage: $0 input_file}</code>。</li>
-<li>[ ] 一个计算表达式： <code>i=$(( (i + 1) % 5 ))</code>。</li>
-<li>[ ] 一个序列： <code>{1..10}</code>。 </li>
-<li>[ ] 截断一个字符串： <code>${var%suffix}</code> 和 <code>${var#prefix}</code>。 示例： <code>if var=foo.pdf, then echo ${var%.pdf}.txt prints “foo.txt”</code>.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>[ ] 通过 <code>&lt;(some command)</code> 可以把某命令当成一个文件。示例：比较一个本地文件和远程文件 <code>/etc/hosts： diff /etc/hosts &lt;(ssh somehost cat /etc/hosts)</code></p>
-</li>
-<li><p>[ ] 了解什么叫 “here documents” ，就是诸如 <code>cat &lt;&lt;EOF</code> 这样的东西。</p>
-</li>
-<li><p>[ ] 在 bash中，使用重定向到标准输出和标准错误。如： <code>some-command &gt;logfile 2&gt;&amp;1</code>。另外，要确认某命令没有把某个打开了的文件句柄重定向给标准输入，最佳实践是加上 “<code>&lt;/dev/null</code>”，把<code>/dev/null</code>重定向到标准输入。</p>
-</li>
-<li><p>[x] 使用 man ascii 来查看 ASCII 表。</p>
-</li>
-<li><p>[ ] 在远端的 ssh 会话里，使用 <code>screen</code> 或 <code>dtach</code> 来保存你的会话。（参看<a href="https://coolshell.cn/articles/7829.html" target="_blank" rel="noopener">《28个Unix/Linux的命令行神器》</a>）</p>
-</li>
-<li><p>[ ] 要来debug Web，试试<code>curl</code> 和 <code>curl -I</code> 或是 <code>wget</code> 。我觉得debug Web的利器是<code>firebug</code>，<code>curl</code>和<code>wget</code>是用来抓网页的</p>
-</li>
-<li><p>[ ] 把 HTML 转成文本： <code>lynx -dump -stdin</code></p>
-</li>
-<li><p>[ ] 如果你要处理XML，使用 <code>xmlstarlet</code></p>
-</li>
-<li><p>[ ] 对于 Amazon S3， <code>s3cmd</code> 是一个很方便的命令（还有点不成熟）</p>
-</li>
-<li><p>[ ] 在 ssh中，知道怎么来使用ssh隧道。通过 <code>-L</code> or <code>-D</code> (还有<code>-R</code>) ，FQ神器。</p>
-</li>
-<li><p>[ ] 你还可以对你的ssh 做点优化。比如，<code>.ssh/config</code> 包含着一些配置：避免链接被丢弃，链接新的host时不需要确认，转发认证，以前使用压缩（如果你要使用scp传文件）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCPKeepAlive=yes</span><br><span class="line">ServerAliveInterval=15</span><br><span class="line">ServerAliveCountMax=6</span><br><span class="line">StrictHostKeyChecking=no</span><br><span class="line">Compression=yes</span><br><span class="line">ForwardAgent=yes</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>[ ] 如果你有输了个命令行，但是你改变注意了，但你又不想删除它，因为你要在历史命令中找到它，但你也不想执行它。那么，你可以按下 <code>Alt_#</code> ，于是这个命令关就被加了一个#字符，于是就被注释掉了。</p>
-</li>
-</ul>
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul>
-<li><p>[x] 了解 <code>sort</code> 和 <code>uniq</code> 命令 (包括 <code>uniq</code> 的 <code>-u</code> 和 <code>-d</code> 选项).</p>
-</li>
-<li><p>[x] 了解用 <code>cut</code>, <code>paste</code>, 和 <code>join</code> 命令来操作文本文件。很多人忘了在<code>cut</code>前使用<code>join</code>。</p>
-</li>
-<li><p>[ ]  如果你知道怎么用<code>sort</code>/<code>uniq</code>来做集合交集、并集、差集能很大地促进你的工作效率。假设有两个文本文件a和b已解被 uniq了，那么，用<code>sort</code>/<code>uniq</code>会是最快的方式，无论这两个文件有多大（<code>sort</code>不会被内存所限，你甚至可以使用<code>-T</code>选项，如果你的/tmp目录很小）</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat a b | sort | uniq &gt; c   <span class="comment"># c is a union b 并集</span></span><br><span class="line">cat a b | sort | uniq -d &gt; c   <span class="comment"># c is a intersect b 交集</span></span><br><span class="line">cat a b b | sort | uniq -u &gt; c   <span class="comment"># c is set difference a - b 差集</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>[ ] 了解和字符集相关的命令行工具，包括排序和性能。很多的Linux安装程序都会设置<code>LANG</code> 或是其它和字符集相关的环境变量。这些东西可能会让一些命令（如：<code>sort</code>）的执行性能慢N多倍（注：就算是你用UTF-8编码文本文件，你也可以很安全地使用ASCII来对其排序）。如果你想Disable那个i18n 并使用传统的基于byte的排序方法，那就设置<code>export LC_ALL=C</code> （实际上，你可以把其放在 <code>.bashrc</code>）。如果这设置这个变量，你的<code>sort</code>命令很有可能会是错的。</p>
-</li>
-<li><p>[x] 了解 <code>awk</code> 和 <code>sed</code>，并用他们来做一些简单的数据修改操作。例如：求第三列的数字之和： <code>awk &#39;{ x += $3 } END { print x }&#39;</code>。这可能会比Python快3倍，并比Python的代码少三倍。</p>
-</li>
-<li><p>[ ] 使用 <code>shuf</code> 来打乱一个文件中的行或是选择文件中一个随机的行。</p>
-</li>
-<li><p>[x] 了解<code>sor</code>t命令的选项。了解key是什么（<code>-t</code>和<code>-k</code>）。具体说来，你可以使用<code>-k1,1</code>来对第一列排序，<code>-k1</code>来对全行排序。</p>
-</li>
-<li><p>[ ] Stable <code>sort</code> (<code>sort -s</code>) 会很有用。例如：如果你要想对两例排序，先是以第二列，然后再以第一列，那么你可以这样： <code>sort -k1,1 | sort -s -k2,2</code></p>
-</li>
-<li><p>[ ] 我们知道，在bash命令行下，Tab键是用来做目录文件自动完成的事的。但是如果你想输入一个Tab字符（比如：你想在<code>sort -t</code>选项后输入<code>&lt;tab&gt;</code>字符），你可以先按<code>Ctrl+V</code>，然后再按Tab键，就可以输入<code>&lt;tab&gt;</code>字符了。当然，你也可以使用<code>\t</code>。</p>
-</li>
-<li><p>[ ] 如果你想查看二进制文件，你可以使用<code>hd</code>命令（在CentOS下是<code>hexdump</code>命令），如果你想编译二进制文件，你可以使用bvi命令（<a href="http://bvi.sourceforge.net/" target="_blank" rel="noopener">http://bvi.sourceforge.net/</a> 墙）</p>
-</li>
-<li><p>[ ] 另外，对于二进制文件，你可以使用<code>strings</code>（配合<code>grep</code>等）来查看二进制中的文本。</p>
-</li>
-<li><p>[ ] 对于文本文件转码，你可以试一下 <code>iconv</code>。或是试试更强的 <code>uconv</code> 命令（这个命令支持更高级的Unicode编码）</p>
-</li>
-<li><p>[ ] 如果你要分隔一个大文件，你可以使用<code>split</code>命令（split by size）和<code>csplit</code>命令（split by a pattern）。</p>
-</li>
-</ul>
-<h2 id="系统调试"><a href="#系统调试" class="headerlink" title="系统调试"></a>系统调试</h2><p><em>这部分内容因为用不到，所以看不懂</em></p>
-<ul>
-<li><p>[ ] 如果你想知道磁盘、CPU、或网络状态，你可以使用 <code>iostat</code>, <code>netstat</code>, <code>top</code> (或更好的 <code>htop</code>), 还有 <code>dstat</code> 命令。你可以很快地知道你的系统发生了什么事。关于这方面的命令，还有<code>iftop</code>, <code>iotop</code>等（参看<a href="https://coolshell.cn/articles/7829.html" target="_blank" rel="noopener">《28个Unix/Linux的命令行神器》</a>）</p>
-</li>
-<li><p>[ ] 要了解内存的状态，你可以使用<code>free</code>和<code>vmstat</code>命令。具体来说，你需要注意 “<code>cached</code>” 的值，这个值是Linux内核占用的内存。还有<code>free</code>的值。</p>
-</li>
-<li><p>[ ] Java 系统监控有一个小的技巧是，你可以使用<code>kill -3 &lt;pid&gt;</code> 发一个SIGQUIT的信号给JVM，可以把堆栈信息（包括垃圾回收的信息）dump到stderr/logs。</p>
-</li>
-<li><p>[ ] 使用 <code>mtr</code> 会比使用 <code>traceroute</code> 要更容易定位一个网络问题。<br>如果你要找到哪个socket或进程在使用网络带宽，你可以使用 <code>iftop</code> 或 <code>nethogs</code>。</p>
-</li>
-<li><p>[ ] Apache的一个叫 <code>ab</code> 的工具是一个很有用的，用<code>quick-and-dirty</code>的方式来测试网站服务器的性能负载的工作。如果你需要更为复杂的测试，你可以试试 <code>siege</code>。</p>
-</li>
-<li><p>[ ] 如果你要抓网络包的话，试试 <code>wireshark</code> 或 <code>tshark</code>。</p>
-</li>
-<li><p>[ ] 了解 <code>strace</code> 和 <code>ltrace</code>。这两个命令可以让你查看进程的系统调用，这有助于你分析进程的<code>hang</code>在哪了，怎么<code>crash</code>和<code>failed</code>的。你还可以用其来做性能<code>profile</code>，使用 <code>-c</code> 选项，你可以使用<code>-p</code>选项来<code>attach</code>上任意一个进程。</p>
-</li>
-<li><p>[ ] 了解用<code>ldd</code>命令来检查相关的动态链接库。注意：<a href="https://coolshell.cn/articles/1626.html" target="_blank" rel="noopener"><code>ldd</code>的安全问题</a></p>
-</li>
-<li><p>[ ] 使用<code>gd</code>b来调试一个正在运行的进程或分析core dump文件。参看<a href="https://coolshell.cn/articles/3643.html" target="_blank" rel="noopener">《GDB中应该知道的几个调试方法》</a></p>
-</li>
-<li><p>[ ] 学会到 <code>/proc</code> 目录中查看信息。这是一个Linux内核运行时记录的整个操作系统的运行统计和信息，比如： <code>/proc/cpuinfo</code>, <code>/proc/xxx/cwd,</code> <code>/proc/xxx/exe</code>, <code>/proc/xxx/fd/</code>, <code>/proc/xxx/smaps</code>.</p>
-</li>
-<li><p>[ ] 如果你调试某个东西为什么出错时，<code>sar</code>命令会有用。它可以让你看看 CPU, 内存, 网络, 等的统计信息。</p>
-</li>
-<li><p>[ ] 使用 <code>dmesg</code> 来查看一些硬件或驱动程序的信息或问题。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/Linux系列---find/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/16/Linux系列---find/" itemprop="url">Linux命令：find</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T00:00:00+08:00">
-                2018-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find *[directory-list]* *[option]* *[expression]*</span><br></pre></td></tr></table></figure></p>
-<p>常用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find dir -name file1</span><br></pre></td></tr></table></figure></p>
-<p><strong>选项：</strong></p>
-<ul>
-<li><p><code>-i</code> 忽略大小写</p>
-</li>
-<li><p><code>-depth</code>：从指定目录下最深层的子目录开始查找； </p>
-</li>
-<li><p><code>-expty</code>：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录</p>
-</li>
-<li><p><code>-name</code>：指定字符串作为寻找文件或目录的范本样式；</p>
-</li>
-<li><p><code>-anewer</code>：查找其存取时间较指定文件或目录的存取时间 更接近现在的文件或目录；</p>
-</li>
-<li><p><code>-newer</code>：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
-</li>
-<li><p><code>-maxdepth</code>：设置最大目录层级； </p>
-</li>
-<li><p><code>-mindepth</code>：设置最小目录层级；</p>
-</li>
-<li><p><code>-regex</code>：正则表达式</p>
-</li>
-<li><p><code>-type</code>：只寻找符合指定的文件类型的文件:</p>
-<ul>
-<li><code>b</code> 特殊的块文件</li>
-<li><code>c</code> 特殊的字符文件</li>
-<li><code>d</code> 目录文件</li>
-<li><code>f</code> 普通文件</li>
-<li><code>I</code> 符号链接</li>
-<li><code>p</code> FIFO(命名管道)</li>
-<li><code>s</code> 套接字</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/fastp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/15/fastp/" itemprop="url">(转)fastp： 一款超快速全功能的FASTQ文件自动化质控+过滤+校正+预处理软件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T00:00:00+08:00">
-                2018-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生信/" itemprop="url" rel="index">
-                    <span itemprop="name">生信</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>软件作者简介：陈实富，海普洛斯 联合创始人 / CTO</p>
-<p>文章转载自：<a href="https://zhuanlan.zhihu.com/p/33601691" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33601691</a></p>
-<h2 id="1引言"><a href="#1引言" class="headerlink" title="1引言"></a>1引言</h2><p>各位做生信的小伙伴都知道，对于下机的FASTQ数据需要进行质控和预处理，以保证下游分析输入的数据都是干净可靠的。通常我们都是使用FASTQC等软件进行质控，使用cutadapt软件去除接头，使用Trimmomatic等软件进行剪裁，然后使用一些自已开发的脚本进行过滤。这一过程可能需要使用多个软件，相当繁琐，而且速度较慢，这些软件大多又不支持多线程，遇到较大的FASTQ文件，处理起来可真是让人等得心急如焚。</p>
-<p>所以今天给大家介绍一款新的软件，名字叫fastp，它可以仅仅扫描FASTQ文件一次，就完成比FASTQC+ cutadapt + Trimmomatic 这三个软件加起来的功能还多很多的功能，而且速度上比仅仅使用Trimmomatic一个软件还要快3倍左右，因为它使用C++开发，处处使用了高效算法，而且完美支持多线程！<br>github地址请戳：<a href="https://github.com/OpenGene/fastp" target="_blank" rel="noopener">https://github.com/OpenGene/fastp</a></p>
-<h2 id="2功能特点"><a href="#2功能特点" class="headerlink" title="2功能特点"></a>2功能特点</h2><p>该软件的功能列表：</p>
-<ul>
-<li>对数据自动进行全方位质控，生成人性化的报告。</li>
-<li>过滤功能（低质量，太短，太多N……）。</li>
-<li>对每一个序列的头部或尾部，计算滑动窗内的质量均值，并将均值较低的子序列进行切除（类似Trimmomatic的做法，但是快非常多）。</li>
-<li>全局剪裁 （在头/尾部，不影响去重），对于Illumina下机数据往往最后一到两个cycle需要这样处理。</li>
-<li>去除接头污染。厉害的是，你不用输入接头序列，因为算法会自动识别接头序列并进行剪裁。</li>
-<li>对于双端测序（PE）的数据，软件会自动查找每一对read的重叠区域，并对该重叠区域中不匹配的碱基对进行校正。</li>
-<li>去除尾部的polyG。对于Illumina NextSeq/NovaSeq的测序数据，因为是两色法发光，polyG是常有的事，所以该特性对该两类测序平台默认打开。</li>
-<li>对于PE数据中的overlap区间中不一致的碱基对，依据质量值进行校正</li>
-<li>可以对带分子标签（UMI）的数据进行预处理，不管UMI在插入片段还是在index上，都可以轻松处理。</li>
-<li>可以将输出进行分拆，而且支持两种模式，分别是指定分拆的个数，或者分拆后每个文件的行数。</li>
-</ul>
-<h2 id="3轻松上手"><a href="#3轻松上手" class="headerlink" title="3轻松上手"></a>3轻松上手</h2><p>SE:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastp -i in.fq -o out.fq</span><br></pre></td></tr></table></figure>
-<p>PE:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fastp -i in.R1.fq -o out.R1.fq -I in.R2.fq -O out.R2.fq</span><br><span class="line">fastp-i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz</span><br></pre></td></tr></table></figure>
-<h2 id="4安装fastp"><a href="#4安装fastp" class="headerlink" title="4安装fastp"></a>4安装fastp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/OpenGene/fastp.git</span><br><span class="line">cd fastp</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<h2 id="5功能介绍"><a href="#5功能介绍" class="headerlink" title="5功能介绍"></a>5功能介绍</h2><h3 id="5-1过滤"><a href="#5-1过滤" class="headerlink" title="5.1过滤"></a>5.1过滤</h3><p>fastp可以对低质量序列，较多N的序列，该功能默认是启用的，但可以使用<code>-Q</code>参数关闭。使用<code>-q</code>参数来指定合格的phred质量值，比如<code>-q 15</code>表示质量值大于等于Q15的即为合格，然后使用<code>-u</code>参数来指定最多可以有多少百分比的质量不合格碱基。比如<code>-q 15 -u 40</code>表示一个read最多只能有40%的碱基的质量值低于Q15，否则会被扔掉。使用<code>-n</code>可以限定一个read中最多能有多少个N。</p>
-<p>fastp还默认启用了read长度过滤，但可以使用<code>-L</code>参数关闭。使用<code>-l</code>参数指定最低要求一个read有多长，比如<code>-l 30</code>表示低于30个碱基的read会被扔掉。这个功能可以用于实现常用的discard模式，以保证所有输出的序列都一样长。<br>在fastp的HTML报告中，最头上的Summary表格很清楚地显示了过滤的统计信息，如下图所示：<br><img src="https://pic2.zhimg.com/80/v2-6920178b4b210ff1e37089ff8e1b289d_hd.jpg" alt="5.1"></p>
-<h3 id="5-2接头处理"><a href="#5-2接头处理" class="headerlink" title="5.2接头处理"></a>5.2接头处理</h3><p>接头（adapter）污染的处理是FASTQ文件预处理中很重要的一步。fastp默认启用了接头处理，但是可以使用<code>-A</code>命令来关掉。fastp可以自动化地查找接头序列并进行剪裁，也就是说你可以不输入任何的接头序列，fastp全自动搞定了！对于SE数据，你还是可以<code>-a</code>参数来输入你的接头，而对于PE数据则完全没有必要，fastp基于PE数据的overlap分析可以更准确地查找接头，去得更干净，而且对于一些接头本身就有碱基不匹配情况处理得更好。fastp对于接头去除会有一个汇总的报告，如下图所示：<br><img src="https://pic1.zhimg.com/80/v2-202f214ad93c99a305f6b3510ddf3f78_hd.jpg" alt="5.2"></p>
-<h3 id="5-3滑窗质量剪裁"><a href="#5-3滑窗质量剪裁" class="headerlink" title="5.3滑窗质量剪裁"></a>5.3滑窗质量剪裁</h3><p>很多时候，一个read的低质量序列都是集中在read的末端，也有少部分是在read的开头。fastp支持像Trimmomatic那样对滑动窗口中的碱基计算平均质量值，然后将不符合的滑窗直接剪裁掉。使用<code>-5</code>参数开启在5’端，也就是read的开头的剪裁，使用<code>-3</code>参数开启在3’端，也就是read的末尾的剪裁。使用<code>-W</code>参数指定滑动窗大小，默认是4，使用<code>-M</code>参数指定要求的平均质量值，默认是20，也就是Q20。</p>
-<h3 id="5-4-PE数据的碱基校正"><a href="#5-4-PE数据的碱基校正" class="headerlink" title="5.4 PE数据的碱基校正"></a>5.4 PE数据的碱基校正</h3><p>fastp支持对PE数据的每一对read进行分析，查找它们的overlap区间，然后对于overlap区间中不一致的碱基，如果发现其中一个质量非常高，而另一个非常低，则可以将非常低质量的碱基改为相应的非常高质量值的碱基值，如下图所示：<br><img src="https://pic4.zhimg.com/80/v2-78e31fe48bbdc53f5c1a1427b6170a53_hd.jpg" alt="5.4"></p>
-<p>上图中所示的标红的T碱基是低质量序列，和高质量的A不匹配，它会被校正为A。该校正功能默认没有开启使用<code>-c</code>参数可以启用，对于一些对噪声容忍度低的应用，比如液体活检，建议开启。</p>
-<h3 id="5-5全局剪裁"><a href="#5-5全局剪裁" class="headerlink" title="5.5全局剪裁"></a>5.5全局剪裁</h3><p>fastp可以对所有read在头部和尾部进行统一剪裁，该功能在去除一些测序质量不好的cycle比较有用，比如151*2的PE测序中，最后一个cycle通常质量是非常低的，需要剪裁掉。使用<code>-f</code>和<code>-t</code>分别指定read1的头部和尾部的剪裁，使用<code>-F</code>和<code>-T</code>分别指定read2的头部和尾部的剪裁。</p>
-<h3 id="5-6-polyG剪裁"><a href="#5-6-polyG剪裁" class="headerlink" title="5.6 polyG剪裁"></a>5.6 polyG剪裁</h3><p>对于两色发光法的Illumina设备（NextSeq /NovaSeq），因为在没有光信号情况下base calling的结果会返回G，所以在序列的尾端可能会出现较多的polyG，需要被去除。fastp会自动化地识别NextSeq / NovaSeq的数据，然后进行polyG识别和剪裁。如果你想强制开启该功能，可以指定<code>-g</code>参数，如果想强制关闭该功能，则可以指定<code>-G</code>参数。</p>
-<h3 id="5-7分子标签UMI处理"><a href="#5-7分子标签UMI处理" class="headerlink" title="5.7分子标签UMI处理"></a>5.7分子标签UMI处理</h3><p>UMI在处理ctDNA类似的超低频突变检测应用中是十分有用的，为了更好地对带UMI的FASTQ文件进行预处理，fastp也很好地支持了UMI预处理功能。该功能默认没有启用，需要使用<code>-U</code>参数开启，另外需要使用<code>--umi_loc</code>来指定UMI所在的位置，它可以是（index1、 index2、 read1、 read2、 per_index、 per_read ）中的一种，分别表示UMI是在index位置上，还是在插入片段中。如果指定了是在插入序列中，还需要使用 <code>--umi_len</code> 参数来指定UMI所占的碱基长度。</p>
-<h3 id="5-8输出文件切分"><a href="#5-8输出文件切分" class="headerlink" title="5.8输出文件切分"></a>5.8输出文件切分</h3><p>很多时候我们需要对输出的FASTQ进行切分，分成大小均匀的多个文件，这样可以使用比对软件并行地比对，提高并行处理的速度。fastp软件也提供了相应的功能，并且支持了两种模式，分别是使用参数<code>-s</code>指定切分后文件的个数，或者使用<code>-S</code>参数指定每个切分后文件的行数。</p>
-<h2 id="6质控报告解读"><a href="#6质控报告解读" class="headerlink" title="6质控报告解读"></a>6质控报告解读</h2><p>接下来，我们再看一下如何理解fastp生成的质控报告。fastp的报告在单一文件中同时包含了过滤前和过滤后的统计结果，如果是PE数据，则同时包含了read1和read2的统计结果。之前我们已经说过了，fastp会生成HTML的报告和JSON格式的报告。HTML报告的默认文件名是fastp.html，但是可以通过-h参数修改，JSON报告的默认文件名是fastp.json，但是可以通过-j参数修改。而且fastp报告还有一个标题，默认是fastp report，这个也可以通过-R参数修改为你想要的标题。JSON格式的报告是优化过的，人机皆可读，适合进阶的用户使用程序解析，而这里我们重点关注HTML格式的报告。</p>
-<h3 id="6-1质量分布曲线图"><a href="#6-1质量分布曲线图" class="headerlink" title="6.1质量分布曲线图"></a>6.1质量分布曲线图</h3><p>我们第一关注的当然是质量，所以fastp提供了质量分布曲线，即每一个cycle的平均质量值，而且fastp同时提供了A/T/C/G四种不同碱基的平均质量，以及总的平均质量，如下图所示：<br><img src="https://pic3.zhimg.com/80/v2-ee5358c3a2a93af49171459278aa751e_hd.jpg" alt="6.1"><br><img src="https://pic3.zhimg.com/80/v2-ee5358c3a2a93af49171459278aa751e_hd.jpg" alt="6.1_1"></p>
-<p>从上图我们可以看到，一共有5条曲线，分别是A/T/C/G和mean。而且HTML报告中的每一个项目和分项目都是可以点击进行隐藏和展开的。</p>
-<h3 id="6-2碱基含量分布曲线"><a href="#6-2碱基含量分布曲线" class="headerlink" title="6.2碱基含量分布曲线"></a>6.2碱基含量分布曲线</h3><p>和质量分布曲线类似，碱基含量分布曲线也是按照每一个cycle来的，显示了每一个位置的碱基含量。如下图所示：<br><img src="https://pic2.zhimg.com/80/v2-c2ca5f1b36bf7c9010d43773dffaf66d_hd.jpg" alt="6.2"><br><img src="https://pic2.zhimg.com/80/v2-4d30aaf1dfe395d89d36d9ae5c3e135d_hd.jpg" alt="6.2_1"></p>
-<p>从图中可以看到，fastp同时显示了A/T/C/G/N/GC的每一个位置的比例和总的比例。而且如果你觉得头部那里比较乱看不清的话，可以用鼠标拉一个框，它就放大了</p>
-<h3 id="6-3-KMER统计表格"><a href="#6-3-KMER统计表格" class="headerlink" title="6.3 KMER统计表格"></a>6.3 KMER统计表格</h3><p>fastp对5个碱基长度的所有组合的出现次数进行了统计，然后把它放在了一张表格中，表格的每一个元素为深背景白字，背景越深，则表示重复次数越多。这样，一眼望去，就可以发现有哪一些异常的信息。<br><img src="https://pic3.zhimg.com/80/v2-a69e014cd516d44ac2bb0d3cb8d6d67e_hd.jpg" alt="6.3"></p>
-<p>从上面的KMER表格中，我们可以发现，GGGGG的颜色特别深，从鼠标移上去之后显示的信息中我们可以发现它的出现次数是平均次数的12.8倍，这是不正常的，因为GGGGG的正常倍数应该在1倍左右。幸好我们有fastp，它可以过滤掉这种polyG，让数值较多地回归正常。</p>
-<h3 id="6-4过表达序列-overrepresented-sequence"><a href="#6-4过表达序列-overrepresented-sequence" class="headerlink" title="6.4过表达序列(overrepresented sequence)"></a>6.4过表达序列(overrepresented sequence)</h3><p>fastp的最新版本（v0.12）提供了overrepresetned<br>sequence的分析，而且不但提供了这些overrepresented sequence的序列个数和占比，还提供了他们在测序cycles中的分布情况，这有利于分析各种问题</p>
-<h2 id="7-完整参数"><a href="#7-完整参数" class="headerlink" title="7 完整参数"></a>7 完整参数</h2><p>使用示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastp -i R1.fastq.gz -I R2.clean.fastq.gz -o R1.clean.fastq.gz -O R2.clean.fastq.gz -f 5 -F 5 -3 -W 8 -M 25 -q 20 -u 25 -n 3 -l 50 -c -g --poly_g_min_len 6 -x -y -Y 20 -j out.json -h out.html --adapter_sequence GATCGGAAGAGCACACGTCTGAACTCCAGTCAC --adapter_sequence_r2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT &gt; fastp.log</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">$fastp</span><br><span class="line">fastp: an ultra-fast all-in-one FASTQ preprocessor</span><br><span class="line">version 0.19.3</span><br><span class="line">usage: fastp --in1=string [options] ...</span><br><span class="line">options:</span><br><span class="line">  -i, --in1                            read1 input file name (string)</span><br><span class="line">  -o, --out1                           read1 output file name (string [=])</span><br><span class="line">  -I, --in2                            read2 input file name (string [=])</span><br><span class="line">  -O, --out2                           read2 output file name (string [=])</span><br><span class="line">  -6, --phred64                        indicate the input is using phred64 scoring (it&apos;ll be converted to phred33, so the output will still be phred33)</span><br><span class="line">  -z, --compression                    compression level for gzip output (1 ~ 9). 1 is fastest, 9 is smallest, default is 4. (int [=4])</span><br><span class="line">      --stdout                         stream passing-filters reads to STDOUT. This option will result in interleaved FASTQ output for paired-end input. Disabled by defaut.</span><br><span class="line">      --interleaved_in                 indicate that &lt;in1&gt; is an interleaved FASTQ which contains both read1 and read2. Disabled by defaut.</span><br><span class="line">      --reads_to_process               specify how many reads/pairs to be processed. Default 0 means process all reads. (int [=0])</span><br><span class="line">      --dont_overwrite                 don&apos;t overwrite existing files. Overwritting is allowed by default.</span><br><span class="line">  -V, --verbose                        output verbose log information (i.e. when every 1M reads are processed).</span><br><span class="line">  -A, --disable_adapter_trimming       adapter trimming is enabled by default. If this option is specified, adapter trimming is disabled</span><br><span class="line">  -a, --adapter_sequence               the adapter for read1. For SE data, if not specified, the adapter will be auto-detected. For PE data, this is used if R1/R2 are found not overlapped. (string [=auto])</span><br><span class="line">      --adapter_sequence_r2            the adapter for read2 (PE data only). This is used if R1/R2 are found not overlapped. If not specified, it will be the same as &lt;adapter_sequence&gt; (string [=])</span><br><span class="line">  -f, --trim_front1                    trimming how many bases in front for read1, default is 0 (int [=0])</span><br><span class="line">  -t, --trim_tail1                     trimming how many bases in tail for read1, default is 0 (int [=0])</span><br><span class="line">  -F, --trim_front2                    trimming how many bases in front for read2. If it&apos;s not specified, it will follow read1&apos;s settings (int [=0])</span><br><span class="line">  -T, --trim_tail2                     trimming how many bases in tail for read2. If it&apos;s not specified, it will follow read1&apos;s settings (int [=0])</span><br><span class="line">  -g, --trim_poly_g                    force polyG tail trimming, by default trimming is automatically enabled for Illumina NextSeq/NovaSeq data</span><br><span class="line">      --poly_g_min_len                 the minimum length to detect polyG in the read tail. 10 by default. (int [=10])</span><br><span class="line">  -G, --disable_trim_poly_g            disable polyG tail trimming, by default trimming is automatically enabled for Illumina NextSeq/NovaSeq data</span><br><span class="line">  -x, --trim_poly_x                    enable polyX trimming in 3&apos; ends.</span><br><span class="line">      --poly_x_min_len                 the minimum length to detect polyX in the read tail. 10 by default. (int [=10])</span><br><span class="line">  -5, --cut_by_quality5                enable per read cutting by quality in front (5&apos;), default is disabled (WARNING: this will interfere deduplication for both PE/SE data)</span><br><span class="line">  -3, --cut_by_quality3                enable per read cutting by quality in tail (3&apos;), default is disabled (WARNING: this will interfere deduplication for SE data)</span><br><span class="line">  -W, --cut_window_size                the size of the sliding window for sliding window trimming, default is 4 (int [=4])</span><br><span class="line">  -M, --cut_mean_quality               the bases in the sliding window with mean quality below cutting_quality will be cut, default is Q20 (int [=20])</span><br><span class="line">  -Q, --disable_quality_filtering      quality filtering is enabled by default. If this option is specified, quality filtering is disabled</span><br><span class="line">  -q, --qualified_quality_phred        the quality value that a base is qualified. Default 15 means phred quality &gt;=Q15 is qualified. (int [=15])</span><br><span class="line">  -u, --unqualified_percent_limit      how many percents of bases are allowed to be unqualified (0~100). Default 40 means 40% (int [=40])</span><br><span class="line">  -n, --n_base_limit                   if one read&apos;s number of N base is &gt;n_base_limit, then this read/pair is discarded. Default is 5 (int [=5])</span><br><span class="line">  -L, --disable_length_filtering       length filtering is enabled by default. If this option is specified, length filtering is disabled</span><br><span class="line">  -l, --length_required                reads shorter than length_required will be discarded, default is 15. (int [=15])</span><br><span class="line">      --length_limit                   reads longer than length_limit will be discarded, default 0 means no limitation. (int [=0])</span><br><span class="line">  -y, --low_complexity_filter          enable low complexity filter. The complexity is defined as the percentage of base that is different from its next base (base[i] != base[i+1]).</span><br><span class="line">  -Y, --complexity_threshold           the threshold for low complexity filter (0~100). Default is 30, which means 30% complexity is required. (int [=30])</span><br><span class="line">      --filter_by_index1               specify a file contains a list of barcodes of index1 to be filtered out, one barcode per line (string [=])</span><br><span class="line">      --filter_by_index2               specify a file contains a list of barcodes of index2 to be filtered out, one barcode per line (string [=])</span><br><span class="line">      --filter_by_index_threshold      the allowed difference of index barcode for index filtering, default 0 means completely identical. (int [=0])</span><br><span class="line">  -c, --correction                     enable base correction in overlapped regions (only for PE data), default is disabled</span><br><span class="line">      --overlap_len_require            the minimum length of the overlapped region for overlap analysis based adapter trimming and correction. 30 by default. (int [=30])</span><br><span class="line">      --overlap_diff_limit             the maximum difference of the overlapped region for overlap analysis based adapter trimming and correction. 5 by default. (int [=5])</span><br><span class="line">  -U, --umi                            enable unique molecular identifer (UMI) preprocessing</span><br><span class="line">      --umi_loc                        specify the location of UMI, can be (index1/index2/read1/read2/per_index/per_read, default is none (string [=])</span><br><span class="line">      --umi_len                        if the UMI is in read1/read2, its length should be provided (int [=0])</span><br><span class="line">      --umi_prefix                     if specified, an underline will be used to connect prefix and UMI (i.e. prefix=UMI, UMI=AATTCG, final=UMI_AATTCG). No prefix by default (string [=])</span><br><span class="line">      --umi_skip                       if the UMI is in read1/read2, fastp can skip several bases following UMI, default is 0 (int [=0])</span><br><span class="line">  -p, --overrepresentation_analysis    enable overrepresented sequence analysis.</span><br><span class="line">  -P, --overrepresentation_sampling    one in (--overrepresentation_sampling) reads will be computed for overrepresentation analysis (1~10000), smaller is slower, default is 20. (int [=20])</span><br><span class="line">  -j, --json                           the json format report file name (string [=fastp.json])</span><br><span class="line">  -h, --html                           the html format report file name (string [=fastp.html])</span><br><span class="line">  -R, --report_title                   should be quoted with &apos; or &quot;, default is &quot;fastp report&quot; (string [=fastp report])</span><br><span class="line">  -w, --thread                         worker thread number, default is 2 (int [=2])</span><br><span class="line">  -s, --split                          split output by limiting total split file number with this option (2~999), a sequential number prefix will be added to output name ( 0001.out.fq, 0002.out.fq...), disabled by default (int [=0])</span><br><span class="line">  -S, --split_by_lines                 split output by limiting lines of each file with this option(&gt;=1000), a sequential number prefix will be added to output name ( 0001.out.fq, 0002.out.fq...), disabled by default (long [=0])</span><br><span class="line">  -d, --split_prefix_digits            the digits for the sequential number padding (1~10), default is 4, so the filename will be padded as 0001.xxx, 0 to disable padding (int[=4])</span><br><span class="line">  -?, --help                           print this message</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/python3标准库系列(五)-subprocess/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/14/python3标准库系列(五)-subprocess/" itemprop="url">python3 标准库系列(五)---subprocess</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T00:00:00+08:00">
-                2018-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>subprocess模块是用来执行外部命令，下面介绍两种主要的用法。</p>
-<h2 id="subprocess-run"><a href="#subprocess-run" class="headerlink" title="subprocess.run"></a><code>subprocess.run</code></h2><p> 这里<code>call</code>, <code>check_call</code>, <code>check_output</code>, 与其功能性相似，就不展开介绍了</p>
-<p>常用参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">subprocess.run (args，*,</span><br><span class="line">				stdin = <span class="keyword">None</span>,</span><br><span class="line">				input = <span class="keyword">None</span>,</span><br><span class="line">				stdout = <span class="keyword">None</span>,</span><br><span class="line">				stderr = <span class="keyword">None</span>,</span><br><span class="line">				shell = <span class="keyword">False</span>,</span><br><span class="line">				cwd = <span class="keyword">None</span>,</span><br><span class="line">				timeout = <span class="keyword">None</span>,</span><br><span class="line">				check = <span class="keyword">False</span>,</span><br><span class="line">				encoding = <span class="keyword">None</span>,</span><br><span class="line">				errors = <span class="keyword">None</span>,</span><br><span class="line">				env = <span class="keyword">None</span> )</span><br></pre></td></tr></table></figure>
-<p>默认不会捕获stdout或stderr</p>
-<p>如果check为true，并且进程以非零退出代码退出， CalledProcessError则会引发异常。该异常的属性包含参数，退出代码以及stdout和stderr（如果它们被捕获）,</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里捕获了stdout,stderr</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = subprocess.run([<span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="string">"/dev/null"</span>],stdout=subprocess.PIPE,stderr=subprocess.PIPE)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.stdout</span><br><span class="line"><span class="string">b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.stdout</span><br><span class="line"><span class="string">b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.stdout.decode(<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
-<p>如果我们使用了check参数的话，如果执行错误，就会引发异常，这里什么都捕获不到</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = subprocess.run([<span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="string">"/null"</span>], check=<span class="keyword">True</span>,stdout=subprocess.PIPE,stderr=subprocess.PIPE)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">"/share/chg2master/prod/Other/zhongjw/miniconda3/lib/python3.6/subprocess.py"</span>, line <span class="number">418</span>, <span class="keyword">in</span> run</span><br><span class="line">    output=stdout, stderr=stderr)</span><br><span class="line">subprocess.CalledProcessError: Command <span class="string">'['</span>ls<span class="string">', '</span>-l<span class="string">', '</span>/null<span class="string">']'</span> returned non-zero exit status <span class="number">2.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(b)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">'b'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-<p><em>python3.7里新增了<code>capture_output</code>参数,如果设置为true，则将捕获stdout和stderr。 使用时，将使用stdout = PIPE和stderr = PIPE自动创建内部Popen对象。 也可能不使用stdout和stderr参数。那么Popen对象的stdout、stderr与上面示例里的有什么不同呢？</em></p>
-<h2 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen"></a><code>subprocess.Popen</code></h2><p>subprocess中更底层的进程创建和管理可以通过Popen类实现。它提供了更多的灵活性，程序员通过它能处理更多复杂的情况。</p>
-<p>常用参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">subprocess.Popen(args, </span><br><span class="line">				bufsize=<span class="number">-1</span>, </span><br><span class="line">				executable=<span class="keyword">None</span>, </span><br><span class="line">				stdin=<span class="keyword">None</span>, </span><br><span class="line">				stdout=<span class="keyword">None</span>, </span><br><span class="line">				stderr=<span class="keyword">None</span>, </span><br><span class="line">				preexec_fn=<span class="keyword">None</span>, </span><br><span class="line">				close_fds=<span class="keyword">True</span>, </span><br><span class="line">				shell=<span class="keyword">False</span>, </span><br><span class="line">				cwd=<span class="keyword">None</span>, </span><br><span class="line">				env=<span class="keyword">None</span>, </span><br><span class="line">				universal_newlines=<span class="keyword">False</span>, </span><br><span class="line">				startupinfo=<span class="keyword">None</span>, </span><br><span class="line">				creationflags=<span class="number">0</span>, </span><br><span class="line">				restore_signals=<span class="keyword">True</span>, </span><br><span class="line">				start_new_session=<span class="keyword">False</span>, </span><br><span class="line">				pass_fds=(), *, </span><br><span class="line">				encoding=<span class="keyword">None</span>, </span><br><span class="line">				errors=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj = subprocess.Popen([<span class="string">"ls"</span>, <span class="string">"-l"</span>, <span class="string">"/null"</span>], stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.stderr.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line"><span class="string">'ls: 无法访问/null: 没有那个文件或目录\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.stderr.read().decode(<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
-<p>从上面示例中可以看出Popen对象的stdout、stderr获取的是数据流，而run捕获的stdout、stderr是字符串格式</p>
-<p>当然官方文档说是不建议使用<code>.stdin.write</code>,<code>.stdout.read</code> 或者 <code>.stderr.read</code>，而是用<code>.communicate</code>方法，该方法会造成阻塞，以防止其他进程读取数据流造成死锁</p>
-<p><code>.communicate()</code>方法如果同时有<code>.stdout</code>和 <code>.stderr</code>, 返回的是一个元组, 用下标可以访问捕获的<code>stdout</code>和 <code>stderr</code>。</p>
-<p>还要补充一点就是如果不捕获输出的话，是不会造成阻塞的，如果要等待子进程运行完可以使用<code>.wait</code>方法，而<code>subprocesee.run</code>方法会造成主程序的阻塞，因为要获取子进程运行状态。</p>
-<p>Popen对象的主要方法有：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'communicate'</span>, <span class="string">'kill'</span>, <span class="string">'pid'</span>, <span class="string">'poll'</span>, <span class="string">'returncode'</span>, <span class="string">'send_signal'</span>, <span class="string">'stderr'</span>, <span class="string">'stdin'</span>, <span class="string">'stdout'</span>, <span class="string">'terminate'</span>, <span class="string">'universal_newlines'</span>, <span class="string">'wait'</span>]</span><br></pre></td></tr></table></figure>
-<p>如果有需要使用其他的参数和方法请查阅<a href="https://docs.python.org/3.6/library/subprocess.html#module-subprocess" target="_blank" rel="noopener">官方文档</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/Linux系列---vim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/Linux系列---vim/" itemprop="url">vim 用法大全</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>打开/退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim -R file1 只读打开</span><br><span class="line">:qall 退出所有文件</span><br><span class="line">:wq 写入并退出</span><br><span class="line">:q! 强制退出</span><br></pre></td></tr></table></figure>
-<p>插入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i 在当前位置生前插入</span><br><span class="line">I 在当前行首插入</span><br><span class="line">a 在当前位置后插入</span><br><span class="line">A 在当前行尾插入</span><br><span class="line">o 在当前行之后插入一行</span><br><span class="line">O 在当前行之前插入一行</span><br></pre></td></tr></table></figure>
-<p>移动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h 左移一个字符</span><br><span class="line">l 右移一个字符</span><br><span class="line">k 上移一个字符</span><br><span class="line">j 下移一个字符</span><br></pre></td></tr></table></figure>
-<p>删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd 删除当前行</span><br><span class="line">dj 删除当前行和上一行</span><br><span class="line">dk 删除当前行和下一行</span><br><span class="line">10dd 删除当前行开始的共10行</span><br><span class="line">D 删除当前字符至行尾</span><br></pre></td></tr></table></figure>
-<p>跳转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gg 跳转到文件头</span><br><span class="line">G 跳转到文件尾</span><br><span class="line">gg=G自动缩进 （非常有用）</span><br><span class="line">Ctrl + d 向下滚动半屏</span><br><span class="line">Ctrl + u 向上滚动半屏</span><br><span class="line">Ctrl + f 向下滚动一屏</span><br><span class="line">Ctrl + b 向上滚动一屏</span><br><span class="line">冒号+行号，跳转到指定行；比如:120，跳转到120行；</span><br><span class="line">$ 跳转到行尾</span><br><span class="line">0 跳转到行首</span><br></pre></td></tr></table></figure>
-<p>编辑</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">u 撤销</span><br><span class="line">Ctrl + r 重做</span><br><span class="line">yy 复制当前行</span><br><span class="line">按v（逐字）或V（逐行）进入可视模式，然后用jklh命令移动即可选择某些行或字符，再按y即可复制任意部分</span><br><span class="line">p 粘贴在当前位置</span><br><span class="line">另外，删除在vim里面就是剪切的意思，所以dd就是剪切当前行，可以用v或V选择特定部分再按d就是任意剪切了</span><br></pre></td></tr></table></figure>
-<p>查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/text　　查找text，按n健查找下一个，按N健查找前一个</span><br><span class="line">?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个</span><br><span class="line">:set ignorecase　　忽略大小写的查找</span><br><span class="line">:set noignorecase　　不忽略大小写的查找</span><br></pre></td></tr></table></figure>
-<p>替换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:s/old/new/ 用old替换new，替换当前行的第一个匹配</span><br><span class="line">:s/old/new/g 用old替换new，替换当前行的所有匹配</span><br><span class="line">:%s/old/new/ 用old替换new，替换所有行的第一个匹配</span><br><span class="line">:%s/old/new/g 用old替换new，替换整个文件的所有匹配</span><br><span class="line">也可以用v或V选择指定行，然后执行</span><br></pre></td></tr></table></figure>
-<p>多文件操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim file1 file2 file3 ... 同时编辑多个文件</span><br><span class="line">:split 将窗口分成上下两个子窗口，对应两个不同的文件</span><br><span class="line">:vsplit 将窗口分成左右两个子窗口，对应两个不同的文件</span><br><span class="line">:open file4 打开新文件</span><br><span class="line">:bn 切换到下一个文件（当前窗口）</span><br><span class="line">:bp 切换到上一个文件（当前窗口）</span><br><span class="line">Ctrl-w h    移动到窗口左边</span><br><span class="line">Ctrl-w j    移动到窗口下边</span><br><span class="line">Ctrl-w k    移动到窗口上边</span><br><span class="line">Ctrl-w l    移动到窗口右边</span><br></pre></td></tr></table></figure>
-<p><em>未完待续……</em></p>
-<p>参考链接：<a href="https://www.cnblogs.com/linyx/p/4131699.html" target="_blank" rel="noopener">https://www.cnblogs.com/linyx/p/4131699.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/perl脚本模板/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/perl脚本模板/" itemprop="url">perl 脚本模板</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T00:00:00+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/perl/" itemprop="url" rel="index">
-                    <span itemprop="name">perl</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/perl -w</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> Getopt::Long;</span><br><span class="line"><span class="keyword">use</span> File::Basename;</span><br><span class="line"><span class="keyword">use</span> FindBin <span class="string">qw($Bin $Script)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $USAGE = <span class="string">qq&#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Fuction：</span></span><br><span class="line"><span class="string">        test</span></span><br><span class="line"><span class="string">Useage:</span></span><br><span class="line"><span class="string">        perl $0 [Options]</span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">        -h|help         Print this help</span></span><br><span class="line"><span class="string">        -i| input       &lt;str&gt;  input input file</span></span><br><span class="line"><span class="string">        -o|output       &lt;str&gt;  output output file</span></span><br><span class="line"><span class="string">Other:</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">&#125;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> ($help,$input,$output);</span><br><span class="line"></span><br><span class="line">GetOptions(	<span class="comment"># 冒号为设置参数类型</span></span><br><span class="line">	<span class="string">"help:s"</span>=&gt;\$help,</span><br><span class="line">	<span class="string">"input:s"</span>=&gt;\$input,</span><br><span class="line">	<span class="string">"output:s"</span>=&gt;\$output</span><br><span class="line">);</span><br><span class="line"><span class="keyword">die</span> <span class="string">"$USAGE\n"</span> <span class="keyword">unless</span> ($input &amp;&amp; $output);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/python3cook系列笔记(八)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/12/python3cook系列笔记(八)/" itemprop="url">python3 cookbook笔记： 第八章 类与对象(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T00:00:00+08:00">
-                2018-11-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>本节介绍property装饰器的用法</em></p>
-<p><code>proprety</code>的作用是可以将方法变成属性，那它到底是怎么实现的呢？让我们先来看一个例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">		self.first_name = name</span><br><span class="line">	<span class="comment"># Getter 方法</span></span><br><span class="line"><span class="meta">	@property</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self._first_name</span><br><span class="line">	<span class="comment"># Setter 方法</span></span><br><span class="line"><span class="meta">	@first_name.setter</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, str):</span><br><span class="line">			<span class="keyword">raise</span> TypeError(<span class="string">'Expected a string'</span>)</span><br><span class="line">		self._first_name = value</span><br><span class="line">	<span class="comment"># Deleter 方法(可选)</span></span><br><span class="line"><span class="meta">	@first_name.deleter</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">raise</span> AttributeError(<span class="string">"Can't delete attribute"</span>)</span><br></pre></td></tr></table></figure>
-<p>使用方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = Person(<span class="string">'Guido'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.first_name <span class="comment"># 调用getter方法</span></span><br><span class="line"><span class="string">'Guido'</span></span><br></pre></td></tr></table></figure>
-<p>当我们进行赋值操作时<code>a = Person(&#39;Guido&#39;)</code>就创建了实例，在构造函数中的赋值语句<code>self.first_name</code>就会自动调用<code>first_name</code>的<code>getter</code>、<code>setter</code>、<code>deleter</code>方法(实质上是调用了<code>__get__()</code> 、<code>__set__()</code>和<code>__delete__()</code> 方法)。</p>
-<p>而将等号右边的<code>name</code>参数传入到<code>@first_name.setter</code>下面的方法中，书中是用的<code>first_name</code>变量名字，其实这里设置成其他的变量名比较好，要不然容易混淆参数与方法函数。</p>
-<p>因此装饰器<code>property</code>将原来的<code>first_name()</code>方法，变成了<code>self.first_name</code>属性,一开始我们要调用方法是<code>var.mothed()</code>,现在变成了属性，只用<code>.</code>运算符就可以, 括号就不需要了</p>
-<p>接下来我们来看另一中形式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(value, str):</span><br><span class="line">            self._name = value</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self._name = <span class="string">'to getter '</span></span><br></pre></td></tr></table></figure>
-<p>这里在构造函数中并没有调用<code>getter</code>、<code>setter</code>方法，那么，<code>self._name</code>，<code>self.name</code>其实是两个不同的属性，只是<code>self._name</code>属性依赖于<code>self.name</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = Animal(<span class="string">'black dog'</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name <span class="comment"># 此时其实是没有调用setter方法的，只调用了 getter方法</span></span><br><span class="line"><span class="string">'black dog'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a._name <span class="comment"># 因为没有调用setter方法，所以self._name值也没有修改</span></span><br><span class="line"><span class="string">'black dog'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name = <span class="number">1</span> <span class="comment"># 调用了setter方法，但是不是字符串类型的，所以执行 self._name = 'to getter '，然后调用getter方法，返回self._name的值</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name</span><br><span class="line"><span class="string">'to getter '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a._name <span class="comment"># 因为进行了赋值操作，因此self._name的值也进行了修改</span></span><br><span class="line"><span class="string">'to getter '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name = <span class="string">"white55k"</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.name</span><br><span class="line"><span class="string">'white55k'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a._name</span><br><span class="line"><span class="string">'white55k'</span></span><br></pre></td></tr></table></figure>
-<p>这里要说明的一点是<code>__init__</code>函数的参数<code>name</code>只是执行了<code>self._name = name</code>赋值操作，由于并没有调用<code>setter</code>方法，因此<code>def name(self, value)</code>需要重新传入参数(赋值)</p>
-<p>在看另一种用法，只设置<code>getter</code>方法，变成只读属性，实现编程接口：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">2018</span> - self._birth</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a=Student() <span class="comment"># 创建实例</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.birth=<span class="number">1990</span> <span class="comment"># setter</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.birth <span class="comment"># getter</span></span><br><span class="line"><span class="number">1990</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.age <span class="comment"># 只有 getter</span></span><br><span class="line"><span class="number">28</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.age=<span class="number">2</span> <span class="comment"># 调用setter方法，会报错</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">AttributeError: can<span class="string">'t set attribute</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/Linux系列---tar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/Linux系列---tar/" itemprop="url">Linux命令：tar</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T00:00:00+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf log.tar log2018.log    #仅打包，不压缩！</span><br><span class="line"></span><br><span class="line">tar -zcvf log.tar.gz log2018.log   #打包后，以 gzip 压缩</span><br><span class="line">tar -jcvf log.tar.bz2 log2018.log  #打包后，以 bzip2 压缩</span><br><span class="line"></span><br><span class="line">tar -zxvf /opt/soft/test/log.tar.gz # 解压gz</span><br><span class="line">tar -jxvf /opt/soft/test/log.tar.bz2 # 解压bz2</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/perl命令行打印单引号/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/perl命令行打印单引号/" itemprop="url">perl 命令行中打印单引号</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T00:00:00+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/perl/" itemprop="url" rel="index">
-                    <span itemprop="name">perl</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一开始我以为在单行命令中打印单引号是这样的：</p>
-  <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  perl -e <span class="string">'print "\'";'</span></span><br><span class="line">  <span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">后来发现这样写是不行的，在第二个单号的时候就会与第一个引号匹配，而被当作这命令未结束。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">因为反斜杠对符号做了转义，这样的命令解释成：perl -e 'print ';' (双引号内一个单引号，它被当作了括住命令的单引号了)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">搜索了一波才知道要这样写：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  `</span><span class="string">``</span>perl</span><br><span class="line">  perl -e <span class="string">'print "'</span>\<span class="string">''</span><span class="string">";'</span></span><br></pre></td></tr></table></figure>
-<p>双引号内是 单引号 反斜杠 单引号 ，这样经过双引号代换后变成：</p>
-  <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e <span class="string">'print \' '</span></span><br></pre></td></tr></table></figure>
-<p>也就是说，在命令行中要使用反转义线’\’, 就必须带（单？）引号,这样才会被Perl语言解释成反转义线，要不然会被shell捕获成反转义线</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/python3cook系列笔记(七)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Naruto">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/137356299.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木叶村">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/09/python3cook系列笔记(七)/" itemprop="url">python3 cookbook笔记： 第八章 类与对象(一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T00:00:00+08:00">
-                2018-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类 定义了一组属性，这些属性与一组叫做<strong>实例</strong>的对象相关且由其共享。类通常是由函数（称为<strong>方法</strong> ，method）、变量（称为<strong>类变量</strong> ，class variable）和计算出的属性（称为<strong>特性</strong> ，property）组成的集合</p>
-<h3 id="class-语句"><a href="#class-语句" class="headerlink" title="class 语句"></a>class 语句</h3><p>使用<code>class</code>语句可定义类。类主体包含一系列在类定义时执行的语句，例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span><span class="params">(object)</span>:</span></span><br><span class="line">　　 num_accounts = <span class="number">0</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,balance)</span>:</span></span><br><span class="line">　　　　 self.name = name</span><br><span class="line">　　　　 self.balance = balance</span><br><span class="line">　　　　 Account.num_accounts += <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 Account.num_accounts -= <span class="number">1</span></span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">deposit</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance + amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span><span class="params">(self,amt)</span>:</span></span><br><span class="line">　　　　 self.balance = self.balance - amt</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">inquiry</span><span class="params">(self)</span>:</span></span><br><span class="line">　　　　 <span class="keyword">return</span> self.balance</span><br></pre></td></tr></table></figure>
-<p>在类主体执行期间创建的值放在类对象中，这个对象充当着命名空间，与模块极为相似。例如，访问Account 类成员的方式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Account.num_accounts</span><br><span class="line">Account.__init__</span><br><span class="line">Account.__del__</span><br><span class="line">Account.deposit</span><br><span class="line">Account.withdraw</span><br><span class="line">Account.inquiry</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，class 语句本身并不创建该类的任何实例（例如，上一个例子实际上不会创建任何账户）。类仅设置将在以后创建的所有实例使用的属性。从这种意义上讲，可以将类看作一个蓝图。</p>
-<p>类中定义的函数称为<strong>实例方法</strong> 。实例方法是一种在类的实例上进行操作的函数，类实例作为第一个参数传递。根据约定，这个参数称为<code>self</code> ，尽管所有合法的标识符都可以使用。在前面的例子中，<code>deposit()</code> 、<code>withdraw()</code>和<code>inquiry()</code> 都是实例方法。</p>
-<p><strong>类变量</strong>（如<code>num_accounts</code> ）是可在类的所有实例之间共享的值（也就是说，它们不是单独分配给每个实例的）。上例中的<code>num_accounts</code> 变量用于跟踪存在多少个Account 实例。</p>
-<h3 id="类实例"><a href="#类实例" class="headerlink" title="类实例"></a>类实例</h3><p>类的实例是以函数形式调用类对象来创建的。这种方法将创建一个新实例，然后将该实例传递给类的<code>__init__()</code>方法。<code>__init__()</code> 方法的参数包括新创建的实例self 和在调用类对象时提供的参数。例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一些账户</span></span><br><span class="line">a = Account(<span class="string">"Guido"</span>, <span class="number">1000.00</span>)　 </span><br><span class="line"><span class="comment"># 调用Account.__init__(a,"Guido",1000.00)</span></span><br><span class="line">b = Account(<span class="string">"Bill"</span>, <span class="number">10.00</span>)</span><br></pre></td></tr></table></figure>
-<p>在<code>__init__()</code> 内，通过将属性分配给self 来将其保存到实例中。上例中，<code>self.name =  &quot;Guido&quot;</code>。</p>
-<p><strong>上面创建了两个实例</strong>，然后用(<code>.</code>)运算符即可访问属性：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.deposit(<span class="number">100.00</span>)　　　</span><br><span class="line"><span class="comment"># 调用Account.deposit(a,100.00)</span></span><br><span class="line"><span class="comment"># self.balance已经通过__init__实例化,即self.balance = 1000.00</span></span><br><span class="line"><span class="comment"># 所以访问deposit属性后：</span></span><br><span class="line"><span class="comment"># self.balance = 1000.00 + 100.00</span></span><br><span class="line">b.withdraw(<span class="number">50.00</span>)　　　<span class="comment"># 调用Account.withdraw(b,50.00)</span></span><br><span class="line">name = a.name　　　　　<span class="comment"># 获取账户名</span></span><br></pre></td></tr></table></figure>
-<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><ul>
-<li>默认的字符串显示是<code>__str__()</code>方法，我们可以自定义<code>__repr__()</code> 和<code>__str__()</code>来是的交互更加友好</li>
-<li><code>format()</code> 函数实际上是调用的<code>__formait__()</code>方法</li>
-<li><code>with</code>语句是调用的<code>__enter__()</code> 和<code>__exit__()</code> 方法,我们可以在定义类的时候定义这两个方法，就能使对象支持<code>witg</code>上下文管理</li>
-</ul>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> socket, AF_INET, SOCK_STREAM</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyConnection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, address, family=AF_INET, type=SOCK_STREAM)</span>:</span></span><br><span class="line">        self.address = address</span><br><span class="line">        self.family = family</span><br><span class="line">        self.type = type</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.sock <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">'Already connected'</span>)</span><br><span class="line">        self.sock = socket(self.family, self.type)</span><br><span class="line">        self.sock.connect(self.address)</span><br><span class="line">        <span class="keyword">return</span> self.sock</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_ty, exc_val, tb)</span>:</span></span><br><span class="line">        self.sock.close()</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>类添加<code>__slots__</code>属性来极大的减少实例所占的内存,但使用后我们不能再给实例添加新的属性了，只能使用在<code>__slots__</code> 中定义的那些属性名。</li>
-<li>约定是任何以单下划线<code>_</code> 开头的名字都应该是内部实现</li>
-<li><p>使用双下划线开始会导致访问名称变成其他形式:</p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__private = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        self.__private_method()</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>比如，在前面的类<code>B</code> 中，私有属性会被分别重命名为<code>_B__private</code> 和<code>_B__private_method</code> 。这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。比如：</p>
-<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.__private = <span class="number">1</span> <span class="comment"># Does not override B.__private</span></span><br><span class="line">    <span class="comment"># Does not override B.__private_method()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-</code></pre><p>这里，私有名称<code>__private</code> 和<code>__private_method</code> 被重命名为<code>_C__private</code> 和<code>_C__private_method</code> ，这个跟父类<code>B</code> 中的名称是完全不同的。</p>
-<ul>
-<li>有时候你定义的一个变量和某个保留关键字冲突，这时候可以使用单下划线作为后缀</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/137356299.jpg"
-               alt="Naruto" />
-          <p class="site-author-name" itemprop="name">Naruto</p>
-           
-              <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
             </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
+        </div>
 
         
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="zhmqsnq90@foxmail.com" target="_blank" title="E-Mail">
-                  
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+<style type="text/css">
+    /* don't remove. */
+    .index-cover {
+        height: 100vh;
+    }
+</style>
+
+<div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                <div class="brand">
+                    <div class="title center-align">
                     
-                      E-Mail
+                        subtitle
                     
-                </a>
-              </span>
-            
-          
+                    </div>
+
+                    <div class="description center-align">
+                    
+                        This is your root _config.yml 'description' value.
+                    
+                    </div>
+                </div>
+            </div>
         </div>
-
         
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-
-      
-
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Naruto</span>
 </div>
 
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<script>
+// Dynamically switch banner pictures every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
+<main class="content">
+
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/13/linux-xi-lie-vim/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="vim 用法大全">
+                            
+                            <span class="card-title">vim 用法大全</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                打开/退出
+vim -R file1 只读打开
+:qall 退出所有文件
+:wq 写入并退出
+:q! 强制退出
+插入
+i 在当前位置生前插入
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/" target="_blank">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                        <a href="/tags/vim/" target="_blank">
+                            <span class="chip bg-color">vim</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/13/perl-jiao-ben-mo-ban/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="perl 脚本模板">
+                            
+                            <span class="card-title">perl 脚本模板</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                #!/usr/bin/perl -w
+use strict;
+use Getopt::Long;
+use File::Basename;
+u
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/perl/" class="post-category" target="_blank">
+                                    perl
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/perl/" target="_blank">
+                            <span class="chip bg-color">perl</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/12/python3cook-xi-lie-bi-ji-ba/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="python3 cookbook笔记： 第八章 类与对象(二)">
+                            
+                            <span class="card-title">python3 cookbook笔记： 第八章 类与对象(二)</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                本节介绍property装饰器的用法
+proprety的作用是可以将方法变成属性，那它到底是怎么实现的呢？让我们先来看一个例子：
+class
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/11/linux-xi-lie-tar/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux命令：tar">
+                            
+                            <span class="card-title">Linux命令：tar</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                tar -cvf log.tar log2018.log    #仅打包，不压缩！
+
+tar -zcvf log.tar.gz log201
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/Linux/" target="_blank">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/11/perl-ming-ling-xing-da-yin-dan-yin-hao/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="perl 命令行中打印单引号">
+                            
+                            <span class="card-title">perl 命令行中打印单引号</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                一开始我以为在单行命令中打印单引号是这样的：
+  perl -e 'print "\'";'
+
+后来发现这样写是不行的，在第二个单号的时候就
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/perl/" class="post-category" target="_blank">
+                                    perl
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/perl/" target="_blank">
+                            <span class="chip bg-color">perl</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/09/python3cook-xi-lie-bi-ji-qi/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="python3 cookbook笔记： 第八章 类与对象(一)">
+                            
+                            <span class="card-title">python3 cookbook笔记： 第八章 类与对象(一)</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                类类 定义了一组属性，这些属性与一组叫做实例的对象相关且由其共享。类通常是由函数（称为方法 ，method）、变量（称为类变量 ，class
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/08/python3-biao-zhun-ku-xi-lie-si-logging/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="python3 标准库系列(四)---logging">
+                            
+                            <span class="card-title">python3 标准库系列(四)---logging</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                logging模块可以给脚本添加日志功能。
+下面是一个输出日志的简单版：
+import logging
+
+# levelname 输出等级
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-08
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="python3 标准库系列(三)---os.path">
+                            
+                            <span class="card-title">python3 标准库系列(三)---os.path</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                os.path模块比较简单，先记住下面这些常用的用就可以了：
+>>> import os
+>>> path = '/Users/beazle
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/07/python3-biao-zhun-ku-xi-lie-er-argparse/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="python3 标准库系列(二)---argparse 模块">
+                            
+                            <span class="card-title">python3 标准库系列(二)---argparse 模块</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                argparse 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：
+import argparse
+
+pars
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/07/python3cook-xi-lie-bi-ji-liu/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="python3 cookbook笔记：第四章 文件与IO">
+                            
+                            <span class="card-title">python3 cookbook笔记：第四章 文件与IO</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/05/python3cook-xi-lie-bi-ji-wu/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="python3 cookbook笔记：第四章 迭代器与生成器">
+                            
+                            <span class="card-title">python3 cookbook笔记：第四章 迭代器与生成器</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                可迭代对象是一个比较新的词汇，而迭代是Python 最强大的功能之一。初看起来，你可能会简单的认为迭代只不过是处理序列中元素的一种方法。然而
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="python3 标准库系列(一)---email模块">
+                            
+                            <span class="card-title">python3 标准库系列(一)---email模块</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                自己写的一个发邮件的类，自己用的时候，省的自己再到处翻教程
+
+#-*-coding:utf-8-*-
+
+import smtplib
+imp
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/编程语言/" target="_blank">
+                            <span class="chip bg-color">编程语言</span>
+                        </a>
+                        
+                        <a href="/tags/python3/" target="_blank">
+                            <span class="chip bg-color">python3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">3 / 5</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/4/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+<a href="https://github.com/JeWeizhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
         tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
         }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
-  
-
-  
-
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

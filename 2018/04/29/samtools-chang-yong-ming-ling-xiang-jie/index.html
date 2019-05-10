@@ -1,0 +1,1034 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="(转载)samtools常用命令详解, 木叶村">
+    <meta name="description" content="samtools的说明文档：http://samtools.sourceforge.net/samtools.shtmlsamtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以下是常用命令的介绍
+viewview命令的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>(转载)samtools常用命令详解 | 木叶村</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">木叶村</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">木叶村</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <div class="social-link">
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+<a href="https://github.com/JeWeizhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a></div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        (转载)samtools常用命令详解
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/生信理论基础/" target="_blank">
+                                <span class="chip bg-color">生信理论基础</span>
+                            </a>
+                        
+                            <a href="/tags/samtools/" target="_blank">
+                                <span class="chip bg-color">samtools</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/生信/" class="post-category" target="_blank">
+                                生信
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-04-29
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>samtools的说明文档：<a href="http://samtools.sourceforge.net/samtools.shtml" target="_blank" rel="noopener">http://samtools.sourceforge.net/samtools.shtml</a><br>samtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以下是常用命令的介绍</p>
+<h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p>view命令的主要功能是：将sam文件转换成bam文件；然后对bam文件进行各种操作，比如数据的排序(不属于本命令的功能)和提取(这些操作是对bam文件进行的，因而当输入为sam文件的时候，不能进行该操作)；最后将排序或提取得到的数据输出为bam或sam（默认的）格式。</p>
+<p>bam文件优点：bam文件为二进制文件，占用的磁盘空间比sam文本文件小；利用bam二进制文件的运算速度快。</p>
+<p>view命令中，对sam文件头部的输入(-t或-T）和输出(-h)是单独的一些参数来控制的。</p>
+<pre><code>Usage: samtools view [options] &lt;in.bam&gt;|&lt;in.sam&gt; [region1 [...]]
+ 默认情况下不加 region，则是输出所有的 region.
+
+Options: -b       output BAM
+                  默认下输出是 SAM 格式文件，该参数设置输出 BAM 格式
+         -h       print header for the SAM output
+                  默认下输出的 sam 格式文件不带 header，该参数设定输出sam文件时带 header 信息
+         -H       print header only (no alignments)
+         -S       input is SAM
+                  默认下输入是 BAM 文件，若是输入是 SAM 文件，则最好加该参数，否则有时候会报错。
+         -u       uncompressed BAM output (force -b)
+                  该参数的使用需要有-b参数，能节约时间，但是需要更多磁盘空间。
+         -c       Instead of printing the alignments, only count them and print the 
+                  total number. All filter options, such as ‘-f’, ‘-F’ and ‘-q’ , 
+                  are taken into account.
+         -1       fast compression (force -b)
+         -x       output FLAG in HEX (samtools-C specific)
+         -X       output FLAG in string (samtools-C specific)
+         -c       print only the count of matching records
+         -L FILE  output alignments overlapping the input BED FILE [null]
+         -t FILE  list of reference names and lengths (force -S) [null]
+                  使用一个list文件来作为header的输入
+         -T FILE  reference sequence file (force -S) [null]
+                  使用序列fasta文件作为header的输入
+         -o FILE  output file name [stdout]
+         -R FILE  list of read groups to be outputted [null]
+         -f INT   required flag, 0 for unset [0]
+         -F INT   filtering flag, 0 for unset [0] 
+                  Skip alignments with bits present in INT [0]
+                  数字4代表该序列没有比对到参考序列上
+                  数字8代表该序列的mate序列没有比对到参考序列上
+         -q INT   minimum mapping quality [0]
+         -l STR   only output reads in library STR [null]
+         -r STR   only output reads in read group STR [null]
+         -s FLOAT fraction of templates to subsample; integer part as seed [-1]
+         -?       longer help
+</code></pre><p>例子：</p>
+<pre><code>将sam文件转换成bam文件
+$ samtools view -bS abc.sam &gt; abc.bam
+$ samtools view -b -S abc.sam -o abc.bam
+
+提取比对到参考序列上的比对结果
+$ samtools view -bF 4 abc.bam &gt; abc.F.bam
+
+提取paired reads中两条reads都比对到参考序列上的比对结果，只需要把两个4+8的值12作为过滤参数即可
+$ samtools view -bF 12 abc.bam &gt; abc.F12.bam
+
+提取没有比对到参考序列上的比对结果
+$ samtools view -bf 4 abc.bam &gt; abc.f.bam
+
+提取bam文件中比对到caffold1上的比对结果，并保存到sam文件格式
+$ samtools view abc.bam scaffold1 &gt; scaffold1.sam
+
+提取scaffold1上能比对到30k到100k区域的比对结果
+$ samtools view abc.bam scaffold1:30000-100000 $gt; scaffold1_30k-100k.sam
+
+根据fasta文件，将 header 加入到 sam 或 bam 文件中
+$ samtools view -T genome.fasta -h scaffold1.sam &gt; scaffold1.h.sam
+</code></pre><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort对bam文件进行排序。</p>
+<pre><code>Usage: samtools sort [-n] [-m &lt;maxMem&gt;] &lt;in.bam&gt; &lt;out.prefix&gt;  
+-m 参数默认下是 500,000,000 即500M（不支持K，M，G等缩写）。对于处理大数据时，如果内存够用，则设置大点的值，以节约时间。
+-n 设定排序方式按short reads的ID排序。默认下是按序列在fasta文件中的顺序（即header）和序列从左往右的位点排序。
+</code></pre><p>例子：</p>
+<pre><code>$ samtools sort abc.bam abc.sort
+$ samtools view abc.sort.bam | less -S
+</code></pre><h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>将2个或2个以上的已经sort了的bam文件融合成一个bam文件。融合后的文件不需要则是已经sort过了的。</p>
+<pre><code>Usage:   samtools merge [-nr] [-h inh.sam] &lt;out.bam&gt; &lt;in1.bam&gt; &lt;in2.bam&gt;[...]
+
+Options: -n       sort by read names
+         -r       attach RG tag (inferred from file names)
+         -u       uncompressed BAM output
+         -f       overwrite the output BAM if exist
+         -1       compress level 1
+         -R STR   merge file in the specified region STR [all]
+         -h FILE  copy the header in FILE to &lt;out.bam&gt; [in1.bam]
+
+Note: Samtools&#39; merge does not reconstruct the @RG dictionary in the header. Users
+      must provide the correct header with -h, or uses Picard which properly maintains
+      the header dictionary in merging.
+</code></pre><h2 id="index"><a href="#index" class="headerlink" title="index"></a>index</h2><p>必须对bam文件进行默认情况下的排序后，才能进行index。否则会报错。</p>
+<p>建立索引后将产生后缀为.bai的文件，用于快速的随机处理。很多情况下需要有bai文件的存在，特别是显示序列比对情况下。比如samtool的tview命令就需要；gbrowse2显示reads的比对图形的时候也需要。</p>
+<pre><code>Usage: samtools index &lt;in.bam&gt; [out.index]
+</code></pre><p>例子：<br>以下两种命令结果一样</p>
+<pre class=" language-lang-`"><code class="language-lang-`">$ samtools index abc.sort.bam
+$ samtools index abc.sort.bam abc.sort.bam.bai
+</code></pre>
+<h2 id="faidx"><a href="#faidx" class="headerlink" title="faidx"></a>faidx</h2><p>对fasta文件建立索引,生成的索引文件以.fai后缀结尾。该命令也能依据索引文件快速提取fasta文件中的某一条（子）序列</p>
+<pre><code>
+Usage: samtools faidx &lt;in.bam&gt; [ [...]]
+
+对基因组文件建立索引
+$ samtools faidx genome.fasta
+生成了索引文件genome.fasta.fai,是一个文本文件，分成了5列。第一列是子序列的名称；
+第二列是子序列的长度；个人认为“第三列是序列所在的位置”，因为该数字从上往下逐渐变大，
+最后的数字是genome.fasta文件的大小；第4和5列不知是啥意思。于是通过此文件，可以定位子序列在fasta文件在磁盘上的存放位置，直接快速调出子序列。
+
+由于有索引文件，可以使用以下命令很快从基因组中提取到fasta格式的子序列
+$ samtools faidx genome.fasta scffold_10 &gt; scaffold_10.fasta
+</code></pre><h2 id="tview"><a href="#tview" class="headerlink" title="tview"></a>tview</h2><p>tview能直观的显示出reads比对基因组的情况，和基因组浏览器有点类似。</p>
+<pre><code>Usage: samtools tview &lt;aln.bam&gt; [ref.fasta]
+
+当给出参考基因组的时候，会在第一排显示参考基因组的序列，否则，第一排全用N表示。
+按下 g ，则提示输入要到达基因组的某一个位点。例子“scaffold_10:1000&quot;表示到达第10号scaffold的第1000个碱基位点处。
+使用H(左）J（上）K（下）L（右）移动显示界面。大写字母移动快，小写字母移动慢。
+使用空格建向左快速移动（和 L 类似），使用Backspace键向左快速移动（和 H 类似）。
+Ctrl+H 向左移动1kb碱基距离； Ctrl+L 向右移动1kb碱基距离
+可以用颜色标注比对质量，碱基质量，核苷酸等。30～40的碱基质量或比对质量使用白色表示；
+20～30黄色；10～20绿色；0～10蓝色。
+使用点号&#39;.&#39;切换显示碱基和点号；使用r切换显示read name等
+还有很多其它的使用说明，具体按 ？ 键来查看。
+</code></pre><h2 id="flagstat"><a href="#flagstat" class="headerlink" title="flagstat"></a>flagstat</h2><p>给出BAM文件的比对结果</p>
+<pre><code>Usage: samtools flagstat &lt;in.bam&gt;
+
+$ samtools flagstat example.bam
+11945742 + 0 in total (QC-passed reads + QC-failed reads)
+总共的reads数
+0 + 0 duplicates
+7536364 + 0 mapped (63.09%:-nan%)
+总体上reads的匹配率
+11945742 + 0 paired in sequencing
+有多少reads是属于paired reads
+5972871 + 0 read1
+reads1中的reads数
+5972871 + 0 read2
+reads2中的reads数
+6412042 + 0 properly paired (53.68%:-nan%)
+完美匹配的reads数：比对到同一条参考序列，并且两条reads之间的距离符合设置的阈值
+6899708 + 0 with itself and mate mapped
+paired reads中两条都比对到参考序列上的reads数
+636656 + 0 singletons (5.33%:-nan%)
+单独一条匹配到参考序列上的reads数，和上一个相加，则是总的匹配上的reads数。
+469868 + 0 with mate mapped to a different chr
+paired reads中两条分别比对到两条不同的参考序列的reads数
+243047 + 0 with mate mapped to a different chr (mapQ&gt;=5)
+同上一个，只是其中比对质量&gt;=5的reads的数量
+</code></pre><h2 id="depth"><a href="#depth" class="headerlink" title="depth"></a>depth</h2><p>得到每个碱基位点的测序深度,并输出到标准输出。</p>
+<pre><code>Usage: bam2depth [-r reg] [-q baseQthres] [-Q mapQthres] [-b in.bed] &lt;in1.bam&gt; [...]
+</code></pre><h2 id="其它有用的命令"><a href="#其它有用的命令" class="headerlink" title="其它有用的命令"></a>其它有用的命令</h2><p>reheader 替换bam文件的头</p>
+<pre><code>$ samtools reheader &lt;in.header.sam&gt; &lt;in.bam&gt;
+</code></pre><p>cat 连接多个bam文件，适用于非sorted的bam文件</p>
+<pre><code>$ samtools cat [-h header.sam] [-o out.bam] &lt;in1.bam&gt; &lt;in2.bam&gt; [ ... ]
+</code></pre><p>idxstats 统计一个表格，4列，分别为”序列名，序列长度，比对上的reads数，unmapped reads number”。第4列应该是paired reads中有一端能匹配到该scaffold上，而另外一端不匹配到任何scaffolds上的reads数。</p>
+<pre><code>$ samtools idxstats &lt;aln.bam&gt;
+</code></pre><h2 id="将bam文件转换为fastq文件"><a href="#将bam文件转换为fastq文件" class="headerlink" title="将bam文件转换为fastq文件"></a>将bam文件转换为fastq文件</h2><p>有时候，我们需要提取出比对到一段参考序列的reads，进行小范围的分析，以利于debug等。这时需要将bam或sam文件转换为fastq格式。<br>该网站提供了一个bam转换为fastq的程序：<a href="http://www.hudsonalpha.org/gsl/information/software/bam2fastq" target="_blank" rel="noopener">http://www.hudsonalpha.org/gsl/information/software/bam2fastq</a></p>
+<pre><code>$ wget http://www.hudsonalpha.org/gsl/static/software/bam2fastq-1.1.0.tgz
+$ tar zxf bam2fastq-1.1.0.tgz
+$ cd bam2fastq-1.1.0
+$ make
+$ ./bam2fastq &lt;in.bam&gt;
+</code></pre><h2 id="mpileup"><a href="#mpileup" class="headerlink" title="mpileup"></a>mpileup</h2><p>samtools还有个非常重要的命令mpileup，以前为pileup。该命令用于生成bcf文件，再使用bcftools进行SNP和Indel的分析。bcftools是samtool中附带的软件，在samtools的安装文件夹中可以找到。</p>
+<p>最常用的参数有2： <code>-f</code> 来输入有索引文件的fasta参考序列； <code>-g</code> 输出到bcf格式。用法和最简单的例子如下</p>
+<pre><code>Usage: samtools mpileup [-EBug] [-C capQcoef] [-r reg] [-f in.fa] [-l list] [-M capMapQ] [-Q minBaseQ] [-q minMapQ] in.bam [in2.bam [...]]
+
+$ samtools mpileup -f genome.fasta abc.bam &gt; abc.txt
+$ samtools mpileup -gSDf genome.fasta abc.bam &gt; abc.bcf
+$ samtools mpileup -guSDf genome.fasta abc.bam | \
+           bcftools view -cvNg - &gt; abc.vcf
+</code></pre><p>mpileup不使用<code>-u</code>或<code>-g</code>参数时，则不生成二进制的bcf文件，而生成一个文本文件(输出到标准输出)。该文本文件统计了参考序列中每个碱基位点的比对情况；该文件每一行代表了参考序列中某一个碱基位点的比对结果。比如：</p>
+<pre><code>scaffold_1      2841    A       11      ,,,...,....     BHIGDGIJ?FF
+scaffold_1      2842    C       12      ,$,,...,....^I. CFGEGEGGCFF+
+scaffold_1      2843    G       11      ,,...,.....     FDDDDCD?DD+
+scaffold_1      2844    G       11      ,,...,.....     FA?AAAA&lt;AA+
+scaffold_1      2845    G       11      ,,...,.....     F656666166*
+scaffold_1      2846    A       11      ,,...,.....     (1.1111)11*
+scaffold_1      2847    A       11      ,,+9acggtgaag.+9ACGGTGAAT.+9ACGGTGAAG.+9ACGGTGAAG,+9acggtgaag.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG       %.+....-..)
+scaffold_1      2848    N       11      agGGGgGGGGG     !!$!!!!!!!!
+scaffold_1      2849    A       11      c$,...,.....    !0000000000
+scaffold_1      2850    A       10      ,...,.....      353333333
+</code></pre><p>mpileup生成的结果包含6行：参考序列名；位置；参考碱基；比对上的reads数；比对情况；比对上的碱基的质量。其中第5列比较复杂,解释如下：</p>
+<pre><code> 1  ‘.’代表与参考序列正链匹配。
+ 2  ‘,’代表与参考序列负链匹配。
+ 3  ‘ATCGN’代表在正链上的不匹配。
+ 4  ‘atcgn’代表在负链上的不匹配。
+ 5  ‘*’代表模糊碱基
+ 6  ‘^’代表匹配的碱基是一个read的开始；’^’后面紧跟的ascii码减去33代表比对质量；这两个符号修饰的是后面的碱基，其后紧跟的碱基(.,ATCGatcgNn)代表该read的第一个碱基。
+ 7  ‘$’代表一个read的结束，该符号修饰的是其前面的碱基。
+ 8  正则式’\+[0-9]+[ACGTNacgtn]+’代表在该位点后插入的碱基；比如上例中在scaffold_1的2847后插入了9个长度的碱基acggtgaag。表明此处极可能是indel。
+ 9  正则式’-[0-9]+[ACGTNacgtn]+’代表在该位点后缺失的碱基；
+</code></pre><p><strong>pileup具体的参数如下：</strong></p>
+<p><strong>输入参数</strong></p>
+<pre><code> -6       Assume the quality is in the Illumina 1.3+ encoding. 
+  -A Do not skip anomalous read pairs in variant calling. 
+ -B       Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments. 
+ -b FILE  List of input BAM files, one file per line [null]
+ -C INT   Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0] 
+ -d INT   At a position, read maximally INT reads per input BAM. [250] 
+ -E       Extended BAQ computation. This option helps sensitivity especially for MNPs, but may hurt specificity a little bit. 
+ -f FILE  The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by razip. [null] 
+ -l FILE  BED or position list file containing a list of regions or sites where pileup or BCF should be generated [null] 
+ -M INT       cap mapping quality at INT [60]
+ -q INT     Minimum mapping quality for an alignment to be used [0] 
+ -Q INT     Minimum base quality for a base to be considered [13]
+ -r STR     Only generate pileup in region STR [all sites]
+</code></pre><p><strong>输出参数</strong></p>
+<pre><code> -D     Output per-sample read depth (require -g/-u)
+ -g     Compute genotype likelihoods and output them in the binary call format (BCF). 
+ -S     Output per-sample Phred-scaled strand bias P-value (require -g/-u) 
+ -u     Similar to -g except that the output is uncompressed BCF, which is preferred for piping. 
+
+Options for Genotype Likelihood Computation (for -g or -u):
+ -e INT     Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20] 
+ -h INT     Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100] 
+ -I     Do not perform INDEL calling 
+ -L INT     Skip INDEL calling if the average per-sample depth is above INT. [250] 
+ -o INT     Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40] 
+ -P STR     Comma dilimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]
+</code></pre><h2 id="使用bcftools"><a href="#使用bcftools" class="headerlink" title="使用bcftools"></a>使用bcftools</h2><p>bcftools和samtools类似，用于处理vcf(variant call format)文件和bcf(binary call format)文件。前者为文本文件，后者为其二进制文件。</p>
+<p>bcftools使用简单，最主要的命令是view命令，其次还有index和cat等命令。index和cat命令和samtools中类似。此处主讲使用view命令来进行SNP和Indel calling。该命令的使用方法和例子为：</p>
+<pre><code>$ bcftools view [-AbFGNQSucgv] [-D seqDict] [-l listLoci] [-s listSample] 
+          [-i gapSNPratio] [-t mutRate] [-p varThres] [-P prior] 
+          [-1 nGroup1] [-d minFrac] [-U nPerm] [-X permThres] 
+          [-T trioType] in.bcf [region]
+
+$ bcftools view -cvNg abc.bcf &gt; snp_indel.vcf
+</code></pre><p>生成的结果文件为vcf格式，有10列，分别是：</p>
+<blockquote>
+<p>1 参考序列名；<br>2 varianti所在的left-most位置；<br>3 variant的ID（默认未设置，用’.’表示)；<br>4 参考序列的allele；<br>5 variant的allele(有多个alleles，则用’,’分隔);<br>6 variant/reference QUALity;<br>7 FILTers applied;<br>8 variant的信息，使用分号隔开；<br>9 FORMAT of the genotype fields, separated by colon (optional)；<br>10 SAMPLE genotypes and per-sample information (optional)。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code>scaffold_1      2847    .       A       AACGGTGAAG      194     .       INDEL;DP=11;VDB=0.0401;AF1=1;AC1=2;DP4=0,0,8,3;MQ=35;FQ=-67.5   GT:PL:GQ        1/1:235,33,0:63
+scaffold_1      3908    .       G       A       111     .       DP=13;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,5,7;MQ=42;FQ=-63   GT:PL:GQ        1/1:144,36,0:69
+scaffold_1      4500    .       A       G       31.5    .       DP=8;VDB=0.0034;AF1=1;AC1=2;DP4=0,0,1,3;MQ=42;FQ=-39    GT:PL:GQ        1/1:64,12,0:21
+scaffold_1      4581    .       TGGNGG  TGG     145     .       INDEL;DP=8;VDB=0.0308;AF1=1;AC1=2;DP4=0,0,0,8;MQ=42;FQ=-58.5    GT:PL:GQ        1/1:186,24,0:45
+scaffold_1      4644    .       G       A       195     .       DP=21;VDB=0.0198;AF1=1;AC1=2;DP4=0,0,10,10;MQ=42;FQ=-87 GT:PL:GQ        1/1:228,60,0:99
+scaffold_1      4827    .       NACAAAGA        NA      4.42    .       INDEL;DP=1;AF1=1;AC1=2;DP4=0,0,1,0;MQ=40;FQ=-37.5       GT:PL:GQ        0/1:40,3,0:3
+scaffold_1      4854    .       A       G       48      .       DP=6;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,2,1;MQ=41;FQ=-36    GT:PL:GQ        1/1:80,9,0:16
+scaffold_1      5120    .       A       G       85      .       DP=8;VDB=0.0355;AF1=1;AC1=2;DP4=0,0,5,3;MQ=42;FQ=-51    GT:PL:GQ        1/1:118,24,0:45
+</code></pre><p>第8列中显示了对variants的信息描述，比较重要，其中的 Tag 的描述如下：</p>
+<pre><code>Tag    Format    Description
+AF1    double    Max-likelihood estimate of the site allele frequency (AF) of the first ALT allele
+DP    int    Raw read depth (without quality filtering)
+DP4    int[4]      high-quality reference forward bases, ref reverse, alternate for and alt rev bases
+FQ    int    Consensus quality. Positive: sample genotypes different; negative: otherwise
+MQ    int    Root-Mean-Square mapping quality of covering reads
+PC2    int[2]    Phred probability of AF in group1 samples being larger (,smaller) than in group2
+PCHI2    double    Posterior weighted chi^2 P-value between group1 and group2 samples
+PV4    double[4]    P-value for strand bias, baseQ bias, mapQ bias and tail distance bias
+QCHI2    int    Phred-scaled PCHI2
+RP    int      permutations yielding a smaller PCHI2
+CLR    int    Phred log ratio of genotype likelihoods with and without the trio/pair constraint
+UGT    string    Most probable genotype configuration without the trio constraint
+CGT    string    Most probable configuration with the trio constraint
+</code></pre><p>bcftools view 的具体参数如下：</p>
+<pre><code>Input/Output Options:
+-A     Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.
+-b     Output in the BCF format. The default is VCF.
+-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]
+-F     Indicate PL is generated by r921 or before (ordering is different).
+-G     Suppress all individual genotype information.
+-l FILE List of sites at which information are outputted [all sites]
+-N     Skip sites where the REF field is not A/C/G/T
+-Q     Output the QCALL likelihood format
+-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]
+-S     The input is VCF instead of BCF.
+-u     Uncompressed BCF output (force -b). 
+
+Consensus/Variant Calling Options:
+-c     Call variants using Bayesian inference. This option automatically invokes option -e.
+-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]
+        当有多个sample用于variants calling时，比如多个转录组数据或多个重测序
+        数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的
+        samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况
+        下，该值设置在0～1之间没有意义，大于1则得不到任何结果。
+-e     Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.
+-g     Call per-sample genotypes at variant sites (force -c)
+-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]
+-p FLOAT A site is considered to be a variant if P(ref|D)
+-t FLOAT Scaled muttion rate for variant calling [0.001]
+-T STR     Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]
+-v     Output variant sites only (force -c) 
+
+Contrast Calling and Association Test Options:
+-1 INT     Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]
+-U INT     Number of permutations for association test (effective only with -1) [0]
+-X FLOAT Only perform permutations for P(chi^2)
+</code></pre><p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：</p>
+<pre><code>$ perl -ne &#39;print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8&#39; snp_indel.vcf &gt; snp_indel.final.vcf
+</code></pre><h2 id="rmdup"><a href="#rmdup" class="headerlink" title="rmdup"></a>rmdup</h2><p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.</p>
+<pre><code>Usage:  samtools rmdup [-sS]  
+ -s 对single-end reads。默认情况下，只对paired-end reads
+ -S 将Paired-end reads作为single-end reads处理。
+
+$ samtools input.sorted.bam output.bam
+</code></pre>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://jeweizhong.github.io" class="b-link-green">木叶村</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/" class="b-link-green">(转载)samtools常用命令详解</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/04/29/linux-xia-duo-ge-jie-dian-ssh-hu-xiang-mian-mi-ma-deng-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="linux下多个节点ssh互相免密码登陆">
+                        
+                        <span class="card-title">linux下多个节点ssh互相免密码登陆</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">假定需要节点gm-35-2和gm-35-18之间免密登陆
+
+确认安装了ssh
+创建私钥和密钥 （id_rsa和 id_rsa.pub）执行ssh-keygen-t rsa ，这样你进入 ~/.ssh文件夹下就会看到 id_rsa 和id_r</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/编程语言/" target="_blank">
+                        <span class="chip bg-color">编程语言</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/ssh/" target="_blank">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/04/01/c-yu-yan-du-xie-wen-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="C语言读写文件">
+                        
+                        <span class="card-title">C语言读写文件</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">使用标准I/O处理文件
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;    // exit()原型
+
+int main(int argc, char *argv[])
+{
+    in</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C-C/" class="post-category" target="_blank">
+                                    C/C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/编程语言/" target="_blank">
+                        <span class="chip bg-color">编程语言</span>
+                    </a>
+                    
+                    <a href="/tags/C/" target="_blank">
+                        <span class="chip bg-color">C</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+<a href="https://github.com/JeWeizhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
