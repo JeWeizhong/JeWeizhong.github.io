@@ -625,20 +625,21 @@ O 在当前</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/11/linux-xi-lie-tar/">
+                <a href="/2018/11/11/perl-ming-ling-xing-da-yin-dan-yin-hao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux命令：tar">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="perl 命令行中打印单引号">
                         
-                        <span class="card-title">Linux命令：tar</span>
+                        <span class="card-title">perl 命令行中打印单引号</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">tar -cvf log.tar log2018.log    #仅打包，不压缩！
+                    <div class="summary">一开始我以为在单行命令中打印单引号是这样的：
+  perl -e 'print "\'";'
 
-tar -zcvf log.tar.gz log2018.log   #打包后，以 gzip 压缩
-tar -jcvf log.tar.bz2 log20</div>
+后来发现这样写是不行的，在第二个单号的时候就会与第一个引号匹配，而被当作这命令未结束。
+因为反斜杠对符号做了转义，这样的命令解释成：perl -</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-11
@@ -647,8 +648,8 @@ tar -jcvf log.tar.bz2 log20</div>
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
+                            <a href="/categories/perl/" class="post-category" target="_blank">
+                                    perl
                                 </a>
                             
                             
@@ -662,8 +663,8 @@ tar -jcvf log.tar.bz2 log20</div>
                         <span class="chip bg-color">编程语言</span>
                     </a>
                     
-                    <a href="/tags/Linux/" target="_blank">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/perl/" target="_blank">
+                        <span class="chip bg-color">perl</span>
                     </a>
                     
                 </div>

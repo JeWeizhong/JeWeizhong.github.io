@@ -731,33 +731,6 @@
     
     
     <entry>
-      <title>Linux命令：tar</title>
-      <link href="/2018/11/11/linux-xi-lie-tar/"/>
-      <url>/2018/11/11/linux-xi-lie-tar/</url>
-      
-        <content type="html"><![CDATA[<pre class=" language-lang-shell"><code class="language-lang-shell">tar -cvf log.tar log2018.log    #仅打包，不压缩！tar -zcvf log.tar.gz log2018.log   #打包后，以 gzip 压缩tar -jcvf log.tar.bz2 log2018.log  #打包后，以 bzip2 压缩tar -zxvf /opt/soft/test/log.tar.gz # 解压gztar -jxvf /opt/soft/test/log.tar.bz2 # 解压bz2</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 编程语言 </tag>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>perl 命令行中打印单引号</title>
       <link href="/2018/11/11/perl-ming-ling-xing-da-yin-dan-yin-hao/"/>
       <url>/2018/11/11/perl-ming-ling-xing-da-yin-dan-yin-hao/</url>
@@ -777,6 +750,33 @@
             <tag> 编程语言 </tag>
             
             <tag> perl </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux命令：tar</title>
+      <link href="/2018/11/11/linux-xi-lie-tar/"/>
+      <url>/2018/11/11/linux-xi-lie-tar/</url>
+      
+        <content type="html"><![CDATA[<pre class=" language-lang-shell"><code class="language-lang-shell">tar -cvf log.tar log2018.log    #仅打包，不压缩！tar -zcvf log.tar.gz log2018.log   #打包后，以 gzip 压缩tar -jcvf log.tar.bz2 log2018.log  #打包后，以 bzip2 压缩tar -zxvf /opt/soft/test/log.tar.gz # 解压gztar -jxvf /opt/soft/test/log.tar.bz2 # 解压bz2</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程语言 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -839,33 +839,6 @@
     
     
     <entry>
-      <title>python3 标准库系列(三)---os.path</title>
-      <link href="/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/"/>
-      <url>/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/</url>
-      
-        <content type="html"><![CDATA[<p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p><pre class=" language-lang-python"><code class="language-lang-python">>>> import os>>> path = '/Users/beazley/Data/data.csv'>>> # 获取文件名>>> os.path.basename(path)'data.csv'>>> # 获取文件所在目录名>>> os.path.dirname(path)'/Users/beazley/Data'>>> # 多个元素拼接成一个链接>>> os.path.join('tmp', 'data', os.path.basename(path))'tmp/data/data.csv'>>> # 将家目录符号~换成真实链接>>> path = '~/Data/data.csv'>>> os.path.expanduser(path)'/Users/beazley/Data/data.csv'>>> # 获取文件扩展名>>> os.path.splitext(path)('~/Data/data', '.csv')>>># 检查文件或目录是否存在>>> os.path.exists('/etc/passwd')True>>> # 检测是不是文件类型>>> os.path.isfile('/etc/passwd')True>>> # 检测是不是目录类型>>> os.path.isdir('/etc/passwd')False>>> # 检测是不是符号链接>>> os.path.islink('/usr/local/bin/python3')True>>> # 返回一个绝对路径>>> os.path.realpath('/usr/local/bin/python3')'/usr/local/bin/python3.3'>>># 获取文件大小>>> os.path.getsize('/etc/passwd')3669>>> # 获取文件修改日期>>> os.path.getmtime('/etc/passwd')1272478234.0>>> import time>>> time.ctime(os.path.getmtime('/etc/passwd'))'Wed Apr 28 13:10:34 2010'>>> # 获取指定目录下的文件列表 >>>os.listdir('somedir')</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> python3 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 编程语言 </tag>
-            
-            <tag> python3 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>python3 cookbook笔记：第四章 文件与IO</title>
       <link href="/2018/11/07/python3cook-xi-lie-bi-ji-liu/"/>
       <url>/2018/11/07/python3cook-xi-lie-bi-ji-liu/</url>
@@ -898,6 +871,33 @@
       <url>/2018/11/07/python3-biao-zhun-ku-xi-lie-er-argparse/</url>
       
         <content type="html"><![CDATA[<p><code>argparse</code> 模块是标准库中最大的模块之一，拥有大量的配置选项，本章只列出了一些常用的选项：</p><pre class=" language-lang-python"><code class="language-lang-python">import argparseparser = argparse.ArgumentParser(description='Search some files')parser.add_argument(dest='filenames',metavar='filename', nargs='*')parser.add_argument('-p', '--pat',metavar='pattern', required=True,dest='patterns', action='append',    help='text pattern to search for')parser.add_argument('-v', dest='verbose', action='store_true',help='verbose mode')parser.add_argument('-o', dest='outfile', action='store',help='output file')parser.add_argument('--speed', dest='speed', action='store',choices={'slow','fast'}, default='slow',help='search speed')args = parser.parse_args()# 使用方法print(args.filenames)print(args.patterns)print(args.verbose)print(args.outfile)print(args.speed)</code></pre><p>为了解析命令行选项， 你首先要创建一个<code>ArgumentParser</code> 实例，并使用<code>add_argument()</code>方法声明你想要支持的选项。</p><p>在每个<code>add_argument()</code> 调用中，</p><ul><li><p><code>dest</code>参数指定解析结果被指派给属性的名字。</p></li><li><p><code>metavar</code> 参数被用来生成帮助信息(<code>metavar</code>仅更改显示的名称，<code>parse_args()</code>对象上属性的名称仍由<code>dest</code>值确定)。</p></li><li><p><code>action</code>参数指定跟属性对应的处理逻辑，通常的值为<code>store</code> , 被用来存储某个值或将多个参数值收集到一个列表中。其他参数：<code>store_true</code>,<code>store_false</code>:</p></li></ul><pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser()>>> parser.add_argument('--foo', action='store_true')>>> parser.add_argument('--bar', action='store_false')>>> parser.add_argument('--baz', action='store_false')>>> parser.parse_args('--foo --bar'.split())Namespace(foo=True, bar=False, baz=True)</code></pre><p>下面的参数收集所有剩余的命令行参数到一个列表中。在本例中它被用来构造一个文件名列表：</p><pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument(dest='filenames',metavar='filename', nargs='*')</code></pre><p>下面的参数根据参数是否存在来设置一个Boolean 标志：</p><pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument('-v', dest='verbose', action='store_true',help='verbose mode')</code></pre><p>下面的参数接受一个单独值并将其存储为一个字符串：</p><pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument('-o', dest='outfile', action='store',help='output file')</code></pre><ul><li><p>如果要接收多个值，可以使用<code>nargs</code>参数，其支持的值有：</p><ul><li>N  (整数), 检测命令行的该参数值的个数，只接收N个值</li><li>* , 也就是说参数可以接收任意个数值</li><li>+,  与‘*’ 一样，但是如果少于一个值，会生成错误信息，有点像通配符</li><li>？，如果传入了参数就使用参数给定的值，如果没有，就用默认值,这个需要设置默认值</li><li><code>argparse.REMAINDER</code>所有剩余的命令行参数都收集到一个列表中:</li></ul></li></ul><pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG')>>> parser.add_argument('--foo')>>> parser.add_argument('command')>>> parser.add_argument('args', nargs=argparse.REMAINDER)>>> print(parser.parse_args('--foo B cmd --arg1 XX ZZ'.split()))Namespace(args=['--arg1', 'XX', 'ZZ'], command='cmd', foo='B')</code></pre><ul><li>下面的参数说明接受一个值，但是会将其和可能的选择值做比较，以检测其合法性：</li></ul><pre class=" language-lang-python"><code class="language-lang-python">parser.add_argument('--speed', dest='speed', action='store',choices={'slow','fast'}, default='slow',help='search speed')</code></pre><p>也就是说只能选择<code>choices</code>参数中的值，否则会报错</p><p>其他一些参数：</p><ul><li><code>default</code>: 设置默认值</li><li><code>type</code>: 设置接收的内置类型，如<code>float</code>或<code>int</code>,(常见的内置类型和<strong>函数</strong>可以直接用作type参数的值)</li></ul><pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser()>>> parser.add_argument('foo', type=int)>>> parser.add_argument('bar', type=open)>>> parser.parse_args('2 temp.txt'.split())Namespace(bar=<_io.TextIOWrapper name='temp.txt' encoding='UTF-8'>, foo=2)</code></pre><ul><li><code>required</code>: 设置为必须参数</li></ul><p><code>ArgumentParser.add_argument_group</code>可以参数设置分组：</p><pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)>>> group = parser.add_argument_group('group')>>> group.add_argument('--foo', help='foo help')>>> group.add_argument('bar', help='bar help')>>> parser.print_help()usage: PROG [--foo FOO] bargroup:  bar    bar help  --foo FOO  foo help</code></pre><pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG', add_help=False)>>> group1 = parser.add_argument_group('group1', 'group1 description')>>> group1.add_argument('foo', help='foo help')>>> group2 = parser.add_argument_group('group2', 'group2 description')>>> group2.add_argument('--bar', help='bar help')>>> parser.print_help()usage: PROG [--bar BAR] foogroup1:  group1 description  foo    foo helpgroup2:  group2 description  --bar BAR  bar help</code></pre><ul><li><code>ArgumentParser.add_mutually_exclusive_group(required=False)</code> 可以设置一组互斥的参数组，即在该组中参数只能选零个或一个,当<code>required=True</code>时，标准该参数组必须选组中的一个参数：</li></ul><pre class=" language-lang-python"><code class="language-lang-python">>>> parser = argparse.ArgumentParser(prog='PROG')>>> group = parser.add_mutually_exclusive_group(required=True)>>> group.add_argument('--foo', action='store_true')>>> group.add_argument('--bar', action='store_false')>>> parser.parse_args([]) # 如果required=False,那么这里不会报错# Namespace(bar=True, foo=False)usage: PROG [-h] (--foo | --bar)PROG: error: one of the arguments --foo --bar is required</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python3 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程语言 </tag>
+            
+            <tag> python3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python3 标准库系列(三)---os.path</title>
+      <link href="/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/"/>
+      <url>/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/</url>
+      
+        <content type="html"><![CDATA[<p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p><pre class=" language-lang-python"><code class="language-lang-python">>>> import os>>> path = '/Users/beazley/Data/data.csv'>>> # 获取文件名>>> os.path.basename(path)'data.csv'>>> # 获取文件所在目录名>>> os.path.dirname(path)'/Users/beazley/Data'>>> # 多个元素拼接成一个链接>>> os.path.join('tmp', 'data', os.path.basename(path))'tmp/data/data.csv'>>> # 将家目录符号~换成真实链接>>> path = '~/Data/data.csv'>>> os.path.expanduser(path)'/Users/beazley/Data/data.csv'>>> # 获取文件扩展名>>> os.path.splitext(path)('~/Data/data', '.csv')>>># 检查文件或目录是否存在>>> os.path.exists('/etc/passwd')True>>> # 检测是不是文件类型>>> os.path.isfile('/etc/passwd')True>>> # 检测是不是目录类型>>> os.path.isdir('/etc/passwd')False>>> # 检测是不是符号链接>>> os.path.islink('/usr/local/bin/python3')True>>> # 返回一个绝对路径>>> os.path.realpath('/usr/local/bin/python3')'/usr/local/bin/python3.3'>>># 获取文件大小>>> os.path.getsize('/etc/passwd')3669>>> # 获取文件修改日期>>> os.path.getmtime('/etc/passwd')1272478234.0>>> import time>>> time.ctime(os.path.getmtime('/etc/passwd'))'Wed Apr 28 13:10:34 2010'>>> # 获取指定目录下的文件列表 >>>os.listdir('somedir')</code></pre>]]></content>
       
       
       <categories>
@@ -1163,33 +1163,6 @@
     
     
     <entry>
-      <title>(转载)samtools常用命令详解</title>
-      <link href="/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/"/>
-      <url>/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/</url>
-      
-        <content type="html"><![CDATA[<p>samtools的说明文档：<a href="http://samtools.sourceforge.net/samtools.shtml" target="_blank" rel="noopener">http://samtools.sourceforge.net/samtools.shtml</a><br>samtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以下是常用命令的介绍</p><h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p>view命令的主要功能是：将sam文件转换成bam文件；然后对bam文件进行各种操作，比如数据的排序(不属于本命令的功能)和提取(这些操作是对bam文件进行的，因而当输入为sam文件的时候，不能进行该操作)；最后将排序或提取得到的数据输出为bam或sam（默认的）格式。</p><p>bam文件优点：bam文件为二进制文件，占用的磁盘空间比sam文本文件小；利用bam二进制文件的运算速度快。</p><p>view命令中，对sam文件头部的输入(-t或-T）和输出(-h)是单独的一些参数来控制的。</p><pre><code>Usage: samtools view [options] &lt;in.bam&gt;|&lt;in.sam&gt; [region1 [...]] 默认情况下不加 region，则是输出所有的 region.Options: -b       output BAM                  默认下输出是 SAM 格式文件，该参数设置输出 BAM 格式         -h       print header for the SAM output                  默认下输出的 sam 格式文件不带 header，该参数设定输出sam文件时带 header 信息         -H       print header only (no alignments)         -S       input is SAM                  默认下输入是 BAM 文件，若是输入是 SAM 文件，则最好加该参数，否则有时候会报错。         -u       uncompressed BAM output (force -b)                  该参数的使用需要有-b参数，能节约时间，但是需要更多磁盘空间。         -c       Instead of printing the alignments, only count them and print the                   total number. All filter options, such as ‘-f’, ‘-F’ and ‘-q’ ,                   are taken into account.         -1       fast compression (force -b)         -x       output FLAG in HEX (samtools-C specific)         -X       output FLAG in string (samtools-C specific)         -c       print only the count of matching records         -L FILE  output alignments overlapping the input BED FILE [null]         -t FILE  list of reference names and lengths (force -S) [null]                  使用一个list文件来作为header的输入         -T FILE  reference sequence file (force -S) [null]                  使用序列fasta文件作为header的输入         -o FILE  output file name [stdout]         -R FILE  list of read groups to be outputted [null]         -f INT   required flag, 0 for unset [0]         -F INT   filtering flag, 0 for unset [0]                   Skip alignments with bits present in INT [0]                  数字4代表该序列没有比对到参考序列上                  数字8代表该序列的mate序列没有比对到参考序列上         -q INT   minimum mapping quality [0]         -l STR   only output reads in library STR [null]         -r STR   only output reads in read group STR [null]         -s FLOAT fraction of templates to subsample; integer part as seed [-1]         -?       longer help</code></pre><p>例子：</p><pre><code>将sam文件转换成bam文件$ samtools view -bS abc.sam &gt; abc.bam$ samtools view -b -S abc.sam -o abc.bam提取比对到参考序列上的比对结果$ samtools view -bF 4 abc.bam &gt; abc.F.bam提取paired reads中两条reads都比对到参考序列上的比对结果，只需要把两个4+8的值12作为过滤参数即可$ samtools view -bF 12 abc.bam &gt; abc.F12.bam提取没有比对到参考序列上的比对结果$ samtools view -bf 4 abc.bam &gt; abc.f.bam提取bam文件中比对到caffold1上的比对结果，并保存到sam文件格式$ samtools view abc.bam scaffold1 &gt; scaffold1.sam提取scaffold1上能比对到30k到100k区域的比对结果$ samtools view abc.bam scaffold1:30000-100000 $gt; scaffold1_30k-100k.sam根据fasta文件，将 header 加入到 sam 或 bam 文件中$ samtools view -T genome.fasta -h scaffold1.sam &gt; scaffold1.h.sam</code></pre><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort对bam文件进行排序。</p><pre><code>Usage: samtools sort [-n] [-m &lt;maxMem&gt;] &lt;in.bam&gt; &lt;out.prefix&gt;  -m 参数默认下是 500,000,000 即500M（不支持K，M，G等缩写）。对于处理大数据时，如果内存够用，则设置大点的值，以节约时间。-n 设定排序方式按short reads的ID排序。默认下是按序列在fasta文件中的顺序（即header）和序列从左往右的位点排序。</code></pre><p>例子：</p><pre><code>$ samtools sort abc.bam abc.sort$ samtools view abc.sort.bam | less -S</code></pre><h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>将2个或2个以上的已经sort了的bam文件融合成一个bam文件。融合后的文件不需要则是已经sort过了的。</p><pre><code>Usage:   samtools merge [-nr] [-h inh.sam] &lt;out.bam&gt; &lt;in1.bam&gt; &lt;in2.bam&gt;[...]Options: -n       sort by read names         -r       attach RG tag (inferred from file names)         -u       uncompressed BAM output         -f       overwrite the output BAM if exist         -1       compress level 1         -R STR   merge file in the specified region STR [all]         -h FILE  copy the header in FILE to &lt;out.bam&gt; [in1.bam]Note: Samtools&#39; merge does not reconstruct the @RG dictionary in the header. Users      must provide the correct header with -h, or uses Picard which properly maintains      the header dictionary in merging.</code></pre><h2 id="index"><a href="#index" class="headerlink" title="index"></a>index</h2><p>必须对bam文件进行默认情况下的排序后，才能进行index。否则会报错。</p><p>建立索引后将产生后缀为.bai的文件，用于快速的随机处理。很多情况下需要有bai文件的存在，特别是显示序列比对情况下。比如samtool的tview命令就需要；gbrowse2显示reads的比对图形的时候也需要。</p><pre><code>Usage: samtools index &lt;in.bam&gt; [out.index]</code></pre><p>例子：<br>以下两种命令结果一样</p><pre class=" language-lang-`"><code class="language-lang-`">$ samtools index abc.sort.bam$ samtools index abc.sort.bam abc.sort.bam.bai</code></pre><h2 id="faidx"><a href="#faidx" class="headerlink" title="faidx"></a>faidx</h2><p>对fasta文件建立索引,生成的索引文件以.fai后缀结尾。该命令也能依据索引文件快速提取fasta文件中的某一条（子）序列</p><pre><code>Usage: samtools faidx &lt;in.bam&gt; [ [...]]对基因组文件建立索引$ samtools faidx genome.fasta生成了索引文件genome.fasta.fai,是一个文本文件，分成了5列。第一列是子序列的名称；第二列是子序列的长度；个人认为“第三列是序列所在的位置”，因为该数字从上往下逐渐变大，最后的数字是genome.fasta文件的大小；第4和5列不知是啥意思。于是通过此文件，可以定位子序列在fasta文件在磁盘上的存放位置，直接快速调出子序列。由于有索引文件，可以使用以下命令很快从基因组中提取到fasta格式的子序列$ samtools faidx genome.fasta scffold_10 &gt; scaffold_10.fasta</code></pre><h2 id="tview"><a href="#tview" class="headerlink" title="tview"></a>tview</h2><p>tview能直观的显示出reads比对基因组的情况，和基因组浏览器有点类似。</p><pre><code>Usage: samtools tview &lt;aln.bam&gt; [ref.fasta]当给出参考基因组的时候，会在第一排显示参考基因组的序列，否则，第一排全用N表示。按下 g ，则提示输入要到达基因组的某一个位点。例子“scaffold_10:1000&quot;表示到达第10号scaffold的第1000个碱基位点处。使用H(左）J（上）K（下）L（右）移动显示界面。大写字母移动快，小写字母移动慢。使用空格建向左快速移动（和 L 类似），使用Backspace键向左快速移动（和 H 类似）。Ctrl+H 向左移动1kb碱基距离； Ctrl+L 向右移动1kb碱基距离可以用颜色标注比对质量，碱基质量，核苷酸等。30～40的碱基质量或比对质量使用白色表示；20～30黄色；10～20绿色；0～10蓝色。使用点号&#39;.&#39;切换显示碱基和点号；使用r切换显示read name等还有很多其它的使用说明，具体按 ？ 键来查看。</code></pre><h2 id="flagstat"><a href="#flagstat" class="headerlink" title="flagstat"></a>flagstat</h2><p>给出BAM文件的比对结果</p><pre><code>Usage: samtools flagstat &lt;in.bam&gt;$ samtools flagstat example.bam11945742 + 0 in total (QC-passed reads + QC-failed reads)总共的reads数0 + 0 duplicates7536364 + 0 mapped (63.09%:-nan%)总体上reads的匹配率11945742 + 0 paired in sequencing有多少reads是属于paired reads5972871 + 0 read1reads1中的reads数5972871 + 0 read2reads2中的reads数6412042 + 0 properly paired (53.68%:-nan%)完美匹配的reads数：比对到同一条参考序列，并且两条reads之间的距离符合设置的阈值6899708 + 0 with itself and mate mappedpaired reads中两条都比对到参考序列上的reads数636656 + 0 singletons (5.33%:-nan%)单独一条匹配到参考序列上的reads数，和上一个相加，则是总的匹配上的reads数。469868 + 0 with mate mapped to a different chrpaired reads中两条分别比对到两条不同的参考序列的reads数243047 + 0 with mate mapped to a different chr (mapQ&gt;=5)同上一个，只是其中比对质量&gt;=5的reads的数量</code></pre><h2 id="depth"><a href="#depth" class="headerlink" title="depth"></a>depth</h2><p>得到每个碱基位点的测序深度,并输出到标准输出。</p><pre><code>Usage: bam2depth [-r reg] [-q baseQthres] [-Q mapQthres] [-b in.bed] &lt;in1.bam&gt; [...]</code></pre><h2 id="其它有用的命令"><a href="#其它有用的命令" class="headerlink" title="其它有用的命令"></a>其它有用的命令</h2><p>reheader 替换bam文件的头</p><pre><code>$ samtools reheader &lt;in.header.sam&gt; &lt;in.bam&gt;</code></pre><p>cat 连接多个bam文件，适用于非sorted的bam文件</p><pre><code>$ samtools cat [-h header.sam] [-o out.bam] &lt;in1.bam&gt; &lt;in2.bam&gt; [ ... ]</code></pre><p>idxstats 统计一个表格，4列，分别为”序列名，序列长度，比对上的reads数，unmapped reads number”。第4列应该是paired reads中有一端能匹配到该scaffold上，而另外一端不匹配到任何scaffolds上的reads数。</p><pre><code>$ samtools idxstats &lt;aln.bam&gt;</code></pre><h2 id="将bam文件转换为fastq文件"><a href="#将bam文件转换为fastq文件" class="headerlink" title="将bam文件转换为fastq文件"></a>将bam文件转换为fastq文件</h2><p>有时候，我们需要提取出比对到一段参考序列的reads，进行小范围的分析，以利于debug等。这时需要将bam或sam文件转换为fastq格式。<br>该网站提供了一个bam转换为fastq的程序：<a href="http://www.hudsonalpha.org/gsl/information/software/bam2fastq" target="_blank" rel="noopener">http://www.hudsonalpha.org/gsl/information/software/bam2fastq</a></p><pre><code>$ wget http://www.hudsonalpha.org/gsl/static/software/bam2fastq-1.1.0.tgz$ tar zxf bam2fastq-1.1.0.tgz$ cd bam2fastq-1.1.0$ make$ ./bam2fastq &lt;in.bam&gt;</code></pre><h2 id="mpileup"><a href="#mpileup" class="headerlink" title="mpileup"></a>mpileup</h2><p>samtools还有个非常重要的命令mpileup，以前为pileup。该命令用于生成bcf文件，再使用bcftools进行SNP和Indel的分析。bcftools是samtool中附带的软件，在samtools的安装文件夹中可以找到。</p><p>最常用的参数有2： <code>-f</code> 来输入有索引文件的fasta参考序列； <code>-g</code> 输出到bcf格式。用法和最简单的例子如下</p><pre><code>Usage: samtools mpileup [-EBug] [-C capQcoef] [-r reg] [-f in.fa] [-l list] [-M capMapQ] [-Q minBaseQ] [-q minMapQ] in.bam [in2.bam [...]]$ samtools mpileup -f genome.fasta abc.bam &gt; abc.txt$ samtools mpileup -gSDf genome.fasta abc.bam &gt; abc.bcf$ samtools mpileup -guSDf genome.fasta abc.bam | \           bcftools view -cvNg - &gt; abc.vcf</code></pre><p>mpileup不使用<code>-u</code>或<code>-g</code>参数时，则不生成二进制的bcf文件，而生成一个文本文件(输出到标准输出)。该文本文件统计了参考序列中每个碱基位点的比对情况；该文件每一行代表了参考序列中某一个碱基位点的比对结果。比如：</p><pre><code>scaffold_1      2841    A       11      ,,,...,....     BHIGDGIJ?FFscaffold_1      2842    C       12      ,$,,...,....^I. CFGEGEGGCFF+scaffold_1      2843    G       11      ,,...,.....     FDDDDCD?DD+scaffold_1      2844    G       11      ,,...,.....     FA?AAAA&lt;AA+scaffold_1      2845    G       11      ,,...,.....     F656666166*scaffold_1      2846    A       11      ,,...,.....     (1.1111)11*scaffold_1      2847    A       11      ,,+9acggtgaag.+9ACGGTGAAT.+9ACGGTGAAG.+9ACGGTGAAG,+9acggtgaag.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG       %.+....-..)scaffold_1      2848    N       11      agGGGgGGGGG     !!$!!!!!!!!scaffold_1      2849    A       11      c$,...,.....    !0000000000scaffold_1      2850    A       10      ,...,.....      353333333</code></pre><p>mpileup生成的结果包含6行：参考序列名；位置；参考碱基；比对上的reads数；比对情况；比对上的碱基的质量。其中第5列比较复杂,解释如下：</p><pre><code> 1  ‘.’代表与参考序列正链匹配。 2  ‘,’代表与参考序列负链匹配。 3  ‘ATCGN’代表在正链上的不匹配。 4  ‘atcgn’代表在负链上的不匹配。 5  ‘*’代表模糊碱基 6  ‘^’代表匹配的碱基是一个read的开始；’^’后面紧跟的ascii码减去33代表比对质量；这两个符号修饰的是后面的碱基，其后紧跟的碱基(.,ATCGatcgNn)代表该read的第一个碱基。 7  ‘$’代表一个read的结束，该符号修饰的是其前面的碱基。 8  正则式’\+[0-9]+[ACGTNacgtn]+’代表在该位点后插入的碱基；比如上例中在scaffold_1的2847后插入了9个长度的碱基acggtgaag。表明此处极可能是indel。 9  正则式’-[0-9]+[ACGTNacgtn]+’代表在该位点后缺失的碱基；</code></pre><p><strong>pileup具体的参数如下：</strong></p><p><strong>输入参数</strong></p><pre><code> -6       Assume the quality is in the Illumina 1.3+ encoding.   -A Do not skip anomalous read pairs in variant calling.  -B       Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments.  -b FILE  List of input BAM files, one file per line [null] -C INT   Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0]  -d INT   At a position, read maximally INT reads per input BAM. [250]  -E       Extended BAQ computation. This option helps sensitivity especially for MNPs, but may hurt specificity a little bit.  -f FILE  The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by razip. [null]  -l FILE  BED or position list file containing a list of regions or sites where pileup or BCF should be generated [null]  -M INT       cap mapping quality at INT [60] -q INT     Minimum mapping quality for an alignment to be used [0]  -Q INT     Minimum base quality for a base to be considered [13] -r STR     Only generate pileup in region STR [all sites]</code></pre><p><strong>输出参数</strong></p><pre><code> -D     Output per-sample read depth (require -g/-u) -g     Compute genotype likelihoods and output them in the binary call format (BCF).  -S     Output per-sample Phred-scaled strand bias P-value (require -g/-u)  -u     Similar to -g except that the output is uncompressed BCF, which is preferred for piping. Options for Genotype Likelihood Computation (for -g or -u): -e INT     Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20]  -h INT     Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100]  -I     Do not perform INDEL calling  -L INT     Skip INDEL calling if the average per-sample depth is above INT. [250]  -o INT     Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40]  -P STR     Comma dilimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]</code></pre><h2 id="使用bcftools"><a href="#使用bcftools" class="headerlink" title="使用bcftools"></a>使用bcftools</h2><p>bcftools和samtools类似，用于处理vcf(variant call format)文件和bcf(binary call format)文件。前者为文本文件，后者为其二进制文件。</p><p>bcftools使用简单，最主要的命令是view命令，其次还有index和cat等命令。index和cat命令和samtools中类似。此处主讲使用view命令来进行SNP和Indel calling。该命令的使用方法和例子为：</p><pre><code>$ bcftools view [-AbFGNQSucgv] [-D seqDict] [-l listLoci] [-s listSample]           [-i gapSNPratio] [-t mutRate] [-p varThres] [-P prior]           [-1 nGroup1] [-d minFrac] [-U nPerm] [-X permThres]           [-T trioType] in.bcf [region]$ bcftools view -cvNg abc.bcf &gt; snp_indel.vcf</code></pre><p>生成的结果文件为vcf格式，有10列，分别是：</p><blockquote><p>1 参考序列名；<br>2 varianti所在的left-most位置；<br>3 variant的ID（默认未设置，用’.’表示)；<br>4 参考序列的allele；<br>5 variant的allele(有多个alleles，则用’,’分隔);<br>6 variant/reference QUALity;<br>7 FILTers applied;<br>8 variant的信息，使用分号隔开；<br>9 FORMAT of the genotype fields, separated by colon (optional)；<br>10 SAMPLE genotypes and per-sample information (optional)。</p></blockquote><p>例如：</p><pre><code>scaffold_1      2847    .       A       AACGGTGAAG      194     .       INDEL;DP=11;VDB=0.0401;AF1=1;AC1=2;DP4=0,0,8,3;MQ=35;FQ=-67.5   GT:PL:GQ        1/1:235,33,0:63scaffold_1      3908    .       G       A       111     .       DP=13;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,5,7;MQ=42;FQ=-63   GT:PL:GQ        1/1:144,36,0:69scaffold_1      4500    .       A       G       31.5    .       DP=8;VDB=0.0034;AF1=1;AC1=2;DP4=0,0,1,3;MQ=42;FQ=-39    GT:PL:GQ        1/1:64,12,0:21scaffold_1      4581    .       TGGNGG  TGG     145     .       INDEL;DP=8;VDB=0.0308;AF1=1;AC1=2;DP4=0,0,0,8;MQ=42;FQ=-58.5    GT:PL:GQ        1/1:186,24,0:45scaffold_1      4644    .       G       A       195     .       DP=21;VDB=0.0198;AF1=1;AC1=2;DP4=0,0,10,10;MQ=42;FQ=-87 GT:PL:GQ        1/1:228,60,0:99scaffold_1      4827    .       NACAAAGA        NA      4.42    .       INDEL;DP=1;AF1=1;AC1=2;DP4=0,0,1,0;MQ=40;FQ=-37.5       GT:PL:GQ        0/1:40,3,0:3scaffold_1      4854    .       A       G       48      .       DP=6;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,2,1;MQ=41;FQ=-36    GT:PL:GQ        1/1:80,9,0:16scaffold_1      5120    .       A       G       85      .       DP=8;VDB=0.0355;AF1=1;AC1=2;DP4=0,0,5,3;MQ=42;FQ=-51    GT:PL:GQ        1/1:118,24,0:45</code></pre><p>第8列中显示了对variants的信息描述，比较重要，其中的 Tag 的描述如下：</p><pre><code>Tag    Format    DescriptionAF1    double    Max-likelihood estimate of the site allele frequency (AF) of the first ALT alleleDP    int    Raw read depth (without quality filtering)DP4    int[4]      high-quality reference forward bases, ref reverse, alternate for and alt rev basesFQ    int    Consensus quality. Positive: sample genotypes different; negative: otherwiseMQ    int    Root-Mean-Square mapping quality of covering readsPC2    int[2]    Phred probability of AF in group1 samples being larger (,smaller) than in group2PCHI2    double    Posterior weighted chi^2 P-value between group1 and group2 samplesPV4    double[4]    P-value for strand bias, baseQ bias, mapQ bias and tail distance biasQCHI2    int    Phred-scaled PCHI2RP    int      permutations yielding a smaller PCHI2CLR    int    Phred log ratio of genotype likelihoods with and without the trio/pair constraintUGT    string    Most probable genotype configuration without the trio constraintCGT    string    Most probable configuration with the trio constraint</code></pre><p>bcftools view 的具体参数如下：</p><pre><code>Input/Output Options:-A     Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.-b     Output in the BCF format. The default is VCF.-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]-F     Indicate PL is generated by r921 or before (ordering is different).-G     Suppress all individual genotype information.-l FILE List of sites at which information are outputted [all sites]-N     Skip sites where the REF field is not A/C/G/T-Q     Output the QCALL likelihood format-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]-S     The input is VCF instead of BCF.-u     Uncompressed BCF output (force -b). Consensus/Variant Calling Options:-c     Call variants using Bayesian inference. This option automatically invokes option -e.-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]        当有多个sample用于variants calling时，比如多个转录组数据或多个重测序        数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的        samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况        下，该值设置在0～1之间没有意义，大于1则得不到任何结果。-e     Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.-g     Call per-sample genotypes at variant sites (force -c)-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]-p FLOAT A site is considered to be a variant if P(ref|D)-t FLOAT Scaled muttion rate for variant calling [0.001]-T STR     Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]-v     Output variant sites only (force -c) Contrast Calling and Association Test Options:-1 INT     Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]-U INT     Number of permutations for association test (effective only with -1) [0]-X FLOAT Only perform permutations for P(chi^2)</code></pre><p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：</p><pre><code>$ perl -ne &#39;print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8&#39; snp_indel.vcf &gt; snp_indel.final.vcf</code></pre><h2 id="rmdup"><a href="#rmdup" class="headerlink" title="rmdup"></a>rmdup</h2><p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.</p><pre><code>Usage:  samtools rmdup [-sS]   -s 对single-end reads。默认情况下，只对paired-end reads -S 将Paired-end reads作为single-end reads处理。$ samtools input.sorted.bam output.bam</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 生信 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 生信理论基础 </tag>
-            
-            <tag> samtools </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>linux下多个节点ssh互相免密码登陆</title>
       <link href="/2018/04/29/linux-xia-duo-ge-jie-dian-ssh-hu-xiang-mian-mi-ma-deng-lu/"/>
       <url>/2018/04/29/linux-xia-duo-ge-jie-dian-ssh-hu-xiang-mian-mi-ma-deng-lu/</url>
@@ -1211,6 +1184,33 @@
             <tag> Linux </tag>
             
             <tag> ssh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>(转载)samtools常用命令详解</title>
+      <link href="/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/"/>
+      <url>/2018/04/29/samtools-chang-yong-ming-ling-xiang-jie/</url>
+      
+        <content type="html"><![CDATA[<p>samtools的说明文档：<a href="http://samtools.sourceforge.net/samtools.shtml" target="_blank" rel="noopener">http://samtools.sourceforge.net/samtools.shtml</a><br>samtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以下是常用命令的介绍</p><h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p>view命令的主要功能是：将sam文件转换成bam文件；然后对bam文件进行各种操作，比如数据的排序(不属于本命令的功能)和提取(这些操作是对bam文件进行的，因而当输入为sam文件的时候，不能进行该操作)；最后将排序或提取得到的数据输出为bam或sam（默认的）格式。</p><p>bam文件优点：bam文件为二进制文件，占用的磁盘空间比sam文本文件小；利用bam二进制文件的运算速度快。</p><p>view命令中，对sam文件头部的输入(-t或-T）和输出(-h)是单独的一些参数来控制的。</p><pre><code>Usage: samtools view [options] &lt;in.bam&gt;|&lt;in.sam&gt; [region1 [...]] 默认情况下不加 region，则是输出所有的 region.Options: -b       output BAM                  默认下输出是 SAM 格式文件，该参数设置输出 BAM 格式         -h       print header for the SAM output                  默认下输出的 sam 格式文件不带 header，该参数设定输出sam文件时带 header 信息         -H       print header only (no alignments)         -S       input is SAM                  默认下输入是 BAM 文件，若是输入是 SAM 文件，则最好加该参数，否则有时候会报错。         -u       uncompressed BAM output (force -b)                  该参数的使用需要有-b参数，能节约时间，但是需要更多磁盘空间。         -c       Instead of printing the alignments, only count them and print the                   total number. All filter options, such as ‘-f’, ‘-F’ and ‘-q’ ,                   are taken into account.         -1       fast compression (force -b)         -x       output FLAG in HEX (samtools-C specific)         -X       output FLAG in string (samtools-C specific)         -c       print only the count of matching records         -L FILE  output alignments overlapping the input BED FILE [null]         -t FILE  list of reference names and lengths (force -S) [null]                  使用一个list文件来作为header的输入         -T FILE  reference sequence file (force -S) [null]                  使用序列fasta文件作为header的输入         -o FILE  output file name [stdout]         -R FILE  list of read groups to be outputted [null]         -f INT   required flag, 0 for unset [0]         -F INT   filtering flag, 0 for unset [0]                   Skip alignments with bits present in INT [0]                  数字4代表该序列没有比对到参考序列上                  数字8代表该序列的mate序列没有比对到参考序列上         -q INT   minimum mapping quality [0]         -l STR   only output reads in library STR [null]         -r STR   only output reads in read group STR [null]         -s FLOAT fraction of templates to subsample; integer part as seed [-1]         -?       longer help</code></pre><p>例子：</p><pre><code>将sam文件转换成bam文件$ samtools view -bS abc.sam &gt; abc.bam$ samtools view -b -S abc.sam -o abc.bam提取比对到参考序列上的比对结果$ samtools view -bF 4 abc.bam &gt; abc.F.bam提取paired reads中两条reads都比对到参考序列上的比对结果，只需要把两个4+8的值12作为过滤参数即可$ samtools view -bF 12 abc.bam &gt; abc.F12.bam提取没有比对到参考序列上的比对结果$ samtools view -bf 4 abc.bam &gt; abc.f.bam提取bam文件中比对到caffold1上的比对结果，并保存到sam文件格式$ samtools view abc.bam scaffold1 &gt; scaffold1.sam提取scaffold1上能比对到30k到100k区域的比对结果$ samtools view abc.bam scaffold1:30000-100000 $gt; scaffold1_30k-100k.sam根据fasta文件，将 header 加入到 sam 或 bam 文件中$ samtools view -T genome.fasta -h scaffold1.sam &gt; scaffold1.h.sam</code></pre><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort对bam文件进行排序。</p><pre><code>Usage: samtools sort [-n] [-m &lt;maxMem&gt;] &lt;in.bam&gt; &lt;out.prefix&gt;  -m 参数默认下是 500,000,000 即500M（不支持K，M，G等缩写）。对于处理大数据时，如果内存够用，则设置大点的值，以节约时间。-n 设定排序方式按short reads的ID排序。默认下是按序列在fasta文件中的顺序（即header）和序列从左往右的位点排序。</code></pre><p>例子：</p><pre><code>$ samtools sort abc.bam abc.sort$ samtools view abc.sort.bam | less -S</code></pre><h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>将2个或2个以上的已经sort了的bam文件融合成一个bam文件。融合后的文件不需要则是已经sort过了的。</p><pre><code>Usage:   samtools merge [-nr] [-h inh.sam] &lt;out.bam&gt; &lt;in1.bam&gt; &lt;in2.bam&gt;[...]Options: -n       sort by read names         -r       attach RG tag (inferred from file names)         -u       uncompressed BAM output         -f       overwrite the output BAM if exist         -1       compress level 1         -R STR   merge file in the specified region STR [all]         -h FILE  copy the header in FILE to &lt;out.bam&gt; [in1.bam]Note: Samtools&#39; merge does not reconstruct the @RG dictionary in the header. Users      must provide the correct header with -h, or uses Picard which properly maintains      the header dictionary in merging.</code></pre><h2 id="index"><a href="#index" class="headerlink" title="index"></a>index</h2><p>必须对bam文件进行默认情况下的排序后，才能进行index。否则会报错。</p><p>建立索引后将产生后缀为.bai的文件，用于快速的随机处理。很多情况下需要有bai文件的存在，特别是显示序列比对情况下。比如samtool的tview命令就需要；gbrowse2显示reads的比对图形的时候也需要。</p><pre><code>Usage: samtools index &lt;in.bam&gt; [out.index]</code></pre><p>例子：<br>以下两种命令结果一样</p><pre class=" language-lang-`"><code class="language-lang-`">$ samtools index abc.sort.bam$ samtools index abc.sort.bam abc.sort.bam.bai</code></pre><h2 id="faidx"><a href="#faidx" class="headerlink" title="faidx"></a>faidx</h2><p>对fasta文件建立索引,生成的索引文件以.fai后缀结尾。该命令也能依据索引文件快速提取fasta文件中的某一条（子）序列</p><pre><code>Usage: samtools faidx &lt;in.bam&gt; [ [...]]对基因组文件建立索引$ samtools faidx genome.fasta生成了索引文件genome.fasta.fai,是一个文本文件，分成了5列。第一列是子序列的名称；第二列是子序列的长度；个人认为“第三列是序列所在的位置”，因为该数字从上往下逐渐变大，最后的数字是genome.fasta文件的大小；第4和5列不知是啥意思。于是通过此文件，可以定位子序列在fasta文件在磁盘上的存放位置，直接快速调出子序列。由于有索引文件，可以使用以下命令很快从基因组中提取到fasta格式的子序列$ samtools faidx genome.fasta scffold_10 &gt; scaffold_10.fasta</code></pre><h2 id="tview"><a href="#tview" class="headerlink" title="tview"></a>tview</h2><p>tview能直观的显示出reads比对基因组的情况，和基因组浏览器有点类似。</p><pre><code>Usage: samtools tview &lt;aln.bam&gt; [ref.fasta]当给出参考基因组的时候，会在第一排显示参考基因组的序列，否则，第一排全用N表示。按下 g ，则提示输入要到达基因组的某一个位点。例子“scaffold_10:1000&quot;表示到达第10号scaffold的第1000个碱基位点处。使用H(左）J（上）K（下）L（右）移动显示界面。大写字母移动快，小写字母移动慢。使用空格建向左快速移动（和 L 类似），使用Backspace键向左快速移动（和 H 类似）。Ctrl+H 向左移动1kb碱基距离； Ctrl+L 向右移动1kb碱基距离可以用颜色标注比对质量，碱基质量，核苷酸等。30～40的碱基质量或比对质量使用白色表示；20～30黄色；10～20绿色；0～10蓝色。使用点号&#39;.&#39;切换显示碱基和点号；使用r切换显示read name等还有很多其它的使用说明，具体按 ？ 键来查看。</code></pre><h2 id="flagstat"><a href="#flagstat" class="headerlink" title="flagstat"></a>flagstat</h2><p>给出BAM文件的比对结果</p><pre><code>Usage: samtools flagstat &lt;in.bam&gt;$ samtools flagstat example.bam11945742 + 0 in total (QC-passed reads + QC-failed reads)总共的reads数0 + 0 duplicates7536364 + 0 mapped (63.09%:-nan%)总体上reads的匹配率11945742 + 0 paired in sequencing有多少reads是属于paired reads5972871 + 0 read1reads1中的reads数5972871 + 0 read2reads2中的reads数6412042 + 0 properly paired (53.68%:-nan%)完美匹配的reads数：比对到同一条参考序列，并且两条reads之间的距离符合设置的阈值6899708 + 0 with itself and mate mappedpaired reads中两条都比对到参考序列上的reads数636656 + 0 singletons (5.33%:-nan%)单独一条匹配到参考序列上的reads数，和上一个相加，则是总的匹配上的reads数。469868 + 0 with mate mapped to a different chrpaired reads中两条分别比对到两条不同的参考序列的reads数243047 + 0 with mate mapped to a different chr (mapQ&gt;=5)同上一个，只是其中比对质量&gt;=5的reads的数量</code></pre><h2 id="depth"><a href="#depth" class="headerlink" title="depth"></a>depth</h2><p>得到每个碱基位点的测序深度,并输出到标准输出。</p><pre><code>Usage: bam2depth [-r reg] [-q baseQthres] [-Q mapQthres] [-b in.bed] &lt;in1.bam&gt; [...]</code></pre><h2 id="其它有用的命令"><a href="#其它有用的命令" class="headerlink" title="其它有用的命令"></a>其它有用的命令</h2><p>reheader 替换bam文件的头</p><pre><code>$ samtools reheader &lt;in.header.sam&gt; &lt;in.bam&gt;</code></pre><p>cat 连接多个bam文件，适用于非sorted的bam文件</p><pre><code>$ samtools cat [-h header.sam] [-o out.bam] &lt;in1.bam&gt; &lt;in2.bam&gt; [ ... ]</code></pre><p>idxstats 统计一个表格，4列，分别为”序列名，序列长度，比对上的reads数，unmapped reads number”。第4列应该是paired reads中有一端能匹配到该scaffold上，而另外一端不匹配到任何scaffolds上的reads数。</p><pre><code>$ samtools idxstats &lt;aln.bam&gt;</code></pre><h2 id="将bam文件转换为fastq文件"><a href="#将bam文件转换为fastq文件" class="headerlink" title="将bam文件转换为fastq文件"></a>将bam文件转换为fastq文件</h2><p>有时候，我们需要提取出比对到一段参考序列的reads，进行小范围的分析，以利于debug等。这时需要将bam或sam文件转换为fastq格式。<br>该网站提供了一个bam转换为fastq的程序：<a href="http://www.hudsonalpha.org/gsl/information/software/bam2fastq" target="_blank" rel="noopener">http://www.hudsonalpha.org/gsl/information/software/bam2fastq</a></p><pre><code>$ wget http://www.hudsonalpha.org/gsl/static/software/bam2fastq-1.1.0.tgz$ tar zxf bam2fastq-1.1.0.tgz$ cd bam2fastq-1.1.0$ make$ ./bam2fastq &lt;in.bam&gt;</code></pre><h2 id="mpileup"><a href="#mpileup" class="headerlink" title="mpileup"></a>mpileup</h2><p>samtools还有个非常重要的命令mpileup，以前为pileup。该命令用于生成bcf文件，再使用bcftools进行SNP和Indel的分析。bcftools是samtool中附带的软件，在samtools的安装文件夹中可以找到。</p><p>最常用的参数有2： <code>-f</code> 来输入有索引文件的fasta参考序列； <code>-g</code> 输出到bcf格式。用法和最简单的例子如下</p><pre><code>Usage: samtools mpileup [-EBug] [-C capQcoef] [-r reg] [-f in.fa] [-l list] [-M capMapQ] [-Q minBaseQ] [-q minMapQ] in.bam [in2.bam [...]]$ samtools mpileup -f genome.fasta abc.bam &gt; abc.txt$ samtools mpileup -gSDf genome.fasta abc.bam &gt; abc.bcf$ samtools mpileup -guSDf genome.fasta abc.bam | \           bcftools view -cvNg - &gt; abc.vcf</code></pre><p>mpileup不使用<code>-u</code>或<code>-g</code>参数时，则不生成二进制的bcf文件，而生成一个文本文件(输出到标准输出)。该文本文件统计了参考序列中每个碱基位点的比对情况；该文件每一行代表了参考序列中某一个碱基位点的比对结果。比如：</p><pre><code>scaffold_1      2841    A       11      ,,,...,....     BHIGDGIJ?FFscaffold_1      2842    C       12      ,$,,...,....^I. CFGEGEGGCFF+scaffold_1      2843    G       11      ,,...,.....     FDDDDCD?DD+scaffold_1      2844    G       11      ,,...,.....     FA?AAAA&lt;AA+scaffold_1      2845    G       11      ,,...,.....     F656666166*scaffold_1      2846    A       11      ,,...,.....     (1.1111)11*scaffold_1      2847    A       11      ,,+9acggtgaag.+9ACGGTGAAT.+9ACGGTGAAG.+9ACGGTGAAG,+9acggtgaag.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG       %.+....-..)scaffold_1      2848    N       11      agGGGgGGGGG     !!$!!!!!!!!scaffold_1      2849    A       11      c$,...,.....    !0000000000scaffold_1      2850    A       10      ,...,.....      353333333</code></pre><p>mpileup生成的结果包含6行：参考序列名；位置；参考碱基；比对上的reads数；比对情况；比对上的碱基的质量。其中第5列比较复杂,解释如下：</p><pre><code> 1  ‘.’代表与参考序列正链匹配。 2  ‘,’代表与参考序列负链匹配。 3  ‘ATCGN’代表在正链上的不匹配。 4  ‘atcgn’代表在负链上的不匹配。 5  ‘*’代表模糊碱基 6  ‘^’代表匹配的碱基是一个read的开始；’^’后面紧跟的ascii码减去33代表比对质量；这两个符号修饰的是后面的碱基，其后紧跟的碱基(.,ATCGatcgNn)代表该read的第一个碱基。 7  ‘$’代表一个read的结束，该符号修饰的是其前面的碱基。 8  正则式’\+[0-9]+[ACGTNacgtn]+’代表在该位点后插入的碱基；比如上例中在scaffold_1的2847后插入了9个长度的碱基acggtgaag。表明此处极可能是indel。 9  正则式’-[0-9]+[ACGTNacgtn]+’代表在该位点后缺失的碱基；</code></pre><p><strong>pileup具体的参数如下：</strong></p><p><strong>输入参数</strong></p><pre><code> -6       Assume the quality is in the Illumina 1.3+ encoding.   -A Do not skip anomalous read pairs in variant calling.  -B       Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments.  -b FILE  List of input BAM files, one file per line [null] -C INT   Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0]  -d INT   At a position, read maximally INT reads per input BAM. [250]  -E       Extended BAQ computation. This option helps sensitivity especially for MNPs, but may hurt specificity a little bit.  -f FILE  The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by razip. [null]  -l FILE  BED or position list file containing a list of regions or sites where pileup or BCF should be generated [null]  -M INT       cap mapping quality at INT [60] -q INT     Minimum mapping quality for an alignment to be used [0]  -Q INT     Minimum base quality for a base to be considered [13] -r STR     Only generate pileup in region STR [all sites]</code></pre><p><strong>输出参数</strong></p><pre><code> -D     Output per-sample read depth (require -g/-u) -g     Compute genotype likelihoods and output them in the binary call format (BCF).  -S     Output per-sample Phred-scaled strand bias P-value (require -g/-u)  -u     Similar to -g except that the output is uncompressed BCF, which is preferred for piping. Options for Genotype Likelihood Computation (for -g or -u): -e INT     Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20]  -h INT     Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100]  -I     Do not perform INDEL calling  -L INT     Skip INDEL calling if the average per-sample depth is above INT. [250]  -o INT     Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40]  -P STR     Comma dilimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]</code></pre><h2 id="使用bcftools"><a href="#使用bcftools" class="headerlink" title="使用bcftools"></a>使用bcftools</h2><p>bcftools和samtools类似，用于处理vcf(variant call format)文件和bcf(binary call format)文件。前者为文本文件，后者为其二进制文件。</p><p>bcftools使用简单，最主要的命令是view命令，其次还有index和cat等命令。index和cat命令和samtools中类似。此处主讲使用view命令来进行SNP和Indel calling。该命令的使用方法和例子为：</p><pre><code>$ bcftools view [-AbFGNQSucgv] [-D seqDict] [-l listLoci] [-s listSample]           [-i gapSNPratio] [-t mutRate] [-p varThres] [-P prior]           [-1 nGroup1] [-d minFrac] [-U nPerm] [-X permThres]           [-T trioType] in.bcf [region]$ bcftools view -cvNg abc.bcf &gt; snp_indel.vcf</code></pre><p>生成的结果文件为vcf格式，有10列，分别是：</p><blockquote><p>1 参考序列名；<br>2 varianti所在的left-most位置；<br>3 variant的ID（默认未设置，用’.’表示)；<br>4 参考序列的allele；<br>5 variant的allele(有多个alleles，则用’,’分隔);<br>6 variant/reference QUALity;<br>7 FILTers applied;<br>8 variant的信息，使用分号隔开；<br>9 FORMAT of the genotype fields, separated by colon (optional)；<br>10 SAMPLE genotypes and per-sample information (optional)。</p></blockquote><p>例如：</p><pre><code>scaffold_1      2847    .       A       AACGGTGAAG      194     .       INDEL;DP=11;VDB=0.0401;AF1=1;AC1=2;DP4=0,0,8,3;MQ=35;FQ=-67.5   GT:PL:GQ        1/1:235,33,0:63scaffold_1      3908    .       G       A       111     .       DP=13;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,5,7;MQ=42;FQ=-63   GT:PL:GQ        1/1:144,36,0:69scaffold_1      4500    .       A       G       31.5    .       DP=8;VDB=0.0034;AF1=1;AC1=2;DP4=0,0,1,3;MQ=42;FQ=-39    GT:PL:GQ        1/1:64,12,0:21scaffold_1      4581    .       TGGNGG  TGG     145     .       INDEL;DP=8;VDB=0.0308;AF1=1;AC1=2;DP4=0,0,0,8;MQ=42;FQ=-58.5    GT:PL:GQ        1/1:186,24,0:45scaffold_1      4644    .       G       A       195     .       DP=21;VDB=0.0198;AF1=1;AC1=2;DP4=0,0,10,10;MQ=42;FQ=-87 GT:PL:GQ        1/1:228,60,0:99scaffold_1      4827    .       NACAAAGA        NA      4.42    .       INDEL;DP=1;AF1=1;AC1=2;DP4=0,0,1,0;MQ=40;FQ=-37.5       GT:PL:GQ        0/1:40,3,0:3scaffold_1      4854    .       A       G       48      .       DP=6;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,2,1;MQ=41;FQ=-36    GT:PL:GQ        1/1:80,9,0:16scaffold_1      5120    .       A       G       85      .       DP=8;VDB=0.0355;AF1=1;AC1=2;DP4=0,0,5,3;MQ=42;FQ=-51    GT:PL:GQ        1/1:118,24,0:45</code></pre><p>第8列中显示了对variants的信息描述，比较重要，其中的 Tag 的描述如下：</p><pre><code>Tag    Format    DescriptionAF1    double    Max-likelihood estimate of the site allele frequency (AF) of the first ALT alleleDP    int    Raw read depth (without quality filtering)DP4    int[4]      high-quality reference forward bases, ref reverse, alternate for and alt rev basesFQ    int    Consensus quality. Positive: sample genotypes different; negative: otherwiseMQ    int    Root-Mean-Square mapping quality of covering readsPC2    int[2]    Phred probability of AF in group1 samples being larger (,smaller) than in group2PCHI2    double    Posterior weighted chi^2 P-value between group1 and group2 samplesPV4    double[4]    P-value for strand bias, baseQ bias, mapQ bias and tail distance biasQCHI2    int    Phred-scaled PCHI2RP    int      permutations yielding a smaller PCHI2CLR    int    Phred log ratio of genotype likelihoods with and without the trio/pair constraintUGT    string    Most probable genotype configuration without the trio constraintCGT    string    Most probable configuration with the trio constraint</code></pre><p>bcftools view 的具体参数如下：</p><pre><code>Input/Output Options:-A     Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.-b     Output in the BCF format. The default is VCF.-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]-F     Indicate PL is generated by r921 or before (ordering is different).-G     Suppress all individual genotype information.-l FILE List of sites at which information are outputted [all sites]-N     Skip sites where the REF field is not A/C/G/T-Q     Output the QCALL likelihood format-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]-S     The input is VCF instead of BCF.-u     Uncompressed BCF output (force -b). Consensus/Variant Calling Options:-c     Call variants using Bayesian inference. This option automatically invokes option -e.-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]        当有多个sample用于variants calling时，比如多个转录组数据或多个重测序        数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的        samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况        下，该值设置在0～1之间没有意义，大于1则得不到任何结果。-e     Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.-g     Call per-sample genotypes at variant sites (force -c)-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]-p FLOAT A site is considered to be a variant if P(ref|D)-t FLOAT Scaled muttion rate for variant calling [0.001]-T STR     Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]-v     Output variant sites only (force -c) Contrast Calling and Association Test Options:-1 INT     Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]-U INT     Number of permutations for association test (effective only with -1) [0]-X FLOAT Only perform permutations for P(chi^2)</code></pre><p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：</p><pre><code>$ perl -ne &#39;print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8&#39; snp_indel.vcf &gt; snp_indel.final.vcf</code></pre><h2 id="rmdup"><a href="#rmdup" class="headerlink" title="rmdup"></a>rmdup</h2><p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.</p><pre><code>Usage:  samtools rmdup [-sS]   -s 对single-end reads。默认情况下，只对paired-end reads -S 将Paired-end reads作为single-end reads处理。$ samtools input.sorted.bam output.bam</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生信 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生信理论基础 </tag>
+            
+            <tag> samtools </tag>
             
         </tags>
       
@@ -1356,33 +1356,6 @@
     
     
     <entry>
-      <title>perl 单行命令</title>
-      <link href="/2018/02/13/perl-dan-xing-ming-ling/"/>
-      <url>/2018/02/13/perl-dan-xing-ming-ling/</url>
-      
-        <content type="html"><![CDATA[<p><strong>与One-Liner相关的perl参数</strong></p><ul><li>-a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $</li><li>-F 指定-a的分隔符</li><li>-l 对输入的内容进行自动chomp，对输出的内容自动加换行符</li><li>-n 相当于while(&lt;&gt;)</li><li>-e 执行命令，也就是脚本</li><li>-p 自动循环+输出，也就是while(&lt;&gt;){命令（脚本）; print;}</li></ul><p><img src="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923" alt="完整版本"></p><ol><li><p>基本格式：perl -参数 ‘命令’ 输入文件</p></li><li><p><code>perl -e</code>为必须要写的参数</p></li><li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p><pre><code> perl -pe &#39;s/aaa/AAA/g&#39; 1.txt</code></pre></li><li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p></li><li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p></li><li>perl单行命令脚本里的变量都不需要预先声明，如想打印出每空行，并且每行以行数开头<pre><code> perl -ne &#39;print ++$a.&quot; $_&quot; if /./&#39;</code></pre></li><li>perl单行命令有时优于sed/grep等shell命令是由于其优秀的正则匹配，通常简单的匹配可以如：匹配上的行号，模仿grep -c的功能：<pre><code> perl -lne &#39;$a++ if /regex/; END {print $a+0}&#39;</code></pre></li><li>perl单行命令可以使用perl的模块，如使用sum函数的模块：<pre><code> perl -MList::Util=sum -alne &#39;print sum @F&#39;</code></pre></li><li>perl也可以像awk一样使用END命令，如打印出文件中总单词个数<pre><code> perl -alne &#39;$t += @F; END { print $t}&#39;</code></pre></li><li>perl也可以使用<code>map{}</code>等函数，如打印出匹配上的单词的总个数<pre><code>perl -alne &#39;map { /regex/ &amp;&amp; $t++ } @F; END { print $t }&#39;</code></pre></li><li>perl单行命令可以说是将perl的简洁用到了极致，如打印出匹配上的行：<pre><code>perl -ne &#39;/regex/ &amp;&amp; print&#39;</code></pre></li><li>perl单行命令能像perl一样灵活的使用则正表达式<pre><code>perl -ne &#39;print if /^\d+$/&#39;</code></pre>以上例子均出自于 <a href="http://www.catonmat.net/blog/perl-one-liners-explained-part-one/" target="_blank" rel="noopener">http://www.catonmat.net/blog/perl-one-liners-explained-part-one/</a></li></ol><p>使用perl来处理数据的我们，会一点Perl one line可以有效的减少编写重复命令的时间，尤其是那些就用1-2次就不会用的脚本，尤其在window系统下不方便使用shell命令的时候。</p><p>PS.当然在windows系统下也可以借用git模拟Unix命令环境</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> perl </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 编程语言 </tag>
-            
-            <tag> perl </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>安装python3及模块</title>
       <link href="/2018/02/13/an-zhuang-python3-ji-mo-kuai/"/>
       <url>/2018/02/13/an-zhuang-python3-ji-mo-kuai/</url>
@@ -1404,6 +1377,33 @@
             <tag> python3 </tag>
             
             <tag> 大数据 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>perl 单行命令</title>
+      <link href="/2018/02/13/perl-dan-xing-ming-ling/"/>
+      <url>/2018/02/13/perl-dan-xing-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<p><strong>与One-Liner相关的perl参数</strong></p><ul><li>-a 自动分隔模式，用空格分隔$并保存在@F中，也就是@F=split //, $</li><li>-F 指定-a的分隔符</li><li>-l 对输入的内容进行自动chomp，对输出的内容自动加换行符</li><li>-n 相当于while(&lt;&gt;)</li><li>-e 执行命令，也就是脚本</li><li>-p 自动循环+输出，也就是while(&lt;&gt;){命令（脚本）; print;}</li></ul><p><img src="http://files.jb51.net/file_images/article/201709/2017910200851051.png?201781020923" alt="完整版本"></p><ol><li><p>基本格式：perl -参数 ‘命令’ 输入文件</p></li><li><p><code>perl -e</code>为必须要写的参数</p></li><li><p><code>perl -pe</code> 可用于读取文件每行，并按照给定的命令进行处理，最后输出；如将文件1.txt中的aaa替换为AAA</p><pre><code> perl -pe &#39;s/aaa/AAA/g&#39; 1.txt</code></pre></li><li><p><code>perl -l</code>参数几乎可以跟n搭配代替perl经常用的<code>while(&lt;&gt;){chomp;}</code>语法</p></li><li><p>如果需要处理tab分割的文件的每一行内容，那么<code>perl -alne</code>参数几乎可以说是必备的，例如:<code>while(&lt;&gt;){chomp;@F=split /\s+/,$_;print &quot;$F[0]\n&quot;}</code>相当于<code>perl -alne &#39;print $F[0]&#39;</code></p></li><li>perl单行命令脚本里的变量都不需要预先声明，如想打印出每空行，并且每行以行数开头<pre><code> perl -ne &#39;print ++$a.&quot; $_&quot; if /./&#39;</code></pre></li><li>perl单行命令有时优于sed/grep等shell命令是由于其优秀的正则匹配，通常简单的匹配可以如：匹配上的行号，模仿grep -c的功能：<pre><code> perl -lne &#39;$a++ if /regex/; END {print $a+0}&#39;</code></pre></li><li>perl单行命令可以使用perl的模块，如使用sum函数的模块：<pre><code> perl -MList::Util=sum -alne &#39;print sum @F&#39;</code></pre></li><li>perl也可以像awk一样使用END命令，如打印出文件中总单词个数<pre><code> perl -alne &#39;$t += @F; END { print $t}&#39;</code></pre></li><li>perl也可以使用<code>map{}</code>等函数，如打印出匹配上的单词的总个数<pre><code>perl -alne &#39;map { /regex/ &amp;&amp; $t++ } @F; END { print $t }&#39;</code></pre></li><li>perl单行命令可以说是将perl的简洁用到了极致，如打印出匹配上的行：<pre><code>perl -ne &#39;/regex/ &amp;&amp; print&#39;</code></pre></li><li>perl单行命令能像perl一样灵活的使用则正表达式<pre><code>perl -ne &#39;print if /^\d+$/&#39;</code></pre>以上例子均出自于 <a href="http://www.catonmat.net/blog/perl-one-liners-explained-part-one/" target="_blank" rel="noopener">http://www.catonmat.net/blog/perl-one-liners-explained-part-one/</a></li></ol><p>使用perl来处理数据的我们，会一点Perl one line可以有效的减少编写重复命令的时间，尤其是那些就用1-2次就不会用的脚本，尤其在window系统下不方便使用shell命令的时候。</p><p>PS.当然在windows系统下也可以借用git模拟Unix命令环境</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> perl </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程语言 </tag>
+            
+            <tag> perl </tag>
             
         </tags>
       
@@ -1437,33 +1437,6 @@
     
     
     <entry>
-      <title>SAM/BAM格式说明</title>
-      <link href="/2018/02/13/sam-bam-ge-shi-shuo-ming/"/>
-      <url>/2018/02/13/sam-bam-ge-shi-shuo-ming/</url>
-      
-        <content type="html"><![CDATA[<p><strong>SAM</strong>是一种序列比对格式标准，由sanger制定，是以TAB为分割符的文本格式。 主要应用于测序序列mapping到基因组上的结果表示，当然也可以表示任意的多重比对结果。 SAM的全称是sequence alignment/map format</p><h5 id="定义和示例"><a href="#定义和示例" class="headerlink" title="定义和示例"></a>定义和示例</h5><p>SAM分为两部分，注释信息（header section ）和比对结果部分 （alignment section）。 通常是把FASTQ文件格式的测序数据比对到对应的参考基因组版本得到的。 注释信息并不是SAM文件的重点，是该SAM文件产生以及被处理过程的一个记录，规定以@开头，用不同的tag表示不同的信息，主要有：</p><ul><li>@HD，说明符合标准的版本、对比序列的排列顺序；</li><li>@SQ，参考序列说明；</li><li>@RG，比对上的序列（read）说明；</li><li>@PG，使用的程序说明；</li><li>@CO，任意的说明信息。<br>一个简单的SAM文件例子如下：<pre><code>ST-E00317:118:HNHK2CCXX:7:1101:5071:1309    97    chr1    196695666    60    147M    chr18    54806715    0    AAGAATATGGACACAGTGAAGTGGTGGAATATTATTGCAATCCTAGATTTCTAATGAAGGGACCTAATAAAATTCAGTGTGTTGATGGAGAGTGGACAACTTTACCAGTGTGTATTTGTAATGTATAAAACATTAATATTGAAACTT    FFAKKKKKKFKKKKKK,FKKKKKKK&lt;KKKFKK,FKKKKKKKKKFFKKKKKFFKKFAKFK,FKKKAKKKKKKKKKKKAF,,,FFAFA,FKKAKAA7FKKFKFFFKKKK7FFKK7F7K,7FAFKAFFKKKKK,7AFKFKFA,,,AAK,A    MC:Z:13S134M    MD:Z:76A39G13T9T6    RG:Z:sampleID    NM:i:4    AS:i:127    XS:i:21</code></pre>说明如下：<pre><code>QNAME   ST-E00317:118:HNHK2CCXX:7:1101:5071:1309      ## read名称FLAG    97  ##  FLAG, 概括出一个合适的标记，各个数字分别代表##1     序列是一对序列中的一个##2     比对结果是一个pair-end比对的末端##4     没有找到位点##8     这个序列是pair中的一个但是没有找到位点##16   在这个比对上的位点，序列与参考序列反向互补##32   这个序列在pair-end中的的mate序列与参考序列反响互补##64   序列是 mate 1##128 序列是 mate 2##假如说标记为以上列举出的数目，就可以直接推断出匹配的情况。假如说标记不是以上列举出的数字，比如说83=（64+16+2+1），就是这几种情况值和。##　其他情况可参见 http://broadinstitute.github.io/picard/explain-flags.htmlRNAME  chr1 ## 染色体名称POS 196695666   ## 染色体位置MAQ 60  ## mapping质量 越高说明位点越独特CIGAR   147M ## M”表示 match或 mismatch；## “I”表示 insert；## “D”表示 deletion；## “N”表示 skipped（跳过这段区域）；## “S”表示 soft clipping（被剪切的序列存在于序列中）；##“H”表示 hard clipping（被剪切的序列不存在于序列中）；##“P”表示 padding；##“=”表示 match；##“X”表示 mismatch（错配，位置是一一对应的）；MRNM    chr18## read2 在参考序列上的位置，如果没有就用 &quot;*&quot;, 相同&quot;=&quot;MPOS    0 ##read2 的位置，若不可用则用0ISIZE   0## emplate的长度，最左边得为正，最右边的为负，中间的不用定义正负，不分区段（single-segment)的比对上，或者不可用时，此处为0SEQ AAGAATATGGACACAGTGAAGTGGTGGAATATTATTGCAATCCTAGATTTCTAATGAAGGGACCTAATAAAATTCAGTGTGTTGATGGAGAGTGGACAACTTTACCAGTGTGTATTTGTAATGTATAAAACATTAATATTGAAACTT##　序列片段的序列信息QUAL    FFAKKKKKKFKKKKKK,FKKKKKKK&lt;KKKFKK,FKKKKKKKKKFFKKKKKFFKKFAKFK,FKKKAKKKKKKKKKKKAF,,,FFAFA,FKKAKAA7FKKFKFFFKKKK7FFKK7F7K,7FAFKAFFKKKKK,7AFKFKFA,,,AAK,A## 序列的质量信息，格式同FASTQ一样。read质量的ASCII编码MC:Z:13S134M    MD:Z:76A39G13T9T6       RG:Z:sampleID   NM:i:4  AS:i:127        XS:i:21## 可选字段（optional fields)，格式如：TAG:TYPE:VALUE，其中TAG有两个大写字母组成，每个TAG代表一类信息，每一行一个TAG只能出现一次，TYPE表示TAG对应值的类型，可以是字符串、整数、字节、数组等。## AS:i 匹配的得分## XS:i 第二好的匹配的得分## YS:i mate 序列匹配的得分## XN:i 在参考序列上模糊碱基的个数## XM:i 错配的个数## XO:i gap open的个数## XG:i gap 延伸的个数## NM:i 经过编辑的序列 ## YF:i 说明为什么这个序列被过滤的字符串## YT:Z## MD:Z 代表序列和参考序列错配的字符串##</code></pre><h5 id="SAM要处理好的问题"><a href="#SAM要处理好的问题" class="headerlink" title="SAM要处理好的问题"></a>SAM要处理好的问题</h5></li><li>非常多序列（read)，mapping到多个参考基因组（reference）上</li><li>同一条序列，分多段（segment）比对到参考基因组上</li><li>无限量的，结构化信息表示，包括错配、删除、插入等比对信息</li></ul><p>要注意的几个概念，以及与之对应的模型：</p><ul><li>reference</li><li>read</li><li>segment</li><li><strong>++template（参考序列和比对上的序列共同组成的序列为template）++</strong></li><li>alignment</li><li>seq</li><li></li></ul><p><strong>参考链接</strong>：</p><ol><li><a href="https://en.wikipedia.org/wiki/SAM_(file_format" target="_blank" rel="noopener">SAM(file format)</a>)(可下载PDF文件)</li><li><a href="https://genome.sph.umich.edu/wiki/SAM#What_are_TAGs.3F" target="_blank" rel="noopener">https://genome.sph.umich.edu/wiki/SAM#What_are_TAGs.3F</a></li><li><a href="https://mp.weixin.qq.com/s/yK1OyJHrePg6bWl41JCpvA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/yK1OyJHrePg6bWl41JCpvA</a></li><li><a href="http://www.cnblogs.com/emanlee/p/5366610.html" target="_blank" rel="noopener">http://www.cnblogs.com/emanlee/p/5366610.html</a></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 生信 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 生信理论基础 </tag>
-            
-            <tag> 文件格式 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>(转载)linux下R安装(无root权限)</title>
       <link href="/2018/02/13/zhuan-zai-linux-xia-r-an-zhuang-wu-root-quan-xian/"/>
       <url>/2018/02/13/zhuan-zai-linux-xia-r-an-zhuang-wu-root-quan-xian/</url>
@@ -1485,6 +1458,33 @@
             <tag> R </tag>
             
             <tag> 统计语言 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SAM/BAM格式说明</title>
+      <link href="/2018/02/13/sam-bam-ge-shi-shuo-ming/"/>
+      <url>/2018/02/13/sam-bam-ge-shi-shuo-ming/</url>
+      
+        <content type="html"><![CDATA[<p><strong>SAM</strong>是一种序列比对格式标准，由sanger制定，是以TAB为分割符的文本格式。 主要应用于测序序列mapping到基因组上的结果表示，当然也可以表示任意的多重比对结果。 SAM的全称是sequence alignment/map format</p><h5 id="定义和示例"><a href="#定义和示例" class="headerlink" title="定义和示例"></a>定义和示例</h5><p>SAM分为两部分，注释信息（header section ）和比对结果部分 （alignment section）。 通常是把FASTQ文件格式的测序数据比对到对应的参考基因组版本得到的。 注释信息并不是SAM文件的重点，是该SAM文件产生以及被处理过程的一个记录，规定以@开头，用不同的tag表示不同的信息，主要有：</p><ul><li>@HD，说明符合标准的版本、对比序列的排列顺序；</li><li>@SQ，参考序列说明；</li><li>@RG，比对上的序列（read）说明；</li><li>@PG，使用的程序说明；</li><li>@CO，任意的说明信息。<br>一个简单的SAM文件例子如下：<pre><code>ST-E00317:118:HNHK2CCXX:7:1101:5071:1309    97    chr1    196695666    60    147M    chr18    54806715    0    AAGAATATGGACACAGTGAAGTGGTGGAATATTATTGCAATCCTAGATTTCTAATGAAGGGACCTAATAAAATTCAGTGTGTTGATGGAGAGTGGACAACTTTACCAGTGTGTATTTGTAATGTATAAAACATTAATATTGAAACTT    FFAKKKKKKFKKKKKK,FKKKKKKK&lt;KKKFKK,FKKKKKKKKKFFKKKKKFFKKFAKFK,FKKKAKKKKKKKKKKKAF,,,FFAFA,FKKAKAA7FKKFKFFFKKKK7FFKK7F7K,7FAFKAFFKKKKK,7AFKFKFA,,,AAK,A    MC:Z:13S134M    MD:Z:76A39G13T9T6    RG:Z:sampleID    NM:i:4    AS:i:127    XS:i:21</code></pre>说明如下：<pre><code>QNAME   ST-E00317:118:HNHK2CCXX:7:1101:5071:1309      ## read名称FLAG    97  ##  FLAG, 概括出一个合适的标记，各个数字分别代表##1     序列是一对序列中的一个##2     比对结果是一个pair-end比对的末端##4     没有找到位点##8     这个序列是pair中的一个但是没有找到位点##16   在这个比对上的位点，序列与参考序列反向互补##32   这个序列在pair-end中的的mate序列与参考序列反响互补##64   序列是 mate 1##128 序列是 mate 2##假如说标记为以上列举出的数目，就可以直接推断出匹配的情况。假如说标记不是以上列举出的数字，比如说83=（64+16+2+1），就是这几种情况值和。##　其他情况可参见 http://broadinstitute.github.io/picard/explain-flags.htmlRNAME  chr1 ## 染色体名称POS 196695666   ## 染色体位置MAQ 60  ## mapping质量 越高说明位点越独特CIGAR   147M ## M”表示 match或 mismatch；## “I”表示 insert；## “D”表示 deletion；## “N”表示 skipped（跳过这段区域）；## “S”表示 soft clipping（被剪切的序列存在于序列中）；##“H”表示 hard clipping（被剪切的序列不存在于序列中）；##“P”表示 padding；##“=”表示 match；##“X”表示 mismatch（错配，位置是一一对应的）；MRNM    chr18## read2 在参考序列上的位置，如果没有就用 &quot;*&quot;, 相同&quot;=&quot;MPOS    0 ##read2 的位置，若不可用则用0ISIZE   0## emplate的长度，最左边得为正，最右边的为负，中间的不用定义正负，不分区段（single-segment)的比对上，或者不可用时，此处为0SEQ AAGAATATGGACACAGTGAAGTGGTGGAATATTATTGCAATCCTAGATTTCTAATGAAGGGACCTAATAAAATTCAGTGTGTTGATGGAGAGTGGACAACTTTACCAGTGTGTATTTGTAATGTATAAAACATTAATATTGAAACTT##　序列片段的序列信息QUAL    FFAKKKKKKFKKKKKK,FKKKKKKK&lt;KKKFKK,FKKKKKKKKKFFKKKKKFFKKFAKFK,FKKKAKKKKKKKKKKKAF,,,FFAFA,FKKAKAA7FKKFKFFFKKKK7FFKK7F7K,7FAFKAFFKKKKK,7AFKFKFA,,,AAK,A## 序列的质量信息，格式同FASTQ一样。read质量的ASCII编码MC:Z:13S134M    MD:Z:76A39G13T9T6       RG:Z:sampleID   NM:i:4  AS:i:127        XS:i:21## 可选字段（optional fields)，格式如：TAG:TYPE:VALUE，其中TAG有两个大写字母组成，每个TAG代表一类信息，每一行一个TAG只能出现一次，TYPE表示TAG对应值的类型，可以是字符串、整数、字节、数组等。## AS:i 匹配的得分## XS:i 第二好的匹配的得分## YS:i mate 序列匹配的得分## XN:i 在参考序列上模糊碱基的个数## XM:i 错配的个数## XO:i gap open的个数## XG:i gap 延伸的个数## NM:i 经过编辑的序列 ## YF:i 说明为什么这个序列被过滤的字符串## YT:Z## MD:Z 代表序列和参考序列错配的字符串##</code></pre><h5 id="SAM要处理好的问题"><a href="#SAM要处理好的问题" class="headerlink" title="SAM要处理好的问题"></a>SAM要处理好的问题</h5></li><li>非常多序列（read)，mapping到多个参考基因组（reference）上</li><li>同一条序列，分多段（segment）比对到参考基因组上</li><li>无限量的，结构化信息表示，包括错配、删除、插入等比对信息</li></ul><p>要注意的几个概念，以及与之对应的模型：</p><ul><li>reference</li><li>read</li><li>segment</li><li><strong>++template（参考序列和比对上的序列共同组成的序列为template）++</strong></li><li>alignment</li><li>seq</li><li></li></ul><p><strong>参考链接</strong>：</p><ol><li><a href="https://en.wikipedia.org/wiki/SAM_(file_format" target="_blank" rel="noopener">SAM(file format)</a>)(可下载PDF文件)</li><li><a href="https://genome.sph.umich.edu/wiki/SAM#What_are_TAGs.3F" target="_blank" rel="noopener">https://genome.sph.umich.edu/wiki/SAM#What_are_TAGs.3F</a></li><li><a href="https://mp.weixin.qq.com/s/yK1OyJHrePg6bWl41JCpvA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/yK1OyJHrePg6bWl41JCpvA</a></li><li><a href="http://www.cnblogs.com/emanlee/p/5366610.html" target="_blank" rel="noopener">http://www.cnblogs.com/emanlee/p/5366610.html</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生信 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生信理论基础 </tag>
+            
+            <tag> 文件格式 </tag>
             
         </tags>
       
