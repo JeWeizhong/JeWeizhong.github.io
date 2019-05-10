@@ -1,0 +1,821 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="(转载)linux下R安装(无root权限), 木叶村">
+    <meta name="description" content="R依赖库的安装在安装R之前首先要安装R依赖的包，如何知道R安装需要什么包呢？可以去看R的官方文档R Installation and Administration ,我们主要要安装的依赖包是zlib，bzip，liblzma(这个包如果直接">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>(转载)linux下R安装(无root权限) | 木叶村</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">木叶村</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">木叶村</div>
+        <div class="logo-desc">
+            
+            无人为孤岛，一书一世界
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/JeWeizhong" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <div class="social-link">
+    <a href="https://github.com/JeWeizhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:584728914@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=584728914" class="tooltipped" data-tooltip="QQ联系我: 584728914" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/JeWeizhong" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        (转载)linux下R安装(无root权限)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/编程语言/" target="_blank">
+                                <span class="chip bg-color">编程语言</span>
+                            </a>
+                        
+                            <a href="/tags/R/" target="_blank">
+                                <span class="chip bg-color">R</span>
+                            </a>
+                        
+                            <a href="/tags/统计语言/" target="_blank">
+                                <span class="chip bg-color">统计语言</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/R/" class="post-category" target="_blank">
+                                R
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-02-13
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h5 id="R依赖库的安装"><a href="#R依赖库的安装" class="headerlink" title="R依赖库的安装"></a>R依赖库的安装</h5><p>在安装R之前首先要安装R依赖的包，如何知道R安装需要什么包呢？可以去看R的官方文档<a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Essential-and-useful-other-programs-under-a-Unix_002dalike" target="_blank" rel="noopener">R Installation and Administration</a> ,我们主要要安装的依赖包是zlib，bzip，liblzma(这个包如果直接搜索liblzma出来的会是XZ，没错，需要安装的就是XZ)以及PCRE。不过首先需要注意的是，我安装的R版本是R-3.4.2 Short Summer，2017-09-28发行，而依照的官方文档也是Version 3.4.2 2017-09-28，因此其他版本的不一定完全适用，但是一般来说R所依赖的包大致都是这些，可能有版本的区别，安装R的大致顺序也差不多。其次，在安装这些库时最好遵照我下面给出的顺序来依次进行。否则就会报错。</p>
+<ol>
+<li>安装zlib1.2.5版本及以上<pre><code>cd zlib-1.2.11
+./configure --prefix =/bulider/software/zlib
+make  
+make install
+</code></pre></li>
+<li>安装bzip<pre><code>cd bzip2-1.0.6
+make -f Makefile-libbz2_so
+#修改Makefile 中的PREFIX=/bulider/software/bzip2
+make &amp;&amp; make install
+</code></pre></li>
+<li>安装liblzma5.0.3版本及以上<pre><code>cd xz-5.2.3
+./configure -prefix=/bulider/software/xz
+make
+make install
+</code></pre></li>
+<li>安装pcre<br>```<br>tar -zxvf pcre-8.41.tar.gz<br>cd pcre-8.41<br>./configure —enable-utf —enable-unicode-properties —enable-jit —disable-cpp —prefix /bulider/software/pcre<h2 id="这个包的安装参数是有要求的，因此用的是官方文档的推荐命令"><a href="#这个包的安装参数是有要求的，因此用的是官方文档的推荐命令" class="headerlink" title="这个包的安装参数是有要求的，因此用的是官方文档的推荐命令"></a>这个包的安装参数是有要求的，因此用的是官方文档的推荐命令</h2>make<br>make install</li>
+</ol>
+<pre><code>5. 安装libcurl7.22.0及以上，但是不要超过版本8
+</code></pre><p>tar -zxf curl-7.28.0.tar.gz<br>cd curl-7.28.0<br>./configure —prefix=/bulider/software/curl<br>make<br>make install</p>
+<pre><code>##### 安装R
+1. 进行configure
+</code></pre><p>/source/R-3.4.2/configure —prefix=/builder/software/R —en<br>able-R-shlib —with-cairo  —with-jpeglib —with-readline —with-tcltk  —with-blas —with-lapack —enable-R-profiling LDFLAGS=”-L/builder/software/zlib/lib  -L/builder/software/bzip2/lib -L/builder/software/xz/lib -L/builder/software/pcre/lib -L/builder/so<br>ftware/curl/lib” CPPFLAGS=”-I/builder/zlib/include -I/builder/softw<br>are/bzip2/include -I/builder/software/xz/include -I/builder/software/pcre/in<br>clude -I/builder/software/curl/include”##第一步检查环境配置，生成Makefile</p>
+<pre><code>首先注意一点，如果你要把R安装到另一个文件夹里而不是源码所在的文件夹里，那么你首先要创建一个文件夹，然后在这个文件夹里对R进行编译，在`configure`时要加上全路径`/source/R-3.4.2/configure`，同时在后面加上`--prefix=`参数，比方我要安装到`/builder/software/R`,那么就需要加入`--prefix=/builder/software/R`这个参数，而我的源码在`/source/R-3.4.2`这个文件夹里。
+
+其次由于R是用C语言写的，因此要从源码编译R需要把R的源码需要通过gcc将源码编译为可执行文件。在前面我们安装了一些R的依赖库，这些依赖库是在编译R的时候要用到的，如果在一般情况下这些依赖库都会放到系统指定的位置来进行使用，但是由于我没有root权限，因此无法将这些库文件放到系统指定的库路径或者修改相应的配置文件，只能把这些库的路径通过`LDFLAGS`和`CPPFLAGS`这两个参数来传递给gcc，关于这两个参数可以参考。告诉gcc这些路径里有相应的库。其中`LDFLAGS`传递的是给链接器的参数，`CPPFLAGS`传递的是相应的头文件。这两个参数都是`configure`的参数。
+2. 通过上一步生成了`Makefile`后，觉得胜利已经在前方向你招手，于是你进行了
+</code></pre><p>make</p>
+<pre><code>但是出现了报错！
+</code></pre><p>sr/bin/ld: warning: libpcre.so.1, needed by ../../lib/libR.so, not found (try using -rpath or -rpath-link)<br>/usr/bin/ld: warning: liblzma.so.5, needed by ../../lib/libR.so, not found (try using -rpath or -rpath-link)<br>../../lib/libR.so: undefined reference to <code>pcre_fullinfo&#39;
+../../lib/libR.so: undefined reference to</code>lzma_lzma_preset@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>lzma_alone_decoder@XZ_5.0&#39;
+../../lib/libR.so: undefined reference to</code>lzma_crc64@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>lzma_raw_encoder@XZ_5.0&#39;
+../../lib/libR.so: undefined reference to</code>pcre_config’<br>../../lib/libR.so: undefined reference to <code>lzma_code@XZ_5.0&#39;
+../../lib/libR.so: undefined reference to</code>lzma_stream_decoder@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>pcre_free&#39;
+../../lib/libR.so: undefined reference to</code>lzma_raw_decoder@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>pcre_free_study&#39;
+../../lib/libR.so: undefined reference to</code>pcre_assign_jit_stack’<br>../../lib/libR.so: undefined reference to <code>pcre_exec&#39;
+../../lib/libR.so: undefined reference to</code>lzma_version_string@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>pcre_maketables&#39;
+../../lib/libR.so: undefined reference to</code>lzma_stream_encoder@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>pcre_compile&#39;
+../../lib/libR.so: undefined reference to</code>pcre_study’<br>../../lib/libR.so: undefined reference to <code>pcre_version&#39;
+../../lib/libR.so: undefined reference to</code>lzma_end@XZ_5.0’<br>../../lib/libR.so: undefined reference to <code>pcre_jit_stack_alloc&#39;
+collect2: error: ld returned 1 exit status
+make[3]: *** [R.bin] Error 1
+make[3]: Leaving directory</code>/builder/software/R/src/main’<br>make[2]: <strong><em> [R] Error 2<br>make[2]: Leaving directory `/builder/software/R/src/main’<br>make[1]: </em></strong> [R] Error 1<br>make[1]: Leaving directory `/builder/software/R/src’<br>make: <em>*</em> [R] Error 1</p>
+<pre><code>这个报错是因为什么原因导致的？我们可以看到里面说
+</code></pre><p>usr/bin/ld: warning: libpcre.so.1, needed by ../../lib/libR.so, not found (try using -rpath or -rpath-link)<br>/usr/bin/ld: warning: liblzma.so.5, needed by ../../lib/libR.so, not found (try using -rpath or -rpath-link)</p>
+<pre><code>说缺少`libpcre.so.1`和`liblzma.so.5`这两个库文件，我心里浮现了一副黑人问号脸我在前面`./configure`的时候还传入了`PCRE`和`XZ`这两个库的路径，为什么还是会报错？
+于是我先是进行了谷歌，从谷歌上找到了一篇R安装攻略,在这篇攻略里也提到了这个问题，
+
+
+&gt;此处报错是由于没有找到动态库，看第一二行
+&gt;
+&gt;解决方法：添加动态库
+&gt;
+&gt;cat /etc/ld.so.conf
+&gt;
+&gt;include ld.so.conf.d/*.conf
+&gt;
+&gt;/opt/pcre-8.39/lib
+&gt;
+&gt;/opt/xz-5.2.2/lib
+
+但是在这个攻略里最后的解决方法是修改`/etc/ld.so.conf`文件，将前面安装的库的路径添加到这个文件中，但是我没有root权限，并不能修改这个文件，因此这个方法对我并不适用。后来在鹏帆和许骄的提醒下，我们在后面看到建议说try using `-rpath or -rpath-link`,后来我搜索了这两个命令，这两个命令是用于通过gcc向ld传递参数的时候用的，
+&gt;gcc编译链接动态库时，很有可能编译通过，但是执行时，找不到动态链接库，那是因为-L选项指定的路径只在编译时有效，解决方法是通过-Wl(注意，是字母表K之后的小写L),`rpath=&lt;your_lib_dir&gt;`，使得execute记住链接库的位置
+
+于是我试着在configure的时候加入这两个参数
+</code></pre><p>/builder/software/R-3.4.2/configure —prefix=/builder/software/R —en<br>able-R-shlib —with-cairo  —with-jpeglib —with-readline —with-tcltk  —with-blas —with-lapack —enable-R-profiling LDFLAGS=”-L/builder/software/zlib/lib  -L/builder/software/bzip2/lib -L/builder/software/xz/lib  -Wl,—rpath/builder/software/pcre/lib -Wl,—rpath/builder/so<br>ftware/curl/lib” CPPFLAGS=”-I/builder/software/zlib/include -I/builder/softw<br>are/bzip2/include -I/builder/software/xz/include -I/builder/software/pcre/in<br>clude -I/builder/software/curl/include</p>
+<pre><code>但是这样总会报错，后来我知道，configure的时候我们传入的参数都会写到Makeconf文件里面，那么我可不可以先按照原来的我方法先进行configure，然后再对Makeconf文件进行修改呢？于是我还是先按照之前的方法进行configure
+</code></pre><p>/builder/software/R-3.4.2/configure —prefix=/builder/software/R —en<br>able-R-shlib —with-cairo  —with-jpeglib —with-readline —with-tcltk  —with-blas —with-lapack —enable-R-profiling LDFLAGS=”-L/builder/software/zlib/lib  -L/builder/software/bzip2/lib -L/builder/software/xz/lib -L/builder/software/pcre/lib -L/builder/so<br>ftware/curl/lib” CPPFLAGS=”-I/builder/software/zlib/include -I/builder/softw<br>are/bzip2/include -I/builder/software/xz/include -I/builder/software/pcre/in<br>clude -I/builder/software/curl/include</p>
+<pre><code>然后在make之前修改Makeconf中的参数
+</code></pre><p>LDFLAGS = -L/builder/software/zlib/lib  -L/builder/software/bzip2/lib   -L/builder/software/curl/lib -Wl,-rpath=/builder/software/xz/lib -Wl,-rpath=/builder/software/pcre/lib</p>
+<pre><code>再进行
+</code></pre><p>make</p>
+<pre><code>之前的报错终于不见了!但是出现了新的报错心里有句mmp:
+</code></pre><p>/usr/bin/ld: cannot find -lpcre<br>collect2: error: ld returned 1 exit status<br>make[3]: <strong><em> [libR.so] Error 1<br>make[3]: Leaving directory `/builder/software/R-3.4.2/src/main’<br>make[2]: </em></strong> [R] Error 2<br>make[2]: Leaving directory <code>/builder/software/R-3.4.2/src/main&#39;
+make[1]: *** [R] Error 1
+make[1]: Leaving directory</code>/builder/software/R-3.4.2/src’<br>make: <em>*</em> [R] Error 1</p>
+<pre><code>于是我在想，可能是前面我把LDFLAGS里面参数由-L/builder/software/pcre/lib修改为了-Wl,-rpath=/builder/software/pcre/lib之后不再出现原来的报错，但是现在又出现了新的报错，而我在使用原来的参数时不会出现这个新的报错，结合之前我搜索到的结果,是不是因为我之前的写法只能让路径gcc在编译时有效,而后来的写法只能让其在进行运行时有效？那么如果我让两种参数同时出现，虽然我把库的路径传递了两次，但是会不会就不再报错了？时间是检验真理的唯一标准！先试验一把！于是我把两种参数的路径都加到了Makeconf中
+</code></pre><p>LDFLAGS = -L/builder/software/zlib/lib  -L/builder/software/bzip2/lib -L/builder/software/xz/lib -L/builder/software/pcre/lib -L/builder/software/curl/lib -Wl,-rpath=/builder/software/xz/lib -Wl,-rpath=/builder/software/pcre/lib</p>
+<pre><code>再次进行
+</code></pre><p>make</p>
+<pre><code>终于没有了报错。说明make成功了，于是我再进行
+</code></pre><p>make install<br>```<br>终于安装完成！你挑着担我牵着马</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>1.在Linux下用源码安装R是个大坑尤其是在没有root权限的情况下</p>
+<p>2.安装R之前一定要将R要求的依赖库预先安装好，版本和安装顺序都要对。具体可以参考R官方文档R Installation and Administration 。</p>
+<p>3.在安装好R的依赖库之后，在进行R的安装的时候要注意将依赖库的路径传入到参数中，而且一定要注意传入的方式。</p>
+<p>4.注意分析报错信息，从中寻找原因，不要盲目瞎想，多谷歌，多问老司机。</p>
+<p>5.关于-Wl -rpath更详细的介绍<a href="https://my.oschina.net/shelllife/blog/115958" target="_blank" rel="noopener">参考</a></p>
+<p>3.在安装好R的依赖库之后，在进行R的安装的时候要注意将依赖库的路径传入到参数中，而且一定要注意传入的方式。<br>4.注意分析报错信息，从中寻找原因，不要盲目瞎想，多谷歌，多问老司机。<br>5.关于-Wl -rpath更详细的介绍参考</p>
+<p>参考链接：<a href="http://www.jianshu.com/p/5bfe154f1aa4" target="_blank" rel="noopener">http://www.jianshu.com/p/5bfe154f1aa4</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://jeweizhong.github.io" class="b-link-green">木叶村</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/02/13/zhuan-zai-linux-xia-r-an-zhuang-wu-root-quan-xian/" class="b-link-green">(转载)linux下R安装(无root权限)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/02/13/an-zhuang-python3-ji-mo-kuai/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="安装python3及模块">
+                        
+                        <span class="card-title">安装python3及模块</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">pythonlinux下安装python
+
+官网下载源码压缩包，解压 
+setup.py 里面可以设置sqlite3的搜索路径， 以防止模块安装不上
+./configure
+安装文件有很多选项``
+./configure -hconfigu</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python3/" class="post-category" target="_blank">
+                                    python3
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/编程语言/" target="_blank">
+                        <span class="chip bg-color">编程语言</span>
+                    </a>
+                    
+                    <a href="/tags/python3/" target="_blank">
+                        <span class="chip bg-color">python3</span>
+                    </a>
+                    
+                    <a href="/tags/大数据/" target="_blank">
+                        <span class="chip bg-color">大数据</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/02/13/sam-bam-ge-shi-shuo-ming/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="SAM/BAM格式说明">
+                        
+                        <span class="card-title">SAM/BAM格式说明</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">SAM是一种序列比对格式标准，由sanger制定，是以TAB为分割符的文本格式。 主要应用于测序序列mapping到基因组上的结果表示，当然也可以表示任意的多重比对结果。 SAM的全称是sequence alignment/map form</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/生信/" class="post-category" target="_blank">
+                                    生信
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/生信理论基础/" target="_blank">
+                        <span class="chip bg-color">生信理论基础</span>
+                    </a>
+                    
+                    <a href="/tags/文件格式/" target="_blank">
+                        <span class="chip bg-color">文件格式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/JeWeizhong" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:584728914@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=584728914" class="tooltipped" data-tooltip="QQ联系我: 584728914" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
