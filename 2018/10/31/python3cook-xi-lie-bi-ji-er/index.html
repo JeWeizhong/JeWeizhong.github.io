@@ -1,232 +1,313 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法 | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="python3" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="编程语言,python3">
-  
+    <meta name="description" content="写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：https://github.com/yidao620c/python3-cookbook 
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+collect..." />
 
-  <meta property="og:title" content="python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法"/>
 
-  <meta property="og:site_name" content="木叶村"/>
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+    <!--Title-->
 
+
+<title>python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法 | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法">
+            
+	            python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/10/31/python3cook-xi-lie-bi-ji-er/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-10-30T16:00:00.000Z">
-          2018-10-31
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python3/">python3</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/31</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
 <ol>
 <li><p><code>collections</code> 模块中的<code>defaultdict</code>函数能够构造一个值为列表的字典：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"> from collections import defaultdict
- d = defaultdict(list)
- d['a'].append(1)
- d['a'].append(2)
- d['b'].append(4)
- d = defaultdict(set)
- d['a'].add(1)
- d['a'].add(2)
- d['b'].add(4)
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line">d = defaultdict(list)</span><br><span class="line">d[<span class="string">'a'</span>].append(<span class="number">1</span>)</span><br><span class="line">d[<span class="string">'a'</span>].append(<span class="number">2</span>)</span><br><span class="line">d[<span class="string">'b'</span>].append(<span class="number">4</span>)</span><br><span class="line">d = defaultdict(set)</span><br><span class="line">d[<span class="string">'a'</span>].add(<span class="number">1</span>)</span><br><span class="line">d[<span class="string">'a'</span>].add(<span class="number">2</span>)</span><br><span class="line">d[<span class="string">'b'</span>].add(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 <p> 简化版：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"> d = defaultdict(list)
- for key, value in pairs:
- d[key].append(value)
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = defaultdict(list)</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> pairs:</span><br><span class="line">d[key].append(value)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>字段的键存储是无序的，如果想要一个键顺序是一定的字典，可以这样做：</p>
-<pre><code> from collections import OrderedDict
- d = OrderedDict()
-</code></pre><p> 但这样做内存占用比较大</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from collections import OrderedDict</span><br><span class="line">d = OrderedDict()</span><br></pre></td></tr></table></figure>
+<p> 但这样做内存占用比较大</p>
 </li>
 <li><p>如果你在一个字典上执行普通的数学运算，你会发现它们仅仅作用于键，而不是值：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"> prices = {
- 'ACME': 45.23,
- 'AAPL': 612.78,
- 'IBM': 205.55,
- 'HPQ': 37.20,
- 'FB': 10.75
- }
- min(prices) # Returns 'AAPL'
- max(prices) # Returns 'IBM'
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prices = &#123;</span><br><span class="line"><span class="string">'ACME'</span>: <span class="number">45.23</span>,</span><br><span class="line"><span class="string">'AAPL'</span>: <span class="number">612.78</span>,</span><br><span class="line"><span class="string">'IBM'</span>: <span class="number">205.55</span>,</span><br><span class="line"><span class="string">'HPQ'</span>: <span class="number">37.20</span>,</span><br><span class="line"><span class="string">'FB'</span>: <span class="number">10.75</span></span><br><span class="line">&#125;</span><br><span class="line">min(prices) <span class="comment"># Returns 'AAPL'</span></span><br><span class="line">max(prices) <span class="comment"># Returns 'IBM'</span></span><br></pre></td></tr></table></figure>
 <p> 想要对值进行操作，可以这样：</p>
-<pre><code> min(prices, key=lambda k: prices[k]) # Returns &#39;FB&#39;
- max(prices, key=lambda k: prices[k]) # Returns &#39;AAPL&#39;
-</code></pre></li>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">min(prices, key=lambda k: prices[k]) # Returns &apos;FB&apos;</span><br><span class="line">max(prices, key=lambda k: prices[k]) # Returns &apos;AAPL&apos;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>对两个字典进行运算：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"> # Find keys in common
- a.keys() & b.keys() # { 'x', 'y' }
- # Find keys in a that are not in b
- a.keys() - b.keys() # { 'z' }
- # Find (key,value) pairs in common
- a.items() & b.items() # { ('y', 2) }
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find keys in common</span></span><br><span class="line">a.keys() &amp; b.keys() <span class="comment"># &#123; 'x', 'y' &#125;</span></span><br><span class="line"><span class="comment"># Find keys in a that are not in b</span></span><br><span class="line">a.keys() - b.keys() <span class="comment"># &#123; 'z' &#125;</span></span><br><span class="line"><span class="comment"># Find (key,value) pairs in common</span></span><br><span class="line">a.items() &amp; b.items() <span class="comment"># &#123; ('y', 2) &#125;</span></span><br></pre></td></tr></table></figure>
 <p> <del>ps：如果想要对列表消除重复元素可以转换位集合：</del></p>
-<pre class=" language-lang-python"><code class="language-lang-python"> >>> a
- [1, 5, 2, 1, 9, 1, 5, 10]
- >>> set(a)
- {1, 2, 10, 5, 9}
- >>>
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>set(a)</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">9</span>&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p> 如果想要对一个复杂类型的列表去重复，就要用到一个稍微复杂一点的函数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"> def dedupe(items, key=None):
-     seen = set()
-     for item in items:
-         val = item if key is None else key(item)
-         if val not in seen:
-             yield item
-             seen.add(val)
-
- >>> a = [ {'x':1, 'y':2}, {'x':1, 'y':3}, {'x':1, 'y':2}, {'x':2, 'y':4}]
- >>> list(dedupe(a, key=lambda d: (d['x'],d['y'])))
- [{'x': 1, 'y': 2}, {'x': 1, 'y': 3}, {'x': 2, 'y': 4}]
- >>> list(dedupe(a, key=lambda d: d['x']))
- [{'x': 1, 'y': 2}, {'x': 2, 'y': 4}]
- >>>
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dedupe</span><span class="params">(items, key=None)</span>:</span></span><br><span class="line">    seen = set()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        val = item <span class="keyword">if</span> key <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">else</span> key(item)</span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">            seen.add(val)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [ &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">3</span>&#125;, &#123;<span class="string">'x'</span>:<span class="number">1</span>, <span class="string">'y'</span>:<span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>:<span class="number">2</span>, <span class="string">'y'</span>:<span class="number">4</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(dedupe(a, key=<span class="keyword">lambda</span> d: (d[<span class="string">'x'</span>],d[<span class="string">'y'</span>])))</span><br><span class="line">[&#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'x'</span>: <span class="number">2</span>, <span class="string">'y'</span>: <span class="number">4</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(dedupe(a, key=<span class="keyword">lambda</span> d: d[<span class="string">'x'</span>]))</span><br><span class="line">[&#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'x'</span>: <span class="number">2</span>, <span class="string">'y'</span>: <span class="number">4</span>&#125;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>按照关键字对字典进行排序：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"> rows = [
- {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003},
- {'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
- {'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
- {'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
- ]
-
- from operator import itemgetter
- rows_by_fname = sorted(rows, key=itemgetter('fname'))
- rows_by_uid = sorted(rows, key=itemgetter('uid'))
- print(rows_by_fname)
- print(rows_by_uid)
-</code></pre>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rows = [</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'Brian'</span>, <span class="string">'lname'</span>: <span class="string">'Jones'</span>, <span class="string">'uid'</span>: <span class="number">1003</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'David'</span>, <span class="string">'lname'</span>: <span class="string">'Beazley'</span>, <span class="string">'uid'</span>: <span class="number">1002</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'John'</span>, <span class="string">'lname'</span>: <span class="string">'Cleese'</span>, <span class="string">'uid'</span>: <span class="number">1001</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'Big'</span>, <span class="string">'lname'</span>: <span class="string">'Jones'</span>, <span class="string">'uid'</span>: <span class="number">1004</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line">rows_by_fname = sorted(rows, key=itemgetter(<span class="string">'fname'</span>))</span><br><span class="line">rows_by_uid = sorted(rows, key=itemgetter(<span class="string">'uid'</span>))</span><br><span class="line">print(rows_by_fname)</span><br><span class="line">print(rows_by_uid)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><code>itemgetter()</code> 有时候也可以用<code>lambda</code> 表达式代替，比如：</p>
-<pre><code>```python
-
-rows_by_fname = sorted(rows, key=lambda r: r[&#39;fname&#39;])
-rows_by_lfname = sorted(rows, key=lambda r: (r[&#39;lname&#39;],r[&#39;fname&#39;]))
-```
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rows_by_fname = sorted(rows, key=<span class="keyword">lambda</span> r: r[<span class="string">'fname'</span>])</span><br><span class="line">rows_by_lfname = sorted(rows, key=<span class="keyword">lambda</span> r: (r[<span class="string">'lname'</span>],r[<span class="string">'fname'</span>]))</span><br></pre></td></tr></table></figure>
 </code></pre><p>理论上讲，<code>operator.attrgetter()</code>与 <code>itemgetter()</code> 函数的作用是一样，书中说<strong>排序不支持原生比较的对象</strong>要用<code>attrgetter()</code>函数，反正我也不知道什么是<strong>不支持原生比较的对象</strong></p>
 <p><strong>下一节：字典的用法(续)</strong></p>
 
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/python3/">python3</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/11/01/python3cook-xi-lie-bi-ji-san/" class="pre-post btn btn-default" title='python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">python3 cookbook笔记：第一章 数据结构和算法(三)---字典的用法(续)</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/10/30/python3cook-xi-lie-bi-ji-yi/" class="next-post btn btn-default" title='python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

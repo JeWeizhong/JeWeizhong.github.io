@@ -1,385 +1,256 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>python3 cookbook年度终极版(超长整理) | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="python3" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="编程语言,python3">
-  
+    <meta name="description" content="写在开头这次是对《python3 cookbook》的最终整理笔记，只是一个简短的对问题的回答，方便以后查阅，但其中的原理和扩展知识说的不是很详细，毕竟篇幅有限，所以还是需要去查资料、看文档。鉴..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="python3 cookbook年度终极版(超长整理)"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>python3 cookbook年度终极版(超长整理) | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="python3 cookbook年度终极版(超长整理)">
+            
+	            python3 cookbook年度终极版(超长整理)
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>python3 cookbook年度终极版(超长整理)</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/12/30/python3cookbook-nian-du-zhong-ji-ban-chao-chang-zheng-li/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-12-29T16:00:00.000Z">
-          2018-12-30
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python3/">python3</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/12/30</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><p><u>这次是对《python3 cookbook》的最终整理笔记，只是一个简短的对问题的回答，方便以后查阅，但其中的原理和扩展知识说的不是很详细，毕竟篇幅有限，所以还是需要去查资料、看文档。鉴于自己也是刚入门python，对书中的一些问题看的不是很明白，因此就出现了很多带有 “略”、“待补充的”字样，如果以后有机会接触到类似的问题，或者自己突然开窍就明白了其中的一些原理，会继续回来补充的</u></p>
 <hr>
 <hr>
 <h2 id="第一章：数据结构和算法"><a href="#第一章：数据结构和算法" class="headerlink" title="第一章：数据结构和算法"></a>第一章：数据结构和算法</h2><h3 id="1-1-解压序列赋值给多个变量"><a href="#1-1-解压序列赋值给多个变量" class="headerlink" title="1.1 解压序列赋值给多个变量"></a>1.1 解压序列赋值给多个变量</h3><p><strong>Q:现在有一个包含N 个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给N 个变量</strong></p>
 <p>A: 元祖, 列表，或者其他可迭代对象都可以进行直接解压，并赋值，用 <code>_</code>,<code>*_</code> 占位并丢弃，</p>
 <p>用 <code>*name</code>  可以解压成列表形式</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> data = [ 'ACME', 50, 91.1, (2012, 12, 21) ]
->>> _, shares, price, _ = data
->>> shares
-50
->>> price
-91.1
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = [ <span class="string">'ACME'</span>, <span class="number">50</span>, <span class="number">91.1</span>, (<span class="number">2012</span>, <span class="number">12</span>, <span class="number">21</span>) ]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>_, shares, price, _ = data</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shares</span><br><span class="line"><span class="number">50</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>price</span><br><span class="line"><span class="number">91.1</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="1-2-解压可迭代对象赋值给多个变量"><a href="#1-2-解压可迭代对象赋值给多个变量" class="headerlink" title="1.2 解压可迭代对象赋值给多个变量"></a>1.2 解压可迭代对象赋值给多个变量</h3><p><strong>Q: 如果一个可迭代对象的元素个数超过变量个数时，会抛出一个ValueError 。那么怎样才能从这个可迭代对象中解压出N 个元素出来？</strong></p>
 <p>A: 星号表达式可以用来收集那些不确定的变量:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> *trailing, current = [10, 8, 7, 1, 9, 5, 10, 3]
->>> trailing
-[10, 8, 7, 1, 9, 5, 10]
->>> current
-3
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>*trailing, current = [<span class="number">10</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>trailing</span><br><span class="line">[<span class="number">10</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>current</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-3-保留最后N-个元素"><a href="#1-3-保留最后N-个元素" class="headerlink" title="1.3 保留最后N 个元素"></a>1.3 保留最后N 个元素</h3><p><strong>Q: 在迭代操作或者其他操作的时候，怎样只保留最后有限几个元素的历史记录？</strong></p>
 <p>A: <code>collections.deque</code>会构造函数会新建一个固定大小的队列。当新的元素加入并<br>且这个队列已满的时候，最老的元素会自动被移除掉。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> from collections import deque
->>> q = deque(maxlen=3)
->>> q.append(1)
->>> q.append(2)
->>> q.append(3)
->>> q
-deque([1, 2, 3], maxlen=3)
->>> q.append(4)
->>> q
-deque([2, 3, 4], maxlen=3)
->>> q.append(5)
->>> q
-deque([3, 4, 5], maxlen=3)
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q = deque(maxlen=<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.append(<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.append(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.append(<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line">deque([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], maxlen=<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line">deque([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], maxlen=<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line">deque([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], maxlen=<span class="number">3</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p><em><code>collections.deque</code>构造的队列也支持在队列两头进行插入删除操作</em></p>
 <h3 id="1-4-查找最大或最小的N-个元素"><a href="#1-4-查找最大或最小的N-个元素" class="headerlink" title="1.4 查找最大或最小的N 个元素"></a>1.4 查找最大或最小的N 个元素</h3><p><strong>Q: 怎样从一个集合中获得最大或者最小的N 个元素列表？</strong></p>
 <p>A: <code>heapq</code> 模块有两个函数：<code>nlargest()</code> 和<code>nsmallest()</code> 可以完美解决这个问题。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import heapq
-nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
-print(heapq.nlargest(3, nums)) # Prints [42, 37, 23]
-print(heapq.nsmallest(3, nums)) # Prints [-4, 1, 2]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">23</span>, <span class="number">7</span>, <span class="number">-4</span>, <span class="number">18</span>, <span class="number">23</span>, <span class="number">42</span>, <span class="number">37</span>, <span class="number">2</span>]</span><br><span class="line">print(heapq.nlargest(<span class="number">3</span>, nums)) <span class="comment"># Prints [42, 37, 23]</span></span><br><span class="line">print(heapq.nsmallest(<span class="number">3</span>, nums)) <span class="comment"># Prints [-4, 1, 2]</span></span><br></pre></td></tr></table></figure>
 <p>也可以接收关键字参数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">portfolio = [
-    {'name': 'IBM', 'shares': 100, 'price': 91.1},
-    {'name': 'AAPL', 'shares': 50, 'price': 543.22},
-    {'name': 'FB', 'shares': 200, 'price': 21.09},
-    {'name': 'HPQ', 'shares': 35, 'price': 31.75},
-    {'name': 'YHOO', 'shares': 45, 'price': 16.35},
-    {'name': 'ACME', 'shares': 75, 'price': 115.65}
-]
-cheap = heapq.nsmallest(3, portfolio, key=lambda s: s['price'])
-expensive = heapq.nlargest(3, portfolio, key=lambda s: s['price'])
-
-# 上面代码在对每个元素进行对比的时候，会以price 的值进行比较
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">portfolio = [</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'IBM'</span>, <span class="string">'shares'</span>: <span class="number">100</span>, <span class="string">'price'</span>: <span class="number">91.1</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'AAPL'</span>, <span class="string">'shares'</span>: <span class="number">50</span>, <span class="string">'price'</span>: <span class="number">543.22</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'FB'</span>, <span class="string">'shares'</span>: <span class="number">200</span>, <span class="string">'price'</span>: <span class="number">21.09</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'HPQ'</span>, <span class="string">'shares'</span>: <span class="number">35</span>, <span class="string">'price'</span>: <span class="number">31.75</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'YHOO'</span>, <span class="string">'shares'</span>: <span class="number">45</span>, <span class="string">'price'</span>: <span class="number">16.35</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'name'</span>: <span class="string">'ACME'</span>, <span class="string">'shares'</span>: <span class="number">75</span>, <span class="string">'price'</span>: <span class="number">115.65</span>&#125;</span><br><span class="line">]</span><br><span class="line">cheap = heapq.nsmallest(<span class="number">3</span>, portfolio, key=<span class="keyword">lambda</span> s: s[<span class="string">'price'</span>])</span><br><span class="line">expensive = heapq.nlargest(<span class="number">3</span>, portfolio, key=<span class="keyword">lambda</span> s: s[<span class="string">'price'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上面代码在对每个元素进行对比的时候，会以price 的值进行比较</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-5-实现一个优先级队列"><a href="#1-5-实现一个优先级队列" class="headerlink" title="1.5 实现一个优先级队列"></a>1.5 实现一个优先级队列</h3><p><strong>Q:怎样实现一个按优先级排序的队列？并且在这个队列上面每次pop 操作总是返回优先级最高的那个元素</strong></p>
 <p>A: 利用heapq 模块可是实现一个简单的优先级队列:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import heapq
-
-class PriorityQueue:
-    def __init__(self):
-        self._queue = []
-        self._index = 0
-    def push(self, item, priority):
-        heapq.heappush(self._queue, (-priority, self._index, item))
-        self._index += 1
-    def pop(self):
-        return heapq.heappop(self._queue)[-1]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._queue = []</span><br><span class="line">        self._index = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, item, priority)</span>:</span></span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index += <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> heapq.heappop(self._queue)[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 <p>使用方式：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> class Item:
-...     def __init__(self, name):
-...         self.name = name
-...     def __repr__(self):
-...         return 'Item({!r})'.format(self.name)
-...
->>> q = PriorityQueue()
->>> q.push(Item('foo'), 1)
->>> q.push(Item('bar'), 5)
->>> q.push(Item('spam'), 4)
->>> q.push(Item('grok'), 1)
->>> q.pop()
-Item('bar')
->>> q.pop()
-Item('spam')
->>> q.pop()
-Item('foo')
->>> q.pop()
-Item('grok')
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Item</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line"><span class="meta">... </span>        self.name = name</span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">'Item(&#123;!r&#125;)'</span>.format(self.name)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q = PriorityQueue()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.push(Item(<span class="string">'foo'</span>), <span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.push(Item(<span class="string">'bar'</span>), <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.push(Item(<span class="string">'spam'</span>), <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.push(Item(<span class="string">'grok'</span>), <span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.pop()</span><br><span class="line">Item(<span class="string">'bar'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.pop()</span><br><span class="line">Item(<span class="string">'spam'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.pop()</span><br><span class="line">Item(<span class="string">'foo'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>q.pop()</span><br><span class="line">Item(<span class="string">'grok'</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="1-6-字典中的键映射多个值"><a href="#1-6-字典中的键映射多个值" class="headerlink" title="1.6 字典中的键映射多个值"></a>1.6 字典中的键映射多个值</h3><p><strong>Q: 怎样实现一个键对应多个值的字典（也叫multidict）？</strong></p>
 <p>A:这其实也就是字典与列表的嵌套，有三种方式实现： 一是自己创建，二是用<code>collections.defaultdict</code>，最后一种是用<code>setdefault</code> : </p>
-<pre class=" language-lang-python"><code class="language-lang-python">d = {}
-for key, value in pairs:
-    if key not in d:
-        d[key] = []
-    d[key].append(value)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> pairs:</span><br><span class="line">    <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> d:</span><br><span class="line">        d[key] = []</span><br><span class="line">    d[key].append(value)</span><br></pre></td></tr></table></figure>
 <p><code>defaultdict</code> 会自动为将要访问的键（就算目前字典中并不存在这样的键）创建映射实体:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">from collections import defaultdict
-
-d = defaultdict(list)
-for key, value in pairs:
-    d[key].append(value)
-</code></pre>
-<pre class=" language-lang-python"><code class="language-lang-python">d = {} # A regular dictionary
-d.setdefault('a', []).append(1)
-d.setdefault('a', []).append(2)
-d.setdefault('b', []).append(4)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">d = defaultdict(list)</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> pairs:</span><br><span class="line">    d[key].append(value)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#125; <span class="comment"># A regular dictionary</span></span><br><span class="line">d.setdefault(<span class="string">'a'</span>, []).append(<span class="number">1</span>)</span><br><span class="line">d.setdefault(<span class="string">'a'</span>, []).append(<span class="number">2</span>)</span><br><span class="line">d.setdefault(<span class="string">'b'</span>, []).append(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="1-7-字典排序"><a href="#1-7-字典排序" class="headerlink" title="1.7 字典排序"></a>1.7 字典排序</h3><p><strong>Q: 你想创建一个字典，并且在迭代或序列化这个字典的时候能够控制元素的顺序</strong></p>
 <p>A: 字典默认是不排序的，所以每次遍历输出的键顺序是不一样的，而<code>collections.OrderedDict</code>会创建一个键顺序固定的字典：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">from collections import OrderedDict
-
-d = OrderedDict()
-d['foo'] = 1
-d['bar'] = 2
-d['spam'] = 3
-d['grok'] = 4
-# Outputs "foo 1", "bar 2", "spam 3", "grok 4"
-for key in d:
-    print(key, d[key])`
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">d = OrderedDict()</span><br><span class="line">d[<span class="string">'foo'</span>] = <span class="number">1</span></span><br><span class="line">d[<span class="string">'bar'</span>] = <span class="number">2</span></span><br><span class="line">d[<span class="string">'spam'</span>] = <span class="number">3</span></span><br><span class="line">d[<span class="string">'grok'</span>] = <span class="number">4</span></span><br><span class="line"><span class="comment"># Outputs "foo 1", "bar 2", "spam 3", "grok 4"</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line">    print(key, d[key])`</span><br></pre></td></tr></table></figure>
 <h3 id="1-8-字典的运算"><a href="#1-8-字典的运算" class="headerlink" title="1.8 字典的运算"></a>1.8 字典的运算</h3><p><strong>Q: 怎样在数据字典中执行一些计算操作（比如求最小值、最大值、排序等等）？</strong></p>
 <p>A: <code>zip()</code>函数可以将字典的键与值反转，然后我们可以愉快的进行排序，求最值等操作了：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> prices = {
-... 'ACME': 45.23,
-... 'AAPL': 612.78,
-... 'IBM': 205.55,
-... 'HPQ': 37.20,
-... 'FB': 10.75
-... }
->>>
->>> zip(prices.values(), prices.keys())
-<zip object at 0x7fdfae678548>
->>> min(zip(prices.values(), prices.keys()))
-(10.75, 'FB')
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>prices = &#123;</span><br><span class="line"><span class="meta">... </span><span class="string">'ACME'</span>: <span class="number">45.23</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'AAPL'</span>: <span class="number">612.78</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'IBM'</span>: <span class="number">205.55</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'HPQ'</span>: <span class="number">37.20</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'FB'</span>: <span class="number">10.75</span></span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zip(prices.values(), prices.keys())</span><br><span class="line">&lt;zip object at <span class="number">0x7fdfae678548</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(zip(prices.values(), prices.keys()))</span><br><span class="line">(<span class="number">10.75</span>, <span class="string">'FB'</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="1-9-查找两字典的相同点"><a href="#1-9-查找两字典的相同点" class="headerlink" title="1.9 查找两字典的相同点"></a>1.9 查找两字典的相同点</h3><p><strong>Q: 怎样在两个字典中寻找相同点（比如相同的键、相同的值等等）？</strong></p>
 <p>A: 其实就是两个列表的运算：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> a = {
-... 'x' : 1,
-... 'y' : 2,
-... 'z' : 3
-... }
->>> b = {
-... 'w' : 10,
-... 'x' : 11,
-... 'y' : 2
-... }
->>> a.keys() & b.keys()
-{'x', 'y'}
->>> a.keys() - b.keys()
-{'z'}
->>> b.keys() - a.keys()
-{'w'}
->>> a.items() & b.items()
-{('y', 2)}
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = &#123;</span><br><span class="line"><span class="meta">... </span><span class="string">'x'</span> : <span class="number">1</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'y'</span> : <span class="number">2</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'z'</span> : <span class="number">3</span></span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = &#123;</span><br><span class="line"><span class="meta">... </span><span class="string">'w'</span> : <span class="number">10</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'x'</span> : <span class="number">11</span>,</span><br><span class="line"><span class="meta">... </span><span class="string">'y'</span> : <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.keys() &amp; b.keys()</span><br><span class="line">&#123;<span class="string">'x'</span>, <span class="string">'y'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.keys() - b.keys()</span><br><span class="line">&#123;<span class="string">'z'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.keys() - a.keys()</span><br><span class="line">&#123;<span class="string">'w'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.items() &amp; b.items()</span><br><span class="line">&#123;(<span class="string">'y'</span>, <span class="number">2</span>)&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="1-10-删除序列相同元素并保持顺序"><a href="#1-10-删除序列相同元素并保持顺序" class="headerlink" title="1.10 删除序列相同元素并保持顺序"></a>1.10 删除序列相同元素并保持顺序</h3><p><strong>Q: 怎样在一个序列上面保持元素顺序的同时消除重复的值？</strong></p>
 <p>A: 大家首先想到的方法是<code>ser()</code>，但是这种方法不能维护元素的顺序，其实方法有很多中，可以构建一个键位固定的字典(<code>OrderedDict</code>),也可对``set()稍作调整：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">def dedupe(items):
-    seen = set()
-    for item in items:
-        if item not in seen:
-        yield item
-        seen.add(item)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dedupe</span><span class="params">(items)</span>:</span></span><br><span class="line">    seen = set()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line">        seen.add(item)</span><br></pre></td></tr></table></figure>
 <h3 id="1-11-命名切片"><a href="#1-11-命名切片" class="headerlink" title="1.11 命名切片"></a>1.11 命名切片</h3><p><strong>Q: 你的程序已经出现一大堆已无法直视的硬编码切片下标，然后你想清理下代码。</strong></p>
 <p>A: <code>slice()</code>方法可以对切片进行命名，而避免用一大堆难以阅读的下标进行运算：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> items = [0, 1, 2, 3, 4, 5, 6]
->>> a = slice(2, 4)
->>> items[2:4]
-[2, 3]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>items = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = slice(<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>items[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 <h3 id="1-12-序列中出现次数最多的元素"><a href="#1-12-序列中出现次数最多的元素" class="headerlink" title="1.12 序列中出现次数最多的元素"></a>1.12 序列中出现次数最多的元素</h3><p><strong>Q:怎样找出序列中出现次数最多的元素呢？</strong></p>
 <p>A: <code>collecttions.Counter</code>类中的<code>most_common</code>就可以直接给出答案，当然你也可以手动计数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> a = [1,1,2,1,2,6,6,6,6]
->>> from
-from
->>> from collections import Counter
->>> w = Counter(a)
->>> w
-Counter({6: 4, 1: 3, 2: 2})
-# 出现频率最高的1个数
->>> w.most_common(1)
-[(6, 4)]
-# 出现频率最高的两个数
->>> w.most_common(2)
-[(6, 4), (1, 3)]
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>w = Counter(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>w</span><br><span class="line">Counter(&#123;<span class="number">6</span>: <span class="number">4</span>, <span class="number">1</span>: <span class="number">3</span>, <span class="number">2</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="comment"># 出现频率最高的1个数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>w.most_common(<span class="number">1</span>)</span><br><span class="line">[(<span class="number">6</span>, <span class="number">4</span>)]</span><br><span class="line"><span class="comment"># 出现频率最高的两个数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>w.most_common(<span class="number">2</span>)</span><br><span class="line">[(<span class="number">6</span>, <span class="number">4</span>), (<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="1-13-通过某个关键字排序一个字典列表"><a href="#1-13-通过某个关键字排序一个字典列表" class="headerlink" title="1.13 通过某个关键字排序一个字典列表"></a>1.13 通过某个关键字排序一个字典列表</h3><p><strong>Q:你有一个字典列表，你想根据某个或某届字典字段来排序这个列表</strong></p>
 <p>A: <code>operator</code> 模块的<code>itemgetter</code> 函数可以生成一个<strong>callable</strong>对象，当作关键字传入到<code>sorted</code>函数中：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">rows = [
-{'fname': 'Brian', 'lname': 'Jones', 'uid': 1003},
-{'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
-{'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
-{'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
-]
-from operator import itemgetter
-rows_by_fname = sorted(rows, key=itemgetter('fname'))
-rows_by_uid = sorted(rows, key=itemgetter('uid'))
-print(rows_by_fname)
-print(rows_by_uid)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rows = [</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'Brian'</span>, <span class="string">'lname'</span>: <span class="string">'Jones'</span>, <span class="string">'uid'</span>: <span class="number">1003</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'David'</span>, <span class="string">'lname'</span>: <span class="string">'Beazley'</span>, <span class="string">'uid'</span>: <span class="number">1002</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'John'</span>, <span class="string">'lname'</span>: <span class="string">'Cleese'</span>, <span class="string">'uid'</span>: <span class="number">1001</span>&#125;,</span><br><span class="line">&#123;<span class="string">'fname'</span>: <span class="string">'Big'</span>, <span class="string">'lname'</span>: <span class="string">'Jones'</span>, <span class="string">'uid'</span>: <span class="number">1004</span>&#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line">rows_by_fname = sorted(rows, key=itemgetter(<span class="string">'fname'</span>))</span><br><span class="line">rows_by_uid = sorted(rows, key=itemgetter(<span class="string">'uid'</span>))</span><br><span class="line">print(rows_by_fname)</span><br><span class="line">print(rows_by_uid)</span><br></pre></td></tr></table></figure>
 <h3 id="1-14-排序不支持原生比较的对象"><a href="#1-14-排序不支持原生比较的对象" class="headerlink" title="1.14 排序不支持原生比较的对象"></a>1.14 排序不支持原生比较的对象</h3><p><strong>Q: 你想排序类型相同的对象，但是他们不支持原生的比较操作。</strong></p>
 <p>A: 内置的<code>sorted</code>是值可以传入<strong>callable</strong>对象，传入其他的对象就需要用<code>operator.attrgetter()</code> 或者<code>lamba</code>来构造，示例略</p>
 <h3 id="1-15-通过某个字段将记录分组"><a href="#1-15-通过某个字段将记录分组" class="headerlink" title="1.15 通过某个字段将记录分组"></a>1.15 通过某个字段将记录分组</h3><p><strong>Q: 个字典或者实例的序列，然后你想根据某个特定的字段比如date 来分组迭代访问。</strong></p>
 <p>A: 用<code>itertools.groupby()</code>函数, 使用之前要先排序，示例略</p>
 <h3 id="1-16-过滤序列元素"><a href="#1-16-过滤序列元素" class="headerlink" title="1.16 过滤序列元素"></a>1.16 过滤序列元素</h3><p><strong>Q: 个数据序列，想利用一些规则从中提取出需要的值或者是缩短序列</strong></p>
 <p>A: 最简单的方法就是列表推倒，也可以直接迭代，这里要说的另外的方法就是<code>filter()</code>函数，它接收一个函数和要过滤的列表，接受的函数可以定义过滤规则，另外一个值得关注的过滤工具就是<code>tertools.compress()</code>, 用法也差不多：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">values = ['1', '2', '-3', '-', '4', 'N/A', '5']
-
-def is_int(val):
-    try:
-        x = int(val)
-        return True
-    except ValueError:
-        return False
-
-ivals = list(filter(is_int, values))
-print(ivals)
-# Outputs ['1', '2', '-3', '4', '5']
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">values = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'-3'</span>, <span class="string">'-'</span>, <span class="string">'4'</span>, <span class="string">'N/A'</span>, <span class="string">'5'</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_int</span><span class="params">(val)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        x = int(val)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line">ivals = list(filter(is_int, values))</span><br><span class="line">print(ivals)</span><br><span class="line"><span class="comment"># Outputs ['1', '2', '-3', '4', '5']</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-17-从字典中提取子集"><a href="#1-17-从字典中提取子集" class="headerlink" title="1.17 从字典中提取子集"></a>1.17 从字典中提取子集</h3><p><strong>Q:构造一个字典，它是另外一个字典的子集。</strong></p>
 <p>A: 字典推倒，示例略</p>
 <h3 id="1-18-映射名称到序列元素"><a href="#1-18-映射名称到序列元素" class="headerlink" title="1.18 映射名称到序列元素"></a>1.18 映射名称到序列元素</h3><p><strong>Q: 段通过下标访问列表或者元组中元素的代码，但是这样有时候会使得你的代码难以阅读，于是你想通过名称来访问元素。</strong></p>
 <p>A:  使用<code>collections.namedtuple()</code>函数来对元组进行命名：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> from collections import namedtuple
->>> Subscriber = namedtuple('Subscriber', ['addr', 'joined'])
->>> sub = Subscriber('jonesy@example.com', '2012-10-19')
->>> sub
-Subscriber(addr='jonesy@example.com', joined='2012-10-19')
->>> sub.addr
-'jonesy@example.com'
->>> sub.joined
-'2012-10-19'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Subscriber = namedtuple(<span class="string">'Subscriber'</span>, [<span class="string">'addr'</span>, <span class="string">'joined'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub = Subscriber(<span class="string">'jonesy@example.com'</span>, <span class="string">'2012-10-19'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub</span><br><span class="line">Subscriber(addr=<span class="string">'jonesy@example.com'</span>, joined=<span class="string">'2012-10-19'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub.addr</span><br><span class="line"><span class="string">'jonesy@example.com'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sub.joined</span><br><span class="line"><span class="string">'2012-10-19'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="1-19-转换并同时计算数据"><a href="#1-19-转换并同时计算数据" class="headerlink" title="1.19 转换并同时计算数据"></a>1.19 转换并同时计算数据</h3><p><strong>Q: 在数据序列上执行聚集函数（比如sum() , min() , max() ），但是首先你需<br>要先转换或者过滤数据</strong></p>
 <p>A: 一般来讲，我们都是先进行过滤再进行计算，但是python为了是语法更简洁，可以允许我们省略中间的临时列表：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">nums = [1,2,3,4,5]
-s = sum((x * x for x in nums)) # 显示的传递一个生成器表达式对象
-s = sum(x * x for x in nums) # 更加优雅的实现方式，省略了括号
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">s = sum((x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums)) <span class="comment"># 显示的传递一个生成器表达式对象</span></span><br><span class="line">s = sum(x * x <span class="keyword">for</span> x <span class="keyword">in</span> nums) <span class="comment"># 更加优雅的实现方式，省略了括号</span></span><br></pre></td></tr></table></figure>
 <h3 id="1-20-合并多个字典或映射"><a href="#1-20-合并多个字典或映射" class="headerlink" title="1.20 合并多个字典或映射"></a>1.20 合并多个字典或映射</h3><p><strong>Q: 多个字典或者映射，你想将它们从逻辑上合并为一个单一的映射后执行某些操作，比如查找值或者检查某些键是否存在。</strong></p>
 <p>A: <code>llections</code>模块中的<code>CainMap</code>类可以讲两个字典在逻辑上和为一个字典：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">
-a = {'x': 1, 'z': 3 }
-b = {'y': 2, 'z': 4 }
-
-from collections import ChainMap
-
-c = ChainMap(a,b)
-print(c['x']) # Outputs 1 (from a)
-print(c['y']) # Outputs 2 (from b)
-print(c['z']) # Outputs 3 (from a)  若有重复值那么只输出一个的值
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a = &#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'z'</span>: <span class="number">3</span> &#125;</span><br><span class="line">b = &#123;<span class="string">'y'</span>: <span class="number">2</span>, <span class="string">'z'</span>: <span class="number">4</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line"></span><br><span class="line">c = ChainMap(a,b)</span><br><span class="line">print(c[<span class="string">'x'</span>]) <span class="comment"># Outputs 1 (from a)</span></span><br><span class="line">print(c[<span class="string">'y'</span>]) <span class="comment"># Outputs 2 (from b)</span></span><br><span class="line">print(c[<span class="string">'z'</span>]) <span class="comment"># Outputs 3 (from a)  若有重复值那么只输出一个的值</span></span><br></pre></td></tr></table></figure>
 <hr>
 <hr>
 <h2 id="第二章：字符串和文本"><a href="#第二章：字符串和文本" class="headerlink" title="第二章：字符串和文本"></a>第二章：字符串和文本</h2><h3 id="2-1-使用多个界定符分割字符串"><a href="#2-1-使用多个界定符分割字符串" class="headerlink" title="2.1 使用多个界定符分割字符串"></a>2.1 使用多个界定符分割字符串</h3><p><strong>Q: 你需要将一个字符串分割为多个字段，但是分隔符(还有周围的空格) 并不是固定的。</strong></p>
 <p>A: 用<code>re.split</code>, 因为<code>str.split</code>并不允许多个分隔符：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> line = 'asdf fjdk; afed, fjek,asdf, foo'
->>> import re
->>> re.split(r'[;,\s]\s*', line)
-['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
-# 如果有捕获分组的话，如果捕获到了也会输出
->>> fields = re.split(r'(;|,|\s)\s*', line)
->>> fields
-['asdf', ' ', 'fjdk', ';', 'afed', ',', 'fjek', ',', 'asdf', ',', 'foo']
->>>
-# 形如(?:....) 就不会输出捕获的分组
->>> re.split(r'(?:,|;|\s)\s*', line)
-['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>line = <span class="string">'asdf fjdk; afed, fjek,asdf, foo'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">r'[;,\s]\s*'</span>, line)</span><br><span class="line">[<span class="string">'asdf'</span>, <span class="string">'fjdk'</span>, <span class="string">'afed'</span>, <span class="string">'fjek'</span>, <span class="string">'asdf'</span>, <span class="string">'foo'</span>]</span><br><span class="line"><span class="comment"># 如果有捕获分组的话，如果捕获到了也会输出</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fields = re.split(<span class="string">r'(;|,|\s)\s*'</span>, line)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fields</span><br><span class="line">[<span class="string">'asdf'</span>, <span class="string">' '</span>, <span class="string">'fjdk'</span>, <span class="string">';'</span>, <span class="string">'afed'</span>, <span class="string">','</span>, <span class="string">'fjek'</span>, <span class="string">','</span>, <span class="string">'asdf'</span>, <span class="string">','</span>, <span class="string">'foo'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment"># 形如(?:....) 就不会输出捕获的分组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">r'(?:,|;|\s)\s*'</span>, line)</span><br><span class="line">[<span class="string">'asdf'</span>, <span class="string">'fjdk'</span>, <span class="string">'afed'</span>, <span class="string">'fjek'</span>, <span class="string">'asdf'</span>, <span class="string">'foo'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-字符串开头或结尾匹配"><a href="#2-2-字符串开头或结尾匹配" class="headerlink" title="2.2 字符串开头或结尾匹配"></a>2.2 字符串开头或结尾匹配</h3><p><strong>Q: 你需要通过指定的文本模式去检查字符串的开头或者结尾，比如文件名后缀，URLScheme 等等。</strong></p>
 <p>A: 参考<code>startswith()</code> 和<code>endswith()</code> 方法,当然也可以用正则表达式或者对字符串进行切片</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> filename = 'spam.txt'
->>> filename.endswith('.txt')
-True
->>> filename.startswith('file:')
-False
->>> url = 'http://www.python.org'
->>> url.startswith('http:')
-True
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename = <span class="string">'spam.txt'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename.endswith(<span class="string">'.txt'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>filename.startswith(<span class="string">'file:'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>url = <span class="string">'http://www.python.org'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>url.startswith(<span class="string">'http:'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p>也可以接收以元祖作为参数</p>
 <h3 id="2-3-用Shell-通配符匹配字符串"><a href="#2-3-用Shell-通配符匹配字符串" class="headerlink" title="2.3 用Shell 通配符匹配字符串"></a>2.3 用Shell 通配符匹配字符串</h3><p><strong>A: 你想使用Unix Shell 中常用的通配符(比如<code>*.py</code> , <code>Dat[0-9]*.csv</code> 等) 去匹配文本字符串</strong></p>
 <p>A: 参见<code>fnmatch</code> 模块提供的两个函数——<code>fnmatch()</code> 和<code>fnmatchcase()</code>，示例略</p>
@@ -387,130 +258,44 @@ True
 <p>A: 正则表达式</p>
 <h3 id="2-5-字符串搜索和替换"><a href="#2-5-字符串搜索和替换" class="headerlink" title="2.5 字符串搜索和替换"></a>2.5 字符串搜索和替换</h3><p><strong>Q: 你想在字符串中搜索和匹配指定的文本模式</strong></p>
 <p>A: <code>str.replace()</code> ,<code>re.sub()</code>:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> text = 'Today is 11/27/2012. PyCon starts 3/13/2013.'
->>> import re
->>> re.sub(r'(\d+)/(\d+)/(\d+)', r'\3-\1-\2', text)
-'Today is 2012-11-27. PyCon starts 2013-3-13.'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>text = <span class="string">'Today is 11/27/2012. PyCon starts 3/13/2013.'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.sub(<span class="string">r'(\d+)/(\d+)/(\d+)'</span>, <span class="string">r'\3-\1-\2'</span>, text)</span><br><span class="line"><span class="string">'Today is 2012-11-27. PyCon starts 2013-3-13.'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p><code>sub()</code> 函数中的第一个参数是被匹配的模式，第二个参数是替换模式。反斜杠数字比如”\3” 指向前面模式的<strong>捕获组号</strong>。</p>
 <h3 id="2-6-字符串忽略大小写的搜索替换"><a href="#2-6-字符串忽略大小写的搜索替换" class="headerlink" title="2.6 字符串忽略大小写的搜索替换"></a>2.6 字符串忽略大小写的搜索替换</h3><p><strong>Q: 你需要以忽略大小写的方式搜索与替换文本字符串</strong></p>
 <p>A: 在正则表达式中使用<code>re.IGNORECASE</code>参数</p>
 <h3 id="2-7-最短匹配模式"><a href="#2-7-最短匹配模式" class="headerlink" title="2.7 最短匹配模式"></a>2.7 最短匹配模式</h3><p><strong>Q: 你正在试着用正则表达式匹配某个文本模式，但是它找到的是模式的最长可能匹配。而你想修改它变成查找最短的可能匹配。</strong></p>
 <p>A: 使用<code>?</code>进行非贪婪匹配：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> text2 = 'Computer says "no." Phone says "yes."'
->>> str_pat.findall(text2)
-['no." Phone says "yes.']
-# 非贪婪匹配
->>> str_pat = re.compile(r'\"(.*?)\"')
->>> str_pat.findall(text2)
-['no.', 'yes.']
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>text2 = <span class="string">'Computer says "no." Phone says "yes."'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str_pat.findall(text2)</span><br><span class="line">[<span class="string">'no." Phone says "yes.'</span>]</span><br><span class="line"><span class="comment"># 非贪婪匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str_pat = re.compile(<span class="string">r'\"(.*?)\"'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str_pat.findall(text2)</span><br><span class="line">[<span class="string">'no.'</span>, <span class="string">'yes.'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-8-多行匹配模式"><a href="#2-8-多行匹配模式" class="headerlink" title="2.8 多行匹配模式"></a>2.8 多行匹配模式</h3><p><strong>Q: 你正在试着使用正则表达式去匹配一大块的文本，而你需要跨越多行去匹配。</strong></p>
 <p>A: 使用<code>re.DOTALL</code>参数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> import re
->>> a = '''hello
-... world'''
->>> a
-'hello\nworld'
->>> re.search('(o.*)',a,re.DOTALL).group(1)
-'o\nworld'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'''hello</span></span><br><span class="line"><span class="string"><span class="meta">... </span>world'''</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">'hello\nworld'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.search(<span class="string">'(o.*)'</span>,a,re.DOTALL).group(<span class="number">1</span>)</span><br><span class="line"><span class="string">'o\nworld'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-9-将Unicode-文本标准化"><a href="#2-9-将Unicode-文本标准化" class="headerlink" title="2.9 将Unicode 文本标准化"></a>2.9 将Unicode 文本标准化</h3><p><strong>Q: 你正在处理Unicode 字符串，需要确保所有字符串在底层有相同的表示。</strong></p>
 <p>A: 在Unicode 中，某些字符能够用多个合法的编码表示,所以有些字符在编码字节是不同的，但是在显示的时候却是一样的，这种情况可以用<code>unicodedata</code> 模块先将文本标准化</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> s1 = 'Spicy Jalape\u00f1o'
->>> s2 = 'Spicy Jalapen\u0303o'
->>> s1
-'Spicy Jalapeño'
->>> s2
-'Spicy Jalapeño'
->>> s1 == s2
-False
-####
->>> import unicodedata
->>> t1 = unicodedata.normalize('NFC', s1)
->>> t2 = unicodedata.normalize('NFC', s2)
->>> t1 == t2
-True
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = <span class="string">'Spicy Jalape\u00f1o'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = <span class="string">'Spicy Jalapen\u0303o'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line"><span class="string">'Spicy Jalapeño'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line"><span class="string">'Spicy Jalapeño'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 == s2</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="comment">####</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> unicodedata</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t1 = unicodedata.normalize(<span class="string">'NFC'</span>, s1)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t2 = unicodedata.normalize(<span class="string">'NFC'</span>, s2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t1 == t2</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure>
 <p>关于<code>unicodedata</code> 模块的其他用法请参考官方文档</p>
 <h3 id="2-10-在正则式中使用Unicode"><a href="#2-10-在正则式中使用Unicode" class="headerlink" title="2.10 在正则式中使用Unicode"></a>2.10 在正则式中使用Unicode</h3><p><strong>Q:你正在使用正则表达式处理文本，但是关注的是Unicode 字符处理。</strong></p>
 <p>A: <code>re</code>模块支持Unicode 字符，直接用就好：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> pat = re.compile('stra\u00dfe', re.IGNORECASE)
->>> s = 'straße'
->>> pat.match(s) # Matches
-<_sre.SRE_Match object at 0x10069d370>
->>> pat.match(s.upper()) # Doesn't match
->>> s.upper() # Case folds
-'STRASSE'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pat = re.compile(<span class="string">'stra\u00dfe'</span>, re.IGNORECASE)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'straße'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pat.match(s) <span class="comment"># Matches</span></span><br><span class="line">&lt;_sre.SRE_Match object at <span class="number">0x10069d370</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pat.match(s.upper()) <span class="comment"># Doesn't match</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper() <span class="comment"># Case folds</span></span><br><span class="line"><span class="string">'STRASSE'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-11-删除字符串中不需要的字符"><a href="#2-11-删除字符串中不需要的字符" class="headerlink" title="2.11 删除字符串中不需要的字符"></a>2.11 删除字符串中不需要的字符</h3><p><strong>Q: 你想去掉文本字符串开头，结尾或者中间不想要的字符，比如空白</strong></p>
 <p>A: <code>strip()</code> 方法能用于删除开始或结尾的字符。<code>lstrip()</code> 和<code>rstrip()</code> 分别从左和从右执行删除操作。默认情况下，这些方法会去除空白字符，但是你也可以指定其他字符。<br>当然也可以使用正则表达式</p>
 <h3 id="2-12-审查清理文本字符串"><a href="#2-12-审查清理文本字符串" class="headerlink" title="2.12 审查清理文本字符串"></a>2.12 审查清理文本字符串</h3><p><strong>Q: 一些无聊的幼稚黑客在你的网站页面表单中输入文本”pýtĥöñ”，然后你想将这些字符清理掉。</strong></p>
 <p>A: 解决的思路就是用<code>str.upper()</code> 和<code>str.lower()</code>将字符串标准化，使用<code>str.replace()</code> 或者<code>re.sub()</code><br>对字符串进行删除或者替换，问题中的文本 “pýtĥöñ” 则可以用<code>unicodedata.normalize()</code> 函数将unicode文本标准化。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> a
-'pýtĥöñ is awesome\n'
->>> b = unicodedata.normalize('NFD', a)
->>> b.encode('ascii', 'ignore').decode('ascii')
-'python is awesome\n'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">'pýtĥöñ is awesome\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = unicodedata.normalize(<span class="string">'NFD'</span>, a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.encode(<span class="string">'ascii'</span>, <span class="string">'ignore'</span>).decode(<span class="string">'ascii'</span>)</span><br><span class="line"><span class="string">'python is awesome\n'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p>另外再介绍一下经常会被忽视的<code>str.translate()</code>方法:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> s = 'pýtĥöñ\fis\tawesome\r\n'
->>> s
-'pýtĥöñ\x0cis\tawesome\r\n'
->>> remap = {
-... ord('\t') : ' ', # 将特殊字符重新映射为空格
-... ord('\f') : ' ',
-... ord('\r') : None # 删除
-... }
->>> a = s.translate(remap)
->>> a
-'pýtĥöñ is awesome\n'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'pýtĥöñ\fis\tawesome\r\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line"><span class="string">'pýtĥöñ\x0cis\tawesome\r\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>remap = &#123;</span><br><span class="line"><span class="meta">... </span>ord(<span class="string">'\t'</span>) : <span class="string">' '</span>, <span class="comment"># 将特殊字符重新映射为空格</span></span><br><span class="line"><span class="meta">... </span>ord(<span class="string">'\f'</span>) : <span class="string">' '</span>,</span><br><span class="line"><span class="meta">... </span>ord(<span class="string">'\r'</span>) : <span class="keyword">None</span> <span class="comment"># 删除</span></span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = s.translate(remap)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">'pýtĥöñ is awesome\n'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-13-字符串对齐"><a href="#2-13-字符串对齐" class="headerlink" title="2.13 字符串对齐"></a>2.13 字符串对齐</h3><p><strong>Q: 你想通过某种对齐方式来格式化字符串</strong></p>
 <p>A: 可以使用字符串的<code>ljust()</code> , <code>rjust()</code> 和<code>center()</code></p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> text = 'Hello World'
-# 默认是空格，也可以接收其他字符
->>> text.ljust(20)
-' Hello World            '
->>> text.rjust(20)
-'            Hello World '
->>> text.center(20)
-'       Hello World      '
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>text = <span class="string">'Hello World'</span></span><br><span class="line"><span class="comment"># 默认是空格，也可以接收其他字符</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>text.ljust(<span class="number">20</span>)</span><br><span class="line"><span class="string">' Hello World            '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>text.rjust(<span class="number">20</span>)</span><br><span class="line"><span class="string">'            Hello World '</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>text.center(<span class="number">20</span>)</span><br><span class="line"><span class="string">'       Hello World      '</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p>还有就是<code>format()</code>函数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"># > <　＾　分别是居左，居右，居中
->>> format(text, '>20')
-'       Hello World'
-＃　也可以在字符串格式化中用
->>> '{:>10s} {:>10s}'.format('Hello', 'World')
-'    Hello　　 World '
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &gt; &lt;　＾　分别是居左，居右，居中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>format(text, <span class="string">'&gt;20'</span>)</span><br><span class="line"><span class="string">'       Hello World'</span></span><br><span class="line">＃　也可以在字符串格式化中用</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'&#123;:&gt;10s&#125; &#123;:&gt;10s&#125;'</span>.format(<span class="string">'Hello'</span>, <span class="string">'World'</span>)</span><br><span class="line"><span class="string">'    Hello　　 World '</span></span><br></pre></td></tr></table></figure>
 <p>最后，老代码中的％操作符来格式化字符串就不细说啦</p>
 <h3 id="2-14-合并拼接字符串"><a href="#2-14-合并拼接字符串" class="headerlink" title="2.14 合并拼接字符串"></a>2.14 合并拼接字符串</h3><p><strong>Q: 你想将几个小的字符串合并为一个大的字符串</strong></p>
 <p>A: <code>&#39; &#39;.join(str)</code> 和”+”操作符都可以合并字符串，比较简单就不举例了</p>
 <h3 id="2-15-字符串中插入变量"><a href="#2-15-字符串中插入变量" class="headerlink" title="2.15 字符串中插入变量"></a>2.15 字符串中插入变量</h3><p><strong>Q: 你想创建一个内嵌变量的字符串，变量被它的值所表示的字符串替换掉。</strong></p>
 <p>A: 这里推荐python3.6版本的新特性: <strong>f-string</strong> :</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> name = "Lee"
->>> n = 666
->>> s = f'{name} has {n} messages.'
->>> s
-'Lee has 666 messages.'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">"Lee"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = <span class="number">666</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">f'<span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;n&#125;</span> messages.'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line"><span class="string">'Lee has 666 messages.'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-16-以指定列宽格式化字符串"><a href="#2-16-以指定列宽格式化字符串" class="headerlink" title="2.16 以指定列宽格式化字符串"></a>2.16 以指定列宽格式化字符串</h3><p><strong>Q: 你有一些长字符串，想以指定的列宽将它们重新格式化。</strong></p>
 <p>A: 使用<code>textwrap</code> 模块来格式化字符串的输出:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> import textwrap
->>> print(textwrap.fill(s, 70)) # 宽度70
->>> print(textwrap.fill(s, 40, initial_indent='  ')) # 宽度40，首行空两格
->>> print(textwrap.fill(s, 40, subsequent_indent='  ')) # 宽度40，非首行空两格
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> textwrap</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(textwrap.fill(s, <span class="number">70</span>)) <span class="comment"># 宽度70</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(textwrap.fill(s, <span class="number">40</span>, initial_indent=<span class="string">'  '</span>)) <span class="comment"># 宽度40，首行空两格</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(textwrap.fill(s, <span class="number">40</span>, subsequent_indent=<span class="string">'  '</span>)) <span class="comment"># 宽度40，非首行空两格</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-17-在字符串中处理html-和xml"><a href="#2-17-在字符串中处理html-和xml" class="headerlink" title="2.17 在字符串中处理html 和xml"></a>2.17 在字符串中处理html 和xml</h3><p><strong>Q: 你想将HTML 或者XML 实体如&entity; 或&#code; 替换为对应的文本。再者，你需要转换文本中特定的字符(比如&lt;, &gt;, 或&amp;)。</strong></p>
 <p>A: 使用<code>html.escape()</code></p>
 <h3 id="2-18-字符串令牌解析"><a href="#2-18-字符串令牌解析" class="headerlink" title="2.18 字符串令牌解析"></a>2.18 字符串令牌解析</h3><p><strong>Q: 你有一个字符串，想从左至右将其解析为一个令牌流。</strong></p>
@@ -519,10 +304,7 @@ True
 <p>A: 看不懂答案</p>
 <h3 id="2-20-字节字符串上的字符串操作"><a href="#2-20-字节字符串上的字符串操作" class="headerlink" title="2.20 字节字符串上的字符串操作"></a>2.20 字节字符串上的字符串操作</h3><p><strong>Q: 你想在字节字符串上执行普通的文本操作(比如移除，搜索和替换)。</strong></p>
 <p>A: 与普通文本字符串的操作没啥差别，需要注意的是使用正则表达式的时候要加<code>b</code>:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> data = b'FOO:BAR,SPAM'
->>> import re
->>> re.split(b'[:,]', data)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = <span class="string">b'FOO:BAR,SPAM'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">b'[:,]'</span>, data)</span><br></pre></td></tr></table></figure>
 <hr>
 <hr>
 <h2 id="第三章：数字日期和时间"><a href="#第三章：数字日期和时间" class="headerlink" title="第三章：数字日期和时间"></a>第三章：数字日期和时间</h2><h3 id="3-1-数字的四舍五入"><a href="#3-1-数字的四舍五入" class="headerlink" title="3.1 数字的四舍五入"></a>3.1 数字的四舍五入</h3><p><strong>Q:你想对浮点数执行指定精度的舍入运算</strong></p>
@@ -533,15 +315,7 @@ True
 <p>A: 跟字符串格式化输出一样，使用<code>format</code>函数</p>
 <h3 id="3-4-二八十六进制整数"><a href="#3-4-二八十六进制整数" class="headerlink" title="3.4 二八十六进制整数"></a>3.4 二八十六进制整数</h3><p><strong>Q: 你需要转换或者输出使用二进制，八进制或十六进制表示的整数。</strong></p>
 <p>A: 了将整数转换为二进制、八进制或十六进制的文本串，可以分别使用<code>bin()</code> ,<code>oct()</code> 或<code>hex()</code> 函数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> x = 1234
->>> bin(x)
-'0b10011010010'
->>> oct(x)
-'0o2322'
->>> hex(x)
-'0x4d2'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">1234</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bin(x)</span><br><span class="line"><span class="string">'0b10011010010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>oct(x)</span><br><span class="line"><span class="string">'0o2322'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hex(x)</span><br><span class="line"><span class="string">'0x4d2'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="3-5-字节到大整数的打包与解包"><a href="#3-5-字节到大整数的打包与解包" class="headerlink" title="3.5 字节到大整数的打包与解包"></a>3.5 字节到大整数的打包与解包</h3><p><strong>Q: 你有一个字节字符串并想将它解压成一个整数。或者，你需要将一个大整数转换为一个字节字符串。</strong></p>
 <p>A: 字节转整数用<code>int.from_bytes()</code>,整数转字节用<code>int.to_bytes()</code></p>
 <h3 id="3-6-复数的数学运算-略"><a href="#3-6-复数的数学运算-略" class="headerlink" title="3.6 复数的数学运算(略)"></a>3.6 复数的数学运算(略)</h3><h3 id="3-7-无穷大与NaN-略"><a href="#3-7-无穷大与NaN-略" class="headerlink" title="3.7 无穷大与NaN(略)"></a>3.7 无穷大与NaN(略)</h3><h3 id="3-8-分数运算-略"><a href="#3-8-分数运算-略" class="headerlink" title="3.8 分数运算(略)"></a>3.8 分数运算(略)</h3><h3 id="3-9-大型数组运算"><a href="#3-9-大型数组运算" class="headerlink" title="3.9 大型数组运算"></a>3.9 大型数组运算</h3><p><strong>Q: 你需要在大数据集(比如数组或网格) 上面执行计算。</strong></p>
@@ -552,38 +326,15 @@ True
 <p>A: 日期与时间处理用<code>datetime</code>模块</p>
 <h3 id="3-13-计算最后一个周五的日期-略"><a href="#3-13-计算最后一个周五的日期-略" class="headerlink" title="3.13 计算最后一个周五的日期(略)"></a>3.13 计算最后一个周五的日期(略)</h3><h3 id="3-14-计算当前月份的日期范围-略"><a href="#3-14-计算当前月份的日期范围-略" class="headerlink" title="3.14 计算当前月份的日期范围(略)"></a>3.14 计算当前月份的日期范围(略)</h3><h3 id="3-15-字符串转换为日期"><a href="#3-15-字符串转换为日期" class="headerlink" title="3.15 字符串转换为日期"></a>3.15 字符串转换为日期</h3><p><strong>Q: 你的应用程序接受字符串格式的输入，但是你想将它们转换为datetime 对象以便在上面执行非字符串操作。</strong></p>
 <p>A:  一个简单的时间格式化问题：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> from datetime import datetime
->>> t = '2012-09-20'
->>> y = datetime.strptime(t,'%Y-%m-%d')
->>> z = datetime.now()
->>> y
-datetime.datetime(2012, 9, 20, 0, 0)
->>> z
-datetime.datetime(2018, 12, 19, 22, 1, 9, 914504)
->>> z-y
-datetime.timedelta(2281, 79269, 914504)
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = <span class="string">'2012-09-20'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = datetime.strptime(t,<span class="string">'%Y-%m-%d'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z = datetime.now()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y</span><br><span class="line">datetime.datetime(<span class="number">2012</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">datetime.datetime(<span class="number">2018</span>, <span class="number">12</span>, <span class="number">19</span>, <span class="number">22</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">914504</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z-y</span><br><span class="line">datetime.timedelta(<span class="number">2281</span>, <span class="number">79269</span>, <span class="number">914504</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <hr>
 <hr>
 <h2 id="第四章：迭代器与生成器"><a href="#第四章：迭代器与生成器" class="headerlink" title="第四章：迭代器与生成器"></a>第四章：迭代器与生成器</h2><h3 id="4-1-手动遍历迭代器"><a href="#4-1-手动遍历迭代器" class="headerlink" title="4.1 手动遍历迭代器"></a>4.1 手动遍历迭代器</h3><p><strong>Q: 你想遍历一个可迭代对象中的所有元素，但是却不想使用for 循环。</strong></p>
 <p>A: 使用<code>next()</code>函数来获取下一个对象：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> list = [1,2,3,4,5,6]
->>> a = iter(list) # 转换成可迭代对象才可以使用next方法
->>> next(a)
-1
->>> next(a)
-2
->>> next(a)
-3
->>> next(a)
-4
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = iter(list) <span class="comment"># 转换成可迭代对象才可以使用next方法</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(a)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(a)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(a)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(a)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-2-代理迭代"><a href="#4-2-代理迭代" class="headerlink" title="4.2 代理迭代"></a>4.2 代理迭代</h3><p><strong>Q: 你构建了一个自定义容器对象，里面包含有列表、元组或其他可迭代对象。你想直接在你的这个新容器对象上执行迭代操作。</strong></p>
 <p>A: 给对象定义一个<code>__iter__</code>方法就好：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">def __iter__(self) :
-    return iter(self.items)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span> :</span></span><br><span class="line">    <span class="keyword">return</span> iter(self.items)</span><br></pre></td></tr></table></figure>
 <h3 id="4-3-使用生成器创建新的迭代模式"><a href="#4-3-使用生成器创建新的迭代模式" class="headerlink" title="4.3 使用生成器创建新的迭代模式"></a>4.3 使用生成器创建新的迭代模式</h3><p><strong>Q: 你想实现一个自定义迭代模式，跟普通的内置函数比如<code>range()</code> , <code>reversed()</code> 不一样。</strong></p>
 <p>A: <code>yield</code>就是一个生成器函数，生成一个迭代对象</p>
 <h3 id="4-4-实现迭代器协议"><a href="#4-4-实现迭代器协议" class="headerlink" title="4.4 实现迭代器协议"></a>4.4 实现迭代器协议</h3><p><strong>Q: 你想构建一个能支持迭代操作的自定义对象，并希望找到一个能实现迭代协议的简单方法。</strong></p>
@@ -594,31 +345,10 @@ datetime.timedelta(2281, 79269, 914504)
 <p>A: 如果你想让你的生成器暴露外部状态给用户，别忘了你可以简单的将它实现为一<br>个类，然后把生成器函数放到<code>__iter__()</code> 方法中过去</p>
 <h3 id="4-7-迭代器切片"><a href="#4-7-迭代器切片" class="headerlink" title="4.7 迭代器切片"></a>4.7 迭代器切片</h3><p><strong>Q: 你想得到一个由迭代器生成的切片对象，但是标准切片操作并不能做到。</strong></p>
 <p>A: 函数<code>itertools.islice()</code>: </p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> def count(n):
-... while True:
-... yield n
-... n += 1
-...
->>> c = count(0)
->>> c[10:20] # 会报错
->>> import itertools
->>> for x in itertools.islice(c, 10, 20):
-... print(x)
-...
-10 # 一直到20
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(n)</span>:</span></span><br><span class="line"><span class="meta">... </span><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line"><span class="meta">... </span><span class="keyword">yield</span> n</span><br><span class="line"><span class="meta">... </span>n += <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = count(<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="number">10</span>:<span class="number">20</span>] <span class="comment"># 会报错</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> itertools</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x <span class="keyword">in</span> itertools.islice(c, <span class="number">10</span>, <span class="number">20</span>):</span><br><span class="line"><span class="meta">... </span>print(x)</span><br><span class="line">...</span><br><span class="line"><span class="number">10</span> <span class="comment"># 一直到20</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-8-跳过可迭代对象的开始部分"><a href="#4-8-跳过可迭代对象的开始部分" class="headerlink" title="4.8 跳过可迭代对象的开始部分"></a>4.8 跳过可迭代对象的开始部分</h3><p><strong>Q: 你想遍历一个可迭代对象，但是它开始的某些元素你并不感兴趣，想跳过它们。</strong></p>
 <p>A: <code>itertools.dropwhile()</code>函数可以做到，比如跳过文件开头几行的注释：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> from itertools import dropwhile
->>> with open('/etc/passwd') as f:
-... for line in dropwhile(lambda line: line.startswith('#'), f):
-... print(line, end='')
-...
-nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false
-root:*:0:0:System Administrator:/var/root:/bin/sh
-...
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> itertools <span class="keyword">import</span> dropwhile</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> open(<span class="string">'/etc/passwd'</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="meta">... </span><span class="keyword">for</span> line <span class="keyword">in</span> dropwhile(<span class="keyword">lambda</span> line: line.startswith(<span class="string">'#'</span>), f):</span><br><span class="line"><span class="meta">... </span>print(line, end=<span class="string">''</span>)</span><br><span class="line">...</span><br><span class="line">nobody:*:<span class="number">-2</span>:<span class="number">-2</span>:Unprivileged User:/var/empty:/usr/bin/false</span><br><span class="line">root:*:<span class="number">0</span>:<span class="number">0</span>:System Administrator:/var/root:/bin/sh</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="4-9-排列组合的迭代"><a href="#4-9-排列组合的迭代" class="headerlink" title="4.9 排列组合的迭代"></a>4.9 排列组合的迭代</h3><p><strong>Q: 你想迭代遍历一个集合中元素的所有可能的排列或组合</strong></p>
 <p>A: 去看一下<code>itertools.permutations()</code>,<code>itertools.combinations()</code>, <code>itertools.combinations_with_replacement</code>使用方法就好了</p>
 <h3 id="4-10-序列上索引值迭代"><a href="#4-10-序列上索引值迭代" class="headerlink" title="4.10 序列上索引值迭代"></a>4.10 序列上索引值迭代</h3><p><strong>Q:你想在迭代一个序列的同时跟踪正在被处理的元素索引。</strong></p>
@@ -627,21 +357,7 @@ root:*:0:0:System Administrator:/var/root:/bin/sh
 <p>A: 章口就莱：<code>zip()</code></p>
 <h3 id="4-12-不同集合上元素的迭代"><a href="#4-12-不同集合上元素的迭代" class="headerlink" title="4.12 不同集合上元素的迭代"></a>4.12 不同集合上元素的迭代</h3><p><strong>Q: 你想在多个对象执行相同的操作，但是这些对象在不同的容器中，你希望代码在不失可读性的情况下避免写重复的循环。</strong></p>
 <p>A: 其实你把这个两个对象合在一起就好了，但是这样做就会有多余的赋值操作，所以就可以用<code>itertools.chain()</code>函数了：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> from itertools import chain
->>> a = [1, 2, 3, 4]
->>> b = ['x', 'y', 'z']
->>> for x in chain(a, b): # 等价于 for x in a+b
-... print(x)
-...
-1
-2
-3
-4
-x
-y
-z
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x <span class="keyword">in</span> chain(a, b): <span class="comment"># 等价于 for x in a+b</span></span><br><span class="line"><span class="meta">... </span>print(x)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">x</span><br><span class="line">y</span><br><span class="line">z</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="4-13-创建数据处理管道"><a href="#4-13-创建数据处理管道" class="headerlink" title="4.13 创建数据处理管道"></a>4.13 创建数据处理管道</h3><p><strong>Q: 你想以数据管道(类似Unix 管道) 的方式迭代处理数据。比如，你有个大量的数据需要处理，但是不能将它们一次性放入内存中</strong></p>
 <p>A: 这个还是看书吧，书中的例子将的比较详细，注意一下<code>yiled</code>和<code>yield from</code>用法</p>
 <h3 id="4-14-展开嵌套的序列"><a href="#4-14-展开嵌套的序列" class="headerlink" title="4.14 展开嵌套的序列"></a>4.14 展开嵌套的序列</h3><p><strong>Q: 你想将一个多层嵌套的序列展开成一个单层列表</strong></p>
@@ -664,43 +380,15 @@ z
 <p>A: <code>w</code>模式默认会清空文件，那就换成<code>x</code>模式就好</p>
 <h3 id="5-6-字符串的I-O-操作"><a href="#5-6-字符串的I-O-操作" class="headerlink" title="5.6 字符串的I/O 操作"></a>5.6 字符串的I/O 操作</h3><p><strong>Q: 你想使用操作类文件对象的程序来操作文本或二进制字符串。</strong></p>
 <p>A: 使用<code>io.StringIO()</code>和<code>io.BytesIO</code>类：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> s = io.StringIO()
->>> s.write('Hello World\n')
-12
->>> print('This is a test', file=s)
-15
->>> # Get all of the data written so far
->>> s.getvalue() # 注意此时文件指针是指向末尾的，所以你用s.read()是读不出来的
-'Hello World\nThis is a test\n'
->>>
->>> # Wrap a file interface around an existing string
->>> s = io.StringIO('Hello\nWorld\n') # 指针在开始出
->>> s.read(4)
-'Hell'
->>> s.read()
-'o\nWorld\n'
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = io.StringIO()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.write(<span class="string">'Hello World\n'</span>)</span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'This is a test'</span>, file=s)</span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Get all of the data written so far</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.getvalue() <span class="comment"># 注意此时文件指针是指向末尾的，所以你用s.read()是读不出来的</span></span><br><span class="line"><span class="string">'Hello World\nThis is a test\n'</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Wrap a file interface around an existing string</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = io.StringIO(<span class="string">'Hello\nWorld\n'</span>) <span class="comment"># 指针在开始出</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.read(<span class="number">4</span>)</span><br><span class="line"><span class="string">'Hell'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.read()</span><br><span class="line"><span class="string">'o\nWorld\n'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="5-7-读写压缩文件"><a href="#5-7-读写压缩文件" class="headerlink" title="5.7 读写压缩文件"></a>5.7 读写压缩文件</h3><p><strong>Q: 你想读写一个gzip 或bz2 格式的压缩文件。</strong></p>
 <p>A: 用<code>gzip</code>和<code>bz2</code>模块的<code>open</code>函数</p>
 <h3 id="5-8-固定大小记录的文件迭代"><a href="#5-8-固定大小记录的文件迭代" class="headerlink" title="5.8 固定大小记录的文件迭代"></a>5.8 固定大小记录的文件迭代</h3><p><strong>Q: 你想在一个固定长度记录或者数据块的集合上迭代，而不是在一个文件中一行一行的迭代。</strong></p>
 <p>A: 方法倒是有，不过我不觉得有必要这样做：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">from functools import partial
-RECORD_SIZE = 32
-with open('somefile.data', 'rb') as f:
-    records = iter(partial(f.read, RECORD_SIZE), b'')
-    for r in records:
-        ...#　输出
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line">RECORD_SIZE = <span class="number">32</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.data'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    records = iter(partial(f.read, RECORD_SIZE), <span class="string">b''</span>)</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> records:</span><br><span class="line">        ...<span class="comment">#　输出</span></span><br></pre></td></tr></table></figure>
 <h3 id="5-9-读取二进制数据到可变缓冲区中"><a href="#5-9-读取二进制数据到可变缓冲区中" class="headerlink" title="5.9 读取二进制数据到可变缓冲区中"></a>5.9 读取二进制数据到可变缓冲区中</h3><p><strong>Q: 你想直接读取二进制数据到一个可变缓冲区中，而不需要做任何的中间复制操作。或者你想原地修改数据并将它写回到一个文件中去。</strong></p>
 <p>A: <code>readinto()</code>函数就是将文件数据读取到一个数组中去：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import os.path
-def read_into_buffer(filename):
-buf = bytearray(os.path.getsize(filename)) # 此时的buf是一个二进制的数组
-with open(filename, 'rb') as f:
-f.readinto(buf)
-return buf
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_into_buffer</span><span class="params">(filename)</span>:</span></span><br><span class="line">buf = bytearray(os.path.getsize(filename)) <span class="comment"># 此时的buf是一个二进制的数组</span></span><br><span class="line"><span class="keyword">with</span> open(filename, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">f.readinto(buf)</span><br><span class="line"><span class="keyword">return</span> buf</span><br></pre></td></tr></table></figure>
 <p>和普通<code>read()</code> 方法不同的是，<code>readinto()</code> 填充已存在的缓冲区而不是为新对象重新分配内存再返回它们</p>
 <h3 id="5-10-内存映射的二进制文件"><a href="#5-10-内存映射的二进制文件" class="headerlink" title="5.10 内存映射的二进制文件"></a>5.10 内存映射的二进制文件</h3><p><strong>Q: 你想内存映射一个二进制文件到一个可变字节数组中，目的可能是为了随机访问它的内容或者是原地做些修改。</strong></p>
 <p>A: <code>mmap</code>模块可以解决这个问题，有需要的去看<a href="https://docs.python.org/3/library/mmap.html" target="_blank" rel="noopener">官方文档</a>吧，这里就不介绍了</p>
@@ -712,17 +400,14 @@ return buf
 <p>A: <code>os.listdir()</code></p>
 <h3 id="5-14-忽略文件名编码"><a href="#5-14-忽略文件名编码" class="headerlink" title="5.14 忽略文件名编码"></a>5.14 忽略文件名编码</h3><p><strong>Q: 你想使用原始文件名执行文件的I/O 操作，也就是说文件名并没有经过系统默认编码去解码或编码过。</strong></p>
 <p>A: 既然文件名编码不知道，那就统一用字节名吧，然后用字节名当做文件名读写：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">with open(b'jalapen\xcc\x83o.txt') as f:
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">b'jalapen\xcc\x83o.txt'</span>) <span class="keyword">as</span> f:</span><br></pre></td></tr></table></figure>
 <h3 id="5-15-打印不合法的文件名"><a href="#5-15-打印不合法的文件名" class="headerlink" title="5.15 打印不合法的文件名"></a>5.15 打印不合法的文件名</h3><p><strong>Q: 你的程序获取了一个目录中的文件名列表，但是当它试着去打印文件名的时候程序崩溃，出现了UnicodeEncodeError 异常和一条奇怪的消息——surrogates notallowed 。</strong></p>
 <p>A: 解决方法：<code>repr(filename)[1:-1]</code>这样就将一些奇奇怪怪的字正确显示</p>
 <h3 id="5-16-增加或改变已打开文件的编码"><a href="#5-16-增加或改变已打开文件的编码" class="headerlink" title="5.16 增加或改变已打开文件的编码"></a>5.16 增加或改变已打开文件的编码</h3><p><strong>Q: 你想在不关闭一个已打开的文件前提下增加或改变它的Unicode 编码。</strong></p>
 <p>A: 我不建议这么做</p>
 <h3 id="5-17-将字节写入文本文件"><a href="#5-17-将字节写入文本文件" class="headerlink" title="5.17 将字节写入文本文件"></a>5.17 将字节写入文本文件</h3><p><strong>Q: 你想在文本模式打开的文件中写入原始的字节数据。</strong></p>
 <p>A: 将字节数据直接写入文件的缓冲区即可：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import sys`
-sys.stdout.buffer.write(b'Hello\n')
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys`</span><br><span class="line">sys.stdout.buffer.write(<span class="string">b'Hello\n'</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="5-18-将文件描述符包装成文件对象"><a href="#5-18-将文件描述符包装成文件对象" class="headerlink" title="5.18 将文件描述符包装成文件对象"></a>5.18 将文件描述符包装成文件对象</h3><p><strong>Q: 你有一个对应于操作系统上一个已打开的I/O 通道(比如文件、管道、套接字等)的整型文件描述符，你想将它包装成一个更高层的Python 文件对象</strong></p>
 <p>A: 包装文件描述符的技术可以很方便的将一个类文件接口作用于一个以不同方式打开的I/O 通道上，如管道、套接字等，有需要的自己去查资料吧</p>
 <h3 id="5-19-创建临时文件和文件夹"><a href="#5-19-创建临时文件和文件夹" class="headerlink" title="5.19 创建临时文件和文件夹"></a>5.19 创建临时文件和文件夹</h3><p><strong>Q: 你需要在程序执行时创建一个临时文件或目录，并希望使用完之后可以自动销毁掉。</strong></p>
@@ -735,14 +420,7 @@ sys.stdout.buffer.write(b'Hello\n')
 <hr>
 <h2 id="第六章：数据编码和处理"><a href="#第六章：数据编码和处理" class="headerlink" title="第六章：数据编码和处理"></a>第六章：数据编码和处理</h2><h3 id="6-1-读写CSV-数据"><a href="#6-1-读写CSV-数据" class="headerlink" title="6.1 读写CSV 数据"></a>6.1 读写CSV 数据</h3><p><strong>Q: 你想读写一个CSV 格式的文件。</strong></p>
 <p>A: 请看示例：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import csv
-
-with open('stocks.csv') as f:
-    f_csv = csv.reader(f)
-    for row in f_csv:
-        # 其他操作
-        # 请注意这里的row是一个列表，是自动以逗号分隔的
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'stocks.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> f_csv:</span><br><span class="line">        <span class="comment"># 其他操作</span></span><br><span class="line">        <span class="comment"># 请注意这里的row是一个列表，是自动以逗号分隔的</span></span><br></pre></td></tr></table></figure>
 <h3 id="6-2-读写JSON-数据"><a href="#6-2-读写JSON-数据" class="headerlink" title="6.2 读写JSON 数据"></a>6.2 读写JSON 数据</h3><p><strong>Q: 你想读写JSON(JavaScript Object Notation) 编码格式的数据。</strong></p>
 <p>A: <code>json.loads</code>读取JSON格式，<code>json.dumps</code>转换为JSON格式，对应的文件读写方法是：<code>json.dump</code>, <code>json.load</code></p>
 <h3 id="6-3-解析简单的XML-数据"><a href="#6-3-解析简单的XML-数据" class="headerlink" title="6.3 解析简单的XML 数据"></a>6.3 解析简单的XML 数据</h3><p><strong>Q: 你想从一个简单的XML 文档中提取数据。</strong></p>
@@ -761,15 +439,10 @@ with open('stocks.csv') as f:
 <p>A: 使用<code>*</code>任意位置参数和<code>**</code>任意关键字参数</p>
 <h3 id="7-2-只接受关键字参数的函数"><a href="#7-2-只接受关键字参数的函数" class="headerlink" title="7.2 只接受关键字参数的函数"></a>7.2 只接受关键字参数的函数</h3><p><strong>Q: 你希望函数的某些参数强制使用关键字参数传递</strong></p>
 <p>A: 将强制关键字参数放到某个<code>*</code> 参数或者单个<code>*</code> 后面就能达到这种效果。比如：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"># 强制最后一个参数必须输入
-def recv(maxsize, *, block):
-    pass
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 强制最后一个参数必须输入</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv</span><span class="params">(maxsize, *, block)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <h3 id="7-3-给函数参数增加元信息"><a href="#7-3-给函数参数增加元信息" class="headerlink" title="7.3 给函数参数增加元信息"></a>7.3 给函数参数增加元信息</h3><p><strong>Q: 你写好了一个函数，然后想为这个函数的参数增加一些额外的信息，这样的话其他使用者就能清楚的知道这个函数应该怎么使用。</strong></p>
 <p>A: 使用函数注解：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">def add(x:int, y:int) -> int:
-    return x + y
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x:int, y:int)</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
 <h3 id="7-4-返回多个值的函数"><a href="#7-4-返回多个值的函数" class="headerlink" title="7.4 返回多个值的函数"></a>7.4 返回多个值的函数</h3><p><strong>Q: 你希望构造一个可以返回多个值的函数</strong></p>
 <p>A: <code>return</code></p>
 <h3 id="7-5-定义有默认参数的函数"><a href="#7-5-定义有默认参数的函数" class="headerlink" title="7.5 定义有默认参数的函数"></a>7.5 定义有默认参数的函数</h3><p><strong>Q: 你想定义一个函数或者方法，它的一个或多个参数是可选的并且有一个默认值。</strong></p>
@@ -778,33 +451,14 @@ def recv(maxsize, *, block):
 <p>A: <code>lambda</code>表达式，但是只能指定单个表达式，它的值就是最后的返回值。</p>
 <h3 id="7-7-匿名函数捕获变量值"><a href="#7-7-匿名函数捕获变量值" class="headerlink" title="7.7 匿名函数捕获变量值"></a>7.7 匿名函数捕获变量值</h3><p><strong>Q: 你用lambda 定义了一个匿名函数，并想在定义时捕获到某些变量的值。</strong></p>
 <p>A: 这个问题看似很难懂，其实你只要明白下列代码的意思就懂了：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">a = lambda y: x + y
-a = lambda y, x=x: x + y
-###
-funcs = [lambda x: x+n for n in range(5)]
-funcs = [lambda x, n=n: x+n for n in range(5)]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="keyword">lambda</span> y: x + y</span><br><span class="line">a = <span class="keyword">lambda</span> y, x=x: x + y</span><br><span class="line"><span class="comment">###</span></span><br><span class="line">funcs = [<span class="keyword">lambda</span> x: x+n <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">funcs = [<span class="keyword">lambda</span> x, n=n: x+n <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br></pre></td></tr></table></figure>
 <h3 id="7-8-减少可调用对象的参数个数-待补充"><a href="#7-8-减少可调用对象的参数个数-待补充" class="headerlink" title="7.8 减少可调用对象的参数个数(待补充)"></a>7.8 减少可调用对象的参数个数(待补充)</h3><h3 id="7-9-将单方法的类转换为函数-待补充"><a href="#7-9-将单方法的类转换为函数-待补充" class="headerlink" title="7.9 将单方法的类转换为函数(待补充)"></a>7.9 将单方法的类转换为函数(待补充)</h3><h3 id="7-10-带额外状态信息的回调函数-待补充"><a href="#7-10-带额外状态信息的回调函数-待补充" class="headerlink" title="7.10 带额外状态信息的回调函数(待补充)"></a>7.10 带额外状态信息的回调函数(待补充)</h3><h3 id="7-11-内联回调函数-待补充"><a href="#7-11-内联回调函数-待补充" class="headerlink" title="7.11 内联回调函数(待补充)"></a>7.11 内联回调函数(待补充)</h3><h3 id="7-12-访问闭包中定义的变量-待补充"><a href="#7-12-访问闭包中定义的变量-待补充" class="headerlink" title="7.12 访问闭包中定义的变量(待补充)"></a>7.12 访问闭包中定义的变量(待补充)</h3><hr>
 <hr>
 <h2 id="第八章：类与对象"><a href="#第八章：类与对象" class="headerlink" title="第八章：类与对象"></a>第八章：类与对象</h2><h3 id="8-1-改变对象的字符串显示"><a href="#8-1-改变对象的字符串显示" class="headerlink" title="8.1 改变对象的字符串显示"></a>8.1 改变对象的字符串显示</h3><p><strong>Q: 你想改变对象实例的打印或显示输出，让它们更具可读性。</strong></p>
 <p>A: 重新定义<code>__str__()</code>和<code>__repr__()</code>方法就好</p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Pair:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-    def __repr__(self):
-        return 'Pair({0.x!r}, {0.y!r})'.format(self)
-    def __str__(self):
-        return '({0.x!s}, {0.y!s})'.format(self)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pair</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Pair(&#123;0.x!r&#125;, &#123;0.y!r&#125;)'</span>.format(self)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'(&#123;0.x!s&#125;, &#123;0.y!s&#125;)'</span>.format(self)</span><br></pre></td></tr></table></figure>
 <p>使用方法</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> p = Pair(3, 4)
->>> p
-Pair(3, 4) # __repr__() output
->>> print(p)
-(3, 4) # __str__() output
->>>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Pair(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p</span><br><span class="line">Pair(<span class="number">3</span>, <span class="number">4</span>) <span class="comment"># __repr__() output</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(p)</span><br><span class="line">(<span class="number">3</span>, <span class="number">4</span>) <span class="comment"># __str__() output</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="8-2-自定义字符串的格式化"><a href="#8-2-自定义字符串的格式化" class="headerlink" title="8.2 自定义字符串的格式化"></a>8.2 自定义字符串的格式化</h3><p><strong>Q: 你想通过format() 函数和字符串方法使得一个对象能支持自定义的格式化。</strong></p>
 <p>A:  重新定义<code>__format__()</code>方法</p>
 <h3 id="8-3-让对象支持上下文管理协议"><a href="#8-3-让对象支持上下文管理协议" class="headerlink" title="8.3 让对象支持上下文管理协议"></a>8.3 让对象支持上下文管理协议</h3><p><strong>Q:你想让你的对象支持上下文管理协议(with 语句)。</strong></p>
@@ -845,57 +499,27 @@ Pair(3, 4) # __repr__() output
 <p>A: 在目录里添加<code>__main__.py</code>文件就可以把目录当做一个运行程序来运行啦</p>
 <h3 id="10-8-读取位于包中的数据文件"><a href="#10-8-读取位于包中的数据文件" class="headerlink" title="10.8 读取位于包中的数据文件"></a>10.8 读取位于包中的数据文件</h3><p><strong>Q: 你的包中包含代码需要去读取的数据文件。你需要尽可能地用最便捷的方式来做这件事</strong></p>
 <p>A: 假设你的包中的文件组织成如下：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">mypackage/
-    __init__.py
-    somedata.dat
-    spam.py
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mypackage/</span><br><span class="line">    __init__.py</span><br><span class="line">    somedata.dat</span><br><span class="line">    spam.py</span><br></pre></td></tr></table></figure>
 <p>现在假设<code>spam.py</code> 文件需要读取<code>somedata.dat</code> 文件中的内容。你可以用以下代码来完成：</p>
-<pre class=" language-lang-python"><code class="language-lang-python"># spam.py
-import pkgutil
-data = pkgutil.get_data(__package__, 'somedata.dat')
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># spam.py</span></span><br><span class="line"><span class="keyword">import</span> pkgutil</span><br><span class="line">data = pkgutil.get_data(__package__, <span class="string">'somedata.dat'</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="10-9-将文件夹加入到sys-path"><a href="#10-9-将文件夹加入到sys-path" class="headerlink" title="10.9 将文件夹加入到sys.path"></a>10.9 将文件夹加入到sys.path</h3><p><strong>Q: 你无法导入你的Python 代码因为它所在的目录不在sys.path 里。你想将添加新目录到Python 路径，但是不想硬链接到你的代码。</strong></p>
 <p>A: 第一种方式是在你的环境变量<code>PYTHONPATH</code>添加路径，第二种就是创建一个<code>myapplication.pth</code>文件将路径写进去，放在<code>site-packages</code>目录下，还有就是在脚本开头导入路径<code>sys.path.insert(0, &#39;/some/dir&#39;)</code>，<code>sys.path.appedn(&#39;/some/dir&#39;)</code>，</p>
 <h3 id="10-10-通过字符串名导入模块"><a href="#10-10-通过字符串名导入模块" class="headerlink" title="10.10 通过字符串名导入模块"></a>10.10 通过字符串名导入模块</h3><p><strong>Q: 你想导入一个模块，但是模块的名字在字符串里。你想对字符串调用导入命令。</strong></p>
 <p>A: <code>importlib.import_module()</code>函数返回一个模块对象</p>
 <h3 id="10-11-通过钩子远程加载模块-待补充"><a href="#10-11-通过钩子远程加载模块-待补充" class="headerlink" title="10.11 通过钩子远程加载模块(待补充)"></a>10.11 通过钩子远程加载模块(待补充)</h3><h3 id="10-12-导入模块的同时修改模块-待补充"><a href="#10-12-导入模块的同时修改模块-待补充" class="headerlink" title="10.12 导入模块的同时修改模块(待补充)"></a>10.12 导入模块的同时修改模块(待补充)</h3><h3 id="10-13-安装私有的包"><a href="#10-13-安装私有的包" class="headerlink" title="10.13 安装私有的包"></a>10.13 安装私有的包</h3><p><strong>Q: 你想要安装一个第三方包，但是没有权限将它安装到系统Python 库中去。或者，你可能想要安装一个供自己使用的包，而不是系统上面所有用户。</strong></p>
-<p>A: </p>
-<pre class=" language-lang-python"><code class="language-lang-python">python3 setup.py install --user
-pip install --user packagename
-</code></pre>
+<p>A:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 setup.py install --user</span><br><span class="line">pip install --user packagename</span><br></pre></td></tr></table></figure></p>
 <h3 id="10-14-创建新的Python-环境"><a href="#10-14-创建新的Python-环境" class="headerlink" title="10.14 创建新的Python 环境"></a>10.14 创建新的Python 环境</h3><p><strong>Q: 你想创建一个新的Python 环境，用来安装模块和包。不过，你不想安装一个新的Python 克隆，也不想对系统Python 环境产生影响。</strong></p>
 <p>A: 用<code>pyvenv</code>创建一个虚拟环境，请参阅<a href="https://www.python.org/dev/peps/pep-0405/" target="_blank" rel="noopener">PEP405</a></p>
 <h3 id="10-15-分发包-待补充"><a href="#10-15-分发包-待补充" class="headerlink" title="10.15 分发包(待补充)"></a>10.15 分发包(待补充)</h3><hr>
 <hr>
 <h2 id="第十一章：网络与Web-编程-待补充"><a href="#第十一章：网络与Web-编程-待补充" class="headerlink" title="第十一章：网络与Web 编程(待补充)"></a>第十一章：网络与Web 编程(待补充)</h2><h3 id="11-1-作为客户端与HTTP-服务交互"><a href="#11-1-作为客户端与HTTP-服务交互" class="headerlink" title="11.1 作为客户端与HTTP 服务交互"></a>11.1 作为客户端与HTTP 服务交互</h3><p><strong>Q: 你需要通过HTTP 协议以客户端的方式访问多种服务。例如，下载数据或者与基于REST 的API 进行交互</strong></p>
 <p>A: 通常我们会有<code>urllib.request</code>, <code>requests</code> 两种方式来我完成，由于<code>requests</code>库比较简单，所以示例我们这个来写个简单的POST请求：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import requests
-url = 'http://httpbin.org/post'
-# Dictionary of query parameters (if any)
-parms = {
-    'name1' : 'value1',
-    'name2' : 'value2'
-}
-# Extra headers
-headers = {
-    'User-agent' : 'none/ofyourbusiness',
-    'Spam' : 'Eggs'
-}
-resp = requests.post(url, data=parms, headers=headers)
-# Decoded text returned by the request
-text = resp.text
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">'http://httpbin.org/post'</span></span><br><span class="line"><span class="comment"># Dictionary of query parameters (if any)</span></span><br><span class="line">parms = &#123;</span><br><span class="line">    <span class="string">'name1'</span> : <span class="string">'value1'</span>,</span><br><span class="line">    <span class="string">'name2'</span> : <span class="string">'value2'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># Extra headers</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'User-agent'</span> : <span class="string">'none/ofyourbusiness'</span>,</span><br><span class="line">    <span class="string">'Spam'</span> : <span class="string">'Eggs'</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.post(url, data=parms, headers=headers)</span><br><span class="line"><span class="comment"># Decoded text returned by the request</span></span><br><span class="line">text = resp.text</span><br></pre></td></tr></table></figure>
 <hr>
 <hr>
 <h2 id="第十二章：并发编程-待补充"><a href="#第十二章：并发编程-待补充" class="headerlink" title="第十二章：并发编程(待补充)"></a>第十二章：并发编程(待补充)</h2><h3 id="12-1-启动与停止线程"><a href="#12-1-启动与停止线程" class="headerlink" title="12.1 启动与停止线程"></a>12.1 启动与停止线程</h3><p><strong>Q: 你要为需要并发执行的代码创建/销毁线程</strong></p>
 <p>A: <code>threading</code>库的简单使用：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">from threading import Thread
-t = Thread(target=somemethod,args=(someargvs,))
-t.start()
-t.join()
-t.is_alive()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line">t = Thread(target=somemethod,args=(someargvs,))</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br><span class="line">t.is_alive()</span><br></pre></td></tr></table></figure>
 <h3 id="12-2-判断线程是否已经启动"><a href="#12-2-判断线程是否已经启动" class="headerlink" title="12.2 判断线程是否已经启动"></a>12.2 判断线程是否已经启动</h3><p><strong>Q: 你已经启动了一个线程，但是你想知道它是不是真的已经开始运行了。</strong></p>
 <p>A: 使用<code>threading</code> 库中的<code>Event</code> 对象</p>
 <h3 id="12-3-线程间通信"><a href="#12-3-线程间通信" class="headerlink" title="12.3 线程间通信"></a>12.3 线程间通信</h3><p><strong>Q: 你的程序中有多个线程，你需要在这些线程之间安全地交换信息或数据</strong></p>
@@ -912,45 +536,22 @@ t.is_alive()
 <p>A: <code>fileinput.input()</code>可以接收管道输入的文件列表</p>
 <h3 id="13-2-终止程序并给出错误信息"><a href="#13-2-终止程序并给出错误信息" class="headerlink" title="13.2 终止程序并给出错误信息"></a>13.2 终止程序并给出错误信息</h3><p><strong>Q: 你想向标准错误打印一条消息并返回某个非零状态码来终止程序运行解</strong></p>
 <p>A: 抛出一个<code>SystemExit</code> 异常:</p>
-<pre class=" language-lang-python"><code class="language-lang-python">raise SystemExit('It failed!')
-或者
-import sys
-sys.stderr.write('It failed!\n')
-raise SystemExit(1)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> SystemExit(<span class="string">'It failed!'</span>)</span><br><span class="line">或者</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.stderr.write(<span class="string">'It failed!\n'</span>)</span><br><span class="line"><span class="keyword">raise</span> SystemExit(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="13-3-解析命令行选项"><a href="#13-3-解析命令行选项" class="headerlink" title="13.3 解析命令行选项"></a>13.3 解析命令行选项</h3><p><strong>Q: 你的程序如何能够解析命令行选项（位于sys.argv 中）</strong></p>
 <p>A: <code>argparse</code> 模块</p>
 <h3 id="13-4-运行时弹出密码输入提示"><a href="#13-4-运行时弹出密码输入提示" class="headerlink" title="13.4 运行时弹出密码输入提示"></a>13.4 运行时弹出密码输入提示</h3><p><strong>Q: 你写了个脚本，运行时需要一个密码。此脚本是交互式的，因此不能将密码在脚本中硬编码，而是需要弹出一个密码输入提示，让用户自己输入。</strong></p>
 <p>A:　看代码：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import getpass
-user = getpass.getuser()
-passwd = getpass.getpass()
-</code></pre>
-<p>代码中<code>getpass.getuser()</code> 不会弹出用户名的输入提示。它会根据该用户的shell 环境或者会依据本地系统的密码库（支持pwd 模块的平台）来使用当前用户的登录名，如果你想显示的弹出用户名输入提示，使用内置的input 函数：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">user = input('Enter your username: ')
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> getpass</span><br><span class="line">user = getpass.getuser()</span><br><span class="line">passwd = getpass.getpass()</span><br></pre></td></tr></table></figure>
+<p>代码中<code>getpass.getuser()</code> 不会弹出用户名的输入提示。它会根据该用户的shell 环境或者会依据本地系统的密码库（支持pwd 模块的平台）来使用当前用户的登录名，如果你想显示的弹出用户名输入提示，使用内置的input 函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = input(<span class="string">'Enter your username: '</span>)</span><br></pre></td></tr></table></figure></p>
 <h3 id="13-5-获取终端的大小"><a href="#13-5-获取终端的大小" class="headerlink" title="13.5 获取终端的大小"></a>13.5 获取终端的大小</h3><p><strong>Q: 你需要知道当前终端的大小以便正确的格式化输出。</strong></p>
 <p>A: <code>os.get_terminal_size()</code>函数</p>
 <h3 id="13-6-执行外部命令并获取它的输出"><a href="#13-6-执行外部命令并获取它的输出" class="headerlink" title="13.6 执行外部命令并获取它的输出"></a>13.6 执行外部命令并获取它的输出</h3><p><strong>Q: 你想执行一个外部命令并以Python 字符串的形式获取执行结果。</strong></p>
 <p>A: <code>subprocess</code>模块</p>
 <h3 id="13-7-复制或者移动文件和目录"><a href="#13-7-复制或者移动文件和目录" class="headerlink" title="13.7 复制或者移动文件和目录"></a>13.7 复制或者移动文件和目录</h3><p><strong>Q: 你想要复制或移动文件和目录，但是又不想调用shell 命令。</strong></p>
 <p>A: <code>shutil</code> 模块</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import shutil
-# Copy src to dst. (cp src dst)
-shutil.copy(src, dst)
-# Copy files, but preserve metadata (cp -p src dst)
-shutil.copy2(src, dst)
-# Copy directory tree (cp -R src dst)
-shutil.copytree(src, dst)
-# Move src to dst (mv src dst)
-shutil.move(src, dst)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="comment"># Copy src to dst. (cp src dst)</span></span><br><span class="line">shutil.copy(src, dst)</span><br><span class="line"><span class="comment"># Copy files, but preserve metadata (cp -p src dst)</span></span><br><span class="line">shutil.copy2(src, dst)</span><br><span class="line"><span class="comment"># Copy directory tree (cp -R src dst)</span></span><br><span class="line">shutil.copytree(src, dst)</span><br><span class="line"><span class="comment"># Move src to dst (mv src dst)</span></span><br><span class="line">shutil.move(src, dst)</span><br></pre></td></tr></table></figure>
 <h3 id="13-8-创建和解压归档文件"><a href="#13-8-创建和解压归档文件" class="headerlink" title="13.8 创建和解压归档文件"></a>13.8 创建和解压归档文件</h3><p><strong>Q: 你需要创建或解压常见格式的归档文件（比如.tar, .tgz 或.zip）</strong></p>
-<p>A: <code>shutil</code> 模块拥有两个函数——<code>make_archive()</code> 和<code>unpack_archive()</code> 可派上用场。例如：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> import shutil
->>> shutil.unpack_archive('Python-3.3.0.tgz')
->>> shutil.make_archive('py33','zip','Python-3.3.0')
-</code></pre>
+<p>A: <code>shutil</code> 模块拥有两个函数——<code>make_archive()</code> 和<code>unpack_archive()</code> 可派上用场。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> shutil</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shutil.unpack_archive(<span class="string">'Python-3.3.0.tgz'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shutil.make_archive(<span class="string">'py33'</span>,<span class="string">'zip'</span>,<span class="string">'Python-3.3.0'</span>)</span><br></pre></td></tr></table></figure></p>
 <h3 id="13-9-通过文件名查找文件"><a href="#13-9-通过文件名查找文件" class="headerlink" title="13.9 通过文件名查找文件"></a>13.9 通过文件名查找文件</h3><p><strong>Q: 你需要写一个涉及到文件查找操作的脚本，比如对日志归档文件的重命名工具，你不想在Python 脚本中调用shell，或者你要实现一些shell 不能做的功能。</strong></p>
 <p>A: 用<code>os.walk()</code> 函数, <code>os.walk()</code> 方法为我们遍历目录树，每次进入一个目录，它会返回一个三元组，包<br>含相对于查找目录的相对路径，一个该目录下的目录名列表，以及那个目录下面的文件名列表。</p>
 <h3 id="13-10-读取配置文件"><a href="#13-10-读取配置文件" class="headerlink" title="13.10 读取配置文件"></a>13.10 读取配置文件</h3><p><strong>Q: 怎样读取普通.ini 格式的配置文件？</strong></p>
@@ -968,54 +569,106 @@ shutil.move(src, dst)
 <h2 id="第十四章：测试、调试和异常-待补充"><a href="#第十四章：测试、调试和异常-待补充" class="headerlink" title="第十四章：测试、调试和异常(待补充)"></a>第十四章：测试、调试和异常(待补充)</h2><hr>
 <hr>
 <h2 id="第十五章：C-语言扩展-待补充"><a href="#第十五章：C-语言扩展-待补充" class="headerlink" title="第十五章：C 语言扩展(待补充)"></a>第十五章：C 语言扩展(待补充)</h2>
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/python3/">python3</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2019/01/14/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="pre-post btn btn-default" title='机器学习笔记-----线性回归'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">机器学习笔记-----线性回归</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/12/10/pa-chong-xi-lie-wu-huo-qu-ke-yong-dai-li/" class="next-post btn btn-default" title='爬虫系列(五)---获取可用代理'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">爬虫系列(五)---获取可用代理</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在开头"><span class="toc-text">写在开头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一章：数据结构和算法"><span class="toc-text">第一章：数据结构和算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-解压序列赋值给多个变量"><span class="toc-text">1.1 解压序列赋值给多个变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-解压可迭代对象赋值给多个变量"><span class="toc-text">1.2 解压可迭代对象赋值给多个变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-保留最后N-个元素"><span class="toc-text">1.3 保留最后N 个元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-查找最大或最小的N-个元素"><span class="toc-text">1.4 查找最大或最小的N 个元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-实现一个优先级队列"><span class="toc-text">1.5 实现一个优先级队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-字典中的键映射多个值"><span class="toc-text">1.6 字典中的键映射多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-字典排序"><span class="toc-text">1.7 字典排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-字典的运算"><span class="toc-text">1.8 字典的运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-查找两字典的相同点"><span class="toc-text">1.9 查找两字典的相同点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-删除序列相同元素并保持顺序"><span class="toc-text">1.10 删除序列相同元素并保持顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-命名切片"><span class="toc-text">1.11 命名切片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-序列中出现次数最多的元素"><span class="toc-text">1.12 序列中出现次数最多的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-通过某个关键字排序一个字典列表"><span class="toc-text">1.13 通过某个关键字排序一个字典列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-排序不支持原生比较的对象"><span class="toc-text">1.14 排序不支持原生比较的对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-通过某个字段将记录分组"><span class="toc-text">1.15 通过某个字段将记录分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-过滤序列元素"><span class="toc-text">1.16 过滤序列元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-17-从字典中提取子集"><span class="toc-text">1.17 从字典中提取子集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-18-映射名称到序列元素"><span class="toc-text">1.18 映射名称到序列元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-19-转换并同时计算数据"><span class="toc-text">1.19 转换并同时计算数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-20-合并多个字典或映射"><span class="toc-text">1.20 合并多个字典或映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二章：字符串和文本"><span class="toc-text">第二章：字符串和文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-使用多个界定符分割字符串"><span class="toc-text">2.1 使用多个界定符分割字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-字符串开头或结尾匹配"><span class="toc-text">2.2 字符串开头或结尾匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-用Shell-通配符匹配字符串"><span class="toc-text">2.3 用Shell 通配符匹配字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-字符串匹配和搜索"><span class="toc-text">2.4 字符串匹配和搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-字符串搜索和替换"><span class="toc-text">2.5 字符串搜索和替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-字符串忽略大小写的搜索替换"><span class="toc-text">2.6 字符串忽略大小写的搜索替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-最短匹配模式"><span class="toc-text">2.7 最短匹配模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-多行匹配模式"><span class="toc-text">2.8 多行匹配模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-将Unicode-文本标准化"><span class="toc-text">2.9 将Unicode 文本标准化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-在正则式中使用Unicode"><span class="toc-text">2.10 在正则式中使用Unicode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-删除字符串中不需要的字符"><span class="toc-text">2.11 删除字符串中不需要的字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-12-审查清理文本字符串"><span class="toc-text">2.12 审查清理文本字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-13-字符串对齐"><span class="toc-text">2.13 字符串对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-14-合并拼接字符串"><span class="toc-text">2.14 合并拼接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-15-字符串中插入变量"><span class="toc-text">2.15 字符串中插入变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-16-以指定列宽格式化字符串"><span class="toc-text">2.16 以指定列宽格式化字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-17-在字符串中处理html-和xml"><span class="toc-text">2.17 在字符串中处理html 和xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-18-字符串令牌解析"><span class="toc-text">2.18 字符串令牌解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-19-实现一个简单的递归下降分析器"><span class="toc-text">2.19 实现一个简单的递归下降分析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-20-字节字符串上的字符串操作"><span class="toc-text">2.20 字节字符串上的字符串操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章：数字日期和时间"><span class="toc-text">第三章：数字日期和时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-数字的四舍五入"><span class="toc-text">3.1 数字的四舍五入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-执行精确的浮点数运算"><span class="toc-text">3.2 执行精确的浮点数运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-数字的格式化输出"><span class="toc-text">3.3 数字的格式化输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-二八十六进制整数"><span class="toc-text">3.4 二八十六进制整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-字节到大整数的打包与解包"><span class="toc-text">3.5 字节到大整数的打包与解包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-复数的数学运算-略"><span class="toc-text">3.6 复数的数学运算(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-无穷大与NaN-略"><span class="toc-text">3.7 无穷大与NaN(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-分数运算-略"><span class="toc-text">3.8 分数运算(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-大型数组运算"><span class="toc-text">3.9 大型数组运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-矩阵与线性代数运算-略"><span class="toc-text">3.10 矩阵与线性代数运算(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-11-随机选择"><span class="toc-text">3.11 随机选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-12-基本的日期与时间转换"><span class="toc-text">3.12 基本的日期与时间转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-13-计算最后一个周五的日期-略"><span class="toc-text">3.13 计算最后一个周五的日期(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-14-计算当前月份的日期范围-略"><span class="toc-text">3.14 计算当前月份的日期范围(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-15-字符串转换为日期"><span class="toc-text">3.15 字符串转换为日期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四章：迭代器与生成器"><span class="toc-text">第四章：迭代器与生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-手动遍历迭代器"><span class="toc-text">4.1 手动遍历迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-代理迭代"><span class="toc-text">4.2 代理迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-使用生成器创建新的迭代模式"><span class="toc-text">4.3 使用生成器创建新的迭代模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-实现迭代器协议"><span class="toc-text">4.4 实现迭代器协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-反向迭代"><span class="toc-text">4.5 反向迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-带有外部状态的生成器函数"><span class="toc-text">4.6 带有外部状态的生成器函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-迭代器切片"><span class="toc-text">4.7 迭代器切片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-跳过可迭代对象的开始部分"><span class="toc-text">4.8 跳过可迭代对象的开始部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-排列组合的迭代"><span class="toc-text">4.9 排列组合的迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-10-序列上索引值迭代"><span class="toc-text">4.10 序列上索引值迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-11-同时迭代多个序列"><span class="toc-text">4.11 同时迭代多个序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-12-不同集合上元素的迭代"><span class="toc-text">4.12 不同集合上元素的迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-13-创建数据处理管道"><span class="toc-text">4.13 创建数据处理管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-14-展开嵌套的序列"><span class="toc-text">4.14 展开嵌套的序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-15-顺序迭代合并后的排序迭代对象"><span class="toc-text">4.15 顺序迭代合并后的排序迭代对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-16-迭代器代替while-无限循环"><span class="toc-text">4.16 迭代器代替while 无限循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五章：文件与IO"><span class="toc-text">第五章：文件与IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-读写文本数据"><span class="toc-text">5.1 读写文本数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-打印输出至文件中"><span class="toc-text">5.2 打印输出至文件中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-使用其他分隔符或行终止符打印"><span class="toc-text">5.3 使用其他分隔符或行终止符打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-读写字节数据"><span class="toc-text">5.4 读写字节数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-文件不存在才能写入"><span class="toc-text">5.5 文件不存在才能写入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-字符串的I-O-操作"><span class="toc-text">5.6 字符串的I/O 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-读写压缩文件"><span class="toc-text">5.7 读写压缩文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8-固定大小记录的文件迭代"><span class="toc-text">5.8 固定大小记录的文件迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-9-读取二进制数据到可变缓冲区中"><span class="toc-text">5.9 读取二进制数据到可变缓冲区中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-10-内存映射的二进制文件"><span class="toc-text">5.10 内存映射的二进制文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-11-文件路径名的操作"><span class="toc-text">5.11 文件路径名的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-12-测试文件是否存在"><span class="toc-text">5.12 测试文件是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-13-获取文件夹中的文件列表"><span class="toc-text">5.13 获取文件夹中的文件列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-14-忽略文件名编码"><span class="toc-text">5.14 忽略文件名编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-15-打印不合法的文件名"><span class="toc-text">5.15 打印不合法的文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-16-增加或改变已打开文件的编码"><span class="toc-text">5.16 增加或改变已打开文件的编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-17-将字节写入文本文件"><span class="toc-text">5.17 将字节写入文本文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-18-将文件描述符包装成文件对象"><span class="toc-text">5.18 将文件描述符包装成文件对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-19-创建临时文件和文件夹"><span class="toc-text">5.19 创建临时文件和文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-20-与串行端口的数据通信"><span class="toc-text">5.20 与串行端口的数据通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-21-序列化Python-对象"><span class="toc-text">　5.21 序列化Python 对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六章：数据编码和处理"><span class="toc-text">第六章：数据编码和处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-读写CSV-数据"><span class="toc-text">6.1 读写CSV 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-读写JSON-数据"><span class="toc-text">6.2 读写JSON 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-解析简单的XML-数据"><span class="toc-text">6.3 解析简单的XML 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-增量式解析大型XML-文件"><span class="toc-text">6.4 增量式解析大型XML 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-将字典转换为XML-略"><span class="toc-text">6.5 将字典转换为XML(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-解析和修改XML-略"><span class="toc-text">6.6 解析和修改XML(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-7-利用命名空间解析XML-文档-略"><span class="toc-text">6.7 利用命名空间解析XML 文档(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-8-与关系型数据库的交互"><span class="toc-text">6.8 与关系型数据库的交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-9-编码和解码十六进制数"><span class="toc-text">6.9 编码和解码十六进制数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-10-编码解码Base64-数据"><span class="toc-text">6.10 编码解码Base64 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-11-读写二进制数组数据-略"><span class="toc-text">6.11 读写二进制数组数据(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-12-读取嵌套和可变长二进制数据-略"><span class="toc-text">6.12 读取嵌套和可变长二进制数据(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-13-数据的累加与统计操作-略"><span class="toc-text">6.13 数据的累加与统计操作(略)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七章：函数"><span class="toc-text">第七章：函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-可接受任意数量参数的函数"><span class="toc-text">7.1 可接受任意数量参数的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-只接受关键字参数的函数"><span class="toc-text">7.2 只接受关键字参数的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-给函数参数增加元信息"><span class="toc-text">7.3 给函数参数增加元信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-返回多个值的函数"><span class="toc-text">7.4 返回多个值的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-定义有默认参数的函数"><span class="toc-text">7.5 定义有默认参数的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-定义匿名或内联函数"><span class="toc-text">7.6 定义匿名或内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-匿名函数捕获变量值"><span class="toc-text">7.7 匿名函数捕获变量值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8-减少可调用对象的参数个数-待补充"><span class="toc-text">7.8 减少可调用对象的参数个数(待补充)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-9-将单方法的类转换为函数-待补充"><span class="toc-text">7.9 将单方法的类转换为函数(待补充)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-10-带额外状态信息的回调函数-待补充"><span class="toc-text">7.10 带额外状态信息的回调函数(待补充)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-11-内联回调函数-待补充"><span class="toc-text">7.11 内联回调函数(待补充)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-12-访问闭包中定义的变量-待补充"><span class="toc-text">7.12 访问闭包中定义的变量(待补充)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第八章：类与对象"><span class="toc-text">第八章：类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-改变对象的字符串显示"><span class="toc-text">8.1 改变对象的字符串显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-自定义字符串的格式化"><span class="toc-text">8.2 自定义字符串的格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-让对象支持上下文管理协议"><span class="toc-text">8.3 让对象支持上下文管理协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-创建大量对象时节省内存方法"><span class="toc-text">8.4 创建大量对象时节省内存方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-在类中封装属性名"><span class="toc-text">8.5 在类中封装属性名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-6-创建可管理的属性"><span class="toc-text">8.6 创建可管理的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-调用父类方法"><span class="toc-text">8.7 调用父类方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-子类中扩展property"><span class="toc-text">8.8 子类中扩展property</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-创建新的类或实例属性"><span class="toc-text">8.9 创建新的类或实例属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-10-使用延迟计算属性"><span class="toc-text">8.10 使用延迟计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-11-简化数据结构的初始化"><span class="toc-text">8.11 简化数据结构的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-12-8-25-待补充"><span class="toc-text">8.12 -8.25(待补充)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第九章：元编程-待补充"><span class="toc-text">第九章：元编程(待补充)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十章：模块与包"><span class="toc-text">第十章：模块与包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-构建一个模块的层级包"><span class="toc-text">10.1 构建一个模块的层级包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-控制模块被全部导入的内容"><span class="toc-text">10.2 控制模块被全部导入的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-使用相对路径名导入包中子模块"><span class="toc-text">10.3 使用相对路径名导入包中子模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-将模块分割成多个文件"><span class="toc-text">10.4 将模块分割成多个文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-利用命名空间导入目录分散的代码"><span class="toc-text">10.5 利用命名空间导入目录分散的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-重新加载模块"><span class="toc-text">10.6 重新加载模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-7-运行目录或压缩文件"><span class="toc-text">10.7 运行目录或压缩文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-8-读取位于包中的数据文件"><span class="toc-text">10.8 读取位于包中的数据文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-9-将文件夹加入到sys-path"><span class="toc-text">10.9 将文件夹加入到sys.path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-10-通过字符串名导入模块"><span class="toc-text">10.10 通过字符串名导入模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-11-通过钩子远程加载模块-待补充"><span class="toc-text">10.11 通过钩子远程加载模块(待补充)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-12-导入模块的同时修改模块-待补充"><span class="toc-text">10.12 导入模块的同时修改模块(待补充)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-13-安装私有的包"><span class="toc-text">10.13 安装私有的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-14-创建新的Python-环境"><span class="toc-text">10.14 创建新的Python 环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-15-分发包-待补充"><span class="toc-text">10.15 分发包(待补充)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十一章：网络与Web-编程-待补充"><span class="toc-text">第十一章：网络与Web 编程(待补充)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-作为客户端与HTTP-服务交互"><span class="toc-text">11.1 作为客户端与HTTP 服务交互</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十二章：并发编程-待补充"><span class="toc-text">第十二章：并发编程(待补充)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1-启动与停止线程"><span class="toc-text">12.1 启动与停止线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-判断线程是否已经启动"><span class="toc-text">12.2 判断线程是否已经启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-线程间通信"><span class="toc-text">12.3 线程间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-给关键部分加锁"><span class="toc-text">12.4 给关键部分加锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-5-防止死锁的加锁机制"><span class="toc-text">12.5 防止死锁的加锁机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-6-保存线程的状态信息"><span class="toc-text">12.6 保存线程的状态信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十三章：脚本编程与系统管理"><span class="toc-text">第十三章：脚本编程与系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-通过重定向-管道-文件接受输入"><span class="toc-text">13.1 通过重定向/管道/文件接受输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-2-终止程序并给出错误信息"><span class="toc-text">13.2 终止程序并给出错误信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-3-解析命令行选项"><span class="toc-text">13.3 解析命令行选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-4-运行时弹出密码输入提示"><span class="toc-text">13.4 运行时弹出密码输入提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-5-获取终端的大小"><span class="toc-text">13.5 获取终端的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-6-执行外部命令并获取它的输出"><span class="toc-text">13.6 执行外部命令并获取它的输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-7-复制或者移动文件和目录"><span class="toc-text">13.7 复制或者移动文件和目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-8-创建和解压归档文件"><span class="toc-text">13.8 创建和解压归档文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-9-通过文件名查找文件"><span class="toc-text">13.9 通过文件名查找文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-10-读取配置文件"><span class="toc-text">13.10 读取配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-11-给简单脚本增加日志功能"><span class="toc-text">13.11 给简单脚本增加日志功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-12-给函数库增加日志功能"><span class="toc-text">13.12 给函数库增加日志功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-13-实现一个计时器-略"><span class="toc-text">13.13 实现一个计时器(略)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-14-限制内存和CPU-的使用量"><span class="toc-text">13.14 限制内存和CPU 的使用量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-15-启动一个WEB-浏览器"><span class="toc-text">13.15 启动一个WEB 浏览器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十四章：测试、调试和异常-待补充"><span class="toc-text">第十四章：测试、调试和异常(待补充)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十五章：C-语言扩展-待补充"><span class="toc-text">第十五章：C 语言扩展(待补充)</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

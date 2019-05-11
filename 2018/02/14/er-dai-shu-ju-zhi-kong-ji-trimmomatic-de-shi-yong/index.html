@@ -1,88 +1,183 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>(转载)二代数据质控及Trimmomatic的使用 | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="软件" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="生信理论基础,测序数据质控,Trimmomatic">
-  
+    <meta name="description" content="数据质控的意义现在的NGS测序，以illumina为首基本都是运用边合成边测序的技术。碱基的合成依靠的是化学反应，这使得碱基链可以不断地从5’端一直往3’端合成并延伸下去。但在这个合成的过程中随..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="(转载)二代数据质控及Trimmomatic的使用"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>(转载)二代数据质控及Trimmomatic的使用 | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="(转载)二代数据质控及Trimmomatic的使用">
+            
+	            (转载)二代数据质控及Trimmomatic的使用
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>(转载)二代数据质控及Trimmomatic的使用</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/生信/">生信</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/02/14/er-dai-shu-ju-zhi-kong-ji-trimmomatic-de-shi-yong/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-02-13T16:00:00.000Z">
-          2018-02-14
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/软件/">软件</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/02/14</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>451</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
         <h3 id="数据质控的意义"><a href="#数据质控的意义" class="headerlink" title="数据质控的意义"></a>数据质控的意义</h3><p>现在的NGS测序，以illumina为首基本都是运用边合成边测序的技术。碱基的合成依靠的是化学反应，这使得碱基链可以不断地从5’端一直往3’端合成并延伸下去。但在这个合成的过程中随着合成链的增长，DNA聚合酶的效率会不断下降，特异性也开始变差，这就会带来一个问题,—越到后面碱基合成的错误率就会越高，这也是为何当前NGS测序读长普遍偏短的一个原因。</p>
 <p><strong>注</strong>: 有时候测序仪在刚开始进行合成反应的时候也会由于反应还不够稳定，同样会带来质量值的波动，不过这个波动一般都在高质量值区域（如下图）。<br><img src="/myphoto/1.png" alt="image"></p>
 <p>一般我们可以从如下几个方面来分析：</p>
@@ -137,10 +232,8 @@
 <li>TOPHRED64: 将 reads 的碱基质量值体系转为 phred-64。</li>
 </ol>
 <h4 id="Trimmomatic-简单用法"><a href="#Trimmomatic-简单用法" class="headerlink" title="Trimmomatic 简单用法"></a>Trimmomatic 简单用法</h4><p>由于 Trimmomatic 过滤数据的步骤与命令行中过滤参数的顺序有关，因此，如果需要去接头，建议第一步就去接头，否则接头序列被其他的过滤参数剪切掉部分之后就更难匹配更难去除干净了。</p>
-<h5 id="单末端测序模式"><a href="#单末端测序模式" class="headerlink" title="单末端测序模式"></a>单末端测序模式</h5><p>在 SE 模式下，只有一个输入文件和一个过滤之后的输出文件：</p>
-<pre><code>java -jar &lt;path to trimmomatic jar&gt; SE [-threads &lt;threads&gt;] [-phred33 | -phred64] [-trimlog
-&lt;logFile&gt;] &lt;input&gt; &lt;output&gt; &lt;step 1&gt; &lt;step 2&gt; ...
-</code></pre><p><code>-trimlog</code> 参数指定了过滤日志文件名，日志中包含以下四列内容:</p>
+<h5 id="单末端测序模式"><a href="#单末端测序模式" class="headerlink" title="单末端测序模式"></a>单末端测序模式</h5><p>在 SE 模式下，只有一个输入文件和一个过滤之后的输出文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -jar &lt;path to trimmomatic jar&gt; SE [-threads &lt;threads&gt;] [-phred33 | -phred64] [-trimlog</span><br><span class="line">&lt;logFile&gt;] &lt;input&gt; &lt;output&gt; &lt;step 1&gt; &lt;step 2&gt; ...</span><br></pre></td></tr></table></figure></p>
+<p><code>-trimlog</code> 参数指定了过滤日志文件名，日志中包含以下四列内容:</p>
 <ul>
 <li>read ID</li>
 <li>过滤之后剩余序列长度</li>
@@ -151,10 +244,8 @@
 <p>由于生成的 trimlog 文件中包含了每一条 reads 的处理记录，因此文件体积巨大（GB 级别），如果后面不会用到 trim 日志，建议不要使用这个参数。 </p>
 <h5 id="双末端测序模式"><a href="#双末端测序模式" class="headerlink" title="双末端测序模式"></a>双末端测序模式</h5><p>在 PE 模式下，有两个输入文件，正向测序序列和反向测序序列，但是过滤之后输出文件有四个，过滤之后双端序列都保留的就是 paired，反之如果其中一端序列过滤之后被丢弃了另一端序列保留下来了就是 unpaired 。</p>
 <p><img src="/myphoto/10.png" alt="image"></p>
-<pre><code>java -jar &lt;path to trimmomatic.jar&gt; PE [-threads &lt;threads] [-phred33 | -phred64] [-trimlog
-&lt;logFile&gt;] &gt;] [-basein &lt;inputBase&gt; | &lt;input 1&gt; &lt;input 2&gt;] [-baseout &lt;outputBase&gt; |
-&lt;paired output 1&gt; &lt;unpaired output 1&gt; &lt;paired output 2&gt; &lt;unpaired output 2&gt; &lt;step 1&gt; &lt;step 2&gt; ...
-</code></pre><p>其中 -phred33 和 -phred64 参数指定 fastq 的质量值编码格式，如果不设置这个参数，软件会自动判断输入文件是哪种格式（v0.32 之后的版本都支持），虽然软件默认的参数是 phred64，如果不确定序列是哪种质量编码格式，可以不设置这个参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java -jar &lt;path to trimmomatic.jar&gt; PE [-threads &lt;threads] [-phred33 | -phred64] [-trimlog</span><br><span class="line">&lt;logFile&gt;] &gt;] [-basein &lt;inputBase&gt; | &lt;input 1&gt; &lt;input 2&gt;] [-baseout &lt;outputBase&gt; |</span><br><span class="line">&lt;paired output 1&gt; &lt;unpaired output 1&gt; &lt;paired output 2&gt; &lt;unpaired output 2&gt; &lt;step 1&gt; &lt;step 2&gt; ...</span><br></pre></td></tr></table></figure>
+<p>其中 -phred33 和 -phred64 参数指定 fastq 的质量值编码格式，如果不设置这个参数，软件会自动判断输入文件是哪种格式（v0.32 之后的版本都支持），虽然软件默认的参数是 phred64，如果不确定序列是哪种质量编码格式，可以不设置这个参数。</p>
 <h5 id="输入输出文件"><a href="#输入输出文件" class="headerlink" title="输入输出文件"></a>输入输出文件</h5><p>PE 模式的两个输入文件：<code>sample_R1.fastq</code> <code>sample_R2.fastq</code>以及四个输出文件：<code>sample_paired_R1.clean.fastq</code> <code>sample_unpaired_R1.clean.fastq</code> <code>sample_paired_R1.clean.fastq</code> <code>sample_unpaired_R1.clean.fastq</code></p>
 <p>通常 PE 测序的两个文件，R1 和 R2 的文件名是类似的，因此可以使用 <code>-basein</code> 参数指定其中 R1 文件名即可，软件会推测出 R2 的文件名，但是这个功能实测并不好用，因为软件只能自动识别推测三种种格式的 <code>-basein</code>:</p>
 <ul>
@@ -171,33 +262,8 @@
 <li>mySampleFiltered_2U.fq.gz - for unpaired reverse reads</li>
 </ul>
 <p>此外，如果直接指定输入输出文件名，文件名后添加 <code>.gz</code> 后缀就是告诉软件输入文件是 <code>.gz</code> 压缩文件，输出文件需要用 gzip 压缩。</p>
-<h5 id="常用参数说明"><a href="#常用参数说明" class="headerlink" title="常用参数说明"></a>常用参数说明</h5><pre><code>PE/SE
-    设定对Paired-End或Single-End的reads进行处理，其输入和输出参数稍有不一样。
--threads
-    设置多线程运行数
--phred33
-    设置碱基的质量格式，可选pred64
-ILLUMINACLIP:TruSeq3-PE.fa:2:30:10
-    切除adapter序列。参数后面分别接adapter序列的fasta文件：允许的最大mismatch
-数：palindrome模式下匹配碱基数阈值：simple模式下的匹配碱基数阈值。
-LEADING:3
-    切除首端碱基质量小于3的碱基
-TRAILING:3
-    切除尾端碱基质量小于3的碱基
-SLIDINGWINDOW:4:15
-    从5&#39;端开始进行滑动，当滑动位点周围一段序列(window)的平均碱基低于阈值，则从该处进行切除。Windows的size是4个碱基，其平均碱基
-质量小于15，则切除。
-MINLEN:50
-    最小的reads长度
-CROP:&lt;length&gt;
-    保留reads到指定的长度
-HEADCROP:&lt;length&gt;
-    在reads的首端切除指定的长度
-TOPHRED33
-    将碱基质量转换为pred33格式
-TOPHRED64
-    将碱基质量转换为pred64格式
-</code></pre><h5 id="过滤原理"><a href="#过滤原理" class="headerlink" title="过滤原理"></a>过滤原理</h5><p>每一步的过滤如果需要多个参数，通常用冒号:将各个参数隔开，当然参数的先后顺序是有要求的。</p>
+<h5 id="常用参数说明"><a href="#常用参数说明" class="headerlink" title="常用参数说明"></a>常用参数说明</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">PE/SE</span><br><span class="line">    设定对Paired-End或Single-End的reads进行处理，其输入和输出参数稍有不一样。</span><br><span class="line">-threads</span><br><span class="line">    设置多线程运行数</span><br><span class="line">-phred33</span><br><span class="line">    设置碱基的质量格式，可选pred64</span><br><span class="line">ILLUMINACLIP:TruSeq3-PE.fa:2:30:10</span><br><span class="line">    切除adapter序列。参数后面分别接adapter序列的fasta文件：允许的最大mismatch</span><br><span class="line">数：palindrome模式下匹配碱基数阈值：simple模式下的匹配碱基数阈值。</span><br><span class="line">LEADING:3</span><br><span class="line">    切除首端碱基质量小于3的碱基</span><br><span class="line">TRAILING:3</span><br><span class="line">    切除尾端碱基质量小于3的碱基</span><br><span class="line">SLIDINGWINDOW:4:15</span><br><span class="line">    从5&apos;端开始进行滑动，当滑动位点周围一段序列(window)的平均碱基低于阈值，则从该处进行切除。Windows的size是4个碱基，其平均碱基</span><br><span class="line">质量小于15，则切除。</span><br><span class="line">MINLEN:50</span><br><span class="line">    最小的reads长度</span><br><span class="line">CROP:&lt;length&gt;</span><br><span class="line">    保留reads到指定的长度</span><br><span class="line">HEADCROP:&lt;length&gt;</span><br><span class="line">    在reads的首端切除指定的长度</span><br><span class="line">TOPHRED33</span><br><span class="line">    将碱基质量转换为pred33格式</span><br><span class="line">TOPHRED64</span><br><span class="line">    将碱基质量转换为pred64格式</span><br></pre></td></tr></table></figure>
+<h5 id="过滤原理"><a href="#过滤原理" class="headerlink" title="过滤原理"></a>过滤原理</h5><p>每一步的过滤如果需要多个参数，通常用冒号:将各个参数隔开，当然参数的先后顺序是有要求的。</p>
 <h6 id="ILUMINACLIP"><a href="#ILUMINACLIP" class="headerlink" title="ILUMINACLIP"></a>ILUMINACLIP</h6><p>从名字可以看出，这一步是为了去除 illumina 接头的，这个软件其实就是专为 illumina 平台数据而设计的。</p>
 <p>为了更好理解测序 reads 中为什么会有引物和接头序列，我画了一个文库加上接头之后的结构示意图，也把引物结合部位大概标了出来：</p>
 <p><img src="/myphoto/11.png" alt="image"></p>
@@ -221,34 +287,18 @@ TOPHRED64
 <p>在第二步的接头序列和测序 reads 全长比对统计比对分值时，罚分策略考虑了测序碱基的质量值Q，每一个比对上的碱基加分 0.6，每一个错配的碱基减分 Q/10，考虑碱基质量值可以降低低质量碱基（高测序错误率）错配对整个比对得分的影响。在这个规则下，一段 12bp 的接头序列完全比对到 reads 上得分为 7.2, 25bp 的接头序列完全比对到 reads 上得分为 15。因此在 ILLUMINACLIP 参数中 simple clip threshold 的值建议为 7-15 之间（即上图中 A/B 比对模式比对得分阈值）。</p>
 <p>对于 palindromic 模式的比对（上图中 D 模式），可以比对上的序列长度会更长，为了保证识别接头序列的准确率，比对得分的阈值也更高，例如 reads的 R1 和 R2 中有 50bp 序列可以反向互补匹配，得分为 30。这种模式下，Trimmomatic 可以识别并去除 reads 中非常短的接头序列。</p>
 <p><strong>ILLUMINACLIP 参数说明</strong>：按照规定顺序，ILLUMINACLIP 的参数列表如下（各个参数之间以冒号分开），PE 测序需要注意最后一个参数。对于 SE 测序最后两个参数可以不设置。</p>
-<pre><code>ILLUMINACLIP:&lt;fastaWithAdaptersEtc&gt;:&lt;seed mismatches&gt;:&lt;palindrome clip threshold&gt;:&lt;simple clip threshold&gt;:&lt;minAdapterLength&gt;:&lt;keepBothReads&gt;
-
-ILLUMINACLIP:TruSeq3-SE:2:30:10 #接头和引物序列在 TruSeq3-SE 中，第一步 seed 搜索允许2个碱基错配，palindrome 比对分值阈值 30，simple clip 比对分值阈值 10，palindrome 模式允许切除的最短接头序列为 8bp（默认值），palindrome 模式去除与 R1 完全反向互补的 R2（默认去除）
-</code></pre><p><code>fastaWithAdaptersEtc</code>：指定包含接头和引物序列（所有被视为污染的序列）的 fasta 文件路径，Trimmomatic 自带了一个包含 Illumina 平台接头和引物序列的 fasta 文件，可以直接用这个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ILLUMINACLIP:&lt;fastaWithAdaptersEtc&gt;:&lt;seed mismatches&gt;:&lt;palindrome clip threshold&gt;:&lt;simple clip threshold&gt;:&lt;minAdapterLength&gt;:&lt;keepBothReads&gt;</span><br><span class="line"></span><br><span class="line">ILLUMINACLIP:TruSeq3-SE:2:30:10 #接头和引物序列在 TruSeq3-SE 中，第一步 seed 搜索允许2个碱基错配，palindrome 比对分值阈值 30，simple clip 比对分值阈值 10，palindrome 模式允许切除的最短接头序列为 8bp（默认值），palindrome 模式去除与 R1 完全反向互补的 R2（默认去除）</span><br></pre></td></tr></table></figure>
+<p><code>fastaWithAdaptersEtc</code>：指定包含接头和引物序列（所有被视为污染的序列）的 fasta 文件路径，Trimmomatic 自带了一个包含 Illumina 平台接头和引物序列的 fasta 文件，可以直接用这个。</p>
 <p><code>seedMismatches</code>：指定第一步 seed 搜索时允许的错配碱基个数，例如 2。</p>
 <p><code>palindrome clip threshold</code>：指定针对 PE 的 palindrome clip 模式下，需要 R1 和 R2 之间至少多少比对分值（上图中 D 模式），才会进行接头切除，例如 30。</p>
 <p><code>simple clip threshold</code>：指定切除接头序列的最低比对分值（上图 A/B 模式），通常 7-15 之间。</p>
 <p><code>minAdapterLength</code>：只对 PE 测序的 palindrome clip 模式有效，指定 palindrome 模式下可以切除的接头序列最短长度，由于历史的原因，默认值是 8，但实际上 palindrome 模式可以切除短至 1bp 的接头污染，所以可以设置为 1 。</p>
 <p><code>keepBothReads</code>：只对 PE 测序的 palindrome clip 模式有效，这个参数很重要，在上图中 D 模式下， R1 和 R2 在去除了接头序列之后剩余的部分是完全反向互补的，默认参数 false，意味着整条去除与 R1 完全反向互补的 R2，当做重复去除掉，但在有些情况下，例如需要用到 paired reads 的 bowtie2 流程，就要将这个参数改为 true，否则会损失一部分 paired reads。</p>
 <p>看一个 PE150 数据的测试，就知道 <code>keepBothReads</code> 参数的重要性了：</p>
-<pre><code>$ java -jar trimmomatic-0.36.jar PE -phred33 F-2-test_R1.fastq.gz F-2-test_R2.fastq.gz -baseout F-2.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51
-
-ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
-Input Read Pairs: 2500 Both Surviving: 1633 (65.32%) Forward Only Surviving: 828 (33.12%) Reverse Only Surviving: 12 (0.48%) Dropped: 27 (1.08%)
-TrimmomaticPE: Completed successfully
-# 使用 ILLUMINACLIP 默认的第六个参数 false，只有 65.32% paired reads 保留下来
-
-$ java -jar trimmomatic-0.36.jar PE -phred33 F-2-test_R1.fastq.gz F-2-test_R2.fastq.gz -baseout F-2.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:8:true LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51
-
-ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
-Input Read Pairs: 2500 Both Surviving: 2439 (97.56%) Forward Only Surviving: 22 (0.88%) Reverse Only Surviving: 16 (0.64%) Dropped: 23 (0.92%)
-TrimmomaticPE: Completed successfully
-# 将 ILLUMINACLIP 第六个参数改为 true，其余所有参数均相同，结果有 97.56% paired reads 保留下来
-</code></pre><h6 id="SLIDINGWINDOW"><a href="#SLIDINGWINDOW" class="headerlink" title="SLIDINGWINDOW"></a>SLIDINGWINDOW</h6><p>滑窗剪切，统计滑窗口中所有碱基的平均质量值，如果低于设定的阈值，则切掉窗口。<br>SLIDINGWINDOW 参数如下：</p>
-<pre><code>SLIDINGWINDOW:&lt;windowSize&gt;:&lt;requiredQuality&gt;
-
-SLIDINGWINDOW:4:15  #设置 4bp 窗口，碱基平均质量值阈值 15
-</code></pre><p><code>widowSize</code>:设置窗口大小<br><code>requiredQuality</code>：设置窗口碱基平均质量阈值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar trimmomatic-0.36.jar PE -phred33 F-2-test_R1.fastq.gz F-2-test_R2.fastq.gz -baseout F-2.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51</span><br><span class="line"></span><br><span class="line">ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences</span><br><span class="line">Input Read Pairs: 2500 Both Surviving: 1633 (65.32%) Forward Only Surviving: 828 (33.12%) Reverse Only Surviving: 12 (0.48%) Dropped: 27 (1.08%)</span><br><span class="line">TrimmomaticPE: Completed successfully</span><br><span class="line"># 使用 ILLUMINACLIP 默认的第六个参数 false，只有 65.32% paired reads 保留下来</span><br><span class="line"></span><br><span class="line">$ java -jar trimmomatic-0.36.jar PE -phred33 F-2-test_R1.fastq.gz F-2-test_R2.fastq.gz -baseout F-2.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:8:true LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51</span><br><span class="line"></span><br><span class="line">ILLUMINACLIP: Using 1 prefix pairs, 0 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences</span><br><span class="line">Input Read Pairs: 2500 Both Surviving: 2439 (97.56%) Forward Only Surviving: 22 (0.88%) Reverse Only Surviving: 16 (0.64%) Dropped: 23 (0.92%)</span><br><span class="line">TrimmomaticPE: Completed successfully</span><br><span class="line"># 将 ILLUMINACLIP 第六个参数改为 true，其余所有参数均相同，结果有 97.56% paired reads 保留下来</span><br></pre></td></tr></table></figure>
+<h6 id="SLIDINGWINDOW"><a href="#SLIDINGWINDOW" class="headerlink" title="SLIDINGWINDOW"></a>SLIDINGWINDOW</h6><p>滑窗剪切，统计滑窗口中所有碱基的平均质量值，如果低于设定的阈值，则切掉窗口。<br>SLIDINGWINDOW 参数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SLIDINGWINDOW:&lt;windowSize&gt;:&lt;requiredQuality&gt;</span><br><span class="line"></span><br><span class="line">SLIDINGWINDOW:4:15  #设置 4bp 窗口，碱基平均质量值阈值 15</span><br></pre></td></tr></table></figure>
+<p><code>widowSize</code>:设置窗口大小<br><code>requiredQuality</code>：设置窗口碱基平均质量阈值</p>
 <h6 id="MAXINFO"><a href="#MAXINFO" class="headerlink" title="MAXINFO"></a>MAXINFO</h6><p>包含一个可以自动调整的过滤条件，在保留尽可能长的序列和保持序列中碱基测序错误率尽可能低之间进行平衡，以达到 trim 之后保留序列的价值最大化。</p>
 <p>对于不同的应用场景，一条 reads 序列的价值由以下三个因素决定：</p>
 <ol>
@@ -270,78 +320,124 @@ SLIDINGWINDOW:4:15  #设置 4bp 窗口，碱基平均质量值阈值 15
 <li>超出最短 read 长度要求的碱基对 INFO 贡献有限，而另一方面，由于碱基的增加导致 reads 中出现测序错误的概率增大，这会导致对 INFO 的罚分。控制这超出最短 read 长度的序列对 INFO 分值的影响到底是罚分还是得分，就看 strictness 参数了。</li>
 <li>对于大部分足够长的 reads，保留超出最低要求的碱基序列是利还是弊，会依照碱基质量值分布和 strictness 参数来决定如何 trim。</li>
 </ol>
-<p>参数说明：</p>
-<pre><code>MAXINFO:&lt;targetLength&gt;:&lt;strictness&gt;
-</code></pre><p><code>targetLength</code>:使得 reads 可以 map 到参考序列上唯一位置的最短长度（likely）。<br><code>strictness</code>：一个介于 0 - 1 之间的小数，决定如何平衡 最大化 reads 长度 或者 最小化 reads 出现错误的概率，当参数设置小于 0.2 时倾向于最大化 reads 长度，当参数设置大于 0.8 时倾向于最小化 reads 中出现测序错误的概率。</p>
-<h6 id="LEADING"><a href="#LEADING" class="headerlink" title="LEADING"></a>LEADING</h6><p>从 reads 的起始端开始切除质量值低于设定的阈值的碱基，直到有一个碱基其质量值达到阈值。</p>
-<pre><code>LEADING:&lt;quality&gt;
-</code></pre><p><code>quality</code>:设定碱基质量值阈值，低于这个阈值将被切除。</p>
-<h6 id="TRAILING"><a href="#TRAILING" class="headerlink" title="TRAILING"></a>TRAILING</h6><p>从 reads 的末端开始切除质量值低于设定阈值的碱基，直到有一个碱基质量值达到阈值。Illumina 平台有些低质量的碱基质量值被标记为 2 ，所以设置为 3 可以过滤掉这部分低质量碱基。官方推荐使用 Sliding Window 或 MaxInfo 来代替 LEADING 和 TAILING。</p>
-<pre><code>TRAILING:&lt;quality&gt;
-</code></pre><p><code>quality</code>:设定碱基质量值阈值，低于这个阈值将被切除。</p>
-<h6 id="CROP"><a href="#CROP" class="headerlink" title="CROP"></a>CROP</h6><p>不管碱基质量，从 reads 的起始开始保留设定长度的碱基，其余全部切除。一刀切，把所有 reads 切成相同的长度。</p>
-<pre><code>CROP:&lt;length&gt;
-</code></pre><p><code>length</code>：reads 从末端除之后保留下来的序列长度</p>
-<h6 id="HEADCROP"><a href="#HEADCROP" class="headerlink" title="HEADCROP"></a>HEADCROP</h6><p>不管碱基质量，从 reads 的起始开始直接切除部分碱基。</p>
-<pre><code>HEADCROP:&lt;length&gt;
-</code></pre><p><code>length</code>：从 reads 的起始开始切除的碱基数</p>
-<h6 id="MINLEN"><a href="#MINLEN" class="headerlink" title="MINLEN"></a>MINLEN</h6><p>设定一个最短 read 长度，当 reads 经过前面的过滤之后，如果保留下来的长度低于这个阈值，整条 reads 被丢弃。被丢弃的 reads 数会被统计在 Trimmomatic 日志的 dropped reads 中。</p>
-<pre><code>MINLEN:&lt;length&gt;
-</code></pre><p><code>length</code>：可被保留的最短 read 长度</p>
+<p>参数说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MAXINFO:&lt;targetLength&gt;:&lt;strictness&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>targetLength</code>:使得 reads 可以 map 到参考序列上唯一位置的最短长度（likely）。<br><code>strictness</code>：一个介于 0 - 1 之间的小数，决定如何平衡 最大化 reads 长度 或者 最小化 reads 出现错误的概率，当参数设置小于 0.2 时倾向于最大化 reads 长度，当参数设置大于 0.8 时倾向于最小化 reads 中出现测序错误的概率。</p>
+<h6 id="LEADING"><a href="#LEADING" class="headerlink" title="LEADING"></a>LEADING</h6><p>从 reads 的起始端开始切除质量值低于设定的阈值的碱基，直到有一个碱基其质量值达到阈值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LEADING:&lt;quality&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>quality</code>:设定碱基质量值阈值，低于这个阈值将被切除。</p>
+<h6 id="TRAILING"><a href="#TRAILING" class="headerlink" title="TRAILING"></a>TRAILING</h6><p>从 reads 的末端开始切除质量值低于设定阈值的碱基，直到有一个碱基质量值达到阈值。Illumina 平台有些低质量的碱基质量值被标记为 2 ，所以设置为 3 可以过滤掉这部分低质量碱基。官方推荐使用 Sliding Window 或 MaxInfo 来代替 LEADING 和 TAILING。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRAILING:&lt;quality&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>quality</code>:设定碱基质量值阈值，低于这个阈值将被切除。</p>
+<h6 id="CROP"><a href="#CROP" class="headerlink" title="CROP"></a>CROP</h6><p>不管碱基质量，从 reads 的起始开始保留设定长度的碱基，其余全部切除。一刀切，把所有 reads 切成相同的长度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CROP:&lt;length&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>length</code>：reads 从末端除之后保留下来的序列长度</p>
+<h6 id="HEADCROP"><a href="#HEADCROP" class="headerlink" title="HEADCROP"></a>HEADCROP</h6><p>不管碱基质量，从 reads 的起始开始直接切除部分碱基。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HEADCROP:&lt;length&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>length</code>：从 reads 的起始开始切除的碱基数</p>
+<h6 id="MINLEN"><a href="#MINLEN" class="headerlink" title="MINLEN"></a>MINLEN</h6><p>设定一个最短 read 长度，当 reads 经过前面的过滤之后，如果保留下来的长度低于这个阈值，整条 reads 被丢弃。被丢弃的 reads 数会被统计在 Trimmomatic 日志的 dropped reads 中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MINLEN:&lt;length&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>length</code>：可被保留的最短 read 长度</p>
 <h6 id="TOPHRED33"><a href="#TOPHRED33" class="headerlink" title="TOPHRED33"></a>TOPHRED33</h6><p>此选项可以将过滤之后的 Fastq 文件中质量值这一行转为 phred-33 格式。</p>
 <h6 id="TOPHRED64"><a href="#TOPHRED64" class="headerlink" title="TOPHRED64"></a>TOPHRED64</h6><p>此选项可以将过滤之后的 Fastq 文件中质量值这一行转为 phred-64 格式。</p>
 <h6 id="接头序列和引物序列"><a href="#接头序列和引物序列" class="headerlink" title="接头序列和引物序列"></a>接头序列和引物序列</h6><p>Trimmomatic 也可以自己制作包含接头和引物序列的 fasta 文件，格式可以参考软件自带的 adapters 文件夹中的格式。</p>
 <p>adapters 文件夹中包含 illumina 测序 TruSeq2，TruSeq3 针对 SE 和 PE 的通用接头和引物序列。</p>
 <p><strong>参考链接</strong>：<br><a href="https://www.jianshu.com/p/a8935adebaae" target="_blank" rel="noopener">https://www.jianshu.com/p/a8935adebaae</a><br><a href="https://www.jianshu.com/p/7b5591673255" target="_blank" rel="noopener">https://www.jianshu.com/p/7b5591673255</a><br><a href="http://www.huangshujia.me/2017/08/25/2017-08-25-Begining-WGS-Data-Analysis-Fastq-Data-Quality-Control.html" target="_blank" rel="noopener">http://www.huangshujia.me/2017/08/25/2017-08-25-Begining-WGS-Data-Analysis-Fastq-Data-Quality-Control.html</a></p>
 
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/生信/">生信</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/生信理论基础/">生信理论基础</a><a href="/tags/测序数据质控/">测序数据质控</a><a href="/tags/Trimmomatic/">Trimmomatic</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/02/15/zhu-shi-ge-shi-shuo-ming/" class="pre-post btn btn-default" title='突变注释格式说明'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">突变注释格式说明</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/02/13/ichorcna/" class="next-post btn btn-default" title='ichorCNA'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ichorCNA</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据质控的意义"><span class="toc-text">数据质控的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trimmomatic的使用"><span class="toc-text">Trimmomatic的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Trimmomatic-介绍"><span class="toc-text">Trimmomatic 介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Trimmomatic-过滤步骤"><span class="toc-text">Trimmomatic 过滤步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Trimmomatic-简单用法"><span class="toc-text">Trimmomatic 简单用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#单末端测序模式"><span class="toc-text">单末端测序模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#双末端测序模式"><span class="toc-text">双末端测序模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#输入输出文件"><span class="toc-text">输入输出文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#常用参数说明"><span class="toc-text">常用参数说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#过滤原理"><span class="toc-text">过滤原理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#ILUMINACLIP"><span class="toc-text">ILUMINACLIP</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#SLIDINGWINDOW"><span class="toc-text">SLIDINGWINDOW</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#MAXINFO"><span class="toc-text">MAXINFO</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#LEADING"><span class="toc-text">LEADING</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#TRAILING"><span class="toc-text">TRAILING</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#CROP"><span class="toc-text">CROP</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HEADCROP"><span class="toc-text">HEADCROP</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#MINLEN"><span class="toc-text">MINLEN</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#TOPHRED33"><span class="toc-text">TOPHRED33</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#TOPHRED64"><span class="toc-text">TOPHRED64</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#接头序列和引物序列"><span class="toc-text">接头序列和引物序列</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

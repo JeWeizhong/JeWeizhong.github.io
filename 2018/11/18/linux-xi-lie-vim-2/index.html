@@ -1,88 +1,181 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>vim 进阶版 | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="vim" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="Linux,vim">
-  
+    <meta name="description" content="参考链接: https://linuxtoy.org/archives/efficient-editing-with-vim.html
+高效率移动在当前行里面有效的移动光标
+fx：移动光标到当前..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="vim 进阶版"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>vim 进阶版 | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vim 进阶版">
+            
+	            vim 进阶版
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>vim 进阶版</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/11/18/linux-xi-lie-vim-2/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-11-17T16:00:00.000Z">
-          2018-11-18
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/vim/">vim</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/18</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <p><strong>参考链接</strong>: <a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html" target="_blank" rel="noopener">https://linuxtoy.org/archives/efficient-editing-with-vim.html</a></p>
 <h2 id="高效率移动"><a href="#高效率移动" class="headerlink" title="高效率移动"></a>高效率移动</h2><h3 id="在当前行里面有效的移动光标"><a href="#在当前行里面有效的移动光标" class="headerlink" title="在当前行里面有效的移动光标"></a>在当前行里面有效的移动光标</h3><ul>
 <li>fx：移动光标到当前行的下一个 x 处。很明显，x 可以是任意一个字母，而且你可以使用 ; 来重复你的上一个 f 命令。</li>
@@ -180,54 +273,106 @@
 <li>K：在 Man 里面查找光标当前所在处的词。</li>
 </ul>
 
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/Linux/">Linux</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Linux/">Linux</a><a href="/tags/vim/">vim</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/11/19/ji-qi-xue-xi-shi-zhan-bi-ji-wu-jue-ce-shu-yi/" class="pre-post btn btn-default" title='机器学习实战笔记(五)---决策树(一)'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">机器学习实战笔记(五)---决策树(一)</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/11/17/linux-xi-lie-zhuan-ni-ying-gai-zhi-dao-de-linux-ji-qiao/" class="next-post btn btn-default" title='(转)应该知道的LINUX技巧'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">(转)应该知道的LINUX技巧</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#高效率移动"><span class="toc-text">高效率移动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在当前行里面有效的移动光标"><span class="toc-text">在当前行里面有效的移动光标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在整个文件里面有效移动光标"><span class="toc-text">在整个文件里面有效移动光标</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#：和上面的类似，但是是往反方向寻找。"><span class="toc-text">：和上面的类似，但是是往反方向寻找。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#高效的输入"><span class="toc-text">高效的输入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自动补全"><span class="toc-text">自动补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进入插入模式"><span class="toc-text">进入插入模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动大段文本"><span class="toc-text">移动大段文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可视选择"><span class="toc-text">可视选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在可视选择模式下剪切和拷贝"><span class="toc-text">在可视选择模式下剪切和拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在非可视选择模式下剪切和拷贝"><span class="toc-text">在非可视选择模式下剪切和拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#粘贴"><span class="toc-text">粘贴</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#避免重复"><span class="toc-text">避免重复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#令人惊奇的-命令"><span class="toc-text">令人惊奇的 . 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用数字"><span class="toc-text">使用数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录宏"><span class="toc-text">记录宏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用-Vim-写代码"><span class="toc-text">用 Vim 写代码</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

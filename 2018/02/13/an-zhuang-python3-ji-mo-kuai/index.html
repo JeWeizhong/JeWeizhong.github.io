@@ -1,170 +1,305 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>安装python3及模块 | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="python3" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="编程语言,python3,大数据">
-  
+    <meta name="description" content="pythonlinux下安装python
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+官网下载源码压缩包，解压 
+setup.py 里面可以设置sqlite3的搜索路径， 以防止模块安装不上
+./configure
 
-  <meta property="og:title" content="安装python3及模块"/>
+安装文件有很多选项..." />
 
-  <meta property="og:site_name" content="木叶村"/>
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
+    <!--Title-->
+
+
+<title>安装python3及模块 | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="安装python3及模块">
+            
+	            安装python3及模块
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>安装python3及模块</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/02/13/an-zhuang-python3-ji-mo-kuai/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-02-12T16:00:00.000Z">
-          2018-02-13
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python3/">python3</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/02/13</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>452</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
         <h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><p><strong>linux下安装python</strong></p>
 <ol>
 <li>官网下载源码压缩包，解压 </li>
 <li>setup.py 里面可以设置sqlite3的搜索路径， 以防止模块安装不上</li>
-<li>./configure<blockquote>
-<p>安装文件有很多选项<br><code>``
-./configure -h</code>configure’ configures python 3.6 to adapt to many kinds of systems.</p>
+<li><p>./configure</p>
+<blockquote>
+<p>安装文件有很多选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">./configure -h</span><br><span class="line">`configure&apos; configures python 3.6 to adapt to many kinds of systems.</span><br><span class="line"></span><br><span class="line">Usage: ./configure [OPTION]... [VAR=VALUE]...</span><br><span class="line"></span><br><span class="line">To assign environment variables (e.g., CC, CFLAGS...), specify them as</span><br><span class="line">VAR=VALUE.  See below for descriptions of some of the useful variables.</span><br><span class="line"></span><br><span class="line">Defaults for the options are specified in brackets.</span><br><span class="line"></span><br><span class="line">Configuration:</span><br><span class="line">  -h, --help              display this help and exit</span><br><span class="line">      --help=short        display options specific to this package</span><br><span class="line">      --help=recursive    display the short help of all the included packages</span><br><span class="line">  -V, --version           display version information and exit</span><br><span class="line">  -q, --quiet, --silent   do not print `checking ...&apos; messages</span><br><span class="line">      --cache-file=FILE   cache test results in FILE [disabled]</span><br><span class="line">  -C, --config-cache      alias for `--cache-file=config.cache&apos;</span><br><span class="line">  -n, --no-create         do not create output files</span><br><span class="line">      --srcdir=DIR        find the sources in DIR [configure dir or `..&apos;]</span><br><span class="line"></span><br><span class="line">Installation directories:</span><br><span class="line">  --prefix=PREFIX         install architecture-independent files in PREFIX      ###  安装路径</span><br><span class="line">                          [/usr/local]</span><br><span class="line">  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX</span><br><span class="line">                          [PREFIX]</span><br><span class="line"></span><br><span class="line">By default, `make install&apos; will install all the files in</span><br><span class="line">`/usr/local/bin&apos;, `/usr/local/lib&apos; etc.  You can specify</span><br><span class="line">an installation prefix other than `/usr/local&apos; using `--prefix&apos;,</span><br><span class="line">for instance `--prefix=$HOME&apos;.</span><br><span class="line"></span><br><span class="line">For better control, use the options below.</span><br><span class="line"></span><br><span class="line">Fine tuning of the installation directories:</span><br><span class="line">  --bindir=DIR            user executables [EPREFIX/bin]</span><br><span class="line">  --sbindir=DIR           system admin executables [EPREFIX/sbin]</span><br><span class="line">  --libexecdir=DIR        program executables [EPREFIX/libexec]</span><br><span class="line">  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]</span><br><span class="line">  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]</span><br><span class="line">  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]</span><br><span class="line">  --libdir=DIR            object code libraries [EPREFIX/lib]</span><br><span class="line">  --includedir=DIR        C header files [PREFIX/include]</span><br><span class="line">  --oldincludedir=DIR     C header files for non-gcc [/usr/include]</span><br><span class="line">  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]</span><br><span class="line">  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]</span><br><span class="line">  --infodir=DIR           info documentation [DATAROOTDIR/info]</span><br><span class="line">  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]</span><br><span class="line">  --mandir=DIR            man documentation [DATAROOTDIR/man]</span><br><span class="line">  --docdir=DIR            documentation root [DATAROOTDIR/doc/python]</span><br><span class="line">  --htmldir=DIR           html documentation [DOCDIR]</span><br><span class="line">  --dvidir=DIR            dvi documentation [DOCDIR]</span><br><span class="line">  --pdfdir=DIR            pdf documentation [DOCDIR]</span><br><span class="line">  --psdir=DIR             ps documentation [DOCDIR]</span><br><span class="line"></span><br><span class="line">System types:</span><br><span class="line">  --build=BUILD     configure for building on BUILD [guessed]</span><br><span class="line">  --host=HOST       cross-compile to build programs to run on HOST [BUILD]</span><br><span class="line">  --target=TARGET   configure for building compilers for TARGET [HOST]</span><br><span class="line"></span><br><span class="line">Optional Features:</span><br><span class="line">  --disable-option-checking  ignore unrecognized --enable/--with options</span><br><span class="line">  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)</span><br><span class="line">  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]</span><br><span class="line">  --enable-universalsdk[=SDKDIR]</span><br><span class="line">                          Build fat binary against Mac OS X SDK</span><br><span class="line">  --enable-framework[=INSTALLDIR]</span><br><span class="line">                          Build (MacOSX|Darwin) framework</span><br><span class="line">  --enable-shared         disable/enable building shared python library</span><br><span class="line">  --enable-profiling      enable C-level code profiling</span><br><span class="line">  --enable-optimizations  Enable expensive, stable optimizations (PGO, etc).</span><br><span class="line">                          Disabled by default.</span><br><span class="line">  --enable-loadable-sqlite-extensions</span><br><span class="line">                          support loadable extensions in _sqlite module</span><br><span class="line">  --enable-ipv6           Enable ipv6 (with ipv4) support</span><br><span class="line">  --disable-ipv6          Disable ipv6 support</span><br><span class="line">  --enable-big-digits[=BITS]</span><br><span class="line">                          use big digits for Python longs [[BITS=30]]</span><br><span class="line"></span><br><span class="line">Optional Packages:</span><br><span class="line">  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]</span><br><span class="line">  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)</span><br><span class="line">  --with-universal-archs=ARCH</span><br><span class="line">                          select architectures for universal build (&quot;32-bit&quot;,</span><br><span class="line">                          &quot;64-bit&quot;, &quot;3-way&quot;, &quot;intel&quot;, &quot;intel-32&quot;, or &quot;all&quot;)</span><br><span class="line">  --with-framework-name=FRAMEWORK</span><br><span class="line">                          specify an alternate name of the framework built</span><br><span class="line">                          with --enable-framework</span><br><span class="line">  --without-gcc           never use gcc</span><br><span class="line">  --with-icc              build with icc</span><br><span class="line">  --with-cxx-main=&lt;compiler&gt;</span><br><span class="line">                          compile main() and link python executable with C++</span><br><span class="line">                          compiler</span><br><span class="line">  --with-suffix=.exe      set executable suffix</span><br><span class="line">  --with-pydebug          build with Py_DEBUG defined</span><br><span class="line">  --with-assertions       build with C assertions enabled</span><br><span class="line">  --with-lto              Enable Link Time Optimization in PGO builds.</span><br><span class="line">                          Disabled by default.</span><br><span class="line">  --with-hash-algorithm=[fnv|siphash24]</span><br><span class="line">                          select hash algorithm</span><br><span class="line">  --with-address-sanitizer</span><br><span class="line">                          enable AddressSanitizer</span><br><span class="line">  --with-libs=&apos;lib1 ...&apos;  link against additional libs</span><br><span class="line">  --with-system-expat     build pyexpat module using an installed expat</span><br><span class="line">                          library</span><br><span class="line">  --with-system-ffi       build _ctypes module using an installed ffi library</span><br><span class="line">  --with-system-libmpdec  build _decimal module using an installed libmpdec</span><br><span class="line">                          library</span><br><span class="line">  --with-tcltk-includes=&apos;-I...&apos;</span><br><span class="line">                          override search for Tcl and Tk include files</span><br><span class="line">  --with-tcltk-libs=&apos;-L...&apos;</span><br><span class="line">                          override search for Tcl and Tk libs</span><br><span class="line">  --with-dbmliborder=db1:db2:...</span><br><span class="line">                          order to check db backends for dbm. Valid value is a</span><br><span class="line">                          colon separated string with the backend names</span><br><span class="line">                          `ndbm&apos;, `gdbm&apos; and `bdb&apos;.</span><br><span class="line">  --with(out)-threads[=DIRECTORY]</span><br><span class="line">                          disable/enable thread support</span><br><span class="line">  --with(out)-thread[=DIRECTORY]</span><br><span class="line">                          deprecated; use --with(out)-threads</span><br><span class="line">  --with(out)-doc-strings disable/enable documentation strings</span><br><span class="line">  --with(out)-pymalloc    disable/enable specialized mallocs</span><br><span class="line">  --with-valgrind         Enable Valgrind support</span><br><span class="line">  --with(out)-dtrace      disable/enable DTrace support</span><br><span class="line">  --with-fpectl           enable SIGFPE catching</span><br><span class="line">  --with-libm=STRING      math library</span><br><span class="line">  --with-libc=STRING      C library</span><br><span class="line">  --with(out)-computed-gotos</span><br><span class="line">                          Use computed gotos in evaluation loop (enabled by</span><br><span class="line">                          default on supported compilers)</span><br><span class="line">  --with(out)-ensurepip=[=upgrade]</span><br><span class="line">                          &quot;install&quot; or &quot;upgrade&quot; using bundled pip</span><br><span class="line"></span><br><span class="line">Some influential environment variables:</span><br><span class="line">  MACHDEP     name for machine-dependent library files</span><br><span class="line">  CC          C compiler command</span><br><span class="line">  CFLAGS      C compiler flags</span><br><span class="line">  LDFLAGS     linker flags, e.g. -L&lt;lib dir&gt; if you have libraries in a</span><br><span class="line">              nonstandard directory &lt;lib dir&gt;</span><br><span class="line">  LIBS        libraries to pass to the linker, e.g. -l&lt;library&gt;</span><br><span class="line">  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I&lt;include dir&gt; if</span><br><span class="line">              you have headers in a nonstandard directory &lt;include dir&gt;</span><br><span class="line">  CPP         C preprocessor</span><br><span class="line">  PKG_CONFIG  path to pkg-config utility</span><br><span class="line">  PKG_CONFIG_PATH</span><br><span class="line">              directories to add to pkg-config&apos;s search path</span><br><span class="line">  PKG_CONFIG_LIBDIR</span><br><span class="line">              path overriding pkg-config&apos;s built-in search path</span><br><span class="line"></span><br><span class="line">Use these variables to override the choices made by `configure&apos; or to help</span><br><span class="line">it to find libraries and programs with nonstandard names/locations.</span><br><span class="line"></span><br><span class="line">Report bugs to &lt;https://bugs.python.org/&gt;.</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-</ol>
-<p>Usage: ./configure [OPTION]… [VAR=VALUE]…</p>
-<p>To assign environment variables (e.g., CC, CFLAGS…), specify them as<br>VAR=VALUE.  See below for descriptions of some of the useful variables.</p>
-<p>Defaults for the options are specified in brackets.</p>
-<p>Configuration:<br>  -h, —help              display this help and exit<br>      —help=short        display options specific to this package<br>      —help=recursive    display the short help of all the included packages<br>  -V, —version           display version information and exit<br>  -q, —quiet, —silent   do not print <code>checking ...&#39; messages
-      --cache-file=FILE   cache test results in FILE [disabled]
-  -C, --config-cache      alias for</code>—cache-file=config.cache’<br>  -n, —no-create         do not create output files<br>      —srcdir=DIR        find the sources in DIR [configure dir or `..’]</p>
-<p>Installation directories:<br>  —prefix=PREFIX         install architecture-independent files in PREFIX      ###  安装路径<br>                          [/usr/local]<br>  —exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX<br>                          [PREFIX]</p>
-<p>By default, <code>make install&#39; will install all the files in</code>/usr/local/bin’, <code>/usr/local/lib&#39; etc.  You can specify
-an installation prefix other than</code>/usr/local’ using <code>--prefix&#39;,
-for instance</code>—prefix=$HOME’.</p>
-<p>For better control, use the options below.</p>
-<p>Fine tuning of the installation directories:<br>  —bindir=DIR            user executables [EPREFIX/bin]<br>  —sbindir=DIR           system admin executables [EPREFIX/sbin]<br>  —libexecdir=DIR        program executables [EPREFIX/libexec]<br>  —sysconfdir=DIR        read-only single-machine data [PREFIX/etc]<br>  —sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]<br>  —localstatedir=DIR     modifiable single-machine data [PREFIX/var]<br>  —libdir=DIR            object code libraries [EPREFIX/lib]<br>  —includedir=DIR        C header files [PREFIX/include]<br>  —oldincludedir=DIR     C header files for non-gcc [/usr/include]<br>  —datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]<br>  —datadir=DIR           read-only architecture-independent data [DATAROOTDIR]<br>  —infodir=DIR           info documentation [DATAROOTDIR/info]<br>  —localedir=DIR         locale-dependent data [DATAROOTDIR/locale]<br>  —mandir=DIR            man documentation [DATAROOTDIR/man]<br>  —docdir=DIR            documentation root [DATAROOTDIR/doc/python]<br>  —htmldir=DIR           html documentation [DOCDIR]<br>  —dvidir=DIR            dvi documentation [DOCDIR]<br>  —pdfdir=DIR            pdf documentation [DOCDIR]<br>  —psdir=DIR             ps documentation [DOCDIR]</p>
-<p>System types:<br>  —build=BUILD     configure for building on BUILD [guessed]<br>  —host=HOST       cross-compile to build programs to run on HOST [BUILD]<br>  —target=TARGET   configure for building compilers for TARGET [HOST]</p>
-<p>Optional Features:<br>  —disable-option-checking  ignore unrecognized —enable/—with options<br>  —disable-FEATURE       do not include FEATURE (same as —enable-FEATURE=no)<br>  —enable-FEATURE[=ARG]  include FEATURE [ARG=yes]<br>  —enable-universalsdk[=SDKDIR]<br>                          Build fat binary against Mac OS X SDK<br>  —enable-framework[=INSTALLDIR]<br>                          Build (MacOSX|Darwin) framework<br>  —enable-shared         disable/enable building shared python library<br>  —enable-profiling      enable C-level code profiling<br>  —enable-optimizations  Enable expensive, stable optimizations (PGO, etc).<br>                          Disabled by default.<br>  —enable-loadable-sqlite-extensions<br>                          support loadable extensions in _sqlite module<br>  —enable-ipv6           Enable ipv6 (with ipv4) support<br>  —disable-ipv6          Disable ipv6 support<br>  —enable-big-digits[=BITS]<br>                          use big digits for Python longs [[BITS=30]]</p>
-<p>Optional Packages:<br>  —with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]<br>  —without-PACKAGE       do not use PACKAGE (same as —with-PACKAGE=no)<br>  —with-universal-archs=ARCH<br>                          select architectures for universal build (“32-bit”,<br>                          “64-bit”, “3-way”, “intel”, “intel-32”, or “all”)<br>  —with-framework-name=FRAMEWORK<br>                          specify an alternate name of the framework built<br>                          with —enable-framework<br>  —without-gcc           never use gcc<br>  —with-icc              build with icc<br>  —with-cxx-main=<compiler><br>                          compile main() and link python executable with C++<br>                          compiler<br>  —with-suffix=.exe      set executable suffix<br>  —with-pydebug          build with Py_DEBUG defined<br>  —with-assertions       build with C assertions enabled<br>  —with-lto              Enable Link Time Optimization in PGO builds.<br>                          Disabled by default.<br>  —with-hash-algorithm=[fnv|siphash24]<br>                          select hash algorithm<br>  —with-address-sanitizer<br>                          enable AddressSanitizer<br>  —with-libs=’lib1 …’  link against additional libs<br>  —with-system-expat     build pyexpat module using an installed expat<br>                          library<br>  —with-system-ffi       build _ctypes module using an installed ffi library<br>  —with-system-libmpdec  build _decimal module using an installed libmpdec<br>                          library<br>  —with-tcltk-includes=’-I…’<br>                          override search for Tcl and Tk include files<br>  —with-tcltk-libs=’-L…’<br>                          override search for Tcl and Tk libs<br>  —with-dbmliborder=db1:db2:…<br>                          order to check db backends for dbm. Valid value is a<br>                          colon separated string with the backend names<br>                          <code>ndbm&#39;,</code>gdbm’ and `bdb’.<br>  —with(out)-threads[=DIRECTORY]<br>                          disable/enable thread support<br>  —with(out)-thread[=DIRECTORY]<br>                          deprecated; use —with(out)-threads<br>  —with(out)-doc-strings disable/enable documentation strings<br>  —with(out)-pymalloc    disable/enable specialized mallocs<br>  —with-valgrind         Enable Valgrind support<br>  —with(out)-dtrace      disable/enable DTrace support<br>  —with-fpectl           enable SIGFPE catching<br>  —with-libm=STRING      math library<br>  —with-libc=STRING      C library<br>  —with(out)-computed-gotos<br>                          Use computed gotos in evaluation loop (enabled by<br>                          default on supported compilers)<br>  —with(out)-ensurepip=[=upgrade]<br>                          “install” or “upgrade” using bundled pip</compiler></p>
-<p>Some influential environment variables:<br>  MACHDEP     name for machine-dependent library files<br>  CC          C compiler command<br>  CFLAGS      C compiler flags<br>  LDFLAGS     linker flags, e.g. -L<lib dir=""> if you have libraries in a<br>              nonstandard directory <lib dir=""><br>  LIBS        libraries to pass to the linker, e.g. -l<library><br>  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir=""> if<br>              you have headers in a nonstandard directory <include dir=""><br>  CPP         C preprocessor<br>  PKG_CONFIG  path to pkg-config utility<br>  PKG_CONFIG_PATH<br>              directories to add to pkg-config’s search path<br>  PKG_CONFIG_LIBDIR<br>              path overriding pkg-config’s built-in search path</include></include></library></lib></lib></p>
-<p>Use these variables to override the choices made by `configure’ or to help<br>it to find libraries and programs with nonstandard names/locations.</p>
-<p>Report bugs to <a href="https://bugs.python.org/" target="_blank" rel="noopener">https://bugs.python.org/</a>.<br>```</p>
-<ol>
-<li>make &amp;&amp; make install </li>
+<li><p>make &amp;&amp; make install </p>
+</li>
 <li>安装模块 pip3 install modulename</li>
 </ol>
 <p><strong>注意-h 下有响应时间等其他参数 按需设置,每个参数具体意义可自行搜索</strong></p>
 
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/python3/">python3</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a><a href="/tags/大数据/">大数据</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/02/13/sam-bam-ge-shi-shuo-ming/" class="pre-post btn btn-default" title='SAM/BAM格式说明'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">SAM/BAM格式说明</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/02/13/zhuan-zai-linux-xia-r-an-zhuang-wu-root-quan-xian/" class="next-post btn btn-default" title='(转载)linux下R安装(无root权限)'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">(转载)linux下R安装(无root权限)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-text">python</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

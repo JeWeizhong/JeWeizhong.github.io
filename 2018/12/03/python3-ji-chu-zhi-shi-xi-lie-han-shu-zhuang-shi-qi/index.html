@@ -1,188 +1,296 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>python3基础知识系列--函数装饰器 | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="python3" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="编程语言,python3">
-  
+    <meta name="description" content="装饰器是一个函数，其主要用途是包装另一个函数或类。这种包装的首要目的是光明正大地修改或增强被包装对象的行为。语法上使用 特殊符号@ 表示装饰器，如下所示：
+123@tracedef square..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="python3基础知识系列--函数装饰器"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>python3基础知识系列--函数装饰器 | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="python3基础知识系列--函数装饰器">
+            
+	            python3基础知识系列--函数装饰器
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>python3基础知识系列--函数装饰器</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/12/03/python3-ji-chu-zhi-shi-xi-lie-han-shu-zhuang-shi-qi/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-12-02T16:00:00.000Z">
-          2018-12-03
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python3/">python3</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/12/03</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <p><strong>装饰器</strong>是一个函数，其主要用途是包装另一个函数或类。这种包装的首要目的是光明正大地修改或增强被包装对象的行为。语法上使用 特殊符号<code>@</code> 表示装饰器，如下所示：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">@trace
-def square(x):
-　　 return x*x
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@trace</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span><span class="params">(x)</span>:</span></span><br><span class="line">　　 <span class="keyword">return</span> x*x</span><br></pre></td></tr></table></figure>
 <p>上面的代码是下面代码的简化：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">def square(x):
-　　return x*x
-square = trace(square)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span><span class="params">(x)</span>:</span></span><br><span class="line">　　<span class="keyword">return</span> x*x</span><br><span class="line">square = trace(square)</span><br></pre></td></tr></table></figure>
 <p>下面介绍几种用法：</p>
 <p>在类定义中，所有函数都被假定在实例上操作，该实例总是作为第一个参数self 传递。但是，还可以定义两种常见的方法。</p>
 <p><strong>静态方法</strong> 是一种普通函数，只不过它们正好位于类定义的命名空间中。它不会对任何实例类型进行操作。要定义静态方<br>法，可使用<code>@staticmethod</code> 装饰器，如下所示：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Foo(object):
-　　 @staticmethod
-　　 def add(x,y):
-　　　　 return x + y
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span><span class="params">(object)</span>:</span></span><br><span class="line">　　 @staticmethod</span><br><span class="line">　　 <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x,y)</span>:</span></span><br><span class="line">　　　　 <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
 <p>要调用静态方法，只需用类名作为它的前缀。无需向它传递任何其他信息，例如：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">x = Foo.add(3,4)　　 # x = 7
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = Foo.add(<span class="number">3</span>,<span class="number">4</span>)　　 <span class="comment"># x = 7</span></span><br></pre></td></tr></table></figure>
 <p>如果在编写类时需要采用很多不同的方式来创建新实例，则常常使用静态方法。因为类中只能有一个<code>__init__()</code> 函数，所以替代的创建函数通常按如下方式定义：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Date(object):
-　　def __init__(self,year,month,day):
-　　　　self.year = year
-　　　　self.month = month
-　　　　self.day = day
-　　@staticmethod
-　　def now():
-　　　　 t = time.localtime()
-　　　　 return Date(t.tm_year, t.tm_mon, t.tm_day)
-　　@staticmethod
-　　def tomorrow():
-　　　　 t = time.localtime(time.time()+86400)
-　　　　 return Date(t.tm_year, t.tm_mon, t.tm_day)
-# 创建日期的示例
-a = Date(1967, 4, 9)
-b = Date.now()　　　　 # 调用静态方法now()
-c = Date.tomorrow()　　# 调用静态方法tomorrow()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Date</span><span class="params">(object)</span>:</span></span><br><span class="line">　　<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,year,month,day)</span>:</span></span><br><span class="line">　　　　self.year = year</span><br><span class="line">　　　　self.month = month</span><br><span class="line">　　　　self.day = day</span><br><span class="line">　　@staticmethod</span><br><span class="line">　　<span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></span><br><span class="line">　　　　 t = time.localtime()</span><br><span class="line">　　　　 <span class="keyword">return</span> Date(t.tm_year, t.tm_mon, t.tm_day)</span><br><span class="line">　　@staticmethod</span><br><span class="line">　　<span class="function"><span class="keyword">def</span> <span class="title">tomorrow</span><span class="params">()</span>:</span></span><br><span class="line">　　　　 t = time.localtime(time.time()+<span class="number">86400</span>)</span><br><span class="line">　　　　 <span class="keyword">return</span> Date(t.tm_year, t.tm_mon, t.tm_day)</span><br><span class="line"><span class="comment"># 创建日期的示例</span></span><br><span class="line">a = Date(<span class="number">1967</span>, <span class="number">4</span>, <span class="number">9</span>)</span><br><span class="line">b = Date.now()　　　　 <span class="comment"># 调用静态方法now()</span></span><br><span class="line">c = Date.tomorrow()　　<span class="comment"># 调用静态方法tomorrow()</span></span><br></pre></td></tr></table></figure>
 <p><strong>类方法</strong> 是将类本身作为对象进行操作的方法。类方法使用<code>@classmethod</code> 装饰器定义，与实例方法不同，因为根据约定，类是作为第一个参数（名为cls ）传递的，例如：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">class Times(object):
-　　factor = 1
-　　@classmethod
-　　def mul(cls,x):
-　　　　return cls.factor*x
-class TwoTimes(Times):
-　　factor = 2
-x = TwoTimes.mul(4)　　# 调用Times.mul(TwoTimes, 4) -> 8
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Times</span><span class="params">(object)</span>:</span></span><br><span class="line">　　factor = <span class="number">1</span></span><br><span class="line">　　@classmethod</span><br><span class="line">　　<span class="function"><span class="keyword">def</span> <span class="title">mul</span><span class="params">(cls,x)</span>:</span></span><br><span class="line">　　　　<span class="keyword">return</span> cls.factor*x</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TwoTimes</span><span class="params">(Times)</span>:</span></span><br><span class="line">　　factor = <span class="number">2</span></span><br><span class="line">x = TwoTimes.mul(<span class="number">4</span>)　　<span class="comment"># 调用Times.mul(TwoTimes, 4) -&gt; 8</span></span><br></pre></td></tr></table></figure>
 <p>最后介绍一个装饰器函数是<code>@property</code>, 是将对象的方法变为属性的一个装饰器，这个在<strong>python3cookbook</strong>系列中讲过了，这里就不举例了</p>
 
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/python3/">python3</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/12/05/pa-chong-xi-lie-si-bao-chi-deng-lu/" class="pre-post btn btn-default" title='爬虫系列(四)---保持登陆'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">爬虫系列(四)---保持登陆</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/12/02/ji-qi-xue-xi-shi-zhan-bi-ji-wu-jue-ce-shu-er/" class="next-post btn btn-default" title='机器学习实战笔记(五)---决策树(二)'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">机器学习实战笔记(五)---决策树(二)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

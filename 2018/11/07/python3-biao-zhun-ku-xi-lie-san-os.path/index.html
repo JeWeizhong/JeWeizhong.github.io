@@ -1,183 +1,282 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>python3 标准库系列(三)---os.path | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="python3" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="编程语言,python3">
-  
+    <meta name="description" content="os.path模块比较简单，先记住下面这些常用的用就可以了：
+123456789101112131415161718192021222324252627282930313233343536373..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="python3 标准库系列(三)---os.path"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>python3 标准库系列(三)---os.path | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="python3 标准库系列(三)---os.path">
+            
+	            python3 标准库系列(三)---os.path
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>python3 标准库系列(三)---os.path</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-11-06T16:00:00.000Z">
-          2018-11-07
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python3/">python3</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/07</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">>>> import os
->>> path = '/Users/beazley/Data/data.csv'
->>> # 获取文件名
->>> os.path.basename(path)
-'data.csv'
->>> # 获取文件所在目录名
->>> os.path.dirname(path)
-'/Users/beazley/Data'
->>> # 多个元素拼接成一个链接
->>> os.path.join('tmp', 'data', os.path.basename(path))
-'tmp/data/data.csv'
->>> # 将家目录符号~换成真实链接
->>> path = '~/Data/data.csv'
->>> os.path.expanduser(path)
-'/Users/beazley/Data/data.csv'
->>> # 获取文件扩展名
->>> os.path.splitext(path)
-('~/Data/data', '.csv')
->>># 检查文件或目录是否存在
->>> os.path.exists('/etc/passwd')
-True
->>> # 检测是不是文件类型
->>> os.path.isfile('/etc/passwd')
-True
->>> # 检测是不是目录类型
->>> os.path.isdir('/etc/passwd')
-False
->>> # 检测是不是符号链接
->>> os.path.islink('/usr/local/bin/python3')
-True
->>> # 返回一个绝对路径
->>> os.path.realpath('/usr/local/bin/python3')
-'/usr/local/bin/python3.3'
->>># 获取文件大小
->>> os.path.getsize('/etc/passwd')
-3669
->>> # 获取文件修改日期
->>> os.path.getmtime('/etc/passwd')
-1272478234.0
->>> import time
->>> time.ctime(os.path.getmtime('/etc/passwd'))
-'Wed Apr 28 13:10:34 2010'
->>> # 获取指定目录下的文件列表 
->>>os.listdir('somedir')
-</code></pre>
-
-      
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="string">'data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件扩展名</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="string">'~/Data/data'</span>, <span class="string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="comment"># 获取文件大小</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取文件修改日期</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/python3/">python3</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/11/08/python3-biao-zhun-ku-xi-lie-si-logging/" class="pre-post btn btn-default" title='python3 标准库系列(四)---logging'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">python3 标准库系列(四)---logging</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/11/07/python3cook-xi-lie-bi-ji-liu/" class="next-post btn btn-default" title='python3 cookbook笔记：第四章 文件与IO'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">python3 cookbook笔记：第四章 文件与IO</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

@@ -1,213 +1,289 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表 | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="python3" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="编程语言,python3">
-  
+    <meta name="description" content="写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：https://github.com/yidao620c/python3-cookbook 
+在python中..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表 | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表">
+            
+	            python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>python3 cookbook笔记：第一章 数据结构和算法(一)---解压列表</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/计算机/">计算机</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/10/30/python3cook-xi-lie-bi-ji-yi/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-10-29T16:00:00.000Z">
-          2018-10-30
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python3/">python3</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/30</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <p><strong>写在开头：感谢译者们的对本书的翻译！非常棒的一本提升python技能的书，项目地址：<a href="https://github.com/yidao620c/python3-cookbook" target="_blank" rel="noopener">https://github.com/yidao620c/python3-cookbook</a></strong> </p>
-<p>在python中任何可迭代的对象(<strong>列表，元组，字符串，文件，迭代器，生成器等</strong>)都可以直接进行解压并赋值，<strong>只要保证</strong>前后的元素是一样的，比如：</p>
-<pre><code>&gt;&gt;&gt; p=(4,5)
-&gt;&gt;&gt; x,y=p
-&gt;&gt;&gt; x
-4
-&gt;&gt;&gt; y
-5
-# 嵌套序列也一样
-&gt;&gt;&gt; data = [ &#39;ACME&#39;, 50, 91.1, (2012, 12, 21) ]
-&gt;&gt;&gt; name, shares, price, date = data
-&gt;&gt;&gt; name
-&#39;ACME&#39;
-&gt;&gt;&gt; date
-(2012, 12, 21)
-&gt;&gt;&gt; name, shares, price, (year, mon, day) = data
-&gt;&gt;&gt; name
-&#39;ACME&#39;
-&gt;&gt;&gt; year
-2012
-&gt;&gt;&gt; mon
-12
-&gt;&gt;&gt; day
-21
-&gt;&gt;&gt;
-</code></pre><p>如果只想要部分，可以中<code>_</code>占位一个变量，<code>*_</code>占位多个变量(返回一个列表)，这些变量最后会被丢弃：</p>
-<pre><code>&gt;&gt;&gt; record = (&#39;ACME&#39;, 50, 123.45, (12, 18, 2012))
-&gt;&gt;&gt; name, *_, (*_, year) = record
-&gt;&gt;&gt; name
-&#39;ACME&#39;
-&gt;&gt;&gt; year
-2012
-&gt;&gt;&gt;
-</code></pre><p>当然<code>*_</code>这个模式也可以不用下划线占位，而是给定一个变量名字，来获取剩余变量的列表：</p>
-<pre><code>&gt;&gt;&gt; items = [1, 10, 7, 4, 5, 9]
-&gt;&gt;&gt; head, *tail = items
-&gt;&gt;&gt; head
-1
-&gt;&gt;&gt; tail
-[10, 7, 4, 5, 9]
-&gt;&gt;&gt;
-</code></pre><p><em>拓展阅读：</em></p>
-<p>实现一个优先级队列:</p>
-<pre><code>import heapq
-
-class PriorityQueue:
-    def __init__(self):
-        self._queue = []
-        self._index = 0
-    def push(self, item, priority):
-        heapq.heappush(self._queue, (-priority, self._index, item))
-        self._index += 1
-    def pop(self):
-        return heapq.heappop(self._queue)[-1]
-</code></pre><p>使用方式：<br><em>小声bb：这本书喜欢用类，自己要抓紧补一下类的知识了</em></p>
-<pre><code>&gt;&gt;&gt; class Item:
-...     def __init__(self, name):
-...         self.name = name
-...     def __repr__(self):
-...         return &#39;Item({!r})&#39;.format(self.name)
-...
-&gt;&gt;&gt; q = PriorityQueue()
-# 传入：元素，优先级
-&gt;&gt;&gt; q.push(Item(&#39;foo&#39;), 1)
-&gt;&gt;&gt; q.push(Item(&#39;bar&#39;), 5)
-&gt;&gt;&gt; q.push(Item(&#39;spam&#39;), 4)
-&gt;&gt;&gt; q.push(Item(&#39;grok&#39;), 1)
-&gt;&gt;&gt; q.pop()
-Item(&#39;bar&#39;)
-&gt;&gt;&gt; q.pop()
-Item(&#39;spam&#39;)
-&gt;&gt;&gt; q.pop()
-Item(&#39;foo&#39;)
-&gt;&gt;&gt; q.pop()
-Item(&#39;grok&#39;)
-</code></pre><p><strong>下一节：字典的用法</strong></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/python3/">python3</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/编程语言/">编程语言</a><a href="/tags/python3/">python3</a>
-    </span>
-    
+<p>在python中任何可迭代的对象(<strong>列表，元组，字符串，文件，迭代器，生成器等</strong>)都可以直接进行解压并赋值，<strong>只要保证</strong>前后的元素是一样的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p=(4,5)</span><br><span class="line">&gt;&gt;&gt; x,y=p</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">5</span><br><span class="line"># 嵌套序列也一样</span><br><span class="line">&gt;&gt;&gt; data = [ &apos;ACME&apos;, 50, 91.1, (2012, 12, 21) ]</span><br><span class="line">&gt;&gt;&gt; name, shares, price, date = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; date</span><br><span class="line">(2012, 12, 21)</span><br><span class="line">&gt;&gt;&gt; name, shares, price, (year, mon, day) = data</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt; mon</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; day</span><br><span class="line">21</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果只想要部分，可以中<code>_</code>占位一个变量，<code>*_</code>占位多个变量(返回一个列表)，这些变量最后会被丢弃：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; record = (&apos;ACME&apos;, 50, 123.45, (12, 18, 2012))</span><br><span class="line">&gt;&gt;&gt; name, *_, (*_, year) = record</span><br><span class="line">&gt;&gt;&gt; name</span><br><span class="line">&apos;ACME&apos;</span><br><span class="line">&gt;&gt;&gt; year</span><br><span class="line">2012</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>当然<code>*_</code>这个模式也可以不用下划线占位，而是给定一个变量名字，来获取剩余变量的列表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; items = [1, 10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt; head, *tail = items</span><br><span class="line">&gt;&gt;&gt; head</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; tail</span><br><span class="line">[10, 7, 4, 5, 9]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+<p><em>拓展阅读：</em></p>
+<p>实现一个优先级队列:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"></span><br><span class="line">class PriorityQueue:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self._queue = []</span><br><span class="line">        self._index = 0</span><br><span class="line">    def push(self, item, priority):</span><br><span class="line">        heapq.heappush(self._queue, (-priority, self._index, item))</span><br><span class="line">        self._index += 1</span><br><span class="line">    def pop(self):</span><br><span class="line">        return heapq.heappop(self._queue)[-1]</span><br></pre></td></tr></table></figure></p>
+<p>使用方式：<br><em>小声bb：这本书喜欢用类，自己要抓紧补一下类的知识了</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Item:</span><br><span class="line">...     def __init__(self, name):</span><br><span class="line">...         self.name = name</span><br><span class="line">...     def __repr__(self):</span><br><span class="line">...         return &apos;Item(&#123;!r&#125;)&apos;.format(self.name)</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; q = PriorityQueue()</span><br><span class="line"># 传入：元素，优先级</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;foo&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;bar&apos;), 5)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;spam&apos;), 4)</span><br><span class="line">&gt;&gt;&gt; q.push(Item(&apos;grok&apos;), 1)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;bar&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;spam&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;foo&apos;)</span><br><span class="line">&gt;&gt;&gt; q.pop()</span><br><span class="line">Item(&apos;grok&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>下一节：字典的用法</strong></p>
 
     </div>
-
     
-  </div>
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/10/31/python3cook-xi-lie-bi-ji-er/" class="pre-post btn btn-default" title='python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">python3 cookbook笔记：第一章 数据结构和算法(二)---字典的用法</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/10/30/ji-qi-xue-xi-shi-zhan-bi-ji-liu-knn-suan-fa-yi/" class="next-post btn btn-default" title='机器学习实战笔记(六)---kNN算法'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">机器学习实战笔记(六)---kNN算法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

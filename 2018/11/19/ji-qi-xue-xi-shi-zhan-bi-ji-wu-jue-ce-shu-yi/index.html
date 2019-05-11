@@ -1,239 +1,286 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title>机器学习实战笔记(五)---决策树(一) | 木叶村 | life is short</title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="木叶村">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
+    <!--SEO-->
 
-  
-  <meta name="author" content="Naruto">
-  
+    <meta name="keywords" content="机器学习" />
 
-  
-  <meta name="description" content="无人为孤岛，一书一世界">
-  
 
-  
-  
-  <meta name="keywords" content="python3,机器学习">
-  
+    <meta name="description" content="基本概念信息熵“信息熵”是度量样本纯合度最常用的的指标。假定当前样本集合D中的第$k$类样本所占的比例为$p_k(k=1,2…|y|)$,则D的信息熵可以定义为：
+Ent(D) = -\sum_..." />
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="机器学习实战笔记(五)---决策树(一)"/>
 
-  <meta property="og:site_name" content="木叶村"/>
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!--Title-->
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
+<title>机器学习实战笔记(五)---决策树(一) | 木叶村</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
+
+
+    <link rel="icon" href="/bitbug_favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
 <body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">木叶村</a>
-    </h1>
-    <p class="site-description">life is short</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Naruto'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 无人为孤岛，一书一世界 </h2>
+            
+    	</div>
+    </div>
 </header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/生信"><i class="fa "></i>生信</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="机器学习实战笔记(五)---决策树(一)">
+            
+	            机器学习实战笔记(五)---决策树(一)
+            
+        </h1>
+        <div class="post-meta">
     
-    <h3 class="article-title"><span>机器学习实战笔记(五)---决策树(一)</span></h3>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/数学与统计/">数学与统计</a>
+        </span>
     
-  
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/11/19/ji-qi-xue-xi-shi-zhan-bi-ji-wu-jue-ce-shu-yi/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-11-18T16:00:00.000Z">
-          2018-11-19
-        </time>
-      </a>
-    </span>
-  </div>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/机器学习/">机器学习</a>
+                
+            </span>
+        </span>
+    
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/19</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
         <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p>“信息熵”是度量样本纯合度最常用的的指标。假定当前样本集合D中的第$k$类样本所占的比例为$p_k(k=1,2…|y|)$,则D的信息熵可以定义为：</p>
 <script type="math/tex; mode=display">Ent(D) = -\sum_{k=1}^{|y|}p_klog_2^{p_k}</script><p>Ent(D)越小，表明D的纯度越高，信息熵也称作经验熵</p>
 <h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>在划分数据集之前之后信息发生的变化称为<strong>信息增益</strong><br>书中的说法都太正式，通俗的将就是我们将样本集D按照特征A划分后，子集中按照剩余的特征划分后的信息熵乘以各自的权重($\frac{|D^v|}{|D|}$)之和就是<strong>条件熵</strong>，与信息熵的差就是信息增益：</p>
 <script type="math/tex; mode=display">Gain(D,a) = Ent(D) - \sum_{v=1}^{V} \frac{|D^v|}{|D|} Ent(D^v)</script><p>按照不同的特征划分可以得到不同的信息增益，一般来说信息增益越大，分类的纯度提升越大，<br>上式中$v$表示的是按照特征A划分后的第$v$类，共有$V$类，而</p>
-<script type="math/tex; mode=display">\sum_{v=1}^{V} \frac{|D^v|}{|D|} Ent(D^v) = Ent(D|A)</script><h2 id="ID3算法构建决策树"><a href="#ID3算法构建决策树" class="headerlink" title="ID3算法构建决策树"></a>ID3算法构建决策树</h2><pre class=" language-lang-python"><code class="language-lang-python">from math import log
-import operator
-
-def createDataSet():
-    dataSet = [[1, 1, 'yes'],
-               [1, 1, 'yes'],
-               [1, 0, 'no'],
-               [0, 1, 'no'],
-               [0, 1, 'no']]
-    labels = ['no surfacing','flippers']
-    #change to discrete values
-    return dataSet, labels
-
-def createTree(dataSet,labels):
-    classList = [example[-1] for example in dataSet]
-    if classList.count(classList[0]) == len(classList): 
-        return classList[0]# 所有类别都相等
-    if len(dataSet[0]) == 1: # 只有一个类别
-        return majorityCnt(classList)
-    bestFeat = chooseBestFeatureToSplit(dataSet)
-    bestFeatLabel = labels[bestFeat]
-    myTree = {bestFeatLabel:{}}
-    del(labels[bestFeat])
-    featValues = [example[bestFeat] for example in dataSet]
-    uniqueVals = set(featValues)
-    for value in uniqueVals:
-        subLabels = labels[:]       #copy all of labels, so trees don't mess up existing labels
-        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value),subLabels)
-    return myTree                  
-
-def majorityCnt(classList):
-    '''
-    选择类别最多的类型
-    '''
-    classCount={}
-    for vote in classList:
-        if vote not in classCount.keys(): classCount[vote] = 0
-        classCount[vote] += 1
-    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)
-    return sortedClassCount[0][0]
-
-def splitDataSet(dataSet, axis, value):
-    '''
-    选取指定列中的指定类别
-    '''
-    retDataSet = []
-    for featVec in dataSet:
-        if featVec[axis] == value:
-            reducedFeatVec = featVec[:axis]     #chop out axis used for splitting
-            reducedFeatVec.extend(featVec[axis+1:])
-            retDataSet.append(reducedFeatVec)
-    return retDataSet
-
-def chooseBestFeatureToSplit(dataSet):
-    '''
-    计算条件熵：在选出信息熵最大分类的条件下
-    '''
-    numFeatures = len(dataSet[0]) - 1      #the last column is used for the labels
-    baseEntropy = calcShannonEnt(dataSet)
-    bestInfoGain = 0.0; bestFeature = -1
-    for i in range(numFeatures):        #iterate over all the features
-        featList = [example[i] for example in dataSet]#create a list of all the examples of this feature
-        uniqueVals = set(featList)       #get a set of unique values
-        newEntropy = 0.0
-        for value in uniqueVals:
-            subDataSet = splitDataSet(dataSet, i, value)
-            prob = len(subDataSet)/float(len(dataSet))
-            newEntropy += prob * calcShannonEnt(subDataSet) # 经验熵    
-        infoGain = baseEntropy - newEntropy     # 计算信息增益
-        if (infoGain > bestInfoGain):       #compare this to the best gain so far
-            bestInfoGain = infoGain         #if better than current best, set to best
-            bestFeature = i
-    return bestFeature                      #returns an integer
-
-def calcShannonEnt(dataSet):
-    '''
-    计算信息熵
-    '''
-    numEntries = len(dataSet) # 样本数
-    labelCounts = {} #　分类数
-    for featVec in dataSet: #the the number of unique elements and their occurance
-        currentLabel = featVec[-1] # 按照最后一列分类
-        if currentLabel not in labelCounts.keys(): labelCounts[currentLabel] = 0
-        labelCounts[currentLabel] += 1
-    shannonEnt = 0.0
-    for key in labelCounts:
-        prob = float(labelCounts[key])/numEntries # 概率
-        shannonEnt -= prob * log(prob,2) #log base 2 # 计算熵。求和 
-    return shannonEnt
-
-if __name__ == '__main__'    :
-    dataSet, labels = createDataSet()
-    #print (dataSet)
-    # 代码运行结果告诉我们，第0个特征是最好的用于划分数据集的特征
-    #print (chooseBestFeatureToSplit(dataSet))
-    print (createTree(dataSet,labels))
-    # {'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}}
-</code></pre>
+<script type="math/tex; mode=display">\sum_{v=1}^{V} \frac{|D^v|}{|D|} Ent(D^v) = Ent(D|A)</script><h2 id="ID3算法构建决策树"><a href="#ID3算法构建决策树" class="headerlink" title="ID3算法构建决策树"></a>ID3算法构建决策树</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    dataSet = [[<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">0</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>]]</span><br><span class="line">    labels = [<span class="string">'no surfacing'</span>,<span class="string">'flippers'</span>]</span><br><span class="line">    <span class="comment">#change to discrete values</span></span><br><span class="line">    <span class="keyword">return</span> dataSet, labels</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createTree</span><span class="params">(dataSet,labels)</span>:</span></span><br><span class="line">    classList = [example[<span class="number">-1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">    <span class="keyword">if</span> classList.count(classList[<span class="number">0</span>]) == len(classList): </span><br><span class="line">        <span class="keyword">return</span> classList[<span class="number">0</span>]<span class="comment"># 所有类别都相等</span></span><br><span class="line">    <span class="keyword">if</span> len(dataSet[<span class="number">0</span>]) == <span class="number">1</span>: <span class="comment"># 只有一个类别</span></span><br><span class="line">        <span class="keyword">return</span> majorityCnt(classList)</span><br><span class="line">    bestFeat = chooseBestFeatureToSplit(dataSet)</span><br><span class="line">    bestFeatLabel = labels[bestFeat]</span><br><span class="line">    myTree = &#123;bestFeatLabel:&#123;&#125;&#125;</span><br><span class="line">    <span class="keyword">del</span>(labels[bestFeat])</span><br><span class="line">    featValues = [example[bestFeat] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">    uniqueVals = set(featValues)</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">        subLabels = labels[:]       <span class="comment">#copy all of labels, so trees don't mess up existing labels</span></span><br><span class="line">        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value),subLabels)</span><br><span class="line">    <span class="keyword">return</span> myTree                  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">majorityCnt</span><span class="params">(classList)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    选择类别最多的类型</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    classCount=&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> vote <span class="keyword">in</span> classList:</span><br><span class="line">        <span class="keyword">if</span> vote <span class="keyword">not</span> <span class="keyword">in</span> classCount.keys(): classCount[vote] = <span class="number">0</span></span><br><span class="line">        classCount[vote] += <span class="number">1</span></span><br><span class="line">    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)</span><br><span class="line">    <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">splitDataSet</span><span class="params">(dataSet, axis, value)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    选取指定列中的指定类别</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    retDataSet = []</span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">        <span class="keyword">if</span> featVec[axis] == value:</span><br><span class="line">            reducedFeatVec = featVec[:axis]     <span class="comment">#chop out axis used for splitting</span></span><br><span class="line">            reducedFeatVec.extend(featVec[axis+<span class="number">1</span>:])</span><br><span class="line">            retDataSet.append(reducedFeatVec)</span><br><span class="line">    <span class="keyword">return</span> retDataSet</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chooseBestFeatureToSplit</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    计算条件熵：在选出信息熵最大分类的条件下</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    numFeatures = len(dataSet[<span class="number">0</span>]) - <span class="number">1</span>      <span class="comment">#the last column is used for the labels</span></span><br><span class="line">    baseEntropy = calcShannonEnt(dataSet)</span><br><span class="line">    bestInfoGain = <span class="number">0.0</span>; bestFeature = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(numFeatures):        <span class="comment">#iterate over all the features</span></span><br><span class="line">        featList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]<span class="comment">#create a list of all the examples of this feature</span></span><br><span class="line">        uniqueVals = set(featList)       <span class="comment">#get a set of unique values</span></span><br><span class="line">        newEntropy = <span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">            subDataSet = splitDataSet(dataSet, i, value)</span><br><span class="line">            prob = len(subDataSet)/float(len(dataSet))</span><br><span class="line">            newEntropy += prob * calcShannonEnt(subDataSet) <span class="comment"># 经验熵    </span></span><br><span class="line">        infoGain = baseEntropy - newEntropy     <span class="comment"># 计算信息增益</span></span><br><span class="line">        <span class="keyword">if</span> (infoGain &gt; bestInfoGain):       <span class="comment">#compare this to the best gain so far</span></span><br><span class="line">            bestInfoGain = infoGain         <span class="comment">#if better than current best, set to best</span></span><br><span class="line">            bestFeature = i</span><br><span class="line">    <span class="keyword">return</span> bestFeature                      <span class="comment">#returns an integer</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    计算信息熵</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    numEntries = len(dataSet) <span class="comment"># 样本数</span></span><br><span class="line">    labelCounts = &#123;&#125; <span class="comment">#　分类数</span></span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet: <span class="comment">#the the number of unique elements and their occurance</span></span><br><span class="line">        currentLabel = featVec[<span class="number">-1</span>] <span class="comment"># 按照最后一列分类</span></span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys(): labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">        labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line">    shannonEnt = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = float(labelCounts[key])/numEntries <span class="comment"># 概率</span></span><br><span class="line">        shannonEnt -= prob * log(prob,<span class="number">2</span>) <span class="comment">#log base 2 # 计算熵。求和 </span></span><br><span class="line">    <span class="keyword">return</span> shannonEnt</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>    :</span><br><span class="line">    dataSet, labels = createDataSet()</span><br><span class="line">    <span class="comment">#print (dataSet)</span></span><br><span class="line">    <span class="comment"># 代码运行结果告诉我们，第0个特征是最好的用于划分数据集的特征</span></span><br><span class="line">    <span class="comment">#print (chooseBestFeatureToSplit(dataSet))</span></span><br><span class="line">    <span class="keyword">print</span> (createTree(dataSet,labels))</span><br><span class="line">    <span class="comment"># &#123;'no surfacing': &#123;0: 'no', 1: &#123;'flippers': &#123;0: 'no', 1: 'yes'&#125;&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="可视化-略"><a href="#可视化-略" class="headerlink" title="可视化(略)"></a>可视化(略)</h3>
-      
     </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/机器学习/">机器学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/python3/">python3</a><a href="/tags/机器学习/">机器学习</a>
-    </span>
-    
-
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
     </div>
-
-    
-  </div>
 </article>
 
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
+<div class="article-nav prev-next-wrap clearfix">
     
-    &copy; 2019 Naruto
+        <a href="/2018/11/20/pa-chong-xi-lie-yi-zhua-qu-dian-ying-top100/" class="pre-post btn btn-default" title='爬虫系列(一)---抓取电影评分top100'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">爬虫系列(一)---抓取电影评分top100</span>
+        </a>
     
-  </p>
-</footer>
     
-  </div>
+        <a href="/2018/11/18/linux-xi-lie-vim-2/" class="next-post btn btn-default" title='vim 进阶版'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">vim 进阶版</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
 </div>
+
+
+    <div id="comments">
+        
+   <p>评论系统未开启，无法评论！</p>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#信息熵"><span class="toc-text">信息熵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息增益"><span class="toc-text">信息增益</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ID3算法构建决策树"><span class="toc-text">ID3算法构建决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化-略"><span class="toc-text">可视化(略)</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
