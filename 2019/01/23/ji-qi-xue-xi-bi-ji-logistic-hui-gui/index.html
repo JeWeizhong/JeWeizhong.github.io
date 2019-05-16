@@ -1,193 +1,204 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html  lang="zh">
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="木叶村">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <link rel="dns-prefetch" href="https://jeweizhong.github.io">
-    <!--SEO-->
-
-    <meta name="keywords" content="机器学习" />
-
-
-    <meta name="description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”
-至于为什么叫对数几率刚回归，..." />
+    <meta charset="utf-8">
+<title>机器学习笔记-----Logistic回归 - 木叶村</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
-
-    <!--Title-->
-
-
-<title>机器学习笔记-----Logistic回归 | 木叶村</title>
-
-
-    <link rel="alternate" href="/atom.xml" title="木叶村" type="application/atom+xml">
-
-
-    <link rel="icon" href="/bitbug_favicon.ico">
-
-    
+    <meta name="description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习笔记-----Logistic回归">
+<meta property="og:url" content="https://jeweizhong.github.io/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/index.html">
+<meta property="og:site_name" content="木叶村">
+<meta property="og:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jeweizhong.github.io/images/2.jpg">
+<meta property="og:updated_time" content="2019-05-16T12:30:22.042Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习笔记-----Logistic回归">
+<meta name="twitter:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/2.jpg">
 
 
 
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
 
 
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
     
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
 
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
 
+    
+    
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
 
     
+    
+    
+    
 
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
 </head>
-
-
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
-
-<body>
-    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
-    <div class="main-header-box">
-        <a class="header-avatar" href="/" title='Naruto'>
-            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
-        </a>
-        <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
-            
-                <h2> 无人为孤岛，一书一世界 </h2>
-            
-    	</div>
-    </div>
-</header>
-    <nav class="main-navigation">
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
-                        <i class="fa fa-bars"></i>
-                    </span>
-                    <a class="navbar-brand" href="https://jeweizhong.github.io">木叶村</a>
-                </div>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="menu">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="机器学习笔记-----Logistic回归" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>首页</a>
-                            </li>
+                        <i class="fab fa-github"></i>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/计算机"><i class="fa "></i>计算机</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/生信"><i class="fa "></i>生信</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/数学与统计"><i class="fa "></i>数学与统计</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>时间轴</a>
-                            </li>
-                        
-                    </ul>
-                </div>
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
             </div>
         </div>
     </div>
 </nav>
-    <section class="content-wrap">
+    
+    <section class="section">
         <div class="container">
-            <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="机器学习笔记-----Logistic回归">
-            
-	            机器学习笔记-----Logistic回归
-            
-        </h1>
-        <div class="post-meta">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
-        <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/数学与统计/">数学与统计</a>
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
         </span>
-    
-
-    
-        <span class="fa-wrap">
-            <i class="fa fa-tags"></i>
-            <span class="tags-meta">
-                
-                    <a class="tag-link" href="/tags/机器学习/">机器学习</a>
-                
-            </span>
-        </span>
-    
-
-    
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/01/23</span>
-        </span>
-        
-    
-</div>
-            
-            
     </div>
     
-    <div class="post-body post-content">
-        <p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1279 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                机器学习笔记-----Logistic回归
+            
+        </h1>
+        <div class="content">
+            <p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
 <p>至于为什么叫对数几率刚回归，请看下面的推倒过程</p>
+<a id="more"></a> 
 <h2 id="线性回归回顾"><a href="#线性回归回顾" class="headerlink" title="线性回归回顾"></a>线性回归回顾</h2><p>先来看一个简单的线性回归模型：</p>
-<script type="math/tex; mode=display">f(x) = \vec\omega^T \vec{x}+b</script><p>这里的</p>
-<script type="math/tex; mode=display">\vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n]</script><script type="math/tex; mode=display">\vec x  = \left[
+<p>$$ f(x) = \vec\omega^T \vec{x}+b  $$<br>这里的</p>
+<p>$$ \vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n] $$</p>
+
+$$ \vec x  = \left[
 \begin{matrix}
 x_1 \\
 x_2  \\
 \cdots\\
 x_n  
-\end{matrix} \right]</script><p>一般来说给定的数据集是：$D=\{(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})\}$, 即有m组数据，n个未知数，因此多变量线性回归的公式是：</p>
-<script type="math/tex; mode=display">f(x)= X^T \vec\omega</script><p>其中：</p>
-<script type="math/tex; mode=display">X = \left[
+\end{matrix} \right] $$
+
+<p>一般来说给定的数据集是：$D={(\vec x^{(1)},y^{(1)}),(\vec x^{(2)},y^{(2)}),⋯,(\vec x^{(m)},y^{(m)})}$, 即有m组数据，n个未知数，因此多变量线性回归的公式是：</p>
+<p>$$f(x)= X^T \vec\omega $$</p>
+<p>其中：</p>
+
+$$X = \left[
 \begin{matrix}
 x_1^{(1)} \   x_2^{(1)} \ x_1^{(1)} \ \cdots \ x_n^{(1)} \ 1 \\
 x_1^{(2)} \   x_2^{(2)} \ x_3^{(2)} \ \cdots \ x_n^{(2)} \ 1 \\
@@ -201,153 +212,840 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
 \vec x^{(3)T} \ 1 \\
 \cdots \\
 \vec x^{(m)T} \ 1 \\
-\end{matrix} \right]</script><p>展开式：</p>
-<script type="math/tex; mode=display">\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)}</script><script type="math/tex; mode=display">\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}</script><script type="math/tex; mode=display">\cdots</script><script type="math/tex; mode=display">\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}</script><p>我们为了便于推导，忽略了下标，只用了一组$(\vec{x},y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
-<script type="math/tex; mode=display">f(x)=\vec\omega^T \vec{x}</script><h2 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h2><p>线性回归很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
-<p>这里引出一个sigmoid函数：</p>
-<script type="math/tex; mode=display">g(z) = \frac {1}{1+e^{-z}}</script><p><img src="/myphoto/logtic.png" alt="logtic"></p>
+\end{matrix} \right]$$
+
+
+<p>展开式：</p>
+<p>$$\omega_1 x_1^{(1)} + \omega_2 x_2^{(1)} + \cdots + \omega_n x_n^{(1)} +b = y^{(1)} $$</p>
+<p>$$\omega_1 x_1^{(2)} + \omega_2 x_2^{(2)} + \cdots + \omega_n x_n^{(2)} + b = y^{(2)}$$</p>
+<p>$$\cdots$$</p>
+<p>$$\omega_1 x_1^{(m)} + \omega_2 x_2^{(m)} + \cdots + \omega_n x_n^{(m)} +b = y^{(m)}$$</p>
+<p>我们为了便于推导，忽略了下标，只用了一组$(\vec{x},y)$,然后把$b$当做$\omega_0$，而此时$x_0 = 1$：</p>
+<p>$$f(x)=\vec\omega^T \vec{x} $$</p>
+<h2 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h2><p>线性回归很显然是一个连续的值，既然要解决二分类的问题，那最好是换成一个$0/1$的值</p>
+<p>这里引出一个sigmoid函数：<br>$$g(z) = \frac {1}{1+e^{-z}}$$</p>
+<p><img src="/myphoto/logtic.png" alt="logtic"></p>
 <p>令：</p>
-<script type="math/tex; mode=display">z =\vec\omega^T \vec{x}+b</script><script type="math/tex; mode=display">f(x) = g(z) = \frac {1}{1+e^{-\vec\omega^T \vec{x}}}</script><p>我们就引出了我们的模型：</p>
-<script type="math/tex; mode=display">ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b</script><p>上式中$\frac{y}{1-y}$ 称为几率，反应x获得正例(y)的相对可能性，由此可以看出，模型实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
+<p>$$z =\vec\omega^T \vec{x}+b $$</p>
+<p>$$f(x) = g(z) = \frac {1}{1+e^{-\vec\omega^T \vec{x}}} $$</p>
+<p>我们就引出了我们的模型：</p>
+<p>$$ln \frac{y}{1-y} =  \vec\omega^T \vec{x}+b $$</p>
+<p>上式中$\frac{y}{1-y}$ 称为几率，反应x获得正例(y)的相对可能性，由此可以看出，模型实际上是在用线性回归模型的预测结果去逼近真实值$y$的对数几率，因此该模型就称为<strong>对数几率回归模型</strong></p>
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>由于$y$的值为0,1，我们将$y$视为后验概率：</p>
-<script type="math/tex; mode=display">p(y=1 |  x;\omega) = f(x)</script><script type="math/tex; mode=display">p(y=0 |  x;\omega) = 1- f(x)</script><p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式中：</p>
-<script type="math/tex; mode=display">p(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}}</script><script type="math/tex; mode=display">p(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}</script><p>为了确定$\omega$用对数似然函数：</p>
-<script type="math/tex; mode=display">\ell(\omega) = lnp(y|x ;\omega)</script><p>可以合并到一起：</p>
-<script type="math/tex; mode=display">p(y|x ;\omega) = f(x)^y(1-f(x))^{(1-y)}</script><p>带入到对数似然函数中：</p>
-<script type="math/tex; mode=display">ln p(y|x ;\omega) = y lnf(x) + (1-y)ln(1-f(x))</script><p>我们得到的代价函数：</p>
-<script type="math/tex; mode=display">J(\omega) = - \frac{1}{m} \sum_{i=1}^m [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln(1-f(x^{(i)})) ]</script><p>$J(\omega)$越小，就说明$f(x) = 1$的概率越大，因此只要求出$J(\omega)$的<strong>最小值</strong></p>
+<p>$$p(y=1 |  x;\omega) = f(x) $$</p>
+<p>$$p(y=0 |  x;\omega) = 1- f(x) $$</p>
+<p>$f(x)$越大，代表着预测值与$y$越接近，误差就越小，带入到公式中：</p>
+<p>$$p(y=1 |  x;\omega) = \frac {e^{\vec\omega^T \vec{x}}}{1+e^{\vec\omega^T \vec{x}}} $$</p>
+<p>$$p(y=0 |  x;\omega) = \frac {1}{1+e^{\vec\omega^T \vec{x}}}  $$</p>
+<p>为了确定$\omega$用对数似然函数：</p>
+<p>$$ \ell(\omega) = lnp(y|x ;\omega)$$</p>
+<p>可以合并到一起：</p>
+<p>$$ p(y|x ;\omega) = f(x)^y(1-f(x))^{(1-y)}$$</p>
+<p>带入到对数似然函数中：</p>
+<p>$$ln p(y|x ;\omega) = y lnf(x) + (1-y)ln(1-f(x)) $$</p>
+<p>我们得到的代价函数：</p>
+<p>$$J(\omega) = - \frac{1}{m} \sum_{i=1}^m [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln(1-f(x^{(i)})) ] $$</p>
+<p>$J(\omega)$越小，就说明$f(x) = 1$的概率越大，因此只要求出$J(\omega)$的<strong>最小值</strong></p>
 <blockquote>
 <p>ps：</p>
 <p>1）其实正常推倒出来的J(w)是没有前面的负号的，这里为了习惯，用梯度下降法求最小值，所以加了一个负号</p>
 <p>2） 之前推倒时候忽略了上标，但是我们在最后的损失函数中为了完整性就把上标加了上去</p>
 </blockquote>
 <h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>对代价函数求导的过程就不写了，直接写最后的结果:</p>
-<script type="math/tex; mode=display">\frac{\partial J(\omega)}{\partial\omega_j} =\frac{1}{m} \sum_{i=1}^m (f(x^{(i)}) - y^{(i)})x_j^{(i)}</script><script type="math/tex; mode=display">\omega_{j+1} := \omega_j- \frac{1}{m}\alpha\sum_{i=1}^m(f(x^{(i)}) - y^{(i)})x_j^{(i)}</script><h2 id="sklearn代码实现逻辑回归"><a href="#sklearn代码实现逻辑回归" class="headerlink" title="sklearn代码实现逻辑回归"></a>sklearn代码实现逻辑回归</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataset = pd.read_csv(<span class="string">r'E:\Downloads\100-Days-Of-ML-Code-master\Social_Network_Ads.csv'</span>)</span><br><span class="line">dataset.head(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = dataset.iloc[:,[<span class="number">2</span>,<span class="number">3</span>]].values</span><br><span class="line">Y = dataset.iloc[:,<span class="number">4</span>].values</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = <span class="number">0.25</span>, random_state = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">sc = StandardScaler()</span><br><span class="line">X_train = sc.fit_transform(X_train)</span><br><span class="line">X_test = sc.transform(X_test)</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">classifier = LogisticRegression()</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"><span class="comment"># classifier.coef_</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred = classifier.predict(X_test)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm = confusion_matrix(y_test, y_pred)</span><br></pre></td></tr></table></figure>
+<p>$$\frac{\partial J(\omega)}{\partial\omega_j} =\frac{1}{m} \sum_{i=1}^m (f(x^{(i)}) - y^{(i)})x_j^{(i)}  $$</p>
+<p>$$\omega_{j+1} := \omega_j- \frac{1}{m}\alpha\sum_{i=1}^m(f(x^{(i)}) - y^{(i)})x_j^{(i)} $$</p>
+<h2 id="sklearn代码实现逻辑回归"><a href="#sklearn代码实现逻辑回归" class="headerlink" title="sklearn代码实现逻辑回归"></a>sklearn代码实现逻辑回归</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataset = pd.read_csv(<span class="hljs-string">r'E:\Downloads\100-Days-Of-ML-Code-master\Social_Network_Ads.csv'</span>)</span><br><span class="line">dataset.head(<span class="hljs-number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = dataset.iloc[:,[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]].values</span><br><span class="line">Y = dataset.iloc[:,<span class="hljs-number">4</span>].values</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = <span class="hljs-number">0.25</span>, random_state = <span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> StandardScaler</span><br><span class="line">sc = StandardScaler()</span><br><span class="line">X_train = sc.fit_transform(X_train)</span><br><span class="line">X_test = sc.transform(X_test)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LogisticRegression</span><br><span class="line">classifier = LogisticRegression()</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"><span class="hljs-comment"># classifier.coef_</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred = classifier.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> confusion_matrix</span><br><span class="line">cm = confusion_matrix(y_test, y_pred)</span><br></pre></td></tr></table></figure>
+
 <p>可视化</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib.colors <span class="keyword">import</span> ListedColormap</span><br><span class="line">X_set,y_set=X_train,y_train</span><br><span class="line">X1,X2=np. meshgrid(np. arange(start=X_set[:,<span class="number">0</span>].min()<span class="number">-1</span>, stop=X_set[:, <span class="number">0</span>].max()+<span class="number">1</span>, step=<span class="number">0.01</span>),</span><br><span class="line">                   np. arange(start=X_set[:,<span class="number">1</span>].min()<span class="number">-1</span>, stop=X_set[:,<span class="number">1</span>].max()+<span class="number">1</span>, step=<span class="number">0.01</span>))</span><br><span class="line">plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span><br><span class="line">             alpha = <span class="number">0.75</span>, cmap = ListedColormap((<span class="string">'red'</span>, <span class="string">'green'</span>)))</span><br><span class="line">plt.xlim(X1.min(),X1.max())</span><br><span class="line">plt.ylim(X2.min(),X2.max())</span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> enumerate(np. unique(y_set)):</span><br><span class="line">    plt.scatter(X_set[y_set==j,<span class="number">0</span>],X_set[y_set==j,<span class="number">1</span>],</span><br><span class="line">                c = ListedColormap((<span class="string">'red'</span>, <span class="string">'green'</span>))(i), label=j)</span><br><span class="line"></span><br><span class="line">plt. title(<span class="string">' LOGISTIC(Training set)'</span>)</span><br><span class="line">plt. xlabel(<span class="string">' Age'</span>)</span><br><span class="line">plt. ylabel(<span class="string">' Estimated Salary'</span>)</span><br><span class="line">plt. legend()</span><br><span class="line">plt. show()</span><br><span class="line"></span><br><span class="line">X_set,y_set=X_test,y_test</span><br><span class="line">X1,X2=np. meshgrid(np. arange(start=X_set[:,<span class="number">0</span>].min()<span class="number">-1</span>, stop=X_set[:, <span class="number">0</span>].max()+<span class="number">1</span>, step=<span class="number">0.01</span>),</span><br><span class="line">                   np. arange(start=X_set[:,<span class="number">1</span>].min()<span class="number">-1</span>, stop=X_set[:,<span class="number">1</span>].max()+<span class="number">1</span>, step=<span class="number">0.01</span>))</span><br><span class="line"></span><br><span class="line">plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span><br><span class="line">             alpha = <span class="number">0.75</span>, cmap = ListedColormap((<span class="string">'red'</span>, <span class="string">'green'</span>)))</span><br><span class="line">plt.xlim(X1.min(),X1.max())</span><br><span class="line">plt.ylim(X2.min(),X2.max())</span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> enumerate(np. unique(y_set)):</span><br><span class="line">    plt.scatter(X_set[y_set==j,<span class="number">0</span>],X_set[y_set==j,<span class="number">1</span>],</span><br><span class="line">                c = ListedColormap((<span class="string">'red'</span>, <span class="string">'green'</span>))(i), label=j)</span><br><span class="line"></span><br><span class="line">plt. title(<span class="string">' LOGISTIC(Test set)'</span>)</span><br><span class="line">plt. xlabel(<span class="string">' Age'</span>)</span><br><span class="line">plt. ylabel(<span class="string">' Estimated Salary'</span>)</span><br><span class="line">plt. legend()</span><br><span class="line">plt. show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> matplotlib.colors <span class="hljs-keyword">import</span> ListedColormap</span><br><span class="line">X_set,y_set=X_train,y_train</span><br><span class="line">X1,X2=np. meshgrid(np. arange(start=X_set[:,<span class="hljs-number">0</span>].min()<span class="hljs-number">-1</span>, stop=X_set[:, <span class="hljs-number">0</span>].max()+<span class="hljs-number">1</span>, step=<span class="hljs-number">0.01</span>),</span><br><span class="line">                   np. arange(start=X_set[:,<span class="hljs-number">1</span>].min()<span class="hljs-number">-1</span>, stop=X_set[:,<span class="hljs-number">1</span>].max()+<span class="hljs-number">1</span>, step=<span class="hljs-number">0.01</span>))</span><br><span class="line">plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span><br><span class="line">             alpha = <span class="hljs-number">0.75</span>, cmap = ListedColormap((<span class="hljs-string">'red'</span>, <span class="hljs-string">'green'</span>)))</span><br><span class="line">plt.xlim(X1.min(),X1.max())</span><br><span class="line">plt.ylim(X2.min(),X2.max())</span><br><span class="line"><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> enumerate(np. unique(y_set)):</span><br><span class="line">    plt.scatter(X_set[y_set==j,<span class="hljs-number">0</span>],X_set[y_set==j,<span class="hljs-number">1</span>],</span><br><span class="line">                c = ListedColormap((<span class="hljs-string">'red'</span>, <span class="hljs-string">'green'</span>))(i), label=j)</span><br><span class="line"></span><br><span class="line">plt. title(<span class="hljs-string">' LOGISTIC(Training set)'</span>)</span><br><span class="line">plt. xlabel(<span class="hljs-string">' Age'</span>)</span><br><span class="line">plt. ylabel(<span class="hljs-string">' Estimated Salary'</span>)</span><br><span class="line">plt. legend()</span><br><span class="line">plt. show()</span><br><span class="line"></span><br><span class="line">X_set,y_set=X_test,y_test</span><br><span class="line">X1,X2=np. meshgrid(np. arange(start=X_set[:,<span class="hljs-number">0</span>].min()<span class="hljs-number">-1</span>, stop=X_set[:, <span class="hljs-number">0</span>].max()+<span class="hljs-number">1</span>, step=<span class="hljs-number">0.01</span>),</span><br><span class="line">                   np. arange(start=X_set[:,<span class="hljs-number">1</span>].min()<span class="hljs-number">-1</span>, stop=X_set[:,<span class="hljs-number">1</span>].max()+<span class="hljs-number">1</span>, step=<span class="hljs-number">0.01</span>))</span><br><span class="line"></span><br><span class="line">plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span><br><span class="line">             alpha = <span class="hljs-number">0.75</span>, cmap = ListedColormap((<span class="hljs-string">'red'</span>, <span class="hljs-string">'green'</span>)))</span><br><span class="line">plt.xlim(X1.min(),X1.max())</span><br><span class="line">plt.ylim(X2.min(),X2.max())</span><br><span class="line"><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> enumerate(np. unique(y_set)):</span><br><span class="line">    plt.scatter(X_set[y_set==j,<span class="hljs-number">0</span>],X_set[y_set==j,<span class="hljs-number">1</span>],</span><br><span class="line">                c = ListedColormap((<span class="hljs-string">'red'</span>, <span class="hljs-string">'green'</span>))(i), label=j)</span><br><span class="line"></span><br><span class="line">plt. title(<span class="hljs-string">' LOGISTIC(Test set)'</span>)</span><br><span class="line">plt. xlabel(<span class="hljs-string">' Age'</span>)</span><br><span class="line">plt. ylabel(<span class="hljs-string">' Estimated Salary'</span>)</span><br><span class="line">plt. legend()</span><br><span class="line">plt. show()</span><br></pre></td></tr></table></figure>
+
 <p><img src="/myphoto/output_12_0.png" alt="png"></p>
 <p><img src="/myphoto/output_12_1.png" alt="png"></p>
 
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
-            
         </div>
-        <div>
-            
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>
+                </div>
+            </div>
         </div>
+        
+        
+        
     </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2019/01/27/suan-fa-yu-shu-ju-jie-gou-xi-lie-yi-lian-biao/" class="pre-post btn btn-default" title='算法与数据结构系列(一)： 链表'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">算法与数据结构系列(一)： 链表</span>
-        </a>
-    
-    
-        <a href="/2019/01/14/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="next-post btn btn-default" title='机器学习笔记-----线性回归'>
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">机器学习笔记-----线性回归</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
-    
 </div>
 
 
-    <div id="comments">
-        
-   <p>评论系统未开启，无法评论！</p>
 
-    </div>
-
-
-
-
-
-                </main>
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">文章目录</h3>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性回归回顾"><span class="toc-text">线性回归回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sigmoid函数"><span class="toc-text">sigmoid函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代价函数"><span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯度下降法"><span class="toc-text">梯度下降法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sklearn代码实现逻辑回归"><span class="toc-text">sklearn代码实现逻辑回归</span></a></li></ol>
-        
-    </div>
-</aside>
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
 
                 
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/03/03/you-are-what-you-write/">
+                <span class="level-item">沈向洋：You Are What You Write</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Your name
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Your location</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/数学与统计/">
+            <span class="level-start">
+                <span class="level-item">数学与统计</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/计算机/">
+            <span class="level-start">
+                <span class="level-item">计算机</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/阅读/">
+            <span class="level-start">
+                <span class="level-item">阅读</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/摘抄/" style="font-size: 10px;">摘抄</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
+                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/03/03/you-are-what-you-write/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/1.jpg" alt="沈向洋：You Are What You Write">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-03-02T16:00:00.000Z">2018-03-03</time></div>
+                    <a href="/2018/03/03/you-are-what-you-write/" class="has-link-black-ter is-size-6">沈向洋：You Are What You Write</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阅读/">阅读</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/3.jpg" alt="AWK简明教程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-15T16:00:00.000Z">2018-02-16</time></div>
+                    <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" class="has-link-black-ter is-size-6">AWK简明教程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/awk/">
+                        <span class="tag">awk</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/摘抄/">
+                        <span class="tag">摘抄</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习/">
+                        <span class="tag">机器学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
+                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/03/03/you-are-what-you-write/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/1.jpg" alt="沈向洋：You Are What You Write">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-03-02T16:00:00.000Z">2018-03-03</time></div>
+                    <a href="/2018/03/03/you-are-what-you-write/" class="has-link-black-ter is-size-6">沈向洋：You Are What You Write</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阅读/">阅读</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/3.jpg" alt="AWK简明教程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-15T16:00:00.000Z">2018-02-16</time></div>
+                    <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" class="has-link-black-ter is-size-6">AWK简明教程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/awk/">
+                        <span class="tag">awk</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/摘抄/">
+                        <span class="tag">摘抄</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/机器学习/">
+                        <span class="tag">机器学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
             </div>
         </div>
     </section>
-    <footer class="main-footer">
+    <footer class="footer">
     <div class="container">
-        <div class="row">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="机器学习笔记-----Logistic回归" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Naruto&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
         </div>
     </div>
 </footer>
-
-<a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
-</a>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
 
-
-    <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="busuanzi">
     
-</div>
+    
+    
+    <script src="/js/animation.js"></script>
+    
 
-            </div>
-            <div class="col-sm-12">
-                <span>Copyright &copy; 2017
-                </span> |
-                <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> |
-                <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
-                </span>
-            </div>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-<script src="/js/app.js?rev=@@hash"></script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>
