@@ -16,7 +16,7 @@
 <meta property="og:description" content="AWK是一种处理文本文件的语言，是一个强大的文本分析工具。之所以叫AWK是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jeweizhong.github.io/images/3.jpg">
-<meta property="og:updated_time" content="2019-05-16T12:38:33.963Z">
+<meta property="og:updated_time" content="2019-05-16T12:58:23.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWK简明教程">
 <meta name="twitter:description" content="AWK是一种处理文本文件的语言，是一个强大的文本分析工具。之所以叫AWK是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。">
@@ -123,13 +123,17 @@
                 
                     
                     
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/JeWeizhong/JeWeizhong.github.io">
                         
                         <i class="fab fa-github"></i>
                         
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -182,8 +186,9 @@
             <p>AWK是一种处理文本文件的语言，是一个强大的文本分析工具。之所以叫AWK是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。</p>
 <a id="more"></a>
 
-<h5 id="awk命令格式和选项"><a href="#awk命令格式和选项" class="headerlink" title="awk命令格式和选项"></a>awk命令格式和选项</h5><p>语法形式</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk [options] &apos;script&apos; var=value file(s)</span><br><span class="line">awk [options] -f scriptfile var=value file(s)</span><br></pre></td></tr></table></figure>
+
+<h3 id="awk命令格式和选项"><a href="#awk命令格式和选项" class="headerlink" title="awk命令格式和选项"></a>awk命令格式和选项</h3><p>语法形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk [options] &apos;script&apos; var=value file(s)</span><br><span class="line">awk [options] -f scriptfile var=value file(s)</span><br></pre></td></tr></table></figure>
 
 <p>常用命令选项</p>
 <ul>
@@ -193,9 +198,9 @@
 <li>-m[fr] val   对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大数目。这两个功能是Bell实验室版awk的扩展功能，在标准awk中不适用。</li>
 </ul>
 <p><strong>工作原理</strong></p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hawk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hawk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</span><br></pre></td></tr></table></figure>
 
-<h5 id="内建变量"><a href="#内建变量" class="headerlink" title="内建变量"></a>内建变量</h5><table>
+<h3 id="内建变量"><a href="#内建变量" class="headerlink" title="内建变量"></a>内建变量</h3><table>
 <thead>
 <tr>
 <th>变量</th>
@@ -243,13 +248,13 @@
 <td>当前输入文件的名字</td>
 </tr>
 </tbody></table>
-<h5 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h5><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> awk '$6 ~ /FIN|TIME/ || NR==1 &#123;print NR,$4,$5,$6&#125;' OFS="\t" netstat.txt</span><br></pre></td></tr></table></figure>
+<h3 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> awk '$6 ~ /FIN|TIME/ || NR==1 &#123;print NR,$4,$5,$6&#125;' OFS="\t" netstat.txt</span><br></pre></td></tr></table></figure>
 
-<h5 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h5><p>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l  *.cpp *.c *.h | awk &apos;&#123;sum+=$5&#125; END &#123;print sum&#125;&apos;</span><br><span class="line">2511401</span><br></pre></td></tr></table></figure>
+<h3 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h3><p>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l  *.cpp *.c *.h | awk &apos;&#123;sum+=$5&#125; END &#123;print sum&#125;&apos;</span><br><span class="line">2511401</span><br></pre></td></tr></table></figure>
 
 <p>统计每个用户的进程的占了多少内存</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ps aux | awk 'NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i ", " a[i]"KB";&#125;'</span><br><span class="line">dbus, 540KB</span><br><span class="line">mysql, 99928KB</span><br><span class="line">www, 3264924KB</span><br><span class="line">root, 63644KB</span><br><span class="line">hchen, 6020KB</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ps aux | awk 'NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i ", " a[i]"KB";&#125;'</span><br><span class="line">dbus, 540KB</span><br><span class="line">mysql, 99928KB</span><br><span class="line">www, 3264924KB</span><br><span class="line">root, 63644KB</span><br><span class="line">hchen, 6020KB</span><br></pre></td></tr></table></figure>
 
 <p><strong>控制结构和脚本语言待补充</strong></p>
 <p><strong>参考链接：</strong></p>
@@ -272,40 +277,6 @@
 </div>
 
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
@@ -339,22 +310,22 @@
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="JeWei">
                     
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        JeWei
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        BIOINFer
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>北京</span>
                     </p>
                     
                 </div>
@@ -393,7 +364,7 @@
             </div>
         </nav>
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://github.com/JeWeizhong" target="_blank">
                 关注我</a>
         </div>
         
@@ -401,85 +372,16 @@
         <div class="level is-mobile">
             
             <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="https://github.com/ppoffice">
+                title="Github" href="https://github.com/JeWeizhong">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
         </div>
         
     </div>
 </div>
-    
-        
-    
-        
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">PPOffice</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-
     
         
 <div class="card widget">
@@ -528,6 +430,74 @@
         <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/摘抄/" style="font-size: 10px;">摘抄</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a>
     </div>
 </div>
+
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#awk命令格式和选项">
+        <span class="has-mr-6">1</span>
+        <span>awk命令格式和选项</span>
+        </a></li><li>
+        <a class="is-flex" href="#内建变量">
+        <span class="has-mr-6">2</span>
+        <span>内建变量</span>
+        </a></li><li>
+        <a class="is-flex" href="#模式匹配">
+        <span class="has-mr-6">3</span>
+        <span>模式匹配</span>
+        </a></li><li>
+        <a class="is-flex" href="#统计">
+        <span class="has-mr-6">4</span>
+        <span>统计</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
 
     
     
