@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html  lang="zh">
+
 <head>
     <meta charset="utf-8">
 <title>机器学习笔记-----Logistic回归 - 木叶村</title>
@@ -16,7 +17,7 @@
 <meta property="og:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jeweizhong.github.io/images/2.jpg">
-<meta property="og:updated_time" content="2019-05-16T13:02:49.069Z">
+<meta property="og:updated_time" content="2019-05-17T13:07:53.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记-----Logistic回归">
 <meta name="twitter:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
@@ -28,7 +29,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/images/bitbug_favicon.ico">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -148,7 +149,8 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+			<!-- 将main_column_class() 改为 col() -->
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
         <span  class="image is-7by1">
@@ -186,6 +188,7 @@
             <p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
 <p>至于为什么叫对数几率刚回归，请看下面的推倒过程</p>
 <a id="more"></a> 
+
 <h2 id="线性回归回顾"><a href="#线性回归回顾" class="headerlink" title="线性回归回顾"></a>线性回归回顾</h2><p>先来看一个简单的线性回归模型：</p>
 <p>$$ f(x) = \vec\omega^T \vec{x}+b  $$<br>这里的</p>
 <p>$$ \vec\omega^T = [\omega_1,\omega_2,\cdots,\omega_n] $$</p>
@@ -303,6 +306,13 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">机器学习笔记-----线性回归</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2018/03/03/you-are-what-you-write/">
@@ -318,10 +328,13 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
 </div>
                 
 
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -330,7 +343,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="JeWei">
+                        <img class="image is-128x128 has-mb-6" src="/images/favicon.svg" alt="JeWei">
                     
                     
                     <p class="is-size-4 is-block">
@@ -358,7 +371,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        5
                     </p>
                 </div>
             </div>
@@ -398,6 +411,13 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
                 
             </a>
             
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="QQ" href="https://facebook.com">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
         </div>
         
     </div>
@@ -417,7 +437,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
                 <span class="level-item">数学与统计</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/计算机/">
@@ -447,7 +467,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/摘抄/" style="font-size: 10px;">摘抄</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a>
+        <a href="/tags/awk/" style="font-size: 10px;">awk</a> <a href="/tags/摘抄/" style="font-size: 10px;">摘抄</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a>
     </div>
 </div>
 
@@ -536,6 +556,44 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
         
         <article class="media">
             
+            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
+                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
+                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
@@ -604,6 +662,17 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/01/">
                 <span class="level-start">
                     <span class="level-item">一月 2019</span>
@@ -666,7 +735,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
                 <div class="control">
                     <a class="tags has-addons" href="/tags/机器学习/">
                         <span class="tag">机器学习</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -681,161 +750,7 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
 
                 
 
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
-                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/03/03/you-are-what-you-write/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/1.jpg" alt="沈向洋：You Are What You Write">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-03-02T16:00:00.000Z">2018-03-03</time></div>
-                    <a href="/2018/03/03/you-are-what-you-write/" class="has-link-black-ter is-size-6">沈向洋：You Are What You Write</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/阅读/">阅读</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/3.jpg" alt="AWK简明教程">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-02-15T16:00:00.000Z">2018-02-16</time></div>
-                    <a href="/2018/02/16/awk-jian-ming-jiao-cheng/" class="has-link-black-ter is-size-6">AWK简明教程</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/awk/">
-                        <span class="tag">awk</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/摘抄/">
-                        <span class="tag">摘抄</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/机器学习/">
-                        <span class="tag">机器学习</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
+<!-- 粘贴的部分 -->
 
             </div>
         </div>
