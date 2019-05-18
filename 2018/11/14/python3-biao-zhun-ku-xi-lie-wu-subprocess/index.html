@@ -3,24 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-<title>friends - 木叶村</title>
+<title>python3 标准库系列(五)---subprocess - 木叶村</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="无人为孤岛，一书一世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="friends">
-<meta property="og:url" content="https://jeweizhong.github.io/friends/index.html">
+    <meta name="description" content="subprocess模块是用来执行外部命令，下面介绍两种主要的用法。">
+<meta name="keywords" content="python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3 标准库系列(五)---subprocess">
+<meta property="og:url" content="https://jeweizhong.github.io/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="无人为孤岛，一书一世界">
+<meta property="og:description" content="subprocess模块是用来执行外部命令，下面介绍两种主要的用法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jeweizhong.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T12:08:30.441Z">
+<meta property="og:image" content="https://jeweizhong.github.io/images/3.jpg">
+<meta property="og:updated_time" content="2019-05-18T03:26:42.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="friends">
-<meta name="twitter:description" content="无人为孤岛，一书一世界">
-<meta name="twitter:image" content="https://jeweizhong.github.io/images/og_image.png">
+<meta name="twitter:title" content="python3 标准库系列(五)---subprocess">
+<meta name="twitter:description" content="subprocess模块是用来执行外部命令，下面介绍两种主要的用法。">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/3.jpg">
 
 
 
@@ -94,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zhuye.svg" alt="friends" height="28">
+                <img src="/images/zhuye.svg" alt="python3 标准库系列(五)---subprocess" height="28">
             
             </a>
         </div>
@@ -131,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -145,19 +150,29 @@
         <div class="container">
             <div class="columns">
 			<!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/3.jpg" alt="python3 标准库系列(五)---subprocess">
+        </span>
+    </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-10T12:07:49.000Z">2019-05-10</time>
+                <time class="level-item has-text-grey" datetime="2018-11-13T16:00:00.000Z">2018-11-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    5 分钟 读完 (大约 799 个字)
                 </span>
                 
                 
@@ -166,11 +181,50 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                friends
+                python3 标准库系列(五)---subprocess
             
         </h1>
         <div class="content">
-            
+            <p>subprocess模块是用来执行外部命令，下面介绍两种主要的用法。</p>
+<a id="more"></a>
+
+<h2 id="subprocess-run"><a href="#subprocess-run" class="headerlink" title="subprocess.run"></a><code>subprocess.run</code></h2><p> 这里<code>call</code>, <code>check_call</code>, <code>check_output</code>, 与其功能性相似，也都是会造成进程阻塞，就不展开介绍了</p>
+<p>常用参数：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">subprocess.run (args，*,</span><br><span class="line">				stdin = <span class="hljs-keyword">None</span>,</span><br><span class="line">				input = <span class="hljs-keyword">None</span>,</span><br><span class="line">				stdout = <span class="hljs-keyword">None</span>,</span><br><span class="line">				stderr = <span class="hljs-keyword">None</span>,</span><br><span class="line">				shell = <span class="hljs-keyword">False</span>,</span><br><span class="line">				cwd = <span class="hljs-keyword">None</span>,</span><br><span class="line">				timeout = <span class="hljs-keyword">None</span>,</span><br><span class="line">				check = <span class="hljs-keyword">False</span>,</span><br><span class="line">				encoding = <span class="hljs-keyword">None</span>,</span><br><span class="line">				errors = <span class="hljs-keyword">None</span>,</span><br><span class="line">				env = <span class="hljs-keyword">None</span> )</span><br></pre></td></tr></table></figure>
+
+<p>默认不会捕获stdout或stderr</p>
+<p>如果check为true，并且进程以非零退出代码退出， CalledProcessError则会引发异常。该异常的属性包含参数，退出代码以及stdout和stderr（如果它们被捕获）,</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 这里捕获了stdout,stderr</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>a = subprocess.run([<span class="hljs-string">"ls"</span>, <span class="hljs-string">"-l"</span>, <span class="hljs-string">"/dev/null"</span>],stdout=subprocess.PIPE,stderr=subprocess.PIPE)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>a.stdout</span><br><span class="line"><span class="hljs-string">b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>a.stdout</span><br><span class="line"><span class="hljs-string">b'crw-rw-rw-. 1 root root 1, 3 8\xe6\x9c\x88   3 13:24 /dev/null\n'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>a.stdout.decode(<span class="hljs-string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果我们使用了check参数的话，如果执行错误，就会引发异常，这里什么都捕获不到</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>b = subprocess.run([<span class="hljs-string">"ls"</span>, <span class="hljs-string">"-l"</span>, <span class="hljs-string">"/null"</span>], check=<span class="hljs-keyword">True</span>,stdout=subprocess.PIPE,stderr=subprocess.PIPE)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="hljs-string">"&lt;stdin&gt;"</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="hljs-string">"/share/chg2master/prod/Other/zhongjw/miniconda3/lib/python3.6/subprocess.py"</span>, line <span class="hljs-number">418</span>, <span class="hljs-keyword">in</span> run</span><br><span class="line">    output=stdout, stderr=stderr)</span><br><span class="line">subprocess.CalledProcessError: Command <span class="hljs-string">'['</span>ls<span class="hljs-string">', '</span>-l<span class="hljs-string">', '</span>/null<span class="hljs-string">']'</span> returned non-zero exit status <span class="hljs-number">2.</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>dir(b)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="hljs-string">"&lt;stdin&gt;"</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="hljs-string">'b'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<p><em>python3.7里新增了<code>capture_output</code>参数,如果设置为true，则将捕获stdout和stderr。 使用时，将使用stdout = PIPE和stderr = PIPE自动创建内部Popen对象。 也可能不使用stdout和stderr参数。那么Popen对象的stdout、stderr与上面示例里的有什么不同呢？</em></p>
+<h2 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen"></a><code>subprocess.Popen</code></h2><p>subprocess中更底层的进程创建和管理可以通过Popen类实现。它提供了更多的灵活性，程序员通过它能处理更多复杂的情况。</p>
+<p>常用参数：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">subprocess.Popen(args, </span><br><span class="line">				bufsize=<span class="hljs-number">-1</span>, </span><br><span class="line">				executable=<span class="hljs-keyword">None</span>, </span><br><span class="line">				stdin=<span class="hljs-keyword">None</span>, </span><br><span class="line">				stdout=<span class="hljs-keyword">None</span>, </span><br><span class="line">				stderr=<span class="hljs-keyword">None</span>, </span><br><span class="line">				preexec_fn=<span class="hljs-keyword">None</span>, </span><br><span class="line">				close_fds=<span class="hljs-keyword">True</span>, </span><br><span class="line">				shell=<span class="hljs-keyword">False</span>, </span><br><span class="line">				cwd=<span class="hljs-keyword">None</span>, </span><br><span class="line">				env=<span class="hljs-keyword">None</span>, </span><br><span class="line">				universal_newlines=<span class="hljs-keyword">False</span>, </span><br><span class="line">				startupinfo=<span class="hljs-keyword">None</span>, </span><br><span class="line">				creationflags=<span class="hljs-number">0</span>, </span><br><span class="line">				restore_signals=<span class="hljs-keyword">True</span>, </span><br><span class="line">				start_new_session=<span class="hljs-keyword">False</span>, </span><br><span class="line">				pass_fds=(), *, </span><br><span class="line">				encoding=<span class="hljs-keyword">None</span>, </span><br><span class="line">				errors=<span class="hljs-keyword">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>obj = subprocess.Popen([<span class="hljs-string">"ls"</span>, <span class="hljs-string">"-l"</span>, <span class="hljs-string">"/null"</span>], stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>obj.stderr.read().decode(<span class="hljs-string">"utf-8"</span>)</span><br><span class="line"><span class="hljs-string">'ls: 无法访问/null: 没有那个文件或目录\n'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>obj.stderr.read().decode(<span class="hljs-string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>从上面示例中可以看出Popen对象的stdout、stderr获取的是数据流，而run捕获的stdout、stderr是字符串格式</p>
+<p>当然官方文档说是不建议使用<code>.stdin.write</code>,<code>.stdout.read</code> 或者 <code>.stderr.read</code>，而是用<code>.communicate</code>方法，该方法会造成阻塞，以防止其他进程读取数据流造成死锁</p>
+<p><code>.communicate()</code>方法如果同时有<code>.stdout</code>和 <code>.stderr</code>, 返回的是一个元组, 用下标可以访问捕获的<code>stdout</code>和 <code>stderr</code>。</p>
+<p>还要补充一点就是如果不捕获输出的话，是不会造成阻塞的，如果要等待子进程运行完可以使用<code>.wait</code>方法，而<code>subprocesee.run</code>方法会造成主程序的阻塞，因为要获取子进程运行状态。</p>
+<p>Popen对象的主要方法有：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="hljs-string">'communicate'</span>, <span class="hljs-string">'kill'</span>, <span class="hljs-string">'pid'</span>, <span class="hljs-string">'poll'</span>, <span class="hljs-string">'returncode'</span>, <span class="hljs-string">'send_signal'</span>, <span class="hljs-string">'stderr'</span>, <span class="hljs-string">'stdin'</span>, <span class="hljs-string">'stdout'</span>, <span class="hljs-string">'terminate'</span>, <span class="hljs-string">'universal_newlines'</span>, <span class="hljs-string">'wait'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>如果有需要使用其他的参数和方法请查阅<a href="https://docs.python.org/3.6/library/subprocess.html#module-subprocess" target="_blank" rel="noopener">官方文档</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/python3/">python3</a>
+                </div>
+            </div>
         </div>
         
         
@@ -182,14 +236,38 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/30/python3-biao-zhun-ku-xi-lie-liu-base64/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">python3 标准库系列(六)---base64</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/08/python3-biao-zhun-ku-xi-lie-si-logging/">
+                <span class="level-item">python3 标准库系列(四)---logging</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
 
 </div>
-                        <!-- 修改 -->
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -336,6 +414,25 @@
 
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#subprocess-run">
+        <span class="has-mr-6">1</span>
+        <span>subprocess.run</span>
+        </a></li><li>
+        <a class="is-flex" href="#subprocess-Popen">
+        <span class="has-mr-6">2</span>
+        <span>subprocess.Popen</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -612,248 +709,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/6.jpg" alt="生新基础知识-----fastq文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----fastq文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----sam-bam文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
-                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/awk/">
-                        <span class="tag">awk</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python/">
-                        <span class="tag">python</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python3/">
-                        <span class="tag">python3</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/摘抄/">
-                        <span class="tag">摘抄</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/机器学习/">
-                        <span class="tag">机器学习</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/生信基础/">
-                        <span class="tag">生信基础</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -866,7 +722,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zhuye.svg" alt="friends" height="28">
+                    <img src="/images/zhuye.svg" alt="python3 标准库系列(五)---subprocess" height="28">
                 
                 </a>
                 <p class="is-size-7">

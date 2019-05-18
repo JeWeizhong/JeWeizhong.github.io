@@ -3,24 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-<title>friends - 木叶村</title>
+<title>python3 标准库系列(四)---logging - 木叶村</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="无人为孤岛，一书一世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="friends">
-<meta property="og:url" content="https://jeweizhong.github.io/friends/index.html">
+    <meta name="description" content="logging模块可以给脚本添加日志功能。">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3 标准库系列(四)---logging">
+<meta property="og:url" content="https://jeweizhong.github.io/2018/11/08/python3-biao-zhun-ku-xi-lie-si-logging/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="无人为孤岛，一书一世界">
+<meta property="og:description" content="logging模块可以给脚本添加日志功能。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jeweizhong.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T12:08:30.441Z">
+<meta property="og:image" content="https://jeweizhong.github.io/images/2.jpg">
+<meta property="og:updated_time" content="2019-05-18T03:14:28.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="friends">
-<meta name="twitter:description" content="无人为孤岛，一书一世界">
-<meta name="twitter:image" content="https://jeweizhong.github.io/images/og_image.png">
+<meta name="twitter:title" content="python3 标准库系列(四)---logging">
+<meta name="twitter:description" content="logging模块可以给脚本添加日志功能。">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/2.jpg">
 
 
 
@@ -94,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zhuye.svg" alt="friends" height="28">
+                <img src="/images/zhuye.svg" alt="python3 标准库系列(四)---logging" height="28">
             
             </a>
         </div>
@@ -131,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -145,19 +150,29 @@
         <div class="container">
             <div class="columns">
 			<!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/2.jpg" alt="python3 标准库系列(四)---logging">
+        </span>
+    </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-10T12:07:49.000Z">2019-05-10</time>
+                <time class="level-item has-text-grey" datetime="2018-11-07T16:00:00.000Z">2018-11-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    6 分钟 读完 (大约 833 个字)
                 </span>
                 
                 
@@ -166,11 +181,37 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                friends
+                python3 标准库系列(四)---logging
             
         </h1>
         <div class="content">
-            
+            <p><code>logging</code>模块可以给脚本添加日志功能。</p>
+<a id="more"></a>
+
+<p>下面是一个输出日志的简单版：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># levelname 输出等级</span></span><br><span class="line"><span class="hljs-comment"># asctime 时间</span></span><br><span class="line"><span class="hljs-comment"># lineno 所在行</span></span><br><span class="line"><span class="hljs-comment"># module 所在模块名</span></span><br><span class="line"><span class="hljs-comment"># filename 日志输出函数的模块的文件名，注意不是参数 filename</span></span><br><span class="line"><span class="hljs-comment"># message 输出的内容</span></span><br><span class="line">logging.basicConfig(format=<span class="hljs-string">'%(levelname)s %(asctime)s,line %(lineno)s:\t%(message)s'</span>,</span><br><span class="line">                    level=logging.INFO,</span><br><span class="line">                    datefmt=<span class="hljs-string">'%Y-%m-%d %H:%M:%S'</span>) <span class="hljs-comment"># 可以加filename=logfile参数将日志输出到文件中</span></span><br><span class="line"></span><br><span class="line">logging.critical(<span class="hljs-string">'当发生严重错误，导致应用程序不能继续运行时记录的信息'</span>)</span><br><span class="line">logging.error(<span class="hljs-string">'由于一个更严重的问题导致某些功能不能正常运行时记录的信息'</span>)</span><br><span class="line">logging.warning(<span class="hljs-string">'当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的'</span>)</span><br><span class="line">logging.info(<span class="hljs-string">'信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作'</span>)</span><br><span class="line">logging.debug(<span class="hljs-string">'最详细的日志信息，典型应用场景是 问题诊断'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>日志调用（<code>critical()</code>, <code>error()</code>, <code>warning()</code>, <code>info()</code>, <code>debug()</code>）以降序方式表示不同的严重级别,默认是<code>warning</code>。</p>
+<p>下面的是一个自己用的以天为单位的输出日志的函数：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"><span class="hljs-keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> logging.handlers <span class="hljs-keyword">import</span> TimedRotatingFileHandler</span><br><span class="line"><span class="hljs-keyword">from</span> logging.handlers <span class="hljs-keyword">import</span> RotatingFileHandler</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">log_init</span><span class="hljs-params">(logfile)</span>:</span></span><br><span class="line">    log_fmt = <span class="hljs-string">'%(asctime)s\tFile \"%(filename)s\",line %(lineno)s\t%(levelname)s: %(message)s'</span></span><br><span class="line">    formatter = logging.Formatter(log_fmt)</span><br><span class="line">    <span class="hljs-comment"># 可以设置间隔时间，这里是一天生成一个文件</span></span><br><span class="line">    log_file_handler = TimedRotatingFileHandler(filename=logfile, when=<span class="hljs-string">"D"</span>, interval=<span class="hljs-number">1</span>, backupCount=<span class="hljs-number">7</span>)</span><br><span class="line">    log_file_handler.suffix = <span class="hljs-string">"%Y-%m-%d.log"</span></span><br><span class="line">    <span class="hljs-comment"># filehanlder.suffix的格式必须这么写，才能自动删除旧文件</span></span><br><span class="line">    <span class="hljs-comment"># 如果设定是天，就必须写成“%Y-%m-%d.log”，写成其他格式会导致删除旧文件不生效</span></span><br><span class="line"></span><br><span class="line">    log_file_handler.setFormatter(formatter)</span><br><span class="line">    <span class="hljs-comment"># log_file_handler.setLevel(logging.DEBUG)</span></span><br><span class="line">    logging.getLogger().setLevel(logging.DEBUG)</span><br><span class="line">    logging.getLogger().addHandler(log_file_handler)</span><br><span class="line">    <span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">    这里是需要运行的程序，需要按照文件格式删除log文件，需要启用 extMatch、removeHandle函数</span></span><br><span class="line"><span class="hljs-string">    '''</span></span><br><span class="line">    <span class="hljs-comment"># logging.info('this is a loggging info message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.debug('this is a loggging debug message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.warning('this is loggging a warning message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.error('this is an loggging error message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.critical('this is a loggging critical message')</span></span><br></pre></td></tr></table></figure>
+
+<p>修改所调用的模块中的日志设置：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># somelib.py</span></span><br><span class="line"><span class="hljs-keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">log = logging.getLogger(__name__) <span class="hljs-comment"># 默认就是： __name__ 只的当前的模块</span></span><br><span class="line">log.addHandler(logging.NullHandler())</span><br><span class="line"><span class="hljs-comment"># Example function (for testing)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    log.critical(<span class="hljs-string">'A Critical Error!'</span>)</span><br><span class="line">    log.debug(<span class="hljs-string">'A debug message'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>下面我们调用这个模块：</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> logging</span><br><span class="line"><span class="hljs-comment"># 这是当前脚本的日志设置</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>logging.basicConfig(level=logging.ERROR)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> somelib</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 指定模块名，改变该模块的输出级别</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>logging.getLogger(<span class="hljs-string">'somelib'</span>).level=logging.DEBUG</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line">DEBUG:somelib:A debug message</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在这里，根日志被配置成仅仅输出<code>ERROR</code> 或更高级别的消息。不过，<code>somelib</code> 的日志级别被单独配置成可以输出debug 级别的消息，它的优先级比全局配置高。像这样更改单独模块的日志配置对于调试来讲是很方便的，因为你无需去更改任何的全局日志配置——只需要修改你想要更多输出的模块的日志等级。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/python/">python</a>
+                </div>
+            </div>
         </div>
         
         
@@ -182,14 +223,38 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">python3 标准库系列(五)---subprocess</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/07/python3-biao-zhun-ku-xi-lie-er-argparse/">
+                <span class="level-item">python3 标准库系列(二)---argparse 模块</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
 
 </div>
-                        <!-- 修改 -->
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -336,6 +401,17 @@
 
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -612,248 +688,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/6.jpg" alt="生新基础知识-----fastq文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----fastq文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----sam-bam文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
-                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/awk/">
-                        <span class="tag">awk</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python/">
-                        <span class="tag">python</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python3/">
-                        <span class="tag">python3</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/摘抄/">
-                        <span class="tag">摘抄</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/机器学习/">
-                        <span class="tag">机器学习</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/生信基础/">
-                        <span class="tag">生信基础</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -866,7 +701,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zhuye.svg" alt="friends" height="28">
+                    <img src="/images/zhuye.svg" alt="python3 标准库系列(四)---logging" height="28">
                 
                 </a>
                 <p class="is-size-7">

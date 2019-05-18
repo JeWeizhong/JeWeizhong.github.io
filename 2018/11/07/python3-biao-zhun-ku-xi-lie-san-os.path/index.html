@@ -3,24 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-<title>friends - 木叶村</title>
+<title>python3 标准库系列(三)---os.path - 木叶村</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="无人为孤岛，一书一世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="friends">
-<meta property="og:url" content="https://jeweizhong.github.io/friends/index.html">
+    <meta name="description" content="os.path模块比较简单，先记住下面这些常用的用就可以了">
+<meta name="keywords" content="python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3 标准库系列(三)---os.path">
+<meta property="og:url" content="https://jeweizhong.github.io/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="无人为孤岛，一书一世界">
+<meta property="og:description" content="os.path模块比较简单，先记住下面这些常用的用就可以了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jeweizhong.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T12:08:30.441Z">
+<meta property="og:image" content="https://jeweizhong.github.io/images/1.jpg">
+<meta property="og:updated_time" content="2019-05-18T03:14:26.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="friends">
-<meta name="twitter:description" content="无人为孤岛，一书一世界">
-<meta name="twitter:image" content="https://jeweizhong.github.io/images/og_image.png">
+<meta name="twitter:title" content="python3 标准库系列(三)---os.path">
+<meta name="twitter:description" content="os.path模块比较简单，先记住下面这些常用的用就可以了">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/1.jpg">
 
 
 
@@ -94,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zhuye.svg" alt="friends" height="28">
+                <img src="/images/zhuye.svg" alt="python3 标准库系列(三)---os.path" height="28">
             
             </a>
         </div>
@@ -145,19 +146,29 @@
         <div class="container">
             <div class="columns">
 			<!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/1.jpg" alt="python3 标准库系列(三)---os.path">
+        </span>
+    </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-10T12:07:49.000Z">2019-05-10</time>
+                <time class="level-item has-text-grey" datetime="2018-11-06T16:00:00.000Z">2018-11-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    2 分钟 读完 (大约 257 个字)
                 </span>
                 
                 
@@ -166,11 +177,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                friends
+                python3 标准库系列(三)---os.path
             
         </h1>
         <div class="content">
-            
+            <p><code>os.path</code>模块比较简单，先记住下面这些常用的用就可以了</p>
+<a id="more"></a>
+
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>path = <span class="hljs-string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 获取文件名</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.basename(path)</span><br><span class="line"><span class="hljs-string">'data.csv'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 获取文件所在目录名</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.dirname(path)</span><br><span class="line"><span class="hljs-string">'/Users/beazley/Data'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 多个元素拼接成一个链接</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.join(<span class="hljs-string">'tmp'</span>, <span class="hljs-string">'data'</span>, os.path.basename(path))</span><br><span class="line"><span class="hljs-string">'tmp/data/data.csv'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 将家目录符号~换成真实链接</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>path = <span class="hljs-string">'~/Data/data.csv'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.expanduser(path)</span><br><span class="line"><span class="hljs-string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 获取文件扩展名</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.splitext(path)</span><br><span class="line">(<span class="hljs-string">'~/Data/data'</span>, <span class="hljs-string">'.csv'</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="hljs-comment"># 检查文件或目录是否存在</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.exists(<span class="hljs-string">'/etc/passwd'</span>)</span><br><span class="line"><span class="hljs-keyword">True</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 检测是不是文件类型</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="hljs-string">'/etc/passwd'</span>)</span><br><span class="line"><span class="hljs-keyword">True</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 检测是不是目录类型</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="hljs-string">'/etc/passwd'</span>)</span><br><span class="line"><span class="hljs-keyword">False</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 检测是不是符号链接</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.islink(<span class="hljs-string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="hljs-keyword">True</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 返回一个绝对路径</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="hljs-string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="hljs-string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;<span class="hljs-comment"># 获取文件大小</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="hljs-string">'/etc/passwd'</span>)</span><br><span class="line"><span class="hljs-number">3669</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 获取文件修改日期</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="hljs-string">'/etc/passwd'</span>)</span><br><span class="line"><span class="hljs-number">1272478234.0</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="hljs-string">'/etc/passwd'</span>))</span><br><span class="line"><span class="hljs-string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 获取指定目录下的文件列表 </span></span><br><span class="line">&gt;&gt;&gt;os.listdir(<span class="hljs-string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/python3/">python3</a>
+                </div>
+            </div>
         </div>
         
         
@@ -182,14 +207,38 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/07/python3-biao-zhun-ku-xi-lie-er-argparse/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">python3 标准库系列(二)---argparse 模块</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/">
+                <span class="level-item">python3 标准库系列(一)---email模块</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
 
 </div>
-                        <!-- 修改 -->
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -612,248 +661,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/6.jpg" alt="生新基础知识-----fastq文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----fastq文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----sam-bam文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
-                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/awk/">
-                        <span class="tag">awk</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python/">
-                        <span class="tag">python</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python3/">
-                        <span class="tag">python3</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/摘抄/">
-                        <span class="tag">摘抄</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/机器学习/">
-                        <span class="tag">机器学习</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/生信基础/">
-                        <span class="tag">生信基础</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -866,7 +674,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zhuye.svg" alt="friends" height="28">
+                    <img src="/images/zhuye.svg" alt="python3 标准库系列(三)---os.path" height="28">
                 
                 </a>
                 <p class="is-size-7">

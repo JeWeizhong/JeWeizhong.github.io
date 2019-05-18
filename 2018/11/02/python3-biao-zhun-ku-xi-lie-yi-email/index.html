@@ -3,24 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-<title>friends - 木叶村</title>
+<title>python3 标准库系列(一)---email模块 - 木叶村</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="无人为孤岛，一书一世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="friends">
-<meta property="og:url" content="https://jeweizhong.github.io/friends/index.html">
+    <meta name="description" content="自己写的一个发邮件的类，自己用的时候，省的再到处翻教程">
+<meta name="keywords" content="python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3 标准库系列(一)---email模块">
+<meta property="og:url" content="https://jeweizhong.github.io/2018/11/02/python3-biao-zhun-ku-xi-lie-yi-email/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="无人为孤岛，一书一世界">
+<meta property="og:description" content="自己写的一个发邮件的类，自己用的时候，省的再到处翻教程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jeweizhong.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-10T12:08:30.441Z">
+<meta property="og:image" content="https://jeweizhong.github.io/images/9.jpg">
+<meta property="og:updated_time" content="2019-05-18T03:14:17.928Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="friends">
-<meta name="twitter:description" content="无人为孤岛，一书一世界">
-<meta name="twitter:image" content="https://jeweizhong.github.io/images/og_image.png">
+<meta name="twitter:title" content="python3 标准库系列(一)---email模块">
+<meta name="twitter:description" content="自己写的一个发邮件的类，自己用的时候，省的再到处翻教程">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/9.jpg">
 
 
 
@@ -94,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zhuye.svg" alt="friends" height="28">
+                <img src="/images/zhuye.svg" alt="python3 标准库系列(一)---email模块" height="28">
             
             </a>
         </div>
@@ -131,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -145,19 +150,29 @@
         <div class="container">
             <div class="columns">
 			<!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/9.jpg" alt="python3 标准库系列(一)---email模块">
+        </span>
+    </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-10T12:07:49.000Z">2019-05-10</time>
+                <time class="level-item has-text-grey" datetime="2018-11-01T16:00:00.000Z">2018-11-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    4 分钟 读完 (大约 659 个字)
                 </span>
                 
                 
@@ -166,11 +181,27 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                friends
+                python3 标准库系列(一)---email模块
             
         </h1>
         <div class="content">
-            
+            <p>自己写的一个发邮件的类，自己用的时候，省的再到处翻教程</p>
+<a id="more"></a>
+
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">#-*-coding:utf-8-*-</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> smtplib</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> email.mime.multipart <span class="hljs-keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText</span><br><span class="line"><span class="hljs-keyword">from</span> email.mime.image <span class="hljs-keyword">import</span> MIMEImage</span><br><span class="line"><span class="hljs-keyword">from</span> email <span class="hljs-keyword">import</span> encoders</span><br><span class="line"><span class="hljs-keyword">from</span> email.header <span class="hljs-keyword">import</span> Header</span><br><span class="line"><span class="hljs-keyword">from</span> email.utils <span class="hljs-keyword">import</span> parseaddr, formataddr</span><br><span class="line"></span><br><span class="line"><span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">发送邮件：</span></span><br><span class="line"><span class="hljs-string">文本，网页，附件，图片</span></span><br><span class="line"><span class="hljs-string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sendemail</span><span class="hljs-params">()</span>:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,mailToList,mailHost,mailUser,mailPass,sub)</span>:</span></span><br><span class="line">        self.mailToList = mailToList  <span class="hljs-comment"># 邮件接收方的邮件地址，传入的必须是list类型</span></span><br><span class="line">        self.mailHost = mailHost    <span class="hljs-comment"># 邮件传送协议服务器: smtp.qiye.163.com</span></span><br><span class="line">        self.mailUser = mailUser  <span class="hljs-comment"># 邮件发送方的邮箱账号: xxxx@xxxx.org</span></span><br><span class="line">        self.mailPass = mailPass  <span class="hljs-comment"># 邮件发送方的邮箱密码: ****</span></span><br><span class="line">        self.sub = sub <span class="hljs-comment"># 邮件名</span></span><br><span class="line">        <span class="hljs-comment">#self.content = content # 内容</span></span><br><span class="line">        <span class="hljs-comment">#self.subtype = subtype # 发送类型 plain(文字)</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_formatAddr</span><span class="hljs-params">(self,s)</span>:</span></span><br><span class="line">        <span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">            处理发件人的名字，防止有带中文名的发件人</span></span><br><span class="line"><span class="hljs-string">        '''</span></span><br><span class="line">        name, addr = parseaddr(s)</span><br><span class="line">        <span class="hljs-keyword">return</span> formataddr((Header(name, <span class="hljs-string">'utf-8'</span>).encode(), addr))</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sendEmail</span><span class="hljs-params">(self,content,subtype)</span>:</span></span><br><span class="line">        msg = MIMEMultipart(<span class="hljs-string">'mixed'</span>) <span class="hljs-comment">#　默认就是　mixed类型</span></span><br><span class="line">        me = re.split(<span class="hljs-string">'@'</span>,self.mailUser)[<span class="hljs-number">0</span>]+<span class="hljs-string">"&lt;"</span>+self.mailUser+<span class="hljs-string">"&gt;"</span></span><br><span class="line">        msg[<span class="hljs-string">'Subject'</span>] = self.sub</span><br><span class="line">        msg[<span class="hljs-string">'From'</span>] = self._formatAddr(me)</span><br><span class="line">        msg[<span class="hljs-string">'To'</span>] = <span class="hljs-string">','</span>.join(self.mailToList)  <span class="hljs-comment"># 多个收件人以“,”分隔</span></span><br><span class="line">        text = MIMEText(content, _subtype=subtype, _charset=<span class="hljs-string">'utf-8'</span>)</span><br><span class="line">        msg.attach(text)</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            server = smtplib.SMTP()</span><br><span class="line">            server.connect(self.mailHost)</span><br><span class="line">            server.login(self.mailUser, self.mailPass)</span><br><span class="line">            server.sendmail(me, self.mailToList, msg.as_string())</span><br><span class="line">            server.quit()</span><br><span class="line">            print(<span class="hljs-string">"发送成功"</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span></span><br><span class="line">        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:</span><br><span class="line">            <span class="hljs-keyword">print</span> (e)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sendFile</span><span class="hljs-params">(self,file)</span>:</span></span><br><span class="line">        <span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">        发送附件'''</span></span><br><span class="line">        msg = MIMEMultipart(<span class="hljs-string">'mixed'</span>) <span class="hljs-comment">#　默认就是　mixed类型</span></span><br><span class="line">        me = re.split(<span class="hljs-string">'@'</span>,self.mailUser)[<span class="hljs-number">0</span>]+<span class="hljs-string">"&lt;"</span>+self.mailUser+<span class="hljs-string">"&gt;"</span></span><br><span class="line">        msg[<span class="hljs-string">'Subject'</span>] = self.sub</span><br><span class="line">        msg[<span class="hljs-string">'From'</span>] = self._formatAddr(me)</span><br><span class="line">        msg[<span class="hljs-string">'To'</span>] = <span class="hljs-string">','</span>.join(self.mailToList)</span><br><span class="line">        </span><br><span class="line">        sendfile=open(file,<span class="hljs-string">'rb'</span>).read()</span><br><span class="line">        text_att = MIMEText(sendfile, <span class="hljs-string">'base64'</span>, <span class="hljs-string">'utf-8'</span>) </span><br><span class="line">        text_att[<span class="hljs-string">"Content-Type"</span>] = <span class="hljs-string">'application/octet-stream'</span>  </span><br><span class="line">        <span class="hljs-comment"># 设置附件名字，如果是windows下的中文文件名需要以gbk编码，这里默认是再Linux上的中文名字的文件</span></span><br><span class="line">        text_att.add_header(<span class="hljs-string">'Content-Disposition'</span>, <span class="hljs-string">'attachment'</span>, filename=(<span class="hljs-string">"utf-8"</span>, <span class="hljs-string">""</span>,os.path.basename(file)))</span><br><span class="line">        <span class="hljs-comment">#return text_att</span></span><br><span class="line">        </span><br><span class="line">        msg.attach(text_att)</span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            server = smtplib.SMTP()</span><br><span class="line">            server.connect(self.mailHost)</span><br><span class="line">            server.login(self.mailUser, self.mailPass)</span><br><span class="line">            server.sendmail(me, self.mailToList, msg.as_string())</span><br><span class="line">            server.quit()</span><br><span class="line">            print(<span class="hljs-string">"发送成功"</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span></span><br><span class="line">        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:</span><br><span class="line">            <span class="hljs-keyword">print</span> (e)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">False</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    </span><br><span class="line">    mailToList = [<span class="hljs-string">"xxx@xx.com"</span>,<span class="hljs-string">"xxx@xxx.com"</span>]  <span class="hljs-comment"># 邮件接收方的邮件地址，传入的必须是list类型</span></span><br><span class="line">    mailHost = <span class="hljs-string">"smtp.qiye.163.com"</span>    <span class="hljs-comment"># 邮件传送协议服务器: smtp.qiye.163.com</span></span><br><span class="line">    mailUser = <span class="hljs-string">"xxx@xxx.com"</span>  <span class="hljs-comment"># 邮件发送方的邮箱账号: xxxx@xxxx.com</span></span><br><span class="line">    mailPass = <span class="hljs-string">"xxxx"</span>  <span class="hljs-comment"># 邮件发送方的邮箱密码: ****</span></span><br><span class="line">    sub = <span class="hljs-string">"测试邮件"</span> <span class="hljs-comment"># 邮件名</span></span><br><span class="line">    s = Sendemail(mailToList,mailHost,mailUser,mailPass,sub)</span><br><span class="line">    <span class="hljs-comment">#content  内容/文件路径</span></span><br><span class="line">    <span class="hljs-comment">#subtype  发送类型 plain(文字) html(网页) 正文图片(目前只能实现插入一张图) 附件</span></span><br><span class="line">    content = <span class="hljs-string">"test"</span></span><br><span class="line">    subtype = <span class="hljs-string">"plain"</span></span><br><span class="line">    <span class="hljs-comment"># 如果发送的是附件用这个函数，暂时不支持邮件正文中发图片，因为比较麻烦，就是把图片插入网页格式中</span></span><br><span class="line">    s.sendFile(<span class="hljs-string">"filepath"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/python3/">python3</a>
+                </div>
+            </div>
         </div>
         
         
@@ -182,14 +213,38 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/07/python3-biao-zhun-ku-xi-lie-san-os.path/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">python3 标准库系列(三)---os.path</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/05/16/awk-jian-ming-jiao-cheng/">
+                <span class="level-item">AWK简明教程</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
 
 </div>
-                        <!-- 修改 -->
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -336,6 +391,17 @@
 
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -612,248 +678,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/6.jpg" alt="生新基础知识-----fastq文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----fastq文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----sam-bam文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time></div>
-                    <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----Logistic回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/awk/">
-                        <span class="tag">awk</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python/">
-                        <span class="tag">python</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python3/">
-                        <span class="tag">python3</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/摘抄/">
-                        <span class="tag">摘抄</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/机器学习/">
-                        <span class="tag">机器学习</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/生信基础/">
-                        <span class="tag">生信基础</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -866,7 +691,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zhuye.svg" alt="friends" height="28">
+                    <img src="/images/zhuye.svg" alt="python3 标准库系列(一)---email模块" height="28">
                 
                 </a>
                 <p class="is-size-7">
