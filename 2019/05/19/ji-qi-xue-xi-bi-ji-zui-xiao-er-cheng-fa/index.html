@@ -3,23 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-<title>分类: 数学与统计 - 木叶村</title>
+<title>机器学习笔记-----最小二乘法 - 木叶村</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="无人为孤岛，一书一世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="木叶村">
-<meta property="og:url" content="https://jeweizhong.github.io/categories/数学与统计/index.html">
+    <meta name="description" content="本文章转载自： 刘建平Pinard- 最小二乘法小结 最小二乘法是用来做函数拟合或者求函数极值的方法。在机器学习，尤其是回归模型中，经常可以看到最小二乘法的身影，这里就对我对最小二乘法的认知做一个小结。">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习笔记-----最小二乘法">
+<meta property="og:url" content="https://jeweizhong.github.io/2019/05/19/ji-qi-xue-xi-bi-ji-zui-xiao-er-cheng-fa/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="无人为孤岛，一书一世界">
+<meta property="og:description" content="本文章转载自： 刘建平Pinard- 最小二乘法小结 最小二乘法是用来做函数拟合或者求函数极值的方法。在机器学习，尤其是回归模型中，经常可以看到最小二乘法的身影，这里就对我对最小二乘法的认知做一个小结。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jeweizhong.github.io/images/og_image.png">
+<meta property="og:image" content="https://jeweizhong.github.io/images/10.jpg">
+<meta property="og:updated_time" content="2019-05-19T07:56:26.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木叶村">
-<meta name="twitter:description" content="无人为孤岛，一书一世界">
-<meta name="twitter:image" content="https://jeweizhong.github.io/images/og_image.png">
+<meta name="twitter:title" content="机器学习笔记-----最小二乘法">
+<meta name="twitter:description" content="本文章转载自： 刘建平Pinard- 最小二乘法小结 最小二乘法是用来做函数拟合或者求函数极值的方法。在机器学习，尤其是回归模型中，经常可以看到最小二乘法的身影，这里就对我对最小二乘法的认知做一个小结。">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/10.jpg">
 
 
 
@@ -93,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zhuye.svg" alt="木叶村" height="28">
+                <img src="/images/zhuye.svg" alt="机器学习笔记-----最小二乘法" height="28">
             
             </a>
         </div>
@@ -130,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -144,24 +150,12 @@
         <div class="container">
             <div class="columns">
 			<!-- 将main_column_class() 改为 col() -->
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">数学与统计</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
-        <a href="/2019/05/19/ji-qi-xue-xi-bi-ji-zui-xiao-er-cheng-fa/" class="image is-7by1">
+        <span  class="image is-7by1">
             <img class="thumbnail" src="/images/10.jpg" alt="机器学习笔记-----最小二乘法">
-        </a>
+        </span>
     </div>
     
     <div class="card-content article ">
@@ -187,147 +181,82 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/05/19/ji-qi-xue-xi-bi-ji-zui-xiao-er-cheng-fa/">机器学习笔记-----最小二乘法</a>
+                机器学习笔记-----最小二乘法
             
         </h1>
         <div class="content">
             <p><em>本文章转载自： <a href="https://www.cnblogs.com/pinard/" target="_blank" rel="noopener">刘建平Pinard</a>- <a href="https://www.cnblogs.com/pinard/p/5976811.html" target="_blank" rel="noopener">最小二乘法小结</a></em></p>
 <p>最小二乘法是用来做函数拟合或者求函数极值的方法。在机器学习，尤其是回归模型中，经常可以看到最小二乘法的身影，这里就对我对最小二乘法的认知做一个小结。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/19/ji-qi-xue-xi-bi-ji-zui-xiao-er-cheng-fa/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
+<a id="more"></a>
 
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="image is-7by1">
-            <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1207 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/">机器学习笔记-----线性回归</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="线性模型的基本形式"><a href="#线性模型的基本形式" class="headerlink" title="线性模型的基本形式"></a>线性模型的基本形式</h2><p>给定由d 个属性描述的示例$\vec x = (x_1,x_2,…x_d)$ ， 其中$x_i$是x在第i个属性上的取值，线性模型(linear model)试图学得一个通过属性的线性组合来进行预测的函数，即<br>公式（1）：<br>$$ f(\vec x) = \omega_1 x_1 + \omega_2 x_2 +\cdots + \omega_d x_d+d + b  $$ </p>
-<p>写成向量式，公式（2）：<br>$$ f(\vec x) = \vec\omega^T \vec x  $$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="image is-7by1">
-            <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1230 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/">机器学习笔记-----数据预处理</a>
-            
-        </h1>
-        <div class="content">
-            <p>数据预处理是机器学习中非常重要的步骤，为了能正确的分析数据，得到最佳的机器学习算法，拿到数据后我们一般来说都需要对数据进行预处理。数据预处理包括以下几个步骤：</p>
+<h2 id="1-最小二乘法的原理与要解决的问题"><a href="#1-最小二乘法的原理与要解决的问题" class="headerlink" title="1.最小二乘法的原理与要解决的问题"></a>1.最小二乘法的原理与要解决的问题</h2><p>最小二乘法是由勒让德在19世纪发现的，原理的一般形式很简单，当然发现的过程是非常艰难的。形式如下式：<br>$$<br>    loss = \sum (f(x) - y )^2<br>$$</p>
+<p>f(x)就是我们的多组样本，y就是我们的假设拟合函数。loss也就是在机器学习中常说的损失函数，我们的目标是得到使目标函数最小化时候的拟合函数的模型。举一个最简单的线性回归的简单例子，比如我们有m个只有一个特征的样本：</p>
+<p>$$<br>(x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}),…(x^{(m)},y^{(m)})<br>$$</p>
+<p>样本采用下面的拟合函数：</p>
+<p>$$<br>h_\theta(x) = \theta_0 + \theta_1 x<br>$$</p>
+<p>这样我们的样本有一个特征x，对应的拟合函数有两个参数$\theta_0 和 \theta_1$需要求出。</p>
+<p>我们的目标函数为：</p>
+<p>$$<br>J(\theta_0, \theta_1) = \sum\limits_{i=1}^{m}(y^{(i)} - h_\theta(x^{(i)})^2<br>= \sum\limits_{i=1}^{m}(y^{(i)} -  \theta_0 - \theta_1 x^{(i)})^2<br>$$</p>
+<p>用最小二乘法做什么呢，使$J(\theta_0, \theta_1)$最小，求出使$J(\theta_0,<br>\theta_1)$最小时的$\theta_0 和 \theta_1$，这样拟合函数就得出了。</p>
+<p>那么，最小二乘法怎么才能使$J(\theta_0, \theta_1)$最小呢？</p>
+<h2 id="2-最小二乘法的代数法解法"><a href="#2-最小二乘法的代数法解法" class="headerlink" title="2.最小二乘法的代数法解法"></a>2.最小二乘法的代数法解法</h2><p>上面提到要使$J(\theta_0, \theta_1)$最小，方法就是对$\theta_0$和$\theta_1$分别来求偏导数，令偏导数为0，得到一个关于$\theta_0 和\theta_1$的二元方程组。求解这个二元方程组，就可以得到$\theta_0$ 和 $\theta_1$的值。下面我们具体看看过程。</p>
+<p>$J(\theta_0, \theta_1)$对$\theta_0$求导，得到如下方程：</p>
+<p>①
+$$<br>\sum\limits_{i=1}^{m}(y^{(i)} -  \theta_0 - \theta_1 x^{(i)}) = 0<br>$$</p>
+<p>$J(\theta_0, \theta_1)$对$\theta_1$求导，得到如下方程：<br>②
+$$<br>\sum\limits_{i=1}^{m}(y^{(i)} -  \theta_0 - \theta_1 x^{(i)})x^{(i)} = 0<br>$$</p>
+<p>①和②组成一个二元一次方程组，容易求出$\theta_0$ 和 $\theta_1$的值：</p>
+<p>$$<br>\theta_0 = \frac {\sum\limits_{i=1}^{m}\big(x^{(i)})^2\sum\limits_{i=1}^{m}y^{(i)}-\sum\limits_{i=1}^{m}x^{(i)}\sum\limits_{i=1}^{m}x^{(i)}y^{(i)}}{m\sum\limits_{i=1}^{m}\big(x^{(i)})^2 -\big(\sum\limits_{i=1}^{m}x^{(i)})^2}<br>$$</p>
+<p>$$<br>\theta_1 = \frac {m\sum\limits_{i=1}^{m}x^{(i)}y^{(i)} -\sum\limits_{i=1}^{m}x^{(i)}\sum\limits_{i=1}^{m}y^{(i)}} {m\sum\limits_{i=1}^{m}\big(x^{(i)})^2 -\big(\sum\limits_{i=1}^{m}x^{(i)})^2}<br>$$</p>
+<p>这个方法很容易推广到多个样本特征的线性拟合。</p>
+<p>拟合函数表示为 $h_\theta(x_1, x_2, …x_n) = \theta_0 + \theta_{1}x_1 + … +\theta_{n}x_{n}$, 其中 $\theta_i$ (i = 0,1,2… n)为模型参数，$x_i $ (i =0,1,2… n)为每个样本的n个特征值。这个表示可以简化，我们增加一个特征$x_0 = 1$ ，这样拟合函数表示为：</p>
+<p>$$<br>h_\theta(x_0,x_1, …x_n) = \sum\limits_{i=0}^{n} \theta_{i} x_{i}<br>$$</p>
+<p>损失函数表示为：</p>
+<p>$$<br>J(\theta_0, \theta_1…, \theta_n) = \sum\limits_{j=1}^{m}(h_\theta(x_0^{(j)}, x_1^{(j)}, …x_n^{(j)}) - y^{(j)})^2 = \sum\limits_{j=1}^{m}(\sum\limits_{i=0}^{n}(\theta_{i}x_{i}^{(j)}- y^{(j)}))^2<br>$$</p>
+<p>利用损失函数分别对$\theta_i$(i=0,1,…n)求导,并令导数为0可得：</p>
+<p>$$<br>\sum\limits_{j=0}^{m}(\sum\limits_{i=0}^{n}(\theta_{i}x_{i}^{(j)} -<br>y^{(j)})x_i^{(j)}) = 0 ,   (i=0,1,…n)<br>$$</p>
+<p>这样我们得到一个N+1元一次方程组，这个方程组有N+1个方程，求解这个方程，就可以得到所有的N+1个未知的$\theta$</p>
+<p>这个方法很容易推广到多个样本特征的非线性拟合。原理和上面的一样，都是用损失函数对各个参数求导取0，然后求解方程组得到参数值。这里就不累述了。</p>
+<h2 id="3-最小二乘法的矩阵法解法"><a href="#3-最小二乘法的矩阵法解法" class="headerlink" title="3.最小二乘法的矩阵法解法"></a>3.最小二乘法的矩阵法解法</h2><p>矩阵法比代数法要简洁，且矩阵运算可以取代循环，所以现在很多书和机器学习库都是用的矩阵法来做最小二乘法。</p>
+<p>这里用上面的多元线性回归例子来描述矩阵法解法。</p>
+<p>假设函数$h_\theta(x_1, x_2, …x_n) = \theta_0 + \theta_{1}x_1 + … +\theta_{n-1}x_{n-1}$的矩阵表达方式为：</p>
+<p>$$<br>h_\mathbf{\theta}(\mathbf{x}) = \mathbf{X\theta}<br>$$</p>
+<p>其中，<br>假设函数$h_\mathbf{\theta}(\mathbf{X})$为mx1的向量,$\mathbf{\theta}$为nx1的向量，里面有n个代数法的模型参数。$\mathbf{X}$为mxn维的矩阵。m代表样本的个数，n代表样本的特征数。</p>
+<p>损失函数定义为$J(\mathbf\theta) = \frac{1}{2}(\mathbf{X\theta} -\mathbf{Y})^T(\mathbf{X\theta} - \mathbf{Y})$</p>
+<p>其中$\mathbf{Y}$是样本的输出向量，维度为$mx1$. $\frac{1}{2}$在这主要是为了求导后系数为1，方便计算。</p>
+<p>根据最小二乘法的原理，我们要对这个损失函数对$\mathbf{\theta}$向量求导取0。结果如下式：</p>
+<p>$$<br>\frac{\partial}{\partial\mathbf\theta}J(\mathbf\theta) =<br>\mathbf{X}^T(\mathbf{X\theta} - \mathbf{Y}) = 0<br>$$</p>
+<p>这里面用到了矩阵求导链式法则，和两个个矩阵求导的公式。</p>
+<p>公式1：$\frac{\partial}{\partial\mathbf{x}}(\mathbf{x^Tx})=2\mathbf{x}$, x为向量</p>
+<p>公式2：$\nabla_Xf(AX+B) = A^T\nabla_Yf,;; Y=AX+B$, f(Y)为标量</p>
+<p>对上述求导等式整理后可得：</p>
+<p>$$<br>\mathbf{X^{T}X\theta} = \mathbf{X^{T}Y}<br>$$</p>
+<p>两边同时左乘$(\mathbf{X^{T}X})^{-1}$可得：</p>
+<p>$$ \mathbf{\theta} = (\mathbf{X^{T}X})^{-1}\mathbf{X^{T}Y} $$</p>
+<p>这样我们就一下子求出了$\theta$向量表达式的公式，免去了代数法一个个去求导的麻烦。只要给了数据,我们就可以用$\mathbf{\theta} = (\mathbf{X^{T}X})^{-1}\mathbf{X^{T}Y}$算出$\theta$。</p>
+<h2 id="4-最小二乘法的局限性和适用场景"><a href="#4-最小二乘法的局限性和适用场景" class="headerlink" title="4.最小二乘法的局限性和适用场景"></a>4.最小二乘法的局限性和适用场景</h2><p>从上面可以看出，最小二乘法适用简洁高效，比梯度下降这样的迭代法似乎方便很多。但是这里我们就聊聊最小二乘法的局限性。</p>
 <ul>
-<li>导入需要的库</li>
-<li>导入数据集</li>
-<li>处理丢失数据</li>
-<li>解析分类数据</li>
-<li>拆分数据集分成训练集合和测试集合</li>
-<li>特征缩放</li>
+<li><p>首先，最小二乘法需要计算$\mathbf{X^{T}X}$的逆矩阵，有可能它的逆矩阵不存在，这样就没有办法直接用最小二乘法了，此时梯度下降法仍然可以使用。当然，我们可以通过对样本数据进行整理，去掉冗余特征。让$\mathbf{X^{T}X}$的行列式不为0，然后继续使用最小二乘法。</p>
+</li>
+<li><p>第二，当样本特征n非常的大的时候，计算$\mathbf{X^{T}X}$的逆矩阵是一个非常耗时的工作（nxn的矩阵求逆），甚至不可行。此时以梯度下降为代表的迭代法仍然可以使用。那这个n到底多大就不适合最小二乘法呢？如果你没有很多的分布式大数据计算资源，建议超过10000个特征就用迭代法吧。或者通过主成分分析降低特征的维度后再用最小二乘法。</p>
+</li>
+<li><p>第三，如果拟合函数不是线性的，这时无法使用最小二乘法，需要通过一些技巧转化为线性才能使用，此时梯度下降仍然可以用。</p>
+</li>
+<li><p>第四，讲一些特殊情况。当样本量m很少，小于特征数n的时候，这时拟合方程是欠定的，常用的优化方法都无法去拟合数据。当样本量m等于特征数n的时候，用方程组求解就可以了。当m大于n时，拟合方程是超定的，也就是我们常用与最小二乘法的场景了。</p>
+</li>
 </ul>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -337,75 +266,31 @@
 
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/" class="image is-7by1">
-            <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----Logistic回归">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-22T16:00:00.000Z">2019-01-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1279 个字)
-                </span>
-                
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/">
+                <span class="level-item">生新基础知识-----fastq文件格式详解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/">机器学习笔记-----Logistic回归</a>
-            
-        </h1>
-        <div class="content">
-            <p>Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归”</p>
-<p>至于为什么叫对数几率刚回归，请看下面的推倒过程</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/01/23/ji-qi-xue-xi-bi-ji-logistic-hui-gui/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
 
 
-
-
-
-
-
-
 </div>
-                        <!-- 修改 -->
+                
+
+<!-- 粘贴的部分 -->
+                          <!-- 修改，可选保留的栏 -->
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -552,6 +437,33 @@
 
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-最小二乘法的原理与要解决的问题">
+        <span class="has-mr-6">1</span>
+        <span>1.最小二乘法的原理与要解决的问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-最小二乘法的代数法解法">
+        <span class="has-mr-6">2</span>
+        <span>2.最小二乘法的代数法解法</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-最小二乘法的矩阵法解法">
+        <span class="has-mr-6">3</span>
+        <span>3.最小二乘法的矩阵法解法</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-最小二乘法的局限性和适用场景">
+        <span class="has-mr-6">4</span>
+        <span>4.最小二乘法的局限性和适用场景</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -828,248 +740,7 @@
     
 </div>
 
-
-<!-- 粘贴的部分 -->
-
-                        <!-- 修改 -->
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/05/19/ji-qi-xue-xi-bi-ji-zui-xiao-er-cheng-fa/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/10.jpg" alt="机器学习笔记-----最小二乘法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-18T16:00:00.000Z">2019-05-19</time></div>
-                    <a href="/2019/05/19/ji-qi-xue-xi-bi-ji-zui-xiao-er-cheng-fa/" class="has-link-black-ter is-size-6">机器学习笔记-----最小二乘法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/6.jpg" alt="生新基础知识-----fastq文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----fastq文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----sam-bam文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/5.jpg" alt="机器学习笔记-----数据预处理">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/4.jpg" alt="机器学习笔记-----线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">6</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/awk/">
-                        <span class="tag">awk</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python/">
-                        <span class="tag">python</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/python3/">
-                        <span class="tag">python3</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/摘抄/">
-                        <span class="tag">摘抄</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/机器学习/">
-                        <span class="tag">机器学习</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/生信基础/">
-                        <span class="tag">生信基础</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 <!-- 粘贴的部分 -->
 
@@ -1082,7 +753,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zhuye.svg" alt="木叶村" height="28">
+                    <img src="/images/zhuye.svg" alt="机器学习笔记-----最小二乘法" height="28">
                 
                 </a>
                 <p class="is-size-7">
