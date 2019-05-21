@@ -17,7 +17,7 @@
 <meta property="og:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jeweizhong.github.io/images/2.jpg">
-<meta property="og:updated_time" content="2019-05-17T13:07:53.474Z">
+<meta property="og:updated_time" content="2019-05-21T12:59:26.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记-----Logistic回归">
 <meta name="twitter:description" content="Logistic回归,有翻译为“逻辑回归”，但是它跟“逻辑”这个单词一点关系都没有，也不是解决回归问题的，是用来解决二分类的算法，最准确的翻译应该是“对数几率回归” 至于为什么叫对数几率刚回归，请看下面的推倒过程">
@@ -172,7 +172,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1279 个字)
+                    9 分钟 读完 (大约 1307 个字)
                 </span>
                 
                 
@@ -254,13 +254,17 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
 <p>$$J(\omega) = - \frac{1}{m} \sum_{i=1}^m [ y^{(i)} lnf(x^{(i)}) + (1-y^{(i)})ln(1-f(x^{(i)})) ] $$</p>
 <p>$J(\omega)$越小，就说明$f(x) = 1$的概率越大，因此只要求出$J(\omega)$的<strong>最小值</strong></p>
 <blockquote>
-<p>ps：</p>
-<p>1）其实正常推倒出来的J(w)是没有前面的负号的，这里为了习惯，用梯度下降法求最小值，所以加了一个负号</p>
-<p>2） 之前推倒时候忽略了上标，但是我们在最后的损失函数中为了完整性就把上标加了上去</p>
+<p>ps：<br>1） 之前推倒时候忽略了上标，但是我们在最后的损失函数中为了完整性就把上标加了上去</p>
 </blockquote>
 <h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>对代价函数求导的过程就不写了，直接写最后的结果:</p>
 <p>$$\frac{\partial J(\omega)}{\partial\omega_j} =\frac{1}{m} \sum_{i=1}^m (f(x^{(i)}) - y^{(i)})x_j^{(i)}  $$</p>
-<p>$$\omega_{j+1} := \omega_j- \frac{1}{m}\alpha\sum_{i=1}^m(f(x^{(i)}) - y^{(i)})x_j^{(i)} $$</p>
+<p>或者是：</p>
+<p>$$<br>\frac{\partial}{\partial\mathbf\omega}J(\mathbf\omega) = \frac{1}{m}<br>\mathbf{X}^T(\mathbf{X\vec\omega} - \mathbf{Y})<br>$$</p>
+<p>$\omega$的更新公式：</p>
+<p>$$\omega_{j} := \omega_j- \frac{1}{m}\alpha\sum_{i=1}^m(f(x^{(i)}) - y^{(i)})x_j^{(i)} $$</p>
+<p>其中, $j=1,2,…n$，需要注意的是$n$个$\omega$是同时更新的</p>
+<p>写成向量形式就是：</p>
+<p>$$\omega_{j} := \omega_j- \frac{1}{m} \alpha \mathbf {X}^T (g(\mathbf{X} \vec\omega) - \vec y) $$</p>
 <h2 id="sklearn代码实现逻辑回归"><a href="#sklearn代码实现逻辑回归" class="headerlink" title="sklearn代码实现逻辑回归"></a>sklearn代码实现逻辑回归</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataset = pd.read_csv(<span class="hljs-string">r'E:\Downloads\100-Days-Of-ML-Code-master\Social_Network_Ads.csv'</span>)</span><br><span class="line">dataset.head(<span class="hljs-number">5</span>)</span><br></pre></td></tr></table></figure>
@@ -307,9 +311,9 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">机器学习笔记-----数据预处理</span>
+                <span class="level-item">机器学习笔记-----线性回归</span>
             </a>
         </div>
         
@@ -583,25 +587,6 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
         
         <article class="media">
             
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/6.jpg" alt="生新基础知识-----fastq文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----fastq文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
@@ -621,18 +606,18 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
         
         <article class="media">
             
-            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
+            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/10.jpg" alt="机器学习笔记-----线性回归">
+                    <img class="thumbnail" src="/images/6.jpg" alt="生信基础知识-----fastq文件格式详解">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
-                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
+                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生信基础知识-----fastq文件格式详解</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
                     </p>
                 </div>
             </div>
@@ -650,6 +635,25 @@ x_1^{(m)} \   x_2^{(m)} \ x_3^{(m)} \ \cdots \ x_n^{(m)} \ 1
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
                     <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-shu-ju-yu-chu-li/" class="has-link-black-ter is-size-6">机器学习笔记-----数据预处理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/10.jpg" alt="机器学习笔记-----线性回归">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-16T16:00:00.000Z">2019-05-17</time></div>
+                    <a href="/2019/05/17/ji-qi-xue-xi-bi-ji-xian-xing-hui-gui/" class="has-link-black-ter is-size-6">机器学习笔记-----线性回归</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
                     </p>
