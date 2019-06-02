@@ -3,25 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-<title>python3 标准库系列(四)---logging - 木叶村</title>
+<title>机器学习笔记-----模型评估 - 木叶村</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="logging模块可以给脚本添加日志功能。">
-<meta name="keywords" content="python">
+    <meta name="description" content="前面几节都是将数据分为训练集和测试集，也有的资料上会分将数据为训练集、测试集和验证集，本节会介绍集中常用的模型验证的方法，以及对所选模型进行评估所用的几个指标">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python3 标准库系列(四)---logging">
-<meta property="og:url" content="https://jeweizhong.github.io/2018/11/08/python3-biao-zhun-ku-xi-lie-si-logging/index.html">
+<meta property="og:title" content="机器学习笔记-----模型评估">
+<meta property="og:url" content="https://jeweizhong.github.io/2019/06/02/ji-qi-xue-xi-bi-ji-mo-xing-yan-zheng/index.html">
 <meta property="og:site_name" content="木叶村">
-<meta property="og:description" content="logging模块可以给脚本添加日志功能。">
+<meta property="og:description" content="前面几节都是将数据分为训练集和测试集，也有的资料上会分将数据为训练集、测试集和验证集，本节会介绍集中常用的模型验证的方法，以及对所选模型进行评估所用的几个指标">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://jeweizhong.github.io/images/2.jpg">
-<meta property="og:updated_time" content="2019-05-18T03:14:28.922Z">
+<meta property="og:image" content="https://jeweizhong.github.io/images/1.jpg">
+<meta property="og:updated_time" content="2019-06-02T03:41:48.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python3 标准库系列(四)---logging">
-<meta name="twitter:description" content="logging模块可以给脚本添加日志功能。">
-<meta name="twitter:image" content="https://jeweizhong.github.io/images/2.jpg">
+<meta name="twitter:title" content="机器学习笔记-----模型评估">
+<meta name="twitter:description" content="前面几节都是将数据分为训练集和测试集，也有的资料上会分将数据为训练集、测试集和验证集，本节会介绍集中常用的模型验证的方法，以及对所选模型进行评估所用的几个指标">
+<meta name="twitter:image" content="https://jeweizhong.github.io/images/1.jpg">
 
 
 
@@ -95,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zhuye.svg" alt="python3 标准库系列(四)---logging" height="28">
+                <img src="/images/zhuye.svg" alt="机器学习笔记-----模型评估" height="28">
             
             </a>
         </div>
@@ -154,7 +154,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/2.jpg" alt="python3 标准库系列(四)---logging">
+            <img class="thumbnail" src="/images/1.jpg" alt="机器学习笔记-----模型评估">
         </span>
     </div>
     
@@ -162,17 +162,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-07T16:00:00.000Z">2018-11-08</time>
+                <time class="level-item has-text-grey" datetime="2019-06-01T16:00:00.000Z">2019-06-02</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/计算机/">计算机</a>
+                <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 833 个字)
+                    7 分钟 读完 (大约 1119 个字)
                 </span>
                 
                 
@@ -181,27 +181,55 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                python3 标准库系列(四)---logging
+                机器学习笔记-----模型评估
             
         </h1>
         <div class="content">
-            <p><code>logging</code>模块可以给脚本添加日志功能。</p>
+            <p>前面几节都是将数据分为训练集和测试集，也有的资料上会分将数据为训练集、测试集和验证集，本节会介绍集中常用的模型验证的方法，以及对所选模型进行评估所用的几个指标</p>
 <a id="more"></a>
 
-<p>下面是一个输出日志的简单版：</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># levelname 输出等级</span></span><br><span class="line"><span class="hljs-comment"># asctime 时间</span></span><br><span class="line"><span class="hljs-comment"># lineno 所在行</span></span><br><span class="line"><span class="hljs-comment"># module 所在模块名</span></span><br><span class="line"><span class="hljs-comment"># filename 日志输出函数的模块的文件名，注意不是参数 filename</span></span><br><span class="line"><span class="hljs-comment"># message 输出的内容</span></span><br><span class="line">logging.basicConfig(format=<span class="hljs-string">'%(levelname)s %(asctime)s,line %(lineno)s:\t%(message)s'</span>,</span><br><span class="line">                    level=logging.INFO,</span><br><span class="line">                    datefmt=<span class="hljs-string">'%Y-%m-%d %H:%M:%S'</span>) <span class="hljs-comment"># 可以加filename=logfile参数将日志输出到文件中</span></span><br><span class="line"></span><br><span class="line">logging.critical(<span class="hljs-string">'当发生严重错误，导致应用程序不能继续运行时记录的信息'</span>)</span><br><span class="line">logging.error(<span class="hljs-string">'由于一个更严重的问题导致某些功能不能正常运行时记录的信息'</span>)</span><br><span class="line">logging.warning(<span class="hljs-string">'当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的'</span>)</span><br><span class="line">logging.info(<span class="hljs-string">'信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作'</span>)</span><br><span class="line">logging.debug(<span class="hljs-string">'最详细的日志信息，典型应用场景是 问题诊断'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>日志调用（<code>critical()</code>, <code>error()</code>, <code>warning()</code>, <code>info()</code>, <code>debug()</code>）以降序方式表示不同的严重级别,默认是<code>warning</code>。</p>
-<p>下面的是一个自己用的以天为单位的输出日志的函数：</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> re</span><br><span class="line"><span class="hljs-keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> logging.handlers <span class="hljs-keyword">import</span> TimedRotatingFileHandler</span><br><span class="line"><span class="hljs-keyword">from</span> logging.handlers <span class="hljs-keyword">import</span> RotatingFileHandler</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">log_init</span><span class="hljs-params">(logfile)</span>:</span></span><br><span class="line">    log_fmt = <span class="hljs-string">'%(asctime)s\tFile \"%(filename)s\",line %(lineno)s\t%(levelname)s: %(message)s'</span></span><br><span class="line">    formatter = logging.Formatter(log_fmt)</span><br><span class="line">    <span class="hljs-comment"># 可以设置间隔时间，这里是一天生成一个文件</span></span><br><span class="line">    log_file_handler = TimedRotatingFileHandler(filename=logfile, when=<span class="hljs-string">"D"</span>, interval=<span class="hljs-number">1</span>, backupCount=<span class="hljs-number">7</span>)</span><br><span class="line">    log_file_handler.suffix = <span class="hljs-string">"%Y-%m-%d.log"</span></span><br><span class="line">    <span class="hljs-comment"># filehanlder.suffix的格式必须这么写，才能自动删除旧文件</span></span><br><span class="line">    <span class="hljs-comment"># 如果设定是天，就必须写成“%Y-%m-%d.log”，写成其他格式会导致删除旧文件不生效</span></span><br><span class="line"></span><br><span class="line">    log_file_handler.setFormatter(formatter)</span><br><span class="line">    <span class="hljs-comment"># log_file_handler.setLevel(logging.DEBUG)</span></span><br><span class="line">    logging.getLogger().setLevel(logging.DEBUG)</span><br><span class="line">    logging.getLogger().addHandler(log_file_handler)</span><br><span class="line">    <span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">    这里是需要运行的程序，需要按照文件格式删除log文件，需要启用 extMatch、removeHandle函数</span></span><br><span class="line"><span class="hljs-string">    '''</span></span><br><span class="line">    <span class="hljs-comment"># logging.info('this is a loggging info message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.debug('this is a loggging debug message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.warning('this is loggging a warning message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.error('this is an loggging error message')</span></span><br><span class="line">    <span class="hljs-comment"># logging.critical('this is a loggging critical message')</span></span><br></pre></td></tr></table></figure>
-
-<p>修改所调用的模块中的日志设置：</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># somelib.py</span></span><br><span class="line"><span class="hljs-keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">log = logging.getLogger(__name__) <span class="hljs-comment"># 默认就是： __name__ 只的当前的模块</span></span><br><span class="line">log.addHandler(logging.NullHandler())</span><br><span class="line"><span class="hljs-comment"># Example function (for testing)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    log.critical(<span class="hljs-string">'A Critical Error!'</span>)</span><br><span class="line">    log.debug(<span class="hljs-string">'A debug message'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>下面我们调用这个模块：</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> logging</span><br><span class="line"><span class="hljs-comment"># 这是当前脚本的日志设置</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>logging.basicConfig(level=logging.ERROR)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> somelib</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># 指定模块名，改变该模块的输出级别</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>logging.getLogger(<span class="hljs-string">'somelib'</span>).level=logging.DEBUG</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>somelib.func()</span><br><span class="line">CRITICAL:somelib:A Critical Error!</span><br><span class="line">DEBUG:somelib:A debug message</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在这里，根日志被配置成仅仅输出<code>ERROR</code> 或更高级别的消息。不过，<code>somelib</code> 的日志级别被单独配置成可以输出debug 级别的消息，它的优先级比全局配置高。像这样更改单独模块的日志配置对于调试来讲是很方便的，因为你无需去更改任何的全局日志配置——只需要修改你想要更多输出的模块的日志等级。</p>
+<h2 id="模型验证"><a href="#模型验证" class="headerlink" title="模型验证"></a>模型验证</h2><h3 id="留出法"><a href="#留出法" class="headerlink" title="留出法"></a>留出法</h3><p>也叫<strong>简单交叉验证方法</strong>是：首先随机地将已给数据分为两部分，一部分作为训练集，另一部分作为测试集（例如，70%的数据为训练集，30%的数据为测试集）；然后用训练集在各种条件下（例如，不同的参数个数）训练模型，从而得到不同的模型；在测试集上评价各个模型的测试误差，选出测试误差最小的模型</p>
+<p>需注意的是，数据互粉要尽可能的保持数据分布的一致性，一般采用分层采样</p>
+<p>单此留出法得到的估计结果往往不够稳定可靠，在使用流出法时一般采用若干次随机划分、每次重复进行实验评估后取平均值作为评估结果</p>
+<h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><p>样本分成10份或者更多，每次只留出一组作为测试集合，这样就会有10组不同的训练集</p>
+<p><img src="/myphoto/md01.png" alt="交叉验证"></p>
+<h3 id="留一验证"><a href="#留一验证" class="headerlink" title="留一验证"></a>留一验证</h3><p>交叉验证的特殊情形是S＝N</p>
+<h2 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h2><p>模型评估有不同的指标，不同的模型也有不同的侧重点，所以在使用模型的时候，要对数据和预测结果有一定的了解，选择合适的模型和评估方法才能达到机器学习的目的</p>
+<p>对于分类问题，最常用的就是混淆矩阵：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>预测正例</th>
+<th>预测假例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>真实正例</td>
+<td>TP(True Positive)</td>
+<td>FN(False Negetive)</td>
+</tr>
+<tr>
+<td>真实假例</td>
+<td>FP(False Positive)</td>
+<td>TN(True Negetive)</td>
+</tr>
+</tbody></table>
+<p>准确率(查准率)，也就是侧重于模型的准确度，它不在乎有多少真实正例被预测为假例，只关系预测正例中有多少为真:<br>$$<br>P = \frac{TP}{TP+FP}<br>$$</p>
+<p>召回率(查全率)，则是侧重于真实正例中有多少被预测为正例:<br>$$<br>R = \frac{TP}{TP+FN}<br>$$</p>
+<p><img src="/myphoto/md02.png" alt="P-R曲线"></p>
+<p>F1:</p>
+<p>$$<br>\frac{1}{F1} = \frac{1}{2} (\frac{1}{P} + \frac{1}{R})<br>$$</p>
+<blockquote>
+<p>在一些应用中，对查准率和查全率的重视程度有所不同.例如在商品推荐系统中，为了尽可能少&gt;打扰用户，更希望推荐内容确是用户感兴趣的，此时查准率更重要;而在逃犯信息检索系统中，&gt;更希望尽可能少漏掉逃犯，此时查全率更重要.</p>
+</blockquote>
+<p>ROC，真值召回率:<br>$$<br>TPR = \frac{TP}{TP+FN}<br>$$</p>
+<p>AUC，假值召回率:<br>$$<br>FPR = \frac{FP}{FP+TN}<br>$$</p>
+<p><img src="/myphoto/md03.png" alt="ROC与AUC"></p>
+<blockquote>
+<p>现实任务中通常是利用有限个测试样例来绘制ROC 图，此时仅能获得有限个(真正例率，假正例率)坐标对，无法产生(a) 中的光滑ROC 曲线， 只能绘制出如(b)所示的近似ROC 曲线. 绘图过程很简单:给定$m^+$ 个正例和$m^-$个反例，根据学习器预测结果对样例进行排序，然后把分类阔值设为最大，即把所有样例均预测为反例，此时真正例率和假正例率均为0 ， 在坐标(0， 0) 处标记一个点然后，将分类阐值依次设为每个样例的预测值，即依次将每个样例划分为正例.设前一个标记点坐标为$(x, y)$ ， 当前若为真正例，则对应标记点的坐标为$(x,y +1/m^{+})$ ;当前若为假正例，则对应标记点的坐标为$(x+1/m^{-}, y)$ ，然后用线段连接相邻点即得.</p>
+<p>进行学习器的比较时， 与P-R 图相似， 若一个学习器的ROC 曲线被另一个学习器的曲线完全”包住”， 则可断言后者的性能优于前者;若两个学习器的ROC 曲线发生交叉，则难以-般性地断言两者孰优孰劣. 此时如果一定要进行比较， 则较为合理的判据是比较ROC 曲线下的面积，即AUC (Area UnderROC Curve)</p>
+</blockquote>
 
         </div>
         
@@ -209,7 +237,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/python/">python</a>
+                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>
                 </div>
             </div>
         </div>
@@ -226,17 +254,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/14/python3-biao-zhun-ku-xi-lie-wu-subprocess/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">python3 标准库系列(五)---subprocess</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/07/python3-biao-zhun-ku-xi-lie-er-argparse/">
-                <span class="level-item">python3 标准库系列(二)---argparse 模块</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/26/ji-qi-xue-xi-bi-ji-ti-du-xia-jiang-yu-sui-ji-ti-du-xia-jiang/">
+                <span class="level-item">机器学习笔记-----梯度下降与随机梯度下降</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -407,7 +428,27 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#模型验证">
+        <span class="has-mr-6">1</span>
+        <span>模型验证</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#留出法">
+        <span class="has-mr-6">1.1</span>
+        <span>留出法</span>
+        </a></li><li>
+        <a class="is-flex" href="#交叉验证">
+        <span class="has-mr-6">1.2</span>
+        <span>交叉验证</span>
+        </a></li><li>
+        <a class="is-flex" href="#留一验证">
+        <span class="has-mr-6">1.3</span>
+        <span>留一验证</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#模型评估">
+        <span class="has-mr-6">2</span>
+        <span>模型评估</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -712,7 +753,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zhuye.svg" alt="python3 标准库系列(四)---logging" height="28">
+                    <img src="/images/zhuye.svg" alt="机器学习笔记-----模型评估" height="28">
                 
                 </a>
                 <p class="is-size-7">
