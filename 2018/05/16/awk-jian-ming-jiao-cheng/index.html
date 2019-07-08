@@ -250,13 +250,13 @@
 <td>当前输入文件的名字</td>
 </tr>
 </tbody></table>
-<h3 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h3><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> awk '$6 ~ /FIN|TIME/ || NR==1 &#123;print NR,$4,$5,$6&#125;' OFS="\t" netstat.txt</span><br></pre></td></tr></table></figure>
+<h3 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h3><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> awk <span class="hljs-string">'$6 ~ /FIN|TIME/ || NR==1 &#123;print NR,$4,$5,$6&#125;'</span> OFS=<span class="hljs-string">"\t"</span> netstat.txt</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h3><p>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和。</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l  *.cpp *.c *.h | awk &apos;&#123;sum+=$5&#125; END &#123;print sum&#125;&apos;</span><br><span class="line">2511401</span><br></pre></td></tr></table></figure>
 
 <p>统计每个用户的进程的占了多少内存</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> ps aux | awk 'NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i ", " a[i]"KB";&#125;'</span><br><span class="line">dbus, 540KB</span><br><span class="line">mysql, 99928KB</span><br><span class="line">www, 3264924KB</span><br><span class="line">root, 63644KB</span><br><span class="line">hchen, 6020KB</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> ps aux | awk <span class="hljs-string">'NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i ", " a[i]"KB";&#125;'</span></span></span><br><span class="line">dbus, 540KB</span><br><span class="line">mysql, 99928KB</span><br><span class="line">www, 3264924KB</span><br><span class="line">root, 63644KB</span><br><span class="line">hchen, 6020KB</span><br></pre></td></tr></table></figure>
 
 <p><strong>控制结构和脚本语言待补充</strong></p>
 <p><strong>参考链接：</strong></p>
@@ -350,7 +350,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -416,7 +416,7 @@
                 <span class="level-item">数学与统计</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/生信/">
@@ -539,6 +539,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/08/ji-qi-xue-xi-bi-ji-jue-ce-shu-suan-fa/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/2.jpg" alt="机器学习笔记-----决策树算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-07T16:00:00.000Z">2019-07-08</time></div>
+                    <a href="/2019/07/08/ji-qi-xue-xi-bi-ji-jue-ce-shu-suan-fa/" class="has-link-black-ter is-size-6">机器学习笔记-----决策树算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数学与统计/">数学与统计</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/06/02/ji-qi-xue-xi-bi-ji-mo-xing-yan-zheng/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/1.jpg" alt="机器学习笔记-----模型评估">
@@ -596,25 +615,6 @@
         
         <article class="media">
             
-            <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/7.jpg" alt="生新基础知识-----sam-bam文件格式详解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-17T16:00:00.000Z">2019-05-18</time></div>
-                    <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-sam-bam-wen-jian-ge-shi/" class="has-link-black-ter is-size-6">生新基础知识-----sam-bam文件格式详解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/生信/">生信</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/05/18/sheng-xin-ji-chu-zhi-shi-fastq-wen-jian-ge-shi/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/6.jpg" alt="生信基础知识-----fastq文件格式详解">
@@ -643,6 +643,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -761,7 +772,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/机器学习/">
                         <span class="tag">机器学习</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
